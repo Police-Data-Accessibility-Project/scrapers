@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ master ]
 
+defaults:
+    run:
+        shell: bash
+
 jobs:
   build:
 
@@ -24,7 +28,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        # Collect all the requirements.txt in the repo.
+        shopt -s globstar
+        mapfile -t reqs < <(printf -- "-r%s\n" **/*/requirements.txt)
+        if [[ "${#reqs[@]}" -gt 0 ]]; then
+            # Satisfy *all* the requirements.
+            pip install "${reqs[@]}"
+        fi
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
