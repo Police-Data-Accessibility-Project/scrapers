@@ -359,7 +359,7 @@ def search_portal(case_number):
                     print("continuing...")
                     break
                 except TimeoutException:
-                    print("still waiting for user to solve the captcha..."
+                    print("still waiting for user to solve the captcha...")
 
     except NoSuchElementException:
         # No captcha on the page, continue.
