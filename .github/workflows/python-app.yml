@@ -26,6 +26,8 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
+        set -x  # let us see each command as it runs
+        sudo apt-get install --assume-yes tesseract-ocr
         python -m pip install --upgrade pip
         pip install flake8 pytest
         # Collect all the requirements.txt in the repo.
