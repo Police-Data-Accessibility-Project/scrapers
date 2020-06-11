@@ -110,13 +110,13 @@ class TestScraperUtils:
     def test_parse_out_path_valid(self):
         # Function should not affect valid length filenames and paths.
         normal_filename = 'document'
-        parsedPath = ScraperUtils.parse_out_path('C:\\Example\Path', normal_filename, 'pdf')
-        assert parsedPath == os.path.join('C:\\Example\Path', '{}.{}'.format(normal_filename, 'pdf'))
+        parsedPath = ScraperUtils.parse_out_path('C:\\Example\\Path', normal_filename, 'pdf')
+        assert parsedPath == os.path.join('C:\\Example\\Path', '{}.{}'.format(normal_filename, 'pdf'))
 
     def test_filename_invalid(self):
         filename = None
-        parsed_path = ScraperUtils.parse_out_path(r'C:\\Example\Path', filename, 'pdf')
-        assert parsed_path == os.path.join(r'C:\\Example\Path', '.pdf')
+        parsed_path = ScraperUtils.parse_out_path(r'C:\\Example\\Path', filename, 'pdf')
+        assert parsed_path == os.path.join(r'C:\\Example\\Path', '.pdf')
 
     def test_parse_out_path_filename_extension_shortening(self):
         # 252 characters long, but with the .pdf extension it becomes 256 characters long - one too many.
