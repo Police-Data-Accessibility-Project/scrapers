@@ -239,20 +239,15 @@ def scrape_record(case_number):
 
     Charges = {}
     for charge in charges_table:
-        charge_details = charge.find_elements_by_tag_name('td')
-        count = int(charge_details[0].text.strip())
-        long_desc = charge_details[1].text.strip()
-        # Statute is contained within brackets
-        if '(' in long_desc and ')' in long_desc:
-            statute = long_desc[long_desc.find('(') + 1:long_desc.find(')')]
-        else:
-            statute = None
-        description = long_desc.split('(')[0]
-        level = charge_details[2].text.strip()
-        degree = charge_details[3].text.strip()
-        # plea = charge_details[4].text.strip() # Plea is not filled out on this portal.
-        disposition = charge_details[5].text.strip()
-        disposition_date = charge_details[6].text.strip()
+        charge_cols = charge.find_elements_by_tag_name('td')
+        count = int(charge_cols[0].text.strip())
+        charge_desc = charge_cols[1].text
+        description, statute = ScraperUtils.parse_charge_statute(charge_desc)
+        level = charge_cols[2].text.strip()
+        degree = charge_cols[3].text.strip()
+        # plea = charge_cols[4].text.strip() # Plea is not filled out on this portal.
+        disposition = charge_cols[5].text.strip()
+        disposition_date = charge_cols[6].text.strip()
         offense_date = None  # Not shown on this portal
         citation_number = None  # Not shown on this portal
         Charges[count] = Charge(count, statute, description, level, degree, disposition, disposition_date, offense_date,
@@ -304,10 +299,7 @@ def scrape_record(case_number):
         MiddleName = None
         LastName = None
         if ',' in full_name:
-            name_split = full_name.split(',')[1].lstrip().split()
-            FirstName = name_split[0]
-            MiddleName = " ".join(name_split[1:])
-            LastName = full_name.split(',')[0]
+            FirstName, MiddleName, LastName = ScraperUtils.parse_name(full_name)
         else:
             # If there's no comma, it's a corporation name.
             FirstName = full_name
@@ -339,27 +331,42 @@ def search_portal(case_number):
     case_input.click()
     case_input.send_keys(case_number)
 
-    if settings['solve-captchas']:
-        # Solve captcha if it is required
-        try:
-            # Get Captcha
-            captcha_image_elem = driver.find_element_by_xpath(
-                '//*/img[@alt="Captcha"]')
-            captcha_buffer = captcha_image_elem.screenshot_as_png
+    # Solve captcha if it is required
+    try:
+        # Get Captcha. This is kinda nasty, but if there's no Captcha, then
+        # this will throw (which is a good thing in this case) and we can
+        # move on with processing.
+        captcha_image_elem = driver.find_element_by_xpath(
+            '//*/img[@alt="Captcha"]')
+        captcha_buffer = captcha_image_elem.screenshot_as_png
+        if settings['solve-captchas']:
             captcha_answer = captcha_solver.solve_captcha(captcha_buffer)
             captcha_textbox = driver.find_element_by_xpath(
                 '//*/input[@name="captcha"]')
             captcha_textbox.click()
             captcha_textbox.send_keys(captcha_answer)
-        except NoSuchElementException:
-            # No captcha on the page, continue.
-            pass
 
+            # Do search
+            search_button = driver.find_element_by_id('searchButton')
+            search_button.click()
+        else:
+            print(f"Captcha encountered trying to view case ID {case_number}.")
+            print("Please solve the captcha and click the search button to proceed.")
+            while True:
+                try:
+                    WebDriverWait(driver, 6 * 60 * 60).until(
+                        lambda x: case_number in driver.title )
+                    print("continuing...")
+                    break
+                except TimeoutException:
+                    print("still waiting for user to solve the captcha..."
+
+    except NoSuchElementException:
+        # No captcha on the page, continue.
         # Do search
         search_button = driver.find_element_by_id('searchButton')
         search_button.click()
-    else:
-        raise Exception("Automated captcha solving is disabled by default. Please seek advice before using this feature.")
+
 
     # If the title stays as 'Search': Captcha solving failed
     # If the title contains the case number or 'Search Results': Captcha solving succeeded
@@ -377,7 +384,9 @@ def search_portal(case_number):
                     driver.find_element_by_xpath(
                         '//div[@class="alert alert-error"]')
                     print("Captcha was solved incorrectly")
-                    captcha_solver.notify_last_captcha_fail()
+
+                    if settings['solve-captchas']:
+                        captcha_solver.notify_last_captcha_fail()
                 except NoSuchElementException:
                     pass
                 # Clear cookies so a new captcha is presented upon refresh
@@ -385,8 +394,9 @@ def search_portal(case_number):
                 # Try solving the captcha again.
                 search_portal(case_number)
             elif 'Search Results: CaseNumber:' in driver.title:
-                # Captcha solved correctly
-                captcha_solver.notify_last_captcha_success()
+                if settings['solve-captchas']:
+                    # Captcha solved correctly
+                    captcha_solver.notify_last_captcha_success()
                 # Figure out the numer of cases returned
                 case_detail_tbl = driver.find_element_by_tag_name('table').text.split('\n')
                 case_count_idx = case_detail_tbl.index('CASES FOUND') + 1
@@ -398,8 +408,9 @@ def search_portal(case_number):
                 else:
                     return set()
             elif case_number in driver.title:
-                # Captcha solved correctly
-                captcha_solver.notify_last_captcha_success()
+                if settings['solve-captchas']:
+                    # Captcha solved correctly
+                    captcha_solver.notify_last_captcha_success()
                 # Case number search did find a single court case.
                 return {case_number}
         except TimeoutException:
