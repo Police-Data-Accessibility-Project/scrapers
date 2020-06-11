@@ -1,7 +1,7 @@
 import os
 import sys
 import csv
-import re
+import regex
 from typing import List
 from pathvalidate import sanitize_filename
 from dataclasses import dataclass
@@ -65,7 +65,7 @@ def parse_plea_case_numbers(plea_text: str, valid_charges: List[int]) -> List[in
     valid_charges = valid_charges or []
     plea_text = plea_text.strip().split()
     if len(plea_text) > 0:
-        plea_counts = re.sub('[^,0-9]', '', plea_text[-1]).split(',')
+        plea_counts = regex.sub('[^,0-9]', '', plea_text[-1]).split(',')
         plea_number = [int(charge) for charge in plea_counts if charge != '']
         # In rare cases numbers appear in the plea text not relating to a count number. Filter these out.
         filtered_plea_number = [charge for charge in plea_number if charge in valid_charges]
@@ -83,16 +83,22 @@ def parse_charge_statute(charge_text: str) -> (str, str):
     charge_text = charge_text or ''
     charge_text = charge_text.strip()
 
-    # Find last set of parenthesis, see https://stackoverflow.com/a/42147313/6008271
-    match = re.search(r"\(([^()]*)\)$", charge_text, re.IGNORECASE)
-    statute = match.group(1) if match else None
-
-    # Find left-most parenthesis (if any)
-    lbrack_pos = charge_text.rfind('(')
-    if lbrack_pos != -1:
-        charge = charge_text[0:lbrack_pos].strip()
+    # Find last set of parenthesis, allowing for nested parenthesis.
+    # This is a hybrid of https://stackoverflow.com/a/19863847/6008271 and https://stackoverflow.com/a/42147313/6008271
+    match = regex.findall(r"\((([^()]|(?R))*)\)", charge_text, regex.IGNORECASE)
+    if match:
+        statute = match[-1][0]
+        charge = charge_text
+        # Find the statute's opening parenthesis and trim. The extra logic is to handle nested brackets in the statute.
+        for _ in range(statute.count('(') + 1):
+            lbrack_pos = charge.rfind('(')
+            if lbrack_pos != -1:
+                charge = charge[0:lbrack_pos].strip()
+            else:
+                charge = charge
     else:
         charge = charge_text
+        statute = None
 
     if len(charge) == 0:
         charge = None

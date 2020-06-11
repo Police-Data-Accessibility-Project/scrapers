@@ -73,21 +73,21 @@ class TestScraperUtils:
         charge1 = '	FLEEING OR ATTEMPTING TO ELUDE (HIGH SPEED RECKLESS) (3161935 3)  '
         charge2 = 'DRIVING WHILE LICENSE SUSPENDED OR REVOKED (32234 2a)'
         charge3 = '	FELON IN POSSESSION OF AMMUNITION (ACTUAL POSSESSION) (79023)  '
-        charge4 = None
+        charge4 = 'FAIL TO DISPLAY REGISTRATION - POSSESSION REQUIRED (320.0605(1))  '
         assert ScraperUtils.parse_charge_statute(charge1) == (
             'FLEEING OR ATTEMPTING TO ELUDE (HIGH SPEED RECKLESS)', '3161935 3')
         assert ScraperUtils.parse_charge_statute(charge2) == ('DRIVING WHILE LICENSE SUSPENDED OR REVOKED', '32234 2a')
         assert ScraperUtils.parse_charge_statute(charge3) == (
             'FELON IN POSSESSION OF AMMUNITION (ACTUAL POSSESSION)', '79023')
-        assert ScraperUtils.parse_charge_statute(charge4) == (None, None)
+        assert ScraperUtils.parse_charge_statute(charge4) == ('FAIL TO DISPLAY REGISTRATION - POSSESSION REQUIRED', '320.0605(1)')
 
     def test_parse_charge_statute_incomplete(self):
         charge1 = '(32234 2a)'
         charge2 = 'DRIVING WHILE LICENSE SUSPENDED OR REVOKED'
-        charge3 = ' '
         assert ScraperUtils.parse_charge_statute(charge1) == (None, '32234 2a')
         assert ScraperUtils.parse_charge_statute(charge2) == (charge2, None)
-        assert ScraperUtils.parse_charge_statute(charge3) == (None, None)
+        assert ScraperUtils.parse_charge_statute(' ') == (None, None)
+        assert ScraperUtils.parse_charge_statute(None) == (None, None)
 
     def test_parse_defense_attorneys(self):
         attorneys1 = ['DEFENSE ATTORNEY: DOE, JANE EMILY ASSIGNED', 'DEFENSE ATTORNEY: DOE, JOHN MICHAEL ASSIGNED', 'DEFENSE ATTORNEY: SELF, SELF ASSIGNED']
