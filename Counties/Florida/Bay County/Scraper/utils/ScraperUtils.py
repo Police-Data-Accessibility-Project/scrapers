@@ -61,6 +61,8 @@ def parse_plea_case_numbers(plea_text: str, valid_charges: List[int]) -> List[in
     :param valid_charges: Valid charge numbers that can be referenced in the plea text
     :return: List of charge count numbers related to this plea
     """
+    plea_text = plea_text or ''
+    valid_charges = valid_charges or []
     plea_text = plea_text.strip().split()
     if len(plea_text) > 0:
         plea_counts = re.sub('[^,0-9]', '', plea_text[-1]).split(',')
@@ -72,12 +74,39 @@ def parse_plea_case_numbers(plea_text: str, valid_charges: List[int]) -> List[in
         return []
 
 
+def parse_charge_statute(charge_text: str) -> (str, str):
+    """
+    Parses the charge description text into the charge and statute code separately
+    :param charge_text: Charge description
+    :return: (Charge description, Statute code)
+    """
+    charge_text = charge_text or ''
+    charge_text = charge_text.strip()
+
+    # Find last set of parenthesis, see https://stackoverflow.com/a/42147313/6008271
+    match = re.search(r"\(([^()]*)\)$", charge_text, re.IGNORECASE)
+    statute = match.group(1) if match else None
+
+    # Find left-most parenthesis (if any)
+    lbrack_pos = charge_text.rfind('(')
+    if lbrack_pos != -1:
+        charge = charge_text[0:lbrack_pos].strip()
+    else:
+        charge = charge_text
+
+    if len(charge) == 0:
+        charge = None
+
+    return charge, statute
+
+
 def parse_attorneys(attorney_text: List[str]):
     """
     Gets a list of case docket strings and parses the attorney names from these
     :param attorney_text: List of case docket strings for the assignment of attorneys.
     :return: List of attorney names
     """
+    attorney_text = attorney_text or ''
     attorneys = []
     for docket_text in attorney_text:
         attorney_name = docket_text.strip()
@@ -87,9 +116,6 @@ def parse_attorneys(attorney_text: List[str]):
             # Remove text before attorney name
             attorney_name = attorney_name.split(':')[1].lstrip()
             attorneys.append(attorney_name)
-        else:
-            print("Docket begins with DEFENSE or COURT APPOINTED but does not end with ASSIGNED. Possible edge case?",
-                  docket_text, file=sys.stderr)
 
     if len(attorneys) == 0:
         return None
@@ -103,6 +129,7 @@ def parse_plea_type(plea_text: str):
     :param plea_text: Plea text in case dockets
     :return: 'Not Guilty', 'Guilty', 'Nolo Contendere', or None.
     """
+    plea_text = plea_text or ''
     if 'NOT' in plea_text:
         plea = 'Not Guilty'
     elif 'GUILTY' in plea_text:
@@ -113,6 +140,26 @@ def parse_plea_type(plea_text: str):
     else:
         plea = None
     return plea
+
+
+def parse_name(fullname_text: str) -> (str, str, str):
+    """
+    Parses the first, middle and last name from a full name.
+    :param fullname_text: Defendant's fullname as a String
+    :return: (FirstName, MiddleName, LastName)
+    """
+    if not fullname_text:
+        return None, None, None
+
+    name_split = fullname_text.split(',')[1].lstrip().split()
+    FirstName = name_split[0]
+    MiddleName = " ".join(name_split[1:])
+    LastName = fullname_text.split(',')[0]
+    if MiddleName == '':
+        MiddleName = None
+    return FirstName, MiddleName, LastName
+
+
 
 
 def write_csv(output_file, record: Record, verbose=False):
