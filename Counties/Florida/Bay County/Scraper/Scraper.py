@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException, TimeoutException
 
-from captcha.CaptchaSolver import CaptchaSolver
+from common.captcha.benchmark.BenchmarkAdditionSolver import CaptchaSolver
 import utils.ScraperUtils as ScraperUtils
 from utils.ScraperUtils import Record, Charge
 
@@ -36,14 +36,13 @@ ffx_profile = webdriver.FirefoxOptions()
 # Automatically dismiss unexpected alerts.
 ffx_profile.set_capability('unexpectedAlertBehaviour', 'dismiss')
 driver = webdriver.Firefox(options=ffx_profile)
-captcha_solver = CaptchaSolver(driver)
-
+captcha_solver = CaptchaSolver()
 
 def main():
     # Parse Arguments
     args = sys.argv[1:]
     short_args = 'p:s:c:y:e:t:pc:o:a:uv'
-    long_args = ['portal-base=', 'state=', 'county', 'start-year=', 'end-year=', 'missing-thresh=', 'collect-pii',
+    long_args = ['portal-base=', 'state=', 'county=', 'start-year=', 'end-year=', 'missing-thresh=', 'collect-pii',
                  'connect-thresh=', 'output=', 'save-attachments=','solve-captchas', 'verbose']
 
     try:
@@ -318,17 +317,16 @@ def search_portal(case_number):
     case_input.send_keys(case_number)
 
     if settings['solve-captchas']:
+        solved_captcha = None
         # Solve captcha if it is required
         try:
             # Get Captcha
-            captcha_image_elem = driver.find_element_by_xpath(
-                '//*/img[@alt="Captcha"]')
+            captcha_image_elem = driver.find_element_by_xpath('//*/img[@alt="Captcha"]')
             captcha_buffer = captcha_image_elem.screenshot_as_png
-            captcha_answer = captcha_solver.solve_captcha(captcha_buffer)
-            captcha_textbox = driver.find_element_by_xpath(
-                '//*/input[@name="captcha"]')
+            solved_captcha = captcha_solver.solve_captcha(captcha_image=captcha_buffer)
+            captcha_textbox = driver.find_element_by_xpath('//*/input[@name="captcha"]')
             captcha_textbox.click()
-            captcha_textbox.send_keys(captcha_answer)
+            captcha_textbox.send_keys(solved_captcha.answer)
         except NoSuchElementException:
             # No captcha on the page, continue.
             pass
@@ -352,10 +350,10 @@ def search_portal(case_number):
                 # Clicking search did not change the page. This could be because of a failed captcha attempt.
                 try:
                     # Check if 'Invalid Captcha' dialog is showing
-                    driver.find_element_by_xpath(
-                        '//div[@class="alert alert-error"]')
+                    driver.find_element_by_xpath('//div[@class="alert alert-error"]')
                     print("Captcha was solved incorrectly")
-                    captcha_solver.notify_last_captcha_fail()
+                    if solved_captcha:
+                        solved_captcha.notify_incorrect()
                 except NoSuchElementException:
                     pass
                 # Clear cookies so a new captcha is presented upon refresh
@@ -364,11 +362,9 @@ def search_portal(case_number):
                 search_portal(case_number)
             elif 'Search Results: CaseNumber:' in driver.title:
                 # Captcha solved correctly
-                captcha_solver.notify_last_captcha_success()
-                # Figure out the numer of cases returned
-                case_detail_tbl = driver.find_element_by_tag_name('table').text.split('\n')
-                case_count_idx = case_detail_tbl.index('CASES FOUND') + 1
-                case_count = int(case_detail_tbl[case_count_idx])
+                if solved_captcha:
+                    solved_captcha.notify_correct()
+                case_count = ScraperUtils.get_search_case_count(driver, settings['county'])
                 # Case number search found multiple cases.
                 if case_count > 1:
                     return ScraperUtils.get_associated_cases(driver)
@@ -377,7 +373,8 @@ def search_portal(case_number):
                     return set()
             elif case_number in driver.title:
                 # Captcha solved correctly
-                captcha_solver.notify_last_captcha_success()
+                if solved_captcha:
+                    solved_captcha.notify_correct()
                 # Case number search did find a single court case.
                 return {case_number}
         except TimeoutException:

@@ -8,8 +8,7 @@ import re
 class CaptchaSolver:
     """Class for solving Captchas used on Benchmark-based Portals"""
 
-    def __init__(self, driver, outdir=None):
-        self.driver = driver
+    def __init__(self, outdir=None):
         self.outdir = outdir or os.path.join(os.getcwd(), 'captcha')
         self.correct_dir = os.path.join(self.outdir, 'correct')
         self.incorrect_dir = os.path.join(self.outdir, 'incorrect')
