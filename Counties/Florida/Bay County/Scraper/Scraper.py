@@ -35,8 +35,17 @@ output_file = os.path.join(os.getcwd(), settings['output'])
 ffx_profile = webdriver.FirefoxOptions()
 # Automatically dismiss unexpected alerts.
 ffx_profile.set_capability('unexpectedAlertBehaviour', 'dismiss')
-driver = webdriver.Firefox(options=ffx_profile)
+
+if os.getenv('DOCKERIZED') == 'true':
+    # If running through docker-compose, use the standalone firefox container. See: docker-compose.yml#firefox
+    driver = webdriver.Remote(
+       command_executor='http://firefox:4444/wd/hub',
+       desired_capabilities=ffx_profile.to_capabilities())
+else:
+    driver = webdriver.Firefox(options=ffx_profile)
+
 captcha_solver = CaptchaSolver()
+
 
 def main():
     # Parse Arguments
@@ -316,26 +325,40 @@ def search_portal(case_number):
     case_input.click()
     case_input.send_keys(case_number)
 
-    if settings['solve-captchas']:
-        solved_captcha = None
-        # Solve captcha if it is required
-        try:
-            # Get Captcha
-            captcha_image_elem = driver.find_element_by_xpath('//*/img[@alt="Captcha"]')
-            captcha_buffer = captcha_image_elem.screenshot_as_png
-            solved_captcha = captcha_solver.solve_captcha(captcha_image=captcha_buffer)
+    # Solve captcha if it is required
+    try:
+        # Get Captcha. This is kinda nasty, but if there's no Captcha, then
+        # this will throw (which is a good thing in this case) and we can
+        # move on with processing.
+        captcha_image_elem = driver.find_element_by_xpath('//*/img[@alt="Captcha"]')
+        captcha_buffer = captcha_image_elem.screenshot_as_png
+        if settings['solve-captchas']:
+            solved_captcha = captcha_solver.solve_captcha(captcha_buffer)
             captcha_textbox = driver.find_element_by_xpath('//*/input[@name="captcha"]')
             captcha_textbox.click()
             captcha_textbox.send_keys(solved_captcha.answer)
-        except NoSuchElementException:
-            # No captcha on the page, continue.
-            pass
 
+            # Do search
+            search_button = driver.find_element_by_id('searchButton')
+            search_button.click()
+        else:
+            print(f"Captcha encountered trying to view case ID {case_number}.")
+            print("Please solve the captcha and click the search button to proceed.")
+            while True:
+                try:
+                    WebDriverWait(driver, 6 * 60 * 60).until(
+                        lambda x: case_number in driver.title)
+                    print("continuing...")
+                    break
+                except TimeoutException:
+                    print("still waiting for user to solve the captcha...")
+
+    except NoSuchElementException:
+        # No captcha on the page, continue.
+        solved_captcha = None
         # Do search
         search_button = driver.find_element_by_id('searchButton')
         search_button.click()
-    else:
-        raise Exception("Automated captcha solving is disabled by default. Please seek advice before using this feature.")
 
     # If the title stays as 'Search': Captcha solving failed
     # If the title contains the case number or 'Search Results': Captcha solving succeeded
@@ -350,9 +373,10 @@ def search_portal(case_number):
                 # Clicking search did not change the page. This could be because of a failed captcha attempt.
                 try:
                     # Check if 'Invalid Captcha' dialog is showing
-                    driver.find_element_by_xpath('//div[@class="alert alert-error"]')
+                    driver.find_element_by_xpath(
+                        '//div[@class="alert alert-error"]')
                     print("Captcha was solved incorrectly")
-                    if solved_captcha:
+                    if settings['solve-captchas'] and solved_captcha:
                         solved_captcha.notify_incorrect()
                 except NoSuchElementException:
                     pass
@@ -362,7 +386,7 @@ def search_portal(case_number):
                 search_portal(case_number)
             elif 'Search Results: CaseNumber:' in driver.title:
                 # Captcha solved correctly
-                if solved_captcha:
+                if settings['solve-captchas'] and solved_captcha:
                     solved_captcha.notify_correct()
                 case_count = ScraperUtils.get_search_case_count(driver, settings['county'])
                 # Case number search found multiple cases.
@@ -373,7 +397,7 @@ def search_portal(case_number):
                     return set()
             elif case_number in driver.title:
                 # Captcha solved correctly
-                if solved_captcha:
+                if settings['solve-captchas'] and solved_captcha:
                     solved_captcha.notify_correct()
                 # Case number search did find a single court case.
                 return {case_number}
