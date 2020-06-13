@@ -87,6 +87,7 @@ def parse_charge_statute(charge_text: str) -> (str, str):
     # This is a hybrid of https://stackoverflow.com/a/19863847/6008271 and https://stackoverflow.com/a/42147313/6008271
     match = regex.findall(r"\((([^()]|(?R))*)\)", charge_text, regex.IGNORECASE)
     if match:
+        # Match the last set of brackets in the charge text, then get the first match's group.
         statute = match[-1][0]
         charge = charge_text
         # Find the statute's opening parenthesis and trim. The extra logic is to handle nested brackets in the statute.
@@ -404,6 +405,20 @@ def parse_out_path(directory, filename, extension):
 
     return os.path.join(directory, '{}.{}'.format(filename, extension))
 
+
+def get_search_case_count(driver, county):
+    # Todo: This should be modularised out as a county-portal specific function
+    # Get number of cases resolved
+    if county == 'Bay':
+        case_detail_tbl = driver.find_element_by_tag_name('table').text.split('\n')
+        case_count_idx = case_detail_tbl.index('CASES FOUND') + 1
+        case_count = int(case_detail_tbl[case_count_idx])
+    elif county == 'Escambia':
+        case_count_cell = driver.find_element_by_xpath(
+            '//*[@class="casedetailSectionTable"]/tbody/tr/td/table/tbody/tr[4]/td[2]')
+        case_count = int(case_count_cell.text)
+        
+    return case_count
 
 def get_associated_cases(driver):
     """
