@@ -7,3 +7,5 @@ requests
 requests-toolbelt
 regex
 absl-py
+enforce-typing
+dataclass-builder

@@ -1,5 +1,7 @@
 import pytest
-from utils import ScraperUtils
+from absl.testing import flagsaver
+from common.pii import Pii
+from USA.FL.Bay.Court.scraper.utils import ScraperUtils
 import os
 
 
@@ -57,11 +59,21 @@ class TestScraperUtils:
         assert ScraperUtils.parse_plea_type(plea2) == 'Not Guilty'
         assert ScraperUtils.parse_plea_type(plea3) == 'Not Guilty'
 
+    @flagsaver.flagsaver(collect_pii=True)
     def test_parse_name(self):
         name1 = "DOE, JANE EMILY"
         name2 = "DOE, JOHN"
         assert ScraperUtils.parse_name(name1) == ('JANE', 'EMILY', 'DOE')
         assert ScraperUtils.parse_name(name2) == ('JOHN', None, 'DOE')
+
+    @flagsaver.flagsaver(collect_pii=False)
+    def test_parse_name_redacted(self):
+        name1 = "DOE, JANE EMILY"
+        name2 = "DOE, JOHN"
+        assert ScraperUtils.parse_name(name1) == (
+                '[redacted]', '[redacted]', '[redacted]')
+        assert ScraperUtils.parse_name(name2) == (
+                '[redacted]', '[redacted]', '[redacted]')
 
     def test_parse_name_error(self):
         name1 = None
@@ -89,19 +101,20 @@ class TestScraperUtils:
         assert ScraperUtils.parse_charge_statute(' ') == (None, None)
         assert ScraperUtils.parse_charge_statute(None) == (None, None)
 
+    @flagsaver.flagsaver(collect_pii=True)
     def test_parse_defense_attorneys(self):
         attorneys1 = ['DEFENSE ATTORNEY: DOE, JANE EMILY ASSIGNED', 'DEFENSE ATTORNEY: DOE, JOHN MICHAEL ASSIGNED', 'DEFENSE ATTORNEY: SELF, SELF ASSIGNED']
         public_defenders1 = ['COURT APPOINTED ATTORNEY: DOE, JOHN MICHAEL ASSIGNED']
-        assert ScraperUtils.parse_attorneys(attorneys1) == ['DOE, JANE EMILY', 'DOE, JOHN MICHAEL', 'SELF, SELF']
-        assert ScraperUtils.parse_attorneys(public_defenders1) == ['DOE, JOHN MICHAEL']
+        assert ScraperUtils.parse_attorneys(attorneys1) == ('DOE, JANE EMILY', 'DOE, JOHN MICHAEL', 'SELF, SELF')
+        assert ScraperUtils.parse_attorneys(public_defenders1) == ('DOE, JOHN MICHAEL',)
 
     def test_parse_defense_attorneys_invalid(self):
         invalid_test = ['', '', '']
         invalid_test2 = []
         invalid_test3 = None
-        assert ScraperUtils.parse_attorneys(invalid_test) is None
-        assert ScraperUtils.parse_attorneys(invalid_test2) is None
-        assert ScraperUtils.parse_attorneys(invalid_test3) is None
+        assert not ScraperUtils.parse_attorneys(invalid_test)
+        assert not ScraperUtils.parse_attorneys(invalid_test2)
+        assert not ScraperUtils.parse_attorneys(invalid_test3)
 
     def test_parse_out_path_illegal_characters(self):
         filename_invalid_chars = 't<>:e"/s\\t|?n*ame'
@@ -110,10 +123,10 @@ class TestScraperUtils:
     def test_parse_out_path_valid(self):
         # Function should not affect valid length filenames and paths.
         normal_filename = 'document'
-        parsedPath = ScraperUtils.parse_out_path(r'C:\\Example\\Path', normal_filename, 'pdf')
-        assert parsedPath == os.path.join(r'C:\\Example\\Path', '{}.{}'.format(normal_filename, 'pdf'))
+        parsedPath = ScraperUtils.parse_out_path('C:\\Example\\Path', normal_filename, 'pdf')
+        assert parsedPath == os.path.join('C:\\Example\\Path', '{}.{}'.format(normal_filename, 'pdf'))
 
-    def test_filename_blank(self):
+    def test_filename_invalid(self):
         filename = None
         parsed_path = ScraperUtils.parse_out_path(r'C:\\Example\\Path', filename, 'pdf')
         assert parsed_path == os.path.join(r'C:\\Example\\Path', '.pdf')
@@ -139,3 +152,24 @@ class TestScraperUtils:
         filename_too_long = '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789'
         parsed_path = ScraperUtils.parse_out_path(os.getcwd(), filename_too_long, 'txt')
         assert len(parsed_path) <= 256
+
+    @flagsaver.flagsaver(collect_pii=False)
+    def test_enforce_use_of_pii_wrappers(self):
+        with pytest.raises(TypeError, match=".*Pii.String.*"):
+            builder = ScraperUtils.RecordBuilder(
+                    id="foo", state="bar", county="baz")
+            builder.first_name = "I should be in a PII wrapper"
+            builder.build()
+
+        with pytest.raises(TypeError, match=".*Pii.String.*"):
+            ScraperUtils.Record(id="foo", state="bar", county="baz",
+                                first_name="I should be in a PII wrapper")
+
+    @flagsaver.flagsaver(collect_pii=False)
+    def test_happy_builder(self):
+        builder = ScraperUtils.RecordBuilder(
+                id="foo", state="bar", county="baz")
+        want = Pii.String("I'm in a PII wrapper")
+        builder.first_name = want
+        r = builder.build()
+        assert r.first_name == want
