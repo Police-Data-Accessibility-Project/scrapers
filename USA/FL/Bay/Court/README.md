@@ -45,17 +45,17 @@ Bay County uses a Benchmark portal by Pioneer Technology .
 
 |Short|Long|Default Value|Description|
 |---|---|---|---|
-|`-p`|`--portal-base`|https://court.baycoclerk.com/BenchmarkWeb2/|Base URL for the Benchmark-based portal|
+|`-p`|`--portal_base`|https://court.baycoclerk.com/BenchmarkWeb2/|Base URL for the Benchmark-based portal|
 |`-s`|`--state`|FL|Postal code for state being scraped.
 |`-c`|`--county`|Bay|County being scraped.
-|`-y`|`--start-year`|2000|Earliest year to scrape as 4-digit year.|
+|`-y`|`--start_year`|2000|Earliest year to scrape as 4-digit year.|
 |`-e`|`--end-year`|2020|Latest year to scrape as 4-digit year.|
-|`-t`|`--missing-thresh`|5|How many missing cases in a row to allow before proceeding to the next year.|
-|`-p`|`--collect-pii`|N/A (Off by default)|Collect Personally Identifiable Information (PII).|
-|`-c`|`--connect-thresh`|10|How many times to attempt to connect to a page before failing.
+|`-t`|`--missing_thresh`|5|How many missing cases in a row to allow before proceeding to the next year.|
+|`-p`|`--collect_pii`|N/A (Off by default)|Collect Personally Identifiable Information (PII).|
+|`-c`|`--connect_thresh`|10|How many times to attempt to connect to a page before failing.
 |`-o`|`--output`|bay-county-scraped|Output CSV name. The .csv file extension is not required.
-|`-a`|`--save-attachments`|none|Save case docket attached documents. Disabled by default as these documents contain embedded PII. Valid values: `none` / `filing` / `all`. The `filing` option saves only attachments related to the case or citation filing.
-|`-u`|`--solve-captchas`|N/A (Off by default)|Automatically solve captchas used on the portal.
+|`-a`|`--save_attachments`|none|Save case docket attached documents. Disabled by default as these documents contain embedded PII. Valid values: `none` / `filing` / `all`. The `filing` option saves only attachments related to the case or citation filing.
+|`-u`|`--solve_captchas`|N/A (Off by default)|Automatically solve captchas used on the portal.
 |`-v`|`--verbose`|N/A (Off by default)|Run in Verbose mode with lots of printing
 
 ### Search Method: Case Number
@@ -76,7 +76,7 @@ Cases can be opened iteratively by searching 92000001, 92000002, 92000003, ... u
 
 Unfortunately, there are some gaps in the data where a case is missing. I'm unsure for the reason for this, perhaps the case has not concluded, or it was removed.
 
-In this scenario, `missing-threshold` is defined, where after N missing cases, it is assumed all cases for that year have been explored.
+In this scenario, `missing_threshold` is defined, where after N missing cases, it is assumed all cases for that year have been explored.
 
 ### Solving Captcha
 

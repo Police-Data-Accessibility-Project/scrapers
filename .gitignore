@@ -165,6 +165,9 @@ Session.vim
 ehthumbs.db
 Thumbs.db
 
+# IDE generated files
+.idea
+
 # Emacs temp files
 \#*\#
 /.emacs.desktop
