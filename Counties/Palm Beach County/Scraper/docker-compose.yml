@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  scraper:
+    image: pdap-fl-palm-beach-scraper:local
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/scraper
+    environment:
+      DOCKERIZED: 'true'

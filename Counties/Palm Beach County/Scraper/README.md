@@ -1,3 +1,9 @@
+# Florida: Palm Beach County
+
+## Installation
+
+### Local installation
+
 - install node
 - extract these files into a folder
 - navigate to that folder via terminal
@@ -10,3 +16,14 @@ Setting start to 0 should start you on the current day. Setting end to 1 should 
 - type "npm start" 
 
 that will run the scraper in a custom chrome browser.
+
+
+### Dockerized installation
+
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+2. `cd Scraper`
+
+3. `docker-compose build scraper`
+
+4. `docker-compose up`
