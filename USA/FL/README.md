@@ -1,8 +1,8 @@
-# Florida
+# Florida Summary
 
 Florida counties use a mixture of court portal systems, the most common is Benchmark by Pioneer Technology Group.
 
-Bay County's scraper attempts to tackle a Benchmark-based portal.
+Bay County's scraper is for a Benchmark-based portal. This will be expanded to scrape other Benchmark-based portals.
 
 ## Legal
 
