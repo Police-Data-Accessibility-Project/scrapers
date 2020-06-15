@@ -11,58 +11,18 @@ from requests.exceptions import HTTPError, Timeout
 from requests_toolbelt.utils import dump
 import requests
 from common.pii import Pii
-
-
-@enforce_types
-@dataclass()
-class Charge:
-    count: Optional[int] = None
-    statute: Optional[str] = None
-    description: Optional[str] = None
-    level: Optional[str] = None
-    degree: Optional[str] = None
-    disposition: Optional[str] = None
-    disposition_date: Optional[str] = None
-    offense_date: Optional[str] = None
-    citation_number: Optional[str] = None
-    plea: Optional[str] = None
-    plea_date: Optional[str] = None
-
-
-ChargeBuilder = dataclass_builder(Charge)
+from common.record import Record
 
 
 @enforce_types
 @dataclass(frozen=True)
-class Record:
-    id: str
-    state: str
-    county: str
+class BenchmarkRecord(Record):
     portal_id: Optional[str] = None
-    case_num: Optional[str] = None
     agency_report_num: Optional[str] = None
     party_id: Optional[str] = None
-    first_name: Optional[Pii.String] = None
-    middle_name: Optional[Pii.String] = None
-    last_name: Optional[Pii.String] = None
-    suffix: Optional[Pii.String] = None
-    dob: Optional[Pii.String] = None
-    race: Optional[str] = None
-    sex: Optional[str] = None
-    arrest_date: Optional[str] = None
-    filing_date: Optional[str] = None
-    offense_date: Optional[str] = None
-    division_name: Optional[str] = None
-    case_status: Optional[str] = None
-    defense_attorney: Optional[Pii.StringSequence] = None
-    public_defender: Optional[Pii.StringSequence] = None
-    judge: Optional[Pii.String] = None
-    charges: Optional[List] = None
-    arresting_officer: Optional[Pii.String] = None
-    arresting_officer_badge_number: Optional[Pii.String] = None
 
 
-RecordBuilder = dataclass_builder(Record)
+BenchmarkRecordBuilder = dataclass_builder(BenchmarkRecord)
 
 
 def parse_plea_case_numbers(plea_text: str, valid_charges: List[int]) -> List[int]:
@@ -175,7 +135,7 @@ def parse_name(fullname_text: str) -> (
     return FirstName, MiddleName, LastName
 
 
-def write_csv(output_file, record: Record, verbose=False):
+def write_csv(output_file, record: BenchmarkRecord, verbose=False):
     """
     Writes a scraped case to the output CSV file
     :param output_file: Output path + filename of CSV

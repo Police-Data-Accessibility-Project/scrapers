@@ -13,8 +13,9 @@ from selenium.common.exceptions import ElementNotInteractableException, NoSuchEl
 
 from common.captcha.benchmark.BenchmarkAdditionSolver import CaptchaSolver
 from common.pii import Pii
+from common.record import Charge, ChargeBuilder
 import utils.ScraperUtils as ScraperUtils
-from utils.ScraperUtils import Record, Charge, RecordBuilder, ChargeBuilder
+from utils.ScraperUtils import BenchmarkRecordBuilder
 
 FLAGS = flags.FLAGS
 flags.DEFINE_string('portal_base', 'https://court.baycoclerk.com/BenchmarkWeb2/', 'Base of the portal to scrape.')
@@ -154,7 +155,7 @@ def scrape_record(case_number):
     docket_pleas = driver.find_elements_by_xpath("//*[contains(text(), 'PLEA OF')]")
     docket_attachments = driver.find_elements_by_class_name('casedocketimage')
 
-    r = RecordBuilder()
+    r = BenchmarkRecordBuilder()
     r.id = str(uuid.uuid4())
     r.state = FLAGS.state
     r.county = FLAGS.county

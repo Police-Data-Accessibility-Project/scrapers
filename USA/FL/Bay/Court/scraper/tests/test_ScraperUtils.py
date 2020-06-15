@@ -156,20 +156,35 @@ class TestScraperUtils:
     @flagsaver.flagsaver(collect_pii=False)
     def test_enforce_use_of_pii_wrappers(self):
         with pytest.raises(TypeError, match=".*Pii.String.*"):
-            builder = ScraperUtils.RecordBuilder(
+            builder = ScraperUtils.BenchmarkRecordBuilder(
                     id="foo", state="bar", county="baz")
             builder.first_name = "I should be in a PII wrapper"
             builder.build()
 
         with pytest.raises(TypeError, match=".*Pii.String.*"):
-            ScraperUtils.Record(id="foo", state="bar", county="baz",
-                                first_name="I should be in a PII wrapper")
+            ScraperUtils.BenchmarkRecord(id="foo", state="bar", county="baz",
+                                         first_name="naked PII")
 
     @flagsaver.flagsaver(collect_pii=False)
-    def test_happy_builder(self):
-        builder = ScraperUtils.RecordBuilder(
-                id="foo", state="bar", county="baz")
-        want = Pii.String("I'm in a PII wrapper")
-        builder.first_name = want
+    def test_happy_builder_with_nopii(self):
+        builder = ScraperUtils.BenchmarkRecordBuilder(
+                id="foo", state="bar", county="baz", party_id="lol")
+        builder.first_name = Pii.String("I'm in a PII wrapper")
         r = builder.build()
-        assert r.first_name == want
+        assert r.first_name == "[redacted]"
+        assert r.id == "foo"
+        assert r.state == "bar"
+        assert r.county == "baz"
+        assert r.party_id == "lol"
+
+    @flagsaver.flagsaver(collect_pii=True)
+    def test_happy_builder_with_pii(self):
+        builder = ScraperUtils.BenchmarkRecordBuilder(
+                id="foo", state="bar", county="baz", party_id="lol")
+        builder.first_name = Pii.String("pii")
+        r = builder.build()
+        assert r.first_name == "pii"
+        assert r.id == "foo"
+        assert r.state == "bar"
+        assert r.county == "baz"
+        assert r.party_id == "lol"
