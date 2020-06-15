@@ -53,7 +53,9 @@ let settings = {
   days: 1,
   start: 3587,
   end: 3587,
-  timeout: 60000
+  timeout: 60000,
+  headless: process.env.DOCKERIZED,
+  args: process.env.DOCKERIZED ? ['--no-sandbox']: []
 }
 
 async function solveCaptchas(page) {
@@ -223,7 +225,7 @@ async function loadCharges(page) {
   await page.waitFor('#cphBody_gvCharges tr')
 }
 
-puppeteer.launch({ headless: false,})
+puppeteer.launch({ headless: settings.headless, args: settings.args })
   .then(async browser => {
     const page = await browser.newPage()
     page.setDefaultNavigationTimeout(settings.timeout)
