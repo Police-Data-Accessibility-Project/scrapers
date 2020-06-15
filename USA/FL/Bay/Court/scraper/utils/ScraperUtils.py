@@ -35,9 +35,9 @@ ChargeBuilder = dataclass_builder(Charge)
 @enforce_types
 @dataclass(frozen=True)
 class Record:
-    id: Optional[str]
-    state: Optional[str]
-    county: Optional[str]
+    id: str
+    state: str
+    county: str
     portal_id: Optional[str] = None
     case_num: Optional[str] = None
     agency_report_num: Optional[str] = None
