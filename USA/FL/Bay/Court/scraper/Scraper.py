@@ -12,8 +12,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException, TimeoutException
 
 from common.captcha.benchmark.BenchmarkAdditionSolver import CaptchaSolver
+from common.pii import Pii
+from common.record import Charge, ChargeBuilder
 import utils.ScraperUtils as ScraperUtils
-from utils.ScraperUtils import Record, Charge
+from utils.ScraperUtils import BenchmarkRecordBuilder
 
 FLAGS = flags.FLAGS
 flags.DEFINE_string('portal_base', 'https://court.baycoclerk.com/BenchmarkWeb2/', 'Base of the portal to scrape.')
@@ -23,7 +25,6 @@ flags.DEFINE_string('county', 'Bay', 'County we are scraping.', short_name='c')
 flags.DEFINE_integer('start_year', 2000, 'Year at which to start scraping.', short_name='y')
 flags.DEFINE_integer('end_year', datetime.now().year, 'Year at which to end scraping', short_name='e')
 
-flags.DEFINE_bool('collect_pii', False, 'Whether to collect PII.', short_name='p')
 flags.DEFINE_bool('solve_captchas', False, 'Whether to solve captchas.')
 flags.DEFINE_enum('save_attachments', 'none', ['none', 'filing', 'all'], 'Which attachments to save.', short_name='a')
 flags.DEFINE_string('output', 'bay-county-scraped.csv', 'Relative filename for our CSV', short_name='o')
@@ -154,58 +155,59 @@ def scrape_record(case_number):
     docket_pleas = driver.find_elements_by_xpath("//*[contains(text(), 'PLEA OF')]")
     docket_attachments = driver.find_elements_by_class_name('casedocketimage')
 
-    _id = str(uuid.uuid4())
-    _state = FLAGS.state
-    _county = FLAGS.county
-    CaseNum = summary_table_col2[1].text.strip()
-    AgencyReportNum = summary_table_col1[4].text.strip()
-    ArrestDate = None  # Can't be found on this portal
-    FilingDate = summary_table_col1[2].text.strip()
-    OffenseDate = None  # Can't be found on this portal
-    DivisionName = summary_table_col3[3].text.strip()
-    CaseStatus = summary_table_col3[1].text.strip()
+    r = BenchmarkRecordBuilder()
+    r.id = str(uuid.uuid4())
+    r.state = FLAGS.state
+    r.county = FLAGS.county
+    r.portal_id = case_number
+    r.case_num = Pii.String(summary_table_col2[1].text.strip())
+    r.agency_report_num = summary_table_col1[4].text.strip()
+    r.arrest_date = None  # Can't be found on this portal
+    r.filing_date = summary_table_col1[2].text.strip()
+    r.offense_date = None  # Can't be found on this portal
+    r.division_name = summary_table_col3[3].text.strip()
+    r.case_status = summary_table_col3[1].text.strip()
 
-    if FLAGS.collect_pii:
-        # Create list of assigned defense attorney(s)
-        defense_attorney_text = list(map(lambda x: x.text, docket_attorney))
-        DefenseAttorney = ScraperUtils.parse_attorneys(defense_attorney_text)
-        # Create list of assigned public defenders / appointed attorneys
-        public_defender_text = list(map(lambda x: x.text, docket_public_defender))
-        PublicDefender = ScraperUtils.parse_attorneys(public_defender_text)
-        # Get Judge
-        Judge = summary_table_col1[0].text.strip()
+    # Create list of assigned defense attorney(s)
+    defense_attorney_text = list(map(lambda x: x.text, docket_attorney))
+    r.defense_attorney = ScraperUtils.parse_attorneys(
+            defense_attorney_text)
+    # Create list of assigned public defenders / appointed attorneys
+    public_defender_text = list(map(lambda x: x.text, docket_public_defender))
+    r.public_defender = ScraperUtils.parse_attorneys(
+            public_defender_text)
+    # Get Judge
+    r.judge = Pii.String(summary_table_col1[0].text.strip())
 
-        # Download docket attachments.
-        # Todo(OscarVanL): This could be parallelized to speed up scraping if save-attachments is set to 'all'.
-        if FLAGS.save_attachments:
-            for attachment_link in docket_attachments:
-                attachment_text = attachment_link.find_element_by_xpath('./../../td[3]').text.strip()
-                if FLAGS.save_attachments == 'filing':
-                    if not ('CITATION FILED' in attachment_text or 'CASE FILED' in attachment_text):
-                        # Attachment is not a filing, don't download it.
-                        continue
-                ScraperUtils.save_attached_pdf(driver, output_attachments, '{}-{}'.format(case_number, attachment_text),
-                                               FLAGS.portal_base, attachment_link, 20, FLAGS.verbose)
-    else:
-        DefenseAttorney = []
-        PublicDefender = []
-        Judge = None
+    # Download docket attachments.
+    # Todo(OscarVanL): This could be parallelized to speed up scraping if save-attachments is set to 'all'.
+    if FLAGS.save_attachments:
+        for attachment_link in docket_attachments:
+            attachment_text = attachment_link.find_element_by_xpath('./../../td[3]').text.strip()
+            if FLAGS.save_attachments == 'filing':
+                if not ('CITATION FILED' in attachment_text or 'CASE FILED' in attachment_text):
+                    # Attachment is not a filing, don't download it.
+                    continue
+            ScraperUtils.save_attached_pdf(driver, output_attachments, '{}-{}'.format(case_number, attachment_text),
+                                           FLAGS.portal_base, attachment_link, 20, FLAGS.verbose)
 
     Charges = {}
     for charge in charges_table:
+        charge_builder = ChargeBuilder()
         charge_cols = charge.find_elements_by_tag_name('td')
         count = int(charge_cols[0].text.strip())
+        charge_builder.count = count
+
         charge_desc = charge_cols[1].text
-        description, statute = ScraperUtils.parse_charge_statute(charge_desc)
-        level = charge_cols[2].text.strip()
-        degree = charge_cols[3].text.strip()
+        charge_builder.description, charge_builder.statute = (
+                ScraperUtils.parse_charge_statute(charge_desc))
+        charge_builder.level = charge_cols[2].text.strip()
+        charge_builder.degree = charge_cols[3].text.strip()
         # plea = charge_cols[4].text.strip() # Plea is not filled out on this portal.
-        disposition = charge_cols[5].text.strip()
-        disposition_date = charge_cols[6].text.strip()
-        offense_date = None  # Not shown on this portal
-        citation_number = None  # Not shown on this portal
-        Charges[count] = Charge(count, statute, description, level, degree, disposition, disposition_date, offense_date,
-                                citation_number, None, None)
+        charge_builder.disposition = charge_cols[5].text.strip()
+        charge_builder.disposition_date = charge_cols[6].text.strip()
+        Charges[count] = charge_builder.build()
+    r.charges = list(Charges.values())
 
     # Pleas are not in the 'plea' field, but instead in the dockets.
     for plea_element in docket_pleas:
@@ -225,8 +227,8 @@ def scrape_record(case_number):
                 Charges[count].plea = plea
                 Charges[count].plea_date = plea_date
 
-    ArrestingOfficer = None  # Can't be found on this portal
-    ArrestingOfficerBadgeNumber = None  # Can't be found on this portal
+    r.arresting_officer = None  # Can't be found on this portal
+    r.arresting_officer_badge_number = None  # Can't be found on this portal
 
     profile_link = driver.find_element_by_xpath("//table[@id='gridParties']/tbody/tr/*[contains(text(), 'DEFENDANT')]/../td[2]/div/a").get_attribute(
        'href')
@@ -234,36 +236,27 @@ def scrape_record(case_number):
     #     'href')
     load_page(profile_link, 'Party Details:', FLAGS.verbose)
 
-    Suffix = None
-    DOB = None  # This portal has DOB as N/A for every defendent
-    Race = driver.find_element_by_xpath(
+    r.suffix = None
+    r.dob = None  # This portal has DOB as N/A for every defendent
+    r.race = driver.find_element_by_xpath(
         '//*[@id="fd-table-2"]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td[2]/table/tbody/tr[7]/td[2]').text.strip()
-    Sex = driver.find_element_by_xpath(
+    r.sex = driver.find_element_by_xpath(
         '//*[@id="mainTableContent"]/tbody/tr/td/table/tbody/tr[2]/td[2]/table[2]/tbody/tr/td[2]/table/tbody/tr[6]/td[2]').text.strip()
-    FirstName = None
-    MiddleName = None
-    LastName = None
-    PartyID = None
 
-    # Only collect PII if configured
-    if FLAGS.collect_pii:
-        # Navigate to party profile
-        full_name = driver.find_element_by_xpath(
-            '//*[@id="mainTableContent"]/tbody/tr/td/table/tbody/tr[2]/td[2]/table[2]/tbody/tr/td[2]/table/tbody/tr[1]/td[2]').text.strip()
-        MiddleName = None
-        LastName = None
-        if ',' in full_name:
-            FirstName, MiddleName, LastName = ScraperUtils.parse_name(full_name)
-        else:
-            # If there's no comma, it's a corporation name.
-            FirstName = full_name
-        PartyID = driver.find_element_by_xpath(
-            '//*[@id="mainTableContent"]/tbody/tr/td/table/tbody/tr[2]/td[2]/table[2]/tbody/tr/td[2]/table/tbody/tr[8]/td[2]').text.strip()  # PartyID is a field within the portal system to uniquely identify defendants
+    # Navigate to party profile
+    full_name = driver.find_element_by_xpath(
+        '//*[@id="mainTableContent"]/tbody/tr/td/table/tbody/tr[2]/td[2]/table[2]/tbody/tr/td[2]/table/tbody/tr[1]/td[2]').text.strip()
+    r.middle_name = None
+    r.last_name = None
+    if ',' in full_name:
+        r.first_name, r.middle_name, r.last_name = ScraperUtils.parse_name(full_name)
+    else:
+        # If there's no comma, it's a corporation name.
+        r.first_name = Pii.String(full_name)
+    r.party_id = driver.find_element_by_xpath(
+        '//*[@id="mainTableContent"]/tbody/tr/td/table/tbody/tr[2]/td[2]/table[2]/tbody/tr/td[2]/table/tbody/tr[8]/td[2]').text.strip()  # PartyID is a field within the portal system to uniquely identify defendants
 
-    record = Record(_id, _state, _county, case_number, CaseNum, AgencyReportNum, PartyID, FirstName, MiddleName,
-                    LastName, Suffix, DOB, Race, Sex, ArrestDate, FilingDate, OffenseDate, DivisionName, CaseStatus,
-                    DefenseAttorney, PublicDefender, Judge, list(Charges.values()), ArrestingOfficer,
-                    ArrestingOfficerBadgeNumber)
+    record = r.build()
     ScraperUtils.write_csv(FLAGS.output, record, FLAGS.verbose)
 
 

@@ -1,57 +1,28 @@
 import os
-import sys
 import csv
 import regex
-from typing import List
-from pathvalidate import sanitize_filename
+from typing import List, Optional
+
+from enforce_typing import enforce_types
+from dataclass_builder import dataclass_builder
 from dataclasses import dataclass
-import requests
-from requests_toolbelt.utils import dump
+from pathvalidate import sanitize_filename
 from requests.exceptions import HTTPError, Timeout
+from requests_toolbelt.utils import dump
+import requests
+from common.pii import Pii
+from common.record import Record
 
 
-@dataclass
-class Charge:
-    count: int
-    statute: str
-    description: str
-    level: str
-    degree: str
-    disposition: str
-    disposition_date: str
-    offense_date: str
-    citation_number: str
-    plea: str
-    plea_date: str
+@enforce_types
+@dataclass(frozen=True)
+class BenchmarkRecord(Record):
+    portal_id: Optional[str] = None
+    agency_report_num: Optional[str] = None
+    party_id: Optional[str] = None
 
 
-@dataclass
-class Record:
-    id: str
-    state: str
-    county: str
-    portal_id: str
-    case_num: str
-    agency_report_num: str
-    party_id: str
-    first_name: str
-    middle_name: str
-    last_name: str
-    suffix: str
-    dob: str
-    race: str
-    sex: str
-    arrest_date: str
-    filing_date: str
-    offense_date: str
-    division_name: str
-    case_status: str
-    defense_attorney: str
-    public_defender: str
-    judge: str
-    charges: List[Charge]
-    arresting_officer: str
-    arresting_officer_badge_number: str
+BenchmarkRecordBuilder = dataclass_builder(BenchmarkRecord)
 
 
 def parse_plea_case_numbers(plea_text: str, valid_charges: List[int]) -> List[int]:
@@ -87,7 +58,6 @@ def parse_charge_statute(charge_text: str) -> (str, str):
     # This is a hybrid of https://stackoverflow.com/a/19863847/6008271 and https://stackoverflow.com/a/42147313/6008271
     match = regex.findall(r"\((([^()]|(?R))*)\)", charge_text, regex.IGNORECASE)
     if match:
-        # Match the last set of brackets in the charge text, then get the first match's group.
         statute = match[-1][0]
         charge = charge_text
         # Find the statute's opening parenthesis and trim. The extra logic is to handle nested brackets in the statute.
@@ -107,7 +77,7 @@ def parse_charge_statute(charge_text: str) -> (str, str):
     return charge, statute
 
 
-def parse_attorneys(attorney_text: List[str]):
+def parse_attorneys(attorney_text: List[str]) -> Pii.StringSequence:
     """
     Gets a list of case docket strings and parses the attorney names from these
     :param attorney_text: List of case docket strings for the assignment of attorneys.
@@ -124,10 +94,7 @@ def parse_attorneys(attorney_text: List[str]):
             attorney_name = attorney_name.split(':')[1].lstrip()
             attorneys.append(attorney_name)
 
-    if len(attorneys) == 0:
-        return None
-    else:
-        return attorneys
+    return Pii.StringSequence(attorneys)
 
 
 def parse_plea_type(plea_text: str):
@@ -149,7 +116,8 @@ def parse_plea_type(plea_text: str):
     return plea
 
 
-def parse_name(fullname_text: str) -> (str, str, str):
+def parse_name(fullname_text: str) -> (
+        Optional[Pii.String], Optional[Pii.String], Optional[Pii.String]):
     """
     Parses the first, middle and last name from a full name.
     :param fullname_text: Defendant's fullname as a String
@@ -159,17 +127,15 @@ def parse_name(fullname_text: str) -> (str, str, str):
         return None, None, None
 
     name_split = fullname_text.split(',')[1].lstrip().split()
-    FirstName = name_split[0]
-    MiddleName = " ".join(name_split[1:])
-    LastName = fullname_text.split(',')[0]
+    FirstName = Pii.String(name_split[0])
+    MiddleName = Pii.String(" ".join(name_split[1:]))
+    LastName = Pii.String(fullname_text.split(',')[0])
     if MiddleName == '':
         MiddleName = None
     return FirstName, MiddleName, LastName
 
 
-
-
-def write_csv(output_file, record: Record, verbose=False):
+def write_csv(output_file, record: BenchmarkRecord, verbose=False):
     """
     Writes a scraped case to the output CSV file
     :param output_file: Output path + filename of CSV
@@ -417,8 +383,9 @@ def get_search_case_count(driver, county):
         case_count_cell = driver.find_element_by_xpath(
             '//*[@class="casedetailSectionTable"]/tbody/tr/td/table/tbody/tr[4]/td[2]')
         case_count = int(case_count_cell.text)
-        
+
     return case_count
+
 
 def get_associated_cases(driver):
     """
