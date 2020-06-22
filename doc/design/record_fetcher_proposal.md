@@ -46,7 +46,9 @@ A bunch of record-identifying metadata is cool, but we also need to be able to r
 record. To that end, we'll require a list of document references. Each reference will contain:
 * a content type (we can just use [MIME
 types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) here)
-* a URI for where that document's contents are durably stored
+* a digest of the content
+* a URI for where that document's contents are durably stored in PDAP infrastructure
+  * this isn't necessary if we adopt storage infrastructure that allows us to reliably derive this from the digest
 * an optional comment expressing where this specific document came from
 
 In order for us to trust our collected record results, we need to be able to verify that we trust the software which
@@ -56,16 +58,18 @@ to include in our manifest:
 * what's our entrypoint for this scraper?
 * what commit hash are we running from?
 * a digital signature of the rest of the manifest
-	* this is required to anchor our data lineage
-	* key management is out of scope for this document (but the appendix touches on a half-baked approach)
+  * this is required to anchor our data lineage
+  * key management is out of scope for this document (but the appendix touches on a half-baked approach)
 * support for extension in the future (we can't be locked in to just these fields)
 
 ### Storage Endpoints
 We need to be able to store the raw documents and manifests somewhere durable. This document doesn't have strong
 opinions regarding how things are stored, but we need a specific API to ensure safe collection. Our collection API:
 * must allow writing new documents and manifests
-* must not allow for the fetching or altering or existing documents or manifests
-* must enforce authentication to prevent dumping unrelated documents
+* must not allow for the fetching or altering of existing documents or manifests
+* must enforce authentication and authorization for document submission
+  * this lets us prevent unknown/untrusted entities from aiming a firehose of data at us and eating all of our money,
+  but there's little risk of this threatening the trustworthiness of our records due to the lack of manifest
   * this document doesn't have a strong opinion here regarding how we authenticate, but the appendix has a strawman we
 can use to start that conversation
 * must not alter the manifest or its signature before committing to durable storage
@@ -122,12 +126,16 @@ Determining the PDAP-controlled URIs of the documents will require uploading the
 manifest.
 
 ### Garbage Collection
-Since this design requires upload documents before writing out a manifest, it's possible that we'll upload docs and then
-fail (or neglect) to upload a manifest. This results in orphaned documents, which are just wasted storage. 
 
-To mitigate this, a periodic (daily? weekly?) GC job will run in order to clean up orphaned documents that have existed
-for a while (>1 day should be sufficient) without a parent manifest. The set of orphans may be constructed by
-enumerating all documents in all manifests and subtracting those from the set of all stored documents.
+Since this design requires documents to be uploaded before writing out a manifest, it's possible that we'll upload docs
+and then fail (or neglect) to upload a manifest. This results in orphaned documents, which are just wasted storage. 
+To mitigate this, we'll construct a GC batch job that runs on a schedule and removes documents that are orphaned and
+have existed for longer than X time.
+
+Finding orphaned documents has to be efficient. To this end, every write to the document storage service results in a
+GC candidate entry. When a manifest is received referencing a given document, it is removed from the pool if it is
+present. Periodically (daily? weekly?) the GC job will run to clean up all entries that have been there for a while
+and remove them from the GC candidate pool.
 
 ## Caveats
 This is somewhat complex and may be tricky to implement. A way to mitigate this is to invest in easy-to-use canonical
@@ -147,14 +155,17 @@ with Record(record_type="USA/FL/Bay/Court", case_id="1337") as r:
 1. Fetcher generates a keypair (so no one has a copy), registers the public key with trusted infra
 2. Trusted infra validates provenance of the requestor, records the information for auditing, wraps that provenance
 information and the public key in a JWT and kicks it back
-  * the JWT should have a short-ish lifespan (like a day?) in case it gets exported
+  * The JWT should have a short-ish lifespan (like a day?) in case it gets exported
   * We can also scope this JWT to the specific region and record type
   * It doesn't really matter how this JWT is signed (symmetric or asymmetric) and we can change this down the road if we
-want
+  want
 3. Fetcher will make requests to the collection services using that JWT blob as a bearer token
 4. Collection services will just verify the JWT for document uploads (after all, they're worthless without a manifest)
 and verify all manifest signatures against the public key of the JWT blob
   * If we scope the auth JWT to the region and record type, we should verify the manifest matches that, as well
+5. Downstream systems can verify manifest signatures against provenance verification audit logs (mentioned in 2) to
+to ensure authenticity
+  * This also enables retroactive disavowment of tokens (and all associated manifests) through a revocation list
 
 What we're papering over here is how we verify provenance. I don't have a good answer here and whatever we end up with
 will very likely strongly hinge on how we deploy our software (which is currently up in the air).
