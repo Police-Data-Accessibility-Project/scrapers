@@ -2,16 +2,17 @@
 
 ## BLUF
 
-Upload fetched documents, having performed the minimal amount of processing. Define a manifest expressing the
-association between those document URIs and basic metadata (ID, region and record type, timestamp of collection, etc.).
-Sign that manifest and upload it. Now a logical record's components may be derived from the manifest and the now-stored
-documents the manifest describes.
+Fetch documents, perform the minimal amount of processing. Define a manifest expressing the association between those
+documents and basic metadata (ID, region and record type, timestamp of collection, etc.). Sign that manifest and upload
+it along with the documents (a record bundle) together to persistent PDAP storage. Now a logical record's components may
+be derived from the manifest and the now-stored documents the manifest describes.
 
 ## Objective
 
-Define a system for tracking the associations between the various crude scrapings that describe a record. How documents
-are fetched and how software is deployed are both directly relevant to this space, but are out of scope for this
-document.
+Define a system for tracking the associations between the various crude scrapings that describe a record.
+
+How documents are fetched and how software is deployed are both directly relevant to this space, but are out of scope
+for this document.
 
 ## Background
 
@@ -37,19 +38,18 @@ and persist it in a meaningful way. Analysis of this information is not in scope
 
 A manifest needs to be able to represent the raw materials associated with a record. The minimal identifiers for the
 record itself are:
-* a unique ID
+* a UUIDv4
 * which region and record type the manifest represents (e.g., "USA/FL/Bay/Court")
 * some sort of case identifier
 * the timestamp of collection
 
 A bunch of record-identifying metadata is cool, but we also need to be able to represent the documents that compose the
 record. To that end, we'll require a list of document references. Each reference will contain:
+* a label for the document
 * a content type (we can just use [MIME
 types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) here)
-* a digest of the content
-* a URI for where that document's contents are durably stored in PDAP infrastructure
-  * this isn't necessary if we adopt storage infrastructure that allows us to reliably derive this from the digest
-* an optional comment expressing where this specific document came from
+* a digest of the content, which may be used to later fetch the document from PDAP-owned storage
+* an optional comment, potentially expressing where this specific document came from
 
 In order for us to trust our collected record results, we need to be able to verify that we trust the software which
 performed the collection. This means being able to audit the code that created each manifest. To this end we also need
@@ -63,8 +63,8 @@ to include in our manifest:
 * support for extension in the future (we can't be locked in to just these fields)
 
 ### Storage Endpoints
-We need to be able to store the raw documents and manifests somewhere durable. This document doesn't have strong
-opinions regarding how things are stored, but we need a specific API to ensure safe collection. Our collection API:
+We need to be able to store the raw documents and manifests somewhere durable. We need a specific API to ensure safe
+collection. Our collection API:
 * must allow writing new documents and manifests
 * must not allow for the fetching or altering of existing documents or manifests
 * must enforce authentication and authorization for document submission
@@ -77,21 +77,17 @@ can use to start that conversation
 * should probably losslessly compress most things (we get 40% savings with gzip on the sample manifest below)
     
 ## Design Ideas
+
 ### Document Storage
-First, let's talk document storage. Have record fetchers crawl however they want and upload documents to a document
-storage endpoint. This should ideally be some kind of content-addressed blob storage service. We don't need a lot of
-structure for this, as any relationship between documents will be encoded by the manifests -- the service just needs to
-be able to store the raw documents for later lookup. Backing this storage API with a fairly flat filesystem is fine
-here, we're rarely going to list files, only write and read. If we do need to list files, it'll be for some cleanup
-operation and should not be on any request path.
+First, let's talk document storage. This will be a content digest-addressed blob storage service. We don't need a
+lot of structure for this, as any relationship between documents will be encoded by the manifests -- the service just
+needs to be able to store the raw documents for later lookup (but lookups don't need to be via this service). Backing
+this storage service with a fairly flat filesystem is fine here, we're rarely going to list files, only write and read.
 
 A big benefit of content-addressed storage here is that we get deduping almost for free -- we may need to zero out
 content that changes on every page load (e.g. "This page requested at HH:MM"), but that's more of an optimization than a
 hard requrement. These savings would apply to both documents which remain unchanged between fetches and documents that
 are shared between records.
-
-The actual document collection service will take a file upload and respond with a simple payload denoting the URI that
-may be used to access the file.
 
 ### Manifest Construction
 
@@ -111,31 +107,27 @@ manifest's information in the JWT payload. As an example, the payload could rese
       "label": "some pdf we'll have to ocr",
       "content_type": "application/pdf",
       "digest": "...",
-      "uri": "https://..."
     }, {
       "label": "party information",
       "content_type": "text/html",
       "digest": "...",
-      "uri": "https://..."
     }
   ]
 }	
 ```
 
-Determining the PDAP-controlled URIs of the documents will require uploading them first, and then constructing the
-manifest.
+### Record Bundles
 
-### Garbage Collection
+Signed manifests and all related documents will be uploaded together as [MIME Multipart messages](
+https://en.wikipedia.org/wiki/MIME#Multipart_messages). Authentication will be via a JWT bearer token (how this is
+granted is not in scope). This has a number of benefits, but the largest is that it gives us a single point to
+validate the manifest and documents together before changing any state. This will allow us to:
+1. verify the signature of the manifest against the bearer auth token to ensure they're coming from the same entity
+2. ensure no documents are missing from the bundle by verifying a manifest's digests against the documents' contents
+3. ensure the manifest is complete by verifying that no additional documents have been uploaded
+4. ensure all required fields are present
 
-Since this design requires documents to be uploaded before writing out a manifest, it's possible that we'll upload docs
-and then fail (or neglect) to upload a manifest. This results in orphaned documents, which are just wasted storage. 
-To mitigate this, we'll construct a GC batch job that runs on a schedule and removes documents that are orphaned and
-have existed for longer than X time.
-
-Finding orphaned documents has to be efficient. To this end, every write to the document storage service results in a
-GC candidate entry. When a manifest is received referencing a given document, it is removed from the pool if it is
-present. Periodically (daily? weekly?) the GC job will run to clean up all entries that have been there for a while
-and remove them from the GC candidate pool.
+If any of those conditions are not met, the request is deemed invalid.
 
 ## Caveats
 This is somewhat complex and may be tricky to implement. A way to mitigate this is to invest in easy-to-use canonical
@@ -146,7 +138,7 @@ with Record(record_type="USA/FL/Bay/Court", case_id="1337") as r:
   r.AddHtml("label1", html_file1)
   r.AddHtml("label2", html_file2)
   r.AddPdf("label3", pdf_file)
-  r.commit()  # upload docs, make and upload manifest
+  r.commit()  # construct a manifest, upload bundle of manifest + documents
 ```
 
 ## Appendix
