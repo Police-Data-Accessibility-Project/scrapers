@@ -10,12 +10,6 @@ save_dir = cur_dir + "/USA/GA/Norcross"
 if not os.path.exists(save_dir):
 	os.makedirs(save_dir)
 
-def verify_data(in_pdf, num):
-	if in_pdf.status_code != 404 or str(in_pdf).find("<Error>") == False: # Verifies that file exists
-		file_name = get_name(num) # Gets the filename from 
-		save_path = os.path.join(save_dir, file_name)
-		
-
 def scrape_urls():
 	with open("response.json", "r") as json_file:
 		response = json.load(json_file)
@@ -50,5 +44,3 @@ def download_data():
 			with open(save_dir + file_name + '.pdf', 'wb') as file:
 				file.write(pdf.read())
 				file.close()
-
-download_data()
