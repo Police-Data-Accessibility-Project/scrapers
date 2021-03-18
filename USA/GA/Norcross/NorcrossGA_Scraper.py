@@ -51,5 +51,6 @@ def download_data():
 					file.close()
 			except TypeError:
 				print("Done, verify that last document matches last url")
+				break
 
 download_data()
