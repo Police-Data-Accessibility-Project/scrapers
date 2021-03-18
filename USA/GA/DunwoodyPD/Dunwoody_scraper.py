@@ -25,7 +25,7 @@ cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
 
 if not os.path.exists(save_dir):
-	os.mkdirs(save_dixr)
+	os.makedirs(save_dir)
 
 def verify_data(data_code):
 	if data_code.status_code != 404 or str(data_code).find("<Error>") == False: # Verifies that file exists
