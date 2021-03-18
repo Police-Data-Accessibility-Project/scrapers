@@ -10,6 +10,8 @@ save_dir = cur_dir + "/USA/GA/Norcross"
 if not os.path.exists(save_dir):
 	os.makedirs(save_dir)
 
+		
+
 def scrape_urls():
 	with open("response.json", "r") as json_file:
 		response = json.load(json_file)
@@ -25,13 +27,16 @@ def scrape_urls():
 	output.close()
 
 def get_name(line):
-	with open("response.json", "r") as json_file:
-		response = json.load(json_file)
-		r_data = response['data']
-		#total = response['total']
+	try:
+		with open("response.json", "r") as json_file:
+			response = json.load(json_file)
+			r_data = response['data']
+			#total = response['total']
 		
-		doc_name = r_data[line]['DisplayName']
-		return doc_name
+			doc_name = r_data[line]['DisplayName']
+			return doc_name
+	except IndexError:
+		print("Done, verify that last document matches last url")
 		
 
 def download_data():
@@ -44,3 +49,5 @@ def download_data():
 			with open(save_dir + file_name + '.pdf', 'wb') as file:
 				file.write(pdf.read())
 				file.close()
+
+download_data()
