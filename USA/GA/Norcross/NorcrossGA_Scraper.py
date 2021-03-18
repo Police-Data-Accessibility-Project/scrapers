@@ -41,13 +41,15 @@ def get_name(line):
 def download_data():
 	with open('urls.txt', 'r') as in_url:
 		for num, line in enumerate(in_url):
-			
-			pdf = urllib.request.urlopen(line) # Gets the pdf
-			file_name = get_name(num)
-			print("Getting " + file_name)
-			file_name = file_name.replace(' ', '_')
-			with open(save_dir + file_name + '.pdf', 'wb') as file:
-				file.write(pdf.read())
-				file.close()
+			try:
+				pdf = urllib.request.urlopen(line) # Gets the pdf
+				file_name = get_name(num)
+				print("Getting " + file_name)
+				file_name = file_name.replace(' ', '_')
+				with open(save_dir + file_name + '.pdf', 'wb') as file:
+					file.write(pdf.read())
+					file.close()
+			except TypeError:
+				print("Done, verify that last document matches last url")
 
 download_data()
