@@ -9,3 +9,7 @@
 
 # Functions
 `scrape_urls`: As the name implies, it extracts the urls from the website's JSON response and saves them in `urls.txt`
+
+`get_name`: extracts the name from the `DisplayName` key in `response.json`. There is likely no need to alter this script.
+
+`download_data`: Also self explanatory. The function iterates over the urls in `urls.txt`, requests them using urllib's request, calls `get_name`, and saves it in the directory set by `save_dir`
