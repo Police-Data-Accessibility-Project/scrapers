@@ -6,3 +6,6 @@
 5. Network>Request>Request payload, change from default to `page=1&size=100`, leaving `id` and `getDocuments` the same. Increase size based on number of files ![image](https://user-images.githubusercontent.com/40151222/111564132-a1c39080-876f-11eb-9dd8-4c10b78f055c.png)
 6. Network>Response>Response Payload    Copy all.
 7. Paste into a document titled response.json, and run script
+
+# Functions
+`scrape_urls`: As the name implies, it extracts the urls from the website's JSON response and saves them in `urls.txt`
