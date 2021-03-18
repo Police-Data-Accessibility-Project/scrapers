@@ -25,13 +25,13 @@ cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
 
 if not os.path.exists(save_dir):
-	os.mkdirs(save_dir)
+	os.mkdirs(save_dixr)
 
 def verify_data(data_code):
-	if data_code.status_code != 404 or str(data_code).find("<Error>") == False:
+	if data_code.status_code != 404 or str(data_code).find("<Error>") == False: # Verifies that file exists
 		save_path = os.path.join(save_dir, file_name+".csv")
 		with open(save_path, "w") as data_file:
-			data_file.write(data.text)
+			data_file.write(data.text)   # Writes using requests text function thing
 			data_file.close()
 
 end = False
