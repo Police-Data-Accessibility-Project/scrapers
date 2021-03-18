@@ -5,12 +5,11 @@ import urllib
 
 
 cur_dir = os.getcwd()
-save_dir = cur_dir + "/USA/GA/Norcross"
+save_dir = cur_dir + "/USA/GA/Norcross/pdfs/"
 
 if not os.path.exists(save_dir):
 	os.makedirs(save_dir)
 
-		
 
 def scrape_urls():
 	with open("response.json", "r") as json_file:
@@ -46,6 +45,7 @@ def download_data():
 			pdf = urllib.request.urlopen(line) # Gets the pdf
 			file_name = get_name(num)
 			print("Getting " + file_name)
+			file_name = file_name.replace(' ', '_')
 			with open(save_dir + file_name + '.pdf', 'wb') as file:
 				file.write(pdf.read())
 				file.close()
