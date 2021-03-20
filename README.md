@@ -12,7 +12,7 @@ This repo contains the record scrapers (and associated tooling) to further the g
 7. Submit a Pull Request for approval.
 
 ## Legal
-Only scrapers which match our [legal restrictions](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit) will be merged into this repo.
+Only scrapers that comply with our [legal guidelines](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit) will be merged into this repo.
 
 ## General Guidelines
 Python is preferred. If you use another language, please document your work.
