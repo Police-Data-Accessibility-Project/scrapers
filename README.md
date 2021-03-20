@@ -4,12 +4,15 @@ This repo contains the record scrapers (and associated tooling) to further the g
 # Getting Started
 ## Quick start
 1. [Clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repo.
-2. Make a copy of the template folder in the appropriate jurisdiction folder.
+2. Make a copy of the template folder in the appropriate jurisdiction folder. Read more about structure below.
 3. Code your scraper.
 4. Scrape sample data from the source and add a truncated version to the folder so we understand the kind of data your scraper generates.
 5. Complete the readme to the best of your ability.
 6. If you know how to use Splunk, complete the config file.
 7. Submit a Pull Request for approval.
+
+## Structure
+Stick to the format of `$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `$STATE/state/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
 
 ## Legal
 Only scrapers that comply with our [legal guidelines](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit) will be merged into this repo.
