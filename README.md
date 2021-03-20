@@ -17,7 +17,7 @@ Only scrapers that comply with our [legal guidelines](https://docs.google.com/do
 ## General Guidelines
 Python is preferred. If you use another language, please document your work.
 
-Your scraper must follow these [legal guidelines](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit).
+Your scraper must comply with our [legal guidelines](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit).
 
 Everyone working on this project is using their free time. Please expect some back-and-forth communication when speaking to the individuals reviewing your PR's and be patient and respectful with us. The more work you do to test and validate that your scraper has met the contribution guidelines, the quicker we can accept it.
 
