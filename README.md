@@ -22,7 +22,7 @@ Your scraper must follow these [legal guidelines](https://docs.google.com/docume
 Everyone working on this project is using their free time. Please expect some back-and-forth communication when speaking to the individuals reviewing your PR's and be patient and respectful with us. The more work you do to test and validate that your scraper has met the contribution guidelines, the quicker we can accept it.
 
 ## Getting Help
-The #scrapers-general slack channel is the place to start.
+The [#scrapers_general](https://policeaccessibility.slack.com/archives/C013XH00WHZ) slack channel is the place to start.
 
 ### Known datasets
 
