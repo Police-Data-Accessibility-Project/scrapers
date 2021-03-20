@@ -9,9 +9,9 @@ import os
 import time
 
 
-police_code = 
+police_code = "Replace with police doe"
 start_month = 1
-start_year = 
+start_year =  "Replace with dataset begin year"
 delay = 1
 
 base_url = "https://cereplicatorprodcomm.blob.core.windows.net/mainblob/"
