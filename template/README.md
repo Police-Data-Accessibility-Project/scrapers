@@ -2,7 +2,7 @@ This readme should give people everything they need to maintain the scraper.
 
 # Summary
 Is there anything in particular of note with the scraping landscape in this jurisdiction?
-
+Time period of data (e.g. 06/01/2017 to 03/20/2021)
 # How to locate the data source
 Give instructions for locating the data source. A URL for a JSON file is OK, but how did you navigate there?
 
