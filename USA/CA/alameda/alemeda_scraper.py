@@ -51,7 +51,7 @@ def get_files():
 			if url_2.find(".pdf"):
 				#save_path = os.path.join(save_dir, file_name+".pdf")
 				pdf = urllib.request.urlopen(url_2)
-				with open(save_dir + file_name + ".pdf", 'wb') as file:
+				with open(save_dir + file_name, 'wb') as file:
 					file.write(pdf.read())
 					file.close()
 			elif url_2.find(".doc"):
@@ -63,6 +63,7 @@ def get_files():
 			else:
 				print("Unhandled documents type")
 				print("Url: " + url_2)
-				time.sleep(5)
+			time.sleep(5)
+			print("Sleep")
 extract_info(soup)
 get_files()
