@@ -12,7 +12,7 @@ This repo contains the record scrapers (and associated tooling) to further the g
 7. Submit a Pull Request for approval.
 
 ## Structure
-Stick to the format of `$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `$STATE/state/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
+Stick to the format of `$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
 
 ## Legal
 Only scrapers that comply with our [legal guidelines](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit) will be merged into this repo.
