@@ -5,7 +5,8 @@ Is there anything in particular of note with the scraping landscape in this juri
 Time period of data (e.g. 06/01/2017 to 03/20/2021)
 
 _Remove fields that were collected_
-Fields that could not be obtained within the PDAP legal guidelines:
+## Fields that could not be obtained within the PDAP legal guidelines:
+**Note:** the naming convention for these fields may not be consistent across data sources
 * _id
 * _state
 * _county
