@@ -44,7 +44,7 @@ def extract_info(soup):
         with open("url_name.txt", 'a') as output:
             output.write(url + ", " + name.strip("/") +"\n")
             # Uncomment following line if domain is not in href, and comment out line above
-            # output.write(domain + web_path + ", " + name.strip("/") + "\n")
+            # output.write(domain + url + ", " + name.strip("/") + "\n")
     print("Done")
 
 def get_files():
