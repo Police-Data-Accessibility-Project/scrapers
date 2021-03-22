@@ -63,6 +63,6 @@ def get_files():
 			else:
 				print("Unhandled documents type")
 				print("Url: " + url_2)
-		time.sleep(5)
+				time.sleep(5)
 extract_info(soup)
 get_files()
