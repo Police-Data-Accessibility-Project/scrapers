@@ -3,6 +3,7 @@ import os
 from bs4 import BeautifulSoup
 import urllib
 import re
+import time
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit'
 
