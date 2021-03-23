@@ -12,7 +12,7 @@ This repo contains the record scrapers (and associated tooling) to further the g
 7. Submit a Pull Request for approval.
 
 ## Structure
-Stick to the format of `$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
+Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `USA/$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
 
 ## Legal
 Only scrapers that comply with our [legal guidelines](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit) will be merged into this repo.
@@ -31,7 +31,7 @@ The [#scrapers_general](https://policeaccessibility.slack.com/archives/C013XH00W
 This [dataset catalogue](https://docs.google.com/spreadsheets/d/1A0iTx7N-qVH2fms3Gmaf8RbnTpJPjgSoLPEa1o-J6J8/edit#gid=0&fvid=1660736644) is how we track potential sources.
 
 ### Fields to scrape
-**Note:** the naming convention for these fields may not be consistent across data sources
+**Note:** the naming convention for these fields may not be consistent across data sources. If any fields are not retrievable please fill it with "NA". 
 * _id
 * _state
 * _county
