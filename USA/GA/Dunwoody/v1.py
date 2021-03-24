@@ -5,46 +5,27 @@ set start_year and start_month to the earliest year and month of data that is av
 
 import requests
 from datetime import date
-import os
-import time
 
 
-police_code = 1423
+police_code = 780
 start_month = 1
 start_year = 2017
-delay = 1
+
 
 base_url = "https://cereplicatorprodcomm.blob.core.windows.net/mainblob/"
 
-# Get the current month and year (Carollton data does not go past 2020)
-'''
+# Get the current month and year
 today = date.today()
 max_month = today.strftime("%m")
 max_year = today.strftime("%Y")
-'''
-max_year = 2020
-max_month = 10
-
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/"
-
-if not os.path.exists(save_dir):
-	os.makedirs(save_dir)
-
-def verify_data(data_code):
-	if data_code.status_code != 404 or str(data_code).find("<Error>") == False: # Verifies that file exists
-		save_path = os.path.join(save_dir, file_name+".csv")
-		with open(save_path, "w") as data_file:
-			data_file.write(data.text)   # Writes using requests text function thing
-			data_file.close()
 
 end = False
 # Iterate over every month until the start_month and year are equal
 # 758-10.2019-01.2020.csv
 # police_code-start_month.start_year-end_month.end_year
 #while max_month != start_month and max_year != start_year:
-while start_year <= int(max_year):
-	end_month = int(start_month) + 2
+while end == False: 
+	end_month = int(start_month) + 3
 
 	# Convert the int value of the month to mm format
 	if len(str(start_month)) == 1:
@@ -60,26 +41,24 @@ while start_year <= int(max_year):
 		url = base_url + file_name
 		print("Getting " + file_name)
 		data = requests.get(url, allow_redirects=True)
-		verify_data(data)
-		start_month = "01"
+		if data.status_code != 404 or str(data).find("<Error>") == False:
+			with open(file_name, "w") as data_file:
+				data_file.write(data.text)
+			data_file.close()
+		start_month = 1
 		start_year = int(start_year) + 1
-	else:
-		file_name = str(police_code) + "-" + str(start_month) + "." + str(start_year) + "-" + str(end_month) + "." + str(start_year) + ".csv"
-		url = base_url + file_name
-		print("Getting " + file_name)
-		data = requests.get(url, allow_redirects=True)
 
-		verify_data(data)
-		if start_month != 10:
-			start_month = int(end_month) 
-		else:
-			start_month = 1
-			start_year = int(start_year) + 1
 
-		time.sleep(delay)
-	'''
-	input()
-	print(end_month)
-	if start_year > int(max_year):
-		break
-	'''
+	file_name = str(police_code) + "-" + str(start_month) + "." + str(start_year) + "-" + str(end_month) + "." + str(start_year) + ".csv"
+	url = base_url + file_name
+	print("Getting " + file_name)
+	data = requests.get(url, allow_redirects=True)
+	if data.status_code != 404 or str(data).find("<Error>") == False:
+		with open(file_name, "w") as data_file:
+			data_file.write(data.text)
+		data_file.close()
+		
+	start_month = int(start_month) + 1 
+	if start_month or end_month == max_month and max_year == end_year:
+		end = True
+	
