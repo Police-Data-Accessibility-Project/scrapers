@@ -52,8 +52,6 @@ def get_files():
 		return
 	with open("url_name.txt", "r") as input_file:
 		for line in input_file:
-			print(line)
-
 			line_list = line.split(', ')
 			url_2 = line_list[0]
 			file_name = line_list[1].replace(" ", "_")[:-1]
