@@ -53,12 +53,16 @@ def get_files():
 			#document = requests.get(url_2, allow_redirects=True)
 
 			if url_2.find(".pdf"):
-				if file_name.find("daily"):
+				print(file_name)
+				if "daily" in file_name:
+					print("found")
 					dir = save_dir + "daily_bulletin/"
+					if not os.path.exists(dir):
+						os.makedirs(dir)
 					save_pdf(file_name, url_2, dir)
 				else:
 					save_pdf(file_name, url_2, save_dir)
-			# This part is not really needed for this site but is left just in case	
+			# This part is not really needed for this site but is left just in case
 			elif url_2.find(".doc"):
 				#save_path = os.path.join(save_dir, file_name+".doc")
 				document = requests.get(url_2, allow_redirects=True)
