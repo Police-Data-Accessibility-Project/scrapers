@@ -36,7 +36,7 @@ Go to https://www.antiochca.gov/police/
 Right side > Crime statistics > crime statistics
 
 
-Eventually a scraper will be written for the [arrest reports](https://www.antiochca.gov/police/crime-statistics/adult-arrest-report/)
+[arrest reports](https://www.antiochca.gov/police/crime-statistics/adult-arrest-report/)
 
 
 # Data refresh rate
