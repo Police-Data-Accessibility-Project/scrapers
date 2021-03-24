@@ -17,6 +17,7 @@ delay = 1
 base_url = "https://cereplicatorprodcomm.blob.core.windows.net/mainblob/"
 
 # Get the current month and year (Carollton data does not go past 2020)
+# Switch which is commented out based on if data is current
 '''
 today = date.today()
 max_month = today.strftime("%m")
@@ -33,7 +34,14 @@ if not os.path.exists(save_dir):
 
 def verify_data(data_code):
 	if data_code.status_code != 404 or str(data_code).find("<Error>") == False: # Verifies that file exists
-		save_path = os.path.join(save_dir, file_name+".csv")
+		save_path = os.path.join(save_dir, file_name)
+		with open(save_path, "w") as data_file:
+			data_file.write(data.text)   # Writes using requests text function thing
+			data_file.close()
+	else:
+		if not os.path.exists(save_dir + "else/"):
+			os.makedirs(save_dir + "else/")
+		save_path = os.path.join(save_dir + "else/", file_name)
 		with open(save_path, "w") as data_file:
 			data_file.write(data.text)   # Writes using requests text function thing
 			data_file.close()
@@ -43,8 +51,8 @@ end = False
 # 758-10.2019-01.2020.csv
 # police_code-start_month.start_year-end_month.end_year
 #while max_month != start_month and max_year != start_year:
-while start_year <= int(max_year): 
-	end_month = int(start_month) + 2
+while start_year <= int(max_year):
+	end_month = int(start_month) + 3
 
 	# Convert the int value of the month to mm format
 	if len(str(start_month)) == 1:
@@ -70,13 +78,14 @@ while start_year <= int(max_year):
 		data = requests.get(url, allow_redirects=True)
 
 		verify_data(data)
-		if start_month != 10:	
-			start_month = int(end_month) + 1 
+		time.sleep(delay)
+		if start_month != 10:
+			start_month = int(end_month)
 		else:
 			start_month = 1
 			start_year = int(start_year) + 1
 
-		time.sleep(delay)
+		# time.sleep(delay)
 	'''
 	input()
 	print(end_month)
