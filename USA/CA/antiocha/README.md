@@ -9,15 +9,9 @@ _Remove fields that were collected_
 * _id
 * _state
 * _county
-* CaseNum
-* FirstName
 * MiddleName
-* LastName
 * Suffix
 * DOB
-* Race
-* Sex
-* ArrestDate
 * FilingDate
 * OffenseDate
 * DivisionName
