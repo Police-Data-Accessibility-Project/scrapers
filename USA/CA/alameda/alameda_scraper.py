@@ -6,6 +6,15 @@ import re
 import time
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit'
+webpage = "https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity"
+'''
+Click the links that lead to the files, and copy their paths. **NOTE:** Ensure that files all match paths, otherwise remove a level until they match
+Also ensure that domain stays the same
+Verify on page that the href to the file contains the domain, if it doesn't, uncomment domain
+'''
+web_path = "/files/assets/public/departments/alameda/police/"
+domain = "https://www.alamedaca.gov"
+sleep_time = 5
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
@@ -13,16 +22,15 @@ save_dir = cur_dir + "/data/"
 if not os.path.exists(save_dir):
 	os.makedirs(save_dir)
 
-html_page = requests.get("https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity").text
+html_page = requests.get(webpage).text
 soup = BeautifulSoup(html_page, "html.parser")
 
 url_name = []
-def extract_info(soup):
-	source = "https://www.alamedaca.gov"
+def extract_info(soup, source):
 	for link in soup.findAll('a'):
 		if link.get('href') is None:
 			continue
-		if not link['href'].startswith('/files/assets/public/departments/alameda/police/'):
+		if not link['href'].startswith(web_path):
 			continue
 		try:
 			assert 'amel' in __noted__
@@ -55,7 +63,6 @@ def get_files():
 			if url_2.find(".pdf"):
 				print(file_name)
 				if "daily" in file_name:
-					print("found")
 					dir = save_dir + "daily_bulletin/"
 					if not os.path.exists(dir):
 						os.makedirs(dir)
@@ -72,7 +79,7 @@ def get_files():
 			else:
 				print("Unhandled documents type")
 				print("Url: " + url_2)
-			time.sleep(5)
+			time.sleep(sleep_time)
 			print("Sleep")
-extract_info(soup)
+extract_info(soup, domain)
 get_files()
