@@ -44,8 +44,8 @@ end = False
 # 758-10.2019-01.2020.csv
 # police_code-start_month.start_year-end_month.end_year
 #while max_month != start_month and max_year != start_year:
-while start_year <= int(max_year): 
-	end_month = int(start_month) + 2
+while start_year <= int(max_year):
+	end_month = int(start_month) + 3
 
 	# Convert the int value of the month to mm format
 	if len(str(start_month)) == 1:
@@ -71,8 +71,8 @@ while start_year <= int(max_year):
 		data = requests.get(url, allow_redirects=True)
 
 		verify_data(data)
-		if start_month != 10:	
-			start_month = int(end_month) + 1 
+		if start_month != 10:
+			start_month = int(end_month)
 		else:
 			start_month = 1
 			start_year = int(start_year) + 1
