@@ -47,7 +47,7 @@ Set the domain to the beginning of the document host.
 Unsure, daily bulletin seems to be two days behind, and the monthly is nearly two months behind.
 
 # Sample response
-In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
+Some PDFS in the sample response may be corrupt. This is simply because I did not allow the scraper to finish.
 
 # Legal
 Is there anything specific to this jurisdiction we should know as we work?
