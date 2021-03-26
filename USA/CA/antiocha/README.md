@@ -36,7 +36,7 @@ Go to https://www.antiochca.gov/police/
 Right side > Crime statistics > crime statistics
 
 
-[arrest reports](https://www.antiochca.gov/police/crime-statistics/adult-arrest-report/)
+Eventually a scraper will be written for the [arrest reports](https://www.antiochca.gov/police/crime-statistics/adult-arrest-report/)
 
 
 # Data refresh rate
@@ -57,4 +57,3 @@ Is there anything specific to this jurisdiction we should know as we work?
 
 # Data uniformity
 Cases are not scraped yet.
-

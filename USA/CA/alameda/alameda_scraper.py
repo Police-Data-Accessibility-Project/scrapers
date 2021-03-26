@@ -66,7 +66,7 @@ def get_files():
 					dir = save_dir + "daily_bulletin/"
 					if not os.path.exists(dir):
 						os.makedirs(dir)
-					save_pdf(file_name, url_2, dir)
+					#save_pdf(file_name, url_2, dir)
 				else:
 					save_pdf(file_name, url_2, save_dir)
 			# This part is not really needed for this site but is left just in case
@@ -79,7 +79,7 @@ def get_files():
 			else:
 				print("Unhandled documents type")
 				print("Url: " + url_2)
-			time.sleep(sleep_time)
+			#time.sleep(sleep_time)
 			print("Sleep")
 extract_info(soup, domain)
 get_files()

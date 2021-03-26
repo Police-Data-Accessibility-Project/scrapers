@@ -2,7 +2,7 @@ import tabula
 import os
 
 cur_dir = os.getcwd()
-directory = cur_dir + "/USA/GA/Norcross/pdfs/"
+directory = cur_dir + "/USA/GA/Norcross/pdfs/" # Replace with respective state/county/folder_with_pdfs
 folder = directory + "/tables/"
 '''
 if not os.path.isdir(folder):
@@ -13,12 +13,12 @@ for file in os.listdir(directory):
 	doc = directory + file
 	folder_name = file.replace('.pdf','/')
 	table = tabula.read_pdf(doc, pages='all')
-	
+
 	for i, table in enumerate(file	, start=1):
 		table.to_excel(os.path.join(folder_name, f"table_{i}.xlsx"), index=False)
 
 	#print(data_table)
-	
+
 '''
 def save_file(file):
 	print(file)
@@ -37,4 +37,3 @@ def save_file(file):
 # read PDF file
 for file in os.listdir(directory):
 	save_file(file)
-		
