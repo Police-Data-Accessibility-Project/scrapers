@@ -1,9 +1,9 @@
-import requests  
-import os 
+import requests
+import os
 from bs4 import BeautifulSoup
 import urllib
 import re
-
+import time
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit'
 
 cur_dir = os.getcwd()
@@ -39,7 +39,7 @@ def get_files():
 	with open("url_name.txt", "r") as input_file:
 		for line in input_file:
 			print(line)
-			
+
 			line_list = line.split(', ')
 			url_2 = line_list[0]
 			file_name = line_list[1].replace(" ", "_")[:-1]
