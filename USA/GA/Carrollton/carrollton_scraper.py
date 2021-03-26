@@ -78,7 +78,6 @@ while start_year <= int(max_year):
 		data = requests.get(url, allow_redirects=True)
 
 		verify_data(data)
-		time.sleep(delay)
 		if start_month != 10:
 			start_month = int(end_month)
 		else:
