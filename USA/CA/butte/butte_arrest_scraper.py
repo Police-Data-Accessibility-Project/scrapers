@@ -17,7 +17,7 @@ domain = "http://www.buttecounty.net/"
 sleep_time = 5   # Set to desired sleep time
 
 cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/arrests"
+save_dir = cur_dir + "/data/arrests/"
 
 if not os.path.exists(save_dir):
 	os.makedirs(save_dir)
