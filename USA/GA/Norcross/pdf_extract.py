@@ -2,7 +2,7 @@ import tabula
 import os
 
 cur_dir = os.getcwd()
-directory = cur_dir + "/USA/GA/Norcross/pdfs/" # Replace with respective state/county/folder_with_pdfs
+directory = cur_dir + "/pdfs/" # Replace with respective state/county/folder_with_pdfs
 folder = directory + "/tables/"
 '''
 if not os.path.isdir(folder):
