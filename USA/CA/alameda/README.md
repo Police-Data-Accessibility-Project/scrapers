@@ -39,9 +39,15 @@ _Remove fields that were collected_
 # How to locate the data source
 On main page: https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity
 Click "Monthly Crime Statistics"
-Set webpage to the page with the pdf lists
+
+Set `webpage` to the page with the pdf lists
+
+
 Open a few pdfs and get the common file path for them, and set that as `web_path`
-Set the domain to the beginning of the document host.
+
+
+Set the `domain` to the beginning of the document host.
+
 
 # Data refresh rate
 Unsure, daily bulletin seems to be two days behind, and the monthly is nearly two months behind.
