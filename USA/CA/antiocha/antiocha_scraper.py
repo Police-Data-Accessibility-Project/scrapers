@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import urllib
 import re
 import time
+import sys
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
