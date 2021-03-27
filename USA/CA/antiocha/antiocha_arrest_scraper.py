@@ -5,6 +5,10 @@ import urllib
 import re
 import datetime
 from dateutil import relativedelta
+"""
+sys.path.insert(1, r'path/to/common')
+from bs_scrapers.get_files import get_files
+"""
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit' # Just don't delete this
 webpage = "https://www.antiochca.gov/fc/police/crime-maps/this-weeks-aar.pdf"

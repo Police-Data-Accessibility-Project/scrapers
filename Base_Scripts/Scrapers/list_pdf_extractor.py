@@ -13,7 +13,7 @@ Also ensure that domain stays the same
 Verify on page that the href to the file contains the domain, if it doesn't, uncomment domain
 '''
 web_path = "https://www.antiochca.gov/fc/police/crime-maps/"
-# domain = https://www.antiochca.gov
+# domain = "https://www.antiochca.gov"
 sleep_time = 5   # Set to desired sleep time
 
 cur_dir = os.getcwd()
@@ -62,21 +62,24 @@ def get_files():
 
 			if url_2.find(".pdf"):
 				#save_path = os.path.join(save_dir, file_name+".pdf")
-				pdf = urllib.request.urlopen(url_2)
-				with open(save_dir + file_name, 'wb') as file:
-					file.write(pdf.read())
-					file.close()
+				print(file_name)
+				if os.path.exists(save_dir + file_name) == False:
+					pdf = urllib.request.urlopen(url_2)
+					with open(save_dir + file_name, 'wb') as file:
+						file.write(pdf.read())
+						file.close()
 			elif url_2.find(".doc"):
 				#save_path = os.path.join(save_dir, file_name+".doc")
-				document = requests.get(url_2, allow_redirects=True)
-				with open(file_name, "w") as data_file:
-					data_file.write(document.text)   # Writes using requests text 	function thing
-				data_file.close()
+				if os.path.exists(save_dir + file_name) == False:
+					document = requests.get(url_2, allow_redirects=True)
+					with open(file_name, "w") as data_file:
+						data_file.write(document.text)   # Writes using requests text 	function thing
+					data_file.close()
 			else:
 				print("Unhandled documents type")
 				print("Url: " + url_2)
 			time.sleep(sleep_time)
 			print("Sleep")
-      
+
 extract_info(soup)
 get_files()

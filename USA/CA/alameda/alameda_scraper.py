@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 import urllib
 import re
 import time
+'''
+Do not update get_files
+'''
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit'
 webpage = "https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity"
@@ -81,5 +84,10 @@ def get_files():
 				print("Url: " + url_2)
 			#time.sleep(sleep_time)
 			print("Sleep")
-extract_info(soup, domain)
+
+try:
+	os.remove("url_name.txt")
+except FileNotFoundError:
+	pass
+extract_info(soup)
 get_files()
