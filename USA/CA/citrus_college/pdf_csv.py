@@ -41,7 +41,15 @@ print("Total PDFS: " + str(pdf_count))
 
 
 # read PDF file
+
 print("Working... this may take a while")
 for file in tqdm(os.listdir(directory), desc="Files",position=0,leave=True):
 	if file.endswith(".pdf"):
 		save_file(file)
+
+
+for file in os.listdir("./data/crime_logs/csv"):
+	src = os.path.join(folder, file)
+	dst = os.path.join(folder, file + '.csv')
+	if not os.path.exists(dst): # check if the file doesn't exist
+		os.rename(src, dst)
