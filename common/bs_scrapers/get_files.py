@@ -2,6 +2,7 @@ import os
 import urllib
 import re
 import time
+import requests
 
 def get_files(save_dir, sleep_time):
 	if not os.path.isfile('url_name.txt'):
