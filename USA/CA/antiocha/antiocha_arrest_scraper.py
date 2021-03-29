@@ -6,8 +6,7 @@ import re
 import datetime
 from dateutil import relativedelta
 """
-sys.path.insert(1, r'path/to/common')
-from bs_scrapers.get_files import get_files
+Uses custom get_files(); Do not update 
 """
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit' # Just don't delete this
