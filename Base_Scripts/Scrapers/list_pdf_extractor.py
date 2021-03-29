@@ -80,6 +80,10 @@ def get_files():
 				print("Url: " + url_2)
 			time.sleep(sleep_time)
 			print("Sleep")
-
+			
+try:
+	os.remove("url_name.txt")
+except FileNotFoundError:
+	pass
 extract_info(soup)
 get_files()
