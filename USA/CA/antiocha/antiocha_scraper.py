@@ -20,7 +20,7 @@ Verify on page that the href to the file contains the domain, if it doesn't, unc
 '''
 web_path = "https://www.antiochca.gov/fc/police/crime-maps/"
 # domain = https://www.antiochca.gov
-
+sleep_time = 5
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
