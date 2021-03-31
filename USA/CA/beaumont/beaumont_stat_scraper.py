@@ -112,7 +112,7 @@ except FileNotFoundError:
 extract_source(soup)
 with open("source.txt", 'r') as f:
 	for line in f:
-		# Iterates over path to DocumentCenter
+		# Iterates over path to DocumentCenter, to send to extract_info, which will then
 		source_page = requests.get(line).text
 		source_soup = BeautifulSoup(source_page, "html.parser")
 		extract_info(source_soup)
