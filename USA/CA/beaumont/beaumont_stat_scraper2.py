@@ -58,8 +58,12 @@ def extract_info(soup, year):
 
 		for link in links:
 			try:
-				if "pdf" in link.get_attribute('class'):
-					print(link.get_attribute('href'))
+				try:
+					if "pdf" in link.get_attribute('class'):
+						print(link.get_attribute('href'))
+				except selenium.common.exceptions.StaleElementReferenceException:
+					pass
+
 					url = link.get_attribute('href')
 					name_index = url.rfind("/")
 					name = url[name_index:]
