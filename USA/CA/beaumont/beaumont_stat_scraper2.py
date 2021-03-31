@@ -18,7 +18,7 @@ Verify on page that the href to the file contains the domain, if it doesn't, unc
 web_path = "/DocumentCenter/Index/"
 domain = "https://www.beaumontca.gov/"
 sleep_time = 5   # Set to desired sleep time
-driver = webdriver.Chrome(executable_path="C:\chromedriver_win32\chromedriver.exe") # Will likely have to change the executable_path
+# driver = webdriver.Chrome(executable_path="C:\chromedriver_win32\chromedriver.exe") # Will likely have to change the executable_path
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
@@ -58,12 +58,8 @@ def extract_info(soup, year):
 
 		for link in links:
 			try:
-				try:
-					if "pdf" in link.get_attribute('class'):
-						print(link.get_attribute('href'))
-				except selenium.common.exceptions.StaleElementReferenceException:
-					pass
-
+				if "pdf" in link.get_attribute('class'):
+					print(link.get_attribute('href'))
 					url = link.get_attribute('href')
 					name_index = url.rfind("/")
 					name = url[name_index:]
@@ -127,7 +123,7 @@ with open("source.txt", 'r') as f:
 		# Iterates over path to DocumentCenter, to send to extract_info, which will then extract the pdfs from the DocumentCenter
 		if not line.isspace():
 			line = line.split(",")
-			extract_info(line[0], line[1])
+			# extract_info(line[0], line[1])
 
 
 with open("source.txt", 'r') as f:
