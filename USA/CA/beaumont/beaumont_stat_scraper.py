@@ -5,11 +5,7 @@ import urllib
 import re
 import time
 import sys
-from pathlib import Path
 
-p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + '/common')
-from bs_scrapers.get_files import get_files
 
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit' # Just don't delete this
@@ -20,7 +16,7 @@ Also ensure that domain stays the same
 Verify on page that the href to the file contains the domain, if it doesn't, uncomment domain
 '''
 web_path = "/DocumentCenter/Index/"
-domain = "https://www.beaumontca.gov"
+domain = "https://www.beaumontca.gov/"
 sleep_time = 5   # Set to desired sleep time
 
 cur_dir = os.getcwd()
@@ -45,34 +41,43 @@ def extract_source(soup):
 			continue
 		print(link.get('href'))
 		url = str(link['href'])
-		name = url[url.rindex('/'):]
+		name = str(link).split(">")
+		print(name)
 		#name = name[:name.rindex('.')]
 		with open("source.txt", 'a') as output:
-			output.write(url + ", " + name.strip("/") +"\n")
+			output.write(url + ", " + name[1].strip("/</a").replace(" ", "_") +"\n")
             # Uncomment following line if domain is not in href, and comment out line above
             # output.write(domain + url + ", " + name.strip("/") + "\n")
 		print("Done")
 
 def extract_info(soup):
-    for link in soup.findAll('a'):
-        if link.get('href') is None:
-            continue
-        if not link['href'].startswith(web_path):
-            continue
-        print(link.get('href'))
-        url = str(link['href'])
-        name = url[url.rindex('/'):]
-        #name = name[:name.rindex('.')]
-        with open("url_name.txt", 'a') as output:
-            # output.write(url)
-            # Uncomment following line if domain is not in href, and comment out line above
-            output.write(domain + url + ", " + name.strip("/") + "\n")
-    print("Done")
+	for link in soup.findAll('a'):
+		try:
+			if "pdf" in link['class']:
+				print(link)
+		except KeyError:
+			pass
+		if link.get('href') is None:
+			continue
+		if not link['href'].startswith(web_path):
+			with open("links.txt", "a") as links:
+				links.write(str(link))
+			continue
+
+		print(link.get('href'))
+		url = str(link['href'])
+		name = url[url.rindex('/'):]
+		#name = name[:name.rindex('.')]
+		with open("url_name.txt", 'a') as output:
+			# output.write(url)
+			# Uncomment following line if domain is not in href, and comment out line above
+			output.write(domain + url + ", " + name.strip("/") + "\n")
+		print("Done")
 
 def get_files(save_dir, sleep_time):
 	if not os.path.isfile('source.txt'):
 		return
-	with open("s.txt", "r") as input_file:
+	with open("source.txt", "r") as input_file:
 		for line in input_file:
 			print(line)
 
@@ -104,21 +109,24 @@ def get_files(save_dir, sleep_time):
 			print("Sleep")
 		input_file.close()
 		os.remove("url_name.txt")
-
+'''
 try:
 	os.remove("url_name.txt")
 except FileNotFoundError:
 	pass
+'''
 extract_source(soup)
 with open("source.txt", 'r') as f:
 	for line in f:
-		# Iterates over path to DocumentCenter, to send to extract_info, which will then
-		source_page = requests.get(line).text
+		# Iterates over path to DocumentCenter, to send to extract_info, which will then extract the pdfs from the DocumentCenter
+		line = line.split(",")
+		source_page = requests.get(line[0]).text
 		source_soup = BeautifulSoup(source_page, "html.parser")
 		extract_info(source_soup)
-		get_files(save_dir, sleep_time)
-
+		#get_files(save_dir, sleep_time)
+'''
 try:
 	os.remove("source.txt")
 except FileNotFoundError:
 	pass
+'''
