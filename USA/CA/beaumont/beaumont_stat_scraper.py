@@ -5,7 +5,7 @@ import urllib
 import re
 import time
 import sys
-
+from selenium import webdriver
 
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit' # Just don't delete this
@@ -18,6 +18,7 @@ Verify on page that the href to the file contains the domain, if it doesn't, unc
 web_path = "/DocumentCenter/Index/"
 domain = "https://www.beaumontca.gov/"
 sleep_time = 5   # Set to desired sleep time
+driver = webdriver.Chrome(executable_path="C:\chromedriver_win32\chromedriver.exe")
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
