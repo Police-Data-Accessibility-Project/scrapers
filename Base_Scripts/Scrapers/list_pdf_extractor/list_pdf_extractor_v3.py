@@ -25,7 +25,6 @@ Verify on page that the href to the file contains the domain, if it doesn't, unc
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
 
-print(configs.domain_included)
 if not os.path.exists(save_dir):
 	os.makedirs(save_dir)
 
