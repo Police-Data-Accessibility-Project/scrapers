@@ -39,9 +39,19 @@ def extract_info(soup):
 			continue
 		if not link['href'].startswith(web_path):
 			continue
-		print(link.get('href'))
+		#print(link.get('href'))
+		print(link)
+		print(link.get('arial_label'))
 		url = str(link['href'])
-		name = url[url.rindex('/'):]
+
+		if not str(link).find("hyperlink"):
+			name = re.findall(r">(.+?)</a>", str(link))
+			name = str(name)
+		#	print("not " + name)
+		else:
+			name = link.get('arial_label')
+			name = str(name)
+		#	print("Else " + name )
 		#name = name[:name.rindex('.')]
 		with open("url_name.txt", 'a') as output:
 			if "https" in link['href']:
