@@ -20,7 +20,7 @@ Verify on page that the href to the file contains the domain, if it doesn't, unc
 '''
 web_path = "/DocumentCenter/View/"
 domain = "http://www.cityofdelano.org"
-sleep_time = 5   # Set to desired sleep time
+sleep_time = 20   # Set to desired sleep time
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
@@ -46,10 +46,10 @@ def extract_info(soup):
 		#name = name[:name.rindex('.')]
 		with open("url_name.txt", 'a') as output:
 			if "https" in link['href']:
-				output.write(url + ", " + str(name) +"\n")
+				output.write(url + ", " + str(name)+ ".pdf" +"\n")
 			else:
 				# Uncomment following line if domain is not in href, and comment out line above
-				output.write(domain + url + ", " + str(name) + "\n")
+				output.write(domain + url + ", " + str(name) + ".pdf"+ "\n")
 	print("Done")
 
 try:
