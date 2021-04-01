@@ -12,14 +12,14 @@ sys.path.insert(1, str(p) + '/common')
 from bs_scrapers.get_files import get_files
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit' # Just don't delete this
-webpage = "https://www.antiochca.gov/police/crime-statistics/crime-statistics/"
+webpage = "http://www.cityofdelano.org/108/Crime-Statistics"
 '''
 Click the links that lead to the files, and copy their paths. **NOTE:** Ensure that files all match paths, otherwise remove a level until they match
 Also ensure that domain stays the same
 Verify on page that the href to the file contains the domain, if it doesn't, uncomment domain
 '''
-web_path = "https://www.antiochca.gov/fc/police/crime-maps/"
-# domain = "https://www.antiochca.gov"
+web_path = "/DocumentCenter/View/"
+domain = "http://www.cityofdelano.org"
 sleep_time = 5   # Set to desired sleep time
 
 cur_dir = os.getcwd()
@@ -39,14 +39,26 @@ def extract_info(soup):
 			continue
 		if not link['href'].startswith(web_path):
 			continue
-		print(link.get('href'))
+		#print(link.get('href'))
+		print(link)
+		print(link.get('arial_label'))
 		url = str(link['href'])
-		name = url[url.rindex('/'):]
+
+		if not str(link).find("hyperlink"):
+			name = re.findall(r">(.+?)</a>", str(link))
+			name = str(name)
+		#	print("not " + name)
+		else:
+			name = link.get('arial_label')
+			name = str(name)
+		#	print("Else " + name )
 		#name = name[:name.rindex('.')]
 		with open("url_name.txt", 'a') as output:
-			output.write(url + ", " + name.strip("/") +"\n")
-			# Uncomment following line if domain is not in href, and comment out line above
-			# output.write(domain + url + ", " + name.strip("/") + "\n")
+			if "https" in link['href']:
+				output.write(url + ", " + name.strip("/") +"\n")
+			else:
+				# Uncomment following line if domain is not in href, and comment out line above
+				output.write(domain + url + ", " + name.strip("/") + "\n")
 	print("Done")
 
 try:
