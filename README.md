@@ -4,7 +4,7 @@ This repo contains the record scrapers (and associated tooling) to further the g
 # Getting Started
 ## Quick start
 1. [Clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repo.
-2. [Find a dataset to scrape](https://www.dolthub.com/repositories/pdap/datasets/), or [submit your own](https://docs.google.com/document/d/1cxvH_O6XwXNmjs5oJi5gR5Y3mLnYENq6XBYbNrfz3ko/edit).
+2. [Find a dataset to scrape](https://www.dolthub.com/repositories/pdap/datasets/), or [submit your own by following these DoltHub instructions](https://docs.google.com/document/d/1cxvH_O6XwXNmjs5oJi5gR5Y3mLnYENq6XBYbNrfz3ko/edit).
 3. Make a copy of the template folder in the appropriate jurisdiction folder. Read more about structure below.
 6. Code your scraper.
 7. Scrape sample data from the source and add a truncated version to the folder so we understand the kind of data your scraper generates.
