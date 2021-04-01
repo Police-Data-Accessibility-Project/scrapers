@@ -40,16 +40,12 @@ def extract_info(soup):
         print link.get('href')
         url = str(link['href'])
         name = url[url.rindex('/'):].split('?')
-
         # name = name[:name.rindex('.')]
 
         with open('url_name.txt', 'a') as output:
-
             # output.write(url + ", " + name.strip("/") +"\n")
             # Uncomment following line if domain is not in href, and comment out line above
-
-            output.write(domain + url + ', ' + name[0].strip('/') + '\n'
-                         )
+            output.write(domain + url + ', ' + name[0].strip('/') + '\n')
     print 'Done'
 
 
@@ -68,30 +64,26 @@ def get_files():
             # document = requests.get(url_2, allow_redirects=True)
 
             if url_2.find('.pdf'):
-
                 # save_path = os.path.join(save_dir, file_name+".pdf")
 
                 print file_name
                 if os.path.exists(save_dir + file_name) == False:
-                    pdf = urllib.request.urlopen(url_2.replace(' ',
-                            '%20'))
+                    pdf = urllib.request.urlopen(url_2.replace(' ','%20'))
                     with open(save_dir + file_name, 'wb') as file:
                         file.write(pdf.read())
                     file.close()
             elif url_2.find('.doc'):
-
                 # save_path = os.path.join(save_dir, file_name+".doc")
-
                 if os.path.exists(save_dir + file_name) == False:
                     document = requests.get(url_2, allow_redirects=True)
                     with open(file_name, 'w') as data_file:
                         data_file.write(document.text)  # Writes using requests text ....function thing
                     data_file.close()
             else:
-                print 'Unhandled documents type'
-                print 'Url: ' + url_2
+                print('Unhandled documents type')
+                print('Url: ' + url_2)
             time.sleep(sleep_time)
-            print 'Sleep'
+            print('Sleep')
 
 
 try:
