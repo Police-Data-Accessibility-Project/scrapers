@@ -5,6 +5,8 @@ import urllib
 import re
 import time
 import sys
+import configs
+from configs import non_important
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
@@ -12,25 +14,22 @@ sys.path.insert(1, str(p) + '/common')
 from bs_scrapers.get_files import get_files
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit' # Just don't delete this
-webpage = "https://www.goldenwestcollege.edu/public-safety/statistics/index.html"
+
 '''
 Click the links that lead to the files, and copy their paths. **NOTE:** Ensure that files all match paths, otherwise remove a level until they match
 Also ensure that domain stays the same
 Verify on page that the href to the file contains the domain, if it doesn't, uncomment domain
 '''
-web_path = "../../Links/pdf/"
-domain = "https://www.goldenwestcollege.edu/"
-sleep_time = 5   # Set to desired sleep time
-# Are there any links on the page that you do not want? Put a word found in them in this table
-non_important = ['emergency','training','guidelines']
+
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
 
+print(configs.domain_included)
 if not os.path.exists(save_dir):
 	os.makedirs(save_dir)
 
-html_page = requests.get(webpage).text
+html_page = requests.get(configs.webpage).text
 soup = BeautifulSoup(html_page, "html.parser")
 
 url_name = []
@@ -38,7 +37,7 @@ def extract_info(soup):
 	for link in soup.findAll('a'):
 		if link.get('href') is None:
 			continue
-		if not link['href'].startswith(web_path):
+		if not link['href'].startswith(configs.web_path):
 			continue
 
 		print(link.get('href'))
@@ -46,9 +45,14 @@ def extract_info(soup):
 		name = url[url.rindex('/'):]
 
 		with open("url_name.txt", 'a') as output:
-			# output.write(url + ", " + name.strip("/") +"\n")
+			if configs.domain_included == True:
+				output.write(url + ", " + name.strip("/") +"\n")
+			elif configs.domain_included == False:
 			# Uncomment following line if domain is not in href, and comment out line above
-			output.write(domain + url + ", " + name.strip("/") + "\n")
+				output.write(configs.domain + url + ", " + name.strip("/") + "\n")
+			else:
+				# This section is mostly just to teach the user
+				print("ERROR: Booleans must be capitalized, either True or False")
 	print("Done")
 
 try:
@@ -66,6 +70,5 @@ try:
 	os.remove("url_name.txt")
 except FileNotFoundError:
 	pass
-
 os.rename("2url_name.txt",'url_name.txt')
-get_files(save_dir, sleep_time)
+get_files(save_dir, configs.sleep_time)
