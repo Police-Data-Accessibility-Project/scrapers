@@ -40,25 +40,16 @@ def extract_info(soup):
 		if not link['href'].startswith(web_path):
 			continue
 		#print(link.get('href'))
-		print(link)
-		print(link.get('arial_label'))
 		url = str(link['href'])
-
-		if not str(link).find("hyperlink"):
-			name = re.findall(r">(.+?)</a>", str(link))
-			name = str(name)
-		#	print("not " + name)
-		else:
-			name = link.get('arial_label')
-			name = str(name)
+		name = link.string
 		#	print("Else " + name )
 		#name = name[:name.rindex('.')]
 		with open("url_name.txt", 'a') as output:
 			if "https" in link['href']:
-				output.write(url + ", " + name.strip("/") +"\n")
+				output.write(url + ", " + str(name) +"\n")
 			else:
 				# Uncomment following line if domain is not in href, and comment out line above
-				output.write(domain + url + ", " + name.strip("/") + "\n")
+				output.write(domain + url + ", " + str(name) + "\n")
 	print("Done")
 
 try:
