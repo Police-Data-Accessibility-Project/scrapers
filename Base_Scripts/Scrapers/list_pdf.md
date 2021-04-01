@@ -18,3 +18,8 @@ The second function, `get_files`, reads the link and name from `links.txt` and d
 
 If this does not make sense, try checking the comments within the code.
  Working example can be found [here](https://github.com/CaptainStabs/Scrapers/blob/master/USA/CA/alameda/alameda_scraper.py)
+
+# Versions:
+`list_pdf_extractor.py` : most basic of the scripts, mostly used for reference
+`list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/CaptainStabs/Scrapers/blob/master/common/bs_scrapers/get_files.py)
+`list_pdf_extractor_v3.py` : Allows for filtering links by common unwanted words. See [golden_west_scraper.py](https://github.com/CaptainStabs/Scrapers/blob/master/USA/CA/golden_west_college/golden_west_scraper.py) for working example.
