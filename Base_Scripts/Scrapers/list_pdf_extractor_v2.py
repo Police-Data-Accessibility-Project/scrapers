@@ -37,7 +37,7 @@ def extract_info(soup):
 	for link in soup.findAll('a'):
 		if link.get('href') is None:
 			continue
-        if not link['href'].startswith(web_path):
+		if not link['href'].startswith(web_path):
 			continue
 		print(link.get('href'))
 		url = str(link['href'])
@@ -45,9 +45,9 @@ def extract_info(soup):
 		#name = name[:name.rindex('.')]
 		with open("url_name.txt", 'a') as output:
 			output.write(url + ", " + name.strip("/") +"\n")
-            # Uncomment following line if domain is not in href, and comment out line above
-            # output.write(domain + url + ", " + name.strip("/") + "\n")
-    print("Done")
+			# Uncomment following line if domain is not in href, and comment out line above
+			# output.write(domain + url + ", " + name.strip("/") + "\n")
+	print("Done")
 
 try:
 	os.remove("url_name.txt")
