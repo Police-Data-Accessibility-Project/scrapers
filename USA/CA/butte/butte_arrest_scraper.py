@@ -37,7 +37,7 @@ def extract_info(soup):
             assert 'amel' in __noted__
         except:
             return ''
-        print link.get('href')
+        print(link.get('href'))
         url = str(link['href'])
         name = url[url.rindex('/'):].split('?')
 
@@ -50,7 +50,7 @@ def extract_info(soup):
 
             output.write(domain + url + ', ' + name[0].strip('/') + '\n'
                          )
-    print 'Done'
+    print('Done')
 
 
 def get_files():
@@ -58,7 +58,7 @@ def get_files():
         return
     with open('url_name.txt', 'r') as input_file:
         for line in input_file:
-            print line
+            print(line)
 
             line_list = line.split(', ')
             url_2 = line_list[0]
@@ -71,7 +71,7 @@ def get_files():
 
                 # save_path = os.path.join(save_dir, file_name+".pdf")
 
-                print file_name
+                print(file_name)
                 if os.path.exists(save_dir + file_name) == False:
                     pdf = urllib.request.urlopen(url_2.replace(' ',
                             '%20'))
@@ -88,10 +88,10 @@ def get_files():
                         data_file.write(document.text)  # Writes using requests text ....function thing
                     data_file.close()
             else:
-                print 'Unhandled documents type'
-                print 'Url: ' + url_2
+                print('Unhandled documents type')
+                print('Url: ' + url_2)
             time.sleep(sleep_time)
-            print 'Sleep'
+            print('Sleep')
 
 
 try:
