@@ -44,10 +44,6 @@ def extract_info(soup):
             # print(link.get('href'))
         url = str(link["href"])
 
-        # if not str(link).find("hyperlink"):
-        # 	name = re.findall(r">(.+?)</a>", str(link))
-        # 	name = str(name)
-        # #	print("not " + name)
         name = link.string
         name = str(name)
         if "None" in name:
