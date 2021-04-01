@@ -124,14 +124,12 @@ with open("source.txt", 'r') as f:
 			line = line.split(",")
 			extract_info(line[0], line[1])
 
-
 with open("source.txt", 'r') as f:
 	for line in f:
 		# Iterates over path to DocumentCenter, to send to extract_info, which will then extract the pdfs from the DocumentCenter
 		if not line.isspace():
 			line = line.split(",")
 			get_files(save_dir, sleep_time)
-
 
 try:
 	os.remove("source.txt")
