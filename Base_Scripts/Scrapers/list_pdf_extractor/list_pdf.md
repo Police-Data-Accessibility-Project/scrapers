@@ -5,6 +5,7 @@ The second function, `get_files`, reads the link and name from `links.txt` and d
  `extract_info` uses `urllib` to open the webpage, and then `BeautifulSoup4` to parse it. It then uses regex to finf all links that end with pdf or doc. It needs a few lines to be replaced with regex.
 
 # Setup
+Copy the extractor version you need, and the `configs.py` to the `COUNTRY/STATE/COUNTY` that you created for the precinct.
 
 1. Set `webpage` to the page with the pdf lists
 2. Open a few pdfs and get the common file path for them, and set that as `web_path`
