@@ -8,8 +8,7 @@ import re
 import time
 
 __noted__ = 'fixes shamelessly stolen from dunnousername without credit'  # Just don't delete this
-webpage = \
-    'https://www.antiochca.gov/police/crime-statistics/crime-statistics/'
+webpage = 'https://www.antiochca.gov/police/crime-statistics/crime-statistics/'
 web_path = 'https://www.antiochca.gov/fc/police/crime-maps/'
 
 # domain = "https://www.antiochca.gov"
@@ -40,7 +39,7 @@ def extract_info(soup):
             assert 'amel' in __noted__
         except:
             return ''
-        print link.get('href')
+        print(link.get('href'))
         url = str(link['href'])
         name = url[url.rindex('/'):]
 
@@ -52,7 +51,7 @@ def extract_info(soup):
             # Uncomment following line if domain is not in href, and comment out line above
             # output.write(domain + url + ", " + name.strip("/") + "\n")
 
-    print 'Done'
+    print('Done')
 
 
 def get_files():
@@ -60,7 +59,7 @@ def get_files():
         return
     with open('url_name.txt', 'r') as input_file:
         for line in input_file:
-            print line
+            print(line)
 
             line_list = line.split(', ')
             url_2 = line_list[0]
@@ -73,7 +72,7 @@ def get_files():
 
                 # save_path = os.path.join(save_dir, file_name+".pdf")
 
-                print file_name
+                print(file_name)
                 if os.path.exists(save_dir + file_name) == False:
                     pdf = urllib.request.urlopen(url_2)
                     with open(save_dir + file_name, 'wb') as file:
@@ -89,10 +88,10 @@ def get_files():
                         data_file.write(document.text)  # Writes using requests text ....function thing
                     data_file.close()
             else:
-                print 'Unhandled documents type'
-                print 'Url: ' + url_2
+                print('Unhandled documents type')
+                print('Url: ' + url_2)
             time.sleep(sleep_time)
-            print 'Sleep'
+            print('Sleep')
 
 
 try:
