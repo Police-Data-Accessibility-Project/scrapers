@@ -20,7 +20,7 @@ def scrape_urls():
 		for p in range(total):
 			doc_url = r_data[p]['URL']
 			output_url = base_url + doc_url
-		
+
 			with open('urls.txt','a') as output:
 				output.write(output_url + '\n')
 	output.close()
@@ -31,12 +31,12 @@ def get_name(line):
 			response = json.load(json_file)
 			r_data = response['data']
 			#total = response['total']
-		
+
 			doc_name = r_data[line]['DisplayName']
 			return doc_name
 	except IndexError:
 		print("Done, verify that last document matches last url")
-		
+
 
 def download_data():
 	with open('urls.txt', 'r') as in_url:

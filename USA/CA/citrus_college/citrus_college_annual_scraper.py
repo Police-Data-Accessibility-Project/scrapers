@@ -40,10 +40,6 @@ def extract_info(soup):
             continue
         if not link['href'].startswith(web_path):
             continue
-        try:
-            assert 'amel' in __noted__
-        except:
-            return ''
         print(link.get('href'))
         url = str(link['href'])
         name = url[url.rindex('/'):]

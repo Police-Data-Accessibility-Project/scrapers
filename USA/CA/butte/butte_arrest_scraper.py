@@ -26,7 +26,6 @@ soup = BeautifulSoup(html_page, 'html.parser')
 
 url_name = []
 
-
 def extract_info(soup):
     for link in soup.findAll('a'):
         if link.get('href') is None:
@@ -37,7 +36,7 @@ def extract_info(soup):
             assert 'amel' in __noted__
         except:
             return ''
-        print link.get('href')
+        print(link.get('href'))
         url = str(link['href'])
         name = url[url.rindex('/'):].split('?')
         # name = name[:name.rindex('.')]
@@ -45,8 +44,9 @@ def extract_info(soup):
         with open('url_name.txt', 'a') as output:
             # output.write(url + ", " + name.strip("/") +"\n")
             # Uncomment following line if domain is not in href, and comment out line above
+
             output.write(domain + url + ', ' + name[0].strip('/') + '\n')
-    print 'Done'
+    print('Done')
 
 
 def get_files():
@@ -54,19 +54,16 @@ def get_files():
         return
     with open('url_name.txt', 'r') as input_file:
         for line in input_file:
-            print line
-
+            print(line)
             line_list = line.split(', ')
             url_2 = line_list[0]
             file_name = line_list[1].replace(' ', '_')[:-1]
-
             # file_name = save_dir + file_name
             # document = requests.get(url_2, allow_redirects=True)
 
             if url_2.find('.pdf'):
                 # save_path = os.path.join(save_dir, file_name+".pdf")
-
-                print file_name
+                print(file_name)
                 if os.path.exists(save_dir + file_name) == False:
                     pdf = urllib.request.urlopen(url_2.replace(' ','%20'))
                     with open(save_dir + file_name, 'wb') as file:
