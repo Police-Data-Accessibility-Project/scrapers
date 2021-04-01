@@ -4,7 +4,7 @@ import re
 import time
 import requests
 
-def get_files(save_dir, sleep_time):
+def get_files(save_dir, sleep_time, delete=True):
 	if not os.path.isfile('url_name.txt'):
 		return
 	with open("url_name.txt", "r") as input_file:
@@ -38,4 +38,7 @@ def get_files(save_dir, sleep_time):
 			time.sleep(sleep_time)
 			print("Sleep")
 		input_file.close()
-		os.remove("url_name.txt")
+		
+		# Used for debugging
+		if delete != False:
+			os.remove("url_name.txt")
