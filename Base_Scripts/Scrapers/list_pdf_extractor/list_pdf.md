@@ -1,9 +1,3 @@
-This script has two functions, the first, `extract_info`, extracts the links containing documents, and saves the url and the document name to a file called `links.txt`
-The second function, `get_files`, reads the link and name from `links.txt` and downloads the files.  
-
-# More in depth explanations
- `extract_info` uses `urllib` to open the webpage, and then `BeautifulSoup4` to parse it. It then uses regex to finf all links that end with pdf or doc. It needs a few lines to be replaced with regex.
-
 # Setup
 Copy the extractor version you need, and the `configs.py` to the `COUNTRY/STATE/COUNTY` that you created for the precinct.
 
@@ -32,3 +26,11 @@ If this does not make sense, try checking the comments within the code.
 `list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/CaptainStabs/Scrapers/blob/master/common/bs_scrapers/get_files.py)
 
 `list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. See [golden_west_scraper.py](https://github.com/CaptainStabs/Scrapers/blob/master/USA/CA/golden_west_college/golden_west_scraper.py) for working example.
+
+
+This script has two functions, the first, `extract_info`, extracts the links containing documents, and saves the url and the document name to a file called `links.txt`
+The second function, `get_files`, reads the link and name from `links.txt` and downloads the files.  
+
+
+# More in depth explanations (Poorly explained, nerdy stuff)
+ `extract_info` uses `urllib` to open the webpage, and then `BeautifulSoup4` to parse it. It then uses regex to find all links that end with pdf or doc. It needs a few lines to be replaced with regex.
