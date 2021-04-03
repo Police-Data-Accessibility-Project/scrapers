@@ -48,12 +48,18 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                 if ".xls" not in file_name:
                     file_name = file_name + ".xls"
                 if os.path.exists(save_dir + file_name) == False:
-                    document = requests.get(url_2, allow_redirects=True)
-                    with open(file_name, "w") as data_file:
-                        data_file.write(
-                            document.text
-                        )  # Writes using requests text 	function thing
-                    data_file.close()
+                    try:
+                        pdf = urllib.request.urlopen(url_2)
+                    except urllib.error.HTTPError:
+                        print("HTTP Error 404: Not Found")
+                        print("URL: " + str(url_2))
+                        print("")
+                        if debug:
+                            traceback.print_exc()
+                        exit()
+                    with open(save_dir + file_name, "wb") as file:
+                        file.write(pdf.read())
+                    file.close()
 
             else:
                 print("Unhandled documents type")
