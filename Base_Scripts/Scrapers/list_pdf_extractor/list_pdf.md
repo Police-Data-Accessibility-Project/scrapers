@@ -18,7 +18,7 @@ Also, if the `href` tag does have have a slash in front of it, like the followin
 ![image](https://user-images.githubusercontent.com/40151222/113487408-ffe9b680-9485-11eb-8942-b08fa7c1e528.png)
 
 make sure to add a slash to the end of the `domain`.
-For example, `domain = "www.website.com"` would become `domain = "www.website.com/"`
+For example, `domain = "https://www.website.com"` would become `domain = "https://www.website.com/"`
 
 
 
