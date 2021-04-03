@@ -22,7 +22,11 @@ def get_files(save_dir, sleep_time, delete=True):
                 # save_path = os.path.join(save_dir, file_name+".pdf")
                 print(file_name)
                 if os.path.exists(save_dir + file_name) == False:
-                    pdf = urllib.request.urlopen(url_2)
+                    try:
+                        pdf = urllib.request.urlopen(url_2)
+                    except urllib.error.HTTPError:
+                        print("HTTP Error 404: Not Found")
+                        print("URL: " + str(url_2))
                     with open(save_dir + file_name, "wb") as file:
                         file.write(pdf.read())
                     file.close()
