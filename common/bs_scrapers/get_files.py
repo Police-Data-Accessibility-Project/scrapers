@@ -19,7 +19,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
             # file_name = save_dir + file_name
             # document = requests.get(url_2, allow_redirects=True)
 
-            if url_2.find(".pdf"):
+            if ".pdf" in url_2:
                 # save_path = os.path.join(save_dir, file_name+".pdf")
                 print(file_name)
                 if os.path.exists(save_dir + file_name) == False:
@@ -35,7 +35,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                     with open(save_dir + file_name, "wb") as file:
                         file.write(pdf.read())
                     file.close()
-            elif url_2.find(".doc"):
+            elif ".doc" in url_2:
                 if os.path.exists(save_dir + file_name) == False:
                     document = requests.get(url_2, allow_redirects=True)
                     with open(file_name, "w") as data_file:
@@ -44,7 +44,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                         )  # Writes using requests text 	function thing
                     data_file.close()
 
-            elif url_2.find(".xls"):
+            elif ".xls" in url_2:
                 if ".xls" not in file_name:
                     file_name = file_name + ".xls"
                 if os.path.exists(save_dir + file_name) == False:
