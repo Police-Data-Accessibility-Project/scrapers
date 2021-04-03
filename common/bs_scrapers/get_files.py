@@ -1,11 +1,12 @@
 import os
+from sys import exit
 import urllib
 import re
 import time
 import requests
+import traceback
 
-
-def get_files(save_dir, sleep_time, delete=True):
+def get_files(save_dir, sleep_time, delete=True, debug=False):
     if not os.path.isfile("url_name.txt"):
         return
     with open("url_name.txt", "r") as input_file:
@@ -27,6 +28,10 @@ def get_files(save_dir, sleep_time, delete=True):
                     except urllib.error.HTTPError:
                         print("HTTP Error 404: Not Found")
                         print("URL: " + str(url_2))
+                        print("")
+                        if debug:
+                            traceback.print_exc()
+                        exit()
                     with open(save_dir + file_name, "wb") as file:
                         file.write(pdf.read())
                     file.close()
