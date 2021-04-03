@@ -16,4 +16,4 @@ sleep_time = 5
 # Put a word found in them (the links you don't want) in this list. It can be one ore more words
 non_important = ['emergency','training','guidelines']
 # For devs
-debug = True
+debug = False
