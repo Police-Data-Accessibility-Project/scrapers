@@ -7,7 +7,6 @@ import requests
 from datetime import date
 import os
 import time
-#from configs import base_url, police_code, start_month, start_year, delay, max_year, max_month
 from configs import * # Yeah, it's not pretty, I know.
 
 
