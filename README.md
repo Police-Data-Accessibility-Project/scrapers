@@ -6,11 +6,11 @@ This repo contains the record scrapers (and associated tooling) to further the g
 1. [Clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repo.
 2. [Find a dataset to scrape](https://www.dolthub.com/repositories/pdap/datasets/), or [submit your own by following these DoltHub instructions](https://docs.google.com/document/d/1cxvH_O6XwXNmjs5oJi5gR5Y3mLnYENq6XBYbNrfz3ko/edit).
 3. Make a copy of the template folder in the appropriate jurisdiction folder. Read more about structure below.
-6. Code your scraper.
-7. Scrape sample data from the source and add a truncated version to the folder so we understand the kind of data your scraper generates.
-8. Complete the readme to the best of your ability.
-9. Add the dolt repo to a config
-10. Submit a Pull Request for approval.
+4. Code your scraper.
+5. Scrape sample data from the source and add a truncated version to the folder so we understand the kind of data your scraper generates.
+6. Complete the readme to the best of your ability.
+7. Add the dolt repo to a config
+8. Submit a Pull Request for approval.
 
 ## Structure
 Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `USA/$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
