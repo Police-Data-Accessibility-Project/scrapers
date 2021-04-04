@@ -53,7 +53,7 @@ def extract_info(soup):
                     if "hyperlink" in str(link_2.get("class")):
                         name_table.append(link_2.string)
                 name = name_table[0]
-                #print(link)
+                # print(link)
             except KeyError:
                 print("KeyError")
                 pass

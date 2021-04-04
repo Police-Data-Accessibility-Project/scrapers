@@ -6,6 +6,7 @@ import time
 import requests
 import traceback
 
+
 def get_files(save_dir, sleep_time, delete=True, debug=False):
     if not os.path.isfile("url_name.txt"):
         return

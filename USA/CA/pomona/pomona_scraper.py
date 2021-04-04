@@ -50,4 +50,4 @@ try:
 except FileNotFoundError:
     pass
 extract_info(soup)
-get_files(save_dir, configs.sleep_time,debug=True)
+get_files(save_dir, configs.sleep_time, debug=True)
