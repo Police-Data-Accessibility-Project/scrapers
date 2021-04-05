@@ -7,7 +7,6 @@ import urllib
 import re
 import time
 
-__noted__ = "fixes shamelessly stolen from dunnousername without credit"  # Just don't delete this
 webpage = "https://www.antiochca.gov/police/crime-statistics/crime-statistics/"
 web_path = "https://www.antiochca.gov/fc/police/crime-maps/"
 
