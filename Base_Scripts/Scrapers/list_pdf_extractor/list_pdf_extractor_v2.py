@@ -22,7 +22,6 @@ if not os.path.exists(save_dir):
 
 html_page = requests.get(configs.webpage).text
 soup = BeautifulSoup(html_page, "html.parser")
-# print(soup)
 
 url_name = []
 

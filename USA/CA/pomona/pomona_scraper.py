@@ -37,11 +37,14 @@ def extract_info(soup):
         url = str(link["href"])
         name = url[url.rindex("/") :]
         # name = name[:name.rindex('.')]
-        with open("url_name.txt", "a") as output:
-            if configs.domain_included == True:
-                output.write(url + ", " + name.strip("/") + "\n")
-            elif configs.domain_included == False:
-                output.write(configs.domain + url + ", " + name.strip("/") + "\n")
+
+        with open("url_name.txt", "a+") as output:
+            # This isn't really needed, but it's nice to have when debug is True
+            if url not in output.read():
+                if configs.domain_included == True:
+                    output.write(url + ", " + name.strip("/") + "\n")
+                elif configs.domain_included == False:
+                    output.write(configs.domain + url + ", " + name.strip("/") + "\n")
     print("Done")
 
 
@@ -49,5 +52,6 @@ try:
     os.remove("url_name.txt")
 except FileNotFoundError:
     pass
+
 extract_info(soup)
-get_files(save_dir, configs.sleep_time, debug=True)
+get_files(save_dir, configs.sleep_time, configs.debug)

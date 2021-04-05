@@ -36,6 +36,8 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                     with open(save_dir + file_name, "wb") as file:
                         file.write(pdf.read())
                     file.close()
+                    time.sleep(sleep_time)
+                    print("Sleep")
             elif ".doc" in url_2:
                 if os.path.exists(save_dir + file_name) == False:
                     document = requests.get(url_2, allow_redirects=True)
@@ -44,7 +46,8 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                             document.text
                         )  # Writes using requests text 	function thing
                     data_file.close()
-
+                    time.sleep(sleep_time)
+                    print("Sleep")
             elif ".xls" in url_2:
                 if ".xls" not in file_name:
                     file_name = file_name + ".xls"
@@ -61,12 +64,12 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                     with open(save_dir + file_name, "wb") as file:
                         file.write(pdf.read())
                     file.close()
+                    time.sleep(sleep_time)
+                    print("Sleep")
 
             else:
                 print("Unhandled documents type")
                 print("Url: " + url_2)
-            time.sleep(sleep_time)
-            print("Sleep")
         input_file.close()
 
         # Used for debugging

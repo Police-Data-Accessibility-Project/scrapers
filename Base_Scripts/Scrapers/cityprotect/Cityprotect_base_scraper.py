@@ -55,16 +55,11 @@ while int(start_year) <= int(max_year):
         end_year = int(start_year) + 1
         end_month = str(1).zfill(2)
         file_name = (
-            str(police_code)
-            + "-"
-            + str(start_month)
-            + "."
-            + str(start_year)
-            + "-"
-            + str(end_month)
-            + "."
-            + str(end_year)
-            + ".csv"
+            str(police_code) + "-"
+            + str(start_month) + "."
+            + str(start_year) + "-"
+            + str(end_month) + "."
+            + str(end_year) + ".csv"
         )
         url = base_url + file_name
         print("Getting " + file_name)
@@ -74,16 +69,11 @@ while int(start_year) <= int(max_year):
         start_year = int(start_year) + 1
     else:
         file_name = (
-            str(police_code)
-            + "-"
-            + str(start_month)
-            + "."
-            + str(start_year)
-            + "-"
-            + str(end_month)
-            + "."
-            + str(start_year)
-            + ".csv"
+            str(police_code) + "-"
+            + str(start_month) + "."
+            + str(start_year) + "-"
+            + str(end_month) + "."
+            + str(start_year) + ".csv"
         )
         url = base_url + file_name
         print("Getting " + file_name)
