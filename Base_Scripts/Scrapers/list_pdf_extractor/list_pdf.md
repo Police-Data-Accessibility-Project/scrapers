@@ -1,7 +1,10 @@
 # Setup
 
-Clone the repo, either via the command line, `git clone https://github.com/Police-Data-Accessibility-Project/Scrapers.git` or from the website.
-Copy the extractor version you need, and the `configs.py` to the `COUNTRY/STATE/COUNTY` that you created for the precinct. For example, Alameda county, California, would be placed into the folder `Scrapers/USA/CA/alameda/`. This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/USA/CA/alameda) for the example.
+1. Clone the repo, either via the command line, `git clone https://github.com/Police-Data-Accessibility-Project/Scrapers.git` or from the website.
+2. Copy the extractor version you need, and the `configs.py` to the `COUNTRY/STATE/COUNTY` that you created for the precinct.
+3. For example, Alameda county, California, would be placed into the folder `Scrapers/USA/CA/alameda/`. 
+   
+   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/USA/CA/alameda) for the example.
 
 Open the `configs.py` file that you copied:
 1. Set `webpage` to the page with the pdf lists
