@@ -20,11 +20,11 @@ Open the `configs.py` file that you copied:
 
 ![image](https://user-images.githubusercontent.com/40151222/113303191-d5093200-92ce-11eb-8e42-0c23f70d9f47.png)
 
-Also, if the `href` tag does have have a slash in front of it, like the following picture,
+Also, if the `href` tag does not have a slash in front of it, like the following picture, please add one.
 
 ![image](https://user-images.githubusercontent.com/40151222/113487408-ffe9b680-9485-11eb-8942-b08fa7c1e528.png)
 
-make sure to add a slash to the end of the `domain`.
+Make sure to add a slash to the end of the `domain`.
 For example, `domain = "https://www.website.com"` would become `domain = "https://www.website.com/"`
 
 
