@@ -1,11 +1,9 @@
-dataclasses==0.8
 requests==2.24.0
 tabula_py==2.2.0
 absl_py==0.10.0
 selenium==3.141.0
 regex==2020.11.13
 tqdm==4.50.1
-absl==0.0
 beautifulsoup4==4.9.3
 dataclass_builder==1.2.0
 enforce_typing==1.0.0.post1
