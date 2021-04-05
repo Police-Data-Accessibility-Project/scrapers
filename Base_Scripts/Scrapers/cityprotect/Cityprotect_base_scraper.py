@@ -7,22 +7,21 @@ import requests
 from datetime import date
 import os
 import time
+from configs import *  # Yeah, it's not pretty, I know.
 
 
-police_code = 780
-start_month = 1
-start_year = 2017
-delay = 1
-
-base_url = "https://cereplicatorprodcomm.blob.core.windows.net/mainblob/"
-
-# Get the current month and year
+# Get the current month and year (Carollton data does not go past 2020)
+# Switch which is commented out based on if data is current
+"""
 today = date.today()
 max_month = today.strftime("%m")
 max_year = today.strftime("%Y")
+"""
+
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
+
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
@@ -31,7 +30,7 @@ def verify_data(data_code):
     if (
         data_code.status_code != 404 or str(data_code).find("<Error>") == False
     ):  # Verifies that file exists
-        save_path = os.path.join(save_dir, file_name + ".csv")
+        save_path = os.path.join(save_dir, file_name)
         with open(save_path, "w") as data_file:
             data_file.write(data.text)  # Writes using requests text function thing
             data_file.close()
@@ -42,8 +41,8 @@ end = False
 # 758-10.2019-01.2020.csv
 # police_code-start_month.start_year-end_month.end_year
 # while max_month != start_month and max_year != start_year:
-while start_year <= int(max_year):
-    end_month = int(start_month) + 2
+while int(start_year) <= int(max_year):
+    end_month = int(start_month) + 3
 
     # Convert the int value of the month to mm format
     if len(str(start_month)) == 1:
@@ -53,19 +52,14 @@ while start_year <= int(max_year):
 
     # Compensate for october with end_year change
     if start_month == 10:
-        end_year = start_year + 1
+        end_year = int(start_year) + 1
         end_month = str(1).zfill(2)
         file_name = (
-            str(police_code)
-            + "-"
-            + str(start_month)
-            + "."
-            + str(start_year)
-            + "-"
-            + str(end_month)
-            + "."
-            + str(end_year)
-            + ".csv"
+            str(police_code) + "-"
+            + str(start_month) + "."
+            + str(start_year) + "-"
+            + str(end_month) + "."
+            + str(end_year) + ".csv"
         )
         url = base_url + file_name
         print("Getting " + file_name)
@@ -75,16 +69,11 @@ while start_year <= int(max_year):
         start_year = int(start_year) + 1
     else:
         file_name = (
-            str(police_code)
-            + "-"
-            + str(start_month)
-            + "."
-            + str(start_year)
-            + "-"
-            + str(end_month)
-            + "."
-            + str(start_year)
-            + ".csv"
+            str(police_code) + "-"
+            + str(start_month) + "."
+            + str(start_year) + "-"
+            + str(end_month) + "."
+            + str(start_year) + ".csv"
         )
         url = base_url + file_name
         print("Getting " + file_name)
@@ -92,7 +81,7 @@ while start_year <= int(max_year):
 
         verify_data(data)
         if start_month != 10:
-            start_month = int(end_month) + 1
+            start_month = int(end_month)
         else:
             start_month = 1
             start_year = int(start_year) + 1

@@ -34,7 +34,6 @@ def save_file(file):
             )
         except tabula.errors.JavaNotFoundError:
             print("Make sure that Java 8+ JRE or JDK is in your PATH")
-            raise
         # except ValueError:
         # print("This seems to mean that the end of the file is reached. Not sure why it isn't handled")
         # table.to_excel(os.path.join(folder_name, f"table_{i}.xlsx"), index=False)
