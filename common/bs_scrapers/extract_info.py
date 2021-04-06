@@ -9,7 +9,6 @@ def extract_info(soup, configs):
         name = url[url.rindex("/") :]
 
         with open("url_name.txt", "a+") as output:
-            # This isn't really needed, but it's nice to have when debug is True
             if url not in output.read():
                 if configs.domain_included == True:
                     output.write(url + ", " + name.strip("/") + "\n")
