@@ -65,7 +65,7 @@ def get_files():
             if url_2.find(".pdf"):
                 print(file_name)
                 if "daily" in file_name:
-                    dir = save_dir + "daily_bulletin/"
+                    dir = save_dir + "daily_bulletin/" # Custom bit here
                     if not os.path.exists(dir):
                         os.makedirs(dir)
                     # save_pdf(file_name, url_2, dir)
