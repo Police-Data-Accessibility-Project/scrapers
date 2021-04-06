@@ -1,7 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
-Is there anything in particular of note with the scraping landscape in this jurisdiction?
+
+This scraper is **NOT** a list_pdf scraper, instead it uses `Selenium`. **DO NOT** attempt to update to use `bs_common` or `list_pdf_scrapers`
 Time period of data 2019-2020
 
 _Remove fields that were collected_
