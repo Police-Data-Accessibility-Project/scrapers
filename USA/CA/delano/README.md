@@ -1,7 +1,10 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
-Only crime statistics and
+**DO NOT** attempt to update to use `list_pdf_scrapers` or `bs_common`
+
+Only crime statistics
+
 Time period of data 08/2018-02/2021
 
 _Remove fields that were collected_
