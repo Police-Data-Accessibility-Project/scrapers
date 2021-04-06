@@ -11,8 +11,7 @@ from pathlib import Path
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
 from bs_scrapers.get_files import get_files
-
-__noted__ = "fixes shamelessly stolen from dunnousername without credit"  # Just don't delete this
+from bs_scrapers.extract_info import extract_info
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
@@ -25,28 +24,9 @@ soup = BeautifulSoup(html_page, "html.parser")
 
 url_name = []
 
-
-def extract_info(soup):
-    for link in soup.findAll("a"):
-        if link.get("href") is None:
-            continue
-        if not link["href"].startswith(configs.web_path):
-            continue
-        print(link.get("href"))
-        url = str(link["href"])
-        name = url[url.rindex("/") :]
-        # name = name[:name.rindex('.')]
-        with open("url_name.txt", "a") as output:
-            if configs.domain_included == True:
-                output.write(url + ", " + name.strip("/") + "\n")
-            elif configs.domain_included == False:
-                output.write(configs.domain + url + ", " + name.strip("/") + "\n")
-    print("Done")
-
-
 try:
     os.remove("url_name.txt")
 except FileNotFoundError:
     pass
-extract_info(soup)
+extract_info(soup, configs)
 get_files(save_dir, configs.sleep_time)
