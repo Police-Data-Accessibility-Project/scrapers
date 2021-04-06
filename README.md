@@ -12,6 +12,14 @@ This repo contains the record scrapers (and associated tooling) to further the g
 7. Add the dolt repo to a config
 8. Submit a Pull Request for approval.
 
+## Approving scrapers
+We require that scrapers be reviewed to meet our [legal guidelines](https://pdap-docs.readthedocs.io/en/latest/volunteers/resources/legal_restrictions.html). Checking that scrapers comply with our legal requirements is top priority. **Approve working legal scrapers.**
+
+1. Review the scraper for [legal risk](https://pdap-docs.readthedocs.io/en/latest/volunteers/resources/legal_restrictions.html).
+2. Test the scraper yourself to see whether it works.
+3. If it works, **approve it**.
+4. Make a comment if you have style suggestions. Better, share your skills by making a commit to their branch!
+
 ## Structure
 Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `USA/$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
 
