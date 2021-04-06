@@ -41,7 +41,7 @@ def extract_info(soup):
 			continue
 
 		print(link.get('href'))
-		url = str(link['href'].lstrip("../"))
+		url = str(link['href'].lstrip("../")) # Custom bit here.
 		name = url[url.rindex('/'):]
 
 		with open("url_name.txt", 'a') as output:
