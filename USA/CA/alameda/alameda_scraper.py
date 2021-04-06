@@ -19,8 +19,7 @@ web_path = "/files/assets/public/departments/alameda/police/"
 domain = "https://www.alamedaca.gov"
 sleep_time = 5
 
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/"
+save_dir =  "./data/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

@@ -26,8 +26,7 @@ max_year = today.strftime("%Y")
 max_year = 2020
 max_month = 10
 
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/"
+save_dir =  "./data/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

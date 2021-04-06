@@ -22,8 +22,7 @@ driver = webdriver.Chrome(
     executable_path="C:\chromedriver_win32\chromedriver.exe"
 )  # Will likely have to change the executable_path
 
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/"
+save_dir = "./data/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
