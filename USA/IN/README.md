@@ -4,7 +4,7 @@
 The state of Indiana has 92 counties, each police department records their own data in different ways.
 
 # How to locate the data source
-Several jurisdictions use [CityProtect](htttps://cityprotect.com):
+Several jurisdictions across the state use [CityProtect](htttps://cityprotect.com):
 * [Arcadia Police Department](https://cityprotect.com/agency/973eace0-866d-4f1f-99f8-af1922414682) - Arcadia, IN 46030
 * [Bloomington Police Department](https://cityprotect.com/agency/8f17da7e-0c1e-4218-82b0-4eb80d912537) - Bloomington, IN 47401
 * [Carmel Police Department](https://cityprotect.com/agency/carmelpd) - Carmel, IN 46032
@@ -30,7 +30,7 @@ Several jurisdictions use [CityProtect](htttps://cityprotect.com):
 * [University of Notre Dame](https://cityprotect.com/agency/e665fc3a-f933-4446-a3fa-3fe45baf35d7) - Notre Dame, IN 46556
 * [Westfield Police Department](https://cityprotect.com/agency/7cc4f8d1-96b8-4d8d-b511-e3ef59c02493) - Westfield, IN 46074
 
-Indiana Court Data can be found [here](https://public.courts.in.gov/home/portal)
+Indiana Court Data can be found [here](https://public.courts.in.gov/home/portal), however their Terms of Service state if you are wanting Bulk Data then you must go [this route](https://www.in.gov/courts/iocs/statistics/bulk-data/), fill out some forms and it appears there is a cost to get the data
 
 # Data refresh rate
 More high volume / main city departments like Carmel or IMPD update more frequently (almost daily) than the rural departments, such as Greensburg (updates at the end of the year).
@@ -40,6 +40,8 @@ In `USA/IN/marion/data`
 
 # Legal
 Is there anything specific to this jurisdiction we should know as we work?
+ - State court data needs to go through the proper [Bulk Data form](https://www.in.gov/courts/iocs/statistics/bulk-data/)
 
 # Data uniformity
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
+ - Indiana Court Data does have a format outlined [here](https://www.in.gov/courts/rules/admin/index.html#_Toc60037232)
