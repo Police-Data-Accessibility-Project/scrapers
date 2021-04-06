@@ -9,7 +9,6 @@ import time
 Do not update get_files
 """
 
-__noted__ = "fixes shamelessly stolen from dunnousername without credit"
 webpage = "https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity"
 """
 Click the links that lead to the files, and copy their paths. **NOTE:** Ensure that files all match paths, otherwise remove a level until they match
@@ -85,7 +84,7 @@ def get_files():
             else:
                 print("Unhandled documents type")
                 print("Url: " + url_2)
-            # time.sleep(sleep_time)
+            time.sleep(sleep_time)
             print("Sleep")
 
 
@@ -93,5 +92,5 @@ try:
     os.remove("url_name.txt")
 except FileNotFoundError:
     pass
-extract_info(soup)
+extract_info(soup, domain)
 get_files()
