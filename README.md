@@ -4,12 +4,13 @@ This repo contains the record scrapers (and associated tooling) to further the g
 # Getting Started
 ## Quick start
 1. [Clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repo.
-2. Make a copy of the template folder in the appropriate jurisdiction folder. Read more about structure below.
-3. Code your scraper.
-4. Scrape sample data from the source and add a truncated version to the folder so we understand the kind of data your scraper generates.
-5. Complete the readme to the best of your ability.
-6. If you know how to use Splunk, complete the config file.
-7. Submit a Pull Request for approval.
+2. [Find a dataset to scrape](https://www.dolthub.com/repositories/pdap/datasets/), or [submit your own by following these DoltHub instructions](https://docs.google.com/document/d/1cxvH_O6XwXNmjs5oJi5gR5Y3mLnYENq6XBYbNrfz3ko/edit).
+3. Make a copy of the template folder in the appropriate jurisdiction folder. Read more about structure below.
+4. Code your scraper.
+5. Scrape sample data from the source and add a truncated version to the folder so we understand the kind of data your scraper generates.
+6. Complete the readme to the best of your ability.
+7. Add the dolt repo to a config
+8. Submit a Pull Request for approval.
 
 ## Structure
 Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `USA/$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
@@ -26,9 +27,6 @@ Everyone working on this project is using their free time. Please expect some ba
 
 ## Getting Help
 The [#scrapers_general](https://policeaccessibility.slack.com/archives/C013XH00WHZ) slack channel is the place to start.
-
-### Known datasets
-This [dataset catalogue](https://docs.google.com/spreadsheets/d/1A0iTx7N-qVH2fms3Gmaf8RbnTpJPjgSoLPEa1o-J6J8/edit#gid=0&fvid=1660736644) is how we track potential sources.
 
 ### Fields to scrape
 **Note:** the naming convention for these fields may not be consistent across data sources. If any fields are not retrievable please fill it with "NA". 
