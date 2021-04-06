@@ -11,7 +11,6 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + '/common')
 from bs_scrapers.get_files import get_files
 
-__noted__ = 'fixes shamelessly stolen from dunnousername without credit' # Just don't delete this
 webpage = "https://www.goldenwestcollege.edu/public-safety/statistics/index.html"
 '''
 Click the links that lead to the files, and copy their paths. **NOTE:** Ensure that files all match paths, otherwise remove a level until they match
