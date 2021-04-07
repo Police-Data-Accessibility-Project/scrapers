@@ -1,0 +1,5 @@
+ccn,date,updateDate,city,state,postalCode,blocksizedAddress,incidentType,parentIncidentType,narrative
+E20-0613,"09/04/2020, 12:46:26 am","09/05/2020, 12:08:32 am",ENOCH,UT,.,3700 Block N COTTONWOOD DR,Prot Order Viol,Quality of Life,Prot Order Viol
+E20-0612,"09/02/2020, 10:32:20 pm","09/04/2020, 5:34:26 am",ENOCH,UT,.,5000 Block N VETERANS MEMORIAL DR,Assault,Assault ,Assault
+E20-0611,"09/02/2020, 6:42:38 pm","09/04/2020, 5:34:25 am",ENOCH,UT,.,4600 Block N SANTA FE TRL,Animal Problem,Proactive Policing,Animal Problem
+E20-0610,"08/31/2020, 6:20:05 pm","09/02/2020, 5:05:40 am",ENOCH,UT,.,4200 Block N WAGON WHEEL DR,Animal Problem,Proactive Policing,Animal Problem
