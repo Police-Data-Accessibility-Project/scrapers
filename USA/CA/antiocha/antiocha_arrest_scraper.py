@@ -10,7 +10,6 @@ from dateutil import relativedelta
 Uses custom get_files(); Do not update
 """
 
-__noted__ = "fixes shamelessly stolen from dunnousername without credit"  # Just don't delete this
 webpage = "https://www.antiochca.gov/fc/police/crime-maps/this-weeks-aar.pdf"
 """
 Click the links that lead to the files, and copy their paths. **NOTE:** Ensure that files all match paths, otherwise remove a level until they match
@@ -20,9 +19,7 @@ Verify on page that the href to the file contains the domain, if it doesn't, unc
 web_path = "https://www.antiochca.gov/fc/police/crime-maps/"
 # domain = https://www.antiochca.gov
 
-
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/arrests/"
+save_dir = "./data/arrests/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

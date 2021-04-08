@@ -1,6 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+This scraper saves data into a seperate folder if it has `daily` in the `name`. **DO NOT** attempt to update to use `list_pdf_scrapers` or `bs_common`, as the `get_files` function sorts the documents as they are downloaded by name.
+
 Most data is private, only public data is the "Daily" activity log, monthly crime statistics, annual arrest and traffic statistics.
 Time period of monthly stats: 02/2020 - 01/2021
 Time period of annual arrest: 2016-2020

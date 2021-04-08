@@ -13,17 +13,7 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
 from bs_scrapers.get_files import get_files
 
-__noted__ = "fixes shamelessly stolen from dunnousername without credit"  # Just don't delete this
-
-"""
-Click the links that lead to the files, and copy their paths. **NOTE:** Ensure that files all match paths, otherwise remove a level until they match
-Also ensure that domain stays the same
-Verify on page that the href to the file contains the domain, if it doesn't, uncomment domain
-"""
-
-
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/"
+save_dir =  "./data/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

@@ -1,6 +1,9 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+
+This scraper is **NOT** the default `list_pdf_scrapers`. 
+This jurisdiction uses a different naming system.
 Time period of crime statistics: 2006-current
 
 _Remove fields that were collected_

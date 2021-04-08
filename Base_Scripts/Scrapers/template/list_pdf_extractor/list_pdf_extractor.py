@@ -14,8 +14,7 @@ web_path = "https://www.antiochca.gov/fc/police/crime-maps/"
 
 sleep_time = 5  # Set to desired sleep time
 
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/"
+save_dir = "./data/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

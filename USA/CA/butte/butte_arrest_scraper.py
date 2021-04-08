@@ -7,14 +7,12 @@ import urllib
 import re
 import time
 
-__noted__ = "fixes shamelessly stolen from dunnousername without credit"  # Just don't delete this
 webpage = "http://www.buttecounty.net/sheriffcoroner/bookinglogs"
 web_path = "/Portals/24/Booking Log/"
 domain = "http://www.buttecounty.net/"
 sleep_time = 5  # Set to desired sleep time
 
-cur_dir = os.getcwd()
-save_dir = cur_dir + "/data/arrests/"
+save_dir = "./data/arrests/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

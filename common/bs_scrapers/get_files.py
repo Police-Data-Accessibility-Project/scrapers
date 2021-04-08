@@ -25,7 +25,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                 print(file_name)
                 if os.path.exists(save_dir + file_name) == False:
                     try:
-                        pdf = urllib.request.urlopen(url_2)
+                        pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
                     except urllib.error.HTTPError:
                         print("HTTP Error 404: Not Found")
                         print("URL: " + str(url_2))
@@ -40,7 +40,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                     print("Sleep")
             elif ".doc" in url_2:
                 if os.path.exists(save_dir + file_name) == False:
-                    document = requests.get(url_2, allow_redirects=True)
+                    document = requests.get(url_2.replace(" ", "%20", allow_redirects=True))
                     with open(file_name, "w") as data_file:
                         data_file.write(
                             document.text
@@ -53,7 +53,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                     file_name = file_name + ".xls"
                 if os.path.exists(save_dir + file_name) == False:
                     try:
-                        pdf = urllib.request.urlopen(url_2)
+                        pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
                     except urllib.error.HTTPError:
                         print("HTTP Error 404: Not Found")
                         print("URL: " + str(url_2))

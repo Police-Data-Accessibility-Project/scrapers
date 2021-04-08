@@ -1,7 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
-Is there anything in particular of note with the scraping landscape in this jurisdiction?
+
+Uses `list_pdf_extractor_v3`- Custom `get_info`, **DO NOT** update to use `list_pdf_v3`. This is due to the file paths being `../../PATH` within the HTML, but not within the actual structure of the website.
 Time period of data: 2017-2020
 
 _Remove fields that were collected_

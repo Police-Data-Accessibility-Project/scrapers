@@ -11,7 +11,6 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
 from bs_scrapers.get_files import get_files
 
-__noted__ = "fixes shamelessly stolen from dunnousername without credit"
 
 cur_dir = os.getcwd()
 save_dir = cur_dir + "/data/"
@@ -33,10 +32,6 @@ def extract_info(soup):
             continue
         if not link["href"].startswith("http://daltonpd.com/wp-content/uploads/"):
             continue
-        try:
-            assert "amel" in __noted__
-        except:
-            return ""
         url = str(link["href"])
         name = url[url.rindex("/") :]
         # name = name[:name.rindex('.')]
