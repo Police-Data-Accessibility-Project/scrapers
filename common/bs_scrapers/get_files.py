@@ -4,6 +4,7 @@ import urllib
 import re
 import time
 import requests
+import mimetypes
 import traceback
 
 
@@ -19,10 +20,13 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
             file_name = line_list[1].replace(" ", "_")[:-1]
             # file_name = save_dir + file_name
             # document = requests.get(url_2, allow_redirects=True)
-
-            if ".pdf" in url_2:
+            response = requests.get(url_2)
+            content_type = response.headers['content-type']
+            extension = mimetypes.guess_extension(content_type)
+            if ".pdf" in extension:
                 # save_path = os.path.join(save_dir, file_name+".pdf")
                 print(file_name)
+
                 if os.path.exists(save_dir + file_name) == False:
                     try:
                         pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
@@ -38,7 +42,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                     file.close()
                     time.sleep(sleep_time)
                     print("Sleep")
-            elif ".doc" in url_2:
+            elif ".doc" in extension:
                 if os.path.exists(save_dir + file_name) == False:
                     document = requests.get(url_2.replace(" ", "%20", allow_redirects=True))
                     with open(file_name, "w") as data_file:
@@ -48,8 +52,9 @@ def get_files(save_dir, sleep_time, delete=True, debug=False):
                     data_file.close()
                     time.sleep(sleep_time)
                     print("Sleep")
-            elif ".xls" in url_2:
+            elif ".xls" in extension:
                 if ".xls" not in file_name:
+                    # Allows saving as xls even if it's not in the file_name (saves in proper format)
                     file_name = file_name + ".xls"
                 if os.path.exists(save_dir + file_name) == False:
                     try:
