@@ -15,7 +15,7 @@ For example "daily at 8pm EST" or "every Friday, usually before noon"
 In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
 
 # Legal
-Is there anything specific to this jurisdiction we should know as we work?
+Include the Terms of Service (or link to them). Is there anything else we should know?
 
 ## Fields that could not be obtained within the PDAP legal guidelines:
 List which fields you had to omit to fall within legal guidelines.
