@@ -1,0 +1,5 @@
+ccn,date,updateDate,city,state,postalCode,blocksizedAddress,incidentType,parentIncidentType,narrative
+CR1702132,"03/29/2017, 2:09:00 pm","09/25/2017, 5:31:42 pm",SHERIDAN,CO,,3800 Block S LOWELL BLVD,AGG MV THEFT,Theft of Vehicle,AGG MV THEFT
+CR1703092,"02/01/2017, 7:00:00 pm","07/31/2017, 6:25:19 pm",SHERIDAN,CO,,3100 Block W HAMPDEN AVE,Theft: Value Less Than $100.00,Theft,Theft: Value Less Than $100.00
+CR1702813,"03/16/2017, 11:00:00 pm","09/12/2017, 5:31:40 pm",SHERIDAN,CO,,3400 Block S FEDERAL BLVD,IDENTITY THEFT,Theft,IDENTITY THEFT
+CR1702189,"03/30/2017, 7:00:00 am","09/26/2017, 5:30:59 pm",SHERIDAN,CO,,3900 Block S FEDERAL BLVD,MURDER 2ND,Homicide,MURDER 2ND
