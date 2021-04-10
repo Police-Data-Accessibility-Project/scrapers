@@ -2,7 +2,7 @@ This readme should give people everything they need to maintain the scraper.
 
 # Summary
 
-This scraper is **NOT** a list_pdf scraper, instead it uses `Selenium`. **DO NOT** attempt to update to use `bs_common` or `list_pdf_scrapers`
+This scraper is **NOT** a list_pdf scraper, instead it uses `Selenium`. **DO NOT** attempt to update to use `bs_common` or `list_pdf_scrapers`, as this uses a custom Selenium variant of the base scripts.
 Time period of data 2019-2020
 
 _Remove fields that were collected_
