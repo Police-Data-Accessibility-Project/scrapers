@@ -24,7 +24,7 @@ def get_pdf(save_dir, file_name, url_2, debug, sleep_time):
         time.sleep(sleep_time)
         print("Sleep")
 
-def get_xls(save_dir, file_name, url_2, sleep_time):
+def get_xls(save_dir, file_name, url_2, sleep_time, debug):
     if ".xls" not in file_name:
         # Allows saving as xls even if it's not in the file_name (saves in proper format)
         file_name = file_name + ".xls"
