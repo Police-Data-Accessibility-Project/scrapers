@@ -22,6 +22,9 @@ We require that scrapers be reviewed to meet our [legal guidelines](https://pdap
 ## Structure
 Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `USA/$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
 
+### Scalability
+Scrapers should do whatever helps them work quickly, including making directories in `common` for reusable components. Document your work and do your best to avoid repeating yourself; if we need to refactor later on, we can.
+
 ## Legal
 Only scrapers that comply with our [legal guidelines](https://docs.google.com/document/d/1gjnH0S18iBI20K1pfs4M3wuMqcLE_ZSgt71ITUY2Fbk/edit) will be merged into this repo.
 
