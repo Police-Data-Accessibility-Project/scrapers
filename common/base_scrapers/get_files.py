@@ -14,7 +14,7 @@ sys.path.insert(1, str(p) + '/common')
 # from file_downloaders.downloaders import get_doc, get_pdf, get_xls
 from base_scrapers.file_downloaders.downloaders import get_doc, get_pdf, get_xls
 
-def get_files(save_dir, sleep_time, delete=True, debug=False, name_in_url=False, try_overwite=False):
+def get_files(save_dir, sleep_time, delete=True, debug=False, name_in_url=False, try_overwite=False, domain_included=False):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
         return
