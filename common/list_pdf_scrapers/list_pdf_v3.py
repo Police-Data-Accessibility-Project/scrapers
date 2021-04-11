@@ -11,7 +11,7 @@ sys.path.insert(1, str(p) + '/common')
 from base_scrapers.get_files import get_files
 from base_scrapers.extract_info import extract_info
 
-def list_pdf_v3(configs, save_dir, important=False, try_overwite=False): # try_overwite is for get_files
+def list_pdf_v3(configs, save_dir, debug=False, important=False, try_overwite=False, name_in_url=True): # try_overwite is for get_files
     if not os.path.exists(save_dir):
     	os.makedirs(save_dir)
 
@@ -43,4 +43,4 @@ def list_pdf_v3(configs, save_dir, important=False, try_overwite=False): # try_o
     	pass
 
     os.rename("2url_name.txt",'url_name.txt')
-    get_files(save_dir, configs.sleep_time, try_overwite=try_overwite)
+    get_files(save_dir, configs.sleep_time, debug=debug, try_overwite=try_overwite, name_in_url=name_in_url)

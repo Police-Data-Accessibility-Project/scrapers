@@ -12,7 +12,7 @@ sys.path.insert(1, str(p) + "/common")
 from base_scrapers.get_files2 import get_files
 from base_scrapers.extract_info import extract_info
 
-def list_pdf_v2(configs, save_dir, name_in_url=False):
+def list_pdf_v2(configs, save_dir, name_in_url=True):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
