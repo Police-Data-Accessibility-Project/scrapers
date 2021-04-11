@@ -2,6 +2,9 @@ This readme should give people everything they need to maintain the scraper.
 
 # Summary
 Will need to get date from third line of pdf (date range is there)
+
+sleep_time is set to `0` as it will only ever be getting a single file
+
 Time period of data: Previous 30 days.
 
 _Remove fields that were collected_
@@ -42,7 +45,7 @@ _Remove fields that were collected_
 On [home Page](http://www.fresnostate.edu/adminserv/police/), right side, `Quick Links` > `Daily Crime Log`
 
 # Data refresh rate
-Currently two days behind, likely updates on Thursdays
+Currently two days behind, likely updates on Thursdays (Shows previous 30 days)
 
 # Sample response
 See `./data/`
