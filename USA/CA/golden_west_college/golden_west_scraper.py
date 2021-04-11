@@ -9,7 +9,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + '/common')
-from bs_scrapers.get_files import get_files
+from base_scrapers.get_files import get_files
 
 webpage = "https://www.goldenwestcollege.edu/public-safety/statistics/index.html"
 '''
