@@ -1,7 +1,7 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
-Is there anything in particular of note with the scraping landscape in this jurisdiction?
+Will need to get date from third line of pdf (date range is there)
 Time period of data: Previous 30 days.
 
 _Remove fields that were collected_
