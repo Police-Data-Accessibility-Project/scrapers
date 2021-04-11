@@ -2,7 +2,7 @@ This readme should give people everything they need to maintain the scraper.
 
 # Summary
 Is there anything in particular of note with the scraping landscape in this jurisdiction?
-Time period of data (e.g. 06/01/2017 to 03/20/2021)
+Time period of data: Previous 30 days.
 
 _Remove fields that were collected_
 ## Fields that could not be obtained within the PDAP legal guidelines:
@@ -10,7 +10,7 @@ _Remove fields that were collected_
 * _id
 * _state
 * _county
-* CaseNum
+* ~~CaseNum~~
 * FirstName
 * MiddleName
 * LastName
@@ -20,7 +20,7 @@ _Remove fields that were collected_
 * Sex
 * ArrestDate
 * FilingDate
-* OffenseDate
+* ~~OffenseDate~~ **Reported**
 * DivisionName
 * CaseStatus
 * DefenseAttorney
@@ -28,9 +28,9 @@ _Remove fields that were collected_
 * Judge
 * ChargeCount
 * ChargeStatute
-* ChargeDescription
-* ChargeDisposition
-* ChargeDispositionDate
+* ~~ChargeDescription~~ **Nature**
+* ~~ChargeDisposition~~ **Disposition**
+* ~~ChargeDispositionDate~~ **Disposition**
 * ChargeOffenseDate
 * ChargeCitationNum
 * ChargePlea
@@ -39,13 +39,13 @@ _Remove fields that were collected_
 * ArrestingOfficerBadgeNumber
 
 # How to locate the data source
-Give instructions for locating the data source. A URL for a JSON file is OK, but how did you navigate there?
+On [home Page](http://www.fresnostate.edu/adminserv/police/), right side, `Quick Links` > `Daily Crime Log`
 
 # Data refresh rate
-For example "daily at 8pm EST" or "every Friday, usually before noon"
+Currently two days behind, likely updates on Thursdays
 
 # Sample response
-In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
+See `./data/`
 
 # Legal
 Is there anything specific to this jurisdiction we should know as we work?
