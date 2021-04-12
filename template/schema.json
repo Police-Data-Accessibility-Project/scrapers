@@ -1,0 +1,8 @@
+{
+    "data_type": "",
+    "full_data_location":"",
+    "mapping":[
+
+    ],
+    "_notes_":"This is a WIP for the ETL scripts. This file will be used to take the output of the scrapers, and format it correctly to be ingested by our ETL script. Final Format TBD"
+}
