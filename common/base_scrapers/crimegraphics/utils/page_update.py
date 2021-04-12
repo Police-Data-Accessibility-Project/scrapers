@@ -2,16 +2,6 @@ import hashlib
 import os
 import sys
 
-def function_timer(stats):
-    if stats != False:
-        return time.perf_counter()
-
-
-def time_dif(stats, string, start, end):
-    if stats != False:
-        print(f"{string}: {end - start} seconds")
-
-
 def hash_comparer(response):
     cur_hash = hashlib.md5(response.text.encode('utf-8')).hexdigest()
     with open('hash.txt','r') as hash:
@@ -43,6 +33,5 @@ def page_update(response):
             pass
     # If the script has never been run, it will generate the hash and store it for the next run.
     else:
-
         page_hasher(response)
         print("First time?")
