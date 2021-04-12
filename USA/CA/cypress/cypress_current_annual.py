@@ -9,4 +9,4 @@ from list_pdf_scrapers.list_pdf_v2 import list_pdf_v2
 
 save_dir = "./data/"
 
-list_pdf_v2(configs, save_dir, name_in_url=True)
+list_pdf_v2(configs, save_dir, name_in_url=False)

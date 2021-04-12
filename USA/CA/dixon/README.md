@@ -1,9 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
-
-This scraper is **NOT** a list_pdf scraper, instead it uses `Selenium`. **DO NOT** attempt to update to use `bs_common` or `list_pdf_scrapers`, as this uses a custom Selenium variant of the base scripts.
-Time period of data 2019-2020
+Is there anything in particular of note with the scraping landscape in this jurisdiction?
+Time period of data: 2010-2019
 
 _Remove fields that were collected_
 ## Fields that could not be obtained within the PDAP legal guidelines:
@@ -40,19 +39,20 @@ _Remove fields that were collected_
 * ArrestingOfficerBadgeNumber
 
 # How to locate the data source
-Navigate to [home page](http://beaumontpd.org/)
-Crime>Crime Statistics
-Each year (except 2018, dead link) leads to a separate index. The scraper first scrapes this page, gets the yearly links, and then opens those to scrape the pdf links, before downloading them.
+1. On [home page](https://www.dixonpolice.org/Year-EndReports), open `Inspect Element` > Networking.
+1. Refresh page
+1. Scroll down in networking tab until you find `?media_folder_id=`
+1. Copy the `Request URL`, and set it as `request_url` in `configs.py`
+1. Run the script
 
 # Data refresh rate
-2019-2020, 9/12 months for 2020
+Last year_end report was in 2019
 
 # Sample response
-see /data/
-
+See `./data/`
 
 # Legal
-Is there anything specific to this jurisdiction we should know as we work?
+There is no `robots.txt`, set `sleep_time` as you please (above 0 (zero) of course)
 
 # Data uniformity
-http://beaumontpd.org/uniform-crime-reporting/, uses UCR
+Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
