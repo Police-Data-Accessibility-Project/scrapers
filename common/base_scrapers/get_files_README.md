@@ -10,4 +10,10 @@
 
 - `debug` : Enables printing of certain tracebacks. Default `False`.
 
-- `name_in_url` : If the name is not in the URL, set `name_in_url=False` when calling. 
+- `name_in_url` : If the name is not in the URL, set `name_in_url=False` when calling.
+
+# Info
+
+`get_files` is the main module.
+
+`REF_get_files` is just a reference script should I need the "intact" version
