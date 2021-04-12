@@ -18,7 +18,38 @@ In the folder, include a JSON payload, a PDF, or anything that is representative
 Include the Terms of Service (or link to them). Is there anything else we should know?
 
 ## Fields that could not be obtained within the PDAP legal guidelines:
-List which fields you had to omit to fall within legal guidelines.
-
+**Note:** the naming convention for these fields may not be consistent across data sources  
+\~~Please strikethrough any fields that you were able to collect collected~~  
+* _id
+* _state
+* _county
+* CaseNum
+* FirstName
+* MiddleName
+* LastName
+* Suffix
+* DOB
+* Race
+* Sex
+* ArrestDate
+* FilingDate
+* OffenseDate
+* DivisionName
+* CaseStatus
+* DefenseAttorney
+* PublicDefender
+* Judge
+* ChargeCount
+* ChargeStatute
+* ChargeDescription
+* ChargeDisposition
+* ChargeDispositionDate
+* ChargeOffenseDate
+* ChargeCitationNum
+* ChargePlea
+* ChargePleaDate
+* ArrestingOfficer
+* ArrestingOfficerBadgeNumber
+* 
 # Data uniformity
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
