@@ -29,4 +29,5 @@ get_pdf(
     sleep_time=configs.sleep_time,
     try_overwite=False,
     no_overwrite=True,
+    add_date=True,
 )

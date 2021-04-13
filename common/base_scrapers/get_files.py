@@ -24,6 +24,8 @@ def get_files(
     name_in_url=False,
     try_overwite=False,
     domain_included=False,
+    no_overwrite=False,
+    add_date=False,
 ):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
@@ -47,7 +49,15 @@ def get_files(
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
                     print(file_name)
-                    get_pdf(save_dir, file_name, url_2, debug, sleep_time, try_overwite)
+                    get_pdf(
+                        save_dir,
+                        file_name,
+                        url_2,
+                        debug,
+                        sleep_time,
+                        try_overwite,
+                        no_overwrite,
+                    )
                     print(sleep_time)
 
                 elif ".doc" in extension:

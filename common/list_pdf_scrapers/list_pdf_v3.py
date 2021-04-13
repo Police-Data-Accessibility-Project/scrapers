@@ -20,6 +20,7 @@ def list_pdf_v3(
     important=False,
     try_overwite=False,
     name_in_url=True,
+    add_date=False,
     extract_name=False,
 ):  # try_overwite is for get_files
     if not os.path.exists(save_dir):
@@ -33,6 +34,7 @@ def list_pdf_v3(
     except FileNotFoundError:
         pass
     extract_info(soup, configs, extract_name=extract_name)
+    
     if important == False:
         non_important = configs.non_important
         with open("url_name.txt", "r") as og_file, open(
@@ -73,6 +75,5 @@ def list_pdf_v3(
         debug=debug,
         try_overwite=try_overwite,
         name_in_url=name_in_url,
+        add_date=add_date,
     )
-
-    # import etl.py
