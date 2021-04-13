@@ -16,41 +16,41 @@ Include the Terms of Service (or link to them). Is there anything else we should
 # Fields to collect:
 _Move these fields to the appropriate list below when you submit your scraper._
 
-_id
-_state
-_county
-CaseNum
-FirstName
-MiddleName
-LastName
-Suffix
-DOB
-Race
-Sex
-ArrestDate
-FilingDate
-OffenseDate
-DivisionName
-CaseStatus
-DefenseAttorney
-PublicDefender
-Judge
-ChargeCount
-ChargeStatute
-ChargeDescription
-ChargeDisposition
-ChargeDispositionDate
-ChargeOffenseDate
-ChargeCitationNum
-ChargePlea
-ChargePleaDate
-ArrestingOfficer
-ArrestingOfficerBadgeNumber
-BookingNum
-BookingDate
-WarrantNum
-BailAmount
-SearchIncident
+* _id
+* _state
+* _county
+* CaseNum
+* FirstName
+* MiddleName
+* LastName
+* Suffix
+* DOB
+* Race
+* Sex
+* ArrestDate
+* FilingDate
+* OffenseDate
+* DivisionName
+* CaseStatus
+* DefenseAttorney
+* PublicDefender
+* Judge
+* ChargeCount
+* ChargeStatute
+* ChargeDescription
+* ChargeDisposition
+* ChargeDispositionDate
+* ChargeOffenseDate
+* ChargeCitationNum
+* ChargePlea
+* ChargePleaDate
+* ArrestingOfficer
+* ArrestingOfficerBadgeNumber
+* BookingNum
+* BookingDate
+* WarrantNum
+* BailAmount
+* SearchIncident
 
 ## Fields that could not be obtained within the PDAP legal guidelines:
 
