@@ -17,3 +17,9 @@
 `get_files` is the main module.
 
 `REF_get_files` is just a reference script should I need the "intact" version
+
+
+# `extract_info` Function:
+- `soup` : Required; passes the parsed html to the Function
+- `configs` : Required; passes the configs file
+- `extract_name` : Optional; use if the `name_in_url` for `get_files` did not work, otherwise

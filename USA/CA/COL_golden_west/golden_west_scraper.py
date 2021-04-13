@@ -68,3 +68,5 @@ except FileNotFoundError:
 
 os.rename("2url_name.txt",'url_name.txt')
 get_files(save_dir, sleep_time)
+
+# import etl.py

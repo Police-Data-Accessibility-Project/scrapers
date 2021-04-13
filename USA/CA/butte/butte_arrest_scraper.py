@@ -86,3 +86,5 @@ except FileNotFoundError:
     pass
 extract_info(soup)
 get_files()
+
+# import etl.py
