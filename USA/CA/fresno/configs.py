@@ -14,6 +14,6 @@ domain = "https://www.fresnostate.edu/"
 sleep_time = 5
 # Are there any links on the page that you do not want? **ONLY FOR V3***
 # Put a word found in them (the links you don't want) in this list. It can be one ore more words
-non_important = ['daily', 'crime']
+important = ['daily', 'crime']
 # For devs:
 debug = True
