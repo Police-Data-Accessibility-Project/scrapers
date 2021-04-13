@@ -13,11 +13,15 @@ For example "daily at 8pm EST" or "every Friday, usually before noon"
 ## Legal
 Include the Terms of Service (or link to them). Is there anything else we should know?
 
-## Fields that could not be obtained within the PDAP legal guidelines:
-List which fields you had to omit to fall within legal guidelines.
+# Fields scraped:
+Start with the list [here](https://docs.pdap.io/data-collection/write-a-data-scraper/fields-to-collect).
 
-## Fields not listed:
-List which fields from this data_type cannot be obtained from this source.
+## Fields that could not be obtained within the PDAP legal guidelines:
+
+## Fields that were not available:
+
+## Fields that were collected:
+
 
 ## Data uniformity
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
