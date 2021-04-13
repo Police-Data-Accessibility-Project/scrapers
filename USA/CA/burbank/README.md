@@ -3,8 +3,6 @@ This readme should give people everything they need to maintain the scraper.
 # Summary
 Only daily arrest reports
 
-Time period of data 08/2018-02/2021
-
 _Remove fields that were collected_
 ## Fields that could not be obtained within the PDAP legal guidelines:
 **Note:** the naming convention for these fields may not be consistent across data sources
@@ -52,7 +50,7 @@ _Remove fields that were collected_
 * BailAmount
 * CityofResidence
 * ArrestLocation
-* `S/I`, `SI` Unsure of meaning
+* SearchIncident
 
 
 # How to locate the data source
