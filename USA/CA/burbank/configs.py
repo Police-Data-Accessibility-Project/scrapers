@@ -17,4 +17,4 @@ sleep_time = 5
 non_important = ["alarm"]
 # For devs:
 debug = False
-name_in_url=False
+name_in_url = False

@@ -8,13 +8,23 @@ import mimetypes
 import traceback
 
 from pathlib import Path
+
 p = Path(__file__).resolve().parents[2]
-sys.path.insert(1, str(p) + '/common')
+sys.path.insert(1, str(p) + "/common")
 
 # from file_downloaders.downloaders import get_doc, get_pdf, get_xls
 from base_scrapers.file_downloaders.downloaders import get_doc, get_pdf, get_xls
 
-def get_files(save_dir, sleep_time, delete=True, debug=False, name_in_url=False, try_overwite=False, domain_included=False):
+
+def get_files(
+    save_dir,
+    sleep_time,
+    delete=True,
+    debug=False,
+    name_in_url=False,
+    try_overwite=False,
+    domain_included=False,
+):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
         return
@@ -29,7 +39,7 @@ def get_files(save_dir, sleep_time, delete=True, debug=False, name_in_url=False,
             # file_name = save_dir + file_name
             # document = requests.get(url_2, allow_redirects=True)
             response = requests.get(url_2)
-            content_type = response.headers['content-type']
+            content_type = response.headers["content-type"]
             extension = mimetypes.guess_extension(content_type)
 
             # If the name IS in the url
@@ -53,26 +63,31 @@ def get_files(save_dir, sleep_time, delete=True, debug=False, name_in_url=False,
             # If the name is NOT in the url
             else:
                 import cgi
+
                 if not debug:
                     response = urllib.request.urlopen(url_2)
-                    file_name, params = cgi.parse_header(response.headers.get('Content-Disposition', ''))
+                    file_name, params = cgi.parse_header(
+                        response.headers.get("Content-Disposition", "")
+                    )
                     if "=" in file_name:
                         file_name = file_name.split("=")
                     elif ":" in file_name:
                         filename = file_name.split(":")
-                    file_name = file_name[1].strip("\"")
+                    file_name = file_name[1].strip('"')
 
                 if debug:
                     response = urllib.request.urlopen(url_2)
                     print(response)
-                    file_name, params = cgi.parse_header(response.headers.get('Content-Disposition', ''))
+                    file_name, params = cgi.parse_header(
+                        response.headers.get("Content-Disposition", "")
+                    )
                     print("file_name: " + str(file_name) + ", params: " + str(params))
                     if "=" in file_name:
                         file_name = file_name.split("=")
                     elif ":" in file_name:
                         filename = file_name.split(":")
                     print(file_name)
-                    file_name = file_name[1].strip("\"")
+                    file_name = file_name[1].strip('"')
                     print(file_name)
 
                 if ".pdf" in extension:

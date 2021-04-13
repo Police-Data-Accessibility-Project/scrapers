@@ -13,7 +13,7 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
 from bs_scrapers.get_files import get_files
 
-save_dir =  "./data/"
+save_dir = "./data/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

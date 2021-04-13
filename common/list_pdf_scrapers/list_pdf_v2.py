@@ -13,7 +13,9 @@ from base_scrapers.get_files import get_files
 from base_scrapers.extract_info import extract_info
 
 
-def list_pdf_v2(configs, save_dir, name_in_url=True, extract_name=False):
+def list_pdf_v2(
+    configs, save_dir, name_in_url=True, extract_name=False, add_date=False
+):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
@@ -27,6 +29,6 @@ def list_pdf_v2(configs, save_dir, name_in_url=True, extract_name=False):
     except FileNotFoundError:
         pass
     extract_info(soup, configs, extract_name=extract_name)
-    get_files(save_dir, configs.sleep_time, name_in_url=name_in_url)
+    get_files(save_dir, configs.sleep_time, name_in_url=name_in_url, add_date=add_date)
 
     # import etl.py

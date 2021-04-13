@@ -8,6 +8,7 @@ import mimetypes
 import traceback
 import filecmp
 
+
 def file_compare(save_dir, file_1, file_2):
     file_1 = save_dir + file_1
     file_2 = save_dir + file_2
@@ -50,7 +51,7 @@ def get_pdf(save_dir, file_name, url_2, debug, sleep_time, try_overwite):
         with open(save_dir + "new_" + file_name, "wb") as file:
             file.write(pdf.read())
         file.close()
-        new_filename = "new_"+file_name
+        new_filename = "new_" + file_name
 
         file_compare(save_dir, file_name, new_filename)
         time.sleep(sleep_time)
@@ -76,13 +77,12 @@ def get_xls(save_dir, file_name, url_2, sleep_time, debug):
         time.sleep(sleep_time)
         print("Sleep")
 
+
 def get_doc(save_dir, file_name, url_2, sleep_time):
     if os.path.exists(save_dir + file_name) == False:
         document = requests.get(url_2.replace(" ", "%20", allow_redirects=True))
         with open(file_name, "w") as data_file:
-            data_file.write(
-                document.text
-            )  # Writes using requests text 	function thing
+            data_file.write(document.text)  # Writes using requests text 	function thing
         data_file.close()
         time.sleep(sleep_time)
         print("Sleep")
