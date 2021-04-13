@@ -1,5 +1,9 @@
-This readme should give people everything they need to maintain the scraper.  
+This readme should give people everything they need to maintain the scraper.
+
+
 Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) when modifying this readme.  
+
+Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
 
 # Summary
 Is there anything in particular of note with the scraping landscape in this jurisdiction?  
