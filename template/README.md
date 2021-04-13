@@ -13,8 +13,44 @@ For example "daily at 8pm EST" or "every Friday, usually before noon"
 ## Legal
 Include the Terms of Service (or link to them). Is there anything else we should know?
 
-# Fields scraped:
-Start with the list [here](https://docs.pdap.io/data-collection/write-a-data-scraper/fields-to-collect).
+# Fields to collect:
+_Move these fields to the appropriate list below when you submit your scraper._
+
+_id
+_state
+_county
+CaseNum
+FirstName
+MiddleName
+LastName
+Suffix
+DOB
+Race
+Sex
+ArrestDate
+FilingDate
+OffenseDate
+DivisionName
+CaseStatus
+DefenseAttorney
+PublicDefender
+Judge
+ChargeCount
+ChargeStatute
+ChargeDescription
+ChargeDisposition
+ChargeDispositionDate
+ChargeOffenseDate
+ChargeCitationNum
+ChargePlea
+ChargePleaDate
+ArrestingOfficer
+ArrestingOfficerBadgeNumber
+BookingNum
+BookingDate
+WarrantNum
+BailAmount
+SearchIncident
 
 ## Fields that could not be obtained within the PDAP legal guidelines:
 
