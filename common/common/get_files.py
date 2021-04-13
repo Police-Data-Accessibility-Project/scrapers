@@ -13,7 +13,7 @@ p = Path(__file__).resolve().parents[2]
 sys.path.insert(1, str(p) + "/common")
 
 # from file_downloaders.downloaders import get_doc, get_pdf, get_xls
-from base_scrapers.file_downloaders.downloaders import get_doc, get_pdf, get_xls
+from common.file_downloaders.downloaders import get_doc, get_pdf, get_xls
 
 
 def get_files(
@@ -21,7 +21,7 @@ def get_files(
     sleep_time,
     delete=True,
     debug=False,
-    name_in_url=False,
+    name_in_url=True,
     try_overwite=False,
     domain_included=False,
 ):
@@ -73,7 +73,12 @@ def get_files(
                         file_name = file_name.split("=")
                     elif ":" in file_name:
                         filename = file_name.split(":")
-                    file_name = file_name[1].strip('"')
+                    try:
+                        file_name = file_name[1].strip('"')
+                    except IndexError:
+                        print("file_name was blank, might want to check that.")
+                        print("(Likely caused by using setting name_in_url=False)")
+                        pass
 
                 if debug:
                     response = urllib.request.urlopen(url_2)
@@ -86,9 +91,15 @@ def get_files(
                         file_name = file_name.split("=")
                     elif ":" in file_name:
                         filename = file_name.split(":")
-                    print(file_name)
-                    file_name = file_name[1].strip('"')
-                    print(file_name)
+                    print(f"file_name: {file_name}")
+                    try:
+                        file_name = file_name[1].strip('"')
+                    except IndexError as exception:
+                        print("file_name was blank, might want to check that.")
+                        print("(Likely caused by using setting name_in_url=False)")
+                        print(exception)
+                        pass
+                    print(f"file_name: {file_name}")
 
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")

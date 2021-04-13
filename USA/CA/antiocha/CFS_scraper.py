@@ -8,7 +8,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
-from base_scrapers.file_downloaders.downloaders import get_pdf
+from common.file_downloaders.downloaders import get_pdf
 
 save_dir = "./data/"
 
