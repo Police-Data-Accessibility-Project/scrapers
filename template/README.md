@@ -52,12 +52,13 @@ _Move these fields to the appropriate list below when you submit your scraper._
 * BailAmount
 * SearchIncident
 
-## Fields that could not be obtained within the PDAP legal guidelines:
+## Fields unobtainable within our legal guidelines:
 
-## Fields that were not available:
+## Fields not available:
 
-## Fields that were collected:
+## Fields being collected:
 
+## Fields available not present on the list above:
 
 ## Data uniformity
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
