@@ -1,28 +1,26 @@
 This readme should give people everything they need to maintain the scraper.
 
-
 Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) when modifying this readme.  
 
 Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
 
-# Summary
-Is there anything in particular of note with the scraping landscape in this jurisdiction?  
-Time period of data (e.g. 06/01/2017 to 03/20/2021)
+# Source info
+Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
 
-# How to locate the data source
-Give instructions for locating the data source. A URL for a JSON file is OK, but how did you navigate there?
-
-# Data refresh rate
+## Data refresh rate
 For example "daily at 8pm EST" or "every Friday, usually before noon"
 
-# Sample response
-In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
-
-# Legal
+## Legal
 Include the Terms of Service (or link to them). Is there anything else we should know?
 
 ## Fields that could not be obtained within the PDAP legal guidelines:
 List which fields you had to omit to fall within legal guidelines.
 
-# Data uniformity
+## Fields not listed:
+List which fields from this data_type cannot be obtained from this source.
+
+## Data uniformity
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
+
+# Sample response
+In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
