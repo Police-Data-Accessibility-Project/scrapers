@@ -135,7 +135,7 @@ def get_pdf(
             file.close()
 
 
-def get_xls(save_dir, file_name, url_2, sleep_time, debug):
+def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
     if ".xls" not in file_name:
         # Allows saving as xls even if it's not in the file_name (saves in proper format)
         file_name = file_name + ".xls"

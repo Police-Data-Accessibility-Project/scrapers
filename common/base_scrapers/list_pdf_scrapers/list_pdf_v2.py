@@ -14,7 +14,13 @@ from common.extract_info import extract_info
 
 
 def list_pdf_v2(
-    configs, save_dir, name_in_url=True, extract_name=False, add_date=False
+    configs,
+    save_dir,
+    name_in_url=True,
+    extract_name=False,
+    add_date=False,
+    try_overwite=False,
+    no_overwrite=False,
 ):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
