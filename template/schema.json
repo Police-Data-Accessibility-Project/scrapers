@@ -1,15 +1,16 @@
 {
-    "dataset_id": "",
-    "dataset_info":{
+    "agency_id": "",
+    "agency_info":{
         "agency_name":"",
         "agency_coords":{"lat": "", "long":""},
-        "url":"",
-        "aggregation":"",
         "state": "",
         "county":""
     },
     "data": [
         {
+            "dataset_id": "",
+            "url":"",
+            "aggregation":"",
             "full_data_location":"/data",
             "source_type": 2,
             "data_type": 1,
