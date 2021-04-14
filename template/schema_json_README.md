@@ -13,11 +13,12 @@ This guide shows you how to fill out the schema.json for use:
     * **`state`**: two-letter state code ('IN', 'CA')
     * **`county`**: county name in Title case (first letter capitalized: 'Marion', 'Bristol Bay') (leave blank if a state agency)
     * **`city`**: city of the agency (leave blank if a county or state agency)
-* **source_type**: use one of the values in the `id` column found in the source_types table [here] (https://www.dolthub.com/repositories/pdap/datasets/data/master/source_types)
-* **data_type**: use one of the values in the `id` column found in the data_types table [here](https://www.dolthub.com/repositories/pdap/datasets/data/master/data_types) (such as `10` for `incident_reports` data)
-* **format_type**: use one of the values in the `id` column found in the format_types table [here](https://www.dolthub.com/repositories/pdap/datasets/data/master/format_types) (such as `2` for `cityprotect` data)
-* **full_data_location**: the location of all the data from the scraper. It will most likely just be in the `/data` directory in the same folder after the scraper has ran
-* **mapping**: based off of your `data_type`, the data will be stored in a different table with different columns. This section is how your data maps to the columns in the database such as for `"table_col": "data_col"`
+* **data**: There can be multiple types of data from each agency, so this is an enumerable way to point to the different types of data stored. Store each type in a different directory such as `/incident_reports` , `/booking_reports` .etc. 
+    * **source_type**: use one of the values in the `id` column found in the source_types table [here] (https://www.dolthub.com/repositories/pdap/datasets/data/master/source_types)
+    * **data_type**: use one of the values in the `id` column found in the data_types table [here](https://www.dolthub.com/repositories/pdap/datasets/data/master/data_types) (such as `10` for `incident_reports` data)
+    * **format_type**: use one of the values in the `id` column found in the format_types table [here](https://www.dolthub.com/repositories/pdap/datasets/data/master/format_types) (such as `2` for `cityprotect` data)
+    * **full_data_location**: the location of all the data from the scraper. It will most likely just be in the `/data` directory in the same folder after the scraper has ran
+    * **mapping**: based off of your `data_type`, the data will be stored in a different table with different columns. This section is how your data maps to the columns in the database such as for `"table_col": "data_col"`
 
 
 ## Example
