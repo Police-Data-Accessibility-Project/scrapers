@@ -71,6 +71,7 @@ def get_pdf(
 
         time.sleep(sleep_time)
         print("Sleep")
+
         # If the file exists, and no_overwrite is true, then:
     elif os.path.exists(save_dir + file_name) == True and no_overwrite == True:
         # Tries to get the file and set it to pdf
@@ -107,6 +108,7 @@ def get_pdf(
             file.close()
     # Checks if the files exists, and that `try_overwite` is True
     elif os.path.exists(save_dir + file_name) == True and try_overwite == True:
+
         # Tries to get the file and set it to pdf
         try:
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
@@ -128,6 +130,7 @@ def get_pdf(
                 + ".pdf"
             )
             print(file_name)
+            
         # Saves the pdf while prepending with "new_"
         with open(save_dir + "new_" + file_name, "wb") as file:
             file.write(pdf.read())

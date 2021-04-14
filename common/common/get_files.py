@@ -42,6 +42,8 @@ def get_files(
         for line in tqdm(input_file):
             if debug:
                 print(line)
+        for line in input_file:
+            print(line)
 
             line_list = line.split(", ")
             url_2 = line_list[0]
