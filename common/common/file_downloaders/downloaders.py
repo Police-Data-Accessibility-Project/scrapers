@@ -32,7 +32,14 @@ def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=Fals
 
 
 def get_pdf(
-    save_dir, file_name, url_2, debug, sleep_time, try_overwite=False, no_overwrite=False, add_date=False
+    save_dir,
+    file_name,
+    url_2,
+    debug,
+    sleep_time,
+    try_overwite=False,
+    no_overwrite=False,
+    add_date=False,
 ):
     file_name = file_name.lstrip("/")
     print(file_name)
@@ -64,42 +71,7 @@ def get_pdf(
 
         time.sleep(sleep_time)
         print("Sleep")
-
-    # Checks if the files exists, and that `try_overwite` is True
-    elif os.path.exists(save_dir + file_name) == True and try_overwite == True:
-        # Tries to get the file and set it to pdf
-        try:
-            pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
-        except urllib.error.HTTPError:
-            print("HTTP Error 404: Not Found")
-            print("")
-            print("URL: " + str(url_2))
-            if debug:
-                traceback.print_exc()
-            sys.exit()
-        print("Comparing")
-
-        if add_date == True:
-            date_name = date.today()
-            file_name = (
-                file_name.strip(".pdf")
-                + "_"
-                + str(date_name).replace("-", "_")
-                + ".pdf"
-            )
-            print(file_name)
-        # Saves the pdf while prepending with "new_"
-        with open(save_dir + "new_" + file_name, "wb") as file:
-            file.write(pdf.read())
-        file.close()
-
-        new_filename = "new_" + file_name
-
-        # Compares the file using file_compare, which will remove the new file if it has not changed
-        file_compare(save_dir, file_name, new_filename)
-        time.sleep(sleep_time)
-
-    # If the file exists, and no_overwrite is true, then:
+        # If the file exists, and no_overwrite is true, then:
     elif os.path.exists(save_dir + file_name) == True and no_overwrite == True:
         # Tries to get the file and set it to pdf
         try:
@@ -133,7 +105,39 @@ def get_pdf(
             with open(save_dir + file_name, "wb") as file:
                 file.write(pdf.read())
             file.close()
+    # Checks if the files exists, and that `try_overwite` is True
+    elif os.path.exists(save_dir + file_name) == True and try_overwite == True:
+        # Tries to get the file and set it to pdf
+        try:
+            pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
+        except urllib.error.HTTPError:
+            print("HTTP Error 404: Not Found")
+            print("")
+            print("URL: " + str(url_2))
+            if debug:
+                traceback.print_exc()
+            sys.exit()
+        print("Comparing")
 
+        if add_date == True:
+            date_name = date.today()
+            file_name = (
+                file_name.strip(".pdf")
+                + "_"
+                + str(date_name).replace("-", "_")
+                + ".pdf"
+            )
+            print(file_name)
+        # Saves the pdf while prepending with "new_"
+        with open(save_dir + "new_" + file_name, "wb") as file:
+            file.write(pdf.read())
+        file.close()
+
+        new_filename = "new_" + file_name
+
+        # Compares the file using file_compare, which will remove the new file if it has not changed
+        file_compare(save_dir, file_name, new_filename)
+        time.sleep(sleep_time)
 
 def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
     if ".xls" not in file_name:
