@@ -6,6 +6,7 @@ import time
 import requests
 import mimetypes
 import traceback
+from tqdm import tqdm
 
 from pathlib import Path
 
@@ -32,12 +33,20 @@ def get_files(
         return
 
     with open("url_name.txt", "r") as input_file:
-        for line in input_file:
-            print(line)
+        # Counts the number of lines in the file
+        line_count = len(input_file.readlines())
+        # If the number of lines is less than or equal to 1, set sleep_time to 0 (No need to sleep for a single file)
+        if line_count <= 1:
+            sleep_time = 0
+
+        for line in tqdm(input_file):
+            if debug:
+                print(line)
 
             line_list = line.split(", ")
             url_2 = line_list[0]
             file_name = line_list[1].replace(" ", "_")[:-1]
+            file_name = file_name.replace("%20", "_")
             # file_name = save_dir + file_name
             # document = requests.get(url_2, allow_redirects=True)
             response = requests.get(url_2)
