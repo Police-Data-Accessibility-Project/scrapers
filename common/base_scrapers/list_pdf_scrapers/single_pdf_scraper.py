@@ -2,12 +2,13 @@ import sys
 from pathlib import Path
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
-from base_scrapers.file_downloaders.downloaders import get_pdf
+from common.file_downloaders.downloaders import get_pdf
 
 
-def single_pdf_scraper(save_dir, configs, try_overwite=False, no_overwrite=True):
+def single_pdf_scraper(save_dir="./data", url_2, try_overwite=False, no_overwrite=True):
 
-    url_2 = configs.webpage
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
 
     file_name = url_2[url_2.rindex("/") :]
     print(file_name)
@@ -17,7 +18,9 @@ def single_pdf_scraper(save_dir, configs, try_overwite=False, no_overwrite=True)
         file_name,
         url_2,
         debug=False,
-        sleep_time=configs.sleep_time,
+        sleep_time=0,
         try_overwite=False,
         no_overwrite=True,
     )
+
+    # import etl
