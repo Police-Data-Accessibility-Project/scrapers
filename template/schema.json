@@ -8,11 +8,15 @@
         "state": "",
         "county":""
     },
-    "data_type": 1,
-    "format_type": 1,
-    "source_type": 2,
-    "full_data_location":"/data",
-    "mapping":[
-
+    "data": [
+        {
+            "full_data_location":"/data",
+            "source_type": 2,
+            "data_type": 1,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
     ]
+    
 }

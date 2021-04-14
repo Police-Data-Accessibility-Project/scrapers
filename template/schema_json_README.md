@@ -21,6 +21,8 @@ This guide shows you how to fill out the schema.json for use:
 
 
 ## Example
+In this example, we only have one set of data from Clanton Police Department, Incident Reports. 
+If we end up getting more data form this agency (such as arrest records or booking reports), then we would put it in a *separate* directory such as `/booking_data` and add the information in the `data` dictionary of the new folder and it's contents
 
 ```
 {
@@ -33,14 +35,18 @@ This guide shows you how to fill out the schema.json for use:
         "state": "AL",
         "county":"Chilton"
     },
-    "source_type": 3,
-    "data_type": 10,
-    "format_type": 2,
-    "full_data_location":"/data",
-    "mapping":[
-        "ccn":"ccn",
-        "incidentDate": "date",
-        ...
+    "data": [
+        {
+            "full_data_location":"/data",
+            "source_type": 3,
+            "data_type": 10,
+            "format_type": 2,
+            "mapping":[
+                "ccn":"ccn",
+                "incidentDate": "date",
+                ...
+            ]
+        }
     ]
 }
 ```
