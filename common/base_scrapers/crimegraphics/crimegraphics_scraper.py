@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from tqdm import tqdm
 import time
+from datetime import date
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[1]
@@ -73,6 +74,9 @@ def crimegraphics_scraper(configs, save_dir, stats=False):
             table_data.append(actual_data.get_text())
         data.append(table_data)
 
+    date_name = date.today()
+    file_name = "_" + str(date_name).replace("-", "_") + "_"
+
     dataframe = pd.DataFrame(data=data, columns=configs.list_header)
 
-    dataframe.to_csv(save_dir + configs.department_code + "_daily_bulletin")
+    dataframe.to_csv(save_dir + configs.department_code + file_name + "_daily_bulletin")

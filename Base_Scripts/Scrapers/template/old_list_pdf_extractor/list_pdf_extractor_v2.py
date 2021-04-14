@@ -10,8 +10,8 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
-from bs_scrapers.get_files import get_files
-from bs_scrapers.extract_info import extract_info
+from common.file_downloaders.get_files import get_files
+from common.file_downloaders.extract_info import extract_info
 
 save_dir = "./data/"
 

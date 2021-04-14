@@ -19,7 +19,7 @@ web_path = "/files/assets/public/departments/alameda/police/"
 domain = "https://www.alamedaca.gov"
 sleep_time = 5
 
-save_dir =  "./data/"
+save_dir = "./data/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
@@ -65,7 +65,7 @@ def get_files():
             if url_2.find(".pdf"):
                 print(file_name)
                 if "daily" in file_name:
-                    dir = save_dir + "daily_bulletin/" # Custom bit here
+                    dir = save_dir + "daily_bulletin/"  # Custom bit here
                     if not os.path.exists(dir):
                         os.makedirs(dir)
                     # save_pdf(file_name, url_2, dir)
