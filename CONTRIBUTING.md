@@ -1,6 +1,9 @@
 # Contributing Scrapers
 Scrapers make up, line for line, most of PDAP. Here's the [official documentation](https://docs.pdap.io/data-collection/write-a-data-scraper).
 
+## What do the scrapers do?
+Navigate to a source of public police data, convert it to a unified format, and add it to our version-controlled database.
+
 ## Best practices
 At least one approval is required for any Pull Requests to be merged.
 
