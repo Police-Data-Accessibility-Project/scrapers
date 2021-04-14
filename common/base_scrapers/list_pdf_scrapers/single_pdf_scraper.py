@@ -5,7 +5,7 @@ sys.path.insert(1, str(p) + "/common")
 from common.file_downloaders.downloaders import get_pdf
 
 
-def single_pdf_scraper(save_dir="./data", url_2, try_overwite=False, no_overwrite=True):
+def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True):
 
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
