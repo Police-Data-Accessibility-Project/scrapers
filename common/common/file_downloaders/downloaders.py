@@ -119,7 +119,7 @@ def get_pdf(
         file.close()
         new_filename = "new_" + file_name
 
-        if file_compare(save_dir, file_name, new_filename, no_overwrite=True) == True:
+        if file_compare(save_dir, file_name, new_filename, no_overwrite=True) == False:
             date_name = date.today()
             print(date_name)
             file_name = (
