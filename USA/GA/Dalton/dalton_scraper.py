@@ -9,7 +9,7 @@ import sys
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
-from base_scrapers.get_files import get_files
+from common.get_files import get_files
 
 
 cur_dir = os.getcwd()
@@ -47,3 +47,5 @@ except FileNotFoundError:
 
 extract_info(soup)
 get_files(save_dir, sleep_time)
+
+# import etl.py # Has a file sorter, make sure to include

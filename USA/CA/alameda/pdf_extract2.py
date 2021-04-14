@@ -21,6 +21,7 @@ def save_file(file):
 
     folder_name = folder + file.replace(".pdf", "/")
 
+
 # Count number of files
 pdf_count = 0
 for file in os.listdir(directory):

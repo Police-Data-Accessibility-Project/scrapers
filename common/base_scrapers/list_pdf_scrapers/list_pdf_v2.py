@@ -9,10 +9,19 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
-from base_scrapers.get_files import get_files
-from base_scrapers.extract_info import extract_info
+from common.get_files import get_files
+from common.extract_info import extract_info
 
-def list_pdf_v2(configs, save_dir, name_in_url=True):
+
+def list_pdf_v2(
+    configs,
+    save_dir,
+    name_in_url=True,
+    extract_name=False,
+    add_date=False,
+    try_overwite=False,
+    no_overwrite=False,
+):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
@@ -25,5 +34,7 @@ def list_pdf_v2(configs, save_dir, name_in_url=True):
         os.remove("url_name.txt")
     except FileNotFoundError:
         pass
-    extract_info(soup, configs)
-    get_files(save_dir, configs.sleep_time, name_in_url=name_in_url)
+    extract_info(soup, configs, extract_name=extract_name)
+    get_files(save_dir, configs.sleep_time, name_in_url=name_in_url, add_date=add_date)
+
+    # import etl.py

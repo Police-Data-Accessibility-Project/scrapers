@@ -9,7 +9,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
-from base_scrapers.get_files import get_files
+from common.get_files import get_files
 
 __noted__ = "fixes shamelessly stolen from dunnousername without credit"  # Just don't delete this
 webpage = "http://www.cityofdelano.org/108/Crime-Statistics"
@@ -74,3 +74,5 @@ except FileNotFoundError:
     pass
 extract_info(soup)
 get_files(save_dir, sleep_time)
+
+# import etl.py
