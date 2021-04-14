@@ -70,7 +70,7 @@ def get_files(
                     print("Unhandled documents type")
                     print("Url: " + url_2)
 
-            # If the name is NOT in the url
+            # If name_in_url is False
             else:
                 import cgi
 
