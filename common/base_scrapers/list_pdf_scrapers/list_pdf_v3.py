@@ -17,6 +17,7 @@ def list_pdf_v3(
     configs,
     save_dir,
     debug=False,
+    delete=True,
     important=False,
     try_overwite=False,
     name_in_url=True,
@@ -29,11 +30,11 @@ def list_pdf_v3(
 
     html_page = requests.get(configs.webpage).text
     soup = BeautifulSoup(html_page, "html.parser")
-
-    try:
-        os.remove("url_name.txt")
-    except FileNotFoundError:
-        pass
+    if delete != False:
+        try:
+            os.remove("url_name.txt")
+        except FileNotFoundError:
+            pass
     extract_info(soup, configs, extract_name=extract_name)
 
     if important == False:
@@ -74,6 +75,7 @@ def list_pdf_v3(
         save_dir,
         configs.sleep_time,
         debug=debug,
+        delete=delete,
         try_overwite=try_overwite,
         name_in_url=name_in_url,
         no_overwrite=no_overwrite,
