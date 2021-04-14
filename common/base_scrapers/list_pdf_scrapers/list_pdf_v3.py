@@ -77,4 +77,5 @@ def list_pdf_v3(
         try_overwite=try_overwite,
         name_in_url=name_in_url,
         no_overwrite=no_overwrite,
+        add_date=add_date,
     )
