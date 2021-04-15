@@ -33,7 +33,7 @@ def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=Fals
 def check_if_exists(save_dir, file_name):
     with open("last_run.txt", "r") as last_run:
         file_name = re.sub("^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$", '', file_name)
-        file_name = file_name.strip(".pdf") + "_" + last_run.read() + ".pdf"
+        file_name = file_name.strip(".pdf") + "_" + last_run.read().strip() + ".pdf"
         print(file_name)
         if os.path.exists(save_dir + file_name):
             return True
