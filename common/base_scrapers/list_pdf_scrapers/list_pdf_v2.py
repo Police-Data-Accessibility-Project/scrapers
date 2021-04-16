@@ -21,6 +21,7 @@ def list_pdf_v2(
     add_date=False,
     try_overwite=False,
     no_overwrite=False,
+    silent=True
 ):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -35,6 +36,6 @@ def list_pdf_v2(
     except FileNotFoundError:
         pass
     extract_info(soup, configs, extract_name=extract_name)
-    get_files(save_dir, configs.sleep_time, name_in_url=name_in_url, add_date=add_date)
+    get_files(save_dir, configs.sleep_time, name_in_url=name_in_url, add_date=add_date, silent=silent)
 
     # import etl.py
