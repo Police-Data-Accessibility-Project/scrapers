@@ -12,7 +12,7 @@ from pathlib import Path
 p = Path(__file__).resolve().parents[2]
 sys.path.insert(1, str(p) + "/common")
 
-from common.file_downloaders.downloaders import get_doc, get_pdf, get_xls
+from .utils.file_downloaders import get_doc, get_pdf, get_xls
 
 
 def get_files(

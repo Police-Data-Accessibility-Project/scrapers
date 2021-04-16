@@ -9,8 +9,8 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p) + "/common")
-from common.get_files import get_files
-from common.extract_info import extract_info
+from list_pdf_utils import get_files
+from list_pdf_utils import extract_info
 
 
 def list_pdf_v3(
