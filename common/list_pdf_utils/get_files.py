@@ -6,12 +6,13 @@ import time
 import requests
 import mimetypes
 import traceback
+from tqdm import tqdm
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[2]
 sys.path.insert(1, str(p) + "/common")
-from .utils.file_downloaders import get_doc, get_pdf, get_xls
 
+from .utils.file_downloaders import get_doc, get_pdf, get_xls
 
 def get_files(
     save_dir,
@@ -26,7 +27,7 @@ def get_files(
 ):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
-        print(" [!] url_name.txt does not exist. Did you call extract_info first?")
+        print("url_name.txt does not exist. Did you call extract_info first?")
         return
 
     print(" [*] Opening url_name.txt")
@@ -42,16 +43,15 @@ def get_files(
         if line_count <= 1:
             print("    [?] One line found, setting sleep_time to 0")
             sleep_time = 0
+        lines = input_file
+        for line in lines:
+            print(line)
     input_file.close()
 
     # Not doing this breaks the code due to `readlines()` for some reason. Unsure why
     with open("url_name.txt", "r") as input_file:
         print(" [*] Getting files")
-        iter = 0
-
-        # Iterate through the lines in `url_name.txt`
-        for line in input_file:
-            iter += 1
+        for line in tqdm(input_file):
             if debug:
                 print(line)
 
@@ -63,20 +63,11 @@ def get_files(
             response = requests.get(url_2)
             content_type = response.headers["content-type"]
             extension = mimetypes.guess_extension(content_type)
-
-            # Might be a good idea to add a check if the extension has changed (eventually)
-            # if iter == 0:
-            #     print(" [*] Extension is " + extension)
-            print(" [*] Extension is " + extension)
+            print(" [*] Extension is " + extension )
 
             # If the name IS in the url
             if name_in_url == True:
-
-                # Ensures that it only prints once.
-                # if iter == 0:
-                #     print(" [?] name_in_url is True")
                 print(" [?] name_in_url is True")
-
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
                     print("   [*] Getting file " + file_name)
@@ -145,7 +136,7 @@ def get_files(
 
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
-                    print(" [*] Getting " + file_name)
+                    print(file_name)
                     get_pdf(save_dir, file_name, url_2, debug, sleep_time, try_overwite)
 
                 elif ".doc" in extension:
