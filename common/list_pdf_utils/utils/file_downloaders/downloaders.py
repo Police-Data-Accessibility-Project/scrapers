@@ -30,15 +30,21 @@ def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=Fals
             os.rename(file_2, file_1)
         return False
 
+
 # Needed a different way to check if a file existed due to us changing the file_name to add the current date.
 def check_if_exists(save_dir, file_name, date_name=False):
     if date_name is True:
         with open("last_run.txt", "r") as last_run:
             # This deletes the date from the file_name in order to compare.
-            file_name = re.sub("^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$", '', file_name)
+            file_name = re.sub(
+                "^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$",
+                "",
+                file_name,
+            )
             # This removes the extension, and appends the previous run's date to the file_name
             file_name = file_name.strip(".pdf") + "_" + last_run.read().strip() + ".pdf"
-            print(file_name)
+            if debug:
+                print(" [DEBUG]" + file_name)
             if os.path.exists(save_dir + file_name):
                 return True
             else:
@@ -51,11 +57,12 @@ def get_pdf(
     save_dir,
     file_name,
     url_2,
-    debug,
     sleep_time,
+    debug=False,
     try_overwite=False,
     no_overwrite=False,
     add_date=False,
+    silent=True,
 ):
     file_name = file_name.lstrip("/")
     print(file_name)
@@ -73,8 +80,11 @@ def get_pdf(
 
     # Default run mode, simply checks that the file does not already exists.
     # Don't need to check if
-    if os.path.exists(save_dir + file_name) == False and check_if_exists(save_dir, file_name) == False:
-        print("File does not exist")
+    if (
+        os.path.exists(save_dir + file_name) == False
+        and check_if_exists(save_dir, file_name) == False
+    ):
+        print(" [*] File does not exist")
         try:
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
         except urllib.error.HTTPError:
@@ -93,7 +103,8 @@ def get_pdf(
                 + str(date_name).replace("-", "_")
                 + ".pdf"
             )
-            print(file_name)
+            if debug:
+                print(file_name)
 
         with open(save_dir + file_name, "wb") as file:
             file.write(pdf.read())
@@ -103,7 +114,11 @@ def get_pdf(
         print("Sleep")
 
         # If the file exists, and no_overwrite is true, then:
-    elif os.path.exists(save_dir + file_name) == True and check_if_exists(save_dir, file_name) == False and no_overwrite == True:
+    elif (
+        os.path.exists(save_dir + file_name) == True
+        and check_if_exists(save_dir, file_name) == False
+        and no_overwrite == True
+    ):
         # Tries to get the file and set it to pdf
         try:
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
@@ -124,20 +139,22 @@ def get_pdf(
 
         if file_compare(save_dir, file_name, new_filename, no_overwrite=True) == False:
             date_name = date.today()
-            print(date_name)
+            # print(date_name)
             file_name = (
                 file_name.strip(".pdf")
                 + "_"
                 + str(date_name).replace("-", "_")
                 + ".pdf"
             )
-            print(file_name)
+            if not silent:
+                print("   [*] file_name: "+file_name)
 
             with open(save_dir + file_name, "wb") as file:
                 file.write(pdf.read())
             file.close()
     # Checks if the files exists, and that `try_overwite` is True
     elif os.path.exists(save_dir + file_name) == True and try_overwite == True:
+        print(" [!!!] try_overwite is set to True, verify that you want this before continuing")
         # Tries to get the file and set it to pdf
         try:
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
@@ -158,7 +175,8 @@ def get_pdf(
                 + str(date_name).replace("-", "_")
                 + ".pdf"
             )
-            print(file_name)
+            if not silent:
+                print(" [*] Date appended name: " + file_name)
         # Saves the pdf while prepending with "new_"
         with open(save_dir + "new_" + file_name, "wb") as file:
             file.write(pdf.read())
@@ -169,6 +187,7 @@ def get_pdf(
         # Compares the file using file_compare, which will remove the new file if it has not changed
         file_compare(save_dir, file_name, new_filename)
         time.sleep(sleep_time)
+
 
 def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
     if ".xls" not in file_name:
