@@ -11,7 +11,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[2]
 sys.path.insert(1, str(p) + "/common")
-
+from .utils.file_downloaders import get_doc, get_pdf, get_xls
 
 
 def get_files(
@@ -24,10 +24,11 @@ def get_files(
     domain_included=False,
     no_overwrite=False,
     add_date=False,
+    silent=True,
 ):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
-        print("url_name.txt does not exist. Did you call extract_info first?")
+        print(" [!] url_name.txt does not exist. Did you call extract_info first?")
         return
 
     print(" [*] Opening url_name.txt")
@@ -48,7 +49,11 @@ def get_files(
     # Not doing this breaks the code due to `readlines()` for some reason. Unsure why
     with open("url_name.txt", "r") as input_file:
         print(" [*] Getting files")
+        iter = 0
+
+        # Iterate through the lines in `url_name.txt`
         for line in tqdm(input_file):
+            iter += 1
             if debug:
                 print(line)
 
@@ -60,14 +65,22 @@ def get_files(
             response = requests.get(url_2)
             content_type = response.headers["content-type"]
             extension = mimetypes.guess_extension(content_type)
-            print(" [*] Extension is " + extension )
+
+            # Might be a good idea to add a check if the extension has changed (eventually)
+            if iter == 0:
+                print(" [*] Extension is " + extension)
 
             # If the name IS in the url
             if name_in_url == True:
-                print(" [?] name_in_url is True")
+
+                # Ensures that it only prints once.
+                if iter == 0:
+                    print(" [?] name_in_url is True")
+
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
-                    print("   [*] Getting file " + file_name)
+                    if not silent:
+                        print("   [*] Getting file " + file_name)
                     get_pdf(
                         save_dir,
                         file_name,
@@ -76,8 +89,11 @@ def get_files(
                         sleep_time,
                         try_overwite,
                         no_overwrite,
+                        silent,
                     )
-                    print("   [*]Sleeping for: " + str(sleep_time))
+
+                    if not silent:
+                        print("   [*]Sleeping for: " + str(sleep_time))
 
                 elif ".doc" in extension:
                     print("Getting doc: " + file_name)
@@ -133,7 +149,7 @@ def get_files(
 
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
-                    print(file_name)
+                    print(" [*] Getting " + file_name)
                     get_pdf(save_dir, file_name, url_2, debug, sleep_time, try_overwite)
 
                 elif ".doc" in extension:
