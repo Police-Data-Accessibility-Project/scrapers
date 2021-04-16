@@ -1,0 +1,1 @@
+from crimegraphic_scraper import crimegraphic_scraper
