@@ -24,7 +24,7 @@ def list_pdf_v3(
     add_date=False,
     extract_name=False,
     no_overwrite=False,
-    silent=True,
+    silent=False,
 ):  # try_overwite is for get_files
     if not os.path.exists(save_dir):
         print(" [*] Making save_dir")

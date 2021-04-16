@@ -24,7 +24,7 @@ def get_files(
     domain_included=False,
     no_overwrite=False,
     add_date=False,
-    silent=True,
+    silent=False,
 ):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):

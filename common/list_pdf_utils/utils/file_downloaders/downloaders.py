@@ -62,7 +62,7 @@ def get_pdf(
     try_overwite=False,
     no_overwrite=False,
     add_date=False,
-    silent=True,
+    silent=False,
 ):
     file_name = file_name.lstrip("/")
     print(file_name)
