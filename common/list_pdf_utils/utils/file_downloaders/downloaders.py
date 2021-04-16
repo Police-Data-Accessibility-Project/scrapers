@@ -31,17 +31,20 @@ def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=Fals
         return False
 
 # Needed a different way to check if a file existed due to us changing the file_name to add the current date.
-def check_if_exists(save_dir, file_name):
-    with open("last_run.txt", "r") as last_run:
-        # This deletes the date from the file_name in order to compare.
-        file_name = re.sub("^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$", '', file_name)
-        # This removes the extension, and appends the previous run's date to the file_name
-        file_name = file_name.strip(".pdf") + "_" + last_run.read().strip() + ".pdf"
-        print(file_name)
-        if os.path.exists(save_dir + file_name):
-            return True
-        else:
-            return False
+def check_if_exists(save_dir, file_name, date_name=False):
+    if date_name is True:
+        with open("last_run.txt", "r") as last_run:
+            # This deletes the date from the file_name in order to compare.
+            file_name = re.sub("^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$", '', file_name)
+            # This removes the extension, and appends the previous run's date to the file_name
+            file_name = file_name.strip(".pdf") + "_" + last_run.read().strip() + ".pdf"
+            print(file_name)
+            if os.path.exists(save_dir + file_name):
+                return True
+            else:
+                return False
+    else:
+        return True
 
 
 def get_pdf(
@@ -57,7 +60,7 @@ def get_pdf(
     file_name = file_name.lstrip("/")
     print(file_name)
 
-    if add_date == True:
+    if add_date is True:
         if not os.path.isfile("last_run.txt"):
             with open("last_run.txt", "w") as last_run:
                 date_name = str(date.today()).replace("-", "_")
