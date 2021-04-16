@@ -26,8 +26,9 @@ def list_pdf_v3(
     no_overwrite=False,
 ):  # try_overwite is for get_files
     if not os.path.exists(save_dir):
+        print(" [*] Making save_dir")
         os.makedirs(save_dir)
-
+    print(" [*] Getting webpage and parsing")
     html_page = requests.get(configs.webpage).text
     soup = BeautifulSoup(html_page, "html.parser")
     if delete != False:
@@ -35,35 +36,42 @@ def list_pdf_v3(
             os.remove("url_name.txt")
         except FileNotFoundError:
             pass
+    print(" [*] Extracting info.")
     extract_info(soup, configs, extract_name=extract_name)
 
     if important == False:
+        print(" [?] important is False, using non_important")
         non_important = configs.non_important
+        print("   [*] Opening url_name.txt")
         with open("url_name.txt", "r") as og_file, open(
             "2url_name.txt", "w"
         ) as new_file:
+            print("   [*] Adding only important lines to 2url_name.txt")
             for line in og_file:
                 if not any(
                     non_important in line.lower() for non_important in non_important
                 ):
                     new_file.write(line)
+            print(" [*] Done writing")
     else:
+        print(" [?] important is True, assuming important is configured")
         try:
             important = configs.important
         except AttributeError:
-            print("")
-            print("Important is still named `non_important`")
-            print("")
+            # print("")
+            print("   [!] Important is still named `non_important`")
+            # print("")
             important = configs.non_important
-
+        print(" [*] Opening url_name.txt")
         with open("url_name.txt", "r") as og_file, open(
             "2url_name.txt", "w"
         ) as new_file:
+            print("   [*] Adding lines containing: " + str(important))
             for line in og_file:
                 if any(important in line.lower() for important in important):
                     new_file.write(line)
                     print(line)
-
+            print(" [*] Done writing")
     if debug != True:
         try:
             os.remove("url_name.txt")
