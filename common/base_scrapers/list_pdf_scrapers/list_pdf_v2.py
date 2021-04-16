@@ -21,6 +21,7 @@ def list_pdf_v2(
     add_date=False,
     try_overwite=False,
     no_overwrite=False,
+    debug=False
 ):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
