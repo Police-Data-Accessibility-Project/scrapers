@@ -23,7 +23,6 @@ def get_files(
     domain_included=False,
     no_overwrite=False,
     add_date=False,
-    silent=False,
 ):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
@@ -66,20 +65,21 @@ def get_files(
             extension = mimetypes.guess_extension(content_type)
 
             # Might be a good idea to add a check if the extension has changed (eventually)
-            if iter == 0:
-                print(" [*] Extension is " + extension)
+            # if iter == 0:
+            #     print(" [*] Extension is " + extension)
+            print(" [*] Extension is " + extension)
 
             # If the name IS in the url
             if name_in_url == True:
 
                 # Ensures that it only prints once.
-                if iter == 0:
-                    print(" [?] name_in_url is True")
+                # if iter == 0:
+                #     print(" [?] name_in_url is True")
+                print(" [?] name_in_url is True")
 
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
-                    if not silent:
-                        print("   [*] Getting file " + file_name)
+                    print("   [*] Getting file " + file_name)
                     get_pdf(
                         save_dir,
                         file_name,
@@ -88,11 +88,8 @@ def get_files(
                         sleep_time,
                         try_overwite,
                         no_overwrite,
-                        silent,
                     )
-
-                    if not silent:
-                        print("   [*]Sleeping for: " + str(sleep_time))
+                    print("   [*]Sleeping for: " + str(sleep_time))
 
                 elif ".doc" in extension:
                     print("Getting doc: " + file_name)

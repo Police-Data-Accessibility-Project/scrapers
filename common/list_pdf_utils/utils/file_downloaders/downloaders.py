@@ -62,7 +62,6 @@ def get_pdf(
     try_overwite=False,
     no_overwrite=False,
     add_date=False,
-    silent=False,
 ):
     file_name = file_name.lstrip("/")
     print(file_name)
@@ -146,8 +145,7 @@ def get_pdf(
                 + str(date_name).replace("-", "_")
                 + ".pdf"
             )
-            if not silent:
-                print("   [*] file_name: "+file_name)
+            print("   [*] file_name: "+file_name)
 
             with open(save_dir + file_name, "wb") as file:
                 file.write(pdf.read())
@@ -175,8 +173,7 @@ def get_pdf(
                 + str(date_name).replace("-", "_")
                 + ".pdf"
             )
-            if not silent:
-                print(" [*] Date appended name: " + file_name)
+            print(" [*] Date appended name: " + file_name)
         # Saves the pdf while prepending with "new_"
         with open(save_dir + "new_" + file_name, "wb") as file:
             file.write(pdf.read())
