@@ -6,7 +6,6 @@ import time
 import requests
 import mimetypes
 import traceback
-from tqdm import tqdm
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[2]
@@ -52,7 +51,7 @@ def get_files(
         iter = 0
 
         # Iterate through the lines in `url_name.txt`
-        for line in tqdm(input_file):
+        for line in input_file:
             iter += 1
             if debug:
                 print(line)
