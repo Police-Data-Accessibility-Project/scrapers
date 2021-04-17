@@ -32,25 +32,20 @@ def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=Fals
 
 
 # Needed a different way to check if a file existed due to us changing the file_name to add the current date.
-def check_if_exists(save_dir, file_name, date_name=False):
-    if date_name is True:
+def check_if_exists(save_dir, file_name, add_date):
+    if add_date:
         with open("last_run.txt", "r") as last_run:
             # This deletes the date from the file_name in order to compare.
-            file_name = re.sub(
-                "^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$",
-                "",
-                file_name,
-            )
+            file_name = re.sub("^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$", '', file_name)
             # This removes the extension, and appends the previous run's date to the file_name
             file_name = file_name.strip(".pdf") + "_" + last_run.read().strip() + ".pdf"
-            if debug:
-                print(" [DEBUG]" + file_name)
+            print(file_name)
             if os.path.exists(save_dir + file_name):
                 return True
             else:
                 return False
     else:
-        return True
+        return False
 
 
 def get_pdf(
@@ -81,7 +76,7 @@ def get_pdf(
     # Don't need to check if
     if (
         os.path.exists(save_dir + file_name) == False
-        and check_if_exists(save_dir, file_name) == False
+        and check_if_exists(save_dir, file_name,add_date) == False
     ):
         print(" [*] File does not exist")
         try:
@@ -115,7 +110,7 @@ def get_pdf(
         # If the file exists, and no_overwrite is true, then:
     elif (
         os.path.exists(save_dir + file_name) == True
-        and check_if_exists(save_dir, file_name) == False
+        and check_if_exists(save_dir, file_name, add_date) == False
         and no_overwrite == True
     ):
         # Tries to get the file and set it to pdf
