@@ -40,7 +40,7 @@ def list_pdf_v3(
     print(" [*] Extracting info.")
     extract_info(soup, configs, extract_name=extract_name)
 
-    if important == False:
+    if not important:
         print(" [?] important is False, using non_important")
         non_important = configs.non_important
         print("   [*] Opening url_name.txt")
