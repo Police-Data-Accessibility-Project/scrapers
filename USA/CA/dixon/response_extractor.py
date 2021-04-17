@@ -6,8 +6,8 @@ import json
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + "/common")
-from common.get_files import get_files
+sys.path.insert(1, str(p))
+from common.list_pdf_utils import get_files
 
 save_dir = "./data/"
 
