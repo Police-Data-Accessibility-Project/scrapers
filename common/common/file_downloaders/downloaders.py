@@ -106,7 +106,7 @@ def get_pdf(
         print("Sleep")
 
         # If the file exists, and no_overwrite is true, then:
-    elif os.path.exists(save_dir + file_name) == True and check_if_exists(save_dir, file_name, add_date) == False and no_overwrite == True:
+    elif os.path.exists(save_dir + file_name) == True and check_if_exists(save_dir, file_name, add_date) == True and no_overwrite == True:
         # Tries to get the file and set it to pdf
         try:
             print(" [*] Requesting file...")
@@ -170,7 +170,7 @@ def get_pdf(
             print(file_name)
 
         # Saves the pdf while prepending with "new_"
-        print(" [*] Preparing to comare...")
+        print(" [*] Preparing to compare...")
         with open(save_dir + "new_" + file_name, "wb") as file:
             file.write(pdf.read())
         file.close()
