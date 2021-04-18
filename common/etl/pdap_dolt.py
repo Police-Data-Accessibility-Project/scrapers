@@ -15,6 +15,10 @@ import json
 import sys
 import uuid
 
+
+# TURN OFF ONCE data_types-sandbox IS MERGED INTO MASTER
+dev_mode = False
+
 dolthub_org = 'pdap'
 
 dolthub_repo = 'datasets'
@@ -195,8 +199,10 @@ def new_dataset(dolt, agency, url):
         'notes': notes
     }])
     print("   [*] Inserting data to datasets table...")
-    id = str(uuid.uuid4()).replace('-','')
-    insert = dolt.sql("INSERT into datasets (`id`, `url`, `name`, `source_type_id`, `data_types_id`, `format_types_id`, `agency_id`, `update_frequency`, `portal_type`, `coverage_start`, `scraper_id`, `notes`) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, source_type_id, data_types_id, format_types_id, agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
+
+    id = str(uuid.uuid4()).replace('-','') # UUID without dashes
+    insert = dolt.sql("INSERT into datasets (`id`, `url`, `name`, `aggregation_level`, `source_type_id`, `data_types_id`, `format_types_id`, `state_iso`, `county_fips`, `city_id`, `consolidator`, `portal_type`, `coverage_start`, `scraper_path`, `notes`) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, aggregation_level, source_type_id, data_types_id, format_types_id, state, fips, city_id, consolidator, portal, start, scraper_path, notes), result_format="csv")
+
     # and grab the record
     data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
     print(" [!] Inserted Dataset Record: ID #{}!".format(data.loc[0, 'id']))
@@ -218,7 +224,8 @@ def load_data(intake, dataset_record, file):
 
     # load the file into a dataframe
     df = pd.read_csv(file)
-    # generate new UUID v4 IDs for each record, and push the column to the front
+    # generate new UUID v4 IDs (with no dashes) for each record, and push the column to the front
+
     df = pd.concat([pd.Series([str(uuid.uuid4()).replace('-','') for _ in range(len(df.index))], index=df.index, name='id'), df], axis=1)
     # set the index to our new ID column
     df.set_index('id')

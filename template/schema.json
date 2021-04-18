@@ -1,8 +1,23 @@
 {
-    "data_type": "",
-    "full_data_location":"",
-    "mapping":[
-
-    ],
-    "_notes_":"This is a WIP for the ETL scripts. This file will be used to take the output of the scrapers, and format it correctly to be ingested by our ETL script. Final Format TBD"
+    "agency_id": "",
+    "agency_info":{
+        "agency_name":"",
+        "agency_coords":{"lat": "", "long":""},
+        "state": "",
+        "county":""
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"",
+            "aggregation":"",
+            "full_data_location":"/data",
+            "source_type": 2,
+            "data_type": 1,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
+    ]
+    
 }
