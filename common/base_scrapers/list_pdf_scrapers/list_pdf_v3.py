@@ -8,9 +8,9 @@ import sys
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + "/common")
-from common.get_files import get_files
-from common.extract_info import extract_info
+sys.path.insert(1, str(p))
+from list_pdf_utils import get_files
+from list_pdf_utils import extract_info
 
 
 def list_pdf_v3(
@@ -25,6 +25,7 @@ def list_pdf_v3(
     extract_name=False,
     no_overwrite=False,
 ):  # try_overwite is for get_files
+
     if not os.path.exists(save_dir):
         print(" [*] Making save_dir")
         os.makedirs(save_dir)
@@ -39,7 +40,7 @@ def list_pdf_v3(
     print(" [*] Extracting info.")
     extract_info(soup, configs, extract_name=extract_name)
 
-    if important == False:
+    if not important:
         print(" [?] important is False, using non_important")
         non_important = configs.non_important
         print("   [*] Opening url_name.txt")

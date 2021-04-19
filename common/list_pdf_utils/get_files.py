@@ -12,7 +12,7 @@ from pathlib import Path
 p = Path(__file__).resolve().parents[2]
 sys.path.insert(1, str(p) + "/common")
 
-
+from .utils.file_downloaders import get_doc, get_pdf, get_xls
 
 def get_files(
     save_dir,
@@ -43,6 +43,9 @@ def get_files(
         if line_count <= 1:
             print("    [?] One line found, setting sleep_time to 0")
             sleep_time = 0
+        lines = input_file
+        for line in lines:
+            print(line)
     input_file.close()
 
     # Not doing this breaks the code due to `readlines()` for some reason. Unsure why
@@ -76,6 +79,7 @@ def get_files(
                         sleep_time,
                         try_overwite,
                         no_overwrite,
+                        add_date=add_date
                     )
                     print("   [*]Sleeping for: " + str(sleep_time))
 

@@ -8,9 +8,9 @@ import sys
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + "/common")
-from common.get_files import get_files
-from common.extract_info import extract_info
+sys.path.insert(1, str(p))
+from list_pdf_utils import get_files
+from list_pdf_utils import extract_info
 
 
 def list_pdf_v2(
@@ -21,6 +21,7 @@ def list_pdf_v2(
     add_date=False,
     try_overwite=False,
     no_overwrite=False,
+    debug=False
 ):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
