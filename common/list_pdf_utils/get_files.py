@@ -6,15 +6,13 @@ import time
 import requests
 import mimetypes
 import traceback
-
+from tqdm import tqdm
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[2]
 sys.path.insert(1, str(p) + "/common")
 
-# from file_downloaders.downloaders import get_doc, get_pdf, get_xls
-from common.file_downloaders.downloaders import get_doc, get_pdf, get_xls
-
+from .utils.file_downloaders import get_doc, get_pdf, get_xls
 
 def get_files(
     save_dir,
@@ -29,26 +27,50 @@ def get_files(
 ):
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
+        print("url_name.txt does not exist. Did you call extract_info first?")
         return
 
+    print(" [*] Opening url_name.txt")
     with open("url_name.txt", "r") as input_file:
-        for line in input_file:
+
+        # Counts the number of lines in the file
+        print("    [*] Counting lines")
+        line_count = len(input_file.readlines())
+
+        print(f"     [?] There are {line_count} lines")
+
+        # If the number of lines is less than or equal to 1, set sleep_time to 0 (No need to sleep for a single file)
+        if line_count <= 1:
+            print("    [?] One line found, setting sleep_time to 0")
+            sleep_time = 0
+        lines = input_file
+        for line in lines:
             print(line)
+    input_file.close()
+
+    # Not doing this breaks the code due to `readlines()` for some reason. Unsure why
+    with open("url_name.txt", "r") as input_file:
+        print(" [*] Getting files")
+        for line in tqdm(input_file):
+            if debug:
+                print(line)
 
             line_list = line.split(", ")
             url_2 = line_list[0]
             file_name = line_list[1].replace(" ", "_")[:-1]
-            # file_name = save_dir + file_name
-            # document = requests.get(url_2, allow_redirects=True)
+            file_name = file_name.replace("%20", "_")
+
             response = requests.get(url_2)
             content_type = response.headers["content-type"]
             extension = mimetypes.guess_extension(content_type)
+            print(" [*] Extension is " + extension )
 
             # If the name IS in the url
             if name_in_url == True:
+                print(" [?] name_in_url is True")
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
-                    print(file_name)
+                    print("   [*] Getting file " + file_name)
                     get_pdf(
                         save_dir,
                         file_name,
@@ -57,10 +79,12 @@ def get_files(
                         sleep_time,
                         try_overwite,
                         no_overwrite,
+                        add_date=add_date
                     )
-                    print(sleep_time)
+                    print("   [*]Sleeping for: " + str(sleep_time))
 
                 elif ".doc" in extension:
+                    print("Getting doc: " + file_name)
                     get_doc(save_dir, file_name, url_2, sleep_time)
 
                 elif ".xls" in extension:
@@ -129,5 +153,5 @@ def get_files(
     input_file.close()
 
     # Used for debugging
-    if delete != False:
+    if delete is not False:
         os.remove("url_name.txt")

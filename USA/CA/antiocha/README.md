@@ -2,7 +2,7 @@ This readme should give people everything they need to maintain the scraper.
 
 # Summary
 
-This scraper is **NOT** the default `list_pdf_scrapers`. 
+This scraper is **NOT** the default `list_pdf_scrapers`.
 This jurisdiction uses a different naming system.
 Time period of crime statistics: 2006-current
 
@@ -44,6 +44,7 @@ Eventually a scraper will be written for the [arrest reports](https://www.antioc
 
 # Data refresh rate
 Crime stats are yearly, with the exception of the current year, which I believe updates monthly
+Calls for service updates weekly, updates the following monday
 
 
 [Calls for service](https://www.antiochca.gov/police/crime-statistics/calls-for-service/) (**Not Scraped**) updates weekly.

@@ -1,6 +1,5 @@
 import sys
 import os
-import configs
 import requests
 import json
 from pathlib import Path
