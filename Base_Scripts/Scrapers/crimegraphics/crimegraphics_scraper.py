@@ -9,8 +9,8 @@ import pandas as pd
 from tqdm import tqdm
 
 p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + "/common")
-from base_scrapers.crimegraphics.crimegraphics_scraper import crimegraphics_scraper
+sys.path.insert(1, str(p))
+from common.base_scrapers import crimegraphics_scraper
 
 
 save_dir = "./data/"
