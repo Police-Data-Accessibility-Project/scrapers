@@ -79,6 +79,7 @@ def get_files(
                         sleep_time,
                         try_overwite,
                         no_overwrite,
+                        add_date=add_date
                     )
                     print("   [*]Sleeping for: " + str(sleep_time))
 
