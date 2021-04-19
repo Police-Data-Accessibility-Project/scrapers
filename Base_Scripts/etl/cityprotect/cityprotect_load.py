@@ -20,7 +20,7 @@ import sys
 # prevents having to keep cloning the libraries everywhere (copied from CaptainStabs' usage on scrapers)
 p = Path().resolve().parents[2]
 pdap_library = os.path.join(p, "common")  # fix for windows
-print(pdap_library)
+# print(pdap_library)
 sys.path.insert(
     1, pdap_library
 )  # insert into our path for so we can call directly on the modules
@@ -28,7 +28,7 @@ from etl import cityprotect
 from etl import pdap_dolt
 
 # we can specify a different starting branch here, if needed
-branch = "data_types-sandbox"
+branch = "master"
 
 # 1 - Drop CSVs in the ./data folder. DO NOT rename them, the naming convention from CityProtect is important!
 # For now, we have two sample csvs in the folder to work with. For prod purposes, after cloning the repo remove those sample files
@@ -37,8 +37,8 @@ branch = "data_types-sandbox"
 agencies = cityprotect.fetch_agencies()
 
 # 3 - Init our repo from an existing branch, and then clone it for the changes we are about to make
-dolt = pdap_dolt.init(branch)
-pdap_dolt.new_branch(dolt)
+dolt, intake = pdap_dolt.init(branch)
+pdap_dolt.new_branch(dolt, intake)
 
 # 4 - Main Loop - Enumerate over all files in ./data and do our ETL proc
 cwd = os.getcwd()
@@ -61,8 +61,8 @@ for datafile in os.scandir(os.path.join(cwd, "data")):
     # incidents_fk = dataset.loc[0, 'id']
 
     # load the incident records in the database
-    pdap_dolt.load_data(dolt, dataset, datafile)
+    pdap_dolt.load_data(intake, dataset, datafile)
 
 
 # 5 - Commit the Changes!
-pdap_dolt.commit(dolt)
+#pdap_dolt.commit(dolt)
