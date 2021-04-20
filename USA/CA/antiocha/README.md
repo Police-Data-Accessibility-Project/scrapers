@@ -4,6 +4,11 @@ This readme should give people everything they need to maintain the scraper.
 
 This scraper is **NOT** the default `list_pdf_scrapers`.
 This jurisdiction uses a different naming system.
+
+- `CFS_scraper.py` scrapes the Calls for service
+- `antiochca_scraper.py` scrapes the annual reports
+- `antiocha_arrest_scraper.py` scrapes the arrests.
+
 Time period of crime statistics: 2006-current
 
 _Remove fields that were collected_
