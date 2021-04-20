@@ -11,9 +11,9 @@ from datetime import date
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[1]
-sys.path.insert(1, str(p) + "/crimegraphics")
+sys.path.insert(1, str(p))
 
-from utils.page_update import hash_comparer, page_hasher, page_update
+from common.utils import hash_comparer, page_hasher, page_update
 
 
 def function_timer(stats):

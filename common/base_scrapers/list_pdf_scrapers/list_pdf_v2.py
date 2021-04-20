@@ -9,8 +9,8 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
-from list_pdf_utils import get_files
-from list_pdf_utils import extract_info
+from common.utils import get_files
+from common.utils import extract_info
 
 
 def list_pdf_v2(

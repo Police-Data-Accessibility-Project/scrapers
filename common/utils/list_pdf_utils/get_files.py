@@ -10,9 +10,9 @@ from tqdm import tqdm
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[2]
-sys.path.insert(1, str(p) + "/common")
+sys.path.insert(1, str(p))
 
-from .utils.file_downloaders import get_doc, get_pdf, get_xls
+from common.utils.file_downloaders import get_doc, get_pdf, get_xls
 
 def get_files(
     save_dir,

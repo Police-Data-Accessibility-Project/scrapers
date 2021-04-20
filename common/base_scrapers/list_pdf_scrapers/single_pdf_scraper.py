@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
-from list_pdf_utils.utils.file_downloaders.downloaders import get_pdf
+from common.utils import get_pdf
 
 
 def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True):
