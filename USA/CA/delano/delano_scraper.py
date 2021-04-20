@@ -9,7 +9,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
-from common.list_pdf_utils import get_files
+from common.utils import get_files
 
 __noted__ = "fixes shamelessly stolen from dunnousername without credit"  # Just don't delete this
 webpage = "http://www.cityofdelano.org/108/Crime-Statistics"
