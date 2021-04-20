@@ -7,7 +7,7 @@ import time
 import sys
 from pathlib import Path
 
-p = Path(__file__).resolve().parents[3]
+p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 from common.utils import get_files
 
