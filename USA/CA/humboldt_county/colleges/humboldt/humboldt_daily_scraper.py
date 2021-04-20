@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from tqdm import tqdm
 
-p = Path(__file__).resolve().parents[3]
+p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 from common.base_scrapers import crimegraphics_scraper
 
