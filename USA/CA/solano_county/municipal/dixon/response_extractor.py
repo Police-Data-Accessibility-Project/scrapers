@@ -5,7 +5,7 @@ import requests
 import json
 from pathlib import Path
 
-p = Path(__file__).resolve().parents[3]
+p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 from common.list_pdf_utils import get_files
 
