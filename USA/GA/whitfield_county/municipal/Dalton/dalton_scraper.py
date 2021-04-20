@@ -7,9 +7,9 @@ import time
 from pathlib import Path
 import sys
 
-p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + "/common")
-from common.get_files import get_files
+p = Path(__file__).resolve().parents[5]
+sys.path.insert(1, str(p))
+from common.utils import get_files
 
 
 cur_dir = os.getcwd()
