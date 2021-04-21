@@ -201,7 +201,7 @@ def new_dataset(dolt, agency, url):
     print("   [*] Inserting data to datasets table...")
 
     id = str(uuid.uuid4()).replace('-','') # UUID without dashes
-    insert = dolt.sql("INSERT into datasets ('id', 'url', 'name', 'aggregation_level', 'source_type_id', 'data_types_id', 'format_types_id', 'state_iso', 'county_fips', 'city_id', 'consolidator', 'portal_type', 'coverage_start', 'scraper_path', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, aggregation_level, source_type_id, data_types_id, format_types_id, state, fips, city_id, consolidator, portal, start, scraper_path, notes), result_format="csv")
+    insert = dolt.sql("INSERT into datasets ('id', 'url', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
 
     # and grab the record
     data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
