@@ -1,0 +1,25 @@
+{
+    "agency_id": "8ef4612ffce14b5a8d8176a377631e71",
+    "agency_info":{
+        "agency_name":"Delano Police Department",
+        "agency_coords":{"lat": "35.788719177246094", "lng":"-119.25151062011719"},
+        "agency_type": 4,
+        "city": "Delano",
+        "state": "CA",
+        "zip":"93215",
+        "county_fips":"06029"
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"http://www.cityofdelano.org/108/Crime-Statistics",
+            "full_data_location":"/data",
+            "source_type": 2,
+            "data_type": 23,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
+    ]
+    
+}
