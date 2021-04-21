@@ -9,3 +9,4 @@ regex
 absl-py
 enforce-typing
 dataclass-builder
+tqdm
