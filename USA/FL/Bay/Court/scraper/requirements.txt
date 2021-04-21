@@ -10,3 +10,4 @@ absl-py
 enforce-typing
 dataclass-builder
 tqdm
+beautifulsoup4
