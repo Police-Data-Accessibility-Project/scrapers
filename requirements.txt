@@ -15,4 +15,5 @@ requests_toolbelt==0.9.1
 selenium==3.141.0
 tabula==1.0.5
 tabula_py==2.2.0
-tqdm==4.59.0
+tqdm==4.60.0
+pandas

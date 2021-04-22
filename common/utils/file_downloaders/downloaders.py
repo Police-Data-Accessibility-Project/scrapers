@@ -43,7 +43,7 @@ def check_if_exists(save_dir, file_name, add_date):
             file_name = file_name.strip(".pdf") + "_" + last_run.read().strip(".pdf") + ".pdf"
             print(file_name)
             if os.path.exists(save_dir + file_name):
-                prinr(" [*] File found... Returning True")
+                print(" [*] File found... Returning True")
                 return True
             else:
                 return False

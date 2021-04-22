@@ -9,3 +9,6 @@ regex
 absl-py
 enforce-typing
 dataclass-builder
+tqdm
+beautifulsoup4
+pandas

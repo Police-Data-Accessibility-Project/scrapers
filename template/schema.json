@@ -2,15 +2,17 @@
     "agency_id": "",
     "agency_info":{
         "agency_name":"",
-        "agency_coords":{"lat": "", "long":""},
+        "agency_coords":{"lat": "", "lng":""},
+        "agency_type": 4,
+        "city": "",
         "state": "",
-        "county":""
+        "zip":"",
+        "county_fips":""
     },
     "data": [
         {
             "dataset_id": "",
             "url":"",
-            "aggregation":"",
             "full_data_location":"/data",
             "source_type": 2,
             "data_type": 1,

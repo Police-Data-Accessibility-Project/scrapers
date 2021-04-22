@@ -92,7 +92,7 @@ def get_dataset(dolt, dataset_url, agency):
 
 def get_agency_id(dolt, name, state):
     try:
-        data = read_pandas_sql(dolt, "SELECT * FROM `agencies` where soundex(`name`) = soundex('{}') and state_iso = '{}'".format(name.strip(), state.strip()))
+        data = read_pandas_sql(dolt, "SELECT * FROM 'agencies' where soundex('name') = soundex('{}') and state_iso = '{}'".format(name.strip(), state.strip()))
         # check if a result was passed
         if data.shape[0] == 0:
             print("       [X] No Agency Found!")
@@ -201,7 +201,7 @@ def new_dataset(dolt, agency, url):
     print("   [*] Inserting data to datasets table...")
 
     id = str(uuid.uuid4()).replace('-','') # UUID without dashes
-    insert = dolt.sql("INSERT into datasets (`id`, `url`, `name`, `aggregation_level`, `source_type_id`, `data_types_id`, `format_types_id`, `state_iso`, `county_fips`, `city_id`, `consolidator`, `portal_type`, `coverage_start`, `scraper_path`, `notes`) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, aggregation_level, source_type_id, data_types_id, format_types_id, state, fips, city_id, consolidator, portal, start, scraper_path, notes), result_format="csv")
+    insert = dolt.sql("INSERT into datasets ('id', 'url', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
 
     # and grab the record
     data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
@@ -264,7 +264,7 @@ def load_data(intake, dataset_record, file):
             print('    [-] Importing record: {} - ccn:'.format(row['id'], row['ccn']))
             # sometimes may get a glitch like an invalid date
             try:
-                insert = intake.sql("INSERT into incident_reports (`id`, `ccn`, `incidentDate`, `updateDate`, `city`, `state`, `postalCode`, `blocksizedAddress`, `incidentType`, `parentIncidentType`, `narrative`, `datasets_id`) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(row['id'], row['ccn'], row['date'], row['updateDate'], row['city'], row['state'], row['postalCode'], row['blocksizedAddress'], row['incidentType'], row['parentIncidentType'], row['narrative'], row['datasets_id']))
+                insert = intake.sql("INSERT into incident_reports ('id', 'ccn', 'incidentDate', 'updateDate', 'city', 'state', 'postalCode', 'blocksizedAddress', 'incidentType', 'parentIncidentType', 'narrative', 'datasets_id') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(row['id'], row['ccn'], row['date'], row['updateDate'], row['city'], row['state'], row['postalCode'], row['blocksizedAddress'], row['incidentType'], row['parentIncidentType'], row['narrative'], row['datasets_id']))
             except:
                 print('      [!] Error importing record: {} - ccn:'.format(row['id'], row['ccn']))
         print('    [*] Done!')
