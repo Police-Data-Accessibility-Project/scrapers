@@ -1,0 +1,97 @@
+00:50    Patrol Check                                            2104190002
+Officer initiated activity at Buck House, Cluster Ct, Arcata.
+Disposition: Rims Documentation Only.
+02:14    Walk Through                                            2104190003
+Officer initiated activity at Kinesiology & Athletics, Gymnasium Ln, Arcata.
+Disposition: Rims Documentation Only.
+02:53    Patrol Check                                            2104190004
+Officer initiated activity at Pacific Southwest Research Lab, Bayview St, Arcata.
+Disposition: Rims Documentation Only.
+02:54    Patrol Check                                            2104190005
+Officer initiated activity at Turner House, Bayview St, Arcata.
+Disposition: Rims Documentation Only.
+03:45    Patrol Check                                            2104190008
+Officer initiated activity at Rowing Shed, Waterfront Dr, Eureka.
+Disposition: Rims Documentation Only.
+03:45    Patrol Check                                            2104190009
+Officer initiated activity at Humboldt Bay Aquatic Center, Waterfront Dr, Eureka.
+Disposition: Rims Documentation Only.
+03:48    Patrol Check                                            2104190010
+Officer initiated activity at 3RD Street Gallery, Third Street, Eureka.
+Disposition: Rims Documentation Only.
+03:54    Patrol Check                                            2104190011
+Officer initiated activity at Research Vessel Coral Sea, Startare Dr, Eureka.
+Disposition: Rims Documentation Only.
+04:04    Patrol Check                                            2104190012
+Officer initiated activity at University Corp Yard, Samoa Blvd, Arcata.
+Disposition: Rims Documentation Only.
+04:09    Patrol Check                                            2104190013
+Officer initiated activity at University Annex, C St, Arcata.
+Disposition: Rims Documentation Only.
+04:14    Patrol Check                                            2104190014
+Officer initiated activity at Creekview Residence Halls, Granite Ave, Arcata.
+Disposition: Rims Documentation Only.
+08:26    Patrol Check                                            2104190015
+Officer initiated activity at Humboldt Bay Aquatic Center, Waterfront Dr, Eureka.
+Disposition: Rims Documentation Only.
+09:01    Patrol Check                                            2104190016
+Officer initiated activity at University Corp Yard, Samoa Blvd, Arcata.
+Disposition: Rims Documentation Only.
+09:44    Patrol Check                                            2104190018
+Officer initiated activity at Natural History Museum, G St, Arcata.
+Disposition: Rims Documentation Only.
+09:48    Outside Assist - APD                                    2104190019
+Officer initiated activity at City Of Arcata West Of 101, Humboldt Ave, Arcata.
+Assisted APD on the 4900 block of Valley West Blvd. with a traffic stop.
+Disposition: Assisted.
+10:33    Walk Through                                            2104190020
+Officer initiated activity at Art Building, Laurel Dr, Arcata.
+Disposition: Rims Documentation Only.
+10:34    Walk Through                                            2104190021
+Officer initiated activity at Art B, Laurel Dr, Arcata.
+Disposition: Rims Documentation Only.
+11:33    Walk Through                                            2104190023
+Officer initiated activity at Art Building, Laurel Dr, Arcata.
+Disposition: Rims Documentation Only.
+11:33    Walk Through                                            2104190024
+Officer initiated activity at Art B, Laurel Dr, Arcata.
+Disposition: Rims Documentation Only.
+14:27    Patrol Check                                            2104190025
+Officer initiated activity at Pacific Southwest Research Lab, Bayview St, Arcata.
+Disposition: Rims Documentation Only.
+15:47    Walk Through                                            2104190026
+Officer initiated activity at Kinesiology & Athletics, Gymnasium Ln, Arcata.
+Disposition: Rims Documentation Only.
+16:29    Patrol Check                                            2104190029
+Officer initiated activity at Redwood Bowl, Gymnasium Ln, Arcata. Gates unlocked.
+Disposition: Rims Documentation Only.
+16:33    Walk Through                                            2104190031
+Officer initiated activity at Student Recreation Center, Fieldhouse Ct, Arcata.
+Disposition: Rims Documentation Only.
+16:54    Patrol Check                                            2104190032
+Officer initiated activity at College Creek Marketplace, Harpst St, Arcata.
+Disposition: Rims Documentation Only.
+20:18    Patrol Check                                            2104190034
+Officer initiated activity at University Annex, C St, Arcata.
+Disposition: Rims Documentation Only.
+20:24    Medical Aid                                             2104190035
+Occurred at Lumberjack Arena on Gymnasium Ln. .
+18 yoa female, collapsed and has muscle cramps and a headache.  Difficulty breathing and chest pain.  Subject was transported via ambulance.
+Disposition: Rims Documentation Only.
+21:05    Outside Assist - APD                                    2104190036
+Occurred at City Of Arcata West Of 101 on Humboldt Ave.
+911 - RP reporting shots heard in the area of the 1500 block of Hilfiker.   RP was transferred to APD.
+Disposition: Assisted.
+21:36    Outside Assist - APD                                    2104190037
+Officer initiated activity at City Of Arcata West Of 101, Humboldt Ave, Arcata.
+Out with APD at Westwood Market.
+Disposition: Assisted.
+23:45    Patrol Check                                            2104190038
+Officer initiated activity at Rowing Shed, Waterfront Dr, Eureka.
+Disposition: Rims Documentation Only.
+23:45    Patrol Check                                            2104190039
+Officer initiated activity at Humboldt Bay Aquatic Center, Waterfront Dr, Eureka.
+Disposition: Rims Documentation Only.
+23:48    Patrol Check                                            2104190041
+Officer initiated activity at 3RD Street Gallery, Third Street, Eureka.
+Disposition: Rims Documentation Only .
