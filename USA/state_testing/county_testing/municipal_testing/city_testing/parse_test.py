@@ -30,6 +30,13 @@ with open("html.html", 'r') as output:
                     data.write(text + "\n")
     data.close()
 
+    date_type_incident = []
     with open("text.txt", "r") as data:
-        for line in data:
-            
+        for count, line in enumerate(data, 1):
+            if count % 3 == 0:
+                print("third")
+
+            if count % 1 == 0:
+                date_type = line.split("    ")
+                print(date_type)
+            print(iter_line)
