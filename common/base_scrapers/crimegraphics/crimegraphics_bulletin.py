@@ -10,9 +10,9 @@ import time
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[1]
-sys.path.insert(1, str(p) + "/crimegraphics")
+sys.path.insert(1, str(p))
 
-from utils.page_update import hash_comparer, page_hasher, page_update
+from common.utils import hash_comparer, page_hasher, page_update
 
 
 def function_timer(stats):
@@ -25,16 +25,12 @@ def time_dif(stats, string, start, end):
         print(f"{string}: {end - start} seconds")
 
 
-def crimegraphics_scraper(configs, save_dir, stats=False):
+def crimegraphics_bulletin(configs, save_dir, stats=False):
     # automatically have the CLERYMenu clicked for daily crime data
     payload = {
         "MYAGCODE": configs.department_code,
-        "__EVENTTARGET": "MainMenu$ArrestsMenu",
-        "__EVENTARGUMENT": "ArrestsMenu",
-        "txtArrestStartDate": "02/05/2021",
-        "txtArrestEndDate": "04/12/2021",
-        "cmdSearchArrests": "Search"
-
+        "__EVENTTARGET": "MainMenu$BulletinMenu",
+        "__EVENTARGUMENT": "BulletinMenu",
     }
     data = []
 
@@ -60,18 +56,20 @@ def crimegraphics_scraper(configs, save_dir, stats=False):
     search_start = function_timer(stats)
     # this website has a bunch of empty tables with the same name
     # the 6th index has the data we need
-    table = soup.find_all("table", {"class": "ob_gBody"})[6]
+    table = soup.find("span", id="Bull")
+    print(table)
     search_end = function_timer(stats)
     time_dif(stats, "Search time", search_start, search_end)
 
-    hash_start = function_timer(stats)
-    # Checks if the page has been updated
-    page_update(table)
+    # hash_start = function_timer(stats)
+    # # Checks if the page has been updated
+    # page_update(table)
+    #
+    # hash_end = function_timer(stats)
+    # time_dif(stats, "Hash time", hash_start, hash_end)
 
-    hash_end = function_timer(stats)
-    time_dif(stats, "Hash time", hash_start, hash_end)
-
-    rows = table.find_all("tr")
+    rows = table.find_all("br")
+    print(rows)
     for row in tqdm(rows):
         td = row.find_all("td")
         table_data = []
