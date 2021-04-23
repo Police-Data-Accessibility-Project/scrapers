@@ -30,7 +30,7 @@ with open("html.html", 'r') as output:
                     data.write(text + "\n")
     data.close()
 
-    date_type_incident = []
+    time_type_date_incident = []
     count = 1
     # for keeping track of multi-line descriptions
     desc_cont = False
@@ -40,9 +40,10 @@ with open("html.html", 'r') as output:
         for line in data:
             # the first line will have the time, record type and record ID
             if count == 1:
-                date_type = line.split("    ")
-                date_type[:] = [x for x in date_type if x]
-                print(date_type)
+                time_type_date = line.split("    ") # There is a 4 space gap between the time and the activity. This splits that
+                time_type_date[:] = [x for x in time_type_date if x] # Removes the 44 blank spaces between the type and the date
+                time_type_date[2] = time_type_date[2].strip("\n") # Removes the new line indicators
+                print(time_type_date)
             # after that we have the description (for any number of lines)
             # and ends in the disposition
             if count >= 2:
@@ -63,6 +64,10 @@ with open("html.html", 'r') as output:
                     incident_description += ' ' + line.strip()
                 else:
                     incident_description = line.strip()
+                    print(" [*] Not an extended description")
+                    initiator_location = line.split(" at ")
+                    initiator_location[1] = initiator_location[1].strip(".\n")
+                    print(initiator_location)
                     desc_cont = True
 
 
