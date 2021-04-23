@@ -65,7 +65,7 @@ with open("html.html", 'r') as output:
                         act_date = time_type_date[2]
                         act_date = act_date[:6] # First 6 characters are the date in YYMMDD
                         # Add underscores to separate, PDAP hates hyphens (idk why)
-                        activity_date = '_'.join([act_date[:2], act_date[2:4], act_date[4:6]])
+                        activity_date = '-'.join([act_date[:2], act_date[2:4], act_date[4:6]])
                         # Adds 20 to the beginning to match MySQL standard of yyyy-mm-dd
                         activity_date = "20" + activity_date
                         reference_num = time_type_date[2]
@@ -76,7 +76,7 @@ with open("html.html", 'r') as output:
                             for i in range(num_add):
                                 place_street_city.append("null")
 
-                    
+
                         #  ReferenceNum, ActivityDate, ActivityTime, ActivityType, ActivityInitiator, ActivityDescription, Disposition, ActivityPlace, ActivityStreet, ActivityCity
                         if was_desc_cont:
                             all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], initiator_location[0], incident_description, disposition, place_street_city[0], place_street_city[1], place_street_city[2]]
@@ -107,5 +107,8 @@ with open("html.html", 'r') as output:
                         desc_cont = True
                 count += 1
 
+with open("data.txt", "r") as read_data:
+    for line in read_data:
+        
                 # if count % 2 == 0:
                 #     initiator line.split("at")
