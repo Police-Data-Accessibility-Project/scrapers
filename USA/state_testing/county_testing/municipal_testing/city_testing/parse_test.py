@@ -32,20 +32,38 @@ with open("html.html", 'r') as output:
 
     date_type_incident = []
     count = 1
+    # for keeping track of multi-line descriptions
+    desc_cont = False
+    print('======================')
     with open("text.txt", "r") as data:
         for line in data:
+            # the first line will have the time, record type and record ID
             if count == 1:
-                print("Line 1")
                 date_type = line.split("    ")
                 date_type[:] = [x for x in date_type if x]
                 print(date_type)
-                print(f"count: {count}")
+            # after that we have the description (for any number of lines)
+            # and ends in the disposition
+            if count >= 2:   
+                # when we reach Disposition, it is the final part of the block
+                if 'Disposition: ' in line:
+                    # if we reach 'Disposition' then we are done
+                    print (incident_description)
+                    desc_cont = False
+                    # remove the 'Disposition: ' prefix and any \n or . chars
+                    disposition = line.split('Disposition: ')[1].strip().replace('.', '')
+                    print('Disposition: ' + disposition)
+                    print('======================') # pretty print a closing line saying we are done
+                    count = 0 # reset back, next line will be a header
+                # if true, then a prior line set this so we know to add it to the description
+                elif desc_cont:
+                    incident_description += ' ' + line.strip()
+                else:
+                    incident_description = line.strip()
+                    desc_cont = True
 
-            elif count == 3:
-                count = 0
-                print("third")
-                print(f"count: {count}")
-
+            
             count += 1
+            
             # if count % 2 == 0:
             #     initiator line.split("at")
