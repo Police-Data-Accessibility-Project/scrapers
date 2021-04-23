@@ -31,12 +31,21 @@ with open("html.html", 'r') as output:
     data.close()
 
     date_type_incident = []
+    count = 1
     with open("text.txt", "r") as data:
-        for count, line in enumerate(data, 1):
-            if count % 3 == 0:
-                print("third")
-
-            if count % 1 == 0:
+        for line in data:
+            if count == 1:
+                print("Line 1")
                 date_type = line.split("    ")
+                date_type[:] = [x for x in date_type if x]
                 print(date_type)
-            print(iter_line)
+                print(f"count: {count}")
+
+            elif count == 3:
+                count = 0
+                print("third")
+                print(f"count: {count}")
+
+            count += 1
+            # if count % 2 == 0:
+            #     initiator line.split("at")
