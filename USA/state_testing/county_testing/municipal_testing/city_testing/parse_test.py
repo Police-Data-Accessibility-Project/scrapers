@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 # from bs4 import BeautifulSoup
 from bs4 import BeautifulSoup, NavigableString, Tag
-
 from tqdm import tqdm
+import pandas
 
 data = []
 with open("html.html", 'r') as output:
@@ -109,6 +109,6 @@ with open("html.html", 'r') as output:
 
 with open("data.txt", "r") as read_data:
     for line in read_data:
-        
+
                 # if count % 2 == 0:
                 #     initiator line.split("at")
