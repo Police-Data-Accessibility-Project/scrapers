@@ -61,22 +61,4 @@ def crimegraphics_bulletin(configs, save_dir, stats=False):
     search_end = function_timer(stats)
     time_dif(stats, "Search time", search_start, search_end)
 
-    # hash_start = function_timer(stats)
-    # # Checks if the page has been updated
-    # page_update(table)
-    #
-    # hash_end = function_timer(stats)
-    # time_dif(stats, "Hash time", hash_start, hash_end)
-
-    rows = table.find_all("br")
-    print(rows)
-    for row in tqdm(rows):
-        td = row.find_all("td")
-        table_data = []
-        for actual_data in td:
-            table_data.append(actual_data.get_text())
-        data.append(table_data)
-
-    dataframe = pd.DataFrame(data=data, columns=configs.list_header)
-
-    dataframe.to_csv(save_dir + configs.department_code + "_daily_bulletin")
+    # Import the parser
