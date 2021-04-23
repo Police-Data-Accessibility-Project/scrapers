@@ -13,6 +13,7 @@ p = Path(__file__).resolve().parents[1]
 sys.path.insert(1, str(p))
 
 from common.utils import hash_comparer, page_hasher, page_update
+from crimegraphics.utils import data_parser
 
 
 def function_timer(stats):
@@ -47,18 +48,18 @@ def crimegraphics_bulletin(configs, save_dir, stats=False):
 
     # Parse the response using bs4
     soup = BeautifulSoup(response.text, "html.parser")
-    with open("html.html", 'wb') as output:
-        output.write(str(soup).encode('utf-8'))
-    output.close()
+    # with open("html.html", 'wb') as output:
+    #     output.write(str(soup).encode('utf-8'))
+    # output.close()
     parse_end = function_timer(stats)
     time_dif(stats, "Parse time", parse_start, parse_end)
 
     search_start = function_timer(stats)
-    # this website has a bunch of empty tables with the same name
-    # the 6th index has the data we need
+
     table = soup.find("span", id="Bull")
-    print(table)
+    page_update(table)
     search_end = function_timer(stats)
     time_dif(stats, "Search time", search_start, search_end)
 
     # Import the parser
+    data_parser(configs, save_dir, table)
