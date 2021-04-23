@@ -50,7 +50,6 @@ with open("html.html", 'r') as output:
                 # when we reach Disposition, it is the final part of the block
                 if 'Disposition: ' in line:
                     # print out the full description we have been compiling
-                    print(incident_description)
                     # TODO: save incident description somewhere (like an obj or an array)
                     incident_description = '' #reset back to empty
                     desc_cont = False # reset bool back
@@ -59,17 +58,20 @@ with open("html.html", 'r') as output:
                     print('Disposition: ' + disposition)
                     print('======================') # pretty print a closing line saying we are done
                     count = 0 # reset back, next line will be a header
+                    input()
                 # if true, then a prior line set this so we know to add it to the description
                 elif desc_cont:
-                    incident_description += ' ' + line.strip()
+                    print("  [!] There is a description")
+                    print("LINE: " + line)
+                    incident_description = line
+                    print("incident_description desc_cont: " +incident_description)
+
                 else:
-                    incident_description = line.strip()
                     print(" [*] Not an extended description")
                     initiator_location = line.split(" at ")
                     initiator_location[1] = initiator_location[1].strip(".\n")
                     print(initiator_location)
                     desc_cont = True
-
 
             count += 1
 
