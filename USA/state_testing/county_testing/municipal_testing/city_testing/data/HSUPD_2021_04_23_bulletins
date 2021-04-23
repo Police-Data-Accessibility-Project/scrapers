@@ -1,0 +1,50 @@
+,ReferenceNum,ActivityDate,ActivityTime,ActivityType,ActivityInitiator,ActivityDescription,Disposition,ActivityPlace,ActivityStreet,ActivityCity
+0,2104220002,2021-04-22,00:35,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Pacific Southwest Research Lab, Bayview St, Arcata
+1,2104220003,2021-04-22,01:01,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Rowing Shed, Waterfront Dr, Eureka
+2,2104220004,2021-04-22,01:04,Patrol Check,Officer initiated activity,null,Rims Documentation Only,3RD Street Gallery, Third Street, Eureka
+3,2104220005,2021-04-22,01:07,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Humboldt Bay Aquatic Center, Waterfront Dr, Eureka
+4,2104220006,2021-04-22,02:43,Patrol Check,Officer initiated activity,null,Rims Documentation Only,University Corp Yard, Samoa Blvd, Arcata
+5,2104220007,2021-04-22,02:47,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Natural History Museum, G St, Arcata
+6,2104220008,2021-04-22,02:50,Patrol Check,Officer initiated activity,null,Rims Documentation Only,University Annex, C St, Arcata
+7,2104220009,2021-04-22,02:52,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Turner House, Bayview St, Arcata
+8,2104220010,2021-04-22,02:53,Patrol Check,Officer initiated activity,Founders/Van Matre,Rims Documentation Only,Founders Hall, E Laurel Dr, Arcata
+9,2104220011,2021-04-22,02:56,Patrol Check,Officer initiated activity,null,Rims Documentation Only,University Center, Plaza Ml, Arcata
+10,2104220013,2021-04-22,03:10,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Pacific Southwest Research Lab, Bayview St, Arcata
+11,2104220014,2021-04-22,03:12,Patrol Check,Officer initiated activity,null,Rims Documentation Only,College Creek Marketplace, Harpst St, Arcata
+12,2104220015,2021-04-22,03:13,Walk Through,Officer initiated activity,null,Rims Documentation Only,Founders Hall, E Laurel Dr, Arcata
+13,2104220016,2021-04-22,04:52,Patrol Check,Officer initiated activity,null,Rims Documentation Only,3RD Street Gallery, Third Street, Eureka
+14,2104220017,2021-04-22,04:54,Walk Through,Officer initiated activity,null,Rims Documentation Only,Humboldt Bay Aquatic Center, Waterfront Dr, Eureka
+15,2104220018,2021-04-22,05:00,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Rowing Shed, Waterfront Dr, Eureka
+16,2104220019,2021-04-22,05:15,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Jgc, Granite Ave, Arcata
+17,2104220022,2021-04-22,08:34,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Pacific Southwest Research Lab, Bayview St, Arcata
+18, 2104220023,20 2-10-42,08:40,Medical Aid,Occurred,The subject was transported to MRCH via ambulance,Rims Documentation Only,Student Health & Counseling on Plaza Ml,null,null
+19, 2104220024,20 2-10-42,08:41,Unknown problem,Occurred,Officer responded. A female was contacted and needed no assistance,Rims Documentation Only,Trinity Residence Hall on Rossow St,null,null
+20, 2104220025,20 2-10-42,09:40,Traffic Enforcement,Officer initiated activity,null,Rims Documentation Only,Gateway Main, Lk Wood Blvd, Arcata
+21, 2104220026,20 2-10-42,10:24,Disturbance,Officer initiated activity,The subject left the area on request,Warned/Advised,Lot G-11, Rossow St, Arcata
+22, 2104220027,20 2-10-42,10:31,Traffic Enforcement,Officer initiated activity,null,Rims Documentation Only,Field Lower Play, Harpst St, Arcata
+23,2104220028,2021-04-22,11:23,Outside Assist - APD,Occurred,The subject was located at MRCH,Refer,Student Health & Counseling on Plaza Ml,null,null
+24, 2104220029,20 2-10-42,11:33,Animal Call,Occurred,The shelter was able to identify the dog and will contact the owner,Rims Documentation Only,University Center on Plaza Ml,null,null
+25, 2104220030,20 2-10-42,11:46,Assist Housing-Non Criminal,Officer initiated activity,Officer assisted locating a missing subject who is now at MRCH,Assisted,Jgc, Granite Ave, Arcata
+26,2104220032,2021-04-22,13:24,Patrol Check,Officer initiated activity,null,Rims Documentation Only,College Creek Apartments, Harpst St, Arcata
+27,2104220033,2021-04-22,14:04,Patrol Check,Officer initiated activity,null,Rims Documentation Only,University Corp Yard, Samoa Blvd, Arcata
+28,2104220034,2021-04-22,14:04,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Humboldt Bay Aquatic Center, Waterfront Dr, Eureka
+29,2104220035,2021-04-22,15:15,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Behavioral And Social Sciences, Union St, Arcata
+30,2104220036,2021-04-22,15:21,Patrol Check,Officer initiated activity,null,Rims Documentation Only,University Corp Yard, Samoa Blvd, Arcata
+31,2104220037,2021-04-22,15:27,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Natural History Museum, G St, Arcata
+32,2104220040,2021-04-22,21:23,Walk Through,Officer initiated activity,Gate secured,Rims Documentation Only,Redwood Bowl, Gymnasium Ln, Arcata
+33,2104220041,2021-04-22,21:29,Walk Through,Officer initiated activity,null,Rims Documentation Only,College Creek Apartments, Harpst St, Arcata
+34,2104220043,2021-04-22,21:46,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Pacific Southwest Research Lab, Bayview St, Arcata
+35,2104220044,2021-04-22,21:48,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Turner House, Bayview St, Arcata
+36,2104220045,2021-04-22,21:50,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Buck House, Cluster Ct, Arcata
+37,2104220046,2021-04-22,22:02,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Ceramics Lab, Lk Wood Blvd, Arcata
+38,2104220047,2021-04-22,22:02,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Sculpture Lab, Lk Wood Blvd, Arcata
+39,2104220048,2021-04-22,22:11,Walk Through,Officer initiated activity,null,Rims Documentation Only,Creekview Residence Halls, Granite Ave, Arcata
+40,2104220049,2021-04-22,22:40,Patrol Check,Officer initiated activity,null,Rims Documentation Only,University Corp Yard, Samoa Blvd, Arcata
+41,2104220050,2021-04-22,22:43,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Jgc, Granite Ave, Arcata
+42,2104220051,2021-04-22,22:48,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Residence Halls Hill, Redwood Fire Ln, Arcata
+43,2104220052,2021-04-22,22:48,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Library, Sequoia Ml, Arcata
+44,2104220053,2021-04-22,22:52,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Founders Hall, E Laurel Dr, Arcata
+45,2104220054,2021-04-22,22:52,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Van Matre Hall, E Laurel Dr, Arcata
+46,2104220055,2021-04-22,23:10,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Natural History Museum, G St, Arcata
+47,2104220056,2021-04-22,23:35,Patrol Check,Officer initiated activity,null,Rims Documentation Only,Rowing Shed, Waterfront Dr, Eureka
+48,2104220057,2021-04-22,23:36,Walk Through,Officer initiated activity,null,Rims Documentation Only,Humboldt Bay Aquatic Center, Waterfront Dr, Eureka

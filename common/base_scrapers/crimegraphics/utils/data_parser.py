@@ -11,13 +11,7 @@ from datetime import date
 
 data_lists = []
 
-with open("html.html", 'r') as output:
-    output = output.read()
-    soup = BeautifulSoup(output, "html.parser")
-
-    table = soup.find("span", id="Bull")
-    # print(table)
-
+def data_parser(configs, save_dir, table):
     # for a in table.childGenerator():
     #     print(type(a), str(a))
     with open("text.txt", "w") as data:
@@ -53,7 +47,6 @@ with open("html.html", 'r') as output:
             if count >= 2:
                 # when we reach Disposition, it is the final part of the block
                 if 'Disposition: ' in line:
-                    print(f"Disposition count {count}")
                     # print out the full description we have been compiling
                     # TODO: save incident description somewhere (like an obj or an array)
                     # incident_description = '' #reset back to empty
@@ -93,31 +86,31 @@ with open("html.html", 'r') as output:
 
                 # if true, then a prior line set this so we know to add it to the description
                 elif desc_cont:
-                    print(f"desc_cont {count}" )
-                    print("  [!] There is a description")
-                    print("LINE: " + line)
+                    # print("  [!] There is a description")
+                    # print("LINE: " + line)
                     incident_description = line.strip(".\n")
-                    print("incident_description desc_cont: " + incident_description)
                     was_desc_cont = True
                 # if disposition is not in the line, then treat it as the usual initiator and location line
                 else:
-                    print(f"else {count}")
                     initiator_location = line.split(" at ")
                     initiator_location[1] = initiator_location[1].strip(".\n")
-                    print(initiator_location)
                     # set desc_cont to True, will remain true unless `Disposition` is found in line
                     desc_cont = True
             count += 1
 
-# print(data_lists)
-columns = ["ReferenceNum", "ActivityDate", "ActivityTime", "ActivityType", "ActivityInitiator", "ActivityDescription", "Disposition", "ActivityPlace", "ActivityStreet", "ActivityCity"]
-index = [i[0] for i in data_lists] #first element of every list in yourlist
-not_index_list = [i for i in data_lists]
-print(not_index_list)
-pd = pandas.DataFrame(not_index_list, columns = columns)
-date_name = date.today()
-file_name = "_" + str(date_name).replace("-", "_") + "_"
-pd.to_csv(file_name + "bulletins")
+    # print(data_lists)
+    columns = ["ReferenceNum", "ActivityDate", "ActivityTime", "ActivityType", "ActivityInitiator", "ActivityDescription", "Disposition", "ActivityPlace", "ActivityStreet", "ActivityCity"]
+    index = [i[0] for i in data_lists] #first element of every list in yourlist
+    not_index_list = [i for i in data_lists]
+    pd = pandas.DataFrame(not_index_list, columns = columns)
+    date_name = date.today()
+    file_name = "_" + str(date_name).replace("-", "_") + "_"
+    pd.to_csv(save_dir + configs.department_code + file_name + "bulletins")
 
-                # if count % 2 == 0:
-                #     initiator line.split("at")
+    try:
+        os.remove("text.txt")
+    except FileNotFoundError:
+        pass
+
+                    # if count % 2 == 0:
+                    #     initiator line.split("at")
