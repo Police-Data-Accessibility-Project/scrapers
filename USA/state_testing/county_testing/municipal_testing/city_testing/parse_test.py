@@ -45,13 +45,13 @@ with open("html.html", 'r') as output:
                 print(date_type)
             # after that we have the description (for any number of lines)
             # and ends in the disposition
-            if count >= 2:   
+            if count >= 2:
                 # when we reach Disposition, it is the final part of the block
                 if 'Disposition: ' in line:
                     # print out the full description we have been compiling
-                    print (incident_description)
+                    print(incident_description)
                     # TODO: save incident description somewhere (like an obj or an array)
-                    incident_description = '' #reset back to empty 
+                    incident_description = '' #reset back to empty
                     desc_cont = False # reset bool back
                     # remove the 'Disposition: ' prefix and any \n or . chars
                     disposition = line.split('Disposition: ')[1].strip().replace('.', '')
@@ -65,8 +65,8 @@ with open("html.html", 'r') as output:
                     incident_description = line.strip()
                     desc_cont = True
 
-            
+
             count += 1
-            
+
             # if count % 2 == 0:
             #     initiator line.split("at")
