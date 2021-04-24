@@ -1,15 +1,59 @@
-# Contributing Scrapers
-Scrapers make up, line for line, most of PDAP. Here's the [official documentation](https://docs.pdap.io/data-collection/write-a-data-scraper).
+# Write a data scraper
 
-## What do the scrapers do?
-Navigate to a source of public police data, convert it to a unified format, and add it to our version-controlled database.
+## Overview
 
-## Best practices
-At least one approval is required for any Pull Requests to be merged.
+You’re going to program a [legal data scraper](../meta/legal/legal-data-scraping.md) and process a sample data file. For example, you could be using Python to turn a PDF of police activities into JSON, or making recurring API calls to pull down files.
 
-## Approving Scrapers
-Anyone is welcome to approve scrapers. Your approval means you think the scraper is legal. Style suggestions are welcome, but the reality is that we're aiming at a moving target: a working scraper can be broken at any moment by changes made in a jurisdiction. Approve legal scrapers.
+### Find a dataset to scrape.
 
-* Review the scraper for legal risk. This is the most important approval criteria.
-* Does the sample data look sane and accurate? Is it legal? If so, approve it!
-* Make a comment if you have style or scale suggestions. Better, share your skills by making a PR to improve the work of someone else!
+Navigate to our [Dataset Catalog](https://www.dolthub.com/repositories/pdap/datasets) and find a source to scrape, or add your own. If this is your first time using Dolt, you can [reference our primer](../data-storage/dolthub.md).
+
+You can also scrape data to improve the dataset catalogue itself! Head to #datasets in Slack or make a PR in Dolt.
+
+### Get set up locally.
+
+Clone the [Scrapers repo](https://github.com/Police-Data-Accessibility-Project/Scrapers). Make a copy of the `template` folder in the appropriate jurisdiction folder.
+
+### Code your scraper.
+
+The most important thing here is that your scraper is grabbing public police data, and is [legal](../meta/legal/legal-data-scraping.md).
+
+#### Scraper requirements
+
+1. It's [legal](../meta/legal/state-computer-crimes-laws.md).
+2. The config file appropriately references a dataset.
+3. Include a truncated version of some sample data so we understand what is generated.
+4. Ensure you have a `schema.json` file & a blank `etl.py` file in your scraper directory, and call `import etl` at the end of your scraper! This will hook into our ETL process once we get further along.
+
+Your submission doesn't need to be set up to recur. We can handle that when we run it periodically!
+
+#### Scalability
+
+Check the `common` folder for helpful assets, and be sure to add your own as you work to keep things scalable. Try not to repeat yourself—but keep in mind that we can always refactor your work later if necessary.
+
+#### Readme
+
+The best way to be a good PDAP citizen is to populate the readme for your scraper with as much helpful information as you can!
+
+#### Structure
+
+Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`. If there are state-level records being scraped, use `USA/$STATE/_State/$RECORD_TYPE`. Use underscores rather than spaces or dashes.
+
+### Submit your work.
+
+Make a PR and request approval from the \#scrapers Slack channel!
+
+## Scraper FAQ
+
+> What kind of data are we scraping?
+
+Police data that's already made public by a government jurisdiction.
+
+> What languages are allowed?
+
+Python is preferred. If you use another language, we may not be able to easily fold it into our infrastructure.
+
+> Are there any specific formatting guidelines I should adhere to?
+
+For now, if you use Python: Try to stick with PEP8 formatting. A good formatter for this is [Black](https://github.com/psf/black).
+
