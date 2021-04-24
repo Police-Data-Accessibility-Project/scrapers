@@ -1,5 +1,5 @@
 # Police Data Accessibility Project Scrapers & ETL
-This repo contains the record scrapers, ETL and associated tooling to further the goals of the Police Data Accessibility Project. Thank you for your interest in contributing!
+This repo contains the record scrapers, ETL and associated tooling to further the goals of the [Police Data Accessibility Project](https://pdap.io). Thank you for your interest in contributing!
 
 # Where can I find data?
 Uploaded data is [here](https://www.dolthub.com/repositories/pdap/data-intake). Soon, we'll mirror it for archival storage and the performance we will need at scale.
