@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 from tqdm import tqdm
 import pandas
 from datetime import date
+import re
 
 data_lists = []
 
@@ -53,7 +54,7 @@ def data_parser(configs, save_dir, table):
                     desc_cont = False # reset bool back
                     # remove the 'Disposition: ' prefix and any \n or . chars
                     disposition = line.split('Disposition: ')[1].strip().replace('.', '')
-                    print('Disposition: ' + disposition)
+                    print("Disposition: " + disposition)
 
                     # Format the data for writing
                     # Separating the date from the ReferenceNum
@@ -72,9 +73,11 @@ def data_parser(configs, save_dir, table):
                                 num_add = 3 - len(place_street_city)
                                 for i in range(num_add):
                                     place_street_city.append("null")
+                            print(place_street_city)
                         except UnboundLocalError as exception:
                             print("")
                             print(f" [!!!] {exception}")
+                            print(f"Line: {line}")
                             print(" [!!!] Not currently saving these")
                             print("")
                     else:
@@ -83,14 +86,23 @@ def data_parser(configs, save_dir, table):
 
                     #  ReferenceNum, ActivityDate, ActivityTime, ActivityType, ActivityInitiator, ActivityDescription, Disposition, ActivityPlace, ActivityStreet, ActivityCity
                     if was_desc_cont:
+                        if inc_description:
+                            incident_description = str(incident_description2[1]) + " CODE_INSERTED_BREAK " + incident_description
                         all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], initiator_location[0], incident_description, disposition, place_street_city[0], place_street_city[1], place_street_city[2]]
-                    else:
+                        print(all_data)
+
+                    elif not was_desc_cont:
+                        if inc_description:
+                            incident_description = str(incident_description2[1]) + " CODE_INSERTED_BREAK " + incident_description
                         try:
                             all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], initiator_location[0], "null", disposition, place_street_city[0], place_street_city[1], place_street_city[2]]
+                            print(all_data)
                         except UnboundLocalError as exception:
                             print(f" [!!!] {exception}")
                             all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], "null", "null", disposition, "null", "null", "null"]
                             print(" [!!!] Not able to save the location... saving as \"null\"")
+                            print(all_data)
+
 
                     data_lists.append(all_data)
 
@@ -107,10 +119,25 @@ def data_parser(configs, save_dir, table):
                     was_desc_cont = True
                 # if disposition is not in the line, then treat it as the usual initiator and location line
                 else:
-                    initiator_location = line.split(" at ")
-                    initiator_location[1] = initiator_location[1].strip(".\n")
-                    # set desc_cont to True, will remain true unless `Disposition` is found in line
-                    desc_cont = True
+                    try:
+                        initiator_location = line.split(" at ")
+                        initiator_location[1] = initiator_location[1].strip(".\n")
+                        # set desc_cont to True, will remain true unless `Disposition` is found in line
+                        desc_cont = True
+                    except IndexError as exception:
+                        print("")
+                        print(f" [!!!] {exception}")
+                        initiator_location = re.split(" on |,*\.\s", line)
+                        initiator_location[1] = initiator_location[1].strip(".\n")
+                        print("INITIATOR_LOCATION: " + str(initiator_location))
+                        print("INCIDENT_DESCRIPTION: " + str(incident_description))
+                        incident_description2 = line.split(".", 1)
+                        print("INCIDENT_DESCRIPTION2: " + str(incident_description))
+                        # set desc_cont to True, will remain true unless `Disposition` is found in line
+                        desc_cont = True
+                        inc_description = True
+
+
             count += 1
 
     # print(data_lists)
