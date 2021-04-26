@@ -6,7 +6,6 @@ import time
 import requests
 import mimetypes
 import traceback
-from tqdm import tqdm
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[2]
@@ -30,6 +29,7 @@ def get_files(
         print("url_name.txt does not exist. Did you call extract_info first?")
         return
 
+
     print(" [*] Opening url_name.txt")
     with open("url_name.txt", "r") as input_file:
 
@@ -43,15 +43,16 @@ def get_files(
         if line_count <= 1:
             print("    [?] One line found, setting sleep_time to 0")
             sleep_time = 0
-        lines = input_file
+        lines = input_file.read()
         for line in lines:
             print(line)
     input_file.close()
 
-    # Not doing this breaks the code due to `readlines()` for some reason. Unsure why
+    first_line = 0
     with open("url_name.txt", "r") as input_file:
         print(" [*] Getting files")
-        for line in tqdm(input_file):
+        for line in input_file:
+            first_line += 1
             if debug:
                 print(line)
 
@@ -63,11 +64,12 @@ def get_files(
             response = requests.get(url_2)
             content_type = response.headers["content-type"]
             extension = mimetypes.guess_extension(content_type)
-            print(" [*] Extension is " + extension )
+            print("    [*] Extension is " + extension )
 
             # If the name IS in the url
             if name_in_url == True:
-                print(" [?] name_in_url is True")
+                if first_line <= 1:
+                    print(" [?] name_in_url is True")
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
                     print("   [*] Getting file " + file_name)
@@ -91,8 +93,8 @@ def get_files(
                     get_xls(save_dir, file_name, url_2, sleep_time)
 
                 else:
-                    print("Unhandled documents type")
-                    print("Url: " + url_2)
+                    print(" [!!!] Unhandled documents type")
+                    print(" [!!!] Url: " + url_2)
 
             # If name_in_url is False
             else:
@@ -110,8 +112,8 @@ def get_files(
                     try:
                         file_name = file_name[1].strip('"')
                     except IndexError:
-                        print("file_name was blank, might want to check that.")
-                        print("(Likely caused by using setting name_in_url=False)")
+                        print(" [!!!] file_name was blank, might want to check that.")
+                        print(" [!!!] (Likely caused by using setting name_in_url=False)")
                         pass
 
                 if debug:
@@ -147,8 +149,8 @@ def get_files(
                     get_xls(save_dir, file_name, url_2, sleep_time)
 
                 else:
-                    print("Unhandled documents type")
-                    print("Url: " + url_2)
+                    print(" [!!!] Unhandled documents type")
+                    print(" [!!!] Url: " + url_2)
 
     input_file.close()
 
