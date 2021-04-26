@@ -1,0 +1,13 @@
+,ReferenceNum,ActivityDate,ActivityTime,ActivityType,ActivityInitiator,ActivityDescription,Disposition,ActivityPlace,ActivityStreet,ActivityCity
+0,   2104250001,20  - 2-10,00:47,Parking Complaint,null,null,Parking Cite,null,null,null
+1,   2104250003,20  - 2-10,02:12,Medical Emergency,null,null,Victim Transported Medical Only,null,null,null
+2, 2104250006,20 2-10-42,04:23,Warrant Service/Attempt,null,null,Arrest Made,null,null,null
+3, 2104250011,20 2-10-42,07:33,Alarm - Audible,null,null,False Alarm,null,null,null
+4,  2104250012,20  -21-04,07:49,Found Property,null,null,Resolved,null,null,null
+5,2104250023,2021-04-25,11:34,Theft from a Vehicle,null,null,Report Taken,null,null,null
+6,   2104250024,20  - 2-10,11:56,Medical Emergency,null,null,Referred To Other Agency,null,null,null
+7,   2104250028,20  - 2-10,13:26,Civil Standby,null,null,Cancelled Enroute,null,null,null
+8,   2104250037,20  - 2-10,15:49,Medical Emergency,null,null,Referred To Other Agency,null,null,null
+9, 2104250046,20 2-10-42,18:35,Disturbance,null,null,Advised/Assisted,null,null,null
+10,2104250055,2021-04-25,22:59,Suspicious Circumstances,null,null,Unfounded/No Merit,null,null,null
+11, 2104250056,20 2-10-42,23:48,Animal Call,null,null,Referred To Other Agency,null,null,null
