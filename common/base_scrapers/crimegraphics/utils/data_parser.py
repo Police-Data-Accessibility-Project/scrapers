@@ -65,18 +65,33 @@ def data_parser(configs, save_dir, table):
                     activity_date = "20" + activity_date
                     reference_num = time_type_date[2]
 
-                    place_street_city = initiator_location[1].split(",")
-                    if len(place_street_city) != 3:
-                        num_add = 3 - len(place_street_city)
-                        for i in range(num_add):
-                            place_street_city.append("null")
+                    if "Occurred on " not in line:
+                        try:
+                            place_street_city = initiator_location[1].split(",")
+                            if len(place_street_city) != 3:
+                                num_add = 3 - len(place_street_city)
+                                for i in range(num_add):
+                                    place_street_city.append("null")
+                        except UnboundLocalError as exception:
+                            print("")
+                            print(f" [!!!] {exception}")
+                            print(" [!!!] Not currently saving these")
+                            print("")
+                    else:
+                        print("Not saving the location")
 
 
                     #  ReferenceNum, ActivityDate, ActivityTime, ActivityType, ActivityInitiator, ActivityDescription, Disposition, ActivityPlace, ActivityStreet, ActivityCity
                     if was_desc_cont:
                         all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], initiator_location[0], incident_description, disposition, place_street_city[0], place_street_city[1], place_street_city[2]]
                     else:
-                        all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], initiator_location[0], "null", disposition, place_street_city[0], place_street_city[1], place_street_city[2]]
+                        try:
+                            all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], initiator_location[0], "null", disposition, place_street_city[0], place_street_city[1], place_street_city[2]]
+                        except UnboundLocalError as exception:
+                            print(f" [!!!] {exception}")
+                            all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], "null", "null", disposition, "null", "null", "null"]
+                            print(" [!!!] Not able to save the location... saving as \"null\"")
+
                     data_lists.append(all_data)
 
                     was_desc_cont = False # resset bool back
