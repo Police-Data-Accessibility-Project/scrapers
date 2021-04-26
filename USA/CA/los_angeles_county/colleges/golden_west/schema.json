@@ -1,0 +1,25 @@
+{
+    "agency_id": "2dcef44d114643e0b2f651886db143a6",
+    "agency_info":{
+        "agency_name":"Golden West College Public Safety",
+        "agency_coords":{"lat": "33.732078552246094", "lng":"-118.00499725341797"},
+        "agency_type": 4,
+        "city": "Huntington Beach",
+        "state": "CA",
+        "zip":"92647",
+        "county_fips":"06059"
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"ttps://www.goldenwestcollege.edu/public-safety/statistics/index.html",
+            "full_data_location":"/data",
+            "source_type": 2,
+            "data_type": 23,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
+    ]
+    
+}

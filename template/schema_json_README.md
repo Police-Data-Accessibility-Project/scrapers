@@ -10,7 +10,7 @@ This guide shows you how to fill out the schema.json for use:
     * **`agency_name`**: name of the agency such as 'Gaston County Sheriff'
     * **`agency_coords`**: this will probably require you to search up on Google Maps. This is actually very important to ensure we pull the correct FIPS and municipal codes. Search the agency on google maps, and right click on the pin to grab the lat and long coordinates. It is okay if there are multiple districts, just grab the main district if so.
     * **`state`**: two-letter state code ('IN', 'CA')
-    * **`county`**: county name in Title case (first letter capitalized: 'Marion', 'Bristol Bay') (leave blank if a state agency)
+    * **`county_fips`**: FIPS code of the county (can be left blank if lat and lng are filled in and it will auto search up the fips)
     * **`city`**: city of the agency (leave blank if a county or state agency)
 * **data**: There can be multiple types of data from each agency, so this is an enumerable way to point to the different types of data stored. Store each type in a different directory such as `/incident_reports` , `/booking_reports` .etc. 
     **dataset_id**: The ID from our list of datasets found [here](https://www.dolthub.com/repositories/pdap/datasets/data/master/datasets). If this is a new dataset not yet in our table, leave this blank and the ETL script will use the information in `dataset_information` to add a record and automatically add the ID to the schema.json file.
@@ -29,12 +29,14 @@ If we end up getting more data form this agency (such as arrest records or booki
 
 ```json
 {
-    "agency_id": "",
+    "agency_id": "73e93439e6bf4ffc8b3f931a86fa3ad0",
     "agency_info":{
         "agency_name":"Clanton Police Department",
-        "agency_coords":{"lat": "32.83853", "long":"-86.62936"},
+        "agency_coords":{"lat": "32.83853", "lng":"-86.62936"},
+        "city":"Clanton",
         "state": "AL",
-        "county":"Chilton"
+        "zip":"35045",
+        "county_fips":"01021"
     },
     "data": [
         {
