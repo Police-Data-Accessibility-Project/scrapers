@@ -19,4 +19,4 @@ data = []
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
-crimegraphics_scraper(configs, save_dir)
+crimegraphics_clery(configs, save_dir)
