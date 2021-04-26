@@ -26,7 +26,7 @@ def time_dif(stats, string, start, end):
         print(f"{string}: {end - start} seconds")
 
 
-def crimegraphics_scraper(configs, save_dir, stats=False):
+def crimegraphics_clery(configs, save_dir, stats=False):
     # automatically have the CLERYMenu clicked for daily crime data
     payload = {
         "MYAGCODE": configs.department_code,
