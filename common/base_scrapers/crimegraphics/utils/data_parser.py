@@ -33,7 +33,8 @@ def data_parser(configs, save_dir, table):
     desc_cont = False
     was_desc_cont = False
     incident_description = ''
-
+    inc_description = False
+    
     print('======================')
     with open("text.txt", "r") as data:
         for line in data:
