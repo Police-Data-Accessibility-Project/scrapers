@@ -1,6 +1,6 @@
 import sys
 import os
-import configs
+import CG_configs as configs
 import requests
 import json
 from pathlib import Path
