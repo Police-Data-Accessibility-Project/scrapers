@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
-from common.base_scrapers import crimegraphics_scraper
+from common.base_scrapers import crimegraphics_bulletin
 
 
 save_dir = "./data/"
@@ -19,4 +19,4 @@ data = []
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
-crimegraphics_scraper(configs, save_dir)
+crimegraphics_bulletin(configs, save_dir)

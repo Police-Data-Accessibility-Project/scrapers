@@ -10,9 +10,9 @@ import time
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[1]
-sys.path.insert(1, str(p) + "/crimegraphics")
+sys.path.insert(1, str(p))
 
-from utils.page_update import hash_comparer, page_hasher, page_update
+from common.utils import hash_comparer, page_hasher, page_update
 
 
 def function_timer(stats):
@@ -25,7 +25,7 @@ def time_dif(stats, string, start, end):
         print(f"{string}: {end - start} seconds")
 
 
-def crimegraphics_scraper(configs, save_dir, stats=False):
+def crimegraphics_arrest(configs, save_dir, stats=False):
     # automatically have the CLERYMenu clicked for daily crime data
     payload = {
         "MYAGCODE": configs.department_code,
