@@ -13,7 +13,7 @@ sys.path.insert(1, str(p))
 from common.base_scrapers import crimegraphics_clery
 
 
-save_dir = "./data/"
+save_dir = "./data/daily_bulletins/"
 data = []
 
 if not os.path.exists(save_dir):
