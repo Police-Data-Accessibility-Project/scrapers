@@ -53,7 +53,7 @@ def list_pdf_v3(
                     non_important in line.lower() for non_important in non_important
                 ):
                     new_file.write(line)
-                print("   [*] The following lines were not added: " + str(line))
+                # print("   [*] The following lines were not added: " + str(line))
             print(" [*] Done writing")
     else:
         print(" [?] important is True, assuming important is configured")
