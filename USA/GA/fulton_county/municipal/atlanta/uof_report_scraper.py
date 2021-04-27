@@ -7,6 +7,6 @@ p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 from common import list_pdf_v2
 
-save_dir = "./data/"
+save_dir = "./data/UOF/"
 
 list_pdf_v2(configs, save_dir, name_in_url=False)
