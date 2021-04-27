@@ -146,6 +146,9 @@ def get_files(
                 elif ".xls" in extension:
                     get_xls(save_dir, file_name, url_2, sleep_time)
 
+                elif ".zip" in extension:
+                    urllib.request.urlretrieve(url_2, save_dir + file_name.replace("/", "-"))
+
                 else:
                     print("Unhandled documents type")
                     print("Url: " + url_2)
