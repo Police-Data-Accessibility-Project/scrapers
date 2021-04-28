@@ -15,7 +15,7 @@
             "url":"https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity",
             "full_data_location":"/data",
             "source_type": 2,
-            "data_type": 1,
+            "data_type": 7,
             "format_type": 1,
             "mapping":[
             ]
