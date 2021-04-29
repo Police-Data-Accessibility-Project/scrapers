@@ -1,4 +1,8 @@
-def extract_info(soup, configs, extract_name=False):
+def extract_info(soup, configs, extract_name=False, name_in_url=True):
+    if not name_in_url:
+        import cgi
+        import urllib
+
     for link in soup.findAll("a"):
         if link.get("href") is None:
             continue
@@ -13,6 +17,12 @@ def extract_info(soup, configs, extract_name=False):
             name = link.string
             # print(" [?] extract_name is True")
             # print(name)
+        if not name_in_url:
+            response = urllib.request.urlopen(configs.domain + url)
+            file_name, params = cgi.parse_header(
+                response.headers.get("Content-Disposition", "")
+            )
+            name = file_name
 
         with open("url_name.txt", "a+") as output:
             if url not in output.read():

@@ -38,7 +38,7 @@ def list_pdf_v3(
         except FileNotFoundError:
             pass
     print(" [*] Extracting info.")
-    extract_info(soup, configs, extract_name=extract_name)
+    extract_info(soup, configs, extract_name=extract_name, name_in_url=name_in_url)
 
     if not important:
         print(" [?] important is False, using non_important")
@@ -53,6 +53,7 @@ def list_pdf_v3(
                     non_important in line.lower() for non_important in non_important
                 ):
                     new_file.write(line)
+                # print("   [*] The following lines were not added: " + str(line))
             print(" [*] Done writing")
     else:
         print(" [?] important is True, assuming important is configured")
