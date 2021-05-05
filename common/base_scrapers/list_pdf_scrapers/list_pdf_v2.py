@@ -21,7 +21,8 @@ def list_pdf_v2(
     add_date=False,
     try_overwite=False,
     no_overwrite=False,
-    debug=False
+    debug=False,
+    flavor="stream"
 ):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -47,7 +48,7 @@ def list_pdf_v2(
             print("  [INFO] csv_dir is not defined in the configs.")
             print("      If you want to save in a different location for some reason, ")
             print("      define it in the configs as `csv_dir=\"<folder>\"`")
-        etl.pdf_extract(save_dir)
+        etl.pdf_extract(pdf_directory=save_dir, flavor=flavor)
         pass
 
     # import etl.py
