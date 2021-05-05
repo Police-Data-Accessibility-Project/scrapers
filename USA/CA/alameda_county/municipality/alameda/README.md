@@ -62,6 +62,8 @@ Set the `domain` to the beginning of the document host.
 # Data refresh rate
 Unsure, daily bulletin seems to be two days behind, and the monthly is nearly two months behind.
 
+Monthly reports are updated 10-14 business days after the end of the month
+
 # Sample response
 In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
 
