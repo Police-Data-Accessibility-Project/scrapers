@@ -4,7 +4,7 @@ import os
 # pdf_directory = "./data/"
 # save_dir = "/csv/"
 
-def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False):
+def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False, flavor="stream"):
     for root, dirs, files in os.walk(pdf_directory):
         if "csv" not in root:
             if not os.path.exists(root + csv_dir):
@@ -15,7 +15,7 @@ def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False):
             print(f"  [*] Extracting: {root}{os.sep}{name}")
             if "csv" not in root:
                 print(" [*] Reading pdf: " + name)
-                tables = camelot.read_pdf(root + os.sep + name, flavor='stream')
+                tables = camelot.read_pdf(root + os.sep + name, flavor=flavor)
                 print("    [*] Exporting tables to: " + root + os.sep + csv_dir)
                 tables.export(root + os.sep + csv_dir + os.sep + name.strip(".pdf") + ".csv", f='csv', compress=False) # json, excel, html
                 try:
