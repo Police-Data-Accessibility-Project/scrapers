@@ -17,7 +17,7 @@ def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False):
                 print(" [*] Reading pdf: " + name)
                 tables = camelot.read_pdf(root + os.sep + name, flavor='stream')
                 print("    [*] Exporting tables to: " + root + os.sep + csv_dir)
-                tables.export(root + os.sep + csv_dir + os.sep + name.strip(".pdf"), f='csv', compress=False) # json, excel, html
+                tables.export(root + os.sep + csv_dir + os.sep + name.strip(".pdf") + ".csv", f='csv', compress=False) # json, excel, html
                 try:
                     print(f"    [STATS] {tables[0].parsing_report}")
                 except IndexError:
