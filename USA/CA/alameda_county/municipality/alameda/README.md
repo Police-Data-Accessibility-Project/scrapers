@@ -4,8 +4,16 @@ This readme should give people everything they need to maintain the scraper.
 This scraper saves data into a seperate folder if it has `daily` in the `name`. **DO NOT** attempt to update to use `list_pdf_scrapers` or `bs_common`, as the `get_files` function sorts the documents as they are downloaded by name. As they are unique to this department, I see no reason to add them to the common script.
 
 Most data is private, only public data is the "Daily" activity log, monthly crime statistics, annual arrest and traffic statistics.
+
 Time period of monthly stats: 02/2020 - 01/2021
+
 Time period of annual arrest: 2016-2020
+
+**NOTE:** daily_bulletin is no longer used by the PD, they have migrated to crimegraphics. See message under "[Alameda Crime Graphics](https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity)"
+
+[Internet Archive capture](https://web.archive.org/web/20210505124522/https://www.alamedaca.gov/Departments/Police-Department/Crime-Activity)
+
+> \*\*On April 7, 2021, APD's Crime Mapping website and Daily Activity Logs were replaced with Alameda's Crime Graphics website. Daily Activity Logs will now be referred to as Media Bulletins and are accessible through the Crime Graphics website.**
 
 _Remove fields that were collected_
 ## Fields that could not be obtained within the PDAP legal guidelines:
