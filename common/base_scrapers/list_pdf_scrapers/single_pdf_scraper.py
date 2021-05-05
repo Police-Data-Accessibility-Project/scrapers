@@ -28,10 +28,6 @@ def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True):
     import etl
     from etl import pdf_extract
     # Pass save_dir to pdf_extract's pdf_directory param
-    try:
-        etl.pdf_extract(save_dir, configs.csv_dir)
-    except AttributeError:
-        etl.pdf_extract(save_dir)
-        pass
-
+    etl.pdf_extract(save_dir)
+    
     # import etl.py
