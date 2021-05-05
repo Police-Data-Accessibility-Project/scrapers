@@ -49,3 +49,5 @@ def list_pdf_v2(
             print("      define it in the configs as `csv_dir=\"<folder>\"`")
         etl.pdf_extract(save_dir)
         pass
+
+    # import etl.py

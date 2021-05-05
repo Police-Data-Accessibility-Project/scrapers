@@ -37,3 +37,5 @@ def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True):
             print("      define it in the configs as `csv_dir=\"<folder>\"`")
         etl.pdf_extract(save_dir)
         pass
+        
+    # import etl.py
