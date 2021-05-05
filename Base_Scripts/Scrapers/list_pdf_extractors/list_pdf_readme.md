@@ -52,7 +52,9 @@ As the `list_pdf_scrapers` all use a common modules, they accept the same argume
 * `configs` : Required - comes with the template script, so no need to worry about it.
 * `save_dir` : Required - comes with the template script, so no need to worry about it.
 
-The following arguments are all passed to the `get_files` module. It's readme is located [here](https://github.com/CaptainStabs/Scrapers/blob/master/common/common/get_files_README.md)
+* `flavor` : Optional - Defaults to `stream`; accepted arguments are `stream` and `lattice`. Useful if the extracted data is jumbled (may not fix everything though).
+
+The following arguments are all passed to the `get_files` module. It's readme is located [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/common/utils/list_pdf_utils/get_files_README.md)
 
 * `name_in_url` : Optional - Defaults to True; As the name implies, if the document name is **NOT** in the url/path or in the `href`
 
@@ -62,6 +64,7 @@ The following arguments are all passed to the `get_files` module. It's readme is
 * `add_date` : Optional - Defaults to False; Use if a document is simply overwritten on a website without it's name being changed. Used in conjunction with `no_overwrite`
 * `try_overwite` : Optional - Defaults to False; Mostly deprecated, check with a board member before using. Instead use `no_overwrite`
 * `no_overwrite` : Optional - Defaults to False; Replaces `try_overwite`. Use in conjunction with `add_date`. As the name suggests, it prevents older documents from being overwritten, while still saving the new one if there are changes.
+
 
 # More in depth explanations (Poorly explained, nerdy stuff)
  `extract_info` uses `urllib` to open the webpage, and then `BeautifulSoup4` to parse it. It then uses regex to find all links that end with pdf or doc. It needs a few lines to be replaced with regex.
