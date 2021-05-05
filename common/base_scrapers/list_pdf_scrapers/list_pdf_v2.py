@@ -38,4 +38,14 @@ def list_pdf_v2(
     extract_info(soup, configs, extract_name=extract_name)
     get_files(save_dir, configs.sleep_time, name_in_url=name_in_url, add_date=add_date)
 
-    # import etl.py
+    import etl
+    # Pass save_dir to pdf_extract's pdf_directory param
+    try:
+        etl.pdf_extract(save_dir, configs.csv_dir)
+    except AttributeError:
+        if debug:
+            print("  [INFO] csv_dir is not defined in the configs.")
+            print("      If you want to save in a different location for some reason, ")
+            print("      define it in the configs as `csv_dir=\"<folder>\"`")
+        etl.pdf_extract(save_dir)
+        pass
