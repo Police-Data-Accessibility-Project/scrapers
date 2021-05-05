@@ -34,7 +34,7 @@ def data_parser(configs, save_dir, table):
     was_desc_cont = False
     incident_description = ''
     inc_description = False
-    
+
     print('======================')
     with open("text.txt", "r") as data:
         for line in data:
@@ -94,6 +94,7 @@ def data_parser(configs, save_dir, table):
 
                     elif not was_desc_cont:
                         if inc_description:
+                            print(" [***] This portion causes build errors.")
                             incident_description = str(incident_description2[1]) + " CODE_INSERTED_BREAK " + incident_description
                         try:
                             all_data = [reference_num, activity_date, time_type_date[0], time_type_date[1], initiator_location[0], "null", disposition, place_street_city[0], place_street_city[1], place_street_city[2]]
