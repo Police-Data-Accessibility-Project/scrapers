@@ -17,3 +17,6 @@ sleep_time = 5
 non_important = ["emergency", "training", "guidelines"]
 # For devs:
 debug = False
+
+# ETL configuration, uncomment if you need it
+csv_dir = "/csv/"
