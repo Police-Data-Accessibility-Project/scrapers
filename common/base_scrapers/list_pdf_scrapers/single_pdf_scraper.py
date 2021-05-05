@@ -6,7 +6,7 @@ sys.path.insert(1, str(p))
 from common.utils import get_pdf
 
 
-def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True):
+def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True, flavor="stream"):
 
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -28,6 +28,6 @@ def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True):
     import etl
     from etl import pdf_extract
     # Pass save_dir to pdf_extract's pdf_directory param
-    etl.pdf_extract(save_dir)
-    
+    etl.pdf_extract(pdf_directory=save_dir, flavor=flavor)
+
     # import etl.py
