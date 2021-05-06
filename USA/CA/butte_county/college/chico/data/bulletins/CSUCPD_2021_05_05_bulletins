@@ -1,0 +1,30 @@
+,ReferenceNum,ActivityDate,ActivityTime,ActivityType,ActivityInitiator,ActivityDescription,Disposition,ActivityPlace,ActivityStreet,ActivityCity
+0,  2105040001,20  -21-05,00:04,Area Check,null,null,Checks Ok,null,null,null
+1,  2105040002,20  -21-05,00:04,Area Check,null,null,Checks Ok,null,null,null
+2,  2105040003,20  -21-05,00:16,Area Check,null,null,Checks Ok,null,null,null
+3,  2105040004,20  -21-05,00:16,Area Check,null,null,Checks Ok,null,null,null
+4,  2105040005,20  -21-05,03:57,Area Check,null,null,Checks Ok,null,null,null
+5,  2105040006,20  -21-05,04:09,Area Check,null,null,Checks Ok,null,null,null
+6,  2105040007,20  -21-05,04:16,Area Check,null,null,Checks Ok,null,null,null
+7,  2105040008,20  -21-05,04:16,Area Check,null,null,Checks Ok,null,null,null
+8,  2105040009,20  -21-05,04:18,Area Check,null,null,Checks Ok,null,null,null
+9,  2105040010,20  -21-05,04:54,Suspicious Person/Vehicle/Circumstance,Occurred,null,Log Only,Parking Structure 1 on Cherry St. . SW CORNER MALE SUBJ WITH BIKE/BELONGS POSSIBLY SLEEPING IN STAIRWELL. RP UNABLE TO PROVIDE ANY FURTHER DETAIL,null,null
+10, 2105040011,20 2-10-50,08:25,Warrant Service,Occurred,null,Arrest Made,Parking Structure 1 on Cherry St. . SW CORNER MALE SUBJ WITH BIKE/BELONGS POSSIBLY SLEEPING IN STAIRWELL. RP UNABLE TO PROVIDE ANY FURTHER DETAIL,null,null
+11,  2105040012,20  -21-05,10:08,Area Check,Occurred,null,Checks Ok,Parking Structure 1 on Cherry St. . SW CORNER MALE SUBJ WITH BIKE/BELONGS POSSIBLY SLEEPING IN STAIRWELL. RP UNABLE TO PROVIDE ANY FURTHER DETAIL,null,null
+12,  2105040013,20  -21-05,10:40,Area Check,Occurred,null,Checks Ok,Parking Structure 1 on Cherry St. . SW CORNER MALE SUBJ WITH BIKE/BELONGS POSSIBLY SLEEPING IN STAIRWELL. RP UNABLE TO PROVIDE ANY FURTHER DETAIL,null,null
+13,   2105040014,20  - 2-10,10:57,Welfare Check,Occurred,null,Arrest Made,Parking Structure 1 on Cherry St. . SW CORNER MALE SUBJ WITH BIKE/BELONGS POSSIBLY SLEEPING IN STAIRWELL. RP UNABLE TO PROVIDE ANY FURTHER DETAIL,null,null
+14,2105040015,2021-05-04,13:23,Vehicle Stop,Occurred,null,Warning ,Parking Structure 1 on Cherry St. . SW CORNER MALE SUBJ WITH BIKE/BELONGS POSSIBLY SLEEPING IN STAIRWELL. RP UNABLE TO PROVIDE ANY FURTHER DETAIL,null,null
+15,2105040016,2021-05-04,14:25,Vehicle Stop,Occurred,null,Arrest Made,Parking Structure 1 on Cherry St. . SW CORNER MALE SUBJ WITH BIKE/BELONGS POSSIBLY SLEEPING IN STAIRWELL. RP UNABLE TO PROVIDE ANY FURTHER DETAIL,null,null
+16,   2105040017,20  - 2-10,15:04,Field Contact,Officer initiated activity,null,Arrest Made,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+17,  2105040018,20  -21-05,15:25,Area Check,Officer initiated activity,null,Checks Ok,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+18,2105040019,2021-05-04,15:29,Bike/Skateboard Stop,Officer initiated activity,null,Warning ,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+19,  2105040020,20  -21-05,16:42,Area Check,Officer initiated activity,null,Checks Ok,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+20,  2105040021,20  -21-05,16:49,Area Check,Officer initiated activity,null,Checks Ok,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+21,  2105040022,20  -21-05,16:49,Area Check,Officer initiated activity,null,Checks Ok,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+22,  2105040023,20  -21-05,16:56,Area Check,Officer initiated activity,null,Checks Ok,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+23,  2105040024,20  -21-05,18:52,Area Check,Officer initiated activity,null,Checks Ok,W 9TH St/Hazel St, Chico. O/W 1 TRANSIENT,null
+24,   2105040025,20  - 2-10,20:30,Welfare Check,Occurred,null,No Problems Noted,Tehama Hall on Warner St. . MALE SUBJ W/ WHT HAIR LAYING ON GRASS/WALKWAY EASTERN LAWN AREA. PASSERBY TRIED TALKING TO HIM AND HE MOVED BUT STAYED ON GROUND,null,null
+25,  2105040026,20  -21-05,20:40,Area Check,Occurred,null,Checks Ok,Tehama Hall on Warner St. . MALE SUBJ W/ WHT HAIR LAYING ON GRASS/WALKWAY EASTERN LAWN AREA. PASSERBY TRIED TALKING TO HIM AND HE MOVED BUT STAYED ON GROUND,null,null
+26,  2105040027,20  -21-05,20:42,Area Check,Occurred,null,Checks Ok,Tehama Hall on Warner St. . MALE SUBJ W/ WHT HAIR LAYING ON GRASS/WALKWAY EASTERN LAWN AREA. PASSERBY TRIED TALKING TO HIM AND HE MOVED BUT STAYED ON GROUND,null,null
+27,  2105040028,20  -21-05,20:49,Area Check,Occurred,null,Checks Ok,Tehama Hall on Warner St. . MALE SUBJ W/ WHT HAIR LAYING ON GRASS/WALKWAY EASTERN LAWN AREA. PASSERBY TRIED TALKING TO HIM AND HE MOVED BUT STAYED ON GROUND,null,null
+28,  2105040029,20  -21-05,20:55,Area Check,Occurred,null,Checks Ok,Tehama Hall on Warner St. . MALE SUBJ W/ WHT HAIR LAYING ON GRASS/WALKWAY EASTERN LAWN AREA. PASSERBY TRIED TALKING TO HIM AND HE MOVED BUT STAYED ON GROUND,null,null

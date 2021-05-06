@@ -8,7 +8,7 @@ Verify on page that the href to the file contains the domain, if it doesn't, unc
 """
 web_path = "/home/showpublisheddocument/"
 # If the domain is not in the href, set to False, otherwise set it to True
-domain_included a= False
+domain_included = False
 domain = "https://www.atlantapd.org"
 # Set to desired sleep time
 sleep_time = 5
