@@ -57,7 +57,9 @@ _Move these fields to the appropriate list below when you submit your scraper._
 ## Fields not available:
 
 ## Fields being collected:
+
 ### Calls for service:
+* previous records (non-2021) contain `OBJECTID`
 * recordId
 * callKey
 * callDateTime
@@ -81,7 +83,7 @@ _Move these fields to the appropriate list below when you submit your scraper._
 * ESRI_OID
 
 ## Arrests:
-* owID
+* RowID
 * ArrestNumber
 * Age
 * Gender
@@ -98,6 +100,24 @@ _Move these fields to the appropriate list below when you submit your scraper._
 * Latitude
 * Longitude
 * GeoLocation
+
+## Part 1 Crime Data:
+* RowID
+* CrimeDateTime
+* CrimeCode
+* Location
+* Description
+* Inside_Outside
+* Weapon
+* Post
+* District
+* Neighborhood
+* Latitude
+* Longitude
+* GeoLocation
+* Premise
+* VRIName
+* Total_Incidents
 
 
 ## Fields available not present on the list above:
