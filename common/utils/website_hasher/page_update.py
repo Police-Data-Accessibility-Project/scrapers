@@ -2,9 +2,14 @@ import hashlib
 import os
 import sys
 
-def hash_comparer(response):
-    cur_hash = hashlib.md5(response.text.encode('utf-8')).hexdigest()
-    with open('hash.txt','r') as hash:
+def hash_comparer(response, save_folder):
+    try:
+        cur_hash = hashlib.md5(response.text.encode('utf-8')).hexdigest()
+    except AttributeError:
+        print(" [!] page_update recieved the response as \"response.text\". (hash_comparer)")
+        cur_hash = hashlib.md5(response.encode('utf-8')).hexdigest()
+
+    with open(save_folder + 'hash.txt','r') as hash:
         old_hash = hash.read()
 
         if cur_hash == old_hash:
@@ -12,26 +17,39 @@ def hash_comparer(response):
             return False
         elif cur_hash != old_hash:
             print("Page has updated.")
-            with open('hash.txt','w') as output:
+            with open(save_folder + 'hash.txt','w') as output:
                 output.write(cur_hash)
             output.close()
             return True
 
-def page_hasher(response):
-    hash = hashlib.md5(response.text.encode('utf-8')).hexdigest()
-    with open('hash.txt', 'w') as output:
+def page_hasher(response, save_folder):
+    try:
+        hash = hashlib.md5(response.text.encode('utf-8')).hexdigest()
+    except AttributeError:
+        print(" [!] page_update recieved the response as \"response.text\". (page_hasher)")
+        hash = hashlib.md5(response.encode('utf-8')).hexdigest()
+
+    with open(save_folder + 'hash.txt', 'w') as output:
         output.write(hash)
     output.close()
 
-def page_update(response):
+def page_update(response, save_folder="./", loop=False):
+    if not os.path.exists(save_folder):
+        os.makedirs(save_folder)
     # Basically checks if the script has been run before.
     # If it has, it will use the hash_comparer function to compare the current and old hash.
-    if os.path.isfile("hash.txt") and os.stat("hash.txt").st_size != 0:
-        if hash_comparer(response) == False:
-            sys.exit()
-        else:
+    if os.path.isfile(save_folder + "hash.txt") and os.stat(save_folder + "hash.txt").st_size != 0:
+        if hash_comparer(response, save_folder) == False:
+            if not loop: # Needs to be checked because otherwise it would not work in a loop
+                sys.exit()
+            else:
+                return False # Pass this to the write checker.
+        else: # if the hash is different
+            if loop:
+                return True
             pass
     # If the script has never been run, it will generate the hash and store it for the next run.
     else:
-        page_hasher(response)
+        page_hasher(response, save_folder)
         print("First time?")
+        return True
