@@ -81,23 +81,23 @@ _Move these fields to the appropriate list below when you submit your scraper._
 * ESRI_OID
 
 ## Arrests:
-RowID
-ArrestNumber
-Age
-Gender
-Race
-ArrestDateTime
-ArrestLocation
-IncidentOffence
-IncidentLocation
-Charge
-ChargeDescription
-District
-Post
-Neighborhood
-Latitude
-Longitude
-GeoLocation
+* owID
+* ArrestNumber
+* Age
+* Gender
+* Race
+* ArrestDateTime
+* ArrestLocation
+* IncidentOffence
+* IncidentLocation
+* Charge
+* ChargeDescription
+* District
+* Post
+* Neighborhood
+* Latitude
+* Longitude
+* GeoLocation
 
 
 ## Fields available not present on the list above:
