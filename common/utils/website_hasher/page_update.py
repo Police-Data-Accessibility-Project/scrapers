@@ -2,7 +2,7 @@ import hashlib
 import os
 import sys
 
-def hash_comparer(response, save_folder):
+def hash_comparer(response, save_folder, print_output):
     try:
         cur_hash = hashlib.md5(response.text.encode('utf-8')).hexdigest()
     except AttributeError:
@@ -13,10 +13,12 @@ def hash_comparer(response, save_folder):
         old_hash = hash.read()
 
         if cur_hash == old_hash:
-            print("Page hasn't changed since last check")
+            if print_output:
+                print("Page hasn't changed since last check")
             return False
         elif cur_hash != old_hash:
-            print("Page has updated.")
+            if print_output:
+                print("Page has updated.")
             with open(save_folder + 'hash.txt','w') as output:
                 output.write(cur_hash)
             output.close()
@@ -33,14 +35,14 @@ def page_hasher(response, save_folder):
         output.write(hash)
     output.close()
 
-def page_update(response, save_folder="./", loop=False):
+def page_update(response, save_folder="./", loop=False, print_output=True):
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)
-    # Basically checks if the script has been run before.
+    # checks if the script has been run before.
     # If it has, it will use the hash_comparer function to compare the current and old hash.
     if os.path.isfile(save_folder + "hash.txt") and os.stat(save_folder + "hash.txt").st_size != 0:
-        if hash_comparer(response, save_folder) == False:
-            if not loop: # Needs to be checked because otherwise it would not work in a loop
+        if hash_comparer(response, save_folder, print_output) == False:
+            if not loop: # Needs to be checked because it would otherwise not work in a loop
                 sys.exit()
             else:
                 return False # Pass this to the write checker.
