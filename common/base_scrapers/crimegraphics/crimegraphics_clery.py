@@ -74,7 +74,7 @@ def crimegraphics_clery(configs, save_dir, stats=False):
         data.append(table_data)
 
     date_name = date.today()
-    file_name = "_" + str(date_name).replace("-", "_") + "_"
+    file_name = "_" + str(date_name).replace("-", "_") # + "_"
 
     dataframe = pd.DataFrame(data=data, columns=configs.list_header)
 

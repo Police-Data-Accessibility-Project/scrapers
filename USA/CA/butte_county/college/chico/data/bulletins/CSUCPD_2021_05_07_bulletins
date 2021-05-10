@@ -1,0 +1,50 @@
+,ReferenceNum,ActivityDate,ActivityTime,ActivityType,ActivityInitiator,ActivityDescription,Disposition,ActivityPlace,ActivityStreet,ActivityCity
+0,   2105060001,20  - 2-10,00:02,Field Contact,null,null,Log Only,null,null,null
+1,  2105060002,20  -21-05,00:12,Area Check,null,null,Checks Ok,null,null,null
+2,2105060003,2021-05-06,00:46,Vehicle Stop,Officer initiated activity,null,Warning ,W Sacramento Av/Nord Av, Chico. X3,null
+3,  2105060004,20  -21-05,01:29,911 Hangup/Disconnect/Openline,Occurred,NOTHING HEARD,No Problems Noted,Blue - Nw/S 1ST Floor on Cherry St. . Service Class: PBXb,null,null
+4,   2105060005,20  - 2-10,01:44,Field Contact,Officer initiated activity,null,Log Only,35 Main, Main St, Chico. OUT W/1
+5,2105060006,2021-05-06,02:38,Vehicle Stop,Officer initiated activity,null,Warning ,35 Main, Main St, Chico. OUT W/1
+6,  2105060007,20  -21-05,03:27,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+7,  2105060008,20  -21-05,03:27,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+8,  2105060009,20  -21-05,03:28,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+9,  2105060010,20  -21-05,03:34,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+10,  2105060011,20  -21-05,04:14,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+11,  2105060012,20  -21-05,07:06,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+12,  2105060013,20  -21-05,07:17,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+13,  2105060014,20  -21-05,07:31,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+14,  2105060015,20  -21-05,07:31,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+15,  2105060016,20  -21-05,07:35,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+16,  2105060017,20  -21-05,08:02,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+17,   2105060018,20  - 2-10,08:33,Field Contact,Officer initiated activity,null,Detail Complete,35 Main, Main St, Chico. OUT W/1
+18,  2105060019,20  -21-05,09:14,Area Check,Officer initiated activity,null,Checks Ok,35 Main, Main St, Chico. OUT W/1
+19,  2105060020,20  -21-05,09:29,Alarm-Specify Type,Officer initiated activity,null,False Alarm,35 Main, Main St, Chico. OUT W/1
+20,   2105060021,20  - 2-10,10:08,Camping/Lodging Complaint,Occurred,null,Gone On Arrival/Unable to Locate,Sapp Hall on Normal Av. . 1 MALE AND 1 FEM TRANSIENT CAMPING ON THE BACK PORCH,null,null
+21,  2105060022,20  -21-05,10:27,Area Check,Occurred,null,Checks Ok,Sapp Hall on Normal Av. . 1 MALE AND 1 FEM TRANSIENT CAMPING ON THE BACK PORCH,null,null
+22,  2105060023,20  -21-05,10:27,Area Check,Occurred,null,Checks Ok,Sapp Hall on Normal Av. . 1 MALE AND 1 FEM TRANSIENT CAMPING ON THE BACK PORCH,null,null
+23,  2105060024,20  -21-05,11:31,Area Check,Occurred,null,Checks Ok,Sapp Hall on Normal Av. . 1 MALE AND 1 FEM TRANSIENT CAMPING ON THE BACK PORCH,null,null
+24, 2105060025,20 2-10-50,12:16,Medical Aid,Occurred,Cellular E911 Call:,Released to Medical Personnel,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+25,  2105060026,20  -21-05,12:45,Area Check,Occurred,null,Checks Ok,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+26,  2105060027,20  -21-05,12:50,Area Check,Occurred,null,Checks Ok,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+27,  2105060028,20  -21-05,13:21,Area Check,Occurred,null,Checks Ok,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+28,   2105060029,20  - 2-10,13:25,Field Contact,Occurred,null,Detail Complete,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+29,   2105060030,20  - 2-10,13:36,Field Contact,Occurred,null,Log Only,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+30,  2105060031,20  -21-05,13:42,Area Check,Occurred,null,Checks Ok,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+31,2105060032,2021-05-06,13:45,Vehicle Stop,Occurred,null,Citation Issued,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+32,2105060033,2021-05-06,14:02,Vehicle Stop,Occurred,null,Warning ,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+33,  2105060034,20  -21-05,14:13,Area Check,Occurred,null,Checks Ok,Plumas Hall on Warner St. . POSS HEART ATTACK, CALL TRANSFERED FROM CPD, MEDS ENRTE
+34,   2105060035,20  - 2-10,14:28,Vandalism,Officer initiated activity,null,Report Taken,Holt Hall, Arcadian Av, Chico. ON THE BRIDGE WEIGHT LIMIT SIGN
+35,  2105060036,20  -21-05,15:11,Area Check,Officer initiated activity,null,Checks Ok,Holt Hall, Arcadian Av, Chico. ON THE BRIDGE WEIGHT LIMIT SIGN
+36,   2105060038,20  - 2-10,15:21,Field Contact,Officer initiated activity,null,Warning ,Holt Hall, Arcadian Av, Chico. ON THE BRIDGE WEIGHT LIMIT SIGN
+37,  2105060039,20  -21-05,16:27,Area Check,Officer initiated activity,null,Checks Ok,Holt Hall, Arcadian Av, Chico. ON THE BRIDGE WEIGHT LIMIT SIGN
+38,  2105060040,20  -21-05,17:05,Area Check,Officer initiated activity,null,Checks Ok,Holt Hall, Arcadian Av, Chico. ON THE BRIDGE WEIGHT LIMIT SIGN
+39, 2105060041,20 2-10-50,19:48,Parking Issue/Complaint,Occurred,null,Warning ,Yolo Hall on Warner St. . TOYOTA 4RUNNER PARKED IN HANDICAP STALL W/OUT  PLACARD,null,null
+40, 2105060042,20 2-10-50,19:59,Maintenance Callout/Service,Occurred,null,Log Only,Yolo Hall on Warner St. . BENCHES/PICNIC TABLES UNBOLTED AND TOPPLED OVER. UNABLE TO PUT THEM BACK UP,null,null
+41,  2105060043,20  -21-05,20:12,Suspicious Person/Vehicle/Circumstance,Occurred,"MALE SUBJ WALKING BACK AND FORTH IN THE AREA, STANDING ACROSS THE ST AND STARING AT FEMALES ATTENDING EVENT.  5' 5'' AMA POSS HMA, BEARD LONG HAIR PONY TAIL, GRY SHIRT, RED SHORTS, BACKPACK. SUBJ WAS SEEN BRAKING INTO TO NEIGHBORS HOUSE IN THE PAST",Log Only,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
+42,2105060044,2021-05-06,21:01,Vehicle Stop,Occurred,null,Citation Issued,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
+43,2105060045,2021-05-06,21:23,Vehicle Stop,Occurred,null,Warning ,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
+44,2105060046,2021-05-06,21:34,Vehicle Stop,Occurred,null,Citation Issued,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
+45,2105060047,2021-05-06,21:58,Vehicle Stop,Occurred,null,Warning ,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
+46,   2105060048,20  - 2-10,22:17,Field Contact,Occurred,null,Report Taken,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
+47,  2105060051,20  -21-05,23:39,Area Check,Occurred,null,Checks Ok,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
+48,  2105060052,20  -21-05,23:40,Area Check,Occurred,null,Checks Ok,Alpha Delta Pi on Chestnut St. . Cellular E911 Call:,null,null
