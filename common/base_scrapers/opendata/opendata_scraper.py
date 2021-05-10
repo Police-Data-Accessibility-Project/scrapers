@@ -15,6 +15,7 @@ def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
     for i, row in enumerate(url_table):
         # get the api response
         response = requests.get(url_table[i])
+        content_type = response.headers["content-type"]
         if response.status_code == 200:
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
             updated = page_update(response, save_folder + save_table[i], loop=True, print_output=False)
