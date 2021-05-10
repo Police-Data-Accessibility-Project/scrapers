@@ -53,5 +53,5 @@ def page_update(response, save_folder="./", loop=False, print_output=True):
     # If the script has never been run, it will generate the hash and store it for the next run.
     else:
         page_hasher(response, save_folder)
-        print("First time?")
+        print("   [*] page_update found no hash file. First time?")
         return True
