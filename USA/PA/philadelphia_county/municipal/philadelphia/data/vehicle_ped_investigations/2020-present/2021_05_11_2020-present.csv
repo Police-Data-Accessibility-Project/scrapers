@@ -1,0 +1,7 @@
+objectid,id,datetimeoccur,weekday,location,districtoccur,psa,stopcode,stoptype,inside_or_outside,gender,race,age,individual_frisked,individual_searched,individual_arrested,individual_contraband,vehicle_frisked,vehicle_searched,vehicle_contraband,point_x,point_y,lat,lng
+9128113,1631542,2021-03-22 17:35:00,MONDAY,5100 BLOCK Old York Rd,35,2,2701,pedestrian,Outside,Female,Black - Non-Latino,37,0,1,0,0,0,0,0,-75.14583151,40.0310669,40.0310669,-75.14583151
+9128114,1631715,2021-03-22 22:00:00,MONDAY,1900 BLOCK E Tioga,24,2,2701,pedestrian,Outside,Male,Black - Non-Latino,16,0,1,1,0,0,0,0,-75.10515494,39.99881703,39.99881703,-75.10515494
+9128118,1631521,2021-03-22 18:10:00,MONDAY,6800 BLOCK BUIST AVE,12,1,2702,vehicle,Outside,Female,Black - Non-Latino,32,0,0,0,0,0,0,0,-75.23327604,39.91796404,39.91796404,-75.23327604
+9128119,1633076,2021-03-25 11:47:00,THURSDAY,6800 BLOCK buist ave,12,3,2702,vehicle,Outside,Female,Black
+
+TRUNCATED

@@ -1,0 +1,7 @@
+objectid,id,datetimeoccur,weekday,location,districtoccur,psa,stopcode,stoptype,inside_or_outside,gender,race,age,individual_frisked,individual_searched,individual_arrested,individual_contraband,vehicle_frisked,vehicle_searched,vehicle_contraband,point_x,point_y,lat,lng
+3780876,605800,2014-12-22 01:25:00,MONDAY,3000 BLOCK MARKET ST,18,181,2702,vehicle,Outside,Male,Unknown,42,0,0,0,0,0,0,0,-75.18413828,39.95488886,39.95488886,-75.18413828
+3781943,494802,2014-10-21 18:25:00,TUESDAY,6100 BLOCK EDMUND ST,15,152,2702,vehicle,Outside,Male,Unknown,22,0,0,0,0,0,0,0,-75.05630302,40.01706719,40.01706719,-75.05630302
+3786533,550238,2014-11-18 22:30:00,TUESDAY,100 BLOCK W SOMERSET ST,25,253,2701,pedestrian,Outside,Female,White - Non-Latino,28,0,0,0,0,0,0,0,,,,
+3791683,783186,2014-11-26 20:05:00,WEDNESDAY,S 20TH ST / SNYDER AV,01,011,2701,pedestrian,Outside,Male,White - Non-Latino,36,0,0,0,0,0,0,0,,,,
+3792891,595952,2014-12-1
+TRUNCATED

@@ -1,0 +1,6 @@
+objectid,id,datetimeoccur,weekday,location,districtoccur,psa,stopcode,stoptype,inside_or_outside,gender,race,age,individual_frisked,individual_searched,individual_arrested,individual_contraband,vehicle_frisked,vehicle_searched,vehicle_contraband,point_x,point_y,lat,lng
+4173361,1132100,2015-11-07 08:30:00,SATURDAY,1200 BLOCK POINT BREEZE AV,17,173,2701,pedestrian,Outside,Male,Black - Non-Latino,60,0,0,0,0,0,0,0,-75.17677646,39.93731862,39.93731861,-75.17677646
+4173362,1132011,2015-11-07 08:35:00,SATURDAY,1500 BLOCK S STANLEY ST,17,172,2701,pedestrian,Outside,Male,Black - Non-Latino,25,0,0,0,0,0,0,0,-75.19524238,39.93516293,39.93516292,-75.19524238
+4173363,1132091,2015-11-07 08:40:00,SATURDAY,1200 BLOCK S 20TH ST,17,173,2701,pedestrian,Outside,Male,Black - Non-Latino,46,0,0,0,0,0,0,0,-75.17681187,39.93704992,39.93704992,-75.17681187
+4173364,1132096,2015-11-07 08:40:00,SATURDAY,1200 BLOCK S 20TH ST,17,173,2701,pedes
+TRUNCATED
