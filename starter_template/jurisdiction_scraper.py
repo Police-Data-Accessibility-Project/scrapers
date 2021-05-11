@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 cloned_repo_root = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(cloned_repo_root) + '/common')
-from bs_scrapers.get_files import get_files # example of importing one of those files
+from common.utils import get_files # example of importing one of those files
 
 
 # do your code specific for the jurisdiction here, be sure to check out some other scrapers
