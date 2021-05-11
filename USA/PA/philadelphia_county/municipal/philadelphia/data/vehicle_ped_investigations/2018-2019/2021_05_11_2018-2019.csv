@@ -1,6 +1,0 @@
-objectid,id,datetimeoccur,weekday,location,districtoccur,psa,stopcode,stoptype,inside_or_outside,gender,race,age,individual_frisked,individual_searched,individual_arrested,individual_contraband,vehicle_frisked,vehicle_searched,vehicle_contraband,point_x,point_y,lat,lng
-6683341,248,2018-11-02 17:00:00,FRIDAY,5300 BLOCK frankford ave,15,151,2701,pedestrian,Outside,,Unknown,25,0,0,0,0,0,0,0,-75.07680953,40.02330806,40.02330806,-75.07680953
-5269550,2900734,2018-01-19 20:35:00,FRIDAY,100 BLOCK APSLEY ST,39,391,2702,vehicle,Outside,Female,Black - Non-Latino,25,0,0,0,0,0,0,0,-75.16127557,40.02424256,40.02424256,-75.16127557
-5269559,2901014,2018-01-19 22:30:00,FRIDAY,200 BLOCK S CHRISTOPHER COLUMBUS BLVD,06,061,2702,vehicle,Outside,Male,White - Non-Latino,38,0,0,0,0,0,0,0,-75.14184616,39.94639148,39.94639148,-75.14184616
-5275365,2900733,2018-01-19 21:20:00,FRIDAY,4300 BLOCK TYSON AV,15,153,2702,vehicle,Outside,Male,White
- TRUNCATED

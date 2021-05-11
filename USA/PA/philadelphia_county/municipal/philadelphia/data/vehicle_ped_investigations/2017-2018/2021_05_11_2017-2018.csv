@@ -1,7 +1,0 @@
-objectid,id,datetimeoccur,weekday,location,districtoccur,psa,stopcode,stoptype,inside_or_outside,gender,race,age,individual_frisked,individual_searched,individual_arrested,individual_contraband,vehicle_frisked,vehicle_searched,vehicle_contraband,point_x,point_y,lat,lng
-4792646,2535551,2017-03-22 21:30:00,WEDNESDAY,,09,091,2702,vehicle,Outside,Male,Black - Non-Latino,43,0,0,0,0,0,0,0,,,,
-4792654,2535278,2017-03-22 21:25:00,WEDNESDAY,,25,252,2702,vehicle,Outside,Male,Black - Non-Latino,47,0,0,0,0,0,0,0,,,,
-4799288,2535225,2017-03-22 15:35:00,WEDNESDAY,4500 BLOCK VISTA ST,15,153,2701,pedestrian,Inside,Male,White - Latino,16,0,0,0,0,0,0,0,-75.03295408,40.03383048,40.03383048,-75.03295408
-4799290,2869778,2017-12-21 22:00:00,THURSDAY,1300 BLOCK E PRICE ST,14,141,2702,vehicle,Outside,Male,Black - Non-Latino,33,0,0,0,0,0,0,0,-75.15870432,40.05323238,40.05323238,-75.15870432
-4796304,2465707,2017-01-23 09:00:00,MONDAY,400
-TRUNCATED
