@@ -27,7 +27,9 @@ url_table = [
     "https://phl.carto.com/api/v2/sql?filename=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272015-01-01%27%20AND%20dispatch_date_time%20%3C%20%272016-01-01%27",
     "https://phl.carto.com/api/v2/sql?filename=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272016-01-01%27%20AND%20dispatch_date_time%20%3C%20%272017-01-01%27",
     "https://phl.carto.com/api/v2/sql?filename=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272017-01-01%27%20AND%20dispatch_date_time%20%3C%20%272018-01-01%27",
-    "https://phl.carto.com/api/v2/sql?filename=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272018-01-01%27%20AND%20dispatch_date_time%20%3C%20%272019-01-01%27"
+    "https://phl.carto.com/api/v2/sql?filename=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272018-01-01%27%20AND%20dispatch_date_time%20%3C%20%272019-01-01%27",
+    "https://phl.carto.com/api/v2/sql?filename=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272019-01-01%27%20AND%20dispatch_date_time%20%3C%20%272020-01-01%27",
+    "https://phl.carto.com/api/v2/sql?filename=incidents_part1_part2&format=csv&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272020-01-01%27%20AND%20dispatch_date_time%20%3C%20%272021-01-01%27",
 
 
 ]
@@ -35,26 +37,29 @@ url_table = [
 # Change to what you need (remove what you don't)
 save_table = [
 
-    "vehicle_ped_investigations/2014-2015/",
-    "vehicle_ped_investigations/2015-2016/",
-    "vehicle_ped_investigations/2016-2017/",
-    "vehicle_ped_investigations/2017-2018/",
-    "vehicle_ped_investigations/2018-2019/",
-    "vehicle_ped_investigations/2019-2020/"
+    "vehicle_ped_investigations/2014/",
+    "vehicle_ped_investigations/2015/",
+    "vehicle_ped_investigations/2016/",
+    "vehicle_ped_investigations/2017/",
+    "vehicle_ped_investigations/2018/",
+    "vehicle_ped_investigations/2019/",
 
-    "crime_incidents/2006-2007/",
-    "crime_incidents/2007-2008/",
-    "crime_incidents/2008-2009/",
-    "crime_incidents/2009-2010/",
-    "crime_incidents/2010-2011/",
-    "crime_incidents/2011-2012/",
-    "crime_incidents/2012-2013/",
-    "crime_incidents/2013-2014/",
-    "crime_incidents/2014-2015/",
-    "crime_incidents/2015-2016/",
-    "crime_incidents/2016-2017/",
-    "crime_incidents/2017-2018",
-    "crime_incidents/2018-2019,"
+    "crime_incidents/2006/",
+    "crime_incidents/2007/",
+    "crime_incidents/2008/",
+    "crime_incidents/2009/",
+    "crime_incidents/2010/",
+    "crime_incidents/2011/",
+    "crime_incidents/2012/",
+    "crime_incidents/2013/",
+    "crime_incidents/2014/",
+    "crime_incidents/2015/",
+    "crime_incidents/2016/",
+    "crime_incidents/2017/",
+    "crime_incidents/2018/",
+    "crime_incidents/2019",
+    "crime_incidents/2020",
+
 
 
 
