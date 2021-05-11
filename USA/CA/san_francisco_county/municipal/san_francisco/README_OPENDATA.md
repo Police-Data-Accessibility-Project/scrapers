@@ -14,7 +14,7 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 [Incident Codes](https://data.sfgov.org/Public-Safety/Reference-Police-Department-Incident-Code-Crosswal/ci9u-8awy): "As needed."
 
 ## Legal
-Include the Terms of Service (or link to them). Is there anything else we should know?
+https://datasf.org/opendata/terms-of-use/
 
 # Fields to collect:
 _Move these fields to the appropriate list below when you submit your scraper._
