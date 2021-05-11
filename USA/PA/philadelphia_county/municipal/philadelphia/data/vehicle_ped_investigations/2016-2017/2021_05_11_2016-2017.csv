@@ -1,0 +1,6 @@
+objectid,id,datetimeoccur,weekday,location,districtoccur,psa,stopcode,stoptype,inside_or_outside,gender,race,age,individual_frisked,individual_searched,individual_arrested,individual_contraband,vehicle_frisked,vehicle_searched,vehicle_contraband,point_x,point_y,lat,lng
+4663607,1319009,2016-03-16 17:33:00,WEDNESDAY,2800 BLOCK N BAMBREY ST,39,393,2701,pedestrian,Outside,Female,Black - Non-Latino,25,0,0,0,0,0,0,0,-75.17291534,39.99880761,39.99880761,-75.17291534
+4663590,1294893,2016-02-29 17:40:00,MONDAY,N 22ND ST / W INDIANA AV,39,392,2702,vehicle,Outside,Male,Black - Non-Latino,35,0,0,0,0,0,0,0,-75.16656557,40.00020884,40.00020884,-75.16656557
+4663591,1295147,2016-02-29 18:03:00,MONDAY,500 BLOCK W CLAPIER ST,39,391,2702,vehicle,Outside,Male,White - Non-Latino,24,0,0,0,0,0,0,0,-75.17146953,40.0202486,40.0202486,-75.17146953
+4663608,1319008,2016-03-16 17:33:00,WEDNESDAY,2800 BLOCK N BAMBREY ST,39,393,2701,pedestrian
+TRUNCATED

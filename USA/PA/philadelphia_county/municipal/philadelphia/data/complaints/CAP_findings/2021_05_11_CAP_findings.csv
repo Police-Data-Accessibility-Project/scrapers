@@ -1,0 +1,5 @@
+complaint_id,officer_id,po_race,po_sex,po_assigned_unit,allegations_investigated,investigative_findings,disciplinary_findings
+16-0001,,,,,No C.A.P. Investigation,Not Applicable,Not Applicable
+16-0002,49788591,latino,male,9807 SUPP POLICE SERVICE,No C.A.P. Investigation,Not Applicable,Not Applicable
+16-0003,16617433,black,male,1900 19TH DISTRICT,No C.A.P. Investigation,Not Applicable,Not Applicable
+TRUNCATED
