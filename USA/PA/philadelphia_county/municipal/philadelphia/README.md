@@ -11,9 +11,9 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 [Complaints against police](https://www.opendataphilly.org/dataset/police-complaints): Monthly
 [Police Advisory Commission Complaints](https://www.opendataphilly.org/dataset/philadelphia-police-advisory-commission-complaints): Never. (not scraped) (just documenting)
 [Shooting Victims](https://www.opendataphilly.org/dataset/shooting-victims): Unsure, scrape monthly
-[Vehicle and Pedestrian investigations](https://www.opendataphilly.org/organization/city-of-philadelphia?q=police&sort=score+desc%2C+metadata_modified+desc): Unsure, 
+[Vehicle and Pedestrian investigations](https://www.opendataphilly.org/organization/city-of-philadelphia?q=police&sort=score+desc%2C+metadata_modified+desc): Unsure,
 ## Legal
-Include the Terms of Service (or link to them). Is there anything else we should know?
+https://www.opendataphilly.org/pages/terms
 
 # Fields to collect:
 _Move these fields to the appropriate list below when you submit your scraper._
