@@ -14,6 +14,7 @@ from common.utils import page_update
 def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
     for i, row in enumerate(url_table):
         # get the api response
+        print(f"   [*] Getting data for table {url_table[i]}...")
         response = requests.get(url_table[i])
         content_type = response.headers["content-type"]
         if response.status_code == 200:
@@ -63,7 +64,7 @@ def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
                         output.write(response.text)
 
                 else:
-                    print(f"  [!] The url in index {i}, save_folder {save_table[i]} did not have a handled content_type!")
+                    print(f"  [!] The url in index {i}, save_folder: {save_table[i]}, did not have a handled content_type!")
                     print("      [?] content_type: " + content_type)
             else:
                 print(f"  [*] Url in index {i} of url_table has not updated.")
@@ -72,4 +73,5 @@ def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
             print(
                 f" [!!!] Url {url_table[i]} returned code {response.status_code}. Check that the url is correct."
             )
-            
+
+    # import etl
