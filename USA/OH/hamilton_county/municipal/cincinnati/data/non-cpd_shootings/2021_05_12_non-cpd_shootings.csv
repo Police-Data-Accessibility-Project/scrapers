@@ -1,0 +1,5 @@
+"district","inclocation_x","latitude_x","longitude_x","cpd_neighborhood","neighborhood","oid","rms_no","viccount","citystatezip","race","sex","age","type","dateoccurred","monthoccured","timeoccured","hroccured","dayoccurred","rmsdup","datetime","dstfull","zip","community_council_neighborhood"
+"5","47XX ESTE AV","39.1771209553885","-84.5087796711584","WINTON HILLS","WINTON HILLS","4124","179046646","1",,"BLACK","MALE","16","NONFATAL","2017-10-30T00:00:00.000","OCT","012000","1","MON","179046646","2017-10-30T01:20:00.000","DISTRICT 5",,"WINTON HILLS"
+"3","10XX ROSEMONT AV","39.1120770139849","-84.5823865220443","WEST PRICE HILL","WEST PRICE HILL","663","30907198","2",,"BLACK","MALE","18","NONFATAL","2009-08-01T00:00:00.000","AUG",,"N/A","SAT","30907198","2009-08-01T00:00:00.000","DISTRICT 3","45205","WEST PRICE HILL"
+"3","28XX HARRISON AV","39.1441033499152","-84.5945031869352","WESTWOOD","WESTWOOD","3849","17900827
+TRUNCATED
