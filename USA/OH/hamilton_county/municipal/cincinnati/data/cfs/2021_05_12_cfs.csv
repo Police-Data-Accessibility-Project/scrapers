@@ -1,0 +1,4 @@
+"address_x","latitude_x","longitude_x","agency","create_time_incident","disposition_text","event_number","incident_type_id","incident_type_desc","priority","priority_color","arrival_time_primary_unit","closed_time_incident","dispatch_time_primary_unit","beat","community_council_neighborhood","district","sna_neighborhood","cpd_neighborhood"
+"16XX WALNUT ST","39.1129340000896","-84.5147","CPD","2019-08-07T23:29:36.000","ARR: ARREST","CPD190807001817","DIRPAT","DIRECTED PATROL - VEHICLE","27","PURPLE","2019-08-07T23:29:36.000","2019-08-07T23:53:24.000","2019-08-07T23:29:36.000","P121","OTR","1","OVER-THE-RHINE","OVER-THE-RHINE"
+"W 7TH ST / CENTRAL AV","39.1021870000897","-84.51901","CPD","2019-08-07T09:23:00.000","NTR: NOTHING TO REPORT","CPD190807000383","SDET","OFF DUTY POLICE DETAILS","35","PURPLE","2019-08-07T09:24:01.000","2019-08-07T17:40:41.000","2019-08-07T09:24:01.000","P011","WEST END","1","WEST END","WEST  
+TRUNCATED

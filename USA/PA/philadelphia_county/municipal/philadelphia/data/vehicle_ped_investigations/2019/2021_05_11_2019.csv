@@ -1,0 +1,6 @@
+objectid,id,datetimeoccur,weekday,location,districtoccur,psa,stopcode,stoptype,inside_or_outside,gender,race,age,individual_frisked,individual_searched,individual_arrested,individual_contraband,vehicle_frisked,vehicle_searched,vehicle_contraband,point_x,point_y,lat,lng
+8377481,1150790,2019-07-01 23:21:00,MONDAY,2800 BLOCK WHARTON ST,17,2,2702,vehicle,Outside,Male,Unknown,38,0,0,0,0,0,0,0,-75.19052219,39.93708829,39.93708829,-75.19052219
+8378361,987461,2019-03-09 19:30:00,SATURDAY,2700 BLOCK 24th st,39,3,2702,vehicle,Outside,Male,Asian,27,1,0,0,0,1,0,0,-75.1707834,39.99606789,39.99606789,-75.1707834
+8379688,1058182,2019-04-29 20:36:00,MONDAY,4900 BLOCK Torresdale Ave,15,1,2702,vehicle,Outside,Male,Asian,25,0,0,0,0,0,0,0,-75.07375755,40.01246213,40.01246213,-75.07375755
+8378369,960140,2019-02-18 19:00:00,MONDAY,2700 BLOCK 24th,39,3,2702,vehicle,Outside,Female,Black - Latino,28,0,0,0,0,0,0,0,-75.1707834,39.99606789,
+TRUNCATED

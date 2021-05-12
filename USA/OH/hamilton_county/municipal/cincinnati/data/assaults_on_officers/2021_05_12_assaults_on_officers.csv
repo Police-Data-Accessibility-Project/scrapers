@@ -1,0 +1,5 @@
+"address_x","incident_no","district","latitude_x","longitude_x","date_reported","subject","crime_type","premise_type","beat","day_of_week","weapon","victim_type","victim_race","victim_gender","sna_neighborhood","cpd_neighborhood","community_council_neighborhood"
+"4XX KING DR","51004908","5",,,"2010-08-14T21:30:00.000","ASSAULT ON POLICE","ASSAULT","47-STREET","1","SATURDAY","99--NONE","P--POLICE OFFICER (IN THE LINE OF DUTY)","WHITE","MALE","CLIFTON/UNIVERSITY HEIGHTS","N/A","N/A"
+"32XX CLIFTON AVNUE","51100920","5",,,"2011-02-21T10:50:00.000","ASSAULT ON POLICE OFFICER","ASSAULT","11-HOSPITAL","1","MONDAY","40--PERSONAL WEAPONS (HANDS, FEET, TEETH, ETC.)","I--INDIVIDUAL","WHITE","MALE","CLIFTON/UNIVERSITY HEIGHTS","N/A","N/A"
+"32XX CLIFTON AVNUE","51100920","5",,,"2011-02-21T10:50:00.000","ASSAULT ON POLICE OFFICER","ASSAULT","11-HOSPITAL","1","MONDAY","40--PERSONAL WEAPONS (HANDS, FEET, TEETH, ETC.)","I--INDIVID
+TRUNCATED

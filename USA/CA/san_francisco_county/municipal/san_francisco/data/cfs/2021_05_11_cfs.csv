@@ -1,0 +1,5 @@
+"crime_id","original_crimetype_name","report_date","call_date","offense_date","call_time","call_dttm","disposition","address","city","state","agency_id","address_type","common_location"
+"161080584","Poss","2016-04-17T00:00:00.000","2016-04-17T00:00:00.000","2016-04-17T00:00:00.000","05:23","2016-04-17T05:23:00.000","NOM","0 Block Of Evelyn Wy","San Francisco","CA","1","Premise Address",
+"190123549","Rep","2019-01-12T00:00:00.000","2019-01-12T00:00:00.000","2019-01-12T00:00:00.000","20:36","2019-01-12T20:36:00.000","HAN","600 Block Of Eddy St","San Francisco","CA","1","Premise Address",
+"161100690","911","2016-04-19T00:00:00.000","2016-04-19T00:00:00.000","2016-04-19T00:00:00.000","07:45","2016-04-19T07:45:00.000","ADV","1700 Block Of Jerrold Av","San Francisco","CA","1","Premise Address",
+TRUNCATED
