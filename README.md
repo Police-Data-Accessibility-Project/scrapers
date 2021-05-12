@@ -18,4 +18,4 @@ If you have a computer, you can help us populate our public-access [data intake]
 We're pending 501c3 non-profit status. You can give us money with PayPal [on our website](http://pdap.io/).
 
 # Documentation
-Our docs are centralized [here](https://pdap.gitbook.io/).
+Our docs are centralized [here](http://docs.pdap.io/).

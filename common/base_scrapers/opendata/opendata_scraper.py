@@ -72,3 +72,4 @@ def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
             print(
                 f" [!!!] Url {url_table[i]} returned code {response.status_code}. Check that the url is correct."
             )
+            
