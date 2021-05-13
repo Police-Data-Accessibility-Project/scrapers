@@ -46,6 +46,9 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 [GUIDE 2017 - RP](https://data.austintexas.gov/Public-Safety/GUIDE-2017-RP/tud4-5x9v): "As needed"
 [Hate Crimes 2019](https://data.austintexas.gov/Public-Safety/Hate-Crimes-2019/e3qf-htd9): Not documented
 [2018 RP Warnings + Field Observations](https://data.austintexas.gov/Public-Safety/2018-RP-Warnings-Field-Observations/vchc-c622): Not documented
+[Hate Crimes 2021](https://data.austintexas.gov/Public-Safety/Hate-Crimes-2021/dmxv-zsfa): "As needed"
+[R2R 2017](https://data.austintexas.gov/Public-Safety/2017-R2-R-Subjects/bmeh-xaea): Undocumented
+[2014 Racial Profiling Warnings + field Observations](https://data.austintexas.gov/City-Government/2014-Racial-Profiling-Warnings-Field-Observations/tqet-vty2): "As needed"
 
 ## Legal
 
