@@ -40,10 +40,10 @@ def single_pdf_scraper(
         add_date=True,
     )
 
-    import etl
-    from etl import pdf_extract
-
-    # Pass save_dir to pdf_extract's pdf_directory param
-    etl.pdf_extract(pdf_directory=save_dir, flavor=flavor)
+    # import etl
+    # from etl import pdf_extract
+    #
+    # # Pass save_dir to pdf_extract's pdf_directory param
+    # etl.pdf_extract(pdf_directory=save_dir, flavor=flavor)
 
     # import etl.py
