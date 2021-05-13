@@ -4,6 +4,7 @@ import sys
 from datetime import date
 from pathlib import Path
 import json
+import urllib
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
@@ -19,7 +20,9 @@ def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
         content_type = response.headers["content-type"]
         if response.status_code == 200:
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
-            updated = page_update(response, save_folder + save_table[i], loop=True, print_output=False)
+            updated = page_update(
+                response, save_folder + save_table[i], loop=True, print_output=False
+            )
             # print("Update bool: " + str(updated))
 
             if updated:
@@ -31,18 +34,24 @@ def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
                 date_name = date.today()
                 if not save_subfolder:
                     file_name = (
-                        str(date_name).replace("-", "_") + "_" + save_table[i].strip("/")
+                        str(date_name).replace("-", "_")
+                        + "_"
+                        + save_table[i].strip("/")
                     )
                 else:
                     if save_table[i].count("/") > 1:
                         file_folder = save_table[i].split("/")
                         file_name = (
-                            str(date_name).replace("-", "_") + "_" + file_folder[1].strip("/")
+                            str(date_name).replace("-", "_")
+                            + "_"
+                            + file_folder[1].strip("/")
                         )
 
                     else:
                         file_name = (
-                            str(date_name).replace("-", "_") + "_" + save_table[i].strip("/")
+                            str(date_name).replace("-", "_")
+                            + "_"
+                            + save_table[i].strip("/")
                         )
 
                 if "json" in content_type:
@@ -55,16 +64,30 @@ def opendata_scraper(url_table, save_table, save_folder, save_subfolder=False):
                         output.write(json.dumps(parsed, indent=4, sort_keys=False))
 
                 elif "csv" in content_type:
-                    with open(save_folder + save_table[i] + file_name +".csv", "w") as output:
+                    with open(
+                        save_folder + save_table[i] + file_name + ".csv", "w"
+                    ) as output:
                         output.write(response.text)
 
                 elif "octet-stream" in content_type:
-                    print("  [*] content_type is \"octect-stream\", saving as csv. (Experimental)")
-                    with open(save_folder + save_table[i] + file_name +".csv", "w") as output:
-                        output.write(response.text)
+                    print(
+                        '  [*] content_type is "octect-stream", saving as csv. (Experimental)'
+                    )
+                    if ".csv" in url_table[i]:
+                        with open(
+                            save_folder + save_table[i] + file_name + ".csv", "w"
+                        ) as output:
+                            output.write(response.text)
+                    elif ".xlsx" in url_table[i]:
+                        urllib.request.urlretrieve(
+                            url_table[i],
+                            save_folder + save_table[i] + file_name + ".xlsx",
+                        )
 
                 else:
-                    print(f"  [!] The url in index {i}, save_folder: {save_table[i]}, did not have a handled content_type!")
+                    print(
+                        f"  [!] The url in index {i}, save_folder: {save_table[i]}, did not have a handled content_type!"
+                    )
                     print("      [?] content_type: " + content_type)
             else:
                 print(f"  [*] Url in index {i} of url_table has not updated.")
