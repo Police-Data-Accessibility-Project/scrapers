@@ -13,6 +13,7 @@ sys.path.insert(1, str(p))
 
 from common.utils.file_downloaders import get_doc, get_pdf, get_xls
 
+
 def get_files(
     save_dir,
     sleep_time,
@@ -28,7 +29,6 @@ def get_files(
     if not os.path.isfile("url_name.txt"):
         print("url_name.txt does not exist. Did you call extract_info first?")
         return
-
 
     print(" [*] Opening url_name.txt")
     with open("url_name.txt", "r") as input_file:
@@ -64,7 +64,7 @@ def get_files(
             response = requests.get(url_2)
             content_type = response.headers["content-type"]
             extension = mimetypes.guess_extension(content_type)
-            print("    [*] Extension is " + extension )
+            print("    [*] Extension is " + extension)
 
             # If the name IS in the url
             if name_in_url == True:
@@ -81,7 +81,7 @@ def get_files(
                         sleep_time,
                         try_overwite,
                         no_overwrite,
-                        add_date=add_date
+                        add_date=add_date,
                     )
                     print("   [*]Sleeping for: " + str(sleep_time))
 
@@ -113,7 +113,9 @@ def get_files(
                         file_name = file_name[1].strip('"')
                     except IndexError:
                         print(" [!!!] file_name was blank, might want to check that.")
-                        print(" [!!!] (Likely caused by using setting name_in_url=False)")
+                        print(
+                            " [!!!] (Likely caused by using setting name_in_url=False)"
+                        )
                         pass
 
                 if debug:
@@ -149,7 +151,9 @@ def get_files(
                     get_xls(save_dir, file_name, url_2, sleep_time)
 
                 elif ".zip" in extension:
-                    urllib.request.urlretrieve(url_2, save_dir + file_name.replace("/", "-"))
+                    urllib.request.urlretrieve(
+                        url_2, save_dir + file_name.replace("/", "-")
+                    )
 
                 else:
                     print(" [!!!] Unhandled documents type")
