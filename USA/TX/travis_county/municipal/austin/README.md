@@ -39,7 +39,13 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 [R2R 2011](https://data.austintexas.gov/Public-Safety/R2R-2011/jipa-v8m5): "As needed"
 [2014 Racial Profiling Arrests](https://data.austintexas.gov/Public-Safety/2014-Racial-Profiling-Arrests/fk9e-2udt): "As needed"
 [R2R 2012](https://data.austintexas.gov/Public-Safety/R2R-2012/bx9w-y5sd): "As needed"
-[2018 RP Citations]
+[2018 RP Citations](https://data.austintexas.gov/Public-Safety/2018-RP-Citations/b9rk-dixy): Not documented
+[2017 racial_profiling Warning + Field Observations](https://data.austintexas.gov/Public-Safety/2017-Racial-Profiling-Warnings-Field-Observations/5asp-dw2k): "As needed"
+[Crime reports 2015](https://data.austintexas.gov/Public-Safety/Crime-Reports-2015/g3bw-w7hh): "Weekly"
+[2019 Discharge of a Firearm against dog](https://data.austintexas.gov/Public-Safety/2019-Discharge-of-a-Firearm-Against-a-Dog/9qgn-zgva): Not documented
+[GUIDE 2017 - RP](https://data.austintexas.gov/Public-Safety/GUIDE-2017-RP/tud4-5x9v): "As needed"
+[Hate Crimes 2019](https://data.austintexas.gov/Public-Safety/Hate-Crimes-2019/e3qf-htd9): Not documented
+[2018 RP Warnings + Field Observations](https://data.austintexas.gov/Public-Safety/2018-RP-Warnings-Field-Observations/vchc-c622): Not documented
 
 ## Legal
 
@@ -61,7 +67,7 @@ _Move these fields to the appropriate list below when you submit your scraper._
 * LastName
 * Suffix
 * DOB
-* Race
+* Race/
 * Sex
 * ArrestDate
 * FilingDate

@@ -38,6 +38,13 @@ url_table = [
     "https://data.austintexas.gov/resource/jipa-v8m5.csv",
     "https://data.austintexas.gov/resource/fk9e-2udt.csv",
     "https://data.austintexas.gov/resource/bx9w-y5sd.csv",
+    "https://data.austintexas.gov/resource/b9rk-dixy.csv",
+    "https://data.austintexas.gov/resource/5asp-dw2k.csv",
+    "https://data.austintexas.gov/resource/g3bw-w7hh.csv",
+    "https://data.austintexas.gov/resource/9qgn-zgva.csv",
+    "https://data.austintexas.gov/resource/tud4-5x9v.csv",
+    "https://data.austintexas.gov/resource/e3qf-htd9.csv",
+    "https://data.austintexas.gov/resource/vchc-c622.csv",
 ]
 
 # Change to what you need (remove what you don't)
@@ -70,7 +77,14 @@ save_table = [
     "racial_profiling/2016/citations",
     "r2r/2011/",
     "racial_profiling/2014/arrests/",
-    "r2r/2012/"
+    "r2r/2012/",
+    "racial_profiling/2018/citations/",
+    "racial_profiling/2017/warnings_field_obs/",
+    "crime_reports/2015/",
+    "discarge_firearm_at_dog/2019/",
+    "racial_profiling/2017/guide/",
+    "hate_crimes/2019/",
+    "racial_profiling/2018/warnings_field_obs/"
 
 ]
 save_folder = "./data/"
