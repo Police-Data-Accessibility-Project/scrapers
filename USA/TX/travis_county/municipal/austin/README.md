@@ -33,6 +33,13 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 [2008-17 OIS (officer_involved_shooting) Subjects](https://data.austintexas.gov/Public-Safety/2008-17-OIS-Subjects/u2k2-n8ez): "As needed"
 [R2R 2010](https://data.austintexas.gov/Public-Safety/R2R-2010/q5ym-htjz): "As needed"
 [Hate Crimes 2020](https://data.austintexas.gov/Public-Safety/Hate-Crimes-2020/mi2a-twn5): "As needed"
+[R2R 2017](https://data.austintexas.gov/Public-Safety/2017-R2R-Dataset/5evd-3tba): Not documented
+[R2R SUBJECTS 2017](https://data.austintexas.gov/dataset/2017-R2R-Subjects/5w6q-adh8): Not documented
+[2016 RP Citations](https://data.austintexas.gov/Public-Safety/2016-RP-Citations/urfd-wng9): "As needed"
+[R2R 2011](https://data.austintexas.gov/Public-Safety/R2R-2011/jipa-v8m5): "As needed"
+[2014 Racial Profiling Arrests](https://data.austintexas.gov/Public-Safety/2014-Racial-Profiling-Arrests/fk9e-2udt): "As needed"
+[R2R 2012](https://data.austintexas.gov/Public-Safety/R2R-2012/bx9w-y5sd): "As needed"
+[2018 RP Citations]
 
 ## Legal
 

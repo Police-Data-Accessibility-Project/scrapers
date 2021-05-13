@@ -32,6 +32,12 @@ url_table = [
     "https://data.austintexas.gov/resource/q5ym-htjz.csv",
     "https://data.austintexas.gov/resource/mi2a-twn5.csv",
     "https://data.austintexas.gov/resource/bmz9-cdnt.csv",
+    "https://data.austintexas.gov/resource/5evd-3tba.csv",
+    "https://data.austintexas.gov/resource/5w6q-adh8.csv",
+    "https://data.austintexas.gov/resource/urfd-wng9.csv",
+    "https://data.austintexas.gov/resource/jipa-v8m5.csv",
+    "https://data.austintexas.gov/resource/fk9e-2udt.csv",
+    "https://data.austintexas.gov/resource/bx9w-y5sd.csv",
 ]
 
 # Change to what you need (remove what you don't)
@@ -58,7 +64,13 @@ save_table = [
     "officer_involved_shooting/2008-2017/subjects/",
     "r2r/2010/",
     "hate_crimes/2020/",
-    "arrests/2016/"
+    "arrests/2016/",
+    "r2r/2017/",
+    "r2r/2017/subjects/",
+    "citations/2016/",
+    "r2r/2011/",
+    "racial_profiling/2014/arrests/",
+    "r2r/2012/"
 
 ]
 save_folder = "./data/"
