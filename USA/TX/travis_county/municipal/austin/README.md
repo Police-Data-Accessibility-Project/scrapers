@@ -49,6 +49,17 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 [Hate Crimes 2021](https://data.austintexas.gov/Public-Safety/Hate-Crimes-2021/dmxv-zsfa): "As needed"
 [R2R 2017](https://data.austintexas.gov/Public-Safety/2017-R2-R-Subjects/bmeh-xaea): Undocumented
 [2014 Racial Profiling Warnings + field Observations](https://data.austintexas.gov/City-Government/2014-Racial-Profiling-Warnings-Field-Observations/tqet-vty2): "As needed"
+[2019 RP Citations]("https://data.austintexas.gov/Public-Safety/2019-Racial-Profiling-RP-Citations/uzta-a386"): "As needed"
+[2018 R2R Data](https://data.austintexas.gov/Public-Safety/2018-Response-to-Resistance-Data/rus9-w6q5): "As needed"
+[2019 R2R Data](https://data.austintexas.gov/dataset/2019-Response-to-Resistance-Data/3bfz-mri4): "As needed"
+[2015 RP + FO](https://data.austintexas.gov/Public-Safety/2015-RP-Warnings-Field-Observations/v6rq-ainw): "As needed"
+[2019 RP Warning and FO](https://data.austintexas.gov/Public-Safety/2019-Racial-Profiling-RP-Warning-and-Field-Observa/djcn-eje6): "As needed"
+[2019 r2r subjects](https://data.austintexas.gov/Public-Safety/2019-Response-to-Resistance-Subject-Data/dwrk-z7q9): Not documented
+[2018 R2R Subjectes](https://data.austintexas.gov/Public-Safety/2018-Response-to-Resistance-Subjects-Data/c7is-tz8m)
+[S.D.1a-c Racial Profiling Motor Vehicle Stops](https://data.austintexas.gov/Public-Safety/S-D-1a-c-Racial-Profiling-Motor-Vehicle-Stops/9dis-d5bk): Annually
+[2019 RP guide](https://data.austintexas.gov/Public-Safety/2019-Racial-Profiling-RP-Guide/f59a-wt7w): "As needed"
+[S.D.1a-c Population vs. MV Stops](https://data.austintexas.gov/Public-Safety/S-D-1a-c-Population-vs-MV-Stops/87wz-a3h2): "Annually"
+[S.D.1b Warnings FOs](https://data.austintexas.gov/Public-Safety/S-D-1b-Warnings-FOs/gzfe-bzj4): "Annually"
 
 ## Legal
 
