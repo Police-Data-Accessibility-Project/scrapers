@@ -1,18 +1,33 @@
 import sys
 from pathlib import Path
 import os
+import mimetypes
+
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
+
 from common.utils import get_pdf
 
 
-def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True, flavor="stream"):
+def single_pdf_scraper(
+    save_dir,
+    url_2,
+    try_overwite=False,
+    no_overwrite=True,
+    flavor="stream",
+    name_in_url=True,
+    filename="null",
+):
 
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
-    file_name = url_2[url_2.rindex("/") :]
-    print(file_name)
+    if name_in_url:
+        file_name = url_2[url_2.rindex("/") :]
+        print(file_name)
+
+    else:
+        file_name = filename
 
     get_pdf(
         save_dir,
@@ -22,11 +37,12 @@ def single_pdf_scraper(save_dir, url_2, try_overwite=False, no_overwrite=True, f
         sleep_time=0,
         try_overwite=False,
         no_overwrite=True,
-        add_date=True
+        add_date=True,
     )
 
     import etl
     from etl import pdf_extract
+
     # Pass save_dir to pdf_extract's pdf_directory param
     etl.pdf_extract(pdf_directory=save_dir, flavor=flavor)
 
