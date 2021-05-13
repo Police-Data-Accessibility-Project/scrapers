@@ -9,14 +9,14 @@ from common import opendata_scraper
 
 # Change to what you need (remove what you don't)
 url_table = [
-    "URL1",
-    "URL2",
+    "https://data.austintexas.gov/resource/fdj4-gpfu.csv",
+    "https://data.austintexas.gov/resource/4bxg-n3iv.csv",
 ]
 
 # Change to what you need (remove what you don't)
 save_table = [
-    "URL1_name/",
-    "arrests/",
+    "crime_reports/",
+    "crime_reports/2017/",
 ]
 save_folder = "./data/"
 
