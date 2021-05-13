@@ -53,7 +53,7 @@ save_table = [
     "racial_profiling/2017/citations/",
     "officer_involved_shooting/guide/",
     "racial_profiling/2018/guide/",
-    "arrests/2018/",
+    "racial_profiling/2018/arrests/",
     "annual_crime/2017/",
     "hate_crimes/2018/",
     "racial_profiling/2014/citations/",
@@ -67,7 +67,7 @@ save_table = [
     "arrests/2016/",
     "r2r/2017/",
     "r2r/2017/subjects/",
-    "citations/2016/",
+    "racial_profiling/2016/citations",
     "r2r/2011/",
     "racial_profiling/2014/arrests/",
     "r2r/2012/"
