@@ -1,0 +1,5 @@
+"warning_fo","primary_key","occ_date","occ_time","sex","apd_race","location","person_searched","reason_for_stop","search_based_on","search_discovered","race_known","x_coordinate","y_coordinate","district","council_district"
+"Field Observation","201473","2014-01-01T00:00:00.000","1808","F","W","7015 VILLAGE CENTER DR","NO = 2","CALL FOR SERVICE",,,"NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3109302","10101313","BA","Council District 10"
+"Field Observation","2014185","2014-01-01T00:00:00.000","1811","M","H","3600 N IH 35 SVRD NB","NO = 2","VIOLATION OF TRANSPORTATION CODE/VEHICLE LAWS",,,"NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3121262","10080275","CH","Council District 9"
+"Field Observation","2014185","2014-01-01T00:00:00.000","1811","M","H","3600 N IH 35 SVRD NB","NO = 2","VIOLATION OF TRANSPORTATION CODE/VEHICLE LAWS",,,"NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3121262","10080275","CH
+TRUNCATED

@@ -1,0 +1,5 @@
+"primary_key","rep_date","cad_date_time","sex","apd_race_desc","location","person_searched_desc","reason_for_stop_desc","corrected_search_based_on","corrected_search_discovered","race_known","x_coordinate","y_coordinate","cad_sector","councildistrict"
+"20171560072","2017-06-05T00:00:00.000","2017-06-05T00:00:00.000","M","WHITE","600 AUGUSTA AVE","YES = 1","VIOLATION OF TRANSPORTATION CODE/VEHICLE LAWS","INCIDENTAL TO ARREST","NOTHING","NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3107170","10073616","BAKER","Council District 9"
+"20172090037","2017-07-28T00:00:00.000","2017-07-28T00:00:00.000","M","ASIAN","400 JOSEPHINE ST","YES = 1","VIOLATION OF TRANSPORTATION CODE/VEHICLE LAWS","INCIDENTAL TO ARREST","NOTHING","NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3109343","10068483","DAVID","Council District 5"
+"20172730297","2017-09-30T00:00:00.000","2017-09-30T00:00:00.000","M","HISPANIC OR LATINO","MANOR 
+TRUNCATED

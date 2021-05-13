@@ -1,0 +1,7 @@
+"go_primary_key_year_plus","council_district","go_highest_offense_desc","crime_type","go_report_date","go_location","go_x_coordinate","go_y_coordinate","clearance_status","clearance_date","go_district","go_location_zip","go_census_tract"
+"20183440706","9","AUTO THEFT","Auto Theft","10-Dec-18","2902 HAMPTON RD","3118304","10078620","N","19-Dec-18","B","78705","4.01"
+"20185041473","9","THEFT BY SHOPLIFTING","Theft","16-Oct-18","1201 BARBARA JORDAN BLVD","3124601","10084923","N","17-Oct-18","B","78723","3.06"
+"20188002409","10","BURGLARY OF VEHICLE","Theft","22-Jun-18","2600 LAKE AUSTIN BLVD","3104471","10074894","N","27-Jun-18","B","78703","16.02"
+"20181860919","4","BURGLARY OF RESIDENCE","Burglary","5-Jul-18","5330 N IH 35 SVRD SB","3124538","10087177","N","13-Sep-18","I","78751","21.05"
+"20185037796","7","BURGLARY OF VEHICLE","Theft","24-Sep-18","12802 POWDERHORN ST","3129160","10126575","N","24-Sep-18","A","787
+TRUNCATED
