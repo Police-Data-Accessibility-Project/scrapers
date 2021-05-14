@@ -28,18 +28,18 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
 
         url = url_save[i][0]
         response = requests.get(url)
-        content_type = response.headers["content-type"]
 
         if response.status_code == 200:
+            save_location = url_save[i][1]
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
             updated = page_update(
-                response, save_folder + save_table[i], loop=True, print_output=False
+                response, save_folder + save_location, loop=True, print_output=False
             )
             # print("Update bool: " + str(updated))
 
             if updated:
-                print(f"  [*] Url in index {i} of url_table has updated.")
-                print(f"     [*] save_folder: {save_table[i]}")
+                print(f"  [*] Url in index {i} of url_save has updated.")
+                print(f"     [*] save_folder: {save_location}")
                 if "json" in content_type:
                     parsed = json.loads(response.text)
 
@@ -48,11 +48,11 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
                     file_name = (
                         str(date_name).replace("-", "_")
                         + "_"
-                        + save_table[i].strip("/")
+                        + save_location.strip("/")
                     )
                 else:
-                    if save_table[i].count("/") > 1:
-                        file_folder = save_table[i].split("/")
+                    if save_location.count("/") > 1:
+                        file_folder = save_location.split("/")
                         file_name = (
                             str(date_name).replace("-", "_")
                             + "_"
@@ -63,21 +63,22 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
                         file_name = (
                             str(date_name).replace("-", "_")
                             + "_"
-                            + save_table[i].strip("/")
+                            + save_location.strip("/")
                         )
 
+                content_type = response.headers["content-type"]
                 if "json" in content_type:
                     # if save_subfolder:
-                    #     if not os.path.exists(save_folder + save_table[i]):
-                    #         os.makedirs(save_folder + save_table[i])
+                    #     if not os.path.exists(save_folder + save_location):
+                    #         os.makedirs(save_folder + save_location)
                     with open(
-                        save_folder + save_table[i] + file_name + ".json", "w"
+                        save_folder + save_location + file_name + ".json", "w"
                     ) as output:
                         output.write(json.dumps(parsed, indent=4, sort_keys=False))
 
                 elif "csv" in content_type:
                     with open(
-                        save_folder + save_table[i] + file_name + ".csv", "w"
+                        save_folder + save_location + file_name + ".csv", "w"
                     ) as output:
                         output.write(response.text)
 
@@ -85,28 +86,28 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
                     print(
                         '  [*] content_type is "octect-stream", saving as csv. (Experimental)'
                     )
-                    if ".csv" in url_table[i]:
+                    if ".csv" in url_save[i]:
                         with open(
-                            save_folder + save_table[i] + file_name + ".csv", "w"
+                            save_folder + save_location + file_name + ".csv", "w"
                         ) as output:
                             output.write(response.text)
-                    elif ".xlsx" in url_table[i]:
+                    elif ".xlsx" in url_save[i]:
                         urllib.request.urlretrieve(
-                            url_table[i],
-                            save_folder + save_table[i] + file_name + ".xlsx",
+                            url_save[i],
+                            save_folder + save_location + file_name + ".xlsx",
                         )
 
                 else:
                     print(
-                        f"  [!] The url in index {i}, save_folder: {save_table[i]}, did not have a handled content_type!"
+                        f"  [!] The url in index {i}, save_folder: {save_location}, did not have a handled content_type!"
                     )
                     print("      [?] content_type: " + content_type)
             else:
-                print(f"  [*] Url in index {i} of url_table has not updated.")
-                print(f"     [*] save_folder: {save_table[i]}")
+                print(f"  [*] Url in index {i} of url_save has not updated.")
+                print(f"     [*] save_folder: {save_location}")
         else:
             print(
-                f" [!!!] Url {url_table[i]} returned code {response.status_code}. Check that the url is correct."
+                f" [!!!] Url {url_save[i]} returned code {response.status_code}. Check that the url is correct."
             )
 
     # import etl
