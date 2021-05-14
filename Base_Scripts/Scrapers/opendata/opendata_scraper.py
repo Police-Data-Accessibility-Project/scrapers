@@ -5,18 +5,13 @@ from pathlib import Path
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 
-from common import opendata_scraper
+from common import opendata_scraper2
 
-# Change to what you need (remove what you don't)
-url_table = [
-    "URL1",
-    "URL2",
-]
-
-# Change to what you need (remove what you don't)
-save_table = [
-    "URL1_name/",
-    "arrests/",
+url_save = [
+    [save_folder, url],
+    [save_folder, url],
+    [save_folder, url],
+    [save_folder, url],
 ]
 save_folder = "./data/"
 
