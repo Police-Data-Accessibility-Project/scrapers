@@ -8,7 +8,7 @@ sys.path.insert(1, str(p))
 from common import opendata_scraper2
 
 # Change to what you need (remove what you don't)
-save_url: [
+save_url = [
     ["crime_reports/", "https://data.austintexas.gov/resource/fdj4-gpfu.csv"],
     ["crime_reports/2017/", "https://data.austintexas.gov/resource/4bxg-n3iv.csv"],
     ["hate_crimes/2021/", "https://data.austintexas.gov/resource/dmxv-zsfa.csv"],
