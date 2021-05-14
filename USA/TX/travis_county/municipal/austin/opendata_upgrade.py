@@ -30,4 +30,5 @@ for i, row in enumerate(url_table):
     updated_table = [save_table[i], url_table[i]]
     url_save.append(updated_table)
 
-print(url_save)
+with open("updated_table.txt", "a") as output:
+    output.write(f"save_url: {url_save}")
