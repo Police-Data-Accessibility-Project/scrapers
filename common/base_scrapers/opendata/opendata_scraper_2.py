@@ -24,7 +24,7 @@ from common.utils import page_update
 def opendata_scraper2(url_save, save_folder, save_subfolder=False):
     for i, row in enumerate(url_save):
         # get the api response
-        print(f"   [*] Getting data for table {url_save[i]}...")
+        print(f"   [*] Getting data for table {url_save[i][0]}...")
 
         url = url_save[i][1]
         response = requests.get(url)
