@@ -1,0 +1,5 @@
+"rpt_id","report_type","arst_date","time","area","area_desc","rd","age","sex_cd","descent_cd","chrg_grp_cd","grp_description","arst_typ_cd","charge","chrg_desc","dispo_desc","location","crsst","lat","lon","location_1","bkg_date","bkg_time","bgk_location","bkg_loc_cd"
+"201412685","RFC","2020-06-10T00:00:00.000","1720","14","Pacific","1431","31","M","W",,,"I","56.06.2(A)",,"MISDEMEANOR COMPLAINT FILED","25TH","OCEAN FRONT                  WK","33.988","-118.4703","POINT (-118.4703 33.988)",,,,
+"200611613","RFC","2020-06-17T00:00:00.000","1908","06","Hollywood","0645","37","M","O","17","Liquor Laws","M","25620BP","OPEN ALCOHOLIC BEV IN PUBLIC PARK/PLACE","MISDEMEANOR COMPLAINT FILED","HAWTHORN","ORANGE","34.1004","-118.3414","POINT (-118.3414 34.1004)",,,,
+"5996502","BOOKING","2020-08-21T00:00:00.000","1945","05","Harbor","0526","41","M","H","06","Larceny","M","490.2PC","PETTY THEFT","MISDEMEANOR COMPLAINT FILED","AVALO
+TRUNCATED

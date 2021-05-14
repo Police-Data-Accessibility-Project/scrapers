@@ -1,0 +1,5 @@
+"rpt_id","report_type","arst_date","time","area","area_desc","rd","age","sex_cd","descent_cd","chrg_grp_cd","grp_description","arst_typ_cd","charge","chrg_desc","dispo_desc","location","crsst","lat","lon","location_1","bkg_date","bkg_time","bgk_location","bkg_loc_cd"
+"121920046","RFC","2012-09-28T00:00:00.000","0930","19","Mission","1998","60","M","H",,,"M","25620(A)BP",,"MISDEMEANOR COMPLAINT FILED","7600    WOODMAN                      AV",,"34.2111","-118.4309","POINT (-118.4309 34.2111)",,,,
+"0000000","BOOKING","2019-02-18T00:00:00.000","1115","01","Central","0132","32","M","H","04","Aggravated Assault","F","273.5(A)PC","CORPORAL INJURY ON SPOUSE/COHABITANT/ETC",,"200 S  GRAND                        AV",,"34.0545","-118.2499","POINT (-118.2499 34.0545)","1997-11-14T00:00:00.000","1443","METRO - JAIL DIVISION","4273"
+"090712341","RFC","2011-03-10T00:00:00.000","0940","07","Wilshire","0776","45","M","B","18","Drunk
+TRUNCATED

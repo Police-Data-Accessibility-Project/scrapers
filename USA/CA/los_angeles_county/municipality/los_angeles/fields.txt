@@ -1,0 +1,136 @@
+* Report ID
+* Arrest Date
+* Time
+* Area ID
+* Area Name
+* Reporting District
+* Age
+* Sex Code
+* Descent Code
+* Charge Group Code
+* Charge Group Description
+* Arrest Type Code
+* Charge
+* Charge Description
+* Address
+* Cross Street
+
+* "incident_number"
+* "rpt_dist"
+* "area_occ"
+* "dispatch_date"
+* "dispatch_time"
+* "call_type_code"
+* "call_type_text"
+
+* "reporting_district"
+* "area_occurred"
+* "call_type_description"
+
+* "rpt_id"
+* "report_type"
+* "arst_date"
+* "time"
+* "area"
+* "area_desc"
+* "rd"
+* "age"
+* "sex_cd"
+* "descent_cd"
+* "chrg_grp_cd"
+* "grp_description"
+* "arst_typ_cd"
+* "charge"
+* "chrg_desc"
+* "dispo_desc"
+* "location"
+* "crsst"
+* "lat"
+* "lon"
+* "location_1"
+* "bkg_date"
+* "bkg_time"
+* "bgk_location"
+* "bkg_loc_cd"
+
+* "dr_no"
+* "date_rptd"
+* "date_occ"
+* "time_occ"
+* "area_name"
+* "rpt_dist_no"
+* "part_1_2"
+* "crm_cd"
+* "crm_cd_desc"
+* "mocodes"
+* "vict_age"
+* "vict_sex"
+* "vict_descent"
+* "premis_cd"
+* "premis_desc"
+* "weapon_used_cd"
+* "weapon_desc"
+* "status"
+* "status_desc"
+* "crm_cd_1"
+* "crm_cd_2"
+* "crm_cd_3"
+* "crm_cd_4"
+* "cross_street"
+* "lon"
+
+* "priority_outcome"
+* "final_report_date"
+* "final_report_date_name"
+* "part_1_crimes"
+* "gang_crimes"
+* "homicides"
+* "sworn_officers"
+* "sexual_assault_evidence_kit_backlog"
+* "collisions"
+* "_911_calls_answered_within_10_seconds"
+* "non_emergency_calls_answered_within_20_seconds"
+
+* "stop_nbr"
+* "form_ref_nbr"
+* "persn_gender_cd"
+* "persn_descent_cd"
+* "descent_desc"
+* "stop_dt"
+* "stop_tm"
+* "ofcr1_serl_nbr"
+* "ofcr1_div_nbr"
+* "div1_desc"
+* "ofcr2_serl_nbr"
+* "ofcr2_div_nbr"
+* "div2_desc"
+* "rpt_dist_nbr"
+* "stop_type"
+* "post_stop_actv_ind"
+
+* "year"
+* "month"
+* "average_ems_turnout_time"
+* "average_ems_travel_time"
+* "average_non_ems_turnout_time"
+* "average_non_ems_travel_time"
+* "average_call_processing_time"
+* "average_non_ems_operational"
+* "average_ems_operational"
+* "average_structure_fire"
+* "average_critical_als"
+
+* "average_lafd_call_processing_time"
+* "average_lafd_turnout_time_non_ems"
+* "average_lafd_turnout_time_ems"
+* "average_lafd_travel_time_non_ems"
+* "average_lafd_travel_time_ems"
+
+* "district"
+* "average_lafd_turnout_time_in_district_non_ems"
+* "average_lafd_turnout_time_in_district_ems"
+* "average_lafd_travel_time_in_district_non_ems"
+* "average_lafd_travel_time_in_district_ems"
+* "incident_count_in_district_non_ems"
+* "incident_count_in_district_ems"
+
