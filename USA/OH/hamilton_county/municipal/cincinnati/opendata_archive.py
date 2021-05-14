@@ -8,7 +8,7 @@ sys.path.insert(1, str(p))
 from common import opendata_scraper2
 
 # Change to what you need (remove what you don't)
-url_save = [
+save_url = [
     ["cfs/archive_2014-2016/", "https://data.cincinnati-oh.gov/resource/4v9f-u3ia.csv"],
 ]
 
@@ -16,4 +16,4 @@ url_save = [
 
 save_folder = "./data/"
 
-opendata_scraper2(url_save, save_folder, save_subfolder=True)
+opendata_scraper2(save_url, save_folder, save_subfolder=True)

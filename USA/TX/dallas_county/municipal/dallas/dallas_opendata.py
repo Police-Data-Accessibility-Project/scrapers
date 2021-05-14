@@ -9,7 +9,7 @@ from common import opendata_scraper2
 
 # Change to what you need (remove what you don't)
 
-url_save = [
+save_url = [
     [
         "officer_involved_shootings/",
         "https://www.dallasopendata.com/resource/4gmt-jyx2.csv",
@@ -21,4 +21,4 @@ url_save = [
 
 save_folder = "./data/"
 
-opendata_scraper2(url_save, save_folder)
+opendata_scraper2(save_url, save_folder)

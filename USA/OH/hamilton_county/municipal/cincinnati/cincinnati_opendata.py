@@ -6,7 +6,7 @@ sys.path.insert(1, str(p))
 
 from common import opendata_scraper2
 
-url_save = [
+save_url = [
     ["cfs/", "https://data.cincinnati-oh.gov/resource/gexm-h6bt.csv"],
     ["crime_incidents/", "https://data.cincinnati-oh.gov/resource/k59e-2pvf.csv"],
     ["use_of_force/", "https://data.cincinnati-oh.gov/resource/8us8-wi2w.csv"],
@@ -27,4 +27,4 @@ url_save = [
 
 save_folder = "./data/"
 
-opendata_scraper2(url_save, save_folder, save_subfolder=True)
+opendata_scraper2(save_url, save_folder, save_subfolder=True)
