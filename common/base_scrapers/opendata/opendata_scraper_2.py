@@ -12,14 +12,24 @@ sys.path.insert(1, str(p))
 from common.utils import page_update
 
 
-def opendata_scraper(
-    url_table, save_table, save_folder, save_subfolder=False, dictionary=True
-):
-    for i, row in enumerate(url_table):
+url_save = [
+    [url, save_folder],
+    [url, save_folder],
+    [url, save_folder],
+    [url, save_folder],
+    [url, save_folder],
+]
+
+
+def opendata_scraper2(url_save, save_folder, save_subfolder=False):
+    for i, row in enumerate(url_save):
         # get the api response
-        print(f"   [*] Getting data for table {url_table[i]}...")
-        response = requests.get(url_table[i])
+        print(f"   [*] Getting data for table {url_save[i]}...")
+
+        url = url_save[i][0]
+        response = requests.get(url)
         content_type = response.headers["content-type"]
+
         if response.status_code == 200:
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
             updated = page_update(
