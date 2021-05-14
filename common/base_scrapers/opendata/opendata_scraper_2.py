@@ -12,13 +12,13 @@ sys.path.insert(1, str(p))
 from common.utils import page_update
 
 
-url_save = [
-    [url, save_folder],
-    [url, save_folder],
-    [url, save_folder],
-    [url, save_folder],
-    [url, save_folder],
-]
+# url_save = [
+#     [save_folder, url],
+#     [save_folder, url],
+#     [save_folder, url],
+#     [save_folder, url],
+#     [save_folder, url],
+# ]
 
 
 def opendata_scraper2(url_save, save_folder, save_subfolder=False):
@@ -26,11 +26,12 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
         # get the api response
         print(f"   [*] Getting data for table {url_save[i]}...")
 
-        url = url_save[i][0]
+        url = url_save[i][1]
         response = requests.get(url)
+        content_type = response.headers["content-type"]
 
         if response.status_code == 200:
-            save_location = url_save[i][1]
+            save_location = url_save[i][0]
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
             updated = page_update(
                 response, save_folder + save_location, loop=True, print_output=False
@@ -38,8 +39,8 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
             # print("Update bool: " + str(updated))
 
             if updated:
-                print(f"  [*] Url in index {i} of url_save has updated.")
-                print(f"     [*] save_folder: {save_location}")
+                print(f"    [*] Url in index {i} of url_save has updated.")
+                print(f"     [*] save_folder: {save_location}\n")
                 if "json" in content_type:
                     parsed = json.loads(response.text)
 
@@ -66,7 +67,6 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
                             + save_location.strip("/")
                         )
 
-                content_type = response.headers["content-type"]
                 if "json" in content_type:
                     # if save_subfolder:
                     #     if not os.path.exists(save_folder + save_location):
@@ -99,12 +99,12 @@ def opendata_scraper2(url_save, save_folder, save_subfolder=False):
 
                 else:
                     print(
-                        f"  [!] The url in index {i}, save_folder: {save_location}, did not have a handled content_type!"
+                        f"   [!] The url in index {i}, save_folder: {save_location}, did not have a handled content_type!"
                     )
                     print("      [?] content_type: " + content_type)
             else:
-                print(f"  [*] Url in index {i} of url_save has not updated.")
-                print(f"     [*] save_folder: {save_location}")
+                print(f"    [*] Url in index {i} of url_save has not updated.")
+                print(f"     [*] save_folder: {save_location}\n")
         else:
             print(
                 f" [!!!] Url {url_save[i]} returned code {response.status_code}. Check that the url is correct."
