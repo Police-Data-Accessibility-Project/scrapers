@@ -15,6 +15,7 @@ from common.utils import page_update
 def opendata_scraper(
     url_table, save_table, save_folder, save_subfolder=False, dictionary=True
 ):
+    print("[!!!] This scraper is deprecated, use ")
     for i, row in enumerate(url_table):
         # get the api response
         print(f"   [*] Getting data for table {url_table[i]}...")
