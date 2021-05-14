@@ -16,4 +16,4 @@ url_save = [
 save_folder = "./data/"
 
 # Optional argument `save_subfolder` allows saving in a subfolder
-opendata_scraper(url_table, save_table, save_folder)
+opendata_scraper2(url_table, save_folder)
