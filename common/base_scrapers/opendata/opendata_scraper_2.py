@@ -5,6 +5,7 @@ from datetime import date
 from pathlib import Path
 import json
 import urllib
+import time
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
@@ -21,7 +22,7 @@ from common.utils import page_update
 # ]
 
 
-def opendata_scraper2(save_url, save_folder, save_subfolder=False):
+def opendata_scraper2(save_url, save_folder, sleep_time=1, save_subfolder=False):
     for i, row in enumerate(save_url):
         # get the api response
         print(f"   [*] Getting data for table {save_url[i][0]}...")
@@ -105,6 +106,8 @@ def opendata_scraper2(save_url, save_folder, save_subfolder=False):
             else:
                 print(f"    [*] Url in index {i} of save_url has not updated.")
                 print(f"     [*] save_folder: {save_location}\n")
+
+            time.sleep(int(sleep_time))
         else:
             print(
                 f" [!!!] Url {save_url[i]} returned code {response.status_code}. Check that the url is correct."
