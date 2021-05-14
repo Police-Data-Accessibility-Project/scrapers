@@ -1,0 +1,16 @@
+"data_purpose","none"
+"This arrest booking dataset provides the raw data needed to identify trends in the use of force in responding to resisting subjects. It is used to help identify potential improvements in department policy, tactics, and training.",
+"Corresponding data:",
+"This guide corresponds to the Arrest data posted on the city data portal here:",
+"https://data.austintexas.gov/browse?Additional-Information_Department=Austin+Police+&tags=bookings",
+"Corresponding report:",
+"This data is used for context in the R2R report, posted on APD's website here:",
+"http://www.austintexas.gov/page/response-resistance-reports",
+"Field definitions:",
+"Below are the fields contained in the dataset and definitions.",
+"Field Name","Definition"
+"Arrest Primary Key","Arrest booking number"
+"Arrest Date","Date arrest occurred"
+"Arrest Time 24hh","Time arrest occurred"
+"Arrest Location","Address of arrest location"
+TRUNCATED

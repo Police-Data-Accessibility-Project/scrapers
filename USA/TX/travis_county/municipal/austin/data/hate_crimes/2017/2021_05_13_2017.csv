@@ -1,0 +1,7 @@
+"month","incident_number","date_of_incident_day_of_week","number_of_vitims_under_18","number_of_victims_over_18","number_of_offenders_under_18","number_of_offenders_over_18","race_or_ethnic_of_offender","offense","offense_location","bias","victim_type"
+"January","2017-241137","01/01/2017/Sun","0","1","0","1","White/Not Hispanic","Aggravated Assault","Park/Playground","Anti-Black or African American","Individual"
+"February","2017-580344","02/01/2017/Wed","0","1","0","1","Black or African American/Not Hispanic","Aggravated Assault","Highway/Road/Alley/Street/Sidewalk","Anti-White","Individual"
+"March","2017-800291","03/21/2017/Tues","0","0","0","0","Unknown","Destruction","Highway/Road/Alley/Street/Sidewalk","Anti-Jewish","Other"
+"April","2017-1021534","04/12/2017/Wed","0","0","0","0","White/Unknown","Simple Assault","Air/Bus/Train Terminal","Anti-Jewish","Individual"
+"May","2017-1351550","05/15/2017/Mon","1","0",
+TRUNCATED

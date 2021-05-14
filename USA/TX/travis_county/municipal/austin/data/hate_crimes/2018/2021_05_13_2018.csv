@@ -1,0 +1,8 @@
+"month","incident_number","date_of_incident_day_of_week","number_of_vitims_under_18","number_of_victims_over_18","number_of_offenders_under_18","number_of_offenders_over_18","race_ethnic_of_offender_s","offense_s","offense_location","bias","victim_type"
+"January","2018-251458","01 25 2018/Thur","0","2","0","1","White/NotHispanic","Burglary/Assault","Residence/Home","Anti-Lesbian","Individual"
+"January","2018-200595","01 19 2018/Fri","0","0","0","0","Unknown","Vandalism","Parking Lot/Garage","Anti-Black","Vehicle"
+"February","2018-400447","02 08 2018/Thur","0","1","0","1","White/NotHispanic","Assault","Parking Lot/Garage","Anti-Gay","Individual"
+"February","2018-530804","02 22 2018/Thur","0","1","0","1","White/NotHispanic","Vandalism","Highway/Road/Street","Anti-Black","Individual"
+"March","2018-611809","03 02 2018/Fri","0","1","0","4","Black/Unknown","Assault","Highway/Road/Street","Anti-Hispanic","Individual"
+
+TRUNCATED

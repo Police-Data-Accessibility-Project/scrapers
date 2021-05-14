@@ -1,0 +1,5 @@
+"primary_key","rep_date","rep_time","location","x_coordinate","y_coordinate","apd_sector","councildistrict","county_description","zip","census_tract","race_known","reason_for_stop_tcole_form","sex","apd_race_desc","person_search_yn","search_based_on","search_found"
+"2018851492","2018-03-26T00:00:00.000","2010","900 BARTON SPRINGS RD","3110900","10067827","DA","Council District 9","TRAVIS COUNTY","78704","13.05","NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","Violation of law other than traffic","F","WHITE","YES","INCIDENTAL TO ARREST","NOTHING"
+"20183380603","2018-12-04T00:00:00.000","1032","W 14TH ST / LAVACA ST","3114407","10073883","BA","Council District 1","TRAVIS COUNTY","78701","7.00",,"Moving Traffic Violation","M","BLACK","NO",,
+"2018220493","2018-01-22T00:00:00.000","930","BARWOOD PARK / N IH 35 SVRD SB","3128801","10100276","ED","Council District 4","TRAVIS COUNTY","78753","18.06",,"Moving Traffic Vi
+TRUNCATED

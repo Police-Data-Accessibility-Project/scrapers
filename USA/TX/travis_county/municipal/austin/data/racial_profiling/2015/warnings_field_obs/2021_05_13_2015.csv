@@ -1,0 +1,6 @@
+"warning_fo","primary_key","occ_date","occ_time","sex","apd_race","location","person_searched","reason_for_stop","search_based_on","search_discovered","race_known","x_coordinate","y_coordinate","district","council_district"
+"Field Observation","2015656","2015-01-01T00:00:00.000","23","M","H","7000 ARDATH ST","NO = 2","VIOLATION OF CITY ORDIANCE",,,"NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3114467","10100186","BA","Council District 7"
+"Field Observation","2015656","2015-01-01T00:00:00.000","23","F","H","7000 ARDATH ST","NO = 2","VIOLATION OF CITY ORDIANCE",,,"NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3114467","10100186","BA","Council District 7"
+"Field Observation","2015307","2015-01-01T00:00:00.000","647","M","B","E 10TH ST / RED RIVER ST","NO = 2","VIOLATION OF TRANSPORTATION CODE/VEHICLE LAWS",,,"NO - RACE OR ETHNICITY WAS NOT KNOWN BEFORE STOP","3116513","10071591","GE","Council District 9"
+
+TRUNCATED
