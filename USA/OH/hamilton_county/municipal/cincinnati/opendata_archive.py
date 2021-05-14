@@ -19,4 +19,6 @@ save_table = [
 
 save_folder = "./data/"
 
-opendata_scraper(url_table, save_table, save_folder, save_subfolder=True)
+opendata_scraper(
+    url_table, save_table, save_folder, save_subfolder=True, dictionary=False
+)

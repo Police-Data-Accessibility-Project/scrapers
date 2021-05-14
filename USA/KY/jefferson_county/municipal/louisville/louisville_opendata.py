@@ -16,7 +16,7 @@ url_table = [
     "https://data.louisvilleky.gov/sites/default/files/UniformCitationData%20.csv",
     "https://lky-open-data.s3.amazonaws.com/LMPD/LMPD_STOPS_DATA.CSV",
     "https://data.louisvilleky.gov/sites/default/files/Firearm%20Data_normalized_addresses.csv",
-    "https://data.louisvilleky.gov/sites/default/files/fiream_data_intersections_reprocessed.csv"
+    "https://data.louisvilleky.gov/sites/default/files/fiream_data_intersections_reprocessed.csv",
 ]
 
 # Change to what you need (remove what you don't)
@@ -28,8 +28,10 @@ save_table = [
     "uniform_citation_data/",
     "stops_data/",
     "firearm_intake/normalized_addresses/",
-    "firearm_intake/intersections/"
+    "firearm_intake/intersections/",
 ]
 save_folder = "./data/"
 
-opendata_scraper(url_table, save_table, save_folder, save_subfolder=True)
+opendata_scraper(
+    url_table, save_table, save_folder, save_subfolder=True, dictionary=False
+)

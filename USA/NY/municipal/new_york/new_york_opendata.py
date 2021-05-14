@@ -11,14 +11,15 @@ from common import opendata_scraper
 url_table = [
     "https://data.cityofnewyork.us/api/views/5uac-w243/rows.csv?accessType=DOWNLOAD",
     "https://data.cityofnewyork.us/api/views/57mv-nv28/rows.csv?accessType=DOWNLOAD",
-
 ]
 
 # Change to what you need (remove what you don't)
 save_table = [
-    "crime_data/", # called "complaints" on website
+    "crime_data/",  # called "complaints" on website
     "crime_data/historic",
 ]
 save_folder = "./data/"
 
-opendata_scraper(url_table, save_table, save_folder, save_subfolder=True)
+opendata_scraper(
+    url_table, save_table, save_folder, save_subfolder=True, dictionary=False
+)

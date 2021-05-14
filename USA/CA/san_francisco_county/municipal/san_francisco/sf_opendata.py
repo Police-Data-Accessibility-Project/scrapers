@@ -22,8 +22,10 @@ save_table = [
     "cfs/",
     "cfs/radio_codes/",
     "incident_reports/historical_2003-may_2018/",
-    "incident_codes/"
+    "incident_codes/",
 ]
 save_folder = "./data/"
 
-opendata_scraper(url_table, save_table, save_folder, save_subfolder=True)
+opendata_scraper(
+    url_table, save_table, save_folder, save_subfolder=True, dictionary=False
+)

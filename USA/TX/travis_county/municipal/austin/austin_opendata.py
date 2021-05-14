@@ -29,4 +29,6 @@ save_table = [
 save_folder = "./data/"
 
 # Optional argument `save_subfolder` allows saving in a subfolder
-opendata_scraper(url_table, save_table, save_folder, save_subfolder=True)
+opendata_scraper(
+    url_table, save_table, save_folder, save_subfolder=True, dictionary=False
+)

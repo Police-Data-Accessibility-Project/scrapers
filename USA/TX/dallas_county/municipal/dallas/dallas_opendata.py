@@ -24,4 +24,4 @@ save_table = [
 ]
 save_folder = "./data/"
 
-opendata_scraper(url_table, save_table, save_folder)
+opendata_scraper(url_table, save_table, save_folder, dictionary=False)
