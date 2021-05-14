@@ -31,7 +31,10 @@ save_url = [
     ["response_metrics/citywide/2017/", "https://data.lacity.org/resource/t69g-g3uk.csv"],
     ["response_metrics/all_stations/2013/", "https://data.lacity.org/resource/x88u-8etg.csv"],
     ["cfs/2012/", "https://data.lacity.org/resource/i7pm-cnmm.csv"],
-    ["response_metrics/all_stations/2016/", "https://data.lacity.org/resource/ieyn-ppaw.csv"]
+    ["response_metrics/all_stations/2016/", "https://data.lacity.org/resource/ieyn-ppaw.csv"],
+    ["response_metrics/all_stations/2017/", "https://data.lacity.org/resource/rub2-5ih6.csv"],
+    ["response_metrics/citywide/2014/", "https://data.lacity.org/resource/txgp-mc85.csv"],
+    
 
 
 

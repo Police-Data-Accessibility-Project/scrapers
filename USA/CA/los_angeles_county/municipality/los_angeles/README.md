@@ -37,6 +37,8 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 * [all stations response metrics 2013](https://data.lacity.org/Public-Safety/All-Stations-Response-Metrics-2013/x88u-8etg): probably never
 * [CFS 2012](https://data.lacity.org/Public-Safety/LAPD-Calls-for-Service-2012/i7pm-cnmm): Probably nevers
 * [All stations response metrics 2016](https://data.lacity.org/Public-Safety/All-Stations-Response-Metrics-2016/ieyn-ppaw): Archived
+* [All stations response metrics 2017](https://data.lacity.org/Public-Safety/All-Stations-Response-Metrics-2017/rub2-5ih6): ARchived
+* [Citywide response metrics 2014](https://data.lacity.org/Public-Safety/Citywide-Response-Metrics-2014/txgp-mc85): Archived
 
 
 
