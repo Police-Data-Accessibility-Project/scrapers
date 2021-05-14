@@ -126,6 +126,6 @@ save_url = [
 save_folder = "./data/"
 
 # Optional argument `save_subfolder` allows saving in a subfolder
-url_save
-# Update this
+
+# Crawl-delay is 1, so no need to set it.
 opendata_scraper2(save_url, save_folder, save_subfolder=True)

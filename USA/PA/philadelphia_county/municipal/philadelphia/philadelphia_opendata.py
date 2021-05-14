@@ -41,4 +41,4 @@ url_save = [
 
 save_folder = "./data/"
 
-opendata_scraper2(url_save, save_folder, save_subfolder=True)
+opendata_scraper2(url_save, save_folder, save_subfolder=True, sleep_time=10)

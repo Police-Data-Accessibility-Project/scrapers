@@ -27,4 +27,5 @@ save_url = [
 
 save_folder = "./data/"
 
+# Crawl-delay is 1, so no need to set it.
 opendata_scraper2(save_url, save_folder, save_subfolder=True)
