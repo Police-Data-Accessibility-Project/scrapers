@@ -17,6 +17,9 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 * [Use of Force](https://data.seattle.gov/Public-Safety/Use-Of-Force/ppi5-g2bj): Daily, duplicate  data bug
 * [Crisis Data](https://data.seattle.gov/Public-Safety/Crisis-Data/i2q9-thny): Daily, "Data is denormalized to represent the one to many relationship between the record and the reported disposition of the contact. **USE CAUTION WHEN COUNTING**"
 * [Crime Data 2008-present](https://data.seattle.gov/Public-Safety/SPD-Crime-Data-2008-Present/tazs-3rd5): Daily
+* [PDRs After using "City of Seattle Public Records Request Center"Public Safety](https://data.seattle.gov/Public-Safety/PDRs-After-using-City-of-Seattle-Public-Records-Re/wj44-r6br): Daily
+* [COBAN Logs](https://data.seattle.gov/Public-Safety/COBAN-Logs/tpvk-5fr3): Daily, says weekly in description but daily in metadata
+* [Closed Case Summaries 2020-present](https://data.seattle.gov/Public-Safety/Closed-Case-Summaries-2020-Present-/f8kp-sfr3): To be determined
 
 ## Archive
 * [Seattle Police PDRs (public data requests)](https://data.seattle.gov/Public-Safety/Seattle-Police-PDRs/8fwq-jcnn)

@@ -19,6 +19,13 @@ save_url = [
     ["ois/", "https://data.seattle.gov/resource/mg5r-efcm.csv"],
     ["uof/", "https://data.seattle.gov/resource/ppi5-g2bj.csv"],
     ["crisis_data/", "https://data.seattle.gov/resource/i2q9-thny.csv"],
+    ["crime_data/2008-present/", "https://data.seattle.gov/resource/tazs-3rd5.csv"],
+    ["pdrs/using_cosprrc/", "https://data.seattle.gov/resource/wj44-r6br.csv"],
+    ["coban_logs/", "https://data.seattle.gov/resource/tpvk-5fr3.csv"],
+    [
+        "closed_cases/summaries/2020-present/",
+        "https://data.seattle.gov/resource/f8kp-sfr3.csv",
+    ],
 ]
 
 save_folder = "./data/"
