@@ -1,0 +1,5 @@
+"subjectagegroup","subjectid","go_num","terry_stop_id","resolution","weapon_type","officerid","officer_yob","officer_gender","officer_race","subjectrace","subjectgender","reported_date","reported_time","initialcalltype","finalcalltype","calltype","officersquad","arrestflag","friskflag","precinct","sector","beat"
+"-","-1","20140000120677","92317","Arrest","None","7500  ","1984","M","Black or African American","Asian","Male","2015-10-16T00:00:00","11:32:00","-","-","-","SOUTH PCT 1ST W - ROBERT","N","N","South","O     ","O2    "
+"-","-1","20150000120532","35462","Arrest","None","7735  ","1991","M","White","-","Unable to Determine","2015-04-13T00:00:00","16:45:00","THEFT (DOES NOT INCLUDE SHOPLIFT OR SVCS)","--THEFT - CAR PROWL","911",,"N","Y","East","C     ","C2    "
+"-","-1","20150000130727","80117","Arrest","None","7557  ","1985","M","White","-","Unable to Determine","2015-09-06T00:00:00","15:34:00","-","-","-","NORT
+TRUNCATED
