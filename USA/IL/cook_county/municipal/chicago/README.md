@@ -7,8 +7,23 @@ Note: Ensure your scraper calls the etl.py file. Even if there is nothing in the
 # Source info
 Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
 
-## Data refresh rate
-For example "daily at 8pm EST" or "every Friday, usually before noon"
+## Data refresh rate:
+* [FOIA Request log - Police](https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Police/wjkc-agnm): As needed
+* [FOIA Request log - Police Board](https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Chicago-Police-Board/9pd8-s9t4): As needed
+* [FOIA Request log - Independent Police Review Authority (saved as IPRA)](https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Independent-Police-Review-Authori/gzxp-vdqf): As needed
+* [Crimes 2001-present](https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-Present/ijzp-q8t2): Daily, has data excluding past 7 days
+* [Police Sentiment Scores]: Monthly
+* [COPA Cases Summary (Civilian Office of Police Accountability)](https://data.cityofchicago.org/Public-Safety/COPA-Cases-Summary/mft5-nfa8): Unsure
+* [COPA Cases By Officer](https://data.cityofchicago.org/resource/ufxy-tgry.csv): Unsure
+* [COPA Cases by Complainant or Subject](https://data.cityofchicago.org/Public-Safety/COPA-Cases-By-Complainant-or-Subject/vnz2-rmie): Unsure
+* [Arrests](https://data.cityofchicago.org/Public-Safety/Arrests/dpt3-jri9): Daily
+* [FOIA Request log - Chicago Public Library](https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Chicago-Public-Library/n379-5uzu): As needed
+
+### Archive:
+* [IUCR Codes](https://data.cityofchicago.org/Public-Safety/Chicago-Police-Department-Illinois-Uniform-Crime-R/c7ck-438e)
+* [Strategic Subject List - Historical](https://data.cityofchicago.org/Public-Safety/Strategic-Subject-List-Historical/4aki-r3np)
+
+
 
 ## Legal
 Include the Terms of Service (or link to them). Is there anything else we should know?

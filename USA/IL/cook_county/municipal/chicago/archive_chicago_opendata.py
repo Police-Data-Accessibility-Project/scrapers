@@ -9,9 +9,10 @@ from common import opendata_scraper2
 
 save_url = [
     ["foia_log/", "https://data.cityofchicago.org/resource/wjkc-agnm.csv"],
-    ["save_folder", "url"],
-    ["save_folder", "url"],
-    ["save_folder", "url"],
+    [
+        "strategic_subject_list/",
+        "https://data.cityofchicago.org/resource/4aki-r3np.csv",
+    ],
 ]
 save_folder = "./data/"
 
