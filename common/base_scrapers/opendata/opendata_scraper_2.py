@@ -21,22 +21,48 @@ from common.utils import page_update
 #     [save_folder, url],
 # ]
 
+# save_folder is the parent directory that all data will be saved under
+def opendata_scraper2(
+    save_url, save_folder, sleep_time=1, save_subfolder=False, is_socrata=False
+):
 
-def opendata_scraper2(save_url, save_folder, sleep_time=1, save_subfolder=False):
     for i, row in enumerate(save_url):
         # get the api response
         print(f"   [*] Getting data for table {save_url[i][0]}...")
 
         url = save_url[i][1]
-        response = requests.get(url)
-        content_type = response.headers["content-type"]
+        if not is_socrata:
+            response = requests.get(url)
+            content_type = response.headers["content-type"]
+        else:
+            # Gets the view-uuid out of the url
+            view_uuid = url.rsplit("/", 1)[-1]
+            # remove file extension
+            view_uuid = view_uuid.split(".")[0]
+
+            # Parse the url using urllib
+            parsed_url = urllib.parse.urlparse(url)
+            site_hostname = parsed_url.hostname
+            api_url = f"https://{site_hostname}/api/views/metadata/v1/{view_uuid}"
+            response = requests.get(api_url)
 
         if response.status_code == 200:
             save_location = save_url[i][0]
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
-            updated = page_update(
-                response, save_folder + save_location, loop=True, print_output=False
-            )
+            if not is_socrata:
+                updated = page_update(
+                    response, save_folder + save_location, loop=True, print_output=False
+                )
+            else:
+                # get the update date of the data from the returned dictionary
+                data_updated_date = response.text["dataUpdatedAt"]
+                # Because I'm too lazy to compare the date to today's date, I'm just hashing it instead
+                updated = page_update(
+                    data_updated_date,
+                    save_folder + save_location,
+                    loop=True,
+                    print_output=False,
+                )
             # print("Update bool: " + str(updated))
 
             if updated:
