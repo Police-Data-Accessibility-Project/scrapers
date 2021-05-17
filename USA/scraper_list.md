@@ -57,3 +57,14 @@
 |                                       |          |
 |                                       |          |
 |                                       |          |
+
+## IL
+
+| Path                                  | Scraper  |
+|---------------------------------------|----------|
+| USA/IL/cook_county/municipal/chicago | opendata |
+
+## PA
+| Path                                  | Scraper  |
+|---------------------------------------|----------|
+| USA/PA/philadelphia_county/municipal/philadelphia | opendata |
