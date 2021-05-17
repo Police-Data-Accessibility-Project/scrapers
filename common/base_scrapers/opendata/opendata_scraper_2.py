@@ -106,6 +106,9 @@ def opendata_scraper2(
 
                 date_name = date.today()
 
+                if save_subfolder:
+                    print(" [!] save_subfolder is deprecated")
+
                 if save_location.count("/") > 1:
                     file_folder = save_location.split("/")
                     file_name = (
