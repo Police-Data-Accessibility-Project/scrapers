@@ -55,44 +55,71 @@ def opendata_scraper2(
                 )
             else:
                 # get the update date of the data from the returned dictionary
-                data_updated_date = response.text["dataUpdatedAt"]
-                # Because I'm too lazy to compare the date to today's date, I'm just hashing it instead
-                updated = page_update(
-                    data_updated_date,
-                    save_folder + save_location,
-                    loop=True,
-                    print_output=False,
-                )
+                response_json = json.loads(response.text)
+                data_updated_date = response_json["dataUpdatedAt"]
+
+                if not os.path.exists(save_folder + save_location):
+                    os.makedirs(save_folder + save_location)
+
+                # An altered version of page_update.py
+                # Check if the file data.txt exists, and that it is not empty
+                if (
+                    os.path.isfile(save_folder + save_location + "date.txt")
+                    and os.stat(save_folder + save_location + "date.txt").st_size != 0
+                ):
+                    with open(save_folder + save_location + "date.txt", "r") as output:
+                        # Read the file
+                        previous_update_date = output.read()
+
+                        # compare the file to the date gotten from the api
+                        if data_updated_date in previous_update_date:
+                            print(" [*] File has not updated")
+                            updated = False
+
+                        else:
+                            with open(
+                                save_folder + save_location + "date.txt", "w"
+                            ) as output_writable:
+                                print(" [*] File has updated")
+                                updated = True
+                                output_writable.write(data_updated_date)
+
+                # If the script has never been run, it will generate the hash and store it for the next run.
+                else:
+                    print("   [*] No date.txt file found. First time?")
+                    with open(save_folder + save_location + "date.txt", "w+") as output:
+                        updated = True
+                        output.write(data_updated_date)
+
             # print("Update bool: " + str(updated))
 
             if updated:
+                if socrata:
+                    # As response is set to the api url we need to set it here.
+                    response = requests.get(url)
+                    content_type = response.headers["content-type"]
+
                 print(f"    [*] Url in index {i} of save_url has updated.")
                 print(f"     [*] save_folder: {save_location}\n")
                 if "json" in content_type:
                     parsed = json.loads(response.text)
 
                 date_name = date.today()
-                if not save_subfolder:
+
+                if save_location.count("/") > 1:
+                    file_folder = save_location.split("/")
+                    file_name = (
+                        str(date_name).replace("-", "_")
+                        + "_"
+                        + file_folder[1].strip("/")
+                    )
+
+                else:
                     file_name = (
                         str(date_name).replace("-", "_")
                         + "_"
                         + save_location.strip("/")
                     )
-                else:
-                    if save_location.count("/") > 1:
-                        file_folder = save_location.split("/")
-                        file_name = (
-                            str(date_name).replace("-", "_")
-                            + "_"
-                            + file_folder[1].strip("/")
-                        )
-
-                    else:
-                        file_name = (
-                            str(date_name).replace("-", "_")
-                            + "_"
-                            + save_location.strip("/")
-                        )
 
                 if "json" in content_type:
                     # if save_subfolder:
