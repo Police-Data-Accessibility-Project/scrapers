@@ -9,9 +9,6 @@ from common import opendata_scraper2
 
 save_url = [
     ["pdrs/2016-2020/", "https://data.seattle.gov/resource/8fwq-jcnn.csv"],
-    ["save_folder", "url"],
-    ["save_folder", "url"],
-    ["save_folder", "url"],
 ]
 
 save_folder = "./data/"
