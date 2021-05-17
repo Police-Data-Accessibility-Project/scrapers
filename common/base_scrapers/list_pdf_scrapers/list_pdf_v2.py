@@ -22,7 +22,8 @@ def list_pdf_v2(
     try_overwite=False,
     no_overwrite=False,
     debug=False,
-    flavor="stream"
+    flavor="stream",
+    extract_tables=False,
 ):
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -36,19 +37,26 @@ def list_pdf_v2(
         os.remove("url_name.txt")
     except FileNotFoundError:
         pass
+    print(" [*] Extracting info...")
     extract_info(soup, configs, extract_name=extract_name)
     get_files(save_dir, configs.sleep_time, name_in_url=name_in_url, add_date=add_date)
 
     import etl
+
     # Pass save_dir to pdf_extract's pdf_directory param
-    try:
-        etl.pdf_extract(save_dir, configs.csv_dir)
-    except AttributeError:
-        if debug:
-            print("  [INFO] csv_dir is not defined in the configs.")
-            print("      If you want to save in a different location for some reason, ")
-            print("      define it in the configs as `csv_dir=\"<folder>\"`")
-        etl.pdf_extract(pdf_directory=save_dir, flavor=flavor)
-        pass
+    if extract_tables:
+        from common.etl import pdf_extract
+
+        try:
+            pdf_extract(save_dir, configs.csv_dir)
+        except AttributeError:
+            if debug:
+                print("  [INFO] csv_dir is not defined in the configs.")
+                print(
+                    "      If you want to save in a different location for some reason, "
+                )
+                print('      define it in the configs as `csv_dir="<folder>"`')
+            pdf_extract(pdf_directory=save_dir, flavor=flavor)
+            pass
 
     # import etl.py

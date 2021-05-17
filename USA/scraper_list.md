@@ -11,7 +11,7 @@
 ## KY
 | Path                                         | Scraper  |
 |----------------------------------------------|----------|
-| USA\KY\jefferson_county\municipal\louisville | opendata |
+| USA\KY\jefferson_county\municipal\louisville | opendata, list_pdf_v2 |
 |                                              |          |
 |                                              |          |
 |                                              |          |
