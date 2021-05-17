@@ -23,7 +23,7 @@ from common.utils import page_update
 
 # save_folder is the parent directory that all data will be saved under
 def opendata_scraper2(
-    save_url, save_folder, sleep_time=1, save_subfolder=False, is_socrata=False
+    save_url, save_folder, sleep_time=1, save_subfolder=False, socrata=False
 ):
 
     for i, row in enumerate(save_url):
@@ -31,7 +31,7 @@ def opendata_scraper2(
         print(f"   [*] Getting data for table {save_url[i][0]}...")
 
         url = save_url[i][1]
-        if not is_socrata:
+        if not socrata:
             response = requests.get(url)
             content_type = response.headers["content-type"]
         else:
@@ -49,7 +49,7 @@ def opendata_scraper2(
         if response.status_code == 200:
             save_location = save_url[i][0]
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
-            if not is_socrata:
+            if not socrata:
                 updated = page_update(
                     response, save_folder + save_location, loop=True, print_output=False
                 )
