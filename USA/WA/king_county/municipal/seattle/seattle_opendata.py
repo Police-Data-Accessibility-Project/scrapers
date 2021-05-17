@@ -10,7 +10,7 @@ from common import opendata_scraper2
 save_url = [
     ["in_car_video_dropped_frames/", "https://data.seattle.gov/resource/k7a5-emiw.csv"],
     [
-        "police_accountability_office/complaints",
+        "police_accountability_office/complaints/",
         "https://data.seattle.gov/resource/99yi-dthu.csv",
     ],
     ["disciplinary_appeals/", "https://data.seattle.gov/resource/2qns-g7s7.csv"],
