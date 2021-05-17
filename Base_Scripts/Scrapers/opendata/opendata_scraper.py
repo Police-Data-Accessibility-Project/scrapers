@@ -13,7 +13,8 @@ save_url = [
     ["save_folder", "url"],
     ["save_folder", "url"],
 ]
-"save_folder" = "./data/"
+
+save_folder = "./data/"
 
 # Optional argument `save_subfolder` allows saving in a subfolder
 # Optional argument `sleep_time` should be set to the site's crawl-delay,
