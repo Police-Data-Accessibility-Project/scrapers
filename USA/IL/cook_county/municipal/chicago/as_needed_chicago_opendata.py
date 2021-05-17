@@ -10,7 +10,7 @@ from common import opendata_scraper2
 save_url = [
     ["foia_log/police/", "https://data.cityofchicago.org/resource/wjkc-agnm.csv"],
     ["foia_log/police_board/", "https://data.cityofchicago.org/resource/9pd8-s9t4.csv"],
-    ["foia_log/ipra", "https://data.cityofchicago.org/resource/gzxp-vdqf.csv"],
+    ["foia_log/ipra/", "https://data.cityofchicago.org/resource/gzxp-vdqf.csv"],
     ["foia_log/cpl/", "https://data.cityofchicago.org/resource/n379-5uzu.csv"],
 ]
 save_folder = "./data/"
