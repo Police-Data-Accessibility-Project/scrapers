@@ -1,0 +1,1 @@
+save_url: [['crime_data/', 'https://data.cityofnewyork.us/api/views/5uac-w243/rows.csv?accessType=DOWNLOAD'], ['crime_data/historic', 'https://data.cityofnewyork.us/api/views/57mv-nv28/rows.csv?accessType=DOWNLOAD']]
