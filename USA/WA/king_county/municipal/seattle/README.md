@@ -14,6 +14,9 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 * [Call Data](https://data.seattle.gov/Public-Safety/Call-Data/33kz-ixgy): Daily
 * [Terry Stops](https://data.seattle.gov/Public-Safety/Terry-Stops/28ny-9ts8): Daily
 * [SPD Officer Involved Shooting (OIS) Data](https://data.seattle.gov/Public-Safety/SPD-Officer-Involved-Shooting-OIS-Data/mg5r-efcm): "Other"
+* [Use of Force](https://data.seattle.gov/Public-Safety/Use-Of-Force/ppi5-g2bj): Daily, duplicate  data bug
+* [Crisis Data](https://data.seattle.gov/Public-Safety/Crisis-Data/i2q9-thny): Daily, "Data is denormalized to represent the one to many relationship between the record and the reported disposition of the contact. **USE CAUTION WHEN COUNTING**"
+* [Crime Data 2008-present](https://data.seattle.gov/Public-Safety/SPD-Crime-Data-2008-Present/tazs-3rd5): Daily
 
 ## Archive
 * [Seattle Police PDRs (public data requests)](https://data.seattle.gov/Public-Safety/Seattle-Police-PDRs/8fwq-jcnn)
