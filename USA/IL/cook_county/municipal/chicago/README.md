@@ -26,7 +26,7 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 
 
 ## Legal
-Include the Terms of Service (or link to them). Is there anything else we should know?
+https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html
 
 # Fields to collect:
 * "ssl_score"
