@@ -1,0 +1,9 @@
+"id","case_number","date","block","iucr","primary_type","description","location_description","arrest","domestic","beat","district","ward","community_area","fbi_code","x_coordinate","y_coordinate","year","updated_on","latitude","longitude","location"
+"12361412","JE225125","2021-05-09T23:57:00.000","048XX W JACKSON BLVD","041A","BATTERY","AGGRAVATED - HANDGUN","STREET","false","false","1533","015","28","25","04B","1144394","1898243","2021","2021-05-16T17:01:23.000","41.876795906","-87.745297106","
+,  
+(41.876795906, -87.745297106)"
+"12361310","JE225113","2021-05-09T23:51:00.000","007XX E 47TH ST","0560","ASSAULT","SIMPLE","RESTAURANT","false","false","0221","002","4","38","08A","1182160","1874015","2021","2021-05-16T17:01:23.000","41.809519024","-87.607384952","
+,  
+(41.809519024, -87.607384952)"
+"12361365","JE225116","2021-05-09T23:50:00.000","041XX W 77TH PL","0810","THEFT","OVER $500","RESIDENCE","false","true","083
+TRUNCATED

@@ -11,7 +11,7 @@
 ## KY
 | Path                                         | Scraper  |
 |----------------------------------------------|----------|
-| USA\KY\jefferson_county\municipal\louisville | opendata |
+| USA\KY\jefferson_county\municipal\louisville | opendata, list_pdf_v2 |
 |                                              |          |
 |                                              |          |
 |                                              |          |
@@ -57,3 +57,14 @@
 |                                       |          |
 |                                       |          |
 |                                       |          |
+
+## IL
+
+| Path                                  | Scraper  |
+|---------------------------------------|----------|
+| USA/IL/cook_county/municipal/chicago | opendata |
+
+## PA
+| Path                                  | Scraper  |
+|---------------------------------------|----------|
+| USA/PA/philadelphia_county/municipal/philadelphia | opendata |

@@ -7,8 +7,10 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True):
         if link.get("href") is None:
             continue
         if not link["href"].startswith(configs.web_path):
+            print("href not startswith")
+            print(link)
             continue
-        # print(link.get("href"))
+        print("link: " + link.get("href"))
         url = str(link["href"])
         if extract_name == False:
             # print(" [?] extract_name is False")
