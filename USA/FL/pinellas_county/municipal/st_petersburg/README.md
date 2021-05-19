@@ -8,10 +8,18 @@ Note: Ensure your scraper calls the etl.py file. Even if there is nothing in the
 Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
 
 ## Data refresh rate
-For example "daily at 8pm EST" or "every Friday, usually before noon"
+* [Police Calls](https://stat.stpete.org/dataset/Police-Calls/2eks-pg5j): Daily
+* [Police Officer Hires](https://stat.stpete.org/Safety/Police-Officer-New-Hires/9nht-ysk6): Monthly
+* [Employment Applications for Police Officer](https://stat.stpete.org/Safety/Employment-Applications-for-Police-Officer/gty9-7yu4): Monthly
+* [Park Walk And Talks](https://stat.stpete.org/Safety/Park-Walk-Talks/bk6h-28ux): Monthly
+* [Directed Patrols](https://stat.stpete.org/Safety/Directed-Patrols/9cbi-474e): Monthly
+* [All Tips](https://stat.stpete.org/Safety/All-Tips/v5at-unyi): Monthly
+* [Citizen Calls for Service (counts)](https://stat.stpete.org/Safety/Citizen-Calls-for-Service/6373-bvti): Monthly
+* [Office of Professional Standards Statistics (READ DESCRIPTION)](https://stat.stpete.org/Safety/Office-of-Professional-Standards-Statistics/6jpx-t9kn): Monthly
 
 ## Legal
-Include the Terms of Service (or link to them). Is there anything else we should know?
+* https://support.socrata.com/hc/en-us/articles/360019057154
+* https://stat.stpete.org/robots.txt: Crawl-delay is 1, no need to set it.
 
 # Fields to collect:
 _Move these fields to the appropriate list below when you submit your scraper._
