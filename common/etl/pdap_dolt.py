@@ -107,8 +107,8 @@ def get_agency_id(dolt, name, state):
 # before we actually start making changes, we should make a new branch
 def new_branch(dolt, intake):
     # generates a modifier at the end
-    # city-protect-import-py-5d365f9b
-    new_branch = 'city-protect-import-py-{}'.format(str(uuid.uuid4()).split('-')[0])
+    # etl-import-py-5d365f9b
+    new_branch = 'etl-import-py-{}'.format(str(uuid.uuid4()).split('-')[0])
     try:
         print('   [*] Creating new Branch: {}'.format(new_branch))
         b = Dolt.branch(dolt, branch_name=dolthub_branch, new_branch=new_branch, copy=True)
@@ -129,19 +129,17 @@ def new_branch(dolt, intake):
 Use the agency data from city protect to derive a new dataset
 The following columns need filled: 
 url [url of dataset]
+status_id [fk to dataset_status - 5 is data loaded]
 name [name of pd]
 aggregation_level [state, county, municipal]
 source_type_id [fk from source_types, for CityProtect will always be 3 - Third Party]
 data_types_id [fk from data_types, for CityProtect will always be 10 - Incident_Reports]
 format_types_id [fk from format_types, for CityProtect will always be 2 - CityProtect]
-state_iso [two digit state code, ie 'IN']
-county_fips [fk to counties table, can be searched via FCC API]
-city_id [fk to municipalities, can use fips, state, city maybe to locate?]
-consolidator [CityProtect]
+agency_id [UUID of the agency]
 update_frequency [quarterly (bulk downloads are quarterly)]
 portal_type [CityProtect]
 coverage_start [no clue how to populate. Bulk downloads, use first file date?]
-scraper_path [null, would need manual population]
+scraper_id [uuid for scraper id (not yet functional)]
 notes [null]
 '''
 def new_dataset(dolt, agency, url):
@@ -149,6 +147,8 @@ def new_dataset(dolt, agency, url):
     name = agency['name'].replace("'", '')
     print('     [*] name: {}'.format(name))
     print('     [*] url: {}'.format(url))
+    status_id = 5
+    print('     [*] status: {}'.format('5 - Initial Data Loaded'))
     
     source_type_id = 3 # Third Party
     print('     [*] source type: {}'.format('Third Party'))
@@ -187,6 +187,7 @@ def new_dataset(dolt, agency, url):
     # then grab all our vars and turn into a dataframe:
     data = pd.DataFrame([{
         'url': url,
+        'status_id': status_id,
         'name': name,
         'source_type_id': source_type_id,
         'data_types_id': data_types_id,
@@ -201,7 +202,7 @@ def new_dataset(dolt, agency, url):
     print("   [*] Inserting data to datasets table...")
 
     id = str(uuid.uuid4()).replace('-','') # UUID without dashes
-    insert = dolt.sql("INSERT into datasets ('id', 'url', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
+    insert = dolt.sql("INSERT into datasets ('id', 'url', 'status_id', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, status_id, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
 
     # and grab the record
     data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))

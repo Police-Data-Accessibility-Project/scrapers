@@ -12,13 +12,39 @@
     "data": [
         {
             "dataset_id": "",
-            "url":"https://csucpd.crimegraphics.com/2013/default.aspx",
-            "full_data_location":"/data",
+            "url":"https://csucpd.crimegraphics.com/2013/default.aspx#CLERYMenu",
+            "full_data_location":"/data/daily_bulletins",
             "source_type": 3,
-            "data_type": 7,
-            "format_type": 3,
-            "mapping":[
-            ]
+            "data_type": 25,
+            "format_type": 5,
+            "mapping":{
+                "ChargeDescription": "ChargeDescription",
+                "CaseNum": "CaseNum",
+                "ReportDate": "ReportDate",
+                "OffenseDate": "OffenseDate",
+                "Location": "Location",
+                "ChargeDisposition":"ChargeDisposition",
+            }
+        },
+        {
+            "dataset_id": "",
+            "url":"https://csucpd.crimegraphics.com/2013/default.aspx#BulletinMenu",
+            "full_data_location":"/data/bulletins",
+            "source_type": 3,
+            "data_type": 26,
+            "format_type": 5,
+            "mapping":{
+                "ReferenceNum": "ReferenceNum",
+                "ActivityDate": "ActivityDate",
+                "ActivityTime": "ActivityTime",
+                "ActivityType": "ActivityType",
+                "ActivityInitiator": "ActivityInitiator",
+                "ActivityDescription": "ActivityDescription",
+                "Disposition": "Disposition",
+                "ActivityPlace": "ActivityPlace",
+                "ActivityStreet": "ActivityStreet",
+                "ActivityCity": "ActivityCity"
+            }
         }
     ]
     

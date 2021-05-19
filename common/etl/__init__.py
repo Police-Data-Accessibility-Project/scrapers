@@ -1,3 +1,1 @@
-from .data_extraction import pdf_extract
-
-# import etl
+from .main import schema_load
