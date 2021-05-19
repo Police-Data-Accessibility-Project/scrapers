@@ -1,0 +1,8 @@
+"stop_nbr","form_ref_nbr","persn_gender_cd","persn_descent_cd","descent_desc","stop_dt","stop_tm","ofcr1_serl_nbr","ofcr1_div_nbr","div1_desc","ofcr2_serl_nbr","ofcr2_div_nbr","div2_desc","rpt_dist_nbr","stop_type","post_stop_actv_ind"
+"13521622","30213936","M","H","HISPANIC","1900-01-01T00:00:00.000","13:59","23085","07","WILSHIRE","61529","07","WILSHIRE","0753","PED","Y"
+"7793251","10282306","M","H","HISPANIC","2010-01-01T00:00:00.000","20:30","26372","21","TOPANGA",,,,"2137","VEH","Y"
+"7793109","10282188","M","W","WHITE","2010-01-01T00:00:00.000","18:20","16058","27","WEST TRAFFIC",,,,"1494","VEH","N"
+"7792818","10281970","F","B","BLACK","2010-01-01T00:00:00.000","11:20","26388","24","CENTRAL TRAFFIC",,,,"1171","VEH","N"
+"7793225","10282287","F","W","WHITE","2010-01-01T00:00:00.000","18:55","25095","27","WEST TRAFFIC",,,,"648","VEH","N"
+"7792779","10281936","F","O","OTHER","2010-01-01T00:00:00.000","11:00","14908"
+TRUNCATED

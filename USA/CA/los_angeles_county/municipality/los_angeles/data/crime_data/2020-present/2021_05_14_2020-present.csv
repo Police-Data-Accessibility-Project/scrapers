@@ -1,0 +1,4 @@
+"dr_no","date_rptd","date_occ","time_occ","area","area_name","rpt_dist_no","part_1_2","crm_cd","crm_cd_desc","mocodes","vict_age","vict_sex","vict_descent","premis_cd","premis_desc","weapon_used_cd","weapon_desc","status","status_desc","crm_cd_1","crm_cd_2","crm_cd_3","crm_cd_4","location","cross_street","lat","lon"
+"010304468","2020-01-08T00:00:00.000","2020-01-08T00:00:00.000","2230","03","Southwest","0377","2","624","BATTERY - SIMPLE ASSAULT","0444 0913","36","F","B","501","SINGLE FAMILY DWELLING","400","STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE)","AO","Adult Other","624",,,,"1100 W  39TH                         PL",,"34.0141","-118.2978"
+"190101086","2020-01-02T00:00:00.000","2020-01-01T00:00:00.000","0330","01","Central","0163","2","624","BATTERY - SIMPLE ASSAULT","0416 1822 1414","25","M","H","102","SIDEWALK","500","UNKNOWN WEAPON/OTHER WEAPON","IC","Invest Cont","624",,,,"700 S  HILL                       
+TRUNCATED
