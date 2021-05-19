@@ -8,7 +8,14 @@ Note: Ensure your scraper calls the etl.py file. Even if there is nothing in the
 Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
 
 ## Data refresh rate
-For example "daily at 8pm EST" or "every Friday, usually before noon"
+* [Police Incidents 2021](https://opendata.minneapolismn.gov/datasets/police-incidents-2021): Daily
+
+### Archive:
+* [Police Incidents 2108](https://opendata.minneapolismn.gov/datasets/police-incidents-2018?geometry=-165.668%2C-5.468%2C72.339%2C48.789): Archived
+* [Police Incidents 2016](https://opendata.minneapolismn.gov/datasets/police-incidents-2016)
+* [Police Incidents 2019](https://opendata.minneapolismn.gov/datasets/police-incidents-2019)
+* [Police Incidents 2015](https://opendata.minneapolismn.gov/datasets/police-incidents-2015)
+* [Police Incidents 2014](https://opendata.minneapolismn.gov/datasets/police-incidents-2014)
 
 ## Legal
 Include the Terms of Service (or link to them). Is there anything else we should know?

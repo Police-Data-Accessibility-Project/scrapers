@@ -8,7 +8,10 @@ sys.path.insert(1, str(p))
 from common import opendata_scraper2
 
 save_url = [
-    ["save_folder", "url"],
+    [
+        "police_incidents/2021/",
+        "https://opendata.arcgis.com/datasets/cb6a8b1d01b74feea5d3f96fa79bb6bf_0.csv",
+    ],
     ["save_folder", "url"],
     ["save_folder", "url"],
     ["save_folder", "url"],
