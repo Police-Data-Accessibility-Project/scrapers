@@ -17,8 +17,10 @@
             "source_type": 2,
             "data_type": 1,
             "format_type": 1,
-            "mapping":[
-            ]
+            "update_freq": 3,
+            "mapping":{
+
+            }
         }
     ]
     

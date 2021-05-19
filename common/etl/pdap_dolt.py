@@ -90,6 +90,42 @@ def get_dataset(dolt, dataset_url, agency):
         print(" [!] Found Existing Dataset Record: ID #{}!".format(data.loc[0, 'id']))
         return data
 
+'''
+    Search the [pdap/datasets].[datasets] database for the specified URL
+    If it does not exist, pass agency info to new func to create it
+
+    This method will verify the data from dolt exactly matches the data in the schema.json
+'''
+def get_dataset_from_schema(dolt, schema_dataset, agency):
+    # method 1: check if id is set first
+    if schema_dataset['dataset_id']:
+        data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE id = '{}'".format(schema_dataset['dataset_id']))
+    # else grab the url and check via that
+    else:
+        data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE url = '{}'".format(schema_dataset['url']))
+    # check if a result was passed
+    if data.shape[0] == 0:
+        print(" [X] No Dataset Found! Proceeding to Add New Dataset...")
+        return new_dataset_from_schema(dolt, agency, schema_dataset)
+    if data.shape[0] == 1: 
+        print(" [!] Found Existing Dataset Record: ID #{}!".format(data.loc[0, 'id']))
+        return data
+
+
+def get_agency_by_uuid(dolt, uuid):
+    try:
+        data = read_pandas_sql(dolt, "SELECT * FROM 'agencies' where id =  '{}'".format(uuid))
+        # check if a result was passed
+        if data.shape[0] == 0:
+            print("       [X] No Agency Found!")
+            return ''
+        if data.shape[0] == 1: 
+            print("       [!] Found Agency ID #{}!".format(data.loc[0, 'id']))
+            return data.loc[0, 'id']
+    except:
+        print("       [X] Error Fetching Agency")
+        return ''
+
 def get_agency_id(dolt, name, state):
     try:
         data = read_pandas_sql(dolt, "SELECT * FROM 'agencies' where soundex('name') = soundex('{}') and state_iso = '{}'".format(name.strip(), state.strip()))
@@ -126,21 +162,9 @@ def new_branch(dolt, intake):
         sys.exit()
 
 '''
-Use the agency data from city protect to derive a new dataset
-The following columns need filled: 
-url [url of dataset]
-status_id [fk to dataset_status - 5 is data loaded]
-name [name of pd]
-aggregation_level [state, county, municipal]
-source_type_id [fk from source_types, for CityProtect will always be 3 - Third Party]
-data_types_id [fk from data_types, for CityProtect will always be 10 - Incident_Reports]
-format_types_id [fk from format_types, for CityProtect will always be 2 - CityProtect]
-agency_id [UUID of the agency]
-update_frequency [quarterly (bulk downloads are quarterly)]
-portal_type [CityProtect]
-coverage_start [no clue how to populate. Bulk downloads, use first file date?]
-scraper_id [uuid for scraper id (not yet functional)]
-notes [null]
+
+This was legacy used for cityprotect data and will most likely be deprecated
+
 '''
 def new_dataset(dolt, agency, url):
     print('   [*] Adding a New Dataset:')
@@ -208,7 +232,73 @@ def new_dataset(dolt, agency, url):
     data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
     print(" [!] Inserted Dataset Record: ID #{}!".format(data.loc[0, 'id']))
     return data
+
+''' load the data from the schema '''
+def new_dataset_from_schema(dolt, agency, schema_dataset):
+    print('   [*] Adding a New Dataset:')
+    print('     [*] url: {}'.format(schema_dataset['url']))
+    status_id = 5
+    print('     [*] status: {}'.format('5 - Initial Data Loaded'))
     
+    source_type_id = 3 # Third Party
+    print('     [*] source type: {}'.format('Third Party'))
+    data_types_id = 10 # Incident Reports
+    print('     [*] data type: {}'.format('Incident Reports'))
+    format_types_id = 2 # CityProtect
+    print('     [*] format type: {}'.format('CityProtect'))
+
+    # try to use soundex to find the agency ID. will not always work
+    agency_id = get_agency_id(dolt, name, agency['state'])
+    print('     [*] agency id: {}'.format(agency_id))
+
+    '''
+    fcc = "https://geo.fcc.gov/api/census/area?lat={}&lon={}&format=json".format(lat, lng)
+    print("     [!] Fetching County FIPS code from FCC.gov")
+    response = requests.get(fcc)
+    # print(response.text)
+    json_resp = json.loads(response.text)
+    
+
+    fips = json_resp['results'][0]['county_fips']
+    print("     [*] fips: {}".format(fips))
+    '''
+    update_freq = 3 # quarterly
+    print('     [*] update freq: {}'.format(update_freq))
+    portal = 'CityProtect'
+    print('     [*] portal type: {}'.format(portal))
+    start = agency['reports'][0]['targetPeriodStart'] or None
+    print('     [*] start date: {}'.format(start))
+
+    # technically we could just omit these, but leaving them here in case this code
+    # is reused elsewhere so they aren't forgotten
+    scraper_id = ''
+    notes = ''
+
+    # then grab all our vars and turn into a dataframe:
+    data = pd.DataFrame([{
+        'url': url,
+        'status_id': status_id,
+        'name': name,
+        'source_type_id': source_type_id,
+        'data_types_id': data_types_id,
+        'format_types_id': format_types_id,
+        'agency_id': agency_id,
+        'update_frequency':update_freq,
+        'portal_type': portal,
+        'coverage_start': start,
+        'scraper_id': scraper_id,
+        'notes': notes
+    }])
+    print("   [*] Inserting data to datasets table...")
+
+    id = str(uuid.uuid4()).replace('-','') # UUID without dashes
+    insert = dolt.sql("INSERT into datasets ('id', 'url', 'status_id', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, status_id, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
+
+    # and grab the record
+    data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
+    print(" [!] Inserted Dataset Record: ID #{}!".format(data.loc[0, 'id']))
+    return data
+
 
 '''
 We use our dolt object, the dataset record passsed from either get_dataset() or new_dataset()
