@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 import sys
 
@@ -12,7 +11,10 @@ from common.etl import main
 '''
     schema_load:
         - schema file JSON
-        - branch name
-        - current directory (that houses the data)
+        - branch name (override)
 '''
-schema = main.schema_load(json.load(open('schema.json', 'r')), 'master', os.getcwd())
+schema = main.schema_load(json.load(open('schema.json', 'r')))
+
+# overwrite the schema.json with the changes from the etl
+with open('schema_dev.json', 'w') as outfile:
+    json.dump(schema, outfile, indent=4)

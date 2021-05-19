@@ -96,25 +96,46 @@ def get_dataset(dolt, dataset_url, agency):
 
     This method will verify the data from dolt exactly matches the data in the schema.json
 '''
-def get_dataset_from_schema(dolt, schema_dataset, agency):
+def get_dataset_from_schema(dolt, schema_dataset, agency, full_schema, idx):
     # method 1: check if id is set first
     if schema_dataset['dataset_id']:
-        data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE id = '{}'".format(schema_dataset['dataset_id']))
+        dolt_data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE id = '{}'".format(schema_dataset['dataset_id']))
     # else grab the url and check via that
     else:
-        data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE url = '{}'".format(schema_dataset['url']))
+        dolt_data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE url = '{}'".format(schema_dataset['url']))
     # check if a result was passed
-    if data.shape[0] == 0:
+
+    # if not, make one
+    if dolt_data.shape[0] == 0:
         print(" [X] No Dataset Found! Proceeding to Add New Dataset...")
-        return new_dataset_from_schema(dolt, agency, schema_dataset)
-    if data.shape[0] == 1: 
-        print(" [!] Found Existing Dataset Record: ID #{}!".format(data.loc[0, 'id']))
-        return data
+        return new_dataset_from_schema(dolt, agency, schema_dataset, full_schema, idx)
+    # if so, compare the db data to the schema.json and consolidate
+    if dolt_data.shape[0] == 1: 
+        print(" [!] Found Existing Dataset Record: ID #{}!".format(dolt_data.loc[0, 'id']))
+        # compare the changes from the db to the schema.json to consolidate before returning
+        return merge_dataset_info(full_schema, dolt_data, idx)
 
 
+''' merge the data from the db back into the schema '''
+def merge_dataset_info(schema, dataset, index):
+    # compare the last_modified time of the json vs the 
+
+    # merge the data back into the schema
+    schema['data'][index]['dataset_id']     = dataset.loc[0, 'id']
+    schema['data'][index]['source_type']    = dataset.loc[0, 'source_type_id']
+    schema['data'][index]['data_type']      = dataset.loc[0, 'data_type_id']
+    schema['data'][index]['format_type']    = dataset.loc[0, 'format_type_id']
+    schema['data'][index]['update_freq']    = dataset.loc[0, 'update_frequency']
+
+    return schema, dataset
+
+''' 
+    used if agency_id is filled out in the schema
+    RETURN: the uuid of the dataset or ''
+'''
 def get_agency_by_uuid(dolt, uuid):
     try:
-        data = read_pandas_sql(dolt, "SELECT * FROM 'agencies' where id =  '{}'".format(uuid))
+        data = read_pandas_sql(dolt, "SELECT * FROM agencies where id =  '{}'".format(uuid))
         # check if a result was passed
         if data.shape[0] == 0:
             print("       [X] No Agency Found!")
@@ -126,6 +147,7 @@ def get_agency_by_uuid(dolt, uuid):
         print("       [X] Error Fetching Agency")
         return ''
 
+''' fallback if the agency_id is blank'''
 def get_agency_id(dolt, name, state):
     try:
         data = read_pandas_sql(dolt, "SELECT * FROM 'agencies' where soundex('name') = soundex('{}') and state_iso = '{}'".format(name.strip(), state.strip()))
@@ -234,22 +256,24 @@ def new_dataset(dolt, agency, url):
     return data
 
 ''' load the data from the schema '''
-def new_dataset_from_schema(dolt, agency, schema_dataset):
+def new_dataset_from_schema(dolt, agency, schema_dataset, full_schema, idx):
     print('   [*] Adding a New Dataset:')
-    print('     [*] url: {}'.format(schema_dataset['url']))
+    url = schema_dataset['url']
+    print('     [*] url: {}'.format(url))
     status_id = 5
     print('     [*] status: {}'.format('5 - Initial Data Loaded'))
-    
-    source_type_id = 3 # Third Party
-    print('     [*] source type: {}'.format('Third Party'))
-    data_types_id = 10 # Incident Reports
-    print('     [*] data type: {}'.format('Incident Reports'))
-    format_types_id = 2 # CityProtect
-    print('     [*] format type: {}'.format('CityProtect'))
 
-    # try to use soundex to find the agency ID. will not always work
-    agency_id = get_agency_id(dolt, name, agency['state'])
-    print('     [*] agency id: {}'.format(agency_id))
+    # agencies method: get_agency_by_uuid
+    agency_id = agency
+    print('     [*] agency_id: {}'.format(agency_id))
+    
+    source_type_id = schema_dataset['source_type'] # Third Party
+    print('     [*] source type: {}'.format(source_type_id))
+    data_types_id = schema_dataset['data_type'] # Incident Reports
+    print('     [*] data type: {}'.format(data_types_id))
+    format_types_id = schema_dataset['format_type'] # CityProtect
+    print('     [*] format type: {}'.format(format_types_id))
+
 
     '''
     fcc = "https://geo.fcc.gov/api/census/area?lat={}&lon={}&format=json".format(lat, lng)
@@ -262,12 +286,9 @@ def new_dataset_from_schema(dolt, agency, schema_dataset):
     fips = json_resp['results'][0]['county_fips']
     print("     [*] fips: {}".format(fips))
     '''
-    update_freq = 3 # quarterly
+    update_freq = schema_dataset['update_freq'] # quarterly
     print('     [*] update freq: {}'.format(update_freq))
-    portal = 'CityProtect'
-    print('     [*] portal type: {}'.format(portal))
-    start = agency['reports'][0]['targetPeriodStart'] or None
-    print('     [*] start date: {}'.format(start))
+
 
     # technically we could just omit these, but leaving them here in case this code
     # is reused elsewhere so they aren't forgotten
@@ -278,26 +299,30 @@ def new_dataset_from_schema(dolt, agency, schema_dataset):
     data = pd.DataFrame([{
         'url': url,
         'status_id': status_id,
-        'name': name,
         'source_type_id': source_type_id,
         'data_types_id': data_types_id,
         'format_types_id': format_types_id,
         'agency_id': agency_id,
         'update_frequency':update_freq,
-        'portal_type': portal,
-        'coverage_start': start,
         'scraper_id': scraper_id,
         'notes': notes
     }])
     print("   [*] Inserting data to datasets table...")
 
     id = str(uuid.uuid4()).replace('-','') # UUID without dashes
-    insert = dolt.sql("INSERT into datasets ('id', 'url', 'status_id', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, status_id, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
+    insert = dolt.sql("INSERT INTO datasets (id, url, status_id, source_type_id, data_types_id, format_types_id, agency_id, update_frequency, scraper_id, notes) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, status_id, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, scraper_id, notes), result_format="csv")
 
     # and grab the record
     data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
     print(" [!] Inserted Dataset Record: ID #{}!".format(data.loc[0, 'id']))
-    return data
+    # update the schema file with the lastest info
+    # since everything was used from the file to create, only the id and last_modified
+    # will change
+    full_schema['data'][idx]['dataset_id'] = data.loc[0, 'id']
+    full_schema['data'][idx]['last_modified'] = data.loc[0, 'last_modified']
+
+    # return back
+    return full_schema, data
 
 
 '''
@@ -361,6 +386,60 @@ def load_data(intake, dataset_record, file):
         print('    [*] Done!')
     except:
         print('    [!] Error Iterating over rows! Skipping file {}'.format(file.name))
+
+
+def load_data_from_schema_map(intake, dataset_record, file):
+    print('  [*] Enumerating records from {} for import'.format(file.name))
+
+    # load the file into a dataframe
+    df = pd.read_csv(file)
+    # generate new UUID v4 IDs (with no dashes) for each record, and push the column to the front
+
+    df = pd.concat([pd.Series([str(uuid.uuid4()).replace('-','') for _ in range(len(df.index))], index=df.index, name='id'), df], axis=1)
+    # set the index to our new ID column
+    df.set_index('id')
+    # add the datasets_fk
+    df['datasets_id']=dataset_record.loc[0, 'id']
+    # format the date columns
+    df['date'] = pd.to_datetime(df['date'], errors='coerce', format='%m/%d/%Y, %I:%M:%S %p')
+    df['updateDate'] = pd.to_datetime(df['updateDate'], errors='coerce', format='%m/%d/%Y, %I:%M:%S %p')
+    
+    '''
+    This currently does not work. It is supposed to be doltpy's method of taking a dataframe and enumerating itself
+
+
+    # write to the database
+    # on windows the path to the repo is C:\\Users\\you\\wherever\\this\\file\\is
+    # it causes sql alchemy to freak
+    # by creating a new dolt instance and stating the repo is just here in this dir, it allows it to work
+    db = Dolt(repo_dir = 'datasets', print_output = False)
+    # set our server config
+    sc = ServerConfig(branch=Dolt.branch(dolt)[0].name, user='root')
+    # create a sql server process
+    print('    [*] Opening MySQL Connection to Dolt DB')
+    with DoltSQLServerContext(db, server_config = sc) as dssc:
+        print('    [*] Writing Data...')
+        # write the data from the dataframe
+        dssc.write_pandas(dolthub_incident_reports_table,
+                            df,
+                            create_if_not_exists=True,
+                            primary_key=['id'],
+                            commit=True)
+    '''
+
+    #instead, we will just loop our data
+    try:
+        for i, row in df.iterrows():
+            print('    [-] Importing record: {} - ccn:'.format(row['id'], row['ccn']))
+            # sometimes may get a glitch like an invalid date
+            try:
+                insert = intake.sql("INSERT into incident_reports ('id', 'ccn', 'incidentDate', 'updateDate', 'city', 'state', 'postalCode', 'blocksizedAddress', 'incidentType', 'parentIncidentType', 'narrative', 'datasets_id') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(row['id'], row['ccn'], row['date'], row['updateDate'], row['city'], row['state'], row['postalCode'], row['blocksizedAddress'], row['incidentType'], row['parentIncidentType'], row['narrative'], row['datasets_id']))
+            except:
+                print('      [!] Error importing record: {} - ccn:'.format(row['id'], row['ccn']))
+        print('    [*] Done!')
+    except:
+        print('    [!] Error Iterating over rows! Skipping file {}'.format(file.name))
+
 
     
 ''' push the changes to our custom branch '''

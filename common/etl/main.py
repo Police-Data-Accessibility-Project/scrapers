@@ -5,7 +5,7 @@ from . import pdap_dolt
     Main Logic for ETL from the schema files
     Returns a schema JSON object that will be modified in the ETL process and can be written back out to the calling file
 '''
-def schema_load(schema, branch, cwd):
+def schema_load(schema, branch = 'master'):
 
     # 1 - Init our repo from an existing branch, and then clone it for the changes we are about to make
     dolt, intake = pdap_dolt.init(branch)
@@ -24,19 +24,25 @@ def schema_load(schema, branch, cwd):
     current_data_index = 0 
     for data in schema['data']:
         print(" [*] Searching PDAP datasets for url: {}".format(data['url']))
-        dataset = pdap_dolt.get_dataset_from_schema(dolt, data, agency)
+        # grab the dataset (or create one) and then sync the schema.json and datasets data
+        schema, dataset = pdap_dolt.get_dataset_from_schema(dolt, data, agency, schema, current_data_index)
+
+
+        # inc the index in case the loop resets
+        current_data_index += 1
         # 4 - Enumerate over the files in the mapped directory
-        for datafile in os.scandir(os.path.join(cwd, "data")):
+        data_dir = os.path.join(os.getcwd(), data['full_data_location'])
+        print(" [*] Searching for files in {}".format(data_dir))
+        for datafile in os.scandir(data_dir):
             print("--------------------------------------------------------")
-            print("Found file in ./data: {}".format(datafile.name))
+            print("Found file in ./{}: {}".format(data['full_data_location'], datafile.name))
            
             # load the incident records in the database
-            pdap_dolt.load_data(intake, dataset, datafile)
-            # inc the index
-            current_data_index += 1
+            #pdap_dolt.load_data_from_schema_map(intake, dataset, datafile)
 
 
-    # 5 - Commit the Changes and Write out Schema.json!
+    # 5 - Commit the Changes to Dolt
+    # pdap_dolt.commit(dolt)
 
-    #pdap_dolt.commit(dolt)
+    # 6- Write out Schema.json!
     return schema

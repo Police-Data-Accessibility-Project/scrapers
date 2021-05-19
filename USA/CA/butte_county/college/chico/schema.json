@@ -13,10 +13,12 @@
         {
             "dataset_id": "",
             "url":"https://csucpd.crimegraphics.com/2013/default.aspx#CLERYMenu",
-            "full_data_location":"/data/daily_bulletins",
+            "full_data_location":"data/daily_bulletins",
             "source_type": 3,
             "data_type": 25,
             "format_type": 5,
+            "update_freq": 6,
+            "last_modified": "2021-05-19 12:21:04 EST",
             "mapping":{
                 "ChargeDescription": "ChargeDescription",
                 "CaseNum": "CaseNum",
@@ -29,10 +31,12 @@
         {
             "dataset_id": "",
             "url":"https://csucpd.crimegraphics.com/2013/default.aspx#BulletinMenu",
-            "full_data_location":"/data/bulletins",
+            "full_data_location":"data/bulletins",
             "source_type": 3,
             "data_type": 26,
             "format_type": 5,
+            "update_freq": 6,
+            "last_modified": "2021-05-19 12:21:04 EST",
             "mapping":{
                 "ReferenceNum": "ReferenceNum",
                 "ActivityDate": "ActivityDate",
