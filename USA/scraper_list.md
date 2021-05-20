@@ -68,3 +68,8 @@
 | Path                                  | Scraper  |
 |---------------------------------------|----------|
 | USA/PA/philadelphia_county/municipal/philadelphia | opendata |
+
+## MN
+| Path                                         | Scraper  |
+|----------------------------------------------|----------|
+| USA/MN/hennepin_county/municipal/minneapolis | opendata |
