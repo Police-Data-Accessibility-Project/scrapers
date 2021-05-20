@@ -9,6 +9,11 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 
 ## Data refresh rate
 * [Police Incidents 2021](https://opendata.minneapolismn.gov/datasets/police-incidents-2021): Daily
+* [Stop Data](https://opendata.minneapolismn.gov/datasets/police-stop-data?geometry=67.593%2C-31.286%2C-176.391%2C66.545): Unsure, seems to be at the end of the day
+* [Use of Force](https://opendata.minneapolismn.gov/datasets/police-use-of-force?geometry=-165.668%2C-5.468%2C72.340%2C48.789): Daily by 9:30 AM
+* [Officer Involved Shootings](https://opendata.minneapolismn.gov/datasets/police-officer-involved-shootings): Last Friday of the month at 7:30 am
+* [Officer Conduct Data](https://opendata.minneapolismn.gov/datasets/officer-conduct-data/data): Unsure, may be as needed or annually (put in monthly scraper)
+* [Shots fired](https://opendata.minneapolismn.gov/datasets/shots-fired?geometry=-93.729%2C44.884%2C-92.799%2C45.055): Daily by 9:30AM
 
 ### Archive:
 * [Police Incidents 2108](https://opendata.minneapolismn.gov/datasets/police-incidents-2018?geometry=-165.668%2C-5.468%2C72.339%2C48.789): Archived
@@ -16,6 +21,13 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 * [Police Incidents 2019](https://opendata.minneapolismn.gov/datasets/police-incidents-2019)
 * [Police Incidents 2015](https://opendata.minneapolismn.gov/datasets/police-incidents-2015)
 * [Police Incidents 2014](https://opendata.minneapolismn.gov/datasets/police-incidents-2014)
+* [Police Incidents 2013](https://opendata.minneapolismn.gov/datasets/police-incidents-2013)
+* [Police Incidents 2012](https://opendata.minneapolismn.gov/datasets/police-incidents-2012)
+* [Police Incidents 2011](https://opendata.minneapolismn.gov/datasets/police-incidents-2011)
+* [Police Incidents 2010](https://opendata.minneapolismn.gov/datasets/police-incidents-2010)
+* [Police Incidents 2018 PIMS](https://opendata.minneapolismn.gov/datasets/police-incidents-2018-pims?geometry=-165.668%2C-5.468%2C72.339%2C48.789)
+* [Police Incidents 2017](https://opendata.minneapolismn.gov/datasets/police-incidents-2017)
+* [Police Incidents 2020](https://opendata.minneapolismn.gov/datasets/police-incidents-2020)
 
 ## Legal
 Include the Terms of Service (or link to them). Is there anything else we should know?

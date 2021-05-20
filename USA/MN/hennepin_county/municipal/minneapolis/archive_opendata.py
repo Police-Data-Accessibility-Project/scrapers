@@ -24,6 +24,42 @@ save_url = [
         "police_incidents/2015/",
         "https://opendata.arcgis.com/datasets/08ff2c3bec594dd2a7a8566b2a81d452_0.csv",
     ],
+    [
+        "police_incidents/2014/",
+        "https://opendata.arcgis.com/datasets/f0279f3673394c66a96c03e6e42287f4_0.csv",
+    ],
+    [
+        "police_incidents/2013/",
+        "https://opendata.arcgis.com/datasets/944cbb45a5fd4f6dbee2f7136f166184_0.csv",
+    ],
+    [
+        "police_incidents/2012/",
+        "https://opendata.arcgis.com/datasets/83508d169ebb48199273d21fef90fb30_0.csv",
+    ],
+    [
+        "police_incidents/2011/",
+        "https://opendata.arcgis.com/datasets/657ebd6b1af14af296e1004ed02080d8_0.csv",
+    ],
+    [
+        "police_incidents/2010/",
+        "https://opendata.arcgis.com/datasets/6d08a19ce96b42ab844bcf08c70e5480_0.csv",
+    ],
+    [
+        "police_incidents/2018/pims/",
+        "https://opendata.arcgis.com/datasets/055e662af18c4488b54dcbd496f897b7_0.csv",
+    ],
+    [
+        "police_incidents/2017/",
+        "https://opendata.arcgis.com/datasets/3d33a4f94a004fb5816936708642e045_0.csv",
+    ],
+    [
+        "police_incidents/2020/",
+        "https://opendata.arcgis.com/datasets/35c7de976a60450bb894fc7aeb68aef6_0.csv",
+    ],
+    [
+        "uof/",
+        "https://opendata.arcgis.com/datasets/6d8110617c4b4971a270ff0834971b89_0.csv",
+    ],
 ]
 
 save_folder = "./data/"
