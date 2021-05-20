@@ -16,7 +16,6 @@ save_url = [
         "officer_conduct_data/",
         "https://opendata.arcgis.com/datasets/7f54c138c7d745618453fc9f4048d8f1_0.csv",
     ],
-    ["save_folder", "url"],
 ]
 
 save_folder = "./data/"
