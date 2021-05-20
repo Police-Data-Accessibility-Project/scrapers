@@ -20,7 +20,6 @@ save_url = [
         "shots_fired/",
         "https://opendata.arcgis.com/datasets/f9ae3bef2ccd4792b1835e2744de017f_0.csv",
     ],
-    ["save_folder", "url"],
 ]
 
 save_folder = "./data/"
