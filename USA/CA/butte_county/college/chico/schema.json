@@ -20,12 +20,14 @@
             "update_freq": 6,
             "last_modified": "2021-05-19 12:21:04 EST",
             "mapping":{
+                "id": "__generate__",
                 "ChargeDescription": "ChargeDescription",
                 "CaseNum": "CaseNum",
                 "ReportDate": "ReportDate",
                 "OffenseDate": "OffenseDate",
                 "Location": "Location",
-                "ChargeDisposition":"ChargeDisposition"
+                "ChargeDisposition":"ChargeDisposition",
+                "datasets_id":"__dataset_id__"
             }
         },
         {
@@ -38,6 +40,7 @@
             "update_freq": 6,
             "last_modified": "2021-05-19 12:21:04 EST",
             "mapping":{
+                "id": "__generate__",
                 "ReferenceNum": "ReferenceNum",
                 "ActivityDate": "ActivityDate",
                 "ActivityTime": "ActivityTime",
@@ -47,7 +50,9 @@
                 "Disposition": "Disposition",
                 "ActivityPlace": "ActivityPlace",
                 "ActivityStreet": "ActivityStreet",
-                "ActivityCity": "ActivityCity"
+                "ActivityCity": "ActivityCity",
+                "datasets_id":"__dataset_id__",
+                "date_insert":"__generate__"
             }
         }
     ]

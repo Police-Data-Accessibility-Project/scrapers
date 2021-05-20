@@ -387,8 +387,64 @@ def load_data(intake, dataset_record, file):
     except:
         print('    [!] Error Iterating over rows! Skipping file {}'.format(file.name))
 
+'''
+    This function will ensure ALL of the columns in the DB are represented, 
+    so if new columns are added to the schema, this function will also load them 
+    back to the schema as "__unmapped__" in case the data source does have a column
+    that could map to it
 
-def load_data_from_schema_map(intake, dataset_record, file):
+    Args:
+    dolt - the dolt [pdap/datasets] instance
+    intake - the dolt [pdap/data-intake] instance
+    schema - the full schema.json file loaded in memory
+    dataset_record - a Pandas DataFrame of the particular record in [pdap/datasets].datasets
+'''
+def merge_dataset_mapping(dolt, intake, schema, dataset_record):
+    
+    data = read_pandas_sql(dolt, "SELECT * FROM data_types where id =  '{}'".format(dataset_record.loc[0, 'data_types_id']))
+    # if a result does not exist then fail the script, we must have a proper data_type
+    # and at this point we cannot accurately derive one
+    if data.shape[0] == 0:
+        print("    [CRITICAL] No Data Type Found! Please fix the mapping in the schema.json file!")
+        sys.exit() # exit the script
+
+    # we have a result, let's do stuff with it
+    if data.shape[0] == 1: 
+        print('    [*] Fetching columns for {} data type'.format(data.loc[0, 'name']))
+        cols = read_pandas_sql(intake, "DESCRIBE {}".format(data.loc[0, 'name']))
+        # no data ? uh oh
+        # this should never happen but just in case
+        if cols.shape[0] == 0:
+            print("    [CRITICAL] No Columns found for table {} in pdap/data-intake! Cannot complete mapping!")
+            sys.exit() # exit the script
+        # else we have data, let's iterate
+        else:
+            #  iterate over all the rows
+            for i, row in cols.iterrows():
+                # the cols are Field, type, Null, Key, Default, Extra.
+                # for us, the field, type & Null are the most important
+                field_name = row[0]
+                field_type = row[1]
+                field_allow_null = row[2]
+
+                # with the above data, we need to compare it to the mapping
+                #TODO
+    
+    # return the schema back out
+    return schema, intake_db_cols
+
+
+'''
+    Enumerate over the data mapping in order to sync the cols in the database to the data scraped
+
+    Args:
+    intake - the dolt [pdap/data-intake] instance
+    intake_db_cols - a Pandas DataFrame - columns from merge_dataset_mapping so we know how to map
+    dataset_record - a Pandas DataFrame of the particular record in [pdap/datasets].datasets
+    file - the csv file path
+'''
+def load_csv_data_from_schema_map(intake, intake_db_cols, dataset_record, file):
+    
     print('  [*] Enumerating records from {} for import'.format(file.name))
 
     # load the file into a dataframe
@@ -411,7 +467,6 @@ def load_data_from_schema_map(intake, dataset_record, file):
     # write to the database
     # on windows the path to the repo is C:\\Users\\you\\wherever\\this\\file\\is
     # it causes sql alchemy to freak
-    # by creating a new dolt instance and stating the repo is just here in this dir, it allows it to work
     db = Dolt(repo_dir = 'datasets', print_output = False)
     # set our server config
     sc = ServerConfig(branch=Dolt.branch(dolt)[0].name, user='root')

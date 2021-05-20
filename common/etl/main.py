@@ -36,9 +36,14 @@ def schema_load(schema, branch = 'master'):
         for datafile in os.scandir(data_dir):
             print("--------------------------------------------------------")
             print("Found file in ./{}: {}".format(data['full_data_location'], datafile.name))
-           
-            # load the incident records in the database
-            #pdap_dolt.load_data_from_schema_map(intake, dataset, datafile)
+            
+            # 4a Sync the schema mapping obj with the db columns to verify a match
+            # returns the fixed schema file, and the dataframe of cols for the table
+            # the latter will be used to actually do the import (and prevent another call)
+            print('  [*] Syncing schema.json mapping with database columns...'.format(file.name))
+            schema, intake_db_cols = pdap_dolt.merge_dataset_mapping(dolt, intake, schema, dataset_record)
+            # 4b load the incident records in the database
+            #pdap_dolt.load_csv_data_from_schema_map(intake, intake_db_cols, dataset, datafile)
 
 
     # 5 - Commit the Changes to Dolt
