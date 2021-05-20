@@ -1,0 +1,4 @@
+ï»¿X,Y,PoliceUseOfForceID,CaseNumber,ResponseDate,Problem,Is911Call,PrimaryOffense,SubjectInjury,ForceReportNumber,SubjectRole,SubjectRoleNumber,ForceType,ForceTypeAction,Race,Sex,EventAge,TypeOfResistance,Precinct,Neighborhood,TotalCityCallsForYear,TotalPrecinctCallsForYear,TotalNeighborhoodCallsForYear,CenterGBSID,CenterLatitude,CenterLongitude,CenterX,CenterY,DateAdded,OBJECTID
+-93.2731406621507,44.9808082812327,22368528,08-000149,2008/01/01 01:29:47+00,Code 3 ,No,MISC,,1,OT,1,Bodily Force,Body Weight to Pin,White,Male,39,Commission of Crime,01,Downtown West,322402,46998,23458,17121,44.980808,-93.273141,-10383118.5232,5618500.6487,2021/05/19 08:19:22+00,1
+-93.2750891816638,44.9734791004946,22368529,08-006825,2008/01/07 15:26:39+00,Unwanted Person ,Yes,TRSPAS,,1,A,1,Bodily Force,Joint Lock,Black,Male,50,Tensed,01,Downtown West,322402,46998,23458,17049,44.973479,-93.275089,-10383335.4314,5617347.2792,2021/05/19 0
+TRUNCATED
