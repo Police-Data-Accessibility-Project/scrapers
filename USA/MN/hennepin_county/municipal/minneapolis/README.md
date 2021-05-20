@@ -30,7 +30,8 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 * [Police Incidents 2020](https://opendata.minneapolismn.gov/datasets/police-incidents-2020)
 
 ## Legal
-Include the Terms of Service (or link to them). Is there anything else we should know?
+* https://creativecommons.org/licenses/by-sa/4.0/
+* https://opendata.minneapolismn.gov/robots.txt: 60 crawl-delay
 
 # Fields to collect:
 _Move these fields to the appropriate list below when you submit your scraper._
