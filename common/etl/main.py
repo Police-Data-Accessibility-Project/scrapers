@@ -48,7 +48,9 @@ def schema_load(schema, branch = 'master'):
 
 
     # 5 - Commit the Changes to Dolt
-    # pdap_dolt.commit(dolt)
+    # For Now I like to manually review the changes and commit
+    #pdap_dolt.commit(dolt, intake)
+    print('Review the changes with dolt and commit them!')
 
     # 6- Write out Schema.json!
     return schema

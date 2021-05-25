@@ -16,5 +16,5 @@ from common.etl import main
 schema = main.schema_load(json.load(open('schema.json', 'r')))
 
 # overwrite the schema.json with the changes from the etl
-with open('schema_dev.json', 'w') as outfile:
+with open('schema.json', 'w+') as outfile:
     json.dump(schema, outfile, indent=4)

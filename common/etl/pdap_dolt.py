@@ -14,6 +14,8 @@ import requests
 import json
 import sys
 import uuid
+import datetime
+import traceback
 
 
 # TURN OFF ONCE data_types-sandbox IS MERGED INTO MASTER
@@ -439,8 +441,10 @@ def merge_dataset_mapping(dolt, intake, schema, dataset_record, idx):
                 else:
                     print('      [x] Missing column {} for dataset in schema.json, adding...'.format(field_name))
                     # figure out what to set the missing column to
-                    if field_name in ['id', 'date_insert', 'date_update']:
-                        schema['data'][idx]['mapping'][field_name] = "__generate__"
+                    if field_name in ['id']:
+                        schema['data'][idx]['mapping'][field_name] = "__uuid__"
+                    elif field_name in ['date_insert', 'date_update']:
+                        schema['data'][idx]['mapping'][field_name] = "__date__"
                     elif field_name == 'datasets_id':
                         schema['data'][idx]['mapping'][field_name] = "__dataset_id__"
                     else:
@@ -468,39 +472,87 @@ def load_csv_data_from_schema_map(intake, intake_db_cols, intake_table_name, dat
 
     # load the file into a dataframe
     df = pd.read_csv(file)
-    # generate new UUID v4 IDs (with no dashes) for each record, and push the column to the front
+    df = df.where(df.notna(), None) # replace all nan with None
 
-    df = pd.concat([pd.Series([str(uuid.uuid4()).replace('-','') for _ in range(len(df.index))], index=df.index, name='id'), df], axis=1)
-    # set the index to our new ID column
-    df.set_index('id')
-    # add the datasets_fk
-    df['datasets_id']=dataset_record.loc[0, 'id']
+    # dynamically build the insert statement
+    # https://stackoverflow.com/questions/51975479/parsing-json-into-insert-statements-with-python
+    
 
-    #instead, we will just loop our data
     try:
+        # first loop through each record in the flatfile
         for i, row in df.iterrows():
-            print('    [-] Importing record: {} - ccn:'.format(row['id'], row['ccn']))
+            # for each record, we need to look up the intake mapping to map properly
+            keylist = "("
+            valuelist = "("
+            firstPair = True # first index no , before it
+            # key - Dolt db column name 
+            # value - scraped file column name / dataframe col name
+            for key, value in intake_db_cols.items():
+                if not firstPair:
+                    keylist += ", "
+                    valuelist += ", "
+                firstPair = False
+                keylist += key
+                
+                # generate any UUIDs
+                if value == '__uuid__':
+                    valuelist +=  "'" + str(uuid.uuid4()).replace('-','') + "'"
+                # generate any dates
+                elif value == '__date__':
+                    valuelist +=  "CAST('"+ str(datetime.datetime.now()) + "' as datetime)"
+                # fill in the dataset id
+                elif value == '__dataset_id__':
+                    valuelist +=  "'" + str(dataset_record.loc[0, 'id']) + "'"
+                # NULL out any skips
+                elif value == '__skip__':
+                    valuelist += 'NULL'
+                # else find the column in the dataframe
+                else:
+                    if row[value] in (None, 'null'):
+                        valuelist += 'NULL'
+                    else:
+                        valuelist += "'" + str(row[value]) + "'"
+            keylist += ")"
+            valuelist += ")"
+
+            sqlstatement = "INSERT INTO " + intake_table_name + " " + keylist + " VALUES " + valuelist
+
+
+
+            #print('    [-] Importing record: {}'.format(sqlstatement))
+            print('    [-] Importing record')
             # sometimes may get a glitch like an invalid date
             try:
-                insert = intake.sql("INSERT into incident_reports ('id', 'ccn', 'incidentDate', 'updateDate', 'city', 'state', 'postalCode', 'blocksizedAddress', 'incidentType', 'parentIncidentType', 'narrative', 'datasets_id') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(row['id'], row['ccn'], row['date'], row['updateDate'], row['city'], row['state'], row['postalCode'], row['blocksizedAddress'], row['incidentType'], row['parentIncidentType'], row['narrative'], row['datasets_id']))
+                insert = intake.sql(sqlstatement)
             except:
-                print('      [!] Error importing record: {} - ccn:'.format(row['id'], row['ccn']))
+                print('      [!] Error importing record: {}'.format(traceback.print_exc()))
         print('    [*] Done!')
     except:
-        print('    [!] Error Iterating over rows! Skipping file {}'.format(file.name))
+        print('    [!] Error Iterating over rows! Skipping file {}. Error: {}'.format(file.name, traceback.print_exc()))
+
+    # first loop through the mapping to grab the dolt col (key) and the flat file key (value)
+    
+
+
+    #instead, we will just loop our data
+    
 
 
     
 ''' push the changes to our custom branch '''
 def commit(dolt, intake):
     branch = Dolt.branch(dolt)[0].name
+    intake_branch = branch = Dolt.branch(intake)[0].name
     print('  [*] Commiting changes to {}'.format(branch))
     # make sure we are in our custom branch and not a main one
-    if 'city-protect' in branch:
-        dolt.remote(name='origin', url=dolthub_fullrepo)
-        dolt.add(['data_incident_reports', 'datasets'])
-        dolt.commit('Data Added from cityprotect_load.py ETL Script')
+    if 'etl-import' in branch and 'etl-import' in intake_branch :
+        dolt.remote(add=True, name='origin', url=dolthub_fullrepo)
+        dolt.commit('Data Added from ETL Script')
         dolt.push('origin', branch, set_upstream='origin')
+
+        intake.remote(add=True, name='origin', url=intake_fullrepo)
+        intake.commit('Data Added from ETL Script')
+        intake.push('origin', intake_branch, set_upstream='origin')
         print('  [*] Done!')
     else:
         print(  '[!] ERROR: Cannot push to main branch. Aborting. Use dolt cli to migrate and finalize commit')
