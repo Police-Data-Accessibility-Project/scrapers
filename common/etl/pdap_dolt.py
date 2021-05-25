@@ -398,8 +398,9 @@ def load_data(intake, dataset_record, file):
     intake - the dolt [pdap/data-intake] instance
     schema - the full schema.json file loaded in memory
     dataset_record - a Pandas DataFrame of the particular record in [pdap/datasets].datasets
+    idx - the current index of the schema['data'] that we are on
 '''
-def merge_dataset_mapping(dolt, intake, schema, dataset_record):
+def merge_dataset_mapping(dolt, intake, schema, dataset_record, idx):
     
     data = read_pandas_sql(dolt, "SELECT * FROM data_types where id =  '{}'".format(dataset_record.loc[0, 'data_types_id']))
     # if a result does not exist then fail the script, we must have a proper data_type
@@ -410,8 +411,9 @@ def merge_dataset_mapping(dolt, intake, schema, dataset_record):
 
     # we have a result, let's do stuff with it
     if data.shape[0] == 1: 
-        print('    [*] Fetching columns for {} data type'.format(data.loc[0, 'name']))
-        cols = read_pandas_sql(intake, "DESCRIBE {}".format(data.loc[0, 'name']))
+        intake_table_name = data.loc[0, 'name']
+        print('    [*] Fetching columns for {} data type'.format(table_name))
+        cols = read_pandas_sql(intake, "DESCRIBE {}".format(table_name))
         # no data ? uh oh
         # this should never happen but just in case
         if cols.shape[0] == 0:
@@ -419,6 +421,7 @@ def merge_dataset_mapping(dolt, intake, schema, dataset_record):
             sys.exit() # exit the script
         # else we have data, let's iterate
         else:
+            print('      [*] Loaded mapping: {}'.format(schema['data'][idx]['mapping']))
             #  iterate over all the rows
             for i, row in cols.iterrows():
                 # the cols are Field, type, Null, Key, Default, Extra.
@@ -428,10 +431,25 @@ def merge_dataset_mapping(dolt, intake, schema, dataset_record):
                 field_allow_null = row[2]
 
                 # with the above data, we need to compare it to the mapping
-                #TODO
+
+                # this is the actual column in the "mapping" object of our current dataset in the schema.json
+                # we will need to test to see if it exists first
+                if field_name in schema['data'][idx]['mapping']:
+                    print('      [*] Found column {} for dataset in schema.json'.format(field_name))
+                else:
+                    print('      [x] Missing column {} for dataset in schema.json, adding...'.format(field_name))
+                    # figure out what to set the missing column to
+                    if field_name in ['id', 'date_insert', 'date_update']:
+                        schema['data'][idx]['mapping'][field_name] = "__generate__"
+                    elif field_name == 'datasets_id':
+                        schema['data'][idx]['mapping'][field_name] = "__dataset_id__"
+                    else:
+                        schema['data'][idx]['mapping'][field_name] = "__skip__"
     
-    # return the schema back out
-    return schema, intake_db_cols
+    # grab our freshly merged mapping
+    intake_db_cols = schema['data'][idx]['mapping']
+    # return the full schema back out with the intake cols and table name
+    return schema, intake_db_cols, intake_table_name
 
 
 '''
@@ -439,11 +457,12 @@ def merge_dataset_mapping(dolt, intake, schema, dataset_record):
 
     Args:
     intake - the dolt [pdap/data-intake] instance
-    intake_db_cols - a Pandas DataFrame - columns from merge_dataset_mapping so we know how to map
+    intake_db_cols - a JSON object - columns from merge_dataset_mapping so we know how to map
+    intake_table_name - name of the table the data will be loaded into
     dataset_record - a Pandas DataFrame of the particular record in [pdap/datasets].datasets
     file - the csv file path
 '''
-def load_csv_data_from_schema_map(intake, intake_db_cols, dataset_record, file):
+def load_csv_data_from_schema_map(intake, intake_db_cols, intake_table_name, dataset_record, file):
     
     print('  [*] Enumerating records from {} for import'.format(file.name))
 
@@ -456,31 +475,6 @@ def load_csv_data_from_schema_map(intake, intake_db_cols, dataset_record, file):
     df.set_index('id')
     # add the datasets_fk
     df['datasets_id']=dataset_record.loc[0, 'id']
-    # format the date columns
-    df['date'] = pd.to_datetime(df['date'], errors='coerce', format='%m/%d/%Y, %I:%M:%S %p')
-    df['updateDate'] = pd.to_datetime(df['updateDate'], errors='coerce', format='%m/%d/%Y, %I:%M:%S %p')
-    
-    '''
-    This currently does not work. It is supposed to be doltpy's method of taking a dataframe and enumerating itself
-
-
-    # write to the database
-    # on windows the path to the repo is C:\\Users\\you\\wherever\\this\\file\\is
-    # it causes sql alchemy to freak
-    db = Dolt(repo_dir = 'datasets', print_output = False)
-    # set our server config
-    sc = ServerConfig(branch=Dolt.branch(dolt)[0].name, user='root')
-    # create a sql server process
-    print('    [*] Opening MySQL Connection to Dolt DB')
-    with DoltSQLServerContext(db, server_config = sc) as dssc:
-        print('    [*] Writing Data...')
-        # write the data from the dataframe
-        dssc.write_pandas(dolthub_incident_reports_table,
-                            df,
-                            create_if_not_exists=True,
-                            primary_key=['id'],
-                            commit=True)
-    '''
 
     #instead, we will just loop our data
     try:

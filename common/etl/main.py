@@ -27,6 +27,11 @@ def schema_load(schema, branch = 'master'):
         # grab the dataset (or create one) and then sync the schema.json and datasets data
         schema, dataset = pdap_dolt.get_dataset_from_schema(dolt, data, agency, schema, current_data_index)
 
+        # 3a Sync the schema mapping obj with the db columns to verify a match
+        # returns the fixed schema file, and the dataframe of cols for the table
+        # the latter will be used to actually do the import (and prevent another call)
+        print('  [*] Syncing schema.json mapping with database columns...')
+        schema, intake_db_cols, intake_table_name = pdap_dolt.merge_dataset_mapping(dolt, intake, schema, dataset, current_data_index)
 
         # inc the index in case the loop resets
         current_data_index += 1
@@ -37,13 +42,9 @@ def schema_load(schema, branch = 'master'):
             print("--------------------------------------------------------")
             print("Found file in ./{}: {}".format(data['full_data_location'], datafile.name))
             
-            # 4a Sync the schema mapping obj with the db columns to verify a match
-            # returns the fixed schema file, and the dataframe of cols for the table
-            # the latter will be used to actually do the import (and prevent another call)
-            print('  [*] Syncing schema.json mapping with database columns...'.format(file.name))
-            schema, intake_db_cols = pdap_dolt.merge_dataset_mapping(dolt, intake, schema, dataset_record)
-            # 4b load the incident records in the database
-            #pdap_dolt.load_csv_data_from_schema_map(intake, intake_db_cols, dataset, datafile)
+            
+            # 4a load the incident records in the database
+            pdap_dolt.load_csv_data_from_schema_map(intake, intake_db_cols, intake_table_name, dataset, datafile)
 
 
     # 5 - Commit the Changes to Dolt
