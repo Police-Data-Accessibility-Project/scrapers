@@ -412,8 +412,8 @@ def merge_dataset_mapping(dolt, intake, schema, dataset_record, idx):
     # we have a result, let's do stuff with it
     if data.shape[0] == 1: 
         intake_table_name = data.loc[0, 'name']
-        print('    [*] Fetching columns for {} data type'.format(table_name))
-        cols = read_pandas_sql(intake, "DESCRIBE {}".format(table_name))
+        print('    [*] Fetching columns for {} data type'.format(intake_table_name))
+        cols = read_pandas_sql(intake, "DESCRIBE {}".format(intake_table_name))
         # no data ? uh oh
         # this should never happen but just in case
         if cols.shape[0] == 0:
