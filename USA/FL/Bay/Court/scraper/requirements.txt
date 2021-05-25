@@ -12,3 +12,4 @@ dataclass-builder
 tqdm
 beautifulsoup4
 pandas
+doltpy==2.0.7
