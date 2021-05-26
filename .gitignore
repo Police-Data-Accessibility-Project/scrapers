@@ -3,6 +3,10 @@
 /Counties/Florida/Bay County/Scraper/captcha/correct/*
 /Counties/Florida/Bay County/Scraper/captcha/incorrect/*
 
+# Ignore dolt repos (cloned from ETL)
+**/datasets
+**/data-intake
+
 # Python gitignore from: https://github.com/github/gitignore/blob/master/Python.gitignore
 
 # Byte-compiled / optimized / DLL files

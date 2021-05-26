@@ -14,6 +14,8 @@ import requests
 import json
 import sys
 import uuid
+import datetime
+import traceback
 
 
 # TURN OFF ONCE data_types-sandbox IS MERGED INTO MASTER
@@ -90,6 +92,64 @@ def get_dataset(dolt, dataset_url, agency):
         print(" [!] Found Existing Dataset Record: ID #{}!".format(data.loc[0, 'id']))
         return data
 
+'''
+    Search the [pdap/datasets].[datasets] database for the specified URL
+    If it does not exist, pass agency info to new func to create it
+
+    This method will verify the data from dolt exactly matches the data in the schema.json
+'''
+def get_dataset_from_schema(dolt, schema_dataset, agency, full_schema, idx):
+    # method 1: check if id is set first
+    if schema_dataset['dataset_id']:
+        dolt_data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE id = '{}'".format(schema_dataset['dataset_id']))
+    # else grab the url and check via that
+    else:
+        dolt_data = read_pandas_sql(dolt, "SELECT * FROM datasets WHERE url = '{}'".format(schema_dataset['url']))
+    # check if a result was passed
+
+    # if not, make one
+    if dolt_data.shape[0] == 0:
+        print(" [X] No Dataset Found! Proceeding to Add New Dataset...")
+        return new_dataset_from_schema(dolt, agency, schema_dataset, full_schema, idx)
+    # if so, compare the db data to the schema.json and consolidate
+    if dolt_data.shape[0] == 1: 
+        print(" [!] Found Existing Dataset Record: ID #{}!".format(dolt_data.loc[0, 'id']))
+        # compare the changes from the db to the schema.json to consolidate before returning
+        return merge_dataset_info(full_schema, dolt_data, idx)
+
+
+''' merge the data from the db back into the schema '''
+def merge_dataset_info(schema, dataset, index):
+    # compare the last_modified time of the json vs the 
+
+    # merge the data back into the schema
+    schema['data'][index]['dataset_id']     = dataset.loc[0, 'id']
+    schema['data'][index]['source_type']    = dataset.loc[0, 'source_type_id']
+    schema['data'][index]['data_type']      = dataset.loc[0, 'data_type_id']
+    schema['data'][index]['format_type']    = dataset.loc[0, 'format_type_id']
+    schema['data'][index]['update_freq']    = dataset.loc[0, 'update_frequency']
+
+    return schema, dataset
+
+''' 
+    used if agency_id is filled out in the schema
+    RETURN: the uuid of the dataset or ''
+'''
+def get_agency_by_uuid(dolt, uuid):
+    try:
+        data = read_pandas_sql(dolt, "SELECT * FROM agencies where id =  '{}'".format(uuid))
+        # check if a result was passed
+        if data.shape[0] == 0:
+            print("       [X] No Agency Found!")
+            return ''
+        if data.shape[0] == 1: 
+            print("       [!] Found Agency ID #{}!".format(data.loc[0, 'id']))
+            return data.loc[0, 'id']
+    except:
+        print("       [X] Error Fetching Agency")
+        return ''
+
+''' fallback if the agency_id is blank'''
 def get_agency_id(dolt, name, state):
     try:
         data = read_pandas_sql(dolt, "SELECT * FROM 'agencies' where soundex('name') = soundex('{}') and state_iso = '{}'".format(name.strip(), state.strip()))
@@ -107,8 +167,8 @@ def get_agency_id(dolt, name, state):
 # before we actually start making changes, we should make a new branch
 def new_branch(dolt, intake):
     # generates a modifier at the end
-    # city-protect-import-py-5d365f9b
-    new_branch = 'city-protect-import-py-{}'.format(str(uuid.uuid4()).split('-')[0])
+    # etl-import-py-5d365f9b
+    new_branch = 'etl-import-py-{}'.format(str(uuid.uuid4()).split('-')[0])
     try:
         print('   [*] Creating new Branch: {}'.format(new_branch))
         b = Dolt.branch(dolt, branch_name=dolthub_branch, new_branch=new_branch, copy=True)
@@ -126,29 +186,17 @@ def new_branch(dolt, intake):
         sys.exit()
 
 '''
-Use the agency data from city protect to derive a new dataset
-The following columns need filled: 
-url [url of dataset]
-name [name of pd]
-aggregation_level [state, county, municipal]
-source_type_id [fk from source_types, for CityProtect will always be 3 - Third Party]
-data_types_id [fk from data_types, for CityProtect will always be 10 - Incident_Reports]
-format_types_id [fk from format_types, for CityProtect will always be 2 - CityProtect]
-state_iso [two digit state code, ie 'IN']
-county_fips [fk to counties table, can be searched via FCC API]
-city_id [fk to municipalities, can use fips, state, city maybe to locate?]
-consolidator [CityProtect]
-update_frequency [quarterly (bulk downloads are quarterly)]
-portal_type [CityProtect]
-coverage_start [no clue how to populate. Bulk downloads, use first file date?]
-scraper_path [null, would need manual population]
-notes [null]
+
+This was legacy used for cityprotect data and will most likely be deprecated
+
 '''
 def new_dataset(dolt, agency, url):
     print('   [*] Adding a New Dataset:')
     name = agency['name'].replace("'", '')
     print('     [*] name: {}'.format(name))
     print('     [*] url: {}'.format(url))
+    status_id = 5
+    print('     [*] status: {}'.format('5 - Initial Data Loaded'))
     
     source_type_id = 3 # Third Party
     print('     [*] source type: {}'.format('Third Party'))
@@ -187,6 +235,7 @@ def new_dataset(dolt, agency, url):
     # then grab all our vars and turn into a dataframe:
     data = pd.DataFrame([{
         'url': url,
+        'status_id': status_id,
         'name': name,
         'source_type_id': source_type_id,
         'data_types_id': data_types_id,
@@ -201,13 +250,82 @@ def new_dataset(dolt, agency, url):
     print("   [*] Inserting data to datasets table...")
 
     id = str(uuid.uuid4()).replace('-','') # UUID without dashes
-    insert = dolt.sql("INSERT into datasets ('id', 'url', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
+    insert = dolt.sql("INSERT into datasets ('id', 'url', 'status_id', 'name', 'source_type_id', 'data_types_id', 'format_types_id', 'agency_id', 'update_frequency', 'portal_type', 'coverage_start', 'scraper_id', 'notes') VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, status_id, name, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, portal, start, scraper_id, notes), result_format="csv")
 
     # and grab the record
     data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
     print(" [!] Inserted Dataset Record: ID #{}!".format(data.loc[0, 'id']))
     return data
+
+''' load the data from the schema '''
+def new_dataset_from_schema(dolt, agency, schema_dataset, full_schema, idx):
+    print('   [*] Adding a New Dataset:')
+    url = schema_dataset['url']
+    print('     [*] url: {}'.format(url))
+    status_id = 5
+    print('     [*] status: {}'.format('5 - Initial Data Loaded'))
+
+    # agencies method: get_agency_by_uuid
+    agency_id = agency
+    print('     [*] agency_id: {}'.format(agency_id))
     
+    source_type_id = schema_dataset['source_type'] # Third Party
+    print('     [*] source type: {}'.format(source_type_id))
+    data_types_id = schema_dataset['data_type'] # Incident Reports
+    print('     [*] data type: {}'.format(data_types_id))
+    format_types_id = schema_dataset['format_type'] # CityProtect
+    print('     [*] format type: {}'.format(format_types_id))
+
+
+    '''
+    fcc = "https://geo.fcc.gov/api/census/area?lat={}&lon={}&format=json".format(lat, lng)
+    print("     [!] Fetching County FIPS code from FCC.gov")
+    response = requests.get(fcc)
+    # print(response.text)
+    json_resp = json.loads(response.text)
+    
+
+    fips = json_resp['results'][0]['county_fips']
+    print("     [*] fips: {}".format(fips))
+    '''
+    update_freq = schema_dataset['update_freq'] # quarterly
+    print('     [*] update freq: {}'.format(update_freq))
+
+
+    # technically we could just omit these, but leaving them here in case this code
+    # is reused elsewhere so they aren't forgotten
+    scraper_id = ''
+    notes = ''
+
+    # then grab all our vars and turn into a dataframe:
+    data = pd.DataFrame([{
+        'url': url,
+        'status_id': status_id,
+        'source_type_id': source_type_id,
+        'data_types_id': data_types_id,
+        'format_types_id': format_types_id,
+        'agency_id': agency_id,
+        'update_frequency':update_freq,
+        'scraper_id': scraper_id,
+        'notes': notes
+    }])
+    print("   [*] Inserting data to datasets table...")
+
+    id = str(uuid.uuid4()).replace('-','') # UUID without dashes
+    insert = dolt.sql("INSERT INTO datasets (id, url, status_id, source_type_id, data_types_id, format_types_id, agency_id, update_frequency, scraper_id, notes) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(id, url, status_id, source_type_id, data_types_id, format_types_id,  agency_id, update_freq, scraper_id, notes), result_format="csv")
+
+    # and grab the record
+    data = read_pandas_sql(dolt, "select * from datasets where id = '{}'".format(id))
+    print(" [!] Inserted Dataset Record: ID #{}!".format(data.loc[0, 'id']))
+    # update the schema file with the lastest info
+    # since everything was used from the file to create, only the id and last_modified
+    # will change
+    full_schema['data'][idx]['dataset_id'] = data.loc[0, 'id']
+    full_schema['data'][idx]['last_modified'] = data.loc[0, 'last_modified']
+
+    # return back
+    return full_schema, data
+
 
 '''
 We use our dolt object, the dataset record passsed from either get_dataset() or new_dataset()
@@ -271,17 +389,170 @@ def load_data(intake, dataset_record, file):
     except:
         print('    [!] Error Iterating over rows! Skipping file {}'.format(file.name))
 
+'''
+    This function will ensure ALL of the columns in the DB are represented, 
+    so if new columns are added to the schema, this function will also load them 
+    back to the schema as "__unmapped__" in case the data source does have a column
+    that could map to it
+
+    Args:
+    dolt - the dolt [pdap/datasets] instance
+    intake - the dolt [pdap/data-intake] instance
+    schema - the full schema.json file loaded in memory
+    dataset_record - a Pandas DataFrame of the particular record in [pdap/datasets].datasets
+    idx - the current index of the schema['data'] that we are on
+'''
+def merge_dataset_mapping(dolt, intake, schema, dataset_record, idx):
+    
+    data = read_pandas_sql(dolt, "SELECT * FROM data_types where id =  '{}'".format(dataset_record.loc[0, 'data_types_id']))
+    # if a result does not exist then fail the script, we must have a proper data_type
+    # and at this point we cannot accurately derive one
+    if data.shape[0] == 0:
+        print("    [CRITICAL] No Data Type Found! Please fix the mapping in the schema.json file!")
+        sys.exit() # exit the script
+
+    # we have a result, let's do stuff with it
+    if data.shape[0] == 1: 
+        intake_table_name = data.loc[0, 'name']
+        print('    [*] Fetching columns for {} data type'.format(intake_table_name))
+        cols = read_pandas_sql(intake, "DESCRIBE {}".format(intake_table_name))
+        # no data ? uh oh
+        # this should never happen but just in case
+        if cols.shape[0] == 0:
+            print("    [CRITICAL] No Columns found for table {} in pdap/data-intake! Cannot complete mapping!")
+            sys.exit() # exit the script
+        # else we have data, let's iterate
+        else:
+            print('      [*] Loaded mapping: {}'.format(schema['data'][idx]['mapping']))
+            #  iterate over all the rows
+            for i, row in cols.iterrows():
+                # the cols are Field, type, Null, Key, Default, Extra.
+                # for us, the field, type & Null are the most important
+                field_name = row[0]
+                field_type = row[1]
+                field_allow_null = row[2]
+
+                # with the above data, we need to compare it to the mapping
+
+                # this is the actual column in the "mapping" object of our current dataset in the schema.json
+                # we will need to test to see if it exists first
+                if field_name in schema['data'][idx]['mapping']:
+                    print('      [*] Found column {} for dataset in schema.json'.format(field_name))
+                else:
+                    print('      [x] Missing column {} for dataset in schema.json, adding...'.format(field_name))
+                    # figure out what to set the missing column to
+                    if field_name in ['id']:
+                        schema['data'][idx]['mapping'][field_name] = "__uuid__"
+                    elif field_name in ['date_insert', 'date_update']:
+                        schema['data'][idx]['mapping'][field_name] = "__date__"
+                    elif field_name == 'datasets_id':
+                        schema['data'][idx]['mapping'][field_name] = "__dataset_id__"
+                    else:
+                        schema['data'][idx]['mapping'][field_name] = "__skip__"
+    
+    # grab our freshly merged mapping
+    intake_db_cols = schema['data'][idx]['mapping']
+    # return the full schema back out with the intake cols and table name
+    return schema, intake_db_cols, intake_table_name
+
+
+'''
+    Enumerate over the data mapping in order to sync the cols in the database to the data scraped
+
+    Args:
+    intake - the dolt [pdap/data-intake] instance
+    intake_db_cols - a JSON object - columns from merge_dataset_mapping so we know how to map
+    intake_table_name - name of the table the data will be loaded into
+    dataset_record - a Pandas DataFrame of the particular record in [pdap/datasets].datasets
+    file - the csv file path
+'''
+def load_csv_data_from_schema_map(intake, intake_db_cols, intake_table_name, dataset_record, file):
+    
+    print('  [*] Enumerating records from {} for import'.format(file.name))
+
+    # load the file into a dataframe
+    df = pd.read_csv(file)
+    df = df.where(df.notna(), None) # replace all nan with None
+
+    # dynamically build the insert statement
+    # https://stackoverflow.com/questions/51975479/parsing-json-into-insert-statements-with-python
+    
+
+    try:
+        # first loop through each record in the flatfile
+        for i, row in df.iterrows():
+            # for each record, we need to look up the intake mapping to map properly
+            keylist = "("
+            valuelist = "("
+            firstPair = True # first index no , before it
+            # key - Dolt db column name 
+            # value - scraped file column name / dataframe col name
+            for key, value in intake_db_cols.items():
+                if not firstPair:
+                    keylist += ", "
+                    valuelist += ", "
+                firstPair = False
+                keylist += key
+                
+                # generate any UUIDs
+                if value == '__uuid__':
+                    valuelist +=  "'" + str(uuid.uuid4()).replace('-','') + "'"
+                # generate any dates
+                elif value == '__date__':
+                    valuelist +=  "CAST('"+ str(datetime.datetime.now()) + "' as datetime)"
+                # fill in the dataset id
+                elif value == '__dataset_id__':
+                    valuelist +=  "'" + str(dataset_record.loc[0, 'id']) + "'"
+                # NULL out any skips
+                elif value == '__skip__':
+                    valuelist += 'NULL'
+                # else find the column in the dataframe
+                else:
+                    if row[value] in (None, 'null'):
+                        valuelist += 'NULL'
+                    else:
+                        valuelist += "'" + str(row[value]) + "'"
+            keylist += ")"
+            valuelist += ")"
+
+            sqlstatement = "INSERT INTO " + intake_table_name + " " + keylist + " VALUES " + valuelist
+
+
+
+            #print('    [-] Importing record: {}'.format(sqlstatement))
+            print('    [-] Importing record')
+            # sometimes may get a glitch like an invalid date
+            try:
+                insert = intake.sql(sqlstatement)
+            except:
+                print('      [!] Error importing record: {}'.format(traceback.print_exc()))
+        print('    [*] Done!')
+    except:
+        print('    [!] Error Iterating over rows! Skipping file {}. Error: {}'.format(file.name, traceback.print_exc()))
+
+    # first loop through the mapping to grab the dolt col (key) and the flat file key (value)
+    
+
+
+    #instead, we will just loop our data
+    
+
+
     
 ''' push the changes to our custom branch '''
 def commit(dolt, intake):
     branch = Dolt.branch(dolt)[0].name
+    intake_branch = branch = Dolt.branch(intake)[0].name
     print('  [*] Commiting changes to {}'.format(branch))
     # make sure we are in our custom branch and not a main one
-    if 'city-protect' in branch:
-        dolt.remote(name='origin', url=dolthub_fullrepo)
-        dolt.add(['data_incident_reports', 'datasets'])
-        dolt.commit('Data Added from cityprotect_load.py ETL Script')
+    if 'etl-import' in branch and 'etl-import' in intake_branch :
+        dolt.remote(add=True, name='origin', url=dolthub_fullrepo)
+        dolt.commit('Data Added from ETL Script')
         dolt.push('origin', branch, set_upstream='origin')
+
+        intake.remote(add=True, name='origin', url=intake_fullrepo)
+        intake.commit('Data Added from ETL Script')
+        intake.push('origin', intake_branch, set_upstream='origin')
         print('  [*] Done!')
     else:
         print(  '[!] ERROR: Cannot push to main branch. Aborting. Use dolt cli to migrate and finalize commit')

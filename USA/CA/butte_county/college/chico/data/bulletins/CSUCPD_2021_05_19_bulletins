@@ -1,0 +1,39 @@
+,ReferenceNum,ActivityDate,ActivityTime,ActivityType,ActivityInitiator,ActivityDescription,Disposition,ActivityPlace,ActivityStreet,ActivityCity
+0,  2105180001,20  -21-05,00:05,Area Check,null,null,Checks Ok,null,null,null
+1,  2105180002,20  -21-05,03:43,Area Check,null,null,Checks Ok,null,null,null
+2,  2105180003,20  -21-05,03:46,Area Check,null,null,Checks Ok,null,null,null
+3,  2105180004,20  -21-05,03:46,Area Check,null,null,Checks Ok,null,null,null
+4,  2105180005,20  -21-05,03:46,Area Check,null,null,Checks Ok,null,null,null
+5,  2105180006,20  -21-05,03:46,Area Check,null,null,Checks Ok,null,null,null
+6,  2105180007,20  -21-05,04:02,Area Check,null,null,Checks Ok,null,null,null
+7,  2105180008,20  -21-05,04:43,Area Check,null,null,Checks Ok,null,null,null
+8,  2105180009,20  -21-05,04:49,Area Check,null,null,Checks Ok,null,null,null
+9,  2105180010,20  -21-05,08:10,Area Check,null,null,Checks Ok,null,null,null
+10,   2105180011,20  - 2-10,08:24,Field Contact,Officer initiated activity,null,Log Only,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+11,  2105180012,20  -21-05,08:57,Area Check,Officer initiated activity,null,Checks Ok,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+12,  2105180013,20  -21-05,08:57,Area Check,Officer initiated activity,null,Checks Ok,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+13,  2105180014,20  -21-05,08:59,Area Check,Officer initiated activity,null,Checks Ok,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+14,  2105180015,20  -21-05,09:00,Area Check,Officer initiated activity,null,Checks Ok,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+15,  2105180016,20  -21-05,09:00,Area Check,Officer initiated activity,null,Checks Ok,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+16,  2105180017,20  -21-05,09:00,Area Check,Officer initiated activity,null,Checks Ok,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+17,  2105180018,20  -21-05,09:05,Area Check,Officer initiated activity,null,Checks Ok,Sapp Hall, Normal Av, Chico. O/W SUBJECT ON WEST SIDE  BETWEEN DEEN HOUSE AND SAPP HALL
+18,   2105180019,20  - 2-10,09:19,Field Contact,Officer initiated activity,null,Arrest Made,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+19,  2105180020,20  -21-05,10:40,Area Check,Officer initiated activity,null,Checks Ok,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+20,  2105180021,20  -21-05,10:40,Area Check,Officer initiated activity,null,Checks Ok,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+21,  2105180022,20  -21-05,10:43,Area Check,Officer initiated activity,null,Checks Ok,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+22,  2105180023,20  -21-05,11:13,Area Check,Officer initiated activity,null,Checks Ok,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+23,  2105180024,20  -21-05,11:21,Area Check,Officer initiated activity,null,Checks Ok,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+24,  2105180025,20  -21-05,12:34,Area Check,Officer initiated activity,null,Checks Ok,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+25,  2105180026,20  -21-05,12:34,Area Check,Officer initiated activity,null,Checks Ok,Lost Park, Wall St, Chico. O/W MALE TRANSIENT
+26,   2105180027,20  - 2-10,19:37,Field Contact,Officer initiated activity,null,No Problems Noted,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+27,  2105180028,20  -21-05,21:20,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+28,  2105180029,20  -21-05,21:28,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+29,  2105180030,20  -21-05,21:32,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+30,  2105180031,20  -21-05,21:32,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+31,  2105180032,20  -21-05,21:33,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+32,  2105180033,20  -21-05,21:39,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+33,  2105180034,20  -21-05,21:47,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+34,  2105180035,20  -21-05,21:50,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+35,  2105180036,20  -21-05,23:43,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+36,  2105180037,20  -21-05,23:50,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null
+37,  2105180038,20  -21-05,23:51,Area Check,Officer initiated activity,null,Checks Ok,W 3RD St/Salem St, Chico. FLAGGED DOWN REG POSSIBLE JUVS SITTING AT TOP OF CITY PARKING STRUCTURE WITH FEET HANGING OVER EDGE AND CONCERNED FOR SAFETY. 10-85 FOR SUBJS,null

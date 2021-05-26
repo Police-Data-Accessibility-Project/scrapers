@@ -37,6 +37,8 @@ jobs:
             # Satisfy *all* the requirements.
             pip install "${reqs[@]}"
         fi
+    - name: Install Dolt dependency to path
+      run: sudo bash -c 'curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | sudo bash'
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names

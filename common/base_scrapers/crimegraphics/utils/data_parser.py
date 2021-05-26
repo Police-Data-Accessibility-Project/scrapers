@@ -34,6 +34,8 @@ def data_parser(configs, save_dir, table):
     was_desc_cont = False
     incident_description = ''
     inc_description = False
+    initiator_location = ''     # fix lint 25 May 2021
+    incident_description2 = ''  # fix lint 25 May 2021
 
     print('======================')
     with open("text.txt", "r") as data:
