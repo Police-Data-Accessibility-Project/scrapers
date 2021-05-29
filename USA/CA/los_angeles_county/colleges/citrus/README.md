@@ -1,8 +1,12 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+Added to dataset. Agency ID: 99be6b8ca2c011eb9c9b8c8590d4a7fc
+
 There are two scrapers for this department, the annual report scraper, and the crime log scraper.
+
 Time period of Crime log: 2017-2020, may update yearly, unsure.
+
 Time period of annual report: 2020
 
 _Remove fields that were collected_

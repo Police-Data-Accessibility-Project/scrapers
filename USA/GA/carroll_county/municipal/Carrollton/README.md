@@ -1,6 +1,7 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+In DOLT datasets
 Time period of data (e.g. 06/01/2017 to 03/20/2021)
 
 _Remove fields that were collected_
@@ -50,7 +51,7 @@ Choose a report (doesn't matter)
 ![image](https://user-images.githubusercontent.com/40151222/112383296-548d7480-8cc3-11eb-8f44-6aef21de5daf.png)
 
 
-With the networking tab open, click "download" (after accepting the data policy and terms). After clicking download, close the download prompt and look in the networking tab. The request will look something like this 
+With the networking tab open, click "download" (after accepting the data policy and terms). After clicking download, close the download prompt and look in the networking tab. The request will look something like this
 
 
 ![image](https://user-images.githubusercontent.com/40151222/112383534-99191000-8cc3-11eb-873a-c1ee34401947.png)

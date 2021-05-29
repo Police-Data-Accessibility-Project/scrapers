@@ -1,6 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+Added to datasets. Agency ID: 8c5f64d40dea45b285ca607023ec3d40
+
 Only daily arrest reports
 
 _Remove fields that were collected_

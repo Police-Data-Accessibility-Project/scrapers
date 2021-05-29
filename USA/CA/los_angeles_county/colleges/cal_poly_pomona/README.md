@@ -1,6 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+Added to dataset. No agency ID.
+
 Is there anything in particular of note with the scraping landscape in this jurisdiction?
 Time period of data: 06/29/2020-01/04/"2020" (Is likely supposed to be 2021)
 

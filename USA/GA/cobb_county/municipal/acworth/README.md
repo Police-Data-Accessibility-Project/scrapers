@@ -5,7 +5,7 @@ Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/ma
 Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
 
 # Source info
-Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
+In DOLT datasets. agency id: e8e00b3fc3ea42bf8858f70d6785bf8a
 
 ## Data refresh rate
 For example "daily at 8pm EST" or "every Friday, usually before noon"

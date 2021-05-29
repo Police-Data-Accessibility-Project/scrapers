@@ -1,6 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+Added to dataset. Agency ID: 8ef4612ffce14b5a8d8176a377631e71
+
 **DO NOT** attempt to update to use `list_pdf_scrapers` or `bs_common`
 
 Only crime statistics

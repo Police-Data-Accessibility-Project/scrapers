@@ -5,7 +5,7 @@ Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/ma
 Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
 
 # Source info
-Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
+Added to dataset. Agency ID: 143ca1a153724b7793f452bc10c78875
 
 The UOF contains the fields listed below, along with demographics such as sex, race, years of service, age, rank.
 
@@ -14,7 +14,7 @@ There are also UOF to the type of call, division, zones, time of day (day, eveni
 List of videos to UOF categorized by BWC (body worn camera), taser (taser camera?), and none.
 
 ## Data refresh rate
-Cobra weekly PDF updates Saturdays at 24:00 (at least that is the data range within)
+Cobra weekly PDF updates Daily at 24:00 (at least that is the data range within)
 
 UOF likely updates yearly/any time their policy changes.
 

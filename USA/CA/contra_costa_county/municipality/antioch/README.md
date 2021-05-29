@@ -2,6 +2,7 @@ This readme should give people everything they need to maintain the scraper.
 
 # Summary
 
+Added to datasets. Agency ID: b83eb5be02144bf9a884d1697dc24a51
 This scraper is **NOT** the default `list_pdf_scrapers`.
 This jurisdiction uses a different naming system.
 

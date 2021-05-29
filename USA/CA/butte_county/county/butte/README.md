@@ -2,6 +2,7 @@ This readme should give people everything they need to maintain the scraper.
 
 # Summary
 
+Added to dolt. **NO AGENCY ID**
 This scraper can't easily be updated to import from `common/bs_scrapers`
 Time period of booking logs: As of writing, 01/15/2021-Current day
 
