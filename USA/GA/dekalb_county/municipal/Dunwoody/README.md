@@ -5,17 +5,13 @@ Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/ma
 Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
 
 # Source info
-Added to dataset. Agency ID: bfe95e401ff945eba0e483706996e8ef
-
-Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
+In dataset. Agency ID: 4a461f4b7b4b4dd49272e2e9833a75c1
 
 ## Data refresh rate
-[Complaints against police](https://www.opendataphilly.org/dataset/police-complaints): Monthly
-[Police Advisory Commission Complaints](https://www.opendataphilly.org/dataset/philadelphia-police-advisory-commission-complaints): Never. (not scraped) (just documenting)
-[Shooting Victims](https://www.opendataphilly.org/dataset/shooting-victims): Unsure, scrape monthly
-[Vehicle and Pedestrian investigations](https://www.opendataphilly.org/organization/city-of-philadelphia?q=police&sort=score+desc%2C+metadata_modified+desc): Unsure,
+For example "daily at 8pm EST" or "every Friday, usually before noon"
+
 ## Legal
-https://www.opendataphilly.org/pages/terms
+Include the Terms of Service (or link to them). Is there anything else we should know?
 
 # Fields to collect:
 _Move these fields to the appropriate list below when you submit your scraper._

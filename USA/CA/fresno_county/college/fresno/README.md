@@ -1,6 +1,8 @@
 This readme should give people everything they need to maintain the scraper.
 
 # Summary
+Added to dolt. Agency ID: 3255cb899684443ab5add9135738a915
+
 **DO NOT** attempt to update to use `list_pdf_scrapers` or `bs_common`
 
 Only crime statistics

@@ -13,3 +13,6 @@
 `get_name`: Extracts the name from the `DisplayName` key in `response.json`. There is likely no need to alter this script.
 
 `download_data`: Also self explanatory. The function iterates over the urls in `urls.txt`, requests them using urllib's request, calls `get_name`, and saves it in the directory set by `save_dir`
+
+
+Added to datasets. Agency ID: 35ebdfb9fae84610a6976f4e761982a9

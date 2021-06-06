@@ -5,7 +5,7 @@ Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/ma
 Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
 
 # Source info
-Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
+Added to dataset. Agency ID: 40ffb1b2b1984716bb97b03a8034e585
 
 ## Data refresh rate
 * [Calls for service 2019](https://data.lacity.org/Public-Safety/LAPD-Calls-for-Service-2019/r4ka-x5je): weekly (likely not)
