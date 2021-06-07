@@ -7,6 +7,18 @@ p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 from common.base_scrapers import crimegraphics_scraper
 
+configs = {
+    "url": "",
+    "department_code": "",
+    "list_header": [
+        "ChargeDescription",
+        "CaseNum",
+        "ReportDate",
+        "OffenseDate",
+        "Location",
+        "ChargeDisposition",
+    ],
+}
 
 save_dir = "./data/"
 data = []
