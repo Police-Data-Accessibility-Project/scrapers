@@ -5,7 +5,7 @@
 | USA\CA\alameda_county\municipality\berkely          | Opendata, single_pdf_scraper                  |
 | USA\CA\butte_county\college\chico                   |  crimegraphics_clery, crimegraphics_bulletin, |
 | USA\CA\butte_county\county\butte                    | custom (arrest), crimegraphics_bulletin       |
-| USA\CA\contra_costa_county\municipality\antioch     | custom (x2)                                   |
+| USA\CA\contra_costa_county\municipality\antioch     | custom (x2), single_pdf_scraper                                   |
 | USA\CA\contra_costa_county\municipality\el_cerrito  | list_pdf_v2                                   |
 | USA\CA\fresno_county\college\fresno                 | list_pdf_v3                                   |
 | USA\CA\humboldt_county\colleges\humboldt            | crimegraphics_clery                           |
