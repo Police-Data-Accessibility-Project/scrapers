@@ -1,7 +1,7 @@
 ## CA
 | Path                                                | Scraper                                       |
 |-----------------------------------------------------|-----------------------------------------------|
-| \USA\CA\alameda_county\municipality\alameda         | Custom                                        |
+| USA\CA\alameda_county\municipality\alameda         | Custom                                        |
 | USA\CA\alameda_county\municipality\berkely          | Opendata, single_pdf_scraper                  |
 | USA\CA\butte_county\college\chico                   |  crimegraphics_clery, crimegraphics_bulletin, |
 | USA\CA\butte_county\county\butte                    | custom (arrest), crimegraphics_bulletin       |
