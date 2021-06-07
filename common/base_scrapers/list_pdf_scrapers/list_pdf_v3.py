@@ -13,6 +13,18 @@ sys.path.insert(1, str(p))
 from common.utils import get_files
 from common.utils import extract_info
 
+"""
+configs = {
+    "webpage": "",
+    "web_path": "",
+    "domain_included": "",
+    "domain": "",
+    "sleep_time": "",
+    "non_important": "",
+    "debug": "",
+    "csv_dir": "",
+}
+"""
 
 def list_pdf_v3(
     configs,
@@ -35,14 +47,24 @@ def list_pdf_v3(
         print(" [*] Making save_dir")
         os.makedirs(save_dir)
 
+    # Check added for backwards compatibility.
+    if not configs_file:  # Default setting
+        webpage = configs["webpage"]
+        sleep_time = configs["sleep_time"]
+        csv_dir = configs["csv_dir"]
+        configs_non_important = configs["non_important"]
+
+    else:
+        webpage = configs.webpage
+        sleep_time = configs.sleep_time
+        csv_dir = configs.csv_dir
+        configs_non_important_ = configs.non_important
+
     print(" [*] Getting webpage and parsing")
 
     # use python's requests module to fetch the webpage as plain html
-    # Check added for backwards compatibility.
-    if not configs_file:  # Default setting
-        html_page = requests.get(configs["webpage"]).text
-    else:
-        html_page = requests.get(configs.webpage).text
+    html_page = requests.get(webpage]).text
+
     # use BeautifulSoup4 (bs4) to parse the returned html_page using BeautifulSoup4's html parser (html.parser)
     soup = BeautifulSoup(html_page, "html.parser")
 
@@ -58,20 +80,15 @@ def list_pdf_v3(
 
     # the following function is imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
-    extract_info(soup, configs, extract_name=extract_name, name_in_url=name_in_url)
+    extract_info(soup, configs, extract_name=extract_name, name_in_url=name_in_url, configs)
 
     # if important is false,
     if not important:
         print(" [?] important is False, using non_important")
 
 
-        # Check added for backwards compatibility.
-        if not configs_file:  # Default setting
-            # retrieve list of non_important keywords from configs file
-            non_important = configs["non_important"]
-        else:
-            # retrieve list of non_important keywords from configs file
-            non_important = configs.non_important
+        # retrieve list of non_important keywords from configs file
+        non_important = configs_non_important
 
         print("   [*] Opening url_name.txt")
 
@@ -99,6 +116,7 @@ def list_pdf_v3(
         # attempt to import important from configs
         try:
             # Check added for backwards compatibility.
+            # Can't combine this into the main check due to the try except block
             if not configs_file:  # Default setting
                 important = configs["important"]
             else:
@@ -140,30 +158,16 @@ def list_pdf_v3(
 
     # the following function is imported from ./common/utils/list_pdf_utils/
     # call get_files and pass parameters supplied to `list_pdf_v3` to get_files
-    # Check added for backwards compatibility.
-    if not configs_file:  # Default setting
-        get_files(
-            save_dir,
-            configs["sleep_time"],
-            debug=debug,
-            delete=delete,
-            try_overwite=try_overwite,
-            name_in_url=name_in_url,
-            no_overwrite=no_overwrite,
-            add_date=add_date,
-        )
-    else:
-        get_files(
-            save_dir,
-            configs.sleep_time,
-            debug=debug,
-            delete=delete,
-            try_overwite=try_overwite,
-            name_in_url=name_in_url,
-            no_overwrite=no_overwrite,
-            add_date=add_date,
-        )
-
+    get_files(
+        save_dir,
+        sleep_time,
+        debug=debug,
+        delete=delete,
+        try_overwite=try_overwite,
+        name_in_url=name_in_url,
+        no_overwrite=no_overwrite,
+        add_date=add_date,
+    )
 
     # import etl for eric (this likely will not work due to etl being in common)
     import etl
@@ -175,11 +179,8 @@ def list_pdf_v3(
 
         try:
             # Pass save_dir to pdf_extract's pdf_directory param
-            # Check added for backwards compatibility.
-            if not configs_file:  # Default setting
-                pdf_extract(save_dir, configs["csv_dir"])
-            else:
-                pdf_extract(save_dir, configs.csv_dir)
+            pdf_extract(save_dir, csv_dir)
+
         except AttributeError:
             # this will happen if csv_dir was not defined in the configs.
             if debug:

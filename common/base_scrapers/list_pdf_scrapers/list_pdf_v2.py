@@ -13,6 +13,7 @@ sys.path.insert(1, str(p))
 from common.utils import get_files
 from common.utils import extract_info
 
+"""
 configs = {
     "webpage": "",
     "web_path": "",
@@ -23,6 +24,7 @@ configs = {
     "debug": "",
     "csv_dir": "",
 }
+"""
 
 def list_pdf_v2(
     configs,
@@ -41,12 +43,19 @@ def list_pdf_v2(
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
-    # Use python's requests module to fetch the webpage as plain html
     # Check added for backwards compatibility.
     if not configs_file:  # Default setting
-        html_page = requests.get(configs["webpage"]).text
+        webpage = configs["webpage"]
+        sleep_time = configs["sleep_time"]
+        csv_dir = configs["csv_dir"]
     else:
-        html_page = requests.get(configs.webpage).text
+        webpage = configs.webpage
+        sleep_time = configs.sleep_time
+        csv_dir = configs.csv_dir
+
+    # Use python's requests module to fetch the webpage as plain html
+    html_page = requests.get(webpage]).text
+
     # use BeautifulSoup4 (bs4) to parse the returned html_page using BeautifulSoup4's html parser (html.parser)
     soup = BeautifulSoup(html_page, "html.parser")
 
@@ -67,12 +76,8 @@ def list_pdf_v2(
     extract_info(soup, configs, extract_name=extract_name, configs_file=configs_file)
 
     # Check added for backwards compatibility.
-    if not configs_file: # Default Setting
-        # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date
-        get_files(save_dir, configs["sleep_time"], name_in_url=name_in_url, add_date=add_date)
-    else:
-        # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date
-        get_files(save_dir, configs.sleep_time, name_in_url=name_in_url, add_date=add_date)
+    # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date
+    get_files(save_dir, sleep_time, name_in_url=name_in_url, add_date=add_date)
 
     # this imports etl for eric to do his magic.
     import etl
@@ -84,10 +89,7 @@ def list_pdf_v2(
 
         try:
             # Pass save_dir to pdf_extract's pdf_directory param, and retrieve csv_dir from the configs
-            if not configs_file: # Default Setting
-                pdf_extract(save_dir, configs["csv_dir"])
-            else:
-                pdf_extract(save_dir, configs.csv_dir)
+            pdf_extract(save_dir, csv_dir)
 
         except AttributeError:
             # this will happen if csv_dir was not defined in the configs.
