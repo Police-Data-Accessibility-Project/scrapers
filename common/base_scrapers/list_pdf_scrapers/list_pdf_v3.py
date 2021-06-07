@@ -27,6 +27,7 @@ def list_pdf_v3(
     no_overwrite=False,
     flavor="stream",
     extract_tables=False,
+    configs_file = False,
 ):  # try_overwite is for get_files
 
     # if save_dir does not exist, make the directory

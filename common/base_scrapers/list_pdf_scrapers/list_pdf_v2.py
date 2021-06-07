@@ -25,6 +25,7 @@ def list_pdf_v2(
     debug=False,
     flavor="stream",
     extract_tables=False,
+    configs_file=False,
 ):
     # if save_dir does not exist, make the directory
     if not os.path.exists(save_dir):
