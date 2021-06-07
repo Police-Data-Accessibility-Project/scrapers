@@ -108,3 +108,8 @@
 | Path                                         | Scraper  |
 |----------------------------------------------|----------|
 | USA\IN\marion_county\municipal\indianapolis  | non-module cityprotect |
+
+## WA
+| Path                                         | Scraper  |
+|----------------------------------------------|----------|
+| USA\WA\king_county\municipal\seattle  | opendata |
