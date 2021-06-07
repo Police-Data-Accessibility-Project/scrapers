@@ -16,6 +16,7 @@ sys.path.insert(1, str(p))
 
 # import hash_comparer, page_hasher, and page_update from common/utils/website_hasher/page_update.py
 from common.utils import hash_comparer, page_hasher, page_update
+
 # import data_parser from common/crimegraphics/utils/data_parser.py
 from crimegraphics.utils import data_parser
 
@@ -24,10 +25,12 @@ def function_timer(stats):
     if stats != False:
         return time.perf_counter()
 
+
 # this function simply calculates and prints the difference between the end and start times
 def time_dif(stats, string, start, end):
     if stats != False:
         print(f"{string}: {end - start} seconds")
+
 
 # Stats default to False
 def crimegraphics_bulletin(configs, save_dir, stats=False):
