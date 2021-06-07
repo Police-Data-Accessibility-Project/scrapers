@@ -38,7 +38,7 @@ def page_hasher(response, save_folder):
 def page_update(response, save_folder="./", loop=False, print_output=True):
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)
-    # checks if the script has been run before.
+    # Checks if the script has been run before.
     # If it has, it will use the hash_comparer function to compare the current and old hash.
     if os.path.isfile(save_folder + "hash.txt") and os.stat(save_folder + "hash.txt").st_size != 0:
         if hash_comparer(response, save_folder, print_output) == False:
@@ -46,7 +46,7 @@ def page_update(response, save_folder="./", loop=False, print_output=True):
                 sys.exit()
             else:
                 return False # Pass this to the write checker.
-        else: # if the hash is different
+        else: # If the hash is different
             if loop:
                 return True
             pass
