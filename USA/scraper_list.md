@@ -30,7 +30,7 @@
 ## KY
 | Path                                         | Scraper  |
 |----------------------------------------------|----------|
-| USA\KY\jefferson_county\municipal\louisville | opendata, list_pdf_v2 |
+| USA\KY\jefferson_county\municipal\louisville | opendata |
 |                                              |          |
 |                                              |          |
 |                                              |          |
