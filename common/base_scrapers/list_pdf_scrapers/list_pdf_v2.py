@@ -47,14 +47,22 @@ def list_pdf_v2(
     if not configs_file:  # Default setting
         webpage = configs["webpage"]
         sleep_time = configs["sleep_time"]
-        csv_dir = configs["csv_dir"]
+        if extract_tables:
+            try:
+                csv_dir = configs["csv_dir"]
+            except AttributeError:
+                pass
     else:
         webpage = configs.webpage
         sleep_time = configs.sleep_time
-        csv_dir = configs.csv_dir
+        if extract_tables:
+            try:
+                csv_dir = configs.csv_dir
+            except AttributeError:
+                pass
 
     # Use python's requests module to fetch the webpage as plain html
-    html_page = requests.get(webpage]).text
+    html_page = requests.get(webpage).text
 
     # use BeautifulSoup4 (bs4) to parse the returned html_page using BeautifulSoup4's html parser (html.parser)
     soup = BeautifulSoup(html_page, "html.parser")

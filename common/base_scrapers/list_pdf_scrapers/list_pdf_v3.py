@@ -51,19 +51,33 @@ def list_pdf_v3(
     if not configs_file:  # Default setting
         webpage = configs["webpage"]
         sleep_time = configs["sleep_time"]
-        csv_dir = configs["csv_dir"]
-        configs_non_important = configs["non_important"]
+        try:
+            configs_non_important = configs["non_important"]
+        except AttributeError:
+            pass
+        if extract_tables:
+            try:
+                csv_dir = configs["csv_dir"]
+            except AttributeError:
+                pass
 
     else:
         webpage = configs.webpage
         sleep_time = configs.sleep_time
-        csv_dir = configs.csv_dir
-        configs_non_important_ = configs.non_important
+        try:
+            configs_non_important_ = configs.non_important
+        except AttributeError:
+            pass
+        if extract_tables:
+            try:
+                csv_dir = configs.csv_dir
+            except AttributeError:
+                pass
 
     print(" [*] Getting webpage and parsing")
 
     # use python's requests module to fetch the webpage as plain html
-    html_page = requests.get(webpage]).text
+    html_page = requests.get(webpage).text
 
     # use BeautifulSoup4 (bs4) to parse the returned html_page using BeautifulSoup4's html parser (html.parser)
     soup = BeautifulSoup(html_page, "html.parser")
@@ -80,7 +94,7 @@ def list_pdf_v3(
 
     # the following function is imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
-    extract_info(soup, configs, extract_name=extract_name, name_in_url=name_in_url, configs)
+    extract_info(soup, configs, extract_name=extract_name, name_in_url=name_in_url, configs_file=configs_file)
 
     # if important is false,
     if not important:
