@@ -38,7 +38,11 @@ def list_pdf_v3(
     print(" [*] Getting webpage and parsing")
 
     # use python's requests module to fetch the webpage as plain html
-    html_page = requests.get(configs.webpage).text
+    # Check added for backwards compatibility.
+    if not configs_file:  # Default setting
+        html_page = requests.get(configs["webpage"]).text
+    else:
+        html_page = requests.get(configs.webpage).text
     # use BeautifulSoup4 (bs4) to parse the returned html_page using BeautifulSoup4's html parser (html.parser)
     soup = BeautifulSoup(html_page, "html.parser")
 
@@ -60,8 +64,14 @@ def list_pdf_v3(
     if not important:
         print(" [?] important is False, using non_important")
 
-        # retrieve list of non_important keywords from configs file
-        non_important = configs.non_important
+
+        # Check added for backwards compatibility.
+        if not configs_file:  # Default setting
+            # retrieve list of non_important keywords from configs file
+            non_important = configs["non_important"]
+        else:
+            # retrieve list of non_important keywords from configs file
+            non_important = configs.non_important
 
         print("   [*] Opening url_name.txt")
 
@@ -88,14 +98,22 @@ def list_pdf_v3(
         print(" [?] important is True, assuming important is configured")
         # attempt to import important from configs
         try:
-            important = configs.important
+            # Check added for backwards compatibility.
+            if not configs_file:  # Default setting
+                important = configs["important"]
+            else:
+                important = configs.important
         except AttributeError:
             # print("")
             print("   [!] Important is still named `non_important`")
             # print("")
 
             # As there is no variable called important in configs, use non_important instead.
-            important = configs.non_important
+            # Check added for backwards compatibility.
+            if not configs_file:  # Default setting
+                important = configs["non_important"]
+            else:
+                important = configs.non_important
         print(" [*] Opening url_name.txt")
 
         # open and read url_name.txt, and open 2url_name.txt,
@@ -122,16 +140,29 @@ def list_pdf_v3(
 
     # the following function is imported from ./common/utils/list_pdf_utils/
     # call get_files and pass parameters supplied to `list_pdf_v3` to get_files
-    get_files(
-        save_dir,
-        configs.sleep_time,
-        debug=debug,
-        delete=delete,
-        try_overwite=try_overwite,
-        name_in_url=name_in_url,
-        no_overwrite=no_overwrite,
-        add_date=add_date,
-    )
+    # Check added for backwards compatibility.
+    if not configs_file:  # Default setting
+        get_files(
+            save_dir,
+            configs["sleep_time"],
+            debug=debug,
+            delete=delete,
+            try_overwite=try_overwite,
+            name_in_url=name_in_url,
+            no_overwrite=no_overwrite,
+            add_date=add_date,
+        )
+    else:
+        get_files(
+            save_dir,
+            configs.sleep_time,
+            debug=debug,
+            delete=delete,
+            try_overwite=try_overwite,
+            name_in_url=name_in_url,
+            no_overwrite=no_overwrite,
+            add_date=add_date,
+        )
 
 
     # import etl for eric (this likely will not work due to etl being in common)
@@ -144,7 +175,11 @@ def list_pdf_v3(
 
         try:
             # Pass save_dir to pdf_extract's pdf_directory param
-            pdf_extract(save_dir, configs.csv_dir)
+            # Check added for backwards compatibility.
+            if not configs_file:  # Default setting
+                pdf_extract(save_dir, configs["csv_dir"])
+            else:
+                pdf_extract(save_dir, configs.csv_dir)
         except AttributeError:
             # this will happen if csv_dir was not defined in the configs.
             if debug:
