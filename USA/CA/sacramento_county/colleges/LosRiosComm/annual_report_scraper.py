@@ -9,4 +9,4 @@ from common import list_pdf_v2
 
 save_dir = "./data/annual/"
 
-list_pdf_v2(configs, save_dir)
+list_pdf_v2(configs, save_dir, configs_file=True)

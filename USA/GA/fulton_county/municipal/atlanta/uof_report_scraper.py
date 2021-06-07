@@ -9,4 +9,4 @@ from common import list_pdf_v2
 
 save_dir = "./data/UOF/"
 
-list_pdf_v2(configs, save_dir, name_in_url=False)
+list_pdf_v2(configs, save_dir, name_in_url=False, configs_file=True)

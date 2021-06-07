@@ -9,4 +9,4 @@ from common import list_pdf_v3
 
 save_dir = "./data/cobra/"
 
-list_pdf_v3(configs, save_dir, add_date=True, name_in_url=False)
+list_pdf_v3(configs, save_dir, add_date=True, name_in_url=False, configs_file=True)
