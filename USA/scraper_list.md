@@ -37,7 +37,6 @@
 | USA\GA\whitfield_county\municipal\Dalton | custom |
 
 ## IL
-
 | Path                                  | Scraper  |
 |---------------------------------------|----------|
 | USA/IL/cook_county/municipal/chicago | opendata |
