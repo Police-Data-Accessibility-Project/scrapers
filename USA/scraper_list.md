@@ -25,7 +25,32 @@
 | USA\CA\solano_county\municipal\dixon                | custom (uses get_files)                       |
 | USA\CA\tehama_county\colleges\el_camino             | list_pdf_v2                                   |
 
+## GA
+| Path                                         | Scraper  |
+|----------------------------------------------|----------|
+| USA\GA\carroll_county\municipal\Carrollton   | non-module cityprotect |
+| USA\GA\cobb_county\municipal\acworth         | list_pdf_v2 |
+| USA\GA\dekalb_county\municipal\Dunwoody | non-module cityprotect |
+| USA\GA\fulton_county\municipal\atlanta | list_pdf_v2 (x1), list_pdf_v3 (x2) |
+| USA\GA\gwinnett_county\municipal\Norcross | custom |
+| USA\GA\whitfield_county\municipal\Dalton | custom, uses `get_files` |
+| USA\GA\whitfield_county\municipal\Dalton | custom |
 
+## IL
+
+| Path                                  | Scraper  |
+|---------------------------------------|----------|
+| USA/IL/cook_county/municipal/chicago | opendata |
+
+## IN
+| Path                                         | Scraper  |
+|----------------------------------------------|----------|
+| USA\IN\marion_county\municipal\indianapolis  | non-module cityprotect |
+
+## MN
+| Path                                         | Scraper  |
+|----------------------------------------------|----------|
+| USA/MN/hennepin_county/municipal/minneapolis | opendata |
 
 ## KY
 | Path                                         | Scraper  |
@@ -67,6 +92,11 @@
 |                                             |          |
 |                                             |          |
 
+## PA
+| Path                                  | Scraper  |
+|---------------------------------------|----------|
+| USA/PA/philadelphia_county/municipal/philadelphia | opendata |
+
 ## TX
 | Path                                  | Scraper  |
 |---------------------------------------|----------|
@@ -76,38 +106,6 @@
 |                                       |          |
 |                                       |          |
 |                                       |          |
-
-## IL
-
-| Path                                  | Scraper  |
-|---------------------------------------|----------|
-| USA/IL/cook_county/municipal/chicago | opendata |
-
-## PA
-| Path                                  | Scraper  |
-|---------------------------------------|----------|
-| USA/PA/philadelphia_county/municipal/philadelphia | opendata |
-
-## MN
-| Path                                         | Scraper  |
-|----------------------------------------------|----------|
-| USA/MN/hennepin_county/municipal/minneapolis | opendata |
-
-## GA
-| Path                                         | Scraper  |
-|----------------------------------------------|----------|
-| USA\GA\carroll_county\municipal\Carrollton   | non-module cityprotect |
-| USA\GA\cobb_county\municipal\acworth         | list_pdf_v2 |
-| USA\GA\dekalb_county\municipal\Dunwoody | non-module cityprotect |
-| USA\GA\fulton_county\municipal\atlanta | list_pdf_v2 (x1), list_pdf_v3 (x2) |
-| USA\GA\gwinnett_county\municipal\Norcross | custom |
-| USA\GA\whitfield_county\municipal\Dalton | custom, uses `get_files` |
-| USA\GA\whitfield_county\municipal\Dalton | custom |
-
-## IN
-| Path                                         | Scraper  |
-|----------------------------------------------|----------|
-| USA\IN\marion_county\municipal\indianapolis  | non-module cityprotect |
 
 ## WA
 | Path                                         | Scraper  |
