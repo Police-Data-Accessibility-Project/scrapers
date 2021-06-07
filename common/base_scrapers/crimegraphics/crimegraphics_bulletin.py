@@ -32,8 +32,20 @@ def time_dif(stats, string, start, end):
         print(f"{string}: {end - start} seconds")
 
 
+# configs = {
+#     "url": "",
+#     "department_code": "",
+# }
+
 # Stats default to False
-def crimegraphics_bulletin(configs, save_dir, stats=False):
+def crimegraphics_bulletin(configs, save_dir, stats=False, configs_file=False):
+    if not configs_file:  # Default setting
+        department_code = configs["department_code"]
+        url = configs["url"]
+    else:
+        department_code = configs.department_code
+        url = configs.url
+
     # Automatically have the CLERYMenu clicked for daily crime data
     payload = {
         "MYAGCODE": configs.department_code,

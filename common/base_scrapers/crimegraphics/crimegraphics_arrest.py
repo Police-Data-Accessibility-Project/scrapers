@@ -22,13 +22,28 @@ def function_timer(stats):
     if stats != False:
         return time.perf_counter()
 
+
 # this function simply calculates and prints the difference between the end and start times
 def time_dif(stats, string, start, end):
     if stats != False:
         print(f"{string}: {end - start} seconds")
 
+
+# configs = {
+#     "url": "",
+#     "department_code": "",
+# }
+
+
 # stats default to False
-def crimegraphics_arrest(configs, save_dir, stats=False):
+def crimegraphics_arrest(configs, save_dir, stats=False, configs_file=False):
+    if not configs_file:  # Default setting
+        department_code = configs["department_code"]
+        url = configs["url"]
+    else:
+        department_code = configs.department_code
+        url = configs.url
+
     # automatically have the ArrestsMenu clicked for daily crime data
     # txtArrestStartDate and txtArrestEndDate are blank by default, which we may want to be the case here as well.
     payload = {
@@ -37,8 +52,7 @@ def crimegraphics_arrest(configs, save_dir, stats=False):
         "__EVENTARGUMENT": "ArrestsMenu",
         "txtArrestStartDate": "02/05/2021",
         "txtArrestEndDate": "04/12/2021",
-        "cmdSearchArrests": "Search"
-
+        "cmdSearchArrests": "Search",
     }
 
     # Initialize "data" table (a table called data, not a datatable)
@@ -59,8 +73,8 @@ def crimegraphics_arrest(configs, save_dir, stats=False):
 
     # Parse the response using bs4
     soup = BeautifulSoup(response.text, "html.parser")
-    with open("html.html", 'wb') as output:
-        output.write(str(soup).encode('utf-8'))
+    with open("html.html", "wb") as output:
+        output.write(str(soup).encode("utf-8"))
     output.close()
     parse_end = function_timer(stats)
     time_dif(stats, "Parse time", parse_start, parse_end)
