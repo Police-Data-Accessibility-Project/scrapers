@@ -9,4 +9,4 @@ from common import list_pdf_v3
 
 save_dir = "./data/weekly_reports/"
 
-list_pdf_v3(configs, save_dir)
+list_pdf_v3(configs, save_dir, configs_file=True)

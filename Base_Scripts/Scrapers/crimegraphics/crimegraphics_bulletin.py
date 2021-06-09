@@ -1,17 +1,16 @@
 import sys
 import os
 import CG_configs as configs
-import requests
-import json
 from pathlib import Path
-from bs4 import BeautifulSoup
-import pandas as pd
-from tqdm import tqdm
 
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 from common.base_scrapers import crimegraphics_bulletin
 
+configs = {
+    "url": "",
+    "department_code": "",
+}
 
 save_dir = "./data/"
 data = []

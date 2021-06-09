@@ -23,13 +23,24 @@ def function_timer(stats):
     if stats != False:
         return time.perf_counter()
 
+
 # this function simply calculates and prints the difference between the end and start times
 def time_dif(stats, string, start, end):
     if stats != False:
         print(f"{string}: {end - start} seconds")
 
+
 # stats default to False
-def crimegraphics_clery(configs, save_dir, stats=False):
+def crimegraphics_clery(configs, save_dir, stats=False, configs_file=False):
+    if not configs_file:  # Default setting
+        department_code = configs["department_code"]
+        url = configs["url"]
+        list_header = configs["list_header"]
+    else:
+        department_code = configs.department_code
+        url = configs.url
+        list_header = configs.list_header
+
     # automatically have the CLERYMenu clicked for daily crime data
     payload = {
         "MYAGCODE": configs.department_code,
@@ -83,7 +94,7 @@ def crimegraphics_clery(configs, save_dir, stats=False):
         data.append(table_data)
 
     date_name = date.today()
-    file_name = "_" + str(date_name).replace("-", "_") # + "_"
+    file_name = "_" + str(date_name).replace("-", "_")  # + "_"
 
     dataframe = pd.DataFrame(data=data, columns=configs.list_header)
 
