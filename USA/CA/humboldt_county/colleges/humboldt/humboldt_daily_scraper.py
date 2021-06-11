@@ -17,6 +17,6 @@ save_dir = "./data/"
 data = []
 
 if not os.path.exists(save_dir):
-	os.makedirs(save_dir)
+    os.makedirs(save_dir)
 
-crimegraphics_clery(configs, save_dir)
+crimegraphics_clery(configs, save_dir, configs_file=True)

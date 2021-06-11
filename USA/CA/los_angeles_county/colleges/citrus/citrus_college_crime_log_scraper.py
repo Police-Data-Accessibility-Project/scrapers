@@ -9,4 +9,4 @@ from common import list_pdf_v2
 
 save_dir = "./data/crime_logs/"
 
-list_pdf_v2(configs_crime_log, save_dir)
+list_pdf_v2(configs_crime_log, save_dir, configs_file=True)

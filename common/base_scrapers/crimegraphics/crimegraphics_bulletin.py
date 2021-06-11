@@ -9,30 +9,51 @@ from tqdm import tqdm
 import time
 from pathlib import Path
 
+# This is a hack that loads that root common folder like a module (without you expressly needing to install it).
+# I'm going to be honest, I have no clue why it uses parents[1] while the list_pdf scrapesr use parents[3]
 p = Path(__file__).resolve().parents[1]
 sys.path.insert(1, str(p))
 
+# import hash_comparer, page_hasher, and page_update from common/utils/website_hasher/page_update.py
 from common.utils import hash_comparer, page_hasher, page_update
+
+# import data_parser from common/crimegraphics/utils/data_parser.py
 from crimegraphics.utils import data_parser
 
-
+# this function is used for gathering time stats
 def function_timer(stats):
     if stats != False:
         return time.perf_counter()
 
 
+# this function simply calculates and prints the difference between the end and start times
 def time_dif(stats, string, start, end):
     if stats != False:
         print(f"{string}: {end - start} seconds")
 
 
-def crimegraphics_bulletin(configs, save_dir, stats=False):
-    # automatically have the CLERYMenu clicked for daily crime data
+# configs = {
+#     "url": "",
+#     "department_code": "",
+# }
+
+# Stats default to False
+def crimegraphics_bulletin(configs, save_dir, stats=False, configs_file=False):
+    if not configs_file:  # Default setting
+        department_code = configs["department_code"]
+        url = configs["url"]
+    else:
+        department_code = configs.department_code
+        url = configs.url
+
+    # Automatically have the CLERYMenu clicked for daily crime data
     payload = {
         "MYAGCODE": configs.department_code,
         "__EVENTTARGET": "MainMenu$BulletinMenu",
         "__EVENTARGUMENT": "BulletinMenu",
     }
+
+    # Initialize "data" table (a table called data, not a datatable)
     data = []
 
     print("Receiving Data... Please wait...")
@@ -57,6 +78,7 @@ def crimegraphics_bulletin(configs, save_dir, stats=False):
     search_start = function_timer(stats)
 
     table = soup.find("span", id="Bull")
+    # Send "table" to page_update to be hashed and compared.
     page_update(table)
     search_end = function_timer(stats)
     time_dif(stats, "Search time", search_start, search_end)

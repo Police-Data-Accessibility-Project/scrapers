@@ -9,4 +9,4 @@ from common import list_pdf_v3
 
 save_dir = "./data/"
 
-list_pdf_v3(configs, save_dir, extract_name=True)
+list_pdf_v3(configs, save_dir, extract_name=True, configs_file=True)
