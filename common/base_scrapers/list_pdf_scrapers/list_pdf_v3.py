@@ -26,6 +26,7 @@ configs = {
 }
 """
 
+
 def list_pdf_v3(
     configs,
     save_dir,
@@ -39,7 +40,7 @@ def list_pdf_v3(
     no_overwrite=False,
     flavor="stream",
     extract_tables=False,
-    configs_file = False,
+    configs_file=False,
 ):  # try_overwite is for get_files
 
     # if save_dir does not exist, make the directory
@@ -94,12 +95,17 @@ def list_pdf_v3(
 
     # the following function is imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
-    extract_info(soup, configs, extract_name=extract_name, name_in_url=name_in_url, configs_file=configs_file)
+    extract_info(
+        soup,
+        configs,
+        extract_name=extract_name,
+        name_in_url=name_in_url,
+        configs_file=configs_file,
+    )
 
     # if important is false,
     if not important:
         print(" [?] important is False, using non_important")
-
 
         # retrieve list of non_important keywords from configs file
         non_important = configs_non_important
@@ -198,7 +204,7 @@ def list_pdf_v3(
         except AttributeError:
             # this will happen if csv_dir was not defined in the configs.
             if debug:
-                    # because i hate having tons of stuff printed in my terminal, this will only print if debug=True (set when calling list_pdf_v3)
+                # because i hate having tons of stuff printed in my terminal, this will only print if debug=True (set when calling list_pdf_v3)
                 print("  [INFO] csv_dir is not defined in the configs.")
                 print(
                     "      If you want to save in a different location for some reason, "
