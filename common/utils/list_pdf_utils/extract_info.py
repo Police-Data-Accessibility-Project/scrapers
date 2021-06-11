@@ -1,4 +1,6 @@
-def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_file=False):
+def extract_info(
+    soup, configs, extract_name=False, name_in_url=True, configs_file=False, debug=False
+):
     if not name_in_url:
         import cgi
         import urllib
@@ -17,11 +19,16 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
         if link.get("href") is None:
             continue
         if not link["href"].startswith(web_path):
-            print("href not startswith")
-            print(link)
+            # Not really sure why I added these in commit 986357286bc98bc154f2333ae75934be4e5df00d,
+            # But they were causing tons of terminal puke.
+            # print("href not startswith")
+            # print(link)
             continue
-        print("link: " + link.get("href"))
+        if debug:
+            print("link: " + link.get("href"))
+
         url = str(link["href"])
+        print(url)
         if extract_name == False:
             # print(" [?] extract_name is False")
             name = url[url.rindex("/") :]
@@ -29,6 +36,7 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
             name = link.string
             # print(" [?] extract_name is True")
             # print(name)
+
         if not name_in_url:
             response = urllib.request.urlopen(domain + url)
             file_name, params = cgi.parse_header(
