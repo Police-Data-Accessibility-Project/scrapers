@@ -16,9 +16,9 @@
 | USA\CA\los_angeles_county\municipality\beverly_hills| list_pdf_v2                                   |
 | USA\CA\los_angeles_county\municipality\burbank      | list_pdf_v3                                   |
 | USA\CA\los_angeles_county\municipality\los_angeles  | opendata                                      |
-| USA\CA\los_angeles_county\colleges\cal_poly_pomona     | list_pdf_v2                                   |
+| USA\CA\los_angeles_county\colleges\cal_poly_pomona  | list_pdf_v2                                   |
 | USA\CA\orange_county\municipality\cypress           | list_pdf_v2                                   |
-| USA\CA\riverside_county\municipality\beaumont       | Custom                                        |
+| USA\CA\riverside_county\municipality\beaumont       | Custom (selenium)                             |
 | USA\CA\sacramento_county\colleges\LosRiosComm       | list_pdf_v2, crimegraphics_clery              |
 | USA\CA\san_francisco_county\municipal\san_francisco | opendata, custom (Eric Turner)                |
 | USA\CA\san_francisco_county\dixon                   | custom                                        |
