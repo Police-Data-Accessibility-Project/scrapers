@@ -50,6 +50,7 @@
 | Path                                         | Scraper  |
 |----------------------------------------------|----------|
 | USA/MN/hennepin_county/municipal/minneapolis | opendata |
+| USA\MN\hennepin_county\municipal\minneapolis\disciplinary_decisions_memoranda_scraper.py | list_pdf_v2 |
 
 ## KY
 | Path                                         | Scraper  |
