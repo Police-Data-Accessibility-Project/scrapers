@@ -5,8 +5,8 @@ The `schema.json` is an overview of the data scraped, the dataset itself, and th
 
 This guide shows you how to fill out the schema.json for use:
 
-* **agency_id**: id of the agency in the agencies table (leave)
-* **agency_info**: This provides more information about the dataset. If the ID is listed above and you change any information here, it will be automatically updated in the database if the script is ran again.
+* **agency_id**: id of the agency in the agencies table 
+* **agency_info**: This provides more information about the agency. If the ID is listed above and you change any information here, it will be automatically updated in the database if the script is ran again.
     * **`agency_name`**: name of the agency such as 'Gaston County Sheriff'
     * **`agency_coords`**: this will probably require you to search up on Google Maps. This is actually very important to ensure we pull the correct FIPS and municipal codes. Search the agency on google maps, and right click on the pin to grab the lat and long coordinates. It is okay if there are multiple districts, just grab the main district if so.
     * **`agency_type`**: the type of agency, using the codes found [here](https://www.dolthub.com/repositories/pdap/datasets/data/master/agency_types)
