@@ -6,7 +6,7 @@ Uploaded data is [here](https://www.dolthub.com/repositories/pdap/data-intake). 
 
 # How can I contribute?
 To submit data, use [Dolt](https://docs.pdap.io/data-storage/dolthub). 
-To contribute a scraper, start with [CONTRIBUTING.md](https://github.com/Police-Data-Accessibility-Project/Scrapers/blob/master/CONTRIBUTING.md).
+To contribute a scraper, start with [CONTRIBUTING.md](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/CONTRIBUTING.md).
 
 ## Dataset research
 If you have a computer, you can help us populate our [datasets](https://www.dolthub.com/repositories/pdap/datasets) table with better info.
