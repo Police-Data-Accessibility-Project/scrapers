@@ -6,9 +6,8 @@ You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal
 
 ### Find a dataset to scrape.
 
-Navigate to our [Dataset Catalog](https://www.dolthub.com/repositories/pdap/datasets) and find a source to scrape, or add your own. If this is your first time using Dolt, you can [reference our primer](../data-storage/dolthub.md).
+Navigate to our [Dataset Catalog](https://www.dolthub.com/repositories/pdap/datasets) and find a source to scrape. It's likely you will need to [add the dataset yourself](https://docs.pdap.io/components/data-collection/dataset-catalog/submit-or-update-datasets). This takes about 5–10 minutes. 
 
-You can also scrape data to improve the dataset catalogue itself! Head to #datasets in Slack or make a PR in Dolt.
 
 ### Get set up locally.
 
