@@ -31,7 +31,7 @@ For example, `domain = "https://www.website.com"` would become `domain = "https:
 
  If the site has a set crawler time under it's `robots.txt`, set `sleep_time` to it's value. Otherwise, just leave it at `5`
 
-If this does not make sense, try checking the comments within the code.
+If this does not make sense, try checking the comments within the code. (if you can find any)
  Working example can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/USA/CA/fresno_county/college/fresno/fresno_daily_scraper.py)
 
 # Versions:
