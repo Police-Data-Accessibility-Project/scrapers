@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="ChooseScraper">
      <attribute name="title">
@@ -171,20 +171,20 @@ list_pdf_v3 allows filtering links by common unwanted words.</string>
      <widget class="QComboBox" name="scraper_input">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>70</x>
         <y>190</y>
-        <width>69</width>
+        <width>101</width>
         <height>22</height>
        </rect>
       </property>
       <item>
        <property name="text">
-        <string>list_pdf_v2</string>
+        <string>list_pdf_v2.py</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>list_pdf_v3</string>
+        <string>list_pdf_v3.py</string>
        </property>
       </item>
      </widget>
