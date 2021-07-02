@@ -14,7 +14,7 @@ class ErrorDialog(QtWidgets.QDialog):
         # self.show()
 
 class ScraperGui(QtWidgets.QMainWindow):
-    is_v3 = False
+    # is_v3 = False
     def __init__(self):
         super(ScraperGui, self).__init__()
         uic.loadUi(ui_file, self)
@@ -63,8 +63,8 @@ class ScraperGui(QtWidgets.QMainWindow):
             sys.stdout.write(line)
 
 
-
     def create_button_pressed(self):
+        is_v3 = False
         # if self.button_pressed:
         # This is executed when the button is pressed
         webpage_input = self.webpage_input.text()
@@ -98,21 +98,27 @@ class ScraperGui(QtWidgets.QMainWindow):
                         is_v3 = True
 
             with open(full_path, "r+") as output:
-                lines = output.readlines()
-                print("Lines lenght: " + str(len(lines)))
+                # output.seek(config_start)
+                lines = output.readlines()[config_start:]
+                print("Lines length: " + str(len(lines)))
                 # for i in range(config_start, config_end):
-
+                lines
                 if not is_v3:
                     config_list = [f'"webpage":"{webpage_input}"',f'"web_path":"{web_path_input}"', f'"domain_input":"{domain_included_input}"',f'"domain":"{domain_included_input}"',f'"sleep_time":"{sleep_time_input}"']
                 else:
-                    config_list = [f'"webpage":"{webpage_input}"',f'"web_path":"{web_path_input}"', f'"domain_input":"{domain_included_input}"',f'"domain":"{domain_included_input}"',f'"sleep_time":"{sleep_time_input}"',f'"{unimportant_input_list}"']
+                    config_list = [f'"webpage":"{webpage_input}"',f'"web_path":"{web_path_input}"',f'"domain_input":"{domain_included_input}"',f'"domain":"{domain_included_input}"',f'"sleep_time":"{sleep_time_input}"',f'"{unimportant_input_list}"']
                 for i in range(len(config_list)):
+                    output.seek(config_start + i)
+                    output.write("    " + config_list[i] + ",\n")
                     print(str(i) + "     " + lines[i])
 
 
 
-        except NameError:
+
+        except NameError as exception:
+            print(str(exception))
             print("You need to complete the first menu first")
+
             self.dialog()
             return
 
