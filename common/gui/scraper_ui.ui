@@ -736,7 +736,7 @@ If you don't know how to do this, see the Help tab</string>
        </font>
       </property>
       <property name="text">
-       <string>(Leave it blank unless step 3 is true)</string>
+       <string>(Leave it blank unless step 3 is False)</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
