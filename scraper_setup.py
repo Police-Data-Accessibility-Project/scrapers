@@ -54,10 +54,11 @@ class ScraperGui(QtWidgets.QMainWindow):
         save_dir_input = self.save_dir_input.text().replace(" ","_").rstrip("/") # Clean input of spaces
         save_dir_input = "save_dir = ./data/" + save_dir_input.replace("./data/","") + "/" # Remove any accidental data prepends
         print(save_dir_input)
+        # make sure that black formatting does not affect this
+        # outer two quotes should be single
         default_save_dir = 'save_dir = \"./data/\"'
         for line in fileinput.input(full_path, inplace=1):
-            # make sure that black formatting does not affect this
-            # outer two quotes should be single
+
             if default_save_dir in line:
                 line = line.replace(default_save_dir,save_dir_input)
             sys.stdout.write(line)
@@ -99,15 +100,17 @@ class ScraperGui(QtWidgets.QMainWindow):
 
             with open(full_path, "r+") as output:
                 # output.seek(config_start)
-                lines = output.readlines()[config_start:]
+                lines = output.readlines()[config_start:] # This doesn't seem to do what I want
                 print("Lines length: " + str(len(lines)))
                 # for i in range(config_start, config_end):
-                lines
                 if not is_v3:
                     config_list = [f'"webpage":"{webpage_input}"',f'"web_path":"{web_path_input}"', f'"domain_input":"{domain_included_input}"',f'"domain":"{domain_included_input}"',f'"sleep_time":"{sleep_time_input}"']
                 else:
                     config_list = [f'"webpage":"{webpage_input}"',f'"web_path":"{web_path_input}"',f'"domain_input":"{domain_included_input}"',f'"domain":"{domain_included_input}"',f'"sleep_time":"{sleep_time_input}"',f'"{unimportant_input_list}"']
+
                 for i in range(len(config_list)):
+                    # Need a way to set the pointer to the beginning of the config dictionary and
+                    # iterate over the lines.
                     output.seek(config_start + i)
                     output.write("    " + config_list[i] + ",\n")
                     print(str(i) + "     " + lines[i])
