@@ -137,6 +137,15 @@ class ScraperGui(QtWidgets.QMainWindow):
                         line = line.replace(lines_to_change[i], config_list[i])
                 sys.stdout.write(line)
 
+        except NameError as exception:
+            import traceback
+            traceback.print_exc()
+            print(str(exception))
+            print("You need to complete the first menu first")
+            self.tabWidget.setCurrentIndex(0) # Go back to the start age
+            self.dialog()
+            return
+
 app = QtWidgets.QApplication(sys.argv)
 window = ScraperGui()
 app.exec_()
