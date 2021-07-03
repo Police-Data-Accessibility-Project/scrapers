@@ -137,64 +137,6 @@ class ScraperGui(QtWidgets.QMainWindow):
                         line = line.replace(lines_to_change[i], config_list[i])
                 sys.stdout.write(line)
 
-            # p = Path("./" + full_path)
-            # print("p: " + str(p.parent))
-            # config_filename = scraper_name.replace("_scraper.py", "_configs.py") # I could just split it into a list or something but im lazy
-            # config_path = str(p.parent).replace("\\", "/") + "/configs/" + config_filename
-            #
-            # p2 = Path("./" + config_path)
-            # config_dir = str(p2.parent)
-            # if not os.path.exists(config_dir):
-            #     os.makedirs(config_dir)
-            #
-            # with open(config_path, "a") as output:
-            #     # for i in range(config_start, config_end):
-            #     if not is_v3:
-            #         config_list = [
-            #             f'webpage = "{webpage_input}"',
-            #             f'web_path = "{web_path_input}"',
-            #             f'domain_included = "{domain_included_input}"',
-            #             f'domain = "{domain_input}"',
-            #             f'sleep_time = {sleep_time_input}',
-            #         ]
-            #     else:
-            #         config_list = [
-            #             f'"webpage":"{webpage_input}"',
-            #             f'"web_path":"{web_path_input}"',
-            #             f'domain_included = {domain_included_input}',
-            #             f'"domain":"{domain_input}"',
-            #             f'sleep_time = {sleep_time_input}',
-            #             f'non_important = {unimportant_input_list}',
-            #         ]
-            #
-            #     for i in range(len(config_list)):
-            #         output.write(config_list[i] + "\n")
-            #
-            # # Open the scraper again to change import line
-            # for line in fileinput.input(full_path, inplace=1):
-            #     # from configs import weekly_configs as configs
-            #     new_import = "from configs import " + config_filename.replace(".py", "") + " as config"
-            #     # Does not support more advanced arguments atm
-            #     lines_to_change = ["import configs", "list_pdf_v2(configs, save_dir)", "list_pdf_v3(config, save_dir)", "configs = {"]
-            #     change_lines_to = [new_import, "list_pdf_v2(config, save_dir, configs_file=True)", "list_pdf_v3(config, save_dir, configs_file=True)", "configs = { # This scraper is not using this"]
-            #
-            #     # This method may work for the configs
-            #     for i in range(len(lines_to_change)):
-            #         if lines_to_change[i] in line:
-            #             line = line.replace(lines_to_change[i], change_lines_to[i])
-            #     sys.stdout.write(line)
-
-
-        except NameError as exception:
-            import traceback
-            traceback.print_exc()
-            print(str(exception))
-            print("You need to complete the first menu first")
-            self.tabWidget.setCurrentIndex(0) # Go back to the start age
-            self.dialog()
-            return
-
-
 app = QtWidgets.QApplication(sys.argv)
 window = ScraperGui()
 app.exec_()
