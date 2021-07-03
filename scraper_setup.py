@@ -42,6 +42,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         department_type_input = str(self.department_type_input.currentText())
         city_input = self.city_input.text()
         scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+
+        # Create directory if it doesn't exist
         if not os.path.exists(scraper_save_dir):
             os.makedirs(scraper_save_dir)
 
@@ -67,9 +69,9 @@ class ScraperGui(QtWidgets.QMainWindow):
             sys.stdout.write(line)
 
     def create_button_pressed(self):
-        is_v3 = False
-        # if self.button_pressed:
         # This is executed when the button is pressed
+        is_v3 = False
+        # if self.button_pressed
         webpage_input = self.webpage_input.text()
         web_path_input = self.web_path_input.text()
         domain_included_input = self.domain_included_input.currentText()
@@ -100,82 +102,87 @@ class ScraperGui(QtWidgets.QMainWindow):
                         is_v3 = True
 
             '''Edit the config dictionary within the scraper script'''
-            # with open(full_path, "r+") as output:
-            #     # output.seek(config_start)
-            #     lines = output.readlines()[config_start:]  # This doesn't seem to do what I want
-            #     print("Lines length: " + str(len(lines)))
-            #     # for i in range(config_start, config_end):
-            #     if not is_v3:
-            #         config_list = [
-            #             f'"webpage":"{webpage_input}"',
-            #             f'"web_path":"{web_path_input}"',
-            #             f'"domain_included":"{domain_included_input}"',
-            #             f'"domain":"{domain_input}"',
-            #             f'"sleep_time":"{sleep_time_input}"',
-            #         ]
-            #     else:
-            #         config_list = [
-            #             f'"webpage":"{webpage_input}"',
-            #             f'"web_path":"{web_path_input}"',
-            #             f'"domain_included":"{domain_included_input}"',
-            #             f'"domain":"{domain_input}"',
-            #             f'"sleep_time": {sleep_time_input}',
-            #             f'{unimportant_input_list}',
-            #         ]
-            #
-            #     for i in range(len(config_list)):
-            #         # Need a way to set the pointer to the beginning of the config dictionary and
-            #         # iterate over the lines.
-            #         output.seek(config_start + i)
-            #         output.write("    " + config_list[i] + ",\n")
-            #         print(str(i) + "     " + lines[i])
-
-            p = Path("./" + full_path)
-            print("p: " + str(p.parent))
-            config_filename = scraper_name.replace("_scraper.py", "_configs.py") # I could just split it into a list or something but im lazy
-            config_path = str(p.parent).replace("\\", "/") + "/configs/" + config_filename
-
-            p2 = Path("./" + config_path)
-            config_dir = str(p2.parent)
-            if not os.path.exists(config_dir):
-                os.makedirs(config_dir)
-
-            with open(config_path, "a") as output:
+            with open(full_path, "r+") as output:
+                # output.seek(config_start)
+                lines = output.readlines()[config_start:]  # This doesn't seem to do what I want
+                print("Lines length: " + str(len(lines)))
                 # for i in range(config_start, config_end):
                 if not is_v3:
                     config_list = [
-                        f'webpage = "{webpage_input}"',
-                        f'web_path = "{web_path_input}"',
-                        f'domain_included = "{domain_included_input}"',
-                        f'domain = "{domain_input}"',
-                        f'sleep_time = {sleep_time_input}',
+                        f'"webpage":"{webpage_input}"',
+                        f'"web_path":"{web_path_input}"',
+                        f'"domain_included":"{domain_included_input}"',
+                        f'"domain":"{domain_input}"',
+                        f'"sleep_time":"{sleep_time_input}"',
                     ]
                 else:
                     config_list = [
                         f'"webpage":"{webpage_input}"',
                         f'"web_path":"{web_path_input}"',
-                        f'domain_included = {domain_included_input}',
+                        f'"domain_included":"{domain_included_input}"',
                         f'"domain":"{domain_input}"',
-                        f'sleep_time = {sleep_time_input}',
-                        f'non_important = {unimportant_input_list}',
+                        f'"sleep_time": {sleep_time_input}',
+                        f'"non_important":{unimportant_input_list}',
                     ]
 
-                for i in range(len(config_list)):
-                    output.write(config_list[i] + "\n")
+            # Does not support more advanced arguments atm
+            lines_to_change = ['"webpage": "",', '"web_path": "",', '"domain_included": False,', '"domain": "",', '"sleep_time": 5,']
 
-            # Open the scraper again to change import line
+            if is_v3:
+                lines_to_change = lines_to_change.append('"non_important": [],')
+            # Use fileinput to replace config lines.
             for line in fileinput.input(full_path, inplace=1):
-                # from configs import weekly_configs as configs
-                new_import = "from configs import " + config_filename.replace(".py", "") + " as config"
-                # Does not support more advanced arguments atm
-                lines_to_change = ["import configs", "list_pdf_v2(configs, save_dir)", "list_pdf_v3(config, save_dir)", "configs = {"]
-                change_lines_to = [new_import, "list_pdf_v2(config, save_dir, configs_file=True)", "list_pdf_v3(config, save_dir, configs_file=True)", "configs = { # This scraper is not using this"]
-
-                # This method may work for the configs
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
-                        line = line.replace(lines_to_change[i], change_lines_to[i])
+                        line = line.replace(lines_to_change[i], config_list[i])
                 sys.stdout.write(line)
+
+            # p = Path("./" + full_path)
+            # print("p: " + str(p.parent))
+            # config_filename = scraper_name.replace("_scraper.py", "_configs.py") # I could just split it into a list or something but im lazy
+            # config_path = str(p.parent).replace("\\", "/") + "/configs/" + config_filename
+            #
+            # p2 = Path("./" + config_path)
+            # config_dir = str(p2.parent)
+            # if not os.path.exists(config_dir):
+            #     os.makedirs(config_dir)
+            #
+            # with open(config_path, "a") as output:
+            #     # for i in range(config_start, config_end):
+            #     if not is_v3:
+            #         config_list = [
+            #             f'webpage = "{webpage_input}"',
+            #             f'web_path = "{web_path_input}"',
+            #             f'domain_included = "{domain_included_input}"',
+            #             f'domain = "{domain_input}"',
+            #             f'sleep_time = {sleep_time_input}',
+            #         ]
+            #     else:
+            #         config_list = [
+            #             f'"webpage":"{webpage_input}"',
+            #             f'"web_path":"{web_path_input}"',
+            #             f'domain_included = {domain_included_input}',
+            #             f'"domain":"{domain_input}"',
+            #             f'sleep_time = {sleep_time_input}',
+            #             f'non_important = {unimportant_input_list}',
+            #         ]
+            #
+            #     for i in range(len(config_list)):
+            #         output.write(config_list[i] + "\n")
+            #
+            # # Open the scraper again to change import line
+            # for line in fileinput.input(full_path, inplace=1):
+            #     # from configs import weekly_configs as configs
+            #     new_import = "from configs import " + config_filename.replace(".py", "") + " as config"
+            #     # Does not support more advanced arguments atm
+            #     lines_to_change = ["import configs", "list_pdf_v2(configs, save_dir)", "list_pdf_v3(config, save_dir)", "configs = {"]
+            #     change_lines_to = [new_import, "list_pdf_v2(config, save_dir, configs_file=True)", "list_pdf_v3(config, save_dir, configs_file=True)", "configs = { # This scraper is not using this"]
+            #
+            #     # This method may work for the configs
+            #     for i in range(len(lines_to_change)):
+            #         if lines_to_change[i] in line:
+            #             line = line.replace(lines_to_change[i], change_lines_to[i])
+            #     sys.stdout.write(line)
 
 
         except NameError as exception:
