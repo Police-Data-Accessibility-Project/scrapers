@@ -5,7 +5,7 @@ import sys
 from shutil import copyfile
 from pathlib import Path
 
-ui_file = "common/gui/scraper_ui2.ui"
+ui_file = "common/gui/scraper_ui.ui"
 error_modal = "common/gui/error_modal.ui"
 
 

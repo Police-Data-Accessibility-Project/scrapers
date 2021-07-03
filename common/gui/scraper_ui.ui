@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>798</width>
     <height>600</height>
    </rect>
   </property>
@@ -15,6 +15,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -24,8 +27,108 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
+    <widget class="QWidget" name="ChooseBaseScraper">
+     <attribute name="title">
+      <string>Choose Type</string>
+     </attribute>
+     <widget class="QWidget" name="formLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>130</y>
+        <width>291</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="ChooseBaseHeader">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>What type of scraper do you need?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>1</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="step1_scraper_text_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;List_pdf:&lt;/span&gt; Typically used for department websites&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Opendata: &lt;/span&gt;Used on opendata sites. Works with &lt;br/&gt;any site that uses an api to deliver files. (Socrata, opendata, arcgis)&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Crimegraphics: &lt;/span&gt;Used on crimegraphic website.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="scraper_choice">
+         <item>
+          <property name="text">
+           <string>List_pdf</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Opendata</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Crimegraphics</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="next_button">
+         <property name="text">
+          <string>Next</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
     <widget class="QWidget" name="ChooseScraper">
      <attribute name="title">
       <string>Choose Scraper</string>
@@ -419,7 +522,7 @@ list_pdf_v3 allows filtering links by common unwanted words.</string>
        </font>
       </property>
       <property name="text">
-       <string>Where should the files be saved? Leave blank if you don't care. 
+       <string>Where should the files be saved? Leave blank if you don't care.
 
 Note that ./data/ will be prepended to your input. You can add as many subfolders as you need.</string>
       </property>
@@ -918,6 +1021,383 @@ Values must be separated by a &quot;, &quot;</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="ChooseCrimegraphics">
+     <attribute name="title">
+      <string>Choose Scraper</string>
+     </attribute>
+     <widget class="QWidget" name="formLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>591</width>
+        <height>548</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="chooseCGStep1">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 1:</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="chooseCGStep1Text">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Choose which scraper you need.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="choose_cg_input">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>Bulletin</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Daily Crime/Fire Log Bulleting (Clery)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QPushButton" name="choose_cg_button">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Choose</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="chooseCGStep1_2">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 3:</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="step2_scraper_text_6">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Configure your scraper</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="step2_scraper_text_7">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>URL:</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="url_input_cg">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="step2_scraper_text_8">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Data output folder:</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="save_dir_input_cg">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0" colspan="2">
+        <widget class="QPushButton" name="create_cg_button">
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Create</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <layout class="QFormLayout" name="formLayout_4">
+         <item row="1" column="0">
+          <widget class="QLabel" name="step2_header_6">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Step 2:</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="step2_scraper_text_4">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>We need some basic information regarding the department.</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="step2_scraper_text_5">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Country:</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="country_input_cg">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>USA</string>
+           </property>
+           <property name="placeholderText">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="step2state_2">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>State:</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="state_input_cg">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="placeholderText">
+            <string>CA</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_42">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>County:</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="county_input_cg">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="placeholderText">
+            <string>los_angeles</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_41">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Department Type:</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QComboBox" name="department_type_input_cg">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="editable">
+            <bool>true</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>municipal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>county</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>college</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="step2city_2">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>City (Or county if a county department):</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QLineEdit" name="city_input_cg">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
     <widget class="QWidget" name="Help">
      <attribute name="title">
       <string>Help</string>
@@ -1326,5 +1806,22 @@ Most departments do not seem to have a crawl-delay specified, so leave it at 5 (
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>choose_cg_input</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>save_dir_input_cg</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>313</x>
+     <y>461</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
