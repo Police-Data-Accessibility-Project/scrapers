@@ -4,6 +4,9 @@ This readme should give people everything they need to maintain the scraper.
 Added to dataset. Agency ID: 77defdbce68c4bcd9a0663a1857e65f9
 
 This scraper is **NOT** a list_pdf scraper, instead it uses `Selenium`. **DO NOT** attempt to update to use `bs_common` or `list_pdf_scrapers`, as this uses a custom Selenium variant of the base scripts.
+
+You will have to set `executable_path` to wherever your selenium is installed to. 
+
 Time period of data 2019-2020
 
 _Remove fields that were collected_

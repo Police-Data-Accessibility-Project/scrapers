@@ -26,6 +26,7 @@ configs = {
 }
 """
 
+
 def list_pdf_v2(
     configs,
     save_dir,
@@ -81,7 +82,9 @@ def list_pdf_v2(
 
     # the following two functions are imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
-    extract_info(soup, configs, extract_name=extract_name, configs_file=configs_file)
+    extract_info(
+        soup, configs, extract_name=extract_name, configs_file=configs_file, debug=debug
+    )
 
     # Check added for backwards compatibility.
     # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date

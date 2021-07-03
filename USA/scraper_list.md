@@ -1,7 +1,7 @@
 ## CA
 | Path                                                | Scraper                                       |
 |-----------------------------------------------------|-----------------------------------------------|
-| USA\CA\alameda_county\municipality\alameda         | Custom                                        |
+| USA\CA\alameda_county\municipality\alameda          | Custom                                        |
 | USA\CA\alameda_county\municipality\berkely          | Opendata, single_pdf_scraper                  |
 | USA\CA\butte_county\college\chico                   |  crimegraphics_clery, crimegraphics_bulletin, |
 | USA\CA\butte_county\county\butte                    | custom (arrest), crimegraphics_bulletin       |
@@ -16,11 +16,11 @@
 | USA\CA\los_angeles_county\municipality\beverly_hills| list_pdf_v2                                   |
 | USA\CA\los_angeles_county\municipality\burbank      | list_pdf_v3                                   |
 | USA\CA\los_angeles_county\municipality\los_angeles  | opendata                                      |
-| USA\CA\los_angeles_county\colleges\cal_poly_pomona     | list_pdf_v2                                   |
+| USA\CA\los_angeles_county\colleges\cal_poly_pomona  | list_pdf_v2                                   |
 | USA\CA\orange_county\municipality\cypress           | list_pdf_v2                                   |
-| USA\CA\riverside_county\municipality\beaumont       | Custom                                        |
+| USA\CA\riverside_county\municipality\beaumont       | Custom (selenium)                             |
 | USA\CA\sacramento_county\colleges\LosRiosComm       | list_pdf_v2, crimegraphics_clery              |
-| USA\CA\san_francisco_county\municipal\san_francisco | opendata, custom (Eric Turner)                |
+| USA\CA\san_francisco_county\municipal\san_francisco | opendata, custom (Eric Turner), custom list_pdf_v3 |
 | USA\CA\san_francisco_county\dixon                   | custom                                        |
 | USA\CA\solano_county\municipal\dixon                | custom (uses get_files)                       |
 | USA\CA\tehama_county\colleges\el_camino             | list_pdf_v2                                   |
@@ -50,6 +50,7 @@
 | Path                                         | Scraper  |
 |----------------------------------------------|----------|
 | USA/MN/hennepin_county/municipal/minneapolis | opendata |
+| USA\MN\hennepin_county\municipal\minneapolis\disciplinary_decisions_memoranda_scraper.py | list_pdf_v2 |
 
 ## KY
 | Path                                         | Scraper  |
