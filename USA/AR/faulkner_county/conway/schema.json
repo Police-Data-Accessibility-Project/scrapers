@@ -1,0 +1,25 @@
+{
+    "agency_id": "3c4af960c9024f7fbf3c876db124e7e4",
+    "agency_info": {
+        "agency_name": "Conway Police Department",
+        "agency_coords": {
+            "lng": "-92.4393539428711",
+            "lat": "35.08815383911133"
+        },
+        "agency_type": 4,
+        "city": "Conway",
+        "state": "AR",
+        "zip": "72032",
+        "county_fips": "05045"
+    },
+    "data": [
+        {
+            "url": "http://conwaypd.org/index.php/calls-for-service",
+            "full_data_location": "data",
+            "data_type": "4",
+            "source_type": "2",
+            "update_freq": "6",
+            "last_modified": "2021-07-05T21:05:46.223+00:00"
+        }
+    ]
+}
