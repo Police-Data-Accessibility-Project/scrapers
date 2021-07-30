@@ -1,0 +1,744 @@
+[
+    {
+        "name": "Russell, Charles L",
+        "age": "31",
+        "date": "04/19/2021",
+        "bond": "$19,747.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Tucker, Tevarus D",
+        "age": "27",
+        "date": "03/25/2021",
+        "bond": "$8,806.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Mcmanis, William E",
+        "age": "54",
+        "date": "03/19/2021",
+        "bond": "$19,814.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Brawley, Richard Dwight",
+        "age": "49",
+        "date": "03/19/2021",
+        "bond": "$6,776.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Alexander, Darion M",
+        "age": "33",
+        "date": "12/04/2020",
+        "bond": "$9,687.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Johnson, Manuel Conell",
+        "age": "38",
+        "date": "12/04/2020",
+        "bond": "$5,009.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Lovettwheeler, Sandy Leigh",
+        "age": "43",
+        "date": "12/01/2020",
+        "bond": "$4,000.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Jackson, Gabriel C",
+        "age": "30",
+        "date": "11/20/2020",
+        "bond": "$14,426.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Spikes, Frederick A",
+        "age": "36",
+        "date": "11/06/2020",
+        "bond": "$26,437.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Durden, Ahmad E",
+        "age": "34",
+        "date": "11/06/2020",
+        "bond": "$12,681.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Andrews, Stacey M",
+        "age": "38",
+        "date": "10/29/2020",
+        "bond": "$36,650.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Andrews, Stacey M",
+        "age": "38",
+        "date": "10/14/2020",
+        "bond": "$32,346.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Andrews, Stacey M",
+        "age": "38",
+        "date": "10/09/2020",
+        "bond": "$35,093.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Beck, Erica M",
+        "age": "26",
+        "date": "10/02/2020",
+        "bond": "$9,650.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Smith, Darrius Deuntae",
+        "age": "23",
+        "date": "10/02/2020",
+        "bond": "$1,795.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Milam, Steven Anthony",
+        "age": "41",
+        "date": "09/18/2020",
+        "bond": "$2,151.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Hukle, Roy A",
+        "age": "27",
+        "date": "09/18/2020",
+        "bond": "$3,369.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Declue, Rebekah Leigh",
+        "age": "46",
+        "date": "09/18/2020",
+        "bond": "$660.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Taylor, Deborah D",
+        "age": "37",
+        "date": "09/18/2020",
+        "bond": "$10,140.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Fraser, Lance ",
+        "age": "50",
+        "date": "09/09/2020",
+        "bond": "$16,164.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Akins, Dawn M",
+        "age": "46",
+        "date": "09/04/2020",
+        "bond": "$3,581.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Anderson, Jarell L",
+        "age": "30",
+        "date": "09/03/2020",
+        "bond": "$930,637.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Harris, James Emmett",
+        "age": "29",
+        "date": "09/02/2020",
+        "bond": "$1,620,009.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Bryant, Joshua E",
+        "age": "38",
+        "date": "08/21/2020",
+        "bond": "$4,032.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Baker, Jason Wayne",
+        "age": "41",
+        "date": "08/21/2020",
+        "bond": "$36,532.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Faulkinbury, Ricky M",
+        "age": "31",
+        "date": "07/14/2020",
+        "bond": null,
+        "charges": "FAILURE TO PAY CHILDSUPPORT"
+    },
+    {
+        "name": "Harris, James Emmett",
+        "age": "29",
+        "date": "06/30/2020",
+        "bond": "$1,256,036.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Morgan, Brian D",
+        "age": "43",
+        "date": "06/18/2020",
+        "bond": "$3,812.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "White, Jason C",
+        "age": "50",
+        "date": "06/11/2020",
+        "bond": "$72,587.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Ahnert, William L",
+        "age": "36",
+        "date": "06/05/2020",
+        "bond": "$12,695.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Rasheed, Adam D",
+        "age": "28",
+        "date": "06/05/2020",
+        "bond": "$6,181.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Converse, Daniel Lee",
+        "age": "34",
+        "date": "05/29/2020",
+        "bond": "$20,725.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Shipe, Nicholas ",
+        "age": "50",
+        "date": "05/29/2020",
+        "bond": "$14,555.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Miller, Ernest Albert",
+        "age": "45",
+        "date": "04/17/2020",
+        "bond": "$12,523.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Morman, Demetrius Jermaine",
+        "age": "27",
+        "date": "03/20/2020",
+        "bond": "$9,802.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Solomon, Kylon T",
+        "age": "33",
+        "date": "03/17/2020",
+        "bond": "$11,700.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Ferrell, Benjamin Dillion",
+        "age": "28",
+        "date": "03/12/2020",
+        "bond": "$16,371.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Weston, Blake A",
+        "age": "37",
+        "date": "03/10/2020",
+        "bond": "$26,284.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Travis, William Matthew",
+        "age": "37",
+        "date": "03/09/2020",
+        "bond": "$150.00",
+        "charges": "FAILURE TO PAY CHILDSUPPORT"
+    },
+    {
+        "name": "Jones Iii, Roy ",
+        "age": "50",
+        "date": "02/21/2020",
+        "bond": "$6,413.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Ivy, Kevin Lee",
+        "age": "40",
+        "date": "01/24/2020",
+        "bond": "$28,305.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Mcfee, Dale ",
+        "age": "33",
+        "date": "01/21/2020",
+        "bond": "$5,986.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Hull, Keith ",
+        "age": "46",
+        "date": "12/20/2019",
+        "bond": "$21,429.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Hackenson, Kristine E",
+        "age": "40",
+        "date": "11/21/2019",
+        "bond": "$4,148.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Highfill, Tyler L",
+        "age": "24",
+        "date": "11/21/2019",
+        "bond": "$2,887.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Scherell, Crystal Marie",
+        "age": "43",
+        "date": "11/21/2019",
+        "bond": "$18,717.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Jewett, Jeffery D",
+        "age": "30",
+        "date": "11/18/2019",
+        "bond": "$4,044.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Miller, Antrone L",
+        "age": "37",
+        "date": "11/04/2019",
+        "bond": "$30,349.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Hodges, Malcolm E",
+        "age": "47",
+        "date": "11/01/2019",
+        "bond": "$33,021.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Jackson, Daniel A",
+        "age": "36",
+        "date": "10/14/2019",
+        "bond": "$23,630.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Rodriguez, Juan ",
+        "age": "52",
+        "date": "09/20/2019",
+        "bond": "$3,482.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Richard, Jared ",
+        "age": "42",
+        "date": "09/12/2019",
+        "bond": "$11,176.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Canon, Shannon David",
+        "age": "44",
+        "date": "08/13/2019",
+        "bond": "$8,012.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Kirkendoll, Dustin Joe",
+        "age": "28",
+        "date": "08/02/2019",
+        "bond": "$3,549.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Smith, Andre T",
+        "age": "44",
+        "date": "07/30/2019",
+        "bond": "$21,975.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Naquin, Wallace ",
+        "age": "43",
+        "date": "07/12/2019",
+        "bond": "$14,942.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Anderson, Justin Quentin",
+        "age": "31",
+        "date": "07/05/2019",
+        "bond": "$10,739.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Oates, Sam M",
+        "age": "34",
+        "date": "05/23/2019",
+        "bond": "$4,895.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Cox, Angela M",
+        "age": "37",
+        "date": "04/22/2019",
+        "bond": "$2,100.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Richards, Robert A",
+        "age": "31",
+        "date": "04/02/2019",
+        "bond": "$3,472.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Sowell, Bobby D",
+        "age": "31",
+        "date": "04/02/2019",
+        "bond": "$8,979.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Dickens, Michael ",
+        "age": "42",
+        "date": "02/15/2019",
+        "bond": "$13,200.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Spriggle, Donald Lee",
+        "age": "40",
+        "date": "01/02/2019",
+        "bond": "$11,214.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Minton, Amanda ",
+        "age": "34",
+        "date": "12/28/2018",
+        "bond": "$9,630.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Lephiew, Vernon Jay",
+        "age": "54",
+        "date": "12/21/2018",
+        "bond": "$4,115.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Eddy, Jerry ",
+        "age": "37",
+        "date": "12/21/2018",
+        "bond": "$40,043.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Redwine, Heather Nicole",
+        "age": "32",
+        "date": "12/18/2018",
+        "bond": "$12,351.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Freeman, Johnathon R",
+        "age": "42",
+        "date": "12/10/2018",
+        "bond": "$30,136.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Austin, James R",
+        "age": "41",
+        "date": "12/07/2018",
+        "bond": "$37,580.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Moore, Michael G",
+        "age": "27",
+        "date": "12/04/2018",
+        "bond": "$11,864.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Brown, Joshua ",
+        "age": "31",
+        "date": "10/24/2018",
+        "bond": "$7,919.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Jackson, Kamran Tyhsun",
+        "age": "27",
+        "date": "09/28/2018",
+        "bond": "$14,378.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Pregeant, David A",
+        "age": "52",
+        "date": "09/25/2018",
+        "bond": "$30,733.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Moore, Terry D",
+        "age": "34",
+        "date": "09/20/2018",
+        "bond": "$6,253.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Jackson, Kamran Tyhsun",
+        "age": "27",
+        "date": "09/11/2018",
+        "bond": "$4,193.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Faulkinbury, Ricky ",
+        "age": "29",
+        "date": "08/29/2018",
+        "bond": "$7,720.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Hanegan, Ryan ",
+        "age": "32",
+        "date": "08/14/2018",
+        "bond": null,
+        "charges": "VIOLATION OF PROBATION"
+    },
+    {
+        "name": "Smith, Stephen L",
+        "age": "38",
+        "date": "07/27/2018",
+        "bond": "$8,466.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Spears, Christina A",
+        "age": "33",
+        "date": "07/16/2018",
+        "bond": "$2,323.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Reese, Brandon B",
+        "age": "34",
+        "date": "07/03/2018",
+        "bond": "$11,129.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Adams, Benjamin Shilcan",
+        "age": "38",
+        "date": "06/07/2018",
+        "bond": "$7,835.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Hughes, Nicholas J",
+        "age": "31",
+        "date": "05/08/2018",
+        "bond": "$4,149.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Rhodes, Callis L",
+        "age": "57",
+        "date": "03/29/2018",
+        "bond": "$9,747.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Mccoy, Jessica L",
+        "age": "39",
+        "date": "02/07/2018",
+        "bond": null,
+        "charges": "FAILURE TO PAY CHILDSUPPORT"
+    },
+    {
+        "name": "Page, Joe ",
+        "age": "37",
+        "date": "01/31/2018",
+        "bond": "$1,512.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Allo, Erik M",
+        "age": "39",
+        "date": "01/16/2018",
+        "bond": "$25,763.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Pearce, Christopher A",
+        "age": "37",
+        "date": "01/02/2018",
+        "bond": "$37,350.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Mills, Deric A",
+        "age": "52",
+        "date": "12/08/2017",
+        "bond": "$18,826.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Cross, Jon Michael",
+        "age": "40",
+        "date": "11/30/2017",
+        "bond": "$4,083.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Lutz, Joshua E",
+        "age": "35",
+        "date": "11/13/2017",
+        "bond": "$605.00",
+        "charges": "FAILURE TO PAY CHILDSUPPORT"
+    },
+    {
+        "name": "Fields, Donald ",
+        "age": "41",
+        "date": "09/22/2017",
+        "bond": null,
+        "charges": "FAILURE TO PAY CHILDSUPPORT"
+    },
+    {
+        "name": "Naranjo, Marvin Angel",
+        "age": "965",
+        "date": "08/31/2017",
+        "bond": "$39,553.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Kelley, Zartan C",
+        "age": "31",
+        "date": "06/28/2017",
+        "bond": "$11,656.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Leach, Lacy J",
+        "age": "32",
+        "date": "04/19/2017",
+        "bond": "$11,164.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Dixon, Leah Gay",
+        "age": "47",
+        "date": "01/19/2017",
+        "bond": "$2,997.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Gregory, Christopher B",
+        "age": "38",
+        "date": "11/09/2016",
+        "bond": "$12,480.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Lowe, Daniel ",
+        "age": "33",
+        "date": "08/29/2016",
+        "bond": null,
+        "charges": "FAILURE TO PAY CHILDSUPPORT"
+    },
+    {
+        "name": "Cheveallier, John Richard",
+        "age": "40",
+        "date": "08/04/2016",
+        "bond": "$7,427.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Hills, Matthew Charles",
+        "age": "46",
+        "date": "04/15/2016",
+        "bond": "$150.00",
+        "charges": "FAILURE TO PAY CHILDSUPPORT"
+    },
+    {
+        "name": "Miller, Hank ",
+        "age": "42",
+        "date": "02/24/2016",
+        "bond": "$41,131.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Khabir, Amatula ",
+        "age": "35",
+        "date": "05/14/2014",
+        "bond": "$5,208.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Danielson, Scott J",
+        "age": "44",
+        "date": "04/09/2014",
+        "bond": "$19,568.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Mccoy, John C",
+        "age": "55",
+        "date": "01/14/2014",
+        "bond": "$38,357.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Oliva, Basilio ",
+        "age": "42",
+        "date": "03/04/2013",
+        "bond": "$1,147.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Brantley, Jeremy James",
+        "age": "47",
+        "date": "09/17/2009",
+        "bond": "$7,842.00",
+        "charges": "BODY ATTACHMENT"
+    },
+    {
+        "name": "Martin, Linda ",
+        "age": "68",
+        "date": "10/18/2000",
+        "bond": "$10,000.00",
+        "charges": "BODY ATTACHMENT"
+    }
+]
