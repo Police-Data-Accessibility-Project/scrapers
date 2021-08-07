@@ -52,15 +52,9 @@ def check_if_exists(save_dir, file_name, add_date):
         print("    [?] add_date is True")
         with open("last_run.txt", "r") as last_run:
             # This deletes the date from the file_name in order to compare.
-            file_name = re.sub(
-                "^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$",
-                "",
-                file_name,
-            )
+            file_name = re.sub("^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$", "", file_name,)
             # This removes the extension, and appends the previous run's date to the file_name
-            file_name = (
-                file_name.strip(".pdf") + "_" + last_run.read().strip(".pdf") + ".pdf"
-            )
+            file_name = file_name.strip(".pdf") + "_" + last_run.read().strip(".pdf") + ".pdf"
             print(file_name)
             if os.path.exists(save_dir + file_name):
                 print(" [*] File found... Returning True")
@@ -72,14 +66,7 @@ def check_if_exists(save_dir, file_name, add_date):
 
 
 def get_pdf(
-    save_dir,
-    file_name,
-    url_2,
-    sleep_time,
-    debug=False,
-    try_overwite=False,
-    no_overwrite=False,
-    add_date=False,
+    save_dir, file_name, url_2, sleep_time, debug=False, try_overwite=False, no_overwrite=False, add_date=False,
 ):
     file_name = file_name.lstrip("/")
     print(file_name)
@@ -100,10 +87,7 @@ def get_pdf(
 
     # Default run mode, simply checks that the file does not already exists.
     # Don't need to check if
-    if (
-        os.path.exists(save_dir + file_name) == False
-        and check_if_exists(save_dir, file_name, add_date=add_date) == False
-    ):
+    if os.path.exists(save_dir + file_name) == False and check_if_exists(save_dir, file_name, add_date=add_date) == False:
         print(" [*] File does not exist")
         try:
             print(" [*] Requesting file....")
@@ -119,12 +103,7 @@ def get_pdf(
         if add_date == True:
             print(" [?] add_date is True")
             date_name = date.today()
-            file_name = (
-                file_name.strip(".pdf")
-                + "_"
-                + str(date_name).replace("-", "_")
-                + ".pdf"
-            )
+            file_name = file_name.strip(".pdf") + "_" + str(date_name).replace("-", "_") + ".pdf"
             if debug:
                 print(file_name)
 
@@ -166,12 +145,7 @@ def get_pdf(
             print("    [?] Files are different")
             date_name = date.today()
             # print(date_name)
-            file_name = (
-                file_name.strip(".pdf")
-                + "_"
-                + str(date_name).replace("-", "_")
-                + ".pdf"
-            )
+            file_name = file_name.strip(".pdf") + "_" + str(date_name).replace("-", "_") + ".pdf"
             print("   [*] file_name: " + file_name)
             print("   [*] Saving file...")
             with open(save_dir + file_name, "wb") as file:
@@ -179,9 +153,7 @@ def get_pdf(
             file.close()
     # Checks if the files exists, and that `try_overwite` is True
     elif os.path.exists(save_dir + file_name) == True and try_overwite == True:
-        print(
-            " [!!!] try_overwite is set to True, verify that you want this before continuing"
-        )
+        print(" [!!!] try_overwite is set to True, verify that you want this before continuing")
         # Tries to get the file and set it to pdf
         try:
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
@@ -196,12 +168,7 @@ def get_pdf(
 
         if add_date == True:
             date_name = date.today()
-            file_name = (
-                file_name.strip(".pdf")
-                + "_"
-                + str(date_name).replace("-", "_")
-                + ".pdf"
-            )
+            file_name = file_name.strip(".pdf") + "_" + str(date_name).replace("-", "_") + ".pdf"
             print(" [*] Date appended name: " + file_name)
         # Saves the pdf while prepending with "new_"
         with open(save_dir + "new_" + file_name, "wb") as file:

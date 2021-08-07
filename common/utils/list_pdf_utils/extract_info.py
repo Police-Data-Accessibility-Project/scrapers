@@ -1,6 +1,4 @@
-def extract_info(
-    soup, configs, extract_name=False, name_in_url=True, configs_file=False, debug=False
-):
+def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_file=False, debug=False):
     """
     Extract information from supplied beautiful soup
     :param soup: BeautifulSoup object
@@ -48,9 +46,7 @@ def extract_info(
 
         if not name_in_url:
             response = urllib.request.urlopen(domain + url)
-            file_name, params = cgi.parse_header(
-                response.headers.get("Content-Disposition", "")
-            )
+            file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
             name = file_name
 
         with open("url_name.txt", "a+") as output:
