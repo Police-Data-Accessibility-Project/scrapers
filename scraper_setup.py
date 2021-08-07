@@ -41,6 +41,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         dialog.exec_()
 
     def next_button_pressed(self):
+        """Next button on `Choose type` tab"""
         scraper_choice = self.scraper_choice.currentIndex()  # Get index of combobox
         print(scraper_choice)
         if scraper_choice == 0:  #  0 is list_pdf
@@ -113,8 +114,12 @@ class ScraperGui(QtWidgets.QMainWindow):
             print("ERROR: File already exists")
 
     def choose_scraper_pressed(self):
+        """ 'Enter' button on `Choose Scraper` tab"""
         global full_path
         global scraper_name
+        global is_v3
+
+        # Step 2
         # /country/state/county/type/city/
         # Get the directory information
         country_input = self.country_input.text().lower()
@@ -129,15 +134,26 @@ class ScraperGui(QtWidgets.QMainWindow):
         if not os.path.exists(scraper_save_dir):
             os.makedirs(scraper_save_dir)
 
+        # Step 4
         # Copy the scraper file
         scraper_name_input = self.scraper_name_input.text()
         scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
         template_folder = "./Base_Scripts/Scrapers/list_pdf_extractors/"
-        scraper_input = self.scraper_input.currentText()  # Get the selected scraper text
-        full_path = scraper_save_dir + scraper_name
-        # Copy and rename the scraper
-        copyfile(template_folder + scraper_input, full_path)
 
+        # Step 1
+        scraper_input_text = self.scraper_input.currentText()  # Get the selected scraper text
+        scraper_input_index = self.scraper_input.currentIndex()
+        full_path = scraper_save_dir + scraper_name
+
+        if scraper_input_index == 0:
+            is_v3 = False
+        elif scraper_input_index == 1:
+            is_v3 = True
+
+        # Copy and rename the scraper
+        copyfile(template_folder + scraper_input_text, full_path)
+
+        # Step 3
         # Edit the save_dir
         save_dir_input = self.save_dir_input.text().replace(" ", "_").rstrip("/")  # Clean input of spaces
 
@@ -155,7 +171,6 @@ class ScraperGui(QtWidgets.QMainWindow):
         default_save_dir = 'save_dir = "./data/"'
         print(save_dir_input)
         for line in fileinput.input(full_path, inplace=1):
-
             if default_save_dir in line:
                 line = line.replace(default_save_dir, save_dir_input)
             sys.stdout.write(line)
@@ -163,7 +178,7 @@ class ScraperGui(QtWidgets.QMainWindow):
     # list_pdf create
     def create_button_pressed(self):
         # This is executed when the button is pressed
-        is_v3 = False
+
         # if self.button_pressed
         webpage_input = self.webpage_input.text()
         web_path_input = self.web_path_input.text()
