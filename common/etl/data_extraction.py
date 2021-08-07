@@ -4,6 +4,7 @@ import os
 # pdf_directory = "./data/"
 # save_dir = "/csv/"
 
+
 def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False, flavor="stream"):
     """
     Test implementation of camelot's pdf extraction
@@ -29,7 +30,7 @@ def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False, flav
                 tables = camelot.read_pdf(root + os.sep + name, flavor=flavor)
 
                 print("    [*] Exporting tables to: " + root + os.sep + csv_dir)
-                tables.export(root + os.sep + csv_dir + os.sep + name.strip(".pdf") + ".csv", f='csv', compress=False) # json, excel, html
+                tables.export(root + os.sep + csv_dir + os.sep + name.strip(".pdf") + ".csv", f="csv", compress=False)  # json, excel, html
 
                 try:
                     print(f"    [STATS] {tables[0].parsing_report}")

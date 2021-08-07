@@ -92,9 +92,7 @@ def list_pdf_v2(
 
     # the following two functions are imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
-    extract_info(
-        soup, configs, extract_name=extract_name, configs_file=configs_file, debug=debug
-    )
+    extract_info(soup, configs, extract_name=extract_name, configs_file=configs_file, debug=debug)
 
     # Check added for backwards compatibility.
     # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date
@@ -117,9 +115,7 @@ def list_pdf_v2(
             if debug:
                 # because i hate having tons of stuff printed in my terminal, this will only print if debug=True (set when calling list_pdf_v2)
                 print("  [INFO] csv_dir is not defined in the configs.")
-                print(
-                    "      If you want to save in a different location for some reason, "
-                )
+                print("      If you want to save in a different location for some reason, ")
                 print('      define it in the configs as `csv_dir="<folder>"`')
             # call pdf_extract again, this time without passing csv_dir to it.
             pdf_extract(pdf_directory=save_dir, flavor=flavor)

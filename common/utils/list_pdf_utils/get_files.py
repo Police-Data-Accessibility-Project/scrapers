@@ -88,14 +88,7 @@ def get_files(
                     # save_path = os.path.join(save_dir, file_name+".pdf")
                     print("   [*] Getting file " + file_name)
                     get_pdf(
-                        save_dir,
-                        file_name,
-                        url_2,
-                        debug,
-                        sleep_time,
-                        try_overwite,
-                        no_overwrite,
-                        add_date=add_date,
+                        save_dir, file_name, url_2, debug, sleep_time, try_overwite, no_overwrite, add_date=add_date,
                     )
                     print("   [*]Sleeping for: " + str(sleep_time))
 
@@ -116,9 +109,7 @@ def get_files(
 
                 if not debug:
                     response = urllib.request.urlopen(url_2)
-                    file_name, params = cgi.parse_header(
-                        response.headers.get("Content-Disposition", "")
-                    )
+                    file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
                     if "=" in file_name:
                         file_name = file_name.split("=")
                     elif ":" in file_name:
@@ -127,17 +118,13 @@ def get_files(
                         file_name = file_name[1].strip('"')
                     except IndexError:
                         print(" [!!!] file_name was blank, might want to check that.")
-                        print(
-                            " [!!!] (Likely caused by using setting name_in_url=False)"
-                        )
+                        print(" [!!!] (Likely caused by using setting name_in_url=False)")
                         pass
 
                 if debug:
                     response = urllib.request.urlopen(url_2)
                     print(response)
-                    file_name, params = cgi.parse_header(
-                        response.headers.get("Content-Disposition", "")
-                    )
+                    file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
                     print("file_name: " + str(file_name) + ", params: " + str(params))
                     if "=" in file_name:
                         file_name = file_name.split("=")
@@ -165,9 +152,7 @@ def get_files(
                     get_xls(save_dir, file_name, url_2, sleep_time)
 
                 elif ".zip" in extension:
-                    urllib.request.urlretrieve(
-                        url_2, save_dir + file_name.replace("/", "-")
-                    )
+                    urllib.request.urlretrieve(url_2, save_dir + file_name.replace("/", "-"))
 
                 else:
                     print(" [!!!] Unhandled documents type")

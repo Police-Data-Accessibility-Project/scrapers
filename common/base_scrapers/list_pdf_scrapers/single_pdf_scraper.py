@@ -11,13 +11,7 @@ from common.utils import get_pdf
 
 
 def single_pdf_scraper(
-    save_dir,
-    url_2,
-    try_overwite=False,
-    no_overwrite=True,
-    flavor="stream",
-    name_in_url=True,
-    filename="null",
+    save_dir, url_2, try_overwite=False, no_overwrite=True, flavor="stream", name_in_url=True, filename="null",
 ):
     """
     Scrape a single file from a website
@@ -49,14 +43,7 @@ def single_pdf_scraper(
 
     # the following function is imported from ./common/utils/list_pdf_utils/
     get_pdf(
-        save_dir,
-        file_name,
-        url_2,
-        debug=False,
-        sleep_time=0,
-        try_overwite=False,
-        no_overwrite=True,
-        add_date=True,
+        save_dir, file_name, url_2, debug=False, sleep_time=0, try_overwite=False, no_overwrite=True, add_date=True,
     )
 
     # import etl

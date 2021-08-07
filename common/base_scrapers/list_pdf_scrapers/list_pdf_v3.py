@@ -111,11 +111,7 @@ def list_pdf_v3(
     # the following function is imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
     extract_info(
-        soup,
-        configs,
-        extract_name=extract_name,
-        name_in_url=name_in_url,
-        configs_file=configs_file,
+        soup, configs, extract_name=extract_name, name_in_url=name_in_url, configs_file=configs_file,
     )
 
     # if important is false,
@@ -128,17 +124,13 @@ def list_pdf_v3(
         print("   [*] Opening url_name.txt")
 
         # open and read url_name.txt, and open 2url_name.txt,
-        with open("url_name.txt", "r") as og_file, open(
-            "2url_name.txt", "w"
-        ) as new_file:
+        with open("url_name.txt", "r") as og_file, open("2url_name.txt", "w") as new_file:
             print("   [*] Adding only important lines to 2url_name.txt")
 
             # iterate over the lines in url_name.txt (og_file)
             for line in og_file:
                 # check if any keywords from non_important are NOT in the line
-                if not any(
-                    non_important in line.lower() for non_important in non_important
-                ):
+                if not any(non_important in line.lower() for non_important in non_important):
                     # if there aren't any keywords fom non_important in the line,
                     # write it to 2url_name.txt (new_file)
                     new_file.write(line)
@@ -170,9 +162,7 @@ def list_pdf_v3(
         print(" [*] Opening url_name.txt")
 
         # open and read url_name.txt, and open 2url_name.txt,
-        with open("url_name.txt", "r") as og_file, open(
-            "2url_name.txt", "w"
-        ) as new_file:
+        with open("url_name.txt", "r") as og_file, open("2url_name.txt", "w") as new_file:
             print("   [*] Adding lines containing: " + str(important))
             # iterate over the lines in url_name.txt (og_file)
             for line in og_file:
@@ -221,9 +211,7 @@ def list_pdf_v3(
             if debug:
                 # because i hate having tons of stuff printed in my terminal, this will only print if debug=True (set when calling list_pdf_v3)
                 print("  [INFO] csv_dir is not defined in the configs.")
-                print(
-                    "      If you want to save in a different location for some reason, "
-                )
+                print("      If you want to save in a different location for some reason, ")
                 print('      define it in the configs as `csv_dir="<folder>"`')
             # call pdf_extract again, this time without passing csv_dir to it.
             pdf_extract(pdf_directory=save_dir, flavor=flavor)
