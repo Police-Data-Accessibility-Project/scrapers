@@ -11,6 +11,14 @@ from datetime import date
 
 
 def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=False):
+    """
+    Compares two files to determine if they have changed
+    :param save_dir: root directory of files to compare
+    :param file_1: file_1's name
+    :param file_2: file_2's name
+    :param try_overwite: deprecated
+    :param no_overwrite: whether to overwrite or not. (default False)
+    """
     file_1 = save_dir + file_1
     file_2 = save_dir + file_2
 
@@ -33,6 +41,12 @@ def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=Fals
 
 # Needed a different way to check if a file existed due to us changing the file_name to add the current date.
 def check_if_exists(save_dir, file_name, add_date):
+    """
+    Check if a file exists, compensating for add_date being true
+    :param save_dir: directory of file
+    :param file_name: name of file
+    :param add_date: bool of add_date
+    """
     if add_date:
         print(" [*] Checking if file is present")
         print("    [?] add_date is True")

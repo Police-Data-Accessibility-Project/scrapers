@@ -42,7 +42,22 @@ def list_pdf_v3(
     extract_tables=False,
     configs_file=False,
 ):  # try_overwite is for get_files
-
+    """
+    Scrape a list of files from a website
+    :param configs: dictionary of configuration
+    :param save_dir: where the files should be saved, string
+    :param debug: enables more verbose output. (default False)
+    :param delete: whether to delete url.txt after script finishes. useful for debugging. (default False)
+    :param important: allows switching from ignoring files matching name to only scraping files matching name (default false)
+    :param try_overwite: mostly deprecated. ask before using.
+    :param name_in_url: whether or not the filename is in the url (default true)
+    :param add_date: used when a document is overwritten on a website. set no_overwrite true if using. (default false)
+    :param extract_name: extract name from an href's string instead of url, set name_in_url false (default false)
+    :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
+    :param flavor: "flavor" that camelot should use to exract data from pdfs. "stream" or "lattice" (default stream)
+    :param extract_tables: whether to extract tables from pdf or not. (default false)
+    :param configs_file: reverse compatibility parameter, leave false
+    """
     # if save_dir does not exist, make the directory
     if not os.path.exists(save_dir):
         print(" [*] Making save_dir")

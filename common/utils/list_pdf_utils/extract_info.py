@@ -1,6 +1,15 @@
 def extract_info(
     soup, configs, extract_name=False, name_in_url=True, configs_file=False, debug=False
 ):
+    """
+    Extract information from supplied beautiful soup
+    :param soup: BeautifulSoup object
+    :param configs: dict of configuration
+    :param extract_name: whether to extract name from url (default false)
+    :param name_in_url: whether the file's name is in the url (default true)
+    :param configs_file: reverse compatbility, leave alone (default false)
+    :param debug: whether to print debug information (default false)
+    """
     if not name_in_url:
         import cgi
         import urllib

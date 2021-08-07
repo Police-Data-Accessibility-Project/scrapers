@@ -19,7 +19,16 @@ def single_pdf_scraper(
     name_in_url=True,
     filename="null",
 ):
-
+    """
+    Scrape a single file from a website
+    :param save_dir: where the files should be saved, string
+    :param url_2: url of the file
+    :param try_overwite: deprecated
+    :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
+    :param flavor: "flavor" that camelot should use to exract data from pdfs. "stream" or "lattice" (default stream)
+    :param name_in_url: whether or not the filename is in the url (default true)
+    :param filename: allows setting of filename. will be ignored unless name_in_url is false. (default null)
+    """
     # if save_dir does not exist, make the directory
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
