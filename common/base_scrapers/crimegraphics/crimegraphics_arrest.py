@@ -40,6 +40,7 @@ def crimegraphics_arrest(configs, save_dir, stats=False, configs_file=False):
     if not configs_file:  # Default setting
         department_code = configs["department_code"]
         url = configs["url"]
+
     else:
         department_code = configs.department_code
         url = configs.url
