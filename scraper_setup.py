@@ -47,7 +47,6 @@ class ScraperGui(QtWidgets.QMainWindow):
         if scraper_choice == 0:  #  0 is list_pdf
             print("0")
             self.tabWidget.setTabEnabled(1, True)  # Re-enable tabs
-            self.tabWidget.setTabEnabled(2, True)
             self.setStyleSheet(
                 "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
             )  # Force stylesheet to recompute
@@ -174,6 +173,12 @@ class ScraperGui(QtWidgets.QMainWindow):
             if default_save_dir in line:
                 line = line.replace(default_save_dir, save_dir_input)
             sys.stdout.write(line)
+
+        # Enable next page, then switch to it
+        self.tabWidget.setTabEnabled(2, True)
+        # Force stylesheet to recompute
+        self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")
+        self.tabWidget.setCurrentIndex(2)
 
     # list_pdf create
     def create_button_pressed(self):
