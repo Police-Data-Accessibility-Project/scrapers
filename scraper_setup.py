@@ -76,13 +76,13 @@ class ScraperGui(QtWidgets.QMainWindow):
 
     def create_cg_pressed(self):
         #  Get user input
-        country_input = self.country_input_cg.text()
-        state_input = self.state_input_cg.text()
-        county_input = self.county_input_cg.text()
-        department_type_input = str(self.department_type_input_cg.currentText())
-        city_input = self.city_input.text()
-        url_input = self.url_input_cg.text()
-        save_dir_input = self.save_dir_input_cg.text()
+        country_input = self.country_input_cg.text().lower()
+        state_input = self.state_input_cg.text().lower()
+        county_input = self.county_input_cg.text().lower()
+        department_type_input = str(self.department_type_input_cg.currentText()).lower()
+        city_input = self.city_input.text().lower()
+        url_input = self.url_input_cg.text().lower()
+        save_dir_input = self.save_dir_input_cg.text().lower()
 
         if self.choose_cg_input.currentIndex() == 0:
             cg_type = "crimegraphics_bulletin.py"
