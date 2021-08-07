@@ -25,7 +25,14 @@ from common.utils import page_update
 def opendata_scraper2(
     save_url, save_folder, sleep_time=1, save_subfolder=False, socrata=False
 ):
-
+    """
+    Scrape opendata (and similar) websites
+    :param save_url: provide nested list following provided example
+    :param save_folder: parent directory where data should be saved
+    :param sleep_time: set to robots.txt crawl-delay if available (default 1)
+    :param save_subfolder: whether or not to you are trying to save in a subfolder per url (default false)
+    :param socrata: if you are scraping a socrata website, set to true (default false)
+    """
     for i, row in enumerate(save_url):
         # get the api response
         print(f"   [*] Getting data for table {save_url[i][0]}...")

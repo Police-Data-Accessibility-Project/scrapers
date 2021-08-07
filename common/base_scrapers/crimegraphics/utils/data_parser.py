@@ -13,6 +13,13 @@ import re
 data_lists = []
 
 def data_parser(configs, save_dir, table):
+    """
+    Parser for crimegraphics' bulletins
+    :param configs: dicionary configs
+    :param save_dir: directory to save to
+    :param table: data dable from html
+    """
+
     # for a in table.childGenerator():
     #     print(type(a), str(a))
     with open("text.txt", "w") as data:
@@ -146,7 +153,7 @@ def data_parser(configs, save_dir, table):
 
     # print(data_lists)
     columns = ["ReferenceNum", "ActivityDate", "ActivityTime", "ActivityType", "ActivityInitiator", "ActivityDescription", "Disposition", "ActivityPlace", "ActivityStreet", "ActivityCity"]
-    index = [i[0] for i in data_lists] #first element of every list in yourlist
+    index = [i[0] for i in data_lists] # first element of every list in yourlist
     not_index_list = [i for i in data_lists]
     pd = pandas.DataFrame(not_index_list, columns = columns)
     date_name = date.today()

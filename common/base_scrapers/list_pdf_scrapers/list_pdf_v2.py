@@ -40,6 +40,16 @@ def list_pdf_v2(
     extract_tables=False,
     configs_file=False,
 ):
+    """
+    Scrape a list of files from a website
+    :param configs: dictionary of configuration
+    :param save_dir: where the files should be saved, string
+    :param name_in_url: whether or not the filename is in the url (default true)
+    :param extract_name: extract name from an href's string instead of url, set name_in_url false (default false)
+    :param add_date: used when a document is overwritten on a website. set no_overwrite true if using. (default false)
+    :param try_overwite: mostly deprecated. ask before using
+    :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
+    """
     # If save_dir does not exist, make the directory
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)

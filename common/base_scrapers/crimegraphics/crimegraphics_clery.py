@@ -32,6 +32,13 @@ def time_dif(stats, string, start, end):
 
 # stats default to False
 def crimegraphics_clery(configs, save_dir, stats=False, configs_file=False):
+    """
+    Scrape a crimegraphics clery. Seen for colleges
+    :param configs: dictionary of configuration
+    :param save_dir: where the files should be saved, string
+    :param stats: whether or not to display execution stats (default false)
+    :param configs_file: for backwards compatibility, leave alone. (default false)
+    """
     if not configs_file:  # Default setting
         department_code = configs["department_code"]
         url = configs["url"]

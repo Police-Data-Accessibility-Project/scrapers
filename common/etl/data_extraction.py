@@ -5,6 +5,14 @@ import os
 # save_dir = "/csv/"
 
 def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False, flavor="stream"):
+    """
+    Test implementation of camelot's pdf extraction
+    :param pdf_directory: parent directory of pdf folder(s) (default "./data/")
+    :param csv_dir: where csv result will be saved. appended to root directory. (default "./data/")
+    :param delete_pdf: whether to delete the pdf when done. best to leave false (default False)
+    :param flavor: camelot extraction flavor, either "stream" or "lattice". (default "stream")
+    """
+    
     for root, dirs, files in os.walk(pdf_directory):
         if "csv" not in root:
             if not os.path.exists(root + csv_dir):
