@@ -12,22 +12,28 @@ def pdf_extract(pdf_directory="./data/", csv_dir="/csv/", delete_pdf=False, flav
     :param delete_pdf: whether to delete the pdf when done. best to leave false (default False)
     :param flavor: camelot extraction flavor, either "stream" or "lattice". (default "stream")
     """
-    
+    #  Iterate over subfolders of pdf_directory
     for root, dirs, files in os.walk(pdf_directory):
+        #  Check if we need to create a folder for the csvs
         if "csv" not in root:
             if not os.path.exists(root + csv_dir):
                 print(" [*] Making csv_dir... \n")
                 os.makedirs(root + csv_dir)
+
         for name in files:
             # r.append(os.path.join(root, name))
             print(f"  [*] Extracting: {root}{os.sep}{name}")
+            #  We don't want to try and extract from the csv folder
             if "csv" not in root:
                 print(" [*] Reading pdf: " + name)
                 tables = camelot.read_pdf(root + os.sep + name, flavor=flavor)
+
                 print("    [*] Exporting tables to: " + root + os.sep + csv_dir)
                 tables.export(root + os.sep + csv_dir + os.sep + name.strip(".pdf") + ".csv", f='csv', compress=False) # json, excel, html
+
                 try:
                     print(f"    [STATS] {tables[0].parsing_report}")
+
                 except IndexError:
                     print("    [!] No tables were found in " + root + os.sep + name)
                     pass
