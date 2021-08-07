@@ -22,11 +22,11 @@ class ScraperGui(QtWidgets.QMainWindow):
         super(ScraperGui, self).__init__()
         uic.loadUi(ui_file, self)
 
-        self.tabWidget.setCurrentIndex(0)       # Start on the first page
+        self.tabWidget.setCurrentIndex(0)  # Start on the first page
         self.tabWidget.setTabEnabled(1, False)  # Disable the Choose Scraper tab
         self.tabWidget.setTabEnabled(2, False)  # Disable the Setup tab
         self.tabWidget.setTabEnabled(3, False)  # Disable Crimegraphic's choose scraper tab
-        self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ") # Hide the tabs
+        self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
 
         """Initialize buttons"""
         self.next_button.clicked.connect(self.next_button_pressed)
@@ -43,11 +43,13 @@ class ScraperGui(QtWidgets.QMainWindow):
     def next_button_pressed(self):
         scraper_choice = self.scraper_choice.currentIndex()  # Get index of combobox
         print(scraper_choice)
-        if scraper_choice == 0: #  0 is list_pdf
+        if scraper_choice == 0:  #  0 is list_pdf
             print("0")
             self.tabWidget.setTabEnabled(1, True)  # Re-enable tabs
             self.tabWidget.setTabEnabled(2, True)
-            self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Force stylesheet to recompute
+            self.setStyleSheet(
+                "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+            )  # Force stylesheet to recompute
             self.tabWidget.setCurrentIndex(1)  # Change to Choose Scraper Page
 
         elif scraper_choice == 1:  # 1 is opendata
@@ -55,7 +57,9 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         elif scraper_choice == 2:  # 2 is crimegraphics
             self.tabWidget.setTabEnabled(3, True)  # Enable Crimegraphics Choose Scraper
-            self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Force stylesheet to recompute
+            self.setStyleSheet(
+                "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+            )  # Force stylesheet to recompute
             self.tabWidget.setCurrentIndex(3)
 
     def choose_cg_pressed(self):
@@ -135,16 +139,27 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         # Edit the save_dir
         save_dir_input = self.save_dir_input.text().replace(" ", "_").rstrip("/")  # Clean input of spaces
-        save_dir_input = "save_dir = ./data/" + save_dir_input.replace("./data/", "") + "/"  # Remove any accidental data prepends
+
+        if save_dir_input:
+            print("save_dir_input not blank")
+            save_dir_input = save_dir_input.replace("./data/","")  # Remove any accidental data prepends
+            save_dir_input = 'save_dir = "./data/' + save_dir_input + '"'
+        else:
+            print("save_dir_input blank")
+            save_dir_input = 'save_dir = "./data/"'
+
+
         # make sure that black formatting does not affect this
         # outer two quotes should be single
         default_save_dir = 'save_dir = "./data/"'
+        print(save_dir_input)
         for line in fileinput.input(full_path, inplace=1):
 
             if default_save_dir in line:
                 line = line.replace(default_save_dir, save_dir_input)
             sys.stdout.write(line)
 
+    # list_pdf create
     def create_button_pressed(self):
         # This is executed when the button is pressed
         is_v3 = False
@@ -178,25 +193,25 @@ class ScraperGui(QtWidgets.QMainWindow):
                     elif '"non_important": [],"' in line:
                         is_v3 = True
 
-            '''Edit the config dictionary within the scraper script'''
+            """Edit the config dictionary within the scraper script"""
             with open(full_path, "r+") as output:
                 # output.seek(config_start)
-                lines = output.readlines()[config_start:]  # This doesn't seem to do what I want
+                lines = output.readlines() #[config_start:]  # This doesn't seem to do what I want
                 print("Lines length: " + str(len(lines)))
                 # for i in range(config_start, config_end):
                 if not is_v3:
                     config_list = [
                         f'"webpage":"{webpage_input}"',
                         f'"web_path":"{web_path_input}"',
-                        f'"domain_included":"{domain_included_input}"',
+                        f'"domain_included":{domain_included_input}',
                         f'"domain":"{domain_input}"',
-                        f'"sleep_time":"{sleep_time_input}"',
+                        f'"sleep_time":{sleep_time_input}',
                     ]
                 else:
                     config_list = [
                         f'"webpage":"{webpage_input}"',
                         f'"web_path":"{web_path_input}"',
-                        f'"domain_included":"{domain_included_input}"',
+                        f'"domain_included":{domain_included_input}',
                         f'"domain":"{domain_input}"',
                         f'"sleep_time": {sleep_time_input}',
                         f'"non_important":{unimportant_input_list}',
@@ -211,22 +226,23 @@ class ScraperGui(QtWidgets.QMainWindow):
             for line in fileinput.input(full_path, inplace=1):
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
-                        line = line.replace(lines_to_change[i], config_list[i])
+                        line = line.replace(lines_to_change[i], config_list[i] + ",")
                 sys.stdout.write(line)
 
         except NameError as exception:
             import traceback
+
             traceback.print_exc()
             print(str(exception))
             print("You need to complete the first menu first")
-            self.tabWidget.setCurrentIndex(0) # Go back to the start age
+            self.tabWidget.setCurrentIndex(0)  # Go back to the start age
             self.dialog()
             return
+
 
 app = QtWidgets.QApplication(sys.argv)
 window = ScraperGui()
 app.exec_()
-
 
 
 # def create_new_folder(folder_name):
