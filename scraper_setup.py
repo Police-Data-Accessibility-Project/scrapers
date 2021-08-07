@@ -46,6 +46,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         print(scraper_choice)
         if scraper_choice == 0:  #  0 is list_pdf
             print("0")
+            self.tabWidget.setTabEnabled(3, False) # Disable crimegraphics tabs if enabled
             self.tabWidget.setTabEnabled(1, True)  # Re-enable tabs
             self.setStyleSheet(
                 "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
@@ -56,7 +57,12 @@ class ScraperGui(QtWidgets.QMainWindow):
             print("ERROR: Not Implemented")
 
         elif scraper_choice == 2:  # 2 is crimegraphics
-            self.tabWidget.setTabEnabled(3, True)  # Enable Crimegraphics Choose Scraper
+            # Disable the list_pdf tabs (if enabled)
+            self.tabWidget.setTabEnabled(1, False)
+            self.tabWidget.setTabEnabled(2, False)
+
+            # Enable Crimegraphics Choose Scraper
+            self.tabWidget.setTabEnabled(3, True)
             self.setStyleSheet(
                 "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
             )  # Force stylesheet to recompute
