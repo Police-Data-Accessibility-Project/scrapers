@@ -117,12 +117,13 @@ class ScraperGui(QtWidgets.QMainWindow):
         global scraper_name
         # /country/state/county/type/city/
         # Get the directory information
-        country_input = self.country_input.text()
-        state_input = self.state_input.text()
-        county_input = self.county_input.text()
-        department_type_input = str(self.department_type_input.currentText())
-        city_input = self.city_input.text()
+        country_input = self.country_input.text().lower()
+        state_input = self.state_input.text().lower()
+        county_input = self.county_input.text().lower()
+        department_type_input = str(self.department_type_input.currentText().lower())
+        city_input = self.city_input.text().lower()
         scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        scraper_save_dir = scraper_save_dir.lower()
 
         # Create directory if it doesn't exist
         if not os.path.exists(scraper_save_dir):
@@ -208,6 +209,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                         f'"sleep_time":{sleep_time_input}',
                     ]
                 else:
+                    print("is v3, putting non_important list")
                     config_list = [
                         f'"webpage":"{webpage_input}"',
                         f'"web_path":"{web_path_input}"',
@@ -221,6 +223,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             lines_to_change = ['"webpage": "",', '"web_path": "",', '"domain_included": False,', '"domain": "",', '"sleep_time": 5,']
 
             if is_v3:
+                print("is v3")
                 lines_to_change = lines_to_change.append('"non_important": [],')
             # Use fileinput to replace config lines.
             for line in fileinput.input(full_path, inplace=1):
