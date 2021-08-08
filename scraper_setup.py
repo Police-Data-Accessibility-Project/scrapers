@@ -257,7 +257,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Copy the scraper file
         scraper_name_input = self.scraper_name_input.text()
         scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
-        template_folder = "./Base_Scripts/Scrapers/list_pdf_extractors/"
+        template_folder = "./Base_Scripts/Scrapers/list_pdf_scrapers/"
 
         # Step 1
         scraper_input_text = self.scraper_input.currentText()  # Get the selected scraper text
