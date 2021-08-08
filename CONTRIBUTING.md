@@ -1,3 +1,6 @@
+# Resources
+Check out `/base_scripts`, `/common`, and `/starter_template` for a head start.
+
 # Write a data scraper
 
 ## Overview

@@ -38,9 +38,15 @@ def check_if_exists(save_dir, file_name, add_date):
         print("    [?] add_date is True")
         with open("last_run.txt", "r") as last_run:
             # This deletes the date from the file_name in order to compare.
-            file_name = re.sub("^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$", '', file_name)
+            file_name = re.sub(
+                "^[^0-9\t\n]*([0-9]{4})_0*([0-9]+?)_0*([0-9]+?)(?:\.(?:[a-zA-Z]*)?)?$",
+                "",
+                file_name,
+            )
             # This removes the extension, and appends the previous run's date to the file_name
-            file_name = file_name.strip(".pdf") + "_" + last_run.read().strip(".pdf") + ".pdf"
+            file_name = (
+                file_name.strip(".pdf") + "_" + last_run.read().strip(".pdf") + ".pdf"
+            )
             print(file_name)
             if os.path.exists(save_dir + file_name):
                 print(" [*] File found... Returning True")
@@ -88,8 +94,8 @@ def get_pdf(
         try:
             print(" [*] Requesting file....")
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
-        except urllib.error.HTTPError:
-            print("   [!] HTTP Error 404: Not Found")
+        except urllib.error.HTTPError as exception:
+            print(f"   [!] {exception}")
             print("   [!] URL: " + str(url_2))
             print("")
             if debug:
@@ -125,8 +131,8 @@ def get_pdf(
         try:
             print(" [*] Requesting file...")
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
-        except urllib.error.HTTPError:
-            print("    [!] HTTP Error 404: Not Found")
+        except urllib.error.HTTPError as exception:
+            print(f"    [!] {exception}")
             print("")
             print("    [!] URL: " + str(url_2))
             if debug:
@@ -152,19 +158,21 @@ def get_pdf(
                 + str(date_name).replace("-", "_")
                 + ".pdf"
             )
-            print("   [*] file_name: "+file_name)
+            print("   [*] file_name: " + file_name)
             print("   [*] Saving file...")
             with open(save_dir + file_name, "wb") as file:
                 file.write(pdf.read())
             file.close()
     # Checks if the files exists, and that `try_overwite` is True
     elif os.path.exists(save_dir + file_name) == True and try_overwite == True:
-        print(" [!!!] try_overwite is set to True, verify that you want this before continuing")
+        print(
+            " [!!!] try_overwite is set to True, verify that you want this before continuing"
+        )
         # Tries to get the file and set it to pdf
         try:
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
-        except urllib.error.HTTPError:
-            print("HTTP Error 404: Not Found")
+        except urllib.error.HTTPError as exception:
+            print(exception)
             print("")
             print("URL: " + str(url_2))
             if debug:
@@ -201,8 +209,8 @@ def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
         try:
             print(" [*] Requesting file...")
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
-        except urllib.error.HTTPError:
-            print("    [!] HTTP Error 404: Not Found")
+        except urllib.error.HTTPError as exception:
+            print(f"    [!] {exception} ")
             print("    [!] URL: " + str(url_2))
             print("")
             if debug:

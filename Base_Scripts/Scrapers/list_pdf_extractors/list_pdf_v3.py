@@ -1,6 +1,5 @@
 import sys
 import os
-import configs
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[5]
