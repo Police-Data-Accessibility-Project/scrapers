@@ -5,7 +5,7 @@ import sys
 from shutil import copyfile
 from pathlib import Path
 
-ui_file = "common/gui/scraper_ui.ui"
+ui_file = "common/gui/scraper_ui_v2.ui"
 error_modal = "common/gui/error_modal.ui"
 
 
@@ -26,6 +26,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.tabWidget.setTabEnabled(1, False)  # Disable the Choose Scraper tab
         self.tabWidget.setTabEnabled(2, False)  # Disable the Setup tab
         self.tabWidget.setTabEnabled(3, False)  # Disable Crimegraphic's choose scraper tab
+        self.tabWidget.setTabEnabled(4, False)  # Disable SetupOpendata tab
+        self.tabWidget.setTabEnabled(5, False)
         self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
 
         """Initialize buttons"""
@@ -34,6 +36,10 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.create_scraper_button.clicked.connect(self.create_button_pressed)
         self.create_cg_button.clicked.connect(self.create_cg_pressed)
         self.choose_cg_button.clicked.connect(self.choose_cg_pressed)
+        self.setup_opendata_button.clicked.connect(self.setup_opendata_pressed)
+        self.addRow_button.clicked.connect(self._addRow)
+        self.removeRow_button.clicked.connect(self._removeRow)
+        self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
         self.show()
 
     def dialog(self):
@@ -54,6 +60,14 @@ class ScraperGui(QtWidgets.QMainWindow):
             self.tabWidget.setCurrentIndex(1)  # Change to Choose Scraper Page
 
         elif scraper_choice == 1:  # 1 is opendata
+            self.tabWidget.setTabEnabled(1, False)
+            self.tabWidget.setTabEnabled(2, False)
+            self.tabWidget.setTabEnabled(3, False)
+            self.tabWidget.setTabEnabled(4, True)
+            self.setStyleSheet(
+                "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+            )  # Force stylesheet to recompute
+            self.tabWidget.setCurrentIndex(4)
             print("ERROR: Not Implemented")
 
         elif scraper_choice == 2:  # 2 is crimegraphics
@@ -68,6 +82,106 @@ class ScraperGui(QtWidgets.QMainWindow):
             )  # Force stylesheet to recompute
             self.tabWidget.setCurrentIndex(3)
 
+    def setup_opendata_pressed(self):
+        # Step 1
+        global full_path
+        global scraper_name
+        global is_v3
+        global sleep_time
+        global save_dir_input
+
+        country_input = self.country_input_opendata.text().lower()
+        state_input = self.state_input_opendata.text().lower()
+        county_input = self.country_input_opendata.text().lower()
+        department_type_input = str(self.department_type_input_opendata.currentText()).lower()
+        city_input = self.city_input.text().lower()
+        save_dir_input = self.save_dir_input_opendata.text().lower()
+        scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        scraper_save_dir = scraper_save_dir.lower()
+        sleep_time = self.sleep_time_input_opendata.value()
+
+        # Create directory if it doesn't exist
+        if not os.path.exists(scraper_save_dir):
+            os.makedirs(scraper_save_dir)
+
+        # Step 2
+        save_dir_input = self.save_dir_input_opendata.text().replace(" ", "_").rstrip("/")  # Clean input of spaces
+
+        if save_dir_input:
+            print("save_dir_input not blank")
+            save_dir_input = save_dir_input.replace("./data/","")  # Remove any accidental data prepends
+            save_dir_input = 'save_dir = "./data/' + save_dir_input + '"'
+        else:
+            print("save_dir_input blank")
+            save_dir_input = 'save_dir = "./data/"'
+
+        # Step 3
+        # Copy the scraper file
+        scraper_name_input = self.scraper_name_input_opendata.text()
+        scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
+        template_folder = "./Base_Scripts/Scrapers/opendata/"
+        full_path = scraper_save_dir + scraper_name
+        print("full_path" + str(full_path))
+
+        # Copy and rename the scraper
+        scraper_input_text = "opendata_scraper.py"
+        copyfile(template_folder + scraper_input_text, full_path)
+
+        self.tabWidget.setTabEnabled(5, True)
+        self.tabWidget.setCurrentIndex(5)
+        self.setStyleSheet(
+            "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+        )  # Force stylesheet to recompute
+
+    def opendata_create_pressed(self):
+        """Edit the config dictionary within the scraper script"""
+        try:
+            with open(full_path, "r+") as output:
+                # output.seek(config_start)
+                lines = output.readlines() #[config_start:]  # This doesn't seem to do what I want
+                print("Lines length: " + str(len(lines)))
+                save_url = [[]]
+                print(self.opendataTable.rowCount())
+                for i in range(self.opendataTable.rowCount()):
+                    data = []
+                    for column in range(0,2):
+                        # print(f"i = {i}, column = {column} " + str(self.opendataTable.item(i, column).text()))
+                        data.append(self.opendataTable.item(i, column).text())
+
+                    save_url[0].append(data)
+                print(save_url)
+
+            for line in fileinput.input(full_path, inplace=1):
+                if "save_url = []" in line:
+                    line = line.replace(line, "save_url = " + str(save_url))
+            sys.stdout.write(line)
+
+            lines_to_change = ['save_folder = "./data/"', 'opendata_scraper2(save_url, save_folder, sleep_time=1)']
+            change_to = [f'save_folder = "{save_dir_input}"', f"opendata_scraper2(save_url, save_folder, sleep_time={sleep_time})"]
+            for line in fileinput.input(full_path, inplace=1):
+                for i in range(len(lines_to_change)):
+                    if lines_to_change[i] in line:
+                        line = line.replace(lines_to_change[i], config_list[i])
+                sys.stdout.write(line)
+
+        except NameError as exception:
+            import traceback
+
+            traceback.print_exc()
+            print(str(exception))
+            print("You need to complete the first menu first")
+            self.tabWidget.setCurrentIndex(0)  # Go back to the start age
+            self.dialog()
+            return
+
+    def _addRow(self):
+        rowCount = self.opendataTable.rowCount()
+        self.opendataTable.insertRow(rowCount)
+
+    def _removeRow(self):
+        if self.opendataTable.rowCount() > 0:
+            self.opendataTable.removeRow(self.opendataTable.rowCount()-1)
+
     def choose_cg_pressed(self):
         if self.choose_cg_input.currentIndex() == 0:
             self.save_dir_input_cg.setText("bulletins")
@@ -76,13 +190,13 @@ class ScraperGui(QtWidgets.QMainWindow):
 
     def create_cg_pressed(self):
         #  Get user input
-        country_input = self.country_input_cg.text().lower()
-        state_input = self.state_input_cg.text().lower()
-        county_input = self.county_input_cg.text().lower()
-        department_type_input = str(self.department_type_input_cg.currentText()).lower()
-        city_input = self.city_input.text().lower()
-        url_input = self.url_input_cg.text().lower()
-        save_dir_input = self.save_dir_input_cg.text().lower()
+        country_input = self.country_input_cg.text()
+        state_input = self.state_input_cg.text()
+        county_input = self.county_input_cg.text()
+        department_type_input = str(self.department_type_input_cg.currentText())
+        city_input = self.city_input.text()
+        url_input = self.url_input_cg.text()
+        save_dir_input = self.save_dir_input_cg.text()
 
         if self.choose_cg_input.currentIndex() == 0:
             cg_type = "crimegraphics_bulletin.py"
@@ -203,23 +317,6 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         # Get the index of config = {
         try:
-            with open(full_path, "r+") as output:
-                i = 0
-                f = 0
-                for num, line in enumerate(output, 1):
-                    if "configs = {" in line:
-                        i += 1
-                        if i > 1:
-                            config_start = num
-                            print(line, num)
-                    elif "}" in line:
-                        f += 1
-                        if f > 1:
-                            config_end = num
-                            print(line, num)
-                    elif '"non_important": [],"' in line:
-                        is_v3 = True
-
             """Edit the config dictionary within the scraper script"""
             with open(full_path, "r+") as output:
                 # output.seek(config_start)
