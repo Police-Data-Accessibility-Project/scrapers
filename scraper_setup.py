@@ -144,7 +144,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                 print(self.opendataTable.rowCount())
                 for i in range(self.opendataTable.rowCount()):
                     data = []
-                    for column in range(0,2):
+                    for column in range(0,2):  # There are two columns to get
                         # print(f"i = {i}, column = {column} " + str(self.opendataTable.item(i, column).text()))
                         data.append(self.opendataTable.item(i, column).text())
 
