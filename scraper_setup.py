@@ -157,7 +157,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             sys.stdout.write(line)
 
             lines_to_change = ['save_folder = "./data/"', 'opendata_scraper2(save_url, save_folder, sleep_time=1)']
-            change_to = [f'save_folder = "{save_dir_input}"', f"opendata_scraper2(save_url, save_folder, sleep_time={sleep_time})"]
+            change_to = [save_dir_input, f"opendata_scraper2(save_url, save_folder, sleep_time={sleep_time})"]
             for line in fileinput.input(full_path, inplace=1):
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
