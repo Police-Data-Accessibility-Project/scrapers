@@ -92,7 +92,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         country_input = self.country_input_opendata.text().upper()
         state_input = self.state_input_opendata.text().lower()
-        county_input = self.country_input_opendata.text().lower()
+        county_input = self.county_input_opendata.text().lower()
         department_type_input = str(self.department_type_input_opendata.currentText()).lower()
         city_input = self.city_input.text().lower()
         save_dir_input = self.save_dir_input_opendata.text().lower()
