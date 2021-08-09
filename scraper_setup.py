@@ -90,7 +90,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         global sleep_time
         global save_dir_input
 
-        country_input = self.country_input_opendata.text().lower()
+        country_input = self.country_input_opendata.text().upper()
         state_input = self.state_input_opendata.text().lower()
         county_input = self.country_input_opendata.text().lower()
         department_type_input = str(self.department_type_input_opendata.currentText()).lower()
