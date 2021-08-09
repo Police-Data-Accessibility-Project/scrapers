@@ -110,7 +110,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         if save_dir_input:
             print("save_dir_input not blank")
             save_dir_input = save_dir_input.replace("./data/","")  # Remove any accidental data prepends
-            save_dir_input = 'save_dir = "./data/' + save_dir_input + '"'
+            save_dir_input = 'save_dir = "./data/' + save_dir_input + '/"'
         else:
             print("save_dir_input blank")
             save_dir_input = 'save_dir = "./data/"'
@@ -151,17 +151,19 @@ class ScraperGui(QtWidgets.QMainWindow):
                     save_url[0].append(data)
                 print(save_url)
 
-            for line in fileinput.input(full_path, inplace=1):
-                if "save_url = []" in line:
-                    line = line.replace(line, "save_url = " + str(save_url))
-            sys.stdout.write(line)
+            # for line in fileinput.input(full_path, inplace=1):
+            #     if "save_url = []" in line:
+            #         line = line.replace(line, "save_url = " + str(save_url))
+            #         sys.stdout.write(line)
 
-            lines_to_change = ['save_folder = "./data/"', 'opendata_scraper2(save_url, save_folder, sleep_time=1)']
-            change_to = [save_dir_input, f"opendata_scraper2(save_url, save_folder, sleep_time={sleep_time})"]
+            save_url_string = "save_url = " + str(save_url)
+
+            lines_to_change = ['save_url = []','save_folder = "./data/"', 'opendata_scraper2(save_url, save_folder, sleep_time=1)']
+            change_to = [save_url_string, save_dir_input, f"opendata_scraper2(save_url, save_folder, sleep_time={sleep_time})"]
             for line in fileinput.input(full_path, inplace=1):
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
-                        line = line.replace(lines_to_change[i], config_list[i])
+                        line = line.replace(lines_to_change[i], change_to[i])
                 sys.stdout.write(line)
 
         except NameError as exception:
