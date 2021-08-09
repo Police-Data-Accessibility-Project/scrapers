@@ -97,7 +97,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         city_input = self.city_input.text().lower()
         save_dir_input = self.save_dir_input_opendata.text().lower()
         scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
-        scraper_save_dir = scraper_save_dir.lower()
+        scraper_save_dir = scraper_save_dir
         sleep_time = self.sleep_time_input_opendata.value()
 
         # Create directory if it doesn't exist
