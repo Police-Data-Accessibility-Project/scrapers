@@ -1,0 +1,63 @@
+{
+    "agency_id": "90999f3d03ca41e7ae7c22ffaf278023",
+    "agency_info": {
+        "agency_name": "Chico Police Department",
+        "agency_coords": {
+            "lat": "39.73572",
+            "lng": "-121.81535"
+        },
+        "agency_type": 4,
+        "city": "Chico",
+        "state": "CA",
+        "zip": "95928",
+        "county_fips": "06007"
+    },
+    "data": [
+        {
+            "dataset_id": "3ae6ddf7cf734e359b1ebfe244e9997f",
+            "url": "https://csucpd.crimegraphics.com/2013/default.aspx#CLERYMenu",
+            "full_data_location": "data/daily_bulletins",
+            "source_type": 3,
+            "data_type": 25,
+            "format_type": 5,
+            "update_freq": 6,
+            "last_modified": "2021-05-25 21:07:03.793049 +0000 UTC",
+            "mapping": {
+                "id": "__uuid__",
+                "ChargeDescription": "ChargeDescription",
+                "CaseNum": "CaseNum",
+                "ReportDate": "ReportDate",
+                "OffenseDate": "OffenseDate",
+                "Location": "Location",
+                "ChargeDisposition": "ChargeDisposition",
+                "datasets_id": "__dataset_id__",
+                "date_insert": "__date__"
+            }
+        },
+        {
+            "dataset_id": "f8a47c87016f49d3b7c0b21f4c50d635",
+            "url": "https://csucpd.crimegraphics.com/2013/default.aspx#BulletinMenu",
+            "full_data_location": "data/bulletins",
+            "source_type": 3,
+            "data_type": 26,
+            "format_type": 5,
+            "update_freq": 6,
+            "last_modified": "2021-05-25 21:07:52.435043 +0000 UTC",
+            "mapping": {
+                "id": "__uuid__",
+                "ReferenceNum": "ReferenceNum",
+                "ActivityDate": "ActivityDate",
+                "ActivityTime": "ActivityTime",
+                "ActivityType": "ActivityType",
+                "ActivityInitiator": "ActivityInitiator",
+                "ActivityDescription": "ActivityDescription",
+                "Disposition": "Disposition",
+                "ActivityPlace": "ActivityPlace",
+                "ActivityStreet": "ActivityStreet",
+                "ActivityCity": "ActivityCity",
+                "datasets_id": "__dataset_id__",
+                "date_insert": "__date__"
+            }
+        }
+    ]
+}

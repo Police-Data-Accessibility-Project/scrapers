@@ -1,0 +1,25 @@
+{
+    "agency_id": "02342e64a2c011eb9c9b8c8590d4a7fc",
+    "agency_info":{
+        "agency_name":"Humboldt State University Campus Police",
+        "agency_coords":{"lat": "40.87464904785156", "lng":"-124.07906341552734"},
+        "agency_type": 5,
+        "city": "Arcata",
+        "state": "CA",
+        "zip":"95521",
+        "county_fips":"06023"
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"https://hsupd.crimegraphics.com/2013/default.aspx",
+            "full_data_location":"/data",
+            "source_type": 3,
+            "data_type": 7,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
+    ]
+    
+}

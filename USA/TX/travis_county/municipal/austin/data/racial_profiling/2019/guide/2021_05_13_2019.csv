@@ -1,0 +1,8 @@
+"data_purpose","unnamed_column"
+"This Racial Profiling dataset provides the raw data needed to identify trends in traffic stops. It is used to help identify potential improvements in department policy, tactics, and training.",
+"Corresponding data:",
+"This guide corresponds to the Racial Profiling data posted on the city data portal here:",
+"https://data.austintexas.gov/browse?Additional-Information_Department=Austin+Police+&tags=racial profiling",
+"Field definitions:",
+"Below are the fields contained in the dataset and definitions. Note: there are three datasets that together make up Racial Profiling data: Citations, Arrests, and Warnings/Field Observations. Citations data contains traffic stop data from citations issued by officers. Arrests data contains traffic stop data from arrests made by officers. Warnings and Field Observations data contains warning and field observation street check data that included a
+TRUNCATED

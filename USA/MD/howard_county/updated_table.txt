@@ -1,0 +1,1 @@
+save_url = [['uof_stats/', 'https://opendata.howardcountymd.gov/resource/aas5-u28t.csv'], ['cfs/', 'https://opendata.howardcountymd.gov/resource/qccx-65fg.csv'], ['crime_by_type/', 'https://opendata.howardcountymd.gov/resource/hrwk-c83k.csv']]

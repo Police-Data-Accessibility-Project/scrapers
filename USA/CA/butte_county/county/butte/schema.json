@@ -1,0 +1,25 @@
+{
+    "agency_id": "62652f07012349d98407c82503533d0d",
+    "agency_info":{
+        "agency_name":"Butte County Sheriff's Department",
+        "agency_coords":{"lat": "39.71446", "lng":"-121.80583"},
+        "agency_type": 3,
+        "city": "Chico",
+        "state": "CA",
+        "zip":"95928",
+        "county_fips":"06007"
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"http://www.buttecounty.net/sheriffcoroner/bookinglogs",
+            "full_data_location":"/data/arrests/tables",
+            "source_type": 2,
+            "data_type": 3,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
+    ]
+    
+}

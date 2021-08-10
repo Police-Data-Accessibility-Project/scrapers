@@ -1,0 +1,4 @@
+"template_id","reported_date","reported_time","occured_date_time","call_type","initial_call_type","final_call_type","disposition","use_of_force_indicator","subject_veteran_indicator","cit_officer_requested","cit_officer_dispatched","cit_officer_arrived","officer_id","officer_gender","officer_race","officer_year_of_birth","officer_years_of_experience","cit_certified_indicator","officer_bureau_desc","officer_precinct_desc","officer_squad_desc","precinct","sector","beat"
+"78352","1900-01-01T00:00:00","00:00:00","2015-09-01T15:25:09.000","911","PERSON IN BEHAVIORAL/EMOTIONAL CRISIS","--CRISIS COMPLAINT - GENERAL","Voluntary Committal","N","N","N","N","Y","7497  ","M","White","1982-12-31T00:00:00","-1","N",,,,"North","UNION","U2    "
+"315652","1900-01-01T00:00:00","00:00:00","2017-10-07T01:28:33.000","911","DISTURBANCE, MISCELLANEOUS/OTHER","--CRISIS COMPLAINT - GENERAL","No Action Possible / Necessary","N","N","N","N","N
+TRUNCATED

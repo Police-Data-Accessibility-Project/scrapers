@@ -1,0 +1,45 @@
+{
+    "agency_id": "b83eb5be02144bf9a884d1697dc24a51",
+    "agency_info":{
+        "agency_name":"Antioch Police Department",
+        "agency_coords":{"lat": "38.016151428222656", "lng":"-121.82064819335938"},
+        "agency_type": 4,
+        "city": "Antioch",
+        "state": "CA",
+        "zip":"94509",
+        "county_fips":"06013"
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"https://www.antiochca.gov/fc/police/crime-maps/this-weeks-aar.pdf",
+            "full_data_location":"/data/arrests",
+            "source_type": 2,
+            "data_type": 2,
+            "format_type": 1,
+            "mapping":[
+            ]
+        },
+        {
+            "dataset_id": "",
+            "url":"https://www.antiochca.gov/fc/police/crime-maps/this-weeks-cfs.pdf",
+            "full_data_location":"/data/cfs",
+            "source_type": 2,
+            "data_type": 4,
+            "format_type": 1,
+            "mapping":[
+            ]
+        },
+        {
+            "dataset_id": "",
+            "url":"https://www.antiochca.gov/police/crime-statistics/crime-statistics/",
+            "full_data_location":"/data",
+            "source_type": 2,
+            "data_type": 23,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
+    ]
+    
+}

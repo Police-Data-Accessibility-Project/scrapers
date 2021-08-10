@@ -1,0 +1,6 @@
+ï»¿OBJECTID,masterIncidentNumber,responseDate,reason,problem,callDisposition,citationIssued,personSearch,vehicleSearch,preRace,race,gender,lat,long,x,y,policePrecinct,neighborhood,lastUpdateDate
+1,16-395258,2016/10/31 22:40:47+00,,Suspicious Person (P),BKG-Booking,,YES,NO,Black,Black,Male,44.97957,-93.27257,-10383055.27,5618306.33,1,Downtown West,2017/08/08 10:25:31+00
+2,16-395296,2016/10/31 23:06:36+00,,Traffic Law Enforcement (P),TAG-Tagged,,NO,NO,Unknown,Black,Male,44.96268936,-93.27592097,-10383428.0252,5615649.6003,5,Steven's Square - Loring Heights,2017/08/08 10:26:13+00
+3,16-395326,2016/10/31 23:20:54+00,,Attempt Pick-Up (P),RFD-Refused,,NO,NO,Unknown,Unknown,Unknown,45.02483565,-93.28806913,-10384780.3529,5625432.1991,4,Webber - Camden,2017/08/08 10:24:35+00
+4,16-395328,2016/10/31 23:23:20+00,,Suspicious Person (P),BKG-Booking,,YES,NO,Black,Black,Male,44.94656,-93.24741,-10380254.21,5613112.002,3,Corcoran,
+TRUNCATED

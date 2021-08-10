@@ -1,0 +1,5 @@
+"report_number","offense_id","offense_start_datetime","offense_end_datetime","report_datetime","group_a_b","crime_against_category","offense_parent_group","offense","offense_code","precinct","sector","beat","mcpp","_100_block_address","longitude","latitude"
+"2020-044620","12605873663","2020-02-05T10:10:00.000",,"2020-02-05T11:24:31.000","A","SOCIETY","DRUG/NARCOTIC OFFENSES","Drug/Narcotic Violations","35A","W","Q","Q1","MAGNOLIA","32XX BLOCK OF 23RD AVE W","-122.385973723","47.649387230"
+"2020-044452","12605598696","2020-02-03T08:00:00.000","2020-02-04T08:00:00.000","2020-02-05T10:06:28.000","A","PROPERTY","LARCENY-THEFT","Theft of Motor Vehicle Parts or Accessories","23G","N","J","J3","ROOSEVELT/RAVENNA","63XX BLOCK OF 5TH AVE NE","-122.323399063","47.675117890"
+"2020-044465","12605567653","2020-02-02T20:30:00.000","2020-02-02T21:30:00.000","2020-02-05T09:39:33.000","A","PROPERTY","ROBBERY","Robbery","120","N","U",
+TRUNCATED

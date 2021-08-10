@@ -1,0 +1,5 @@
+"dr_no","date_rptd","date_occ","time_occ","area","area_name","rpt_dist_no","part_1_2","crm_cd","crm_cd_desc","mocodes","vict_age","vict_sex","vict_descent","premis_cd","premis_desc","weapon_used_cd","weapon_desc","status","status_desc","crm_cd_1","crm_cd_2","crm_cd_3","crm_cd_4","location","cross_street","lat","lon"
+"001307355","2010-02-20T00:00:00.000","2010-02-20T00:00:00.000","1350","13","Newton","1385","2","900","VIOLATION OF COURT ORDER","0913 1814 2000","48","M","H","501","SINGLE FAMILY DWELLING",,,"AA","Adult Arrest","900",,,,"300 E  GAGE                         AV",,"33.9825","-118.2695"
+"011401303","2010-09-13T00:00:00.000","2010-09-12T00:00:00.000","0045","14","Pacific","1485","2","740","VANDALISM - FELONY ($400 & OVER, ALL CHURCH VANDALISMS)","0329","0","M","W","101","STREET",,,"IC","Invest Cont","740",,,,"SEPULVEDA                    BL","MANCHESTER                   AV","33.9599","-118.3962"
+"070309629",
+TRUNCATED

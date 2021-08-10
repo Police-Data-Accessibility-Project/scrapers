@@ -1,0 +1,7 @@
+"createdatetime","incidentnumber","address","city","lat","lon","calltype","race","gender","age","reason","enforcement","car_search"
+"2020-09-30T11:47:20.000","2020-00045232","MURRAY ST / 7TH ST","BERKELEY","37.85080699","-122.291036813","T","Black","Male",">40","Traffic","Citation","No Search"
+"2020-09-30T11:28:27.000","2020-00045226","FRONTAGE RD / GILMAN ST","BERKELEY","37.878006732","-122.307957087","T","Hispanic","Male",">40","Traffic","Citation","No Search"
+"2020-09-30T03:27:16.000","2020-00045187","VIRGINIA ST / 6TH ST","BERKELEY","37.872331796","-122.299060286","T","Black","Female","18-29","Traffic","Arrest","No Search"
+"2020-09-29T12:23:14.000","2020-00045055",,"BERKELEY","37.8680172840001","-122.303776422","T","Black","Male",">40","Traffic","Citation","No Search"
+"2020-09-29T11:35:29.000","2020-00045045","6TH ST / ADDISON ST","BERKELEY","37.866709916","-122.29724867","T","Other","Male","18-29","Traffic"
+TRUNCATED

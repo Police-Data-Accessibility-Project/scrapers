@@ -1,0 +1,35 @@
+{
+    "agency_id": "99be6b8ca2c011eb9c9b8c8590d4a7fc",
+    "agency_info":{
+        "agency_name":"Citrus College Campus Safety",
+        "agency_coords":{"lat": "34.13301086425781", "lng":"-117.8894271850586"},
+        "agency_type": 4,
+        "city": "Glendora",
+        "state": "CA",
+        "zip":"91741",
+        "county_fips":"06037"
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"https://www.citruscollege.edu/campussafety/Pages/AnnualReports.aspx",
+            "full_data_location":"/data/annual",
+            "source_type": 2,
+            "data_type": 24,
+            "format_type": 1,
+            "mapping":[
+            ]
+        },
+        {
+            "dataset_id": "",
+            "url":"https://www.citruscollege.edu/campussafety/Pages/CampusCrimeStatistics.aspx",
+            "full_data_location":"/data/crime_logs",
+            "source_type": 2,
+            "data_type": 23,
+            "format_type": 1,
+            "mapping":[
+            ]
+        }
+    ]
+    
+}

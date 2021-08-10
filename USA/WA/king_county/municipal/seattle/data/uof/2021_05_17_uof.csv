@@ -1,0 +1,8 @@
+"uniqueid","incident_num","incident_type","occured_date_time","precinct","sector","beat","officer_id","subject_id","subject_race","subject_gender"
+"2014UOF-0001-1377-203","251","Level 1 - Use of Force","2014-06-07T00:09:00.000","East","CHARLIE","C2","1594","203","Black or African American","Male"
+"2014UOF-0002-1098-166","218","Level 1 - Use of Force","2014-05-30T14:06:00.000","East","GEORGE","G1","1673","166","White","Male"
+"2014UOF-0003-1031-125","178","Level 1 - Use of Force","2014-05-23T17:24:00.000","West","KING","K3","1690","125","Asian","Female"
+"2014UOF-0004-767-126","179","Level 1 - Use of Force","2014-05-26T00:10:00.000","East","EDWARD","E2","953","126","Black or African American","Male"
+"2014UOF-0005-1473-172","223","Level 1 - Use of Force","2014-06-01T16:03:00.000","South","ROBERT","R1","1145","172","Black or African American","Male"
+"2014UOF-0006-1216-178","229","Level 1 - Use of Force","2014-06-02T05:08:
+TRUNCATED

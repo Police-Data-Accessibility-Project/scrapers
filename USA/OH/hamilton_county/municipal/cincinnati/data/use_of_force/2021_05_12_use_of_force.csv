@@ -1,0 +1,5 @@
+"incident_no","incident_date","case_no","cfs_no","district","incident_type","incident_description","incident_location_x","latitude_x","longitude_x","subject_gender","subject_race","suspect_age","officer_gender","officer_race","sna_neighborhood","cpd_neighborhood","community_council_neighborhood"
+"20151","2019-12-26T21:37:00.000","EVT-00002015","CPD191226000886","DISTRICT 1","9824","TASER-BEANBAG-PEPPERBALL-40MM FOAM","16XX LINN ST","39.1135733968422","-84.5277456298977","MALE","BLACK","ADULT","MALE","BLACK","WEST END","WEST  END","WEST END"
+"4033","2008-06-16T13:32:00.000","2008-115804","LCP080616000825","DISTRICT 1","9824","TASER-BEANBAG-PEPPERBALL-40MM FOAM","18XX REPUBLIC ST","39.115350445892","-84.5168665477428","MALE","BLACK","ADULT","MALE","WHITE","OVER-THE-RHINE","OVER-THE-RHINE","OTR"
+"32451","2020-03-08T19:40:00.000","EVT-00003245","CPD200308000723","DISTRICT 5","9824","TASER-BEANBAG-PEPPERBALL-40MM FOAM"
+TRUNCATED

@@ -1,0 +1,6 @@
+"incident_report_number","crime_type","ucr_code","family_violence","occ_date_time","occ_date","occ_time","rep_date_time","rep_date","rep_time","location_type","address","zip_code","council_district","sector","district","pra","census_tract","clearance_status","clearance_date","ucr_category","category_description","x_coordinate","y_coordinate","latitude","longitude","location"
+"20215017873","HARASSMENT","2703","N","2021-05-08T19:00:00.000","2021-05-08T00:00:00.000","1900","2021-05-08T19:00:00.000","2021-05-08T00:00:00.000","1900","RESIDENCE / HOME","4600 NUCKOLS CROSSING RD","78744","2","FR","5","495","24.13",,,,,"3117292","3117292","30.1996283","-97.73520938","
+,  
+(30.1996283, -97.73520938)"
+"20215017854","THEFT","600","N","2021-05-08T15:34:00.000","2021-05-08T00:00:00.000","1534","2021-05-08T15:34:00.000","2021-05-08T00:00:00.000","1534","RESIDENCE / HOME","2806 REAL ST","78722","1","CH","3","390","4",,,"23H","T
+TRUNCATED

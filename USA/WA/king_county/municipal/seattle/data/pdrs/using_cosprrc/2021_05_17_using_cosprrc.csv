@@ -1,0 +1,7 @@
+"assigned_dept","reference_no","request_type","city_requestertype_internal","request_status","close_date","create_date","source","spd_receiptofrecordspreference","spd_recreqincidentreportyesno","spd_recreqfollowupinvestigationyesno","spd_recreqvideoyesno","spd_recreqspd911yesno","spd_recreqphotoyesno","spd_recreqotheryesno"
+"SPD","P074658-051621","Police","","Received",,"2021-05-16T00:57:37.000","Web","Web (Public Records Center)","Yes","No","No","Yes","No","No"
+"SPD","P074657-051521","Police","","Received",,"2021-05-15T23:39:43.000","Web","Web (Public Records Center)","No","No","No","No","No","No"
+"SPD","P074655-051521","Police","","Received",,"2021-05-15T19:52:22.000","Web","Web (Public Records Center)","No","No","No","No","No","No"
+"SPD","P074654-051521","Police","","Received",,"2021-05-15T19:34:35.000","Web","Web (Public Records Center)","No","No","No","No","No","No"
+"SPD","P074653-051521","Police","","Received",
+TRUNCATED

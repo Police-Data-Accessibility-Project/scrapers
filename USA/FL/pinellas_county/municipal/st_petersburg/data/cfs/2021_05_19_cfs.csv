@@ -1,0 +1,9 @@
+"id","event_number","event_case_number","type_of_engagement","sub_engagement","classification","display_address","crime_date","crime_time","latitude","longitude","location","submit_an_anonymous_tip","neighborhood_name","council_district"
+"A4661273","E2021093515",,"SRO/SLO","COMPLAINT","All Other - Non-Criminal","5XXX 16TH ST N","2021-05-19T06:58:27.000","06:58:00","27.82300571411712","-82.65718953905454","
+,  
+(27.82300571411712, -82.65718953905454)","https://app.citizenobserver.com/tips/new?alert_group_id=2995","CITY OF ST. PETERSBURG","4"
+"A4661272","E2021093514",,"SRO/SLO","COMPLAINT","All Other - Non-Criminal","8XX 34TH ST S","2021-05-19T06:56:35.000","06:56:00","27.76088552760462","-82.67790983394369","
+,  
+(27.76088552760462, -82.67790983394369)","https://app.citizenobserver.com/tips/new?alert_group_id=2995","THIRTY-FIRST ST NBRHD ASSN","7"
+"A4661271","E2021093513",,"TRAFFIC STOP","COMPLAINT","Traffic Incident"
+TRUNCATED

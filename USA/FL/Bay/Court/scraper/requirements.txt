@@ -1,0 +1,16 @@
+selenium
+opencv-python
+pytesseract
+pytest
+pathvalidate
+requests
+requests-toolbelt
+regex
+absl-py
+enforce-typing
+dataclass-builder
+tqdm
+beautifulsoup4
+pandas
+doltpy==2.0.7
+Scrapy==2.5.0

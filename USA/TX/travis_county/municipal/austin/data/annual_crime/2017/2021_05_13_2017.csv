@@ -1,0 +1,5 @@
+"go_primary_key","council_district","go_highest_offense_desc","highest_nibrs_ucr_offense_description","go_report_date","go_location","clearance_status","clearance_date","go_district","go_location_zip","go_census_tract","go_x_coordinate","go_y_coordinate"
+"2017340453","1","AUTO THEFT                    ","Auto Theft","3-Feb-17","6200 LOYOLA LN                                                                                      ","N","10-Feb-17","C","78724","22.02","3143028","10083917"
+"2017560006","9","AGG ASSAULT                   ","Agg Assault","25-Feb-17","300 E 6TH ST                                                                                        ","C","25-Feb-17","G","78701","11","3115154","10070604"
+"20175006188","7","BURGLARY OF VEHICLE           ","Theft","12-Feb-17","13609 N IH 35 NB                                                                                    ","N","13-Feb-17","E","78753","18
+TRUNCATED

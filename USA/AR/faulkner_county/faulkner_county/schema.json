@@ -1,0 +1,44 @@
+{
+    "agency_id": "04a0ff710f6d439db799e4f078f037b9",
+    "agency_info": {
+        "agency_name": "Faulkner County Sheriff's Office",
+        "agency_coords": {
+            "lat": "35.14699935913086",
+            "lng": "-92.33200073242188"
+        },
+        "agency_type": 3,
+        "city": "Conway",
+        "state": "AR",
+        "zip": "72034",
+        "county_fips": "05045"
+    },
+    "data": [
+        {
+            "url": "https://www.fcso.ar.gov/press",
+            "full_data_location": "faulkner_co/press_releases/press_releases.json",
+            "source_type": 2,
+            "update_freq": 3
+        },
+        {
+            "full_data_location": "faulkner_co/warrants/warrants.json",
+            "url": "https://www.fcso.ar.gov/warrants.php",
+            "source_type": 2
+        },
+        {
+            "full_data_location": "faulkner_co/child_support_offenders/child_support_offenders.json",
+            "url": "https://www.fcso.ar.gov/child-support-offenders",
+            "source_type": 2
+        },
+        {
+            "full_data_location": "faulkner_co/inmates/inmates.json",
+            "url": "https://www.fcso.ar.gov/roster.php",
+            "source_type": 2
+        },
+        {
+            "full_data_location": "faulkner_co/sex_offenders/sex_offenders.json",
+            "url": "https://www.fcso.ar.gov/sex_offenders.php",
+            "source_type": 2,
+            "data_type": 28
+        }
+    ]
+}

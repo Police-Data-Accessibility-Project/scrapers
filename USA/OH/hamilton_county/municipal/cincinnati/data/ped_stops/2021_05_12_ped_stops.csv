@@ -1,0 +1,5 @@
+"address_x","latitude_x","longitude_x","agency","beat","disposition_text","event_number","incident_type_desc","incident_type_id","priority_","sna_neighborhood","community_council_neighborhood","cpd_neighborhood","actiontakencid","actiontakencidid","instance_id","is_juvenile","interview_number","interview_date","vehicle_make","vehicle_model","vehicle_year","contact_type_cid","license_plate_state","officer_assignment","report_type_cid","sex","race","field_subject_cid","age_range_cid","district"
+"11XX E MCMILLAN ST",,,,,,,,,,,,,"ARREST MISD.","6","193F9F9B-D1A6-4A45-97BA-003211B9AF78",,"10-1102404","2010-08-04T21:12:00.000Z",,,,"PEDESTRIAN",,"DISTRICT 4","CONTACT CARD","MALE","BLACK","PEDESTRIAN","36-45",
+"11XX ELM ST",,,,,,,,,,,,,"NONE","1","012116EF-BA64-4934-8043-003273C134D2",,"10-1110135","2010-09-19T20:17:00.000Z",,,,"PEDESTRIAN",,"DISTRICT 1","FIELD INTERVIEW","MALE","BLACK","PEDESTRIAN","26-35",
+"11XX ELM ST"
+TRUNCATED

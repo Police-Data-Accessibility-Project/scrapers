@@ -1,0 +1,6 @@
+"month","incident_number","date_of_incident","day_of_week","number_of_victims_under_18","number_of_victims_over_18","number_of_offenders_under","number_of_offenders_over","race_ethnicity_of_offenders","offense_s","offense_location","bias","notes"
+"January","2019-8000242","2018-12-29T00:00:00.000","Saturday","0","1","0","0","Unknown","Assault","Bar/Nightclub","Anti-Gay (Male)","Offense occurred in 2018, but reported in January 2019"
+"January","2019-190201","2019-01-19T00:00:00.000","Saturday","0","2","0","4","White/Hispanic (2) White/NonHispanic (2)","Assault","Streets/Highway/Road/Alley","Anti-Gay (Male)","Four total offenders, two White Hispanic, two White Nonhispanic"
+"February","2019-531028","2019-02-22T00:00:00.000","Friday","0","1","0","0","Unknown","Vandalism","Residence/Home","Anti-Jewish",
+"March","2019-901579","2019-03-31T00:00:00.000","Sunday","0","1","0","1","White/Hispanic","Assault","Bar/Nightclub","
+TRUNCATED
