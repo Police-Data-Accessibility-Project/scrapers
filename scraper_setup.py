@@ -1,3 +1,4 @@
+from _version import __version__
 from PyQt5 import QtWidgets, uic
 import os
 import fileinput
@@ -7,7 +8,6 @@ from pathlib import Path
 
 ui_file = "common/gui/scraper_ui.ui"
 error_modal = "common/gui/error_modal.ui"
-
 
 class ErrorDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
@@ -21,6 +21,8 @@ class ScraperGui(QtWidgets.QMainWindow):
     def __init__(self):
         super(ScraperGui, self).__init__()
         uic.loadUi(ui_file, self)
+
+        self.version_label.setText("Version: " + str(__version__))
 
         self.tabWidget.setCurrentIndex(0)  # Start on the first page
         self.tabWidget.setTabEnabled(1, False)  # Disable the Choose Scraper tab
@@ -366,7 +368,6 @@ class ScraperGui(QtWidgets.QMainWindow):
             self.tabWidget.setCurrentIndex(0)  # Go back to the start age
             self.dialog()
             return
-
 
 app = QtWidgets.QApplication(sys.argv)
 window = ScraperGui()
