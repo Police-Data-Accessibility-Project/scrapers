@@ -34,7 +34,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         self.version_label.setText("Version: " + str(__version__))
 
-        self.tabWidget.setCurrentIndex(0)  # Start on the first page
+        self.tabWidget.setCurrentIndex(0)       # Start on the first page
         self.tabWidget.setTabEnabled(1, False)  # Disable the Choose Scraper tab
         self.tabWidget.setTabEnabled(2, False)  # Disable the Setup tab
         self.tabWidget.setTabEnabled(3, False)  # Disable Crimegraphic's choose scraper tab
