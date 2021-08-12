@@ -8,12 +8,19 @@ from pathlib import Path
 
 ui_file = "common/gui/scraper_ui.ui"
 error_modal = "common/gui/error_modal.ui"
+success_modal = "common/gui/success_modal.ui"
 
 class ErrorDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super(ErrorDialog, self).__init__()
         uic.loadUi(error_modal, self)
         # self.show()
+
+class SuccessDialog(QtWidgets.QDialog):
+    def __init__(self, parent=None):
+        super(SuccessDialog, self).__init__()
+        uic.loadUi(success_modal, self)
+        self.yes_no_box.accepted.connect(ScraperGui.start_over())
 
 
 class ScraperGui(QtWidgets.QMainWindow):
@@ -44,9 +51,13 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
         self.show()
 
-    def dialog(self):
-        dialog = ErrorDialog()
-        dialog.exec_()
+    def error_dialog(self):
+        error_dialog = ErrorDialog()
+        error_dialog.exec_()
+
+    def success_dialog(self):
+        success_dialog = SuccessDialog()
+        success_dialog.exec_()
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
@@ -172,6 +183,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], change_to[i])
                 sys.stdout.write(line)
+            self.success_dialog()
 
         except NameError as exception:
             import traceback
@@ -180,7 +192,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             print(str(exception))
             print("You need to complete the first menu first")
             self.tabWidget.setCurrentIndex(0)  # Go back to the start age
-            self.dialog()
+            self.error_dialog()
             return
 
     def _addRow(self):
@@ -233,11 +245,14 @@ class ScraperGui(QtWidgets.QMainWindow):
         if not os.path.exists(scraper_save_dir + cg_type):
             copyfile(cg_template_folder + cg_type, scraper_save_dir + cg_type)
 
+            # Iterate over file to find and replace the configs
             for line in fileinput.input(full_path, inplace=1):
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i])
                 sys.stdout.write(line)
+            self.success_dialog()
+
         else:
             print("ERROR: File already exists")
 
@@ -363,6 +378,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i] + ",")
                 sys.stdout.write(line)
+            self.success_dialog()
 
         except NameError as exception:
             import traceback
@@ -370,9 +386,14 @@ class ScraperGui(QtWidgets.QMainWindow):
             traceback.print_exc()
             print(str(exception))
             print("You need to complete the first menu first")
-            self.tabWidget.setCurrentIndex(0)  # Go back to the start age
-            self.dialog()
+            self.tabWidget.setCurrentIndex(1)  # Go back to the first list_pdf page
+            self.error_dialog()
             return
+
+    def start_over():
+        for tab in range(1,6):
+            print(" [*] Tab: " + str(tab))
+            self.tabWidget.setTabEnabled(tab, False)
 
 app = QtWidgets.QApplication(sys.argv)
 window = ScraperGui()
