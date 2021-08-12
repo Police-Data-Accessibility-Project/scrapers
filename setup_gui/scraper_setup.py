@@ -16,14 +16,14 @@ class ErrorDialog(QtWidgets.QDialog):
         uic.loadUi(error_modal, self)
         # self.show()
 
-class SuccessDialog(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        super(SuccessDialog, self).__init__()
-        uic.loadUi(success_modal, self)
-        self.yes_no_box.accepted.connect(self.accept_button())
+# class SuccessDialog(QtWidgets.QDialog):
+#     def __init__(self, parent=None):
+#         super(SuccessDialog, self).__init__()
+#         uic.loadUi(success_modal, self)
+#         self.yes_no_box.accepted.connect(self.accept_button())
 
-    def accept_button(self):
-        ScraperGui.start_over(ScraperGui.self)
+#     def accept_button(self):
+#         ScraperGui.start_over(ScraperGui.self)
 
 
 class ScraperGui(QtWidgets.QMainWindow):
@@ -186,7 +186,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], change_to[i])
                 sys.stdout.write(line)
-            self.success_dialog()
+            # self.success_dialog()
 
         except NameError as exception:
             import traceback
@@ -254,7 +254,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i])
                 sys.stdout.write(line)
-            self.success_dialog()
+            # self.success_dialog()
 
         else:
             print("ERROR: File already exists")
@@ -381,7 +381,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i] + ",")
                 sys.stdout.write(line)
-            self.success_dialog()
+            # self.success_dialog()
 
         except NameError as exception:
             import traceback
