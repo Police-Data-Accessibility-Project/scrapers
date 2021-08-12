@@ -29,7 +29,8 @@ Navigate to our [Dataset Catalog](https://www.dolthub.com/repositories/pdap/data
 4. Follow through the GUI. You can either run the script directly `python3 scraper_setup.py`, or run the executable by double clicking it.
 5. Copy the resulting folder into your clone of `PDAP-Scrapers`.
 
-## 3. Check the `common` folder for helpful assets before you start. 
+## 3. Check the `/common` folder for helpful assets before you start. 
+[`/common` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)
 
 Why start from scratch if we have a useful library? Keep in mind that we can always refactor your work later if necessary, so if you're not sure, we still want 
 you to submit!
