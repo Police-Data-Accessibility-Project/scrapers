@@ -20,7 +20,10 @@ class SuccessDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super(SuccessDialog, self).__init__()
         uic.loadUi(success_modal, self)
-        self.yes_no_box.accepted.connect(ScraperGui.start_over())
+        self.yes_no_box.accepted.connect(self.accept_button())
+
+    def accept_button(self):
+        ScraperGui.start_over(ScraperGui.self)
 
 
 class ScraperGui(QtWidgets.QMainWindow):
