@@ -6,6 +6,8 @@ import sys
 from shutil import copyfile
 from pathlib import Path
 import jmespath
+import requests
+import json
 
 ui_file = "common/gui/scraper_ui.ui"
 error_modal = "common/gui/error_modal.ui"
@@ -34,13 +36,14 @@ class ScraperGui(QtWidgets.QMainWindow):
         uic.loadUi(ui_file, self)
 
         self.version_label.setText("Version: " + str(__version__))
-
         self.tabWidget.setCurrentIndex(0)       # Start on the first page
         self.tabWidget.setTabEnabled(1, False)  # Disable the Choose Scraper tab
         self.tabWidget.setTabEnabled(2, False)  # Disable the Setup tab
         self.tabWidget.setTabEnabled(3, False)  # Disable Crimegraphic's choose scraper tab
         self.tabWidget.setTabEnabled(4, False)  # Disable SetupOpendata tab
-        self.tabWidget.setTabEnabled(5, False)
+        self.tabWidget.setTabEnabled(5, False)  # Disable opendata row tab
+        self.tabWidget.setTabEnabled(6, False)  # Disable search schema
+        self.tabWidget.setTabEnabled(7, False)  # Disable schema tab
         self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
 
         """Initialize buttons"""
@@ -53,6 +56,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.addRow_button.clicked.connect(self._addRow)
         self.removeRow_button.clicked.connect(self._removeRow)
         self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
+        self.search_button.clicked.connect(self.get_agency_info)
+
         self.show()
 
     def error_dialog(self):
@@ -63,8 +68,14 @@ class ScraperGui(QtWidgets.QMainWindow):
         success_dialog = SuccessDialog()
         success_dialog.exec_()
 
-    def get_agency_info(homepage_url):
-         # Make sure that there is only one slash after URL
+    def get_agency_info(self):
+        '''Get agency info from dolthub
+        :param self: self
+        :param search_schema: whether it is search schema tab or not (bool)
+        '''
+
+        homepage_url = self.homepageURLSearch_input.text()
+        # Make sure that there is only one slash after URL
         homepage_url = homepage_url.rstrip("/") + "/"
 
         owner, repo, branch = 'pdap', 'datasets', 'master'
@@ -90,12 +101,17 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         """
 
-        if searched.count > 1:
-            print("Found multiple! Can't choose.")
+        if len(searched) > 1:
+            for i, response_row in enumerate(searched):
+                self.searchResult_table.insertColumn(i)
+                row_number = self.searchResult_table.rowCount()
 
-        else:
+        elif len(searched) == 0:
             print()
         print(json.dumps(searched, indent=4))
+
+        self.tabWidget.setTabEnabled(7, True)
+        self.tabWidget.setCurrentIndex(7)
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
@@ -221,6 +237,9 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], change_to[i])
                 sys.stdout.write(line)
+            print("enabled")
+            self.tabWidget.setTabEnabled(6, True)
+            self.tabWidget.setCurrentIndex(6)
             # self.success_dialog()
 
         except NameError as exception:
