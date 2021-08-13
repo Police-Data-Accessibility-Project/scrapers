@@ -5,6 +5,7 @@ import fileinput
 import sys
 from shutil import copyfile
 from pathlib import Path
+import jmespath
 
 ui_file = "common/gui/scraper_ui.ui"
 error_modal = "common/gui/error_modal.ui"
@@ -61,6 +62,40 @@ class ScraperGui(QtWidgets.QMainWindow):
     def success_dialog(self):
         success_dialog = SuccessDialog()
         success_dialog.exec_()
+
+    def get_agency_info(homepage_url):
+         # Make sure that there is only one slash after URL
+        homepage_url = homepage_url.rstrip("/") + "/"
+
+        owner, repo, branch = 'pdap', 'datasets', 'master'
+        query = f'''SELECT * FROM `agencies` WHERE `homepage_url` = ''' + f"'{homepage_url}'"
+        print(query)
+        res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
+        jsoned = res.json()
+
+        expression = jmespath.compile("rows[]")
+        searched = expression.search(jsoned)
+
+        """
+        Todo:
+            create new tab for selecting correct agency
+                create form to fill out schema
+            switch to tab
+                portions can be preloaded from info provided by list_pdf_scrapers tabs
+                    homepage_url = webpage_input
+            tabulize json rows, send to GUI table
+            add buttons per row or something to select the correct agency
+            copy schema_template.json to scraper path if it doesn't exist
+
+
+        """
+
+        if searched.count > 1:
+            print("Found multiple! Can't choose.")
+
+        else:
+            print()
+        print(json.dumps(searched, indent=4))
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
@@ -206,12 +241,14 @@ class ScraperGui(QtWidgets.QMainWindow):
         if self.opendataTable.rowCount() > 0:
             self.opendataTable.removeRow(self.opendataTable.rowCount()-1)
 
+    # Choose crimegraphic scraper
     def choose_cg_pressed(self):
         if self.choose_cg_input.currentIndex() == 0:
             self.save_dir_input_cg.setText("bulletins")
         elif self.choose_cg_input.currentIndex() == 1:
             self.save_dir_input_cg.setText("daily_bulletins")
 
+    # Create crimegraphic scraper
     def create_cg_pressed(self):
         #  Get user input
         country_input = self.country_input_cg.text()
@@ -259,6 +296,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         else:
             print("ERROR: File already exists")
 
+    # Choose Scraper list_pdf
     def choose_scraper_pressed(self):
         """ 'Enter' button on `Choose Scraper` tab"""
         global full_path
