@@ -80,10 +80,6 @@ class ScraperGui(QtWidgets.QMainWindow):
         '''
         global searched
 
-        self.setStyleSheet(
-            "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
-        )  # Force stylesheet to recompute
-
         homepage_url = self.homepageURLSearch_input.text()
         # Make sure that there is only one slash after URL
         homepage_url = homepage_url.rstrip("/") + "/"
@@ -140,11 +136,14 @@ class ScraperGui(QtWidgets.QMainWindow):
             success = True
 
         elif len(searched) == 0:
-            error_modal = QtWidgets.QErrorMessage()
-            error_modal.showMessage("Couldn't find anything, may not have an existing dataset!")
-            error_modal.exec_()
-            print("Couldn't find anything")
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("Couldn't find anything, may not have an existing dataset!")
+            msg.setWindowTitle("Error")
+            msg.exec_()
+
             success = False
+            print("Couldn't find anything")
 
         # Go back through and resize the columns.
         # I tried putting it in the first loop, but it caused it to crash...
@@ -303,6 +302,9 @@ class ScraperGui(QtWidgets.QMainWindow):
             # Enable and switch to schema tab
             self.tabWidget.setTabEnabled(6, True)
             self.tabWidget.setCurrentIndex(6)
+            self.setStyleSheet(
+                "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+            )  # Force stylesheet to recompute
             # self.success_dialog()
 
         except NameError as exception:
@@ -377,6 +379,9 @@ class ScraperGui(QtWidgets.QMainWindow):
             # Enable and switch to schema tab
             self.tabWidget.setTabEnabled(6, True)
             self.tabWidget.setCurrentIndex(6)
+            self.setStyleSheet(
+                "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+            )  # Force stylesheet to recompute
             # self.success_dialog()
 
         else:
@@ -509,6 +514,9 @@ class ScraperGui(QtWidgets.QMainWindow):
             # Enable and switch to schema tab
             self.tabWidget.setTabEnabled(6, True)
             self.tabWidget.setCurrentIndex(6)
+            self.setStyleSheet(
+                "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+            )  # Force stylesheet to recompute
             # self.success_dialog()
 
         except NameError as exception:
