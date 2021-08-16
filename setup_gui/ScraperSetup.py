@@ -1,4 +1,4 @@
-from _version import __version__
+rom _version import __version__
 from PyQt5 import QtCore, QtWidgets, uic
 from PyQt5.QtWidgets import QTableWidgetItem
 import os
@@ -172,8 +172,14 @@ class ScraperGui(QtWidgets.QMainWindow):
             msg.exec_()
 
             print("Index error: Table isn't that long")
+        template_folder = "./Base_Scripts/"
 
+        scraper_save_dir_cwd = os.path.join(os.getcwd(), scraper_save_dir.lstrip(".").rstrip("/").rstrip("\\"))
+        print("scraper_save_dir: " + str(scraper_save_dir_cwd))
 
+        # Copy and rename the scraper
+        scraper_input_text = "schema.json"
+        copyfile(template_folder + scraper_input_text, scraper_save_dir_cwd)
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
@@ -231,7 +237,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         department_type_input = str(self.department_type_input_opendata.currentText()).lower()
         city_input = self.city_input.text().lower()
         save_dir_input = self.save_dir_input_opendata.text().lower()
-        scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        # scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        scraper_save_dir = os.path.join(country_input, state_input, county_input, department_type_input, city_input)
         scraper_save_dir = scraper_save_dir
         sleep_time = self.sleep_time_input_opendata.value()
 
@@ -256,7 +263,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
         template_folder = "./Base_Scripts/Scrapers/opendata/"
         full_path = scraper_save_dir + scraper_name
-        print("full_path" + str(full_path))
+        print("full_path: " + str(full_path))
 
         # Copy and rename the scraper
         scraper_input_text = "opendata_scraper.py"
@@ -403,13 +410,12 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Step 2
         # /country/state/county/type/city/
         # Get the directory information
-        country_input = self.country_input.text().lower()
+        country_input = self.country_input.text()
         state_input = self.state_input.text().lower()
         county_input = self.county_input.text().lower()
         department_type_input = str(self.department_type_input.currentText().lower())
         city_input = self.city_input.text().lower()
         scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
-        scraper_save_dir = scraper_save_dir.lower()
 
         # Create directory if it doesn't exist
         if not os.path.exists(scraper_save_dir):
