@@ -61,6 +61,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.removeRow_button.clicked.connect(self._removeRow)
         self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
         self.search_button.clicked.connect(self.get_agency_info)
+        self.create_schemas_button.clicked.connect(self.create_schema)
 
         self.show()
 
@@ -135,6 +136,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.tabWidget.setTabEnabled(7, True)
         self.tabWidget.setCurrentIndex(7)
 
+    def create_schema(self):
+        selected_agency = self.schema_spinBox.value()
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
@@ -261,6 +264,8 @@ class ScraperGui(QtWidgets.QMainWindow):
                         line = line.replace(lines_to_change[i], change_to[i])
                 sys.stdout.write(line)
             print("enabled")
+
+            # Enable and switch to schema tab
             self.tabWidget.setTabEnabled(6, True)
             self.tabWidget.setCurrentIndex(6)
             # self.success_dialog()
@@ -333,6 +338,10 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i])
                 sys.stdout.write(line)
+
+            # Enable and switch to schema tab
+            self.tabWidget.setTabEnabled(6, True)
+            self.tabWidget.setCurrentIndex(6)
             # self.success_dialog()
 
         else:
@@ -461,6 +470,10 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i] + ",")
                 sys.stdout.write(line)
+
+            # Enable and switch to schema tab
+            self.tabWidget.setTabEnabled(6, True)
+            self.tabWidget.setCurrentIndex(6)
             # self.success_dialog()
 
         except NameError as exception:
