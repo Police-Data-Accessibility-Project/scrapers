@@ -173,6 +173,8 @@ class ScraperGui(QtWidgets.QMainWindow):
 
             print("Index error: Table isn't that long")
 
+
+
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
         scraper_choice = self.scraper_choice.currentIndex()  # Get index of combobox
@@ -221,6 +223,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         global is_v3
         global sleep_time
         global save_dir_input
+        global scraper_save_dir
 
         country_input = self.country_input_opendata.text().upper()
         state_input = self.state_input_opendata.text().lower()
@@ -334,6 +337,8 @@ class ScraperGui(QtWidgets.QMainWindow):
 
     # Create crimegraphic scraper
     def create_cg_pressed(self):
+        global scraper_save_dir
+
         #  Get user input
         country_input = self.country_input_cg.text()
         state_input = self.state_input_cg.text()
@@ -393,6 +398,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         global full_path
         global scraper_name
         global is_v3
+        global scraper_save_dir
 
         # Step 2
         # /country/state/county/type/city/
