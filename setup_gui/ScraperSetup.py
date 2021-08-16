@@ -61,7 +61,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.removeRow_button.clicked.connect(self._removeRow)
         self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
         self.search_button.clicked.connect(self.get_agency_info)
-        self.create_schemas_button.clicked.connect(self.create_schema)
+        self.create_schema_button.clicked.connect(self.create_schema)
 
         self.show()
 
@@ -78,6 +78,11 @@ class ScraperGui(QtWidgets.QMainWindow):
         :param self: self
         :param search_schema: whether it is search schema tab or not (bool)
         '''
+        global searched
+
+        self.setStyleSheet(
+            "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
+        )  # Force stylesheet to recompute
 
         homepage_url = self.homepageURLSearch_input.text()
         # Make sure that there is only one slash after URL
@@ -111,10 +116,14 @@ class ScraperGui(QtWidgets.QMainWindow):
         rows_expression = jmespath.compile('rows[].["id", "name","city","state_iso", "homepage_url"]')
         rows_searched = rows_expression.search(jsoned)
 
+        header = self.searchResult_table.horizontalHeader()
 
+        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
         if len(rows_searched) > 1:
             # Iterate over rows_searched json "rows"
             for column_number, response_row in enumerate(rows_searched):
+                print(column_number)
                 self.searchResult_table.insertColumn(column_number)
                 row_number = self.searchResult_table.rowCount()
 
@@ -122,22 +131,48 @@ class ScraperGui(QtWidgets.QMainWindow):
                 # Add data to table
                 for cell_data in response_row:
                     print(cell_data)
-                    print(current_row, column_number, response_row)
+                    # print(current_row, column_number, response_row)
                     # print(rows_searched[i])
                     self.searchResult_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
                     current_row += 1
                     if current_row == row_number:
                         break
+            success = True
 
         elif len(searched) == 0:
-            print()
+            error_modal = QtWidgets.QErrorMessage()
+            error_modal.showMessage("Couldn't find anything, may not have an existing dataset!")
+            error_modal.exec_()
+            print("Couldn't find anything")
+            success = False
+
+        # Go back through and resize the columns.
+        # I tried putting it in the first loop, but it caused it to crash...
+        for column_number in range(self.searchResult_table.columnCount()):
+            header.setSectionResizeMode(column_number, QtWidgets.QHeaderView.ResizeToContents)
         # print(json.dumps(searched, indent=4))
 
-        self.tabWidget.setTabEnabled(7, True)
-        self.tabWidget.setCurrentIndex(7)
+        if success:
+            self.tabWidget.setTabEnabled(7, True)
+            self.tabWidget.setCurrentIndex(7)
 
     def create_schema(self):
-        selected_agency = self.schema_spinBox.value()
+        selected_index = self.schema_spinBox.value()
+        # Lists start at 0, table doesn't
+        selected_agency = selected_index - 1
+
+        try:
+            schema_data = searched[selected_agency]
+            print(schema_data)
+
+        except IndexError:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("Index error: Table isn't that long")
+            msg.setWindowTitle("Error")
+            msg.exec_()
+
+            print("Index error: Table isn't that long")
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
