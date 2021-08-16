@@ -1,5 +1,5 @@
 from _version import __version__
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtCore, QtWidgets, uic
 import os
 import fileinput
 import sys
@@ -8,6 +8,9 @@ from pathlib import Path
 import jmespath
 import requests
 import json
+
+# Support for high resolution screens
+os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
 
 ui_file = "common/gui/scraper_ui.ui"
 error_modal = "common/gui/error_modal.ui"
@@ -456,6 +459,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             self.tabWidget.setTabEnabled(tab, False)
 
 app = QtWidgets.QApplication(sys.argv)
+app.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
 window = ScraperGui()
 app.exec_()
 
