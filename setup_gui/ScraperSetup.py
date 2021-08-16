@@ -1,5 +1,6 @@
 from _version import __version__
 from PyQt5 import QtCore, QtWidgets, uic
+from PyQt5.QtWidgets import QTableWidgetItem
 import os
 import fileinput
 import sys
@@ -86,7 +87,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         print(query)
         res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
         jsoned = res.json()
-
+        print(json.dumps(jsoned, indent=4))
+        # Filter out everything except the "rows" table
         expression = jmespath.compile("rows[]")
         searched = expression.search(jsoned)
 
@@ -103,15 +105,25 @@ class ScraperGui(QtWidgets.QMainWindow):
 
 
         """
+        # Separate expression to only get what we need to show user
+        rows_expression = jmespath.compile('rows[].{"id":"id", "name":"name","city":"city","state_iso":"state_iso","homepage_url":"homepage_url"}')
+        rows_searched = rows_expression.search(jsoned)
 
-        if len(searched) > 1:
-            for i, response_row in enumerate(searched):
+        if len(rows_searched) > 1:
+            # Iterate over rows_searched json "rows"
+            for i, response_row in enumerate(rows_searched):
                 self.searchResult_table.insertColumn(i)
                 row_number = self.searchResult_table.rowCount()
 
+                # Add data to table
+                for column_number, data in enumerate(rows_searched):
+                    for row in range(row_number):
+                        print(row, column_number, response_row)
+                        self.searchResult_table.setItem(row, column_number, QTableWidgetItem(str(data)))
+
         elif len(searched) == 0:
             print()
-        print(json.dumps(searched, indent=4))
+        # print(json.dumps(searched, indent=4))
 
         self.tabWidget.setTabEnabled(7, True)
         self.tabWidget.setCurrentIndex(7)
