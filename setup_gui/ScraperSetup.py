@@ -83,11 +83,11 @@ class ScraperGui(QtWidgets.QMainWindow):
         homepage_url = homepage_url.rstrip("/") + "/"
 
         owner, repo, branch = 'pdap', 'datasets', 'master'
-        query = f'''SELECT * FROM `agencies` WHERE `homepage_url` = ''' + f"'{homepage_url}'"
-        print(query)
+        query = '''SELECT * FROM `agencies` WHERE `homepage_url` = ''' + f"'{homepage_url}'"
+        # print(query)
         res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
         jsoned = res.json()
-        print(json.dumps(jsoned, indent=4))
+        # print(json.dumps(jsoned, indent=4))
         # Filter out everything except the "rows" table
         expression = jmespath.compile("rows[]")
         searched = expression.search(jsoned)
@@ -106,20 +106,27 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         """
         # Separate expression to only get what we need to show user
-        rows_expression = jmespath.compile('rows[].{"id":"id", "name":"name","city":"city","state_iso":"state_iso","homepage_url":"homepage_url"}')
+        # rows_expression = jmespath.compile('rows[].{"id":"id", "name":"name","city":"city","state_iso":"state_iso","homepage_url":"homepage_url"}')
+        rows_expression = jmespath.compile('rows[].["id", "name","city","state_iso", "homepage_url"]')
         rows_searched = rows_expression.search(jsoned)
+
 
         if len(rows_searched) > 1:
             # Iterate over rows_searched json "rows"
-            for i, response_row in enumerate(rows_searched):
-                self.searchResult_table.insertColumn(i)
+            for column_number, response_row in enumerate(rows_searched):
+                self.searchResult_table.insertColumn(column_number)
                 row_number = self.searchResult_table.rowCount()
 
+                current_row = 0
                 # Add data to table
-                for column_number, data in enumerate(rows_searched):
-                    for row in range(row_number):
-                        print(row, column_number, response_row)
-                        self.searchResult_table.setItem(row, column_number, QTableWidgetItem(str(data)))
+                for cell_data in response_row:
+                    print(cell_data)
+                    print(current_row, column_number, response_row)
+                    # print(rows_searched[i])
+                    self.searchResult_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
+                    current_row += 1
+                    if current_row == row_number:
+                        break
 
         elif len(searched) == 0:
             print()
@@ -127,6 +134,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         self.tabWidget.setTabEnabled(7, True)
         self.tabWidget.setCurrentIndex(7)
+
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
