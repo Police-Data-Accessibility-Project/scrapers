@@ -14,15 +14,13 @@
             "dataset_id": "",
             "url":"",
             "full_data_location":"data",
-            "source_type": 2,
-            "data_type": 1,
-            "format_type": 1,
-            "update_freq": 3,
+            "source_type": 0,
+            "data_type": 0,
+            "format_type": 0,
+            "update_freq": 0,
             "last_modified": "2021-05-19 12:21:04 EST",
-            "mapping":{
-
-            }
+            "scraper_path": "",
+            "mapping": ""
         }
     ]
-    
 }
