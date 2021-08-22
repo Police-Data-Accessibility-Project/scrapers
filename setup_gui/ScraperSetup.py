@@ -1,4 +1,4 @@
-rom _version import __version__
+from _version import __version__
 from PyQt5 import QtCore, QtWidgets, uic
 from PyQt5.QtWidgets import QTableWidgetItem
 import os
@@ -82,7 +82,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         homepage_url = self.homepageURLSearch_input.text()
         # Make sure that there is only one slash after URL
-        homepage_url = homepage_url.rstrip("/") + "/"
+        homepage_url = homepage_url.rstrip("/").strip() + "/"
 
         owner, repo, branch = 'pdap', 'datasets', 'master'
         query = '''SELECT * FROM `agencies` WHERE `homepage_url` = ''' + f"'{homepage_url}'"
@@ -157,12 +157,35 @@ class ScraperGui(QtWidgets.QMainWindow):
 
     def create_schema(self):
         selected_index = self.schema_spinBox.value()
+        pathsep = os.path.sep
+
         # Lists start at 0, table doesn't
         selected_agency = selected_index - 1
 
+        template_folder = "Base_Scripts"
+
+        working_folder = scraper_save_dir
+        working_folder = os.path.normpath(working_folder)
+
+        # os.path.join isn't working for me
+        scraper_save_dir_cwd = os.getcwd() + pathsep + working_folder
+
+        # Copy the schema to the scraper's directory
+        schema_file = os.path.normpath(template_folder) + pathsep + "schema.json"
+        template_schema = os.getcwd() + pathsep + schema_file
+        schema_save_path = scraper_save_dir_cwd + pathsep + "schema.json"
+
+        # Don't want to overwrite the schema file
+        if not os.path.exists(schema_save_path):
+            schema_is_new = True
+            copyfile(template_schema, schema_save_path)
+        else:
+            schema_is_new = False
+
+        # Get the selected agency from dolthub response
         try:
             schema_data = searched[selected_agency]
-            print(schema_data)
+            print("searched: " + str(schema_data))
 
         except IndexError:
             msg = QtWidgets.QMessageBox()
@@ -172,14 +195,30 @@ class ScraperGui(QtWidgets.QMainWindow):
             msg.exec_()
 
             print("Index error: Table isn't that long")
-        template_folder = "./Base_Scripts/"
 
-        scraper_save_dir_cwd = os.path.join(os.getcwd(), scraper_save_dir.lstrip(".").rstrip("/").rstrip("\\"))
-        print("scraper_save_dir: " + str(scraper_save_dir_cwd))
+        # Edit the schema
+        schema_path = scraper_save_dir_cwd + pathsep + "schema.json"
+        print("\nSchema path: " + str(schema_path))
 
-        # Copy and rename the scraper
-        scraper_input_text = "schema.json"
-        copyfile(template_folder + scraper_input_text, scraper_save_dir_cwd)
+        with open(schema_path, "r+", encoding="utf-8") as schema_out:
+            data = json.load(schema_out)
+            if schema_is_new:
+                agency_info = data["agency_info"]
+
+                data["agency_id"] = schema_data["id"]
+                agency_info["agency_name"] = schema_data["name"]
+                agency_info["agency_coords"]["lat"] = schema_data["lat"]
+                agency_info["agency_coords"]["lng"] = schema_data["lng"]
+                agency_info["agency_type"] = schema_data["agency_type"]
+                agency_info["city"] = schema_data["city"]
+                agency_info["state"] = schema_data["state_iso"]
+                agency_info["zip"] = schema_data["zip"]
+                agency_info["county_fips"] = schema_data["county_fips"]
+
+            agency_data = data["data"]
+            print(agency_data)
+
+
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
