@@ -9,6 +9,7 @@ from pathlib import Path
 import jmespath
 import requests
 import json
+from datetime import datetime
 
 # Support for high resolution screens
 os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
@@ -202,9 +203,10 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         with open(schema_path, "r+", encoding="utf-8") as schema_out:
             data = json.load(schema_out)
-            if schema_is_new:
-                agency_info = data["agency_info"]
+            agency_info = data["agency_info"]
 
+            if schema_is_new:
+                print("Schema is new")
                 data["agency_id"] = schema_data["id"]
                 agency_info["agency_name"] = schema_data["name"]
                 agency_info["agency_coords"]["lat"] = schema_data["lat"]
@@ -215,7 +217,67 @@ class ScraperGui(QtWidgets.QMainWindow):
                 agency_info["zip"] = schema_data["zip"]
                 agency_info["county_fips"] = schema_data["county_fips"]
 
-            agency_data = data["data"]
+                agency_data = data["data"]
+
+                try:
+                    agency_data[0]["url"] = url_input
+                    agency_data[0]["full_data_location"] = str(save_dir)
+                    agency_data[0]["scraper_path"] = scraper_save_dir
+                    agency_data[0]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+
+                except NameError:
+                    print("Opendata is not currently supported for schema data creation")
+                    msg = QtWidgets.QMessageBox()
+                    msg.setIcon(QtWidgets.QMessageBox.Critical)
+                    msg.setText("Opendata is not currently supported for the data portion of the schema!\nYou will have to do it manually :(.")
+                    msg.setWindowTitle("Error")
+                    msg.exec_()
+
+            else:
+                print("Schema is not new")
+                print(len(data["data"]))
+                agency_data = data["data"]
+                # agency_start_index = len(agency_data) - 1
+                # print(agency_start_index)
+                agency_index = len(agency_data)
+                agency_data.append({})
+
+                try:
+                    agency_data[agency_index]["dataset_id"] = ""
+                    agency_data[agency_index]["url"] = url_input
+                    agency_data[agency_index]["full_data_location"] = str(save_dir)
+                    agency_data[agency_index]["source_type"] = 0
+                    agency_data[agency_index]["data_type"] = 0
+                    agency_data[agency_index]["format_type"] = 0
+                    agency_data[agency_index]["update_freq"] = 0
+                    agency_data[agency_index]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+                    agency_data[agency_index]["scraper_path"] = scraper_save_dir
+                    agency_data[agency_index]["mapping"] = ""
+                    print(json.dumps(data, indent=4))
+
+                except NameError:
+                    print("Opendata is not currently supported for schema data creation")
+                    msg = QtWidgets.QMessageBox()
+                    msg.setIcon(QtWidgets.QMessageBox.Critical)
+                    msg.setText("Opendata is not currently supported for the data portion of the schema!\nYou will have to do it manually :(.")
+                    msg.setWindowTitle("Error")
+                    msg.exec_()
+
+            schema_out.seek(0)
+            json.dump(data, schema_out, indent=4)
+            # schema_out.truncate()
+
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText("Schema created/edited! You still need to check if there is a dataset id already, and fill out the rest of the schema")
+            msg.setWindowTitle("Success!")
+            msg.exec_()
+
+
+
+
+
+
             print(agency_data)
 
 
@@ -224,6 +286,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         """Next button on `Choose type` tab"""
         scraper_choice = self.scraper_choice.currentIndex()  # Get index of combobox
         print(scraper_choice)
+
         if scraper_choice == 0:  #  0 is list_pdf
             print("0")
             self.tabWidget.setTabEnabled(2, False)  # Disable second page of list_pdf setup
@@ -384,6 +447,9 @@ class ScraperGui(QtWidgets.QMainWindow):
     # Create crimegraphic scraper
     def create_cg_pressed(self):
         global scraper_save_dir
+        global url_input
+        global save_dir_input
+        global save_dir
 
         #  Get user input
         country_input = self.country_input_cg.text()
@@ -445,6 +511,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         global scraper_name
         global is_v3
         global scraper_save_dir
+        global save_dir_input
+        global save_dir
 
         # Step 2
         # /country/state/county/type/city/
@@ -486,10 +554,12 @@ class ScraperGui(QtWidgets.QMainWindow):
         if save_dir_input:
             print("save_dir_input not blank")
             save_dir_input = save_dir_input.replace("./data/","")  # Remove any accidental data prepends
+            save_dir = "./data/" + save_dir_input + '"'
             save_dir_input = 'save_dir = "./data/' + save_dir_input + '"'
         else:
             print("save_dir_input blank")
             save_dir_input = 'save_dir = "./data/"'
+            save_dir = "./data/"
 
 
         # make sure that black formatting does not affect this
@@ -510,9 +580,11 @@ class ScraperGui(QtWidgets.QMainWindow):
     # list_pdf create
     def create_button_pressed(self):
         # This is executed when the button is pressed
+        global url_input
 
         # if self.button_pressed
         webpage_input = self.webpage_input.text()
+        url_input = webpage_input
         web_path_input = self.web_path_input.text()
         domain_included_input = self.domain_included_input.currentText()
         # print(domain_included_input)
