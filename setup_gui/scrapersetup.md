@@ -1,2 +1,2 @@
 # Compile
-`pyinstaller --onefile --windowed scraper_setup.py`
+`pyinstaller --onefile --windowed --console ScraperSetup.py`
