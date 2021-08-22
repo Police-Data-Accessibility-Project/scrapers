@@ -40,6 +40,16 @@ def list_pdf_v2(
     extract_tables=False,
     configs_file=False,
 ):
+    """
+    Scrape a list of files from a website
+    :param configs: dictionary of configuration
+    :param save_dir: where the files should be saved, string
+    :param name_in_url: whether or not the filename is in the url (default true)
+    :param extract_name: extract name from an href's string instead of url, set name_in_url false (default false)
+    :param add_date: used when a document is overwritten on a website. set no_overwrite true if using. (default false)
+    :param try_overwite: mostly deprecated. ask before using
+    :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
+    """
     # If save_dir does not exist, make the directory
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -82,9 +92,7 @@ def list_pdf_v2(
 
     # the following two functions are imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
-    extract_info(
-        soup, configs, extract_name=extract_name, configs_file=configs_file, debug=debug
-    )
+    extract_info(soup, configs, extract_name=extract_name, configs_file=configs_file, debug=debug)
 
     # Check added for backwards compatibility.
     # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date
@@ -107,9 +115,7 @@ def list_pdf_v2(
             if debug:
                 # because i hate having tons of stuff printed in my terminal, this will only print if debug=True (set when calling list_pdf_v2)
                 print("  [INFO] csv_dir is not defined in the configs.")
-                print(
-                    "      If you want to save in a different location for some reason, "
-                )
+                print("      If you want to save in a different location for some reason, ")
                 print('      define it in the configs as `csv_dir="<folder>"`')
             # call pdf_extract again, this time without passing csv_dir to it.
             pdf_extract(pdf_directory=save_dir, flavor=flavor)

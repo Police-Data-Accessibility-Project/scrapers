@@ -5,6 +5,7 @@ import os
 
 
 def data_truncater(dir):
+    """Truncate the data so as to keep repo small"""
     for root, dirs, files in os.walk(dir):
         print(files)
         # print(files)

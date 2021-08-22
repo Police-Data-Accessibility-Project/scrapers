@@ -39,6 +39,13 @@ def time_dif(stats, string, start, end):
 
 # Stats default to False
 def crimegraphics_bulletin(configs, save_dir, stats=False, configs_file=False):
+    """
+    Scrape a crimegraphics [daily] bulletins
+    :param configs: dictionary of configuration.
+    :param save_dir: directory to save data to
+    :param stats: whether you want execution stats (default false)
+    :param configs_file: for backwards compatibility, leave it alone (default False)
+    """
     if not configs_file:  # Default setting
         department_code = configs["department_code"]
         url = configs["url"]

@@ -3,6 +3,7 @@ import os
 # filename = "./data/vehicle_ped_investigations/2020-present/2021_05_11_2020-present.csv"
 # dir = "./"
 def field_extractor(directory):
+    """Extract fields from csv files in all sub directories of given directory."""
     fields = []
 
     for root, dirs, files in os.walk(directory):

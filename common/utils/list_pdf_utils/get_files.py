@@ -25,6 +25,18 @@ def get_files(
     no_overwrite=False,
     add_date=False,
 ):
+    """
+    Download files provided by extract_info
+    :param save_dir: directory to save files to
+    :param sleep_time: number of seconds to sleep, set to robots.txt crawler-delay
+    :param delete: whether to delete url_name.txt after completion, useful for debugging (default true)
+    :param debug: whether to print debug information (default false)
+    :param name_in_url: if the file's name is in the url (default True)
+    :param try_overwite: deprecated
+    :param domain_included: whether the domain is in the html's href (almost always false) (default false)
+    :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
+    param add_date: used with no_overwrite. appends date scraped to file. (default false)
+    """
     name_in_url = name_in_url
     if not os.path.isfile("url_name.txt"):
         print("url_name.txt does not exist. Did you call extract_info first?")
@@ -70,18 +82,13 @@ def get_files(
             if name_in_url == True:
                 if first_line <= 1:
                     print(" [?] name_in_url is True")
+
+                #  All of these separate functions are likely unecessary
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
                     print("   [*] Getting file " + file_name)
                     get_pdf(
-                        save_dir,
-                        file_name,
-                        url_2,
-                        debug,
-                        sleep_time,
-                        try_overwite,
-                        no_overwrite,
-                        add_date=add_date,
+                        save_dir, file_name, url_2, debug, sleep_time, try_overwite, no_overwrite, add_date=add_date,
                     )
                     print("   [*]Sleeping for: " + str(sleep_time))
 
@@ -102,9 +109,7 @@ def get_files(
 
                 if not debug:
                     response = urllib.request.urlopen(url_2)
-                    file_name, params = cgi.parse_header(
-                        response.headers.get("Content-Disposition", "")
-                    )
+                    file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
                     if "=" in file_name:
                         file_name = file_name.split("=")
                     elif ":" in file_name:
@@ -113,17 +118,13 @@ def get_files(
                         file_name = file_name[1].strip('"')
                     except IndexError:
                         print(" [!!!] file_name was blank, might want to check that.")
-                        print(
-                            " [!!!] (Likely caused by using setting name_in_url=False)"
-                        )
+                        print(" [!!!] (Likely caused by using setting name_in_url=False)")
                         pass
 
                 if debug:
                     response = urllib.request.urlopen(url_2)
                     print(response)
-                    file_name, params = cgi.parse_header(
-                        response.headers.get("Content-Disposition", "")
-                    )
+                    file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
                     print("file_name: " + str(file_name) + ", params: " + str(params))
                     if "=" in file_name:
                         file_name = file_name.split("=")
@@ -151,9 +152,7 @@ def get_files(
                     get_xls(save_dir, file_name, url_2, sleep_time)
 
                 elif ".zip" in extension:
-                    urllib.request.urlretrieve(
-                        url_2, save_dir + file_name.replace("/", "-")
-                    )
+                    urllib.request.urlretrieve(url_2, save_dir + file_name.replace("/", "-"))
 
                 else:
                     print(" [!!!] Unhandled documents type")

@@ -22,10 +22,15 @@ from common.utils import page_update
 # ]
 
 # save_folder is the parent directory that all data will be saved under
-def opendata_scraper2(
-    save_url, save_folder, sleep_time=1, save_subfolder=False, socrata=False
-):
-
+def opendata_scraper2(save_url, save_folder, sleep_time=1, save_subfolder=False, socrata=False):
+    """
+    Scrape opendata (and similar) websites
+    :param save_url: provide nested list following provided example
+    :param save_folder: parent directory where data should be saved
+    :param sleep_time: set to robots.txt crawl-delay if available (default 1)
+    :param save_subfolder: whether or not to you are trying to save in a subfolder per url (default false)
+    :param socrata: if you are scraping a socrata website, set to true (default false)
+    """
     for i, row in enumerate(save_url):
         # get the api response
         print(f"   [*] Getting data for table {save_url[i][0]}...")
@@ -50,9 +55,7 @@ def opendata_scraper2(
             save_location = save_url[i][0]
             # this could be achieved by using the "Return Count Only" option when generating the query instead of hashing the entire response (later on)
             if not socrata:
-                updated = page_update(
-                    response, save_folder + save_location, loop=True, print_output=False
-                )
+                updated = page_update(response, save_folder + save_location, loop=True, print_output=False)
             else:
                 # get the update date of the data from the returned dictionary
                 response_json = json.loads(response.text)
@@ -63,10 +66,7 @@ def opendata_scraper2(
 
                 # An altered version of page_update.py
                 # Check if the file data.txt exists, and that it is not empty
-                if (
-                    os.path.isfile(save_folder + save_location + "date.txt")
-                    and os.stat(save_folder + save_location + "date.txt").st_size != 0
-                ):
+                if os.path.isfile(save_folder + save_location + "date.txt") and os.stat(save_folder + save_location + "date.txt").st_size != 0:
                     with open(save_folder + save_location + "date.txt", "r") as output:
                         # Read the file
                         previous_update_date = output.read()
@@ -77,9 +77,7 @@ def opendata_scraper2(
                             updated = False
 
                         else:
-                            with open(
-                                save_folder + save_location + "date.txt", "w"
-                            ) as output_writable:
+                            with open(save_folder + save_location + "date.txt", "w") as output_writable:
                                 print(" [*] File has updated")
                                 updated = True
                                 output_writable.write(data_updated_date)
@@ -111,53 +109,34 @@ def opendata_scraper2(
 
                 if save_location.count("/") > 1:
                     file_folder = save_location.split("/")
-                    file_name = (
-                        str(date_name).replace("-", "_")
-                        + "_"
-                        + file_folder[1].strip("/")
-                    )
+                    file_name = str(date_name).replace("-", "_") + "_" + file_folder[1].strip("/")
 
                 else:
-                    file_name = (
-                        str(date_name).replace("-", "_")
-                        + "_"
-                        + save_location.strip("/")
-                    )
+                    file_name = str(date_name).replace("-", "_") + "_" + save_location.strip("/")
 
                 if "json" in content_type:
                     # if save_subfolder:
                     #     if not os.path.exists(save_folder + save_location):
                     #         os.makedirs(save_folder + save_location)
-                    with open(
-                        save_folder + save_location + file_name + ".json", "w"
-                    ) as output:
+                    with open(save_folder + save_location + file_name + ".json", "w") as output:
                         output.write(json.dumps(parsed, indent=4, sort_keys=False))
 
                 elif "csv" in content_type:
-                    with open(
-                        save_folder + save_location + file_name + ".csv", "w"
-                    ) as output:
+                    with open(save_folder + save_location + file_name + ".csv", "w") as output:
                         output.write(response.text)
 
                 elif "octet-stream" in content_type:
-                    print(
-                        '  [*] content_type is "octect-stream", saving as csv. (Experimental)'
-                    )
+                    print('  [*] content_type is "octect-stream", saving as csv. (Experimental)')
                     if ".csv" in save_url[i]:
-                        with open(
-                            save_folder + save_location + file_name + ".csv", "w"
-                        ) as output:
+                        with open(save_folder + save_location + file_name + ".csv", "w") as output:
                             output.write(response.text)
                     elif ".xlsx" in save_url[i]:
                         urllib.request.urlretrieve(
-                            save_url[i],
-                            save_folder + save_location + file_name + ".xlsx",
+                            save_url[i], save_folder + save_location + file_name + ".xlsx",
                         )
 
                 else:
-                    print(
-                        f"   [!] The url in index {i}, save_folder: {save_location}, did not have a handled content_type!"
-                    )
+                    print(f"   [!] The url in index {i}, save_folder: {save_location}, did not have a handled content_type!")
                     print("      [?] content_type: " + content_type)
             else:
                 print(f"    [*] Url in index {i} of save_url has not updated.")
@@ -165,8 +144,6 @@ def opendata_scraper2(
 
             time.sleep(int(sleep_time))
         else:
-            print(
-                f" [!!!] Url {save_url[i]} returned code {response.status_code}. Check that the url is correct."
-            )
+            print(f" [!!!] Url {save_url[i]} returned code {response.status_code}. Check that the url is correct.")
 
     # import etl

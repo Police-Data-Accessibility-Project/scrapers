@@ -5,60 +5,17 @@ Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/ma
 Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
 
 # Source info
-Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
+Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if something has changed.
 
 ## Data refresh rate
 For example "daily at 8pm EST" or "every Friday, usually before noon"
 
 ## Legal
-Include the Terms of Service (or link to them). Is there anything else we should know?
-
-# Fields to collect:
-_Move these fields to the appropriate list below when you submit your scraper._
-
-* _id
-* _state
-* _county
-* CaseNum
-* FirstName
-* MiddleName
-* LastName
-* Suffix
-* DOB
-* Race
-* Sex
-* ArrestDate
-* FilingDate
-* OffenseDate
-* DivisionName
-* CaseStatus
-* DefenseAttorney
-* PublicDefender
-* Judge
-* ChargeCount
-* ChargeStatute
-* ChargeDescription
-* ChargeDisposition
-* ChargeDispositionDate
-* ChargeOffenseDate
-* ChargeCitationNum
-* ChargePlea
-* ChargePleaDate
-* ArrestingOfficer
-* ArrestingOfficerBadgeNumber
-* BookingNum
-* BookingDate
-* WarrantNum
-* BailAmount
-* SearchIncident
-
-## Fields unobtainable within our legal guidelines:
-
-## Fields not available:
+Include the Terms of Service or robots.txt (or link to them). How does your code account for or meet the legal guidelines?
 
 ## Fields being collected:
 
-## Fields available not present on the list above:
+## Fields unobtainable within our legal guidelines:
 
 ## Data uniformity
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
