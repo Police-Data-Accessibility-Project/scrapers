@@ -10,4 +10,4 @@ Within `configs.py`:
 The `crimegraphics_scraper` module requires two arguments, the `configs`, and the `save_dir`. Should you want performance stats, add `stats=True` as an argument.
 
 # Info
-The scripts should likely be run daily. They will only save the data if the hash (generated from the table) is different. Otherwise, it will simply exit. 
+The scripts should likely be run daily. They will only save the data if the hash (generated from the table) is different. Otherwise, it will simply exit.
