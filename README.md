@@ -3,6 +3,7 @@ This repo contains the data scrapers for [Police Data Accessibility Project](htt
 
 ## Contribute
 To write a scraper, start with [CONTRIBUTING.md](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/CONTRIBUTING.md). Be sure to check out the [/common folder](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)!
+
 For everything else, start with [docs.pdap.io](https://docs.pdap.io/).
 
 ## What data are we scraping?
