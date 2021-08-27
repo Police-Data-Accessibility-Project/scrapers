@@ -30,14 +30,30 @@ Navigate to our [Dataset Catalog](https://www.dolthub.com/repositories/pdap/data
    - [@Pythonidaer](https://github.com/Pythonidaer/pythonidaer) made an [excellent walkthrough of the GUI as of the v0.0.1 release](https://www.youtube.com/watch?v=oJxXkSytreE).
 6. Copy the resulting folder into your clone of `PDAP-Scrapers`.
 
-## 3. Check the `/common` folder for helpful assets before you start. 
+## 3. Check the `/common` `/Base_Scripts` folder for helpful assets and scrapers before you start. 
 [`/common` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)
+[`/Base_Scripts` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/Base_Scripts/Scrapers)
 
 Why start from scratch if we have a useful library? Keep in mind that we can always refactor your work later if necessary, so if you're not sure, we still want 
 you to submit!
 
 ## 4. Code your scraper and make a Pull Request!
 The most important thing here is that your scraper is grabbing public police data, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
+
+Make sure you follow this guideline for creating folders:
+
+```
+COUNTRY/
+  STATE/
+    COUNTY/ 
+      DEPARTMENT_TYPE
+                (CITY)
+                (COUNTY)
+                (COLLEGE)
+                (STATE)
+                (FEDERAL)/
+                    DEPARTMENT-X-NAME/
+```
 
 
 # FAQ
