@@ -18,7 +18,7 @@ You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal
 
 ## 1. Find a dataset to scrape.
 
-Navigate to our [Dataset Catalog](https://www.dolthub.com/repositories/pdap/datasets) and find a source to scrape. It's likely you will need to [add the dataset yourself](https://docs.pdap.io/components/data-collection/dataset-catalog/submit-or-update-datasets). This takes about 5–10 minutes. 
+Navigate to our [Datasets repo in DoltHub](https://www.dolthub.com/repositories/pdap/datasets) or the [PostgreSQL mirror](https://docs.pdap.io/components/datasets/hadoop-datasets-mirror) and find a source to scrape. If you have a particular dataset in mind you may need to [add it dataset yourself](https://docs.pdap.io/components/data-collection/dataset-catalog/submit-or-update-datasets). This takes about 5–10 minutes. 
 
 
 ## 2. Get set up locally.
