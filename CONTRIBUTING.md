@@ -13,7 +13,7 @@ You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal
 - Populate the readme for your scraper with as much helpful information as you can!
 - The config file appropriately references a dataset.
 - Include a truncated version of some sample data so we understand what is generated.
-- Ensure you have a `schema.json` file & a blank `etl.py` file in your scraper directory, and call `import etl` at the end of your scraper! This will hook into our ETL process once we get further along.
+- Ensure you have a `schema.json` file & a blank `etl.py` file in your scraper directory, and call `import etl` at the end of your scraper. [Read more about Scraper Schemas here](https://docs.pdap.io/components/datasets/scraper_schemas).
 - Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`.
 
 ## 1. Find a dataset to scrape.
