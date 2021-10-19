@@ -7,4 +7,4 @@ To write a scraper, start with [CONTRIBUTING.md](https://github.com/Police-Data-
 For everything else, start with [docs.pdap.io](https://docs.pdap.io/).
 
 ## What data are we scraping?
-The [data types listed here](https://www.dolthub.com/repositories/pdap/datasets/data/master/data_types). If we should targeting a new data type, suggest it in Discord or make a DoltHub PR!
+The [datasets listed here](https://www.dolthub.com/repositories/pdap/datasets/query/master?q=SELECT+*%0AFROM+%60datasets%60%0Awhere+status_id+%3D+1%0A%0A&active=Tables) are our to-do list. If we should targeting a new data type, suggest it in Discord or make a DoltHub PR!
