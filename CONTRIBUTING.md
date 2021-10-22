@@ -25,10 +25,11 @@ Navigate to our [Dataset Catalog](https://www.dolthub.com/repositories/pdap/data
 
 1. Clone this repository. [Don't know how?](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)
 2. `cd` into the `/setup_gui` directory.
-3. Install dependencies. `pip install -r requirements.txt`
-4. Follow through the GUI. You can either run the script directly `python3 scraper_setup.py`, or run the executable by double clicking it.
+3. Follow through the GUI.
+   - Mac: run the script with `python3 ScraperSetup.py`
+   - Windows: run the executable by double clicking it.
    - [@Pythonidaer](https://github.com/Pythonidaer/pythonidaer) made an [excellent walkthrough of the GUI as of the v0.0.1 release](https://www.youtube.com/watch?v=oJxXkSytreE).
-6. Copy the resulting folder into your clone of `PDAP-Scrapers`.
+4. Copy the resulting folder into your clone of `PDAP-Scrapers`.
 
 ## 3. Check the `/common` `/Base_Scripts` folder for helpful assets and scrapers before you start. 
 [`/common` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)

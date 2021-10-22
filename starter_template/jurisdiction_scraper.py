@@ -13,8 +13,10 @@ for example if this script is in /USA/CA/san_francisco, that is 3 directories to
 '''
 import sys
 from pathlib import Path
-cloned_repo_root = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(cloned_repo_root) + '/common')
+
+p = Path(__file__).resolve().parents[5]
+sys.path.insert(1, str(p))
+
 from common.utils import get_files # example of importing one of those files
 
 
