@@ -10,6 +10,8 @@ import jmespath
 import requests
 import json
 from datetime import datetime
+from urllib.parse import urlparse
+
 
 # Support for high resolution screens
 os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
@@ -82,11 +84,15 @@ class ScraperGui(QtWidgets.QMainWindow):
         global searched
 
         homepage_url = self.homepageURLSearch_input.text()
+        homepage_url_parsed = urlparse(homepage_url)
         # Make sure that there is only one slash after URL
         homepage_url = homepage_url.rstrip("/").strip() + "/"
 
+        print("homepage_url_parsed: " + str(homepage_url_parsed))
+        homepage_url = homepage_url_parsed.netloc
+
         owner, repo, branch = 'pdap', 'datasets', 'master'
-        query = '''SELECT * FROM `agencies` WHERE `homepage_url` = ''' + f"'{homepage_url}'"
+        query = f'''SELECT * FROM `agencies` WHERE `homepage_url` LIKE "%{homepage_url}%"'''
         # print(query)
         res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
         jsoned = res.json()
@@ -117,7 +123,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
         # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        if len(rows_searched) > 1:
+        if len(rows_searched) >= 1:
             # Iterate over rows_searched json "rows"
             for column_number, response_row in enumerate(rows_searched):
                 print(column_number)
