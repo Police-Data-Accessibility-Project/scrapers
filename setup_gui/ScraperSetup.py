@@ -64,6 +64,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.removeRow_button.clicked.connect(self._removeRow)
         self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
         self.search_button.clicked.connect(self.get_agency_info)
+        self.search_button_2.clicked.connect(self.get_agency_info)
         self.create_schema_button.clicked.connect(self.create_schema)
 
         self.show()
@@ -83,23 +84,45 @@ class ScraperGui(QtWidgets.QMainWindow):
         '''
         global searched
 
-        homepage_url = self.homepageURLSearch_input.text()
-        homepage_url_parsed = urlparse(homepage_url)
-        # Make sure that there is only one slash after URL
-        homepage_url = homepage_url.rstrip("/").strip() + "/"
+        sender = self.sender()
 
-        print("homepage_url_parsed: " + str(homepage_url_parsed))
-        homepage_url = homepage_url_parsed.netloc
+        # There has to be a better way to do this
+        # Preferably using the button's name instead of text value
+        if sender.text() == "Search":
+            homepage_url = self.homepageURLSearch_input.text()
+            homepage_url_parsed = urlparse(homepage_url)
+            # Make sure that there is only one slash after URL
+            homepage_url = homepage_url.rstrip("/").strip() + "/"
 
-        owner, repo, branch = 'pdap', 'datasets', 'master'
-        query = f'''SELECT * FROM `agencies` WHERE `homepage_url` LIKE "%{homepage_url}%"'''
-        # print(query)
-        res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
-        jsoned = res.json()
-        # print(json.dumps(jsoned, indent=4))
-        # Filter out everything except the "rows" table
-        expression = jmespath.compile("rows[]")
-        searched = expression.search(jsoned)
+            # Extract the domain from the URL
+            print("homepage_url_parsed: " + str(homepage_url_parsed))
+            homepage_url = homepage_url_parsed.netloc
+
+            owner, repo, branch = 'pdap', 'datasets', 'master'
+            query = f'''SELECT * FROM `agencies` WHERE `homepage_url` LIKE "%{homepage_url}%"'''
+            # print(query)
+            res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
+            jsoned = res.json()
+            # print(json.dumps(jsoned, indent=4))
+            # Filter out everything except the "rows" table
+            expression = jmespath.compile("rows[]")
+            searched = expression.search(jsoned)
+
+        elif sender.text() == "Alternative Search":
+            state_iso = str(self.stateISO_input.text()).upper()
+            city_input = str(self.city_schema_input.text()).title()
+
+
+            owner, repo, branch = 'pdap', 'datasets', 'master'
+            query = f'''SELECT * FROM `agencies` WHERE `state_iso` = "{state_iso}" and city = "{city_input}"'''
+            # print(query)
+            res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
+            jsoned = res.json()
+            # print(json.dumps(jsoned, indent=4))
+            # Filter out everything except the "rows" table
+            expression = jmespath.compile("rows[]")
+            searched = expression.search(jsoned)
+
 
         """
         Todo:
