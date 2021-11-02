@@ -1,3 +1,6 @@
+import logging
+import sys
+
 def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_file=False, debug=False):
     """
     Extract information from supplied beautiful soup
@@ -8,6 +11,13 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
     :param configs_file: reverse compatbility, leave alone (default false)
     :param debug: whether to print debug information (default false)
     """
+
+    if debug:
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    else:
+        logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+
+
     if not name_in_url:
         import cgi
         import urllib
@@ -31,11 +41,11 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
             # print("href not startswith")
             # print(link)
             continue
-        if debug:
-            print("link: " + link.get("href"))
+            logging.debug("link: " + link.get("href"))
 
         url = str(link["href"])
-        print(url)
+        logging.info("URL: " + str(url))
+
         if extract_name == False:
             # print(" [?] extract_name is False")
             name = url[url.rindex("/") :]
