@@ -100,7 +100,7 @@ def list_pdf_v3(
 
     # if delete is not false (i think that would be true then), try to remove url_name.txt
     # the delete option is primarily used for debugging
-    if delete != False:
+    if delete is not False:
         try:
             os.remove("url_name.txt")
         except FileNotFoundError:
@@ -174,7 +174,7 @@ def list_pdf_v3(
             print(" [*] Done writing")
     # if debug is false, can probably be rewritten as "if not debug:"
     # functions the same as the delete variable tbh
-    if debug != True:
+    if not debug:
         try:
             os.remove("url_name.txt")
         except FileNotFoundError:

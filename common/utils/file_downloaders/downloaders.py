@@ -8,6 +8,7 @@ import mimetypes
 import traceback
 import filecmp
 from datetime import date
+import logging
 
 
 def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=False):
@@ -68,6 +69,7 @@ def check_if_exists(save_dir, file_name, add_date):
 def get_pdf(
     save_dir, file_name, url_2, sleep_time, debug=False, try_overwite=False, no_overwrite=False, add_date=False,
 ):
+
     """
     Download PDFs
     :param save_dir: path where files should be saved, string
@@ -79,8 +81,14 @@ def get_pdf(
     :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
     :param add_date: adds the date scraped to the filename, bool
     """
+    
+    if debug:
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    else:
+        logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+        
     file_name = file_name.lstrip("/")
-    print(file_name)
+    logging.info("file_name: " + str(file_name))
 
     if add_date:
         print(" [?] add_date is True")
@@ -110,16 +118,14 @@ def get_pdf(
             print(f"   [!] {exception}")
             print("   [!] URL: " + str(url_2))
             print("")
-            if debug:
-                traceback.print_exc()
+            logging.exception(traceback.print_exc())
             sys.exit()
 
         if add_date:
             print(" [?] add_date is True")
             date_name = date.today()
             file_name = file_name.strip(".pdf") + "_" + str(date_name).replace("-", "_") + ".pdf"
-            if debug:
-                print(file_name)
+            logging.debug("file_name: " + str(file_name))
 
         with open(save_dir + file_name, "wb") as file:
             file.write(pdf.read())
@@ -142,10 +148,11 @@ def get_pdf(
             print(f"    [!] {exception}")
             print("")
             print("    [!] URL: " + str(url_2))
-            if debug:
-                traceback.print_exc()
+            logging.exception(traceback.print_exc())
             sys.exit()
+            
         print("   [*] Comparing")
+
 
         # Saves the pdf while prepending with "new_"
         print(" [*] Saving as new_" + file_name)
@@ -176,8 +183,7 @@ def get_pdf(
             print(exception)
             print("")
             print("URL: " + str(url_2))
-            if debug:
-                traceback.print_exc()
+            logging.exception(traceback.print_exc())
             sys.exit()
         print("Comparing")
 
@@ -209,8 +215,7 @@ def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
             print(f"    [!] {exception} ")
             print("    [!] URL: " + str(url_2))
             print("")
-            if debug:
-                traceback.print_exc()
+            logging.exception(traceback.print_exc())
             exit()
 
         with open(save_dir + file_name, "wb") as file:
@@ -218,9 +223,9 @@ def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
 
         file.close()
         time.sleep(sleep_time)
-        print("   [*] Sleeping for: " + str(sleep_time))
+        print("   [*] Sleeping for:", sleep_time)
 
-
+        
 def get_doc(save_dir, file_name, url_2, sleep_time):
     if not os.path.exists(save_dir + file_name):
         document = requests.get(url_2.replace(" ", "%20", allow_redirects=True))
@@ -230,4 +235,4 @@ def get_doc(save_dir, file_name, url_2, sleep_time):
 
         data_file.close()
         time.sleep(sleep_time)
-        print("   [*] Sleeping for: " + str(sleep_time))
+        logging.info("Sleeping for:", sleep_time)

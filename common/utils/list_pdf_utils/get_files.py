@@ -7,6 +7,7 @@ import requests
 import mimetypes
 import traceback
 from pathlib import Path
+import logging
 
 p = Path(__file__).resolve().parents[2]
 sys.path.insert(1, str(p))
@@ -37,7 +38,15 @@ def get_files(
     :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
     param add_date: used with no_overwrite. appends date scraped to file. (default false)
     """
+
+    if debug:
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    else:
+        logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+
+    # Why do I have this?
     name_in_url = name_in_url
+
     if not os.path.isfile("url_name.txt"):
         print("url_name.txt does not exist. Did you call extract_info first?")
         return
@@ -65,8 +74,7 @@ def get_files(
         print(" [*] Getting files")
         for line in input_file:
             first_line += 1
-            if debug:
-                print(line)
+            logging.debug("line: " + str(line))
 
             line_list = line.split(", ")
             url_2 = line_list[0]
@@ -107,38 +115,24 @@ def get_files(
             else:
                 import cgi
 
-                if not debug:
-                    response = urllib.request.urlopen(url_2)
-                    file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
-                    if "=" in file_name:
-                        file_name = file_name.split("=")
-                    elif ":" in file_name:
-                        filename = file_name.split(":")
-                    try:
-                        file_name = file_name[1].strip('"')
-                    except IndexError:
-                        print(" [!!!] file_name was blank, might want to check that.")
-                        print(" [!!!] (Likely caused by using setting name_in_url=False)")
-                        pass
 
-                if debug:
-                    response = urllib.request.urlopen(url_2)
-                    print(response)
-                    file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
-                    print("file_name: " + str(file_name) + ", params: " + str(params))
-                    if "=" in file_name:
-                        file_name = file_name.split("=")
-                    elif ":" in file_name:
-                        filename = file_name.split(":")
-                    print(f"file_name: {file_name}")
-                    try:
-                        file_name = file_name[1].strip('"')
-                    except IndexError as exception:
-                        print("file_name was blank, might want to check that.")
-                        print("(Likely caused by using setting name_in_url=False)")
-                        print(exception)
-                        pass
-                    print(f"file_name: {file_name}")
+                response = urllib.request.urlopen(url_2)
+                logging.debug("Response: " + str(response))
+                file_name, params = cgi.parse_header(response.headers.get("Content-Disposition", ""))
+                logging.debug("file_name: " + str(file_name) + ", params: " + str(params))
+                if "=" in file_name:
+                    file_name = file_name.split("=")
+                elif ":" in file_name:
+                    filename = file_name.split(":")
+                logging.debug(f"file_name: {file_name}")
+                try:
+                    file_name = file_name[1].strip('"')
+                except IndexError:
+                    print(" [!!!] file_name was blank, might want to check that.")
+                    print(" [!!!] (Likely caused by using setting name_in_url=False)")
+                    logging.exception()
+                    pass
+                logging.debug(f"file_name: {file_name}")
 
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
