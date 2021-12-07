@@ -36,9 +36,11 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
 
         url = str(link["href"])
         print(url)
-        if extract_name == False:
+        
+        if not extract_name:
             # print(" [?] extract_name is False")
             name = url[url.rindex("/") :]
+
         else:
             name = link.string
             # print(" [?] extract_name is True")
