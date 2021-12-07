@@ -10,6 +10,10 @@ import jmespath
 import requests
 import json
 from datetime import datetime
+from urllib.parse import urlparse
+import logging
+
+
 
 # Support for high resolution screens
 os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
@@ -17,6 +21,9 @@ os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
 ui_file = "common/gui/scraper_ui.ui"
 error_modal = "common/gui/error_modal.ui"
 success_modal = "common/gui/success_modal.ui"
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+
 
 class ErrorDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
@@ -62,6 +69,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.removeRow_button.clicked.connect(self._removeRow)
         self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
         self.search_button.clicked.connect(self.get_agency_info)
+        self.search_button_2.clicked.connect(self.get_agency_info)
         self.create_schema_button.clicked.connect(self.create_schema)
 
         self.show()
@@ -81,19 +89,45 @@ class ScraperGui(QtWidgets.QMainWindow):
         '''
         global searched
 
-        homepage_url = self.homepageURLSearch_input.text()
-        # Make sure that there is only one slash after URL
-        homepage_url = homepage_url.rstrip("/").strip() + "/"
+        sender = self.sender()
 
-        owner, repo, branch = 'pdap', 'datasets', 'master'
-        query = '''SELECT * FROM `agencies` WHERE `homepage_url` = ''' + f"'{homepage_url}'"
-        # print(query)
-        res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
-        jsoned = res.json()
-        # print(json.dumps(jsoned, indent=4))
-        # Filter out everything except the "rows" table
-        expression = jmespath.compile("rows[]")
-        searched = expression.search(jsoned)
+        # There has to be a better way to do this
+        # Preferably using the button's name instead of text value
+        if sender.text() == "Search":
+            homepage_url = self.homepageURLSearch_input.text()
+            homepage_url_parsed = urlparse(homepage_url)
+            # Make sure that there is only one slash after URL
+            homepage_url = homepage_url.rstrip("/").strip() + "/"
+
+            # Extract the domain from the URL
+            logging.info("homepage_url_parsed: " + str(homepage_url_parsed))
+            homepage_url = homepage_url_parsed.netloc
+
+            owner, repo, branch = 'pdap', 'datasets', 'master'
+            query = f'''SELECT * FROM `agencies` WHERE `homepage_url` LIKE "%{homepage_url}%"'''
+            # print(query)
+            res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
+            jsoned = res.json()
+            # print(json.dumps(jsoned, indent=4))
+            # Filter out everything except the "rows" table
+            expression = jmespath.compile("rows[]")
+            searched = expression.search(jsoned)
+
+        elif sender.text() == "Alternative Search":
+            state_iso = str(self.stateISO_input.text()).upper()
+            city_input = str(self.city_schema_input.text()).title()
+
+
+            owner, repo, branch = 'pdap', 'datasets', 'master'
+            query = f'''SELECT * FROM `agencies` WHERE `state_iso` = "{state_iso}" and city = "{city_input}"'''
+            # print(query)
+            res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
+            jsoned = res.json()
+            # print(json.dumps(jsoned, indent=4))
+            # Filter out everything except the "rows" table
+            expression = jmespath.compile("rows[]")
+            searched = expression.search(jsoned)
+
 
         """
         Todo:
@@ -117,17 +151,17 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
         # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        if len(rows_searched) > 1:
+        if len(rows_searched) >= 1:
             # Iterate over rows_searched json "rows"
             for column_number, response_row in enumerate(rows_searched):
-                print(column_number)
+                logging.debug("column_number: " + str(column_number))
                 self.searchResult_table.insertColumn(column_number)
                 row_number = self.searchResult_table.rowCount()
 
                 current_row = 0
                 # Add data to table
                 for cell_data in response_row:
-                    print(cell_data)
+                    logging.debug("cell_data: " + str(cell_data))
                     # print(current_row, column_number, response_row)
                     # print(rows_searched[i])
                     self.searchResult_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
@@ -144,7 +178,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             msg.exec_()
 
             success = False
-            print("Couldn't find anything")
+            logging.info("Couldn't find anything")
 
         # Go back through and resize the columns.
         # I tried putting it in the first loop, but it caused it to crash...
@@ -186,7 +220,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Get the selected agency from dolthub response
         try:
             schema_data = searched[selected_agency]
-            print("searched: " + str(schema_data))
+            logging.info("searched: " + str(schema_data))
 
         except IndexError:
             msg = QtWidgets.QMessageBox()
@@ -195,18 +229,18 @@ class ScraperGui(QtWidgets.QMainWindow):
             msg.setWindowTitle("Error")
             msg.exec_()
 
-            print("Index error: Table isn't that long")
+            logging.exception("Index error: Table isn't that long")
 
         # Edit the schema
         schema_path = scraper_save_dir_cwd + pathsep + "schema.json"
-        print("\nSchema path: " + str(schema_path))
+        logging.info("\nSchema path: " + str(schema_path))
 
         with open(schema_path, "r+", encoding="utf-8") as schema_out:
             data = json.load(schema_out)
             agency_info = data["agency_info"]
 
             if schema_is_new:
-                print("Schema is new")
+                logging.info("Schema is new")
                 data["agency_id"] = schema_data["id"]
                 agency_info["agency_name"] = schema_data["name"]
                 agency_info["agency_coords"]["lat"] = schema_data["lat"]
@@ -226,7 +260,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     agency_data[0]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
 
                 except NameError:
-                    print("Opendata is not currently supported for schema data creation")
+                    logging.warning("Opendata is not currently supported for schema data creation")
                     msg = QtWidgets.QMessageBox()
                     msg.setIcon(QtWidgets.QMessageBox.Critical)
                     msg.setText("Opendata is not currently supported for the data portion of the schema!\nYou will have to do it manually :(.")
@@ -234,8 +268,8 @@ class ScraperGui(QtWidgets.QMainWindow):
                     msg.exec_()
 
             else:
-                print("Schema is not new")
-                print(len(data["data"]))
+                logging.info("Schema is not new")
+                logging.debug("Data length: " + str(len(data["data"])))
                 agency_data = data["data"]
                 # agency_start_index = len(agency_data) - 1
                 # print(agency_start_index)
@@ -253,10 +287,10 @@ class ScraperGui(QtWidgets.QMainWindow):
                     agency_data[agency_index]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
                     agency_data[agency_index]["scraper_path"] = scraper_save_dir
                     agency_data[agency_index]["mapping"] = ""
-                    print(json.dumps(data, indent=4))
+                    logging.debug(json.dumps(data, indent=4))
 
                 except NameError:
-                    print("Opendata is not currently supported for schema data creation")
+                    logging.warning("Opendata is not currently supported for schema data creation")
                     msg = QtWidgets.QMessageBox()
                     msg.setIcon(QtWidgets.QMessageBox.Critical)
                     msg.setText("Opendata is not currently supported for the data portion of the schema!\nYou will have to do it manually :(.")
@@ -273,22 +307,17 @@ class ScraperGui(QtWidgets.QMainWindow):
             msg.setWindowTitle("Success!")
             msg.exec_()
 
-
-
-
-
-
-            print(agency_data)
+            logging.debug("agency_data: " + str(agency_data))
 
 
 
     def next_button_pressed(self):
         """Next button on `Choose type` tab"""
         scraper_choice = self.scraper_choice.currentIndex()  # Get index of combobox
-        print(scraper_choice)
+        logging.info("Scraper choice: " + str(scraper_choice))
 
         if scraper_choice == 0:  #  0 is list_pdf
-            print("0")
+            logging.debug("Scraper choice: 0")
             self.tabWidget.setTabEnabled(2, False)  # Disable second page of list_pdf setup
             self.tabWidget.setTabEnabled(3, False)  # Disable crimegraphics tabs if enabled
             self.tabWidget.setTabEnabled(4, False)  # Disable Initial Setup page
@@ -308,7 +337,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                 "QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} "
             )  # Force stylesheet to recompute
             self.tabWidget.setCurrentIndex(4)
-            print("ERROR: Not Implemented")
+            logging.warning("ERROR: Not Implemented")
 
         elif scraper_choice == 2:  # 2 is crimegraphics
             # Disable the list_pdf tabs (if enabled)
@@ -352,11 +381,11 @@ class ScraperGui(QtWidgets.QMainWindow):
         save_dir_input = self.save_dir_input_opendata.text().replace(" ", "_").rstrip("/")  # Clean input of spaces
 
         if save_dir_input:
-            print("save_dir_input not blank")
+            logging.info("save_dir_input not blank")
             save_dir_input = save_dir_input.replace("./data/","")  # Remove any accidental data prepends
             save_dir_input = 'save_dir = "./data/' + save_dir_input + '/"'
         else:
-            print("save_dir_input blank")
+            logging.info("save_dir_input blank, defaulting to `./data/`")
             save_dir_input = 'save_dir = "./data/"'
 
         # Step 3
@@ -365,7 +394,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
         template_folder = "./Base_Scripts/Scrapers/opendata/"
         full_path = scraper_save_dir + scraper_name
-        print("full_path: " + str(full_path))
+        logging.info("full_path: " + str(full_path))
 
         # Copy and rename the scraper
         scraper_input_text = "opendata_scraper.py"
@@ -383,9 +412,10 @@ class ScraperGui(QtWidgets.QMainWindow):
             with open(full_path, "r+") as output:
                 # output.seek(config_start)
                 lines = output.readlines() #[config_start:]  # This doesn't seem to do what I want
-                print("Lines length: " + str(len(lines)))
+                logging.debug("Lines length: " + str(len(lines)))
                 save_url = [[]]
-                print(self.opendataTable.rowCount())
+                logging.debug("Rows in opendataTable: " + str(self.opendataTable.rowCount()))
+
                 for i in range(self.opendataTable.rowCount()):
                     data = []
                     for column in range(0,2):  # There are two columns to get
@@ -393,7 +423,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                         data.append(self.opendataTable.item(i, column).text())
 
                     save_url[0].append(data)
-                print(save_url)
+                logging.debug("save_url: " + str(save_url))
 
             # for line in fileinput.input(full_path, inplace=1):
             #     if "save_url = []" in line:
@@ -409,7 +439,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], change_to[i])
                 sys.stdout.write(line)
-            print("enabled")
+            logging.info("enabled")
 
             # Enable and switch to schema tab
             self.tabWidget.setTabEnabled(6, True)
@@ -423,8 +453,8 @@ class ScraperGui(QtWidgets.QMainWindow):
             import traceback
 
             traceback.print_exc()
-            print(str(exception))
-            print("You need to complete the first menu first")
+            logging.exception()
+            logging.warning("You need to complete the first menu first")
             self.tabWidget.setCurrentIndex(0)  # Go back to the start age
             self.error_dialog()
             return
@@ -478,7 +508,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         #     "department_code": "",
         department_code = url_input.split(".")
         department_code = str(department_code[0]).replace("https://", "")
-        print(department_code)
+        logging.info("Department Code: " + str(department_code))
         save_dir = "./data/" + save_dir_input
         lines_to_change = ['"url": "",', '"department_code": "",', 'save_dir = "./data/"']
         config_list = [f'"url": "{url_input}",', f'"department_code": "{department_code}"', f'save_dir = "{save_dir_input}"']
@@ -502,7 +532,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             # self.success_dialog()
 
         else:
-            print("ERROR: File already exists")
+            logging.warning("ERROR: File already exists")
 
     # Choose Scraper list_pdf
     def choose_scraper_pressed(self):
@@ -552,12 +582,12 @@ class ScraperGui(QtWidgets.QMainWindow):
         save_dir_input = self.save_dir_input.text().replace(" ", "_").rstrip("/")  # Clean input of spaces
 
         if save_dir_input:
-            print("save_dir_input not blank")
+            logging.info("save_dir_input not blank")
             save_dir_input = save_dir_input.replace("./data/","")  # Remove any accidental data prepends
             save_dir = "./data/" + save_dir_input + '"'
             save_dir_input = 'save_dir = "./data/' + save_dir_input + '"'
         else:
-            print("save_dir_input blank")
+            logging.info("save_dir_input blank")
             save_dir_input = 'save_dir = "./data/"'
             save_dir = "./data/"
 
@@ -565,7 +595,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         # make sure that black formatting does not affect this
         # outer two quotes should be single
         default_save_dir = 'save_dir = "./data/"'
-        print(save_dir_input)
+        logging.info("save_dir_input: " + str(save_dir_input))
+
         for line in fileinput.input(full_path, inplace=1):
             if default_save_dir in line:
                 line = line.replace(default_save_dir, save_dir_input)
@@ -600,7 +631,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             with open(full_path, "r+") as output:
                 # output.seek(config_start)
                 lines = output.readlines() #[config_start:]  # This doesn't seem to do what I want
-                print("Lines length: " + str(len(lines)))
+                logging.debug("Lines length: " + str(len(lines)))
                 # for i in range(config_start, config_end):
                 if not is_v3:
                     config_list = [
@@ -611,7 +642,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                         f'"sleep_time":{sleep_time_input}',
                     ]
                 else:
-                    print("is v3, putting non_important list")
+                    logging.info("is v3, putting non_important list")
                     config_list = [
                         f'"webpage":"{webpage_input}"',
                         f'"web_path":"{web_path_input}"',
@@ -625,7 +656,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             lines_to_change = ['"webpage": "",', '"web_path": "",', '"domain_included": False,', '"domain": "",', '"sleep_time": 5,']
 
             if is_v3:
-                print("is v3")
+                logging.debug("is v3")
                 lines_to_change = lines_to_change.append('"non_important": [],')
             # Use fileinput to replace config lines.
             for line in fileinput.input(full_path, inplace=1):
@@ -646,15 +677,15 @@ class ScraperGui(QtWidgets.QMainWindow):
             import traceback
 
             traceback.print_exc()
-            print(str(exception))
-            print("You need to complete the first menu first")
+            logging.exception(exception)
+            logging.warning("You need to complete the first menu first")
             self.tabWidget.setCurrentIndex(1)  # Go back to the first list_pdf page
             self.error_dialog()
             return
 
     def start_over():
         for tab in range(1,6):
-            print(" [*] Tab: " + str(tab))
+            logging.debug(" [*] Tab: " + str(tab))
             self.tabWidget.setTabEnabled(tab, False)
 
 app = QtWidgets.QApplication(sys.argv)
