@@ -155,5 +155,5 @@ def get_files(
     input_file.close()
 
     # Used for debugging
-    if delete is not False:
+    if delete:
         os.remove("url_name.txt")

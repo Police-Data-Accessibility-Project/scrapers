@@ -22,13 +22,13 @@ from crimegraphics.utils import data_parser
 
 # this function is used for gathering time stats
 def function_timer(stats):
-    if stats != False:
+    if stats:
         return time.perf_counter()
 
 
 # this function simply calculates and prints the difference between the end and start times
 def time_dif(stats, string, start, end):
-    if stats != False:
+    if stats:
         print(f"{string}: {end - start} seconds")
 
 

@@ -44,11 +44,15 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
             logging.debug("link: " + link.get("href"))
 
         url = str(link["href"])
+
         logging.info("URL: " + str(url))
 
-        if extract_name == False:
+        print(url)
+        
+        if not extract_name:
             # print(" [?] extract_name is False")
             name = url[url.rindex("/") :]
+
         else:
             name = link.string
             # print(" [?] extract_name is True")

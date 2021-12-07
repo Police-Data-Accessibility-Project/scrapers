@@ -33,7 +33,7 @@ def file_compare(save_dir, file_1, file_2, try_overwite=False, no_overwrite=Fals
     else:
         # I tried to just put the code to write it here, but it would've required too many arguments
         print("File has changed")
-        if try_overwite == True:
+        if try_overwite:
             os.remove(file_1)
             # Renames the new file to the old_file's name (without the new_)
             os.rename(file_2, file_1)
@@ -65,24 +65,38 @@ def check_if_exists(save_dir, file_name, add_date):
     else:
         return False
 
-
+# These can likely get merged into a single function
 def get_pdf(
     save_dir, file_name, url_2, sleep_time, debug=False, try_overwite=False, no_overwrite=False, add_date=False,
 ):
 
+    """
+    Download PDFs
+    :param save_dir: path where files should be saved, string
+    :param file_name: name of file,  string
+    :param name_in_url: url of file, string
+    :param extract_name: time to sleep between requests, integer
+    :param debug: more verbose printing, should be replaced with logging module, bool
+    :param try_overwite: mostly deprecated. ask before using
+    :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
+    :param add_date: adds the date scraped to the filename, bool
+    """
+    
     if debug:
         logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     else:
         logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-
+        
     file_name = file_name.lstrip("/")
     logging.info("file_name: " + str(file_name))
 
-    if add_date is True:
+    if add_date:
         print(" [?] add_date is True")
+
         if not os.path.isfile("last_run.txt"):
             print(" [!] last_run.txt did not exist... Is this your first time running?")
             print("    [*] Creating last_run.txt and adding data...")
+
             with open("last_run.txt", "w") as last_run:
                 date_name = str(date.today()).replace("-", "_")
                 print(date_name)
@@ -94,11 +108,12 @@ def get_pdf(
 
     # Default run mode, simply checks that the file does not already exists.
     # Don't need to check if
-    if os.path.exists(save_dir + file_name) == False and check_if_exists(save_dir, file_name, add_date=add_date) == False:
+    if not os.path.exists(save_dir + file_name) and check_if_exists(save_dir, file_name, add_date=add_date) is False:
         print(" [*] File does not exist")
         try:
             print(" [*] Requesting file....")
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
+
         except urllib.error.HTTPError as exception:
             print(f"   [!] {exception}")
             print("   [!] URL: " + str(url_2))
@@ -106,7 +121,7 @@ def get_pdf(
             logging.exception(traceback.print_exc())
             sys.exit()
 
-        if add_date == True:
+        if add_date:
             print(" [?] add_date is True")
             date_name = date.today()
             file_name = file_name.strip(".pdf") + "_" + str(date_name).replace("-", "_") + ".pdf"
@@ -121,9 +136,9 @@ def get_pdf(
 
         # If the file exists, and no_overwrite is true, then:
     elif (
-        os.path.exists(save_dir + file_name) == True
-        and check_if_exists(save_dir, file_name, add_date=add_date) == False
-        and no_overwrite == True
+        os.path.exists(save_dir + file_name) is True
+        and check_if_exists(save_dir, file_name, add_date=add_date) is False
+        and no_overwrite is True
     ):
         # Tries to get the file and set it to pdf
         try:
@@ -135,8 +150,9 @@ def get_pdf(
             print("    [!] URL: " + str(url_2))
             logging.exception(traceback.print_exc())
             sys.exit()
+            
+        print("   [*] Comparing")
 
-        print("Comparing")
 
         # Saves the pdf while prepending with "new_"
         print(" [*] Saving as new_" + file_name)
@@ -146,7 +162,8 @@ def get_pdf(
         new_filename = "new_" + file_name
 
         print(" [*] Comparing...")
-        if file_compare(save_dir, file_name, new_filename, no_overwrite=True) == False:
+
+        if not file_compare(save_dir, file_name, new_filename, no_overwrite=True):
             print("    [?] Files are different")
             date_name = date.today()
             # print(date_name)
@@ -157,7 +174,7 @@ def get_pdf(
                 file.write(pdf.read())
             file.close()
     # Checks if the files exists, and that `try_overwite` is True
-    elif os.path.exists(save_dir + file_name) == True and try_overwite == True:
+    elif os.path.exists(save_dir + file_name) is True and try_overwite is True:
         print(" [!!!] try_overwite is set to True, verify that you want this before continuing")
         # Tries to get the file and set it to pdf
         try:
@@ -170,7 +187,7 @@ def get_pdf(
             sys.exit()
         print("Comparing")
 
-        if add_date == True:
+        if add_date:
             date_name = date.today()
             file_name = file_name.strip(".pdf") + "_" + str(date_name).replace("-", "_") + ".pdf"
             print(" [*] Date appended name: " + file_name)
@@ -190,9 +207,9 @@ def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
     if ".xls" not in file_name:
         # Allows saving as xls even if it's not in the file_name (saves in proper format)
         file_name = file_name + ".xls"
-    if os.path.exists(save_dir + file_name) == False:
+    if not os.path.exists(save_dir + file_name):
         try:
-            print(" [*] Requesting file...")
+            print("   [*] Requesting file...")
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
         except urllib.error.HTTPError as exception:
             print(f"    [!] {exception} ")
@@ -204,15 +221,18 @@ def get_xls(save_dir, file_name, url_2, sleep_time, debug=False):
         with open(save_dir + file_name, "wb") as file:
             file.write(pdf.read())
 
+        file.close()
         time.sleep(sleep_time)
-        logging.info("Sleep")
+        print("   [*] Sleeping for:", sleep_time)
 
-
+        
 def get_doc(save_dir, file_name, url_2, sleep_time):
-    if os.path.exists(save_dir + file_name) == False:
+    if not os.path.exists(save_dir + file_name):
         document = requests.get(url_2.replace(" ", "%20", allow_redirects=True))
+
         with open(file_name, "w") as data_file:
             data_file.write(document.text)  # Writes using requests text 	function thing
+
         data_file.close()
         time.sleep(sleep_time)
-        logging.info("Sleep")
+        logging.info("Sleeping for:", sleep_time)
