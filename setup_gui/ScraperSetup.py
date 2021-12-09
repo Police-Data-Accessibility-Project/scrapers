@@ -12,7 +12,7 @@ import json
 from datetime import datetime
 from urllib.parse import urlparse
 import logging
-
+import uuid
 
 
 # Support for high resolution screens
@@ -286,6 +286,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     agency_data[agency_index]["update_freq"] = 0
                     agency_data[agency_index]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
                     agency_data[agency_index]["scraper_path"] = scraper_save_dir
+                    agency_data[agency_index]["scraper_id"] = str(uuid.uuid4()).replace('-','')
                     agency_data[agency_index]["mapping"] = ""
                     logging.debug(json.dumps(data, indent=4))
 
