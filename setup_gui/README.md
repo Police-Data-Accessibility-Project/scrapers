@@ -15,12 +15,12 @@ python3 -m pip install -r min_requirements.txt
 
 If you plan on contributing more/running a scraper, install the full requirements from [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/requirements.txt)
 
-# Build
+# Building
 1. Install `pyinstaller`
 ```
 pip install pyinstaller
 ```
 2. Run
 ```
-pyinstaller --onefile --windowed --console scraper_setup.py
+pyinstaller --onefile --windowed --console ScraperSetup.py
 ```
