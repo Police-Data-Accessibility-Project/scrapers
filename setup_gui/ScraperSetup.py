@@ -189,6 +189,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         if success:
             self.tabWidget.setTabEnabled(7, True)
             self.tabWidget.setCurrentIndex(7)
+            self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
 
     def create_schema(self):
         selected_index = self.schema_spinBox.value()
@@ -257,6 +258,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     agency_data[0]["url"] = url_input
                     agency_data[0]["full_data_location"] = str(save_dir)
                     agency_data[0]["scraper_path"] = scraper_save_dir
+                    agency_data[0]["scraper_id"] = str(uuid.uuid4()).replace('-','')
                     agency_data[0]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
 
                 except NameError:
