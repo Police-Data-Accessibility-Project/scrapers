@@ -18,7 +18,7 @@
             "data_type": 24,
             "format_type": 3,
             "update_freq": 1,
-            "last_modified": "2021-12-13 18:19:00 UTC",
+            "last_modified": "2021-05-28 17:42:00 UTC",
             "scraper_path":"USA/CA/los_angeles_county/colleges/citrus/citrus_college_annual_scraper.py",
             "scraper_id":"28abca04d0ac493db643734b3813263c",
             "mapping":{
@@ -33,7 +33,7 @@
             "data_type": 23,
             "format_type": 3,
             "update_freq": 1,
-            "last_modified": "2021-12-13 18:20:00 UTC",
+            "last_modified": "2021-05-28 17:44:00 UTC",
             "scraper_path":"USA/CA/los_angeles_county/colleges/citrus/citrus_college_crime_log_scraper.py",
             "scraper_id":"93938da343be4c62a30a5ff468733ce5",
             "mapping":{
