@@ -1,3 +1,5 @@
+import json
+
 url_table = [
     "https://lky-open-data.s3.amazonaws.com/LMPD/LMPD_OP_BIAS.csv",
     "https://lky-open-data.s3.amazonaws.com/LMPD/AssaultedOfficerData.csv",
@@ -35,4 +37,4 @@ for i, row in enumerate(url_table):
     url_save.append(updated_table)
 
 with open("updated_table.txt", "a") as output:
-    output.write(f"save_url = {url_save}")
+    output.write(f"save_url = {json.dumps(url_save, indent=4)}")
