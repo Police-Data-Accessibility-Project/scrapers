@@ -21,7 +21,7 @@ web_path = "https://www.antiochca.gov/fc/police/crime-maps/"
 # domain = https://www.antiochca.gov
 sleep_time = 5
 
-save_dir = "./data/"
+save_dir = "./data/crime_stats/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
