@@ -11,15 +11,20 @@
     },
     "data": [
         {
-            "dataset_id": "",
+            "dataset_id": "7d7f50da81586e105824f294b1ed5d11",
             "url":"https://hsupd.crimegraphics.com/2013/default.aspx",
             "full_data_location":"/data",
             "source_type": 3,
-            "data_type": 7,
-            "format_type": 1,
-            "mapping":[
-            ]
+            "data_type": 25,
+            "format_type": 5,
+            "update_freq": 6,
+            "last_modified": "2021-12-13 17:10:00",
+            "scraper_path":"USA/CA/humboldt_county/colleges/humboldt/humboldt_daily_scraper.py",
+            "scraper_id":"ccceeb8fecad4ab09756995bc37d71de",
+            "mapping":{
+
+            }
         }
     ]
-    
+
 }

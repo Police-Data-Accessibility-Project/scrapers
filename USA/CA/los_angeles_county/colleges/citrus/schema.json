@@ -11,25 +11,35 @@
     },
     "data": [
         {
-            "dataset_id": "",
+            "dataset_id": "9109db2e646e48cc967aa70b46a642da",
             "url":"https://www.citruscollege.edu/campussafety/Pages/AnnualReports.aspx",
             "full_data_location":"/data/annual",
             "source_type": 2,
             "data_type": 24,
-            "format_type": 1,
-            "mapping":[
-            ]
+            "format_type": 3,
+            "update_freq": 1,
+            "last_modified": "2021-12-13 18:19:00 UTC",
+            "scraper_path":"USA/CA/los_angeles_county/colleges/citrus/citrus_college_annual_scraper.py",
+            "scraper_id":"28abca04d0ac493db643734b3813263c",
+            "mapping":{
+
+            }
         },
         {
-            "dataset_id": "",
+            "dataset_id": "47c6b252823c2694706ad23cb0f1023f",
             "url":"https://www.citruscollege.edu/campussafety/Pages/CampusCrimeStatistics.aspx",
             "full_data_location":"/data/crime_logs",
             "source_type": 2,
             "data_type": 23,
-            "format_type": 1,
-            "mapping":[
-            ]
+            "format_type": 3,
+            "update_freq": 1,
+            "last_modified": "2021-12-13 18:20:00 UTC",
+            "scraper_path":"USA/CA/los_angeles_county/colleges/citrus/citrus_college_crime_log_scraper.py",
+            "scraper_id":"93938da343be4c62a30a5ff468733ce5",
+            "mapping":{
+
+            }
         }
     ]
-    
+
 }
