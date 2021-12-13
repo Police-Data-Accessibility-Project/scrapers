@@ -8,10 +8,10 @@ Note: Ensure your scraper calls the etl.py file. Even if there is nothing in the
 Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if there's anything that should be stored there.
 
 ## Data refresh rate
-[Calls for service](https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Calls-for-Service/k2nh-s5h5): Unsure
+[Calls for service](https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Calls-for-Service/k2nh-s5h5): Unsure, maybe every 180 days at the beginning of the week
 [Arrests](https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Log-Arrests/xi7q-nji6): Seems to be daily, has previous day's data. "Daily (Monday through Friday, excluding holidays) at 9:00 am"
 [Jail Bookings](https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Log-Jail-Bookings/7ykt-c32j): Seems to be daily, has previous day's data.
-[Stop Data (Jan 26, 2015 to Sep 30, 2020)](https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Stop-Data-Jan-26-2015-to-Sep-30-2020-/4tbf-3yt8): Should be never, but it was updated a few days ago (05/07/2021)
+[Stop Data (Jan 26, 2015 to Sep 30, 2020)](https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Stop-Data-Jan-26-2015-to-Sep-30-2020-/4tbf-3yt8): Should be never, but it was updated a few days ago (05/07/2021). Weekly on fridays (scrape saturday)
 [Stop Data ((October 1, 2020 - Present))](https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Stop-Data-October-1-2020-Present-/ysvs-bcge): Unsure, last updated `April 15, 2021`
 
 
