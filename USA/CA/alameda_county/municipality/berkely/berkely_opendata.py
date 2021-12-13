@@ -9,18 +9,6 @@ from common import opendata_scraper
 
 save_url = [
     [
-        "cfs/",
-        "https://data.cityofberkeley.info/resource/k2nh-s5h5.csv"
-    ],
-    [
-        "arrests/",
-        "https://data.cityofberkeley.info/resource/xi7q-nji6.csv"
-    ],
-    [
-        "jail_bookings/",
-        "https://data.cityofberkeley.info/resource/7ykt-c32j.csv"
-    ],
-    [
         "stop_data/",
         "https://data.cityofberkeley.info/resource/ysvs-bcge.csv"
     ],
