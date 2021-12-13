@@ -13,13 +13,18 @@
         {
             "dataset_id": "",
             "url":"https://www.fresnostate.edu/adminserv/police/documents/",
-            "full_data_location":"/data",
+            "full_data_location":"data",
             "source_type": 2,
-            "data_type": 7,
-            "format_type": 1,
-            "mapping":[
-            ]
+            "data_type": 25,
+            "format_type": 3,
+            "update_freq": 6,
+            "last_modified": "2021-12-13 17:08:00",
+            "scraper_path":"USA/CA/fresno_county/college/fresno/fresno_daily_scraper.py",
+            "scraper_id":"fa6b8224706c43288b310ad72dd7f030",
+            "mapping":{
+
+            }
         }
     ]
-    
+
 }

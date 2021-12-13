@@ -1,13 +1,13 @@
 {
-    "agency_id": "",
+    "agency_id": "40ffb1b2b1984716bb97b03a8034e585",
     "agency_info":{
-        "agency_name":"",
-        "agency_coords":{"lat": "", "lng":""},
+        "agency_name":"Los Angeles Police Department",
+        "agency_coords":{"lat": "34.2213249206543", "lng":"-118.59928131103516"},
         "agency_type": 4,
-        "city": "",
-        "state": "",
-        "zip":"",
-        "county_fips":""
+        "city": "Canoga Park",
+        "state": "CA",
+        "zip":"91304",
+        "county_fips":"06037"
     },
     "data": [
         {
@@ -21,5 +21,5 @@
             ]
         }
     ]
-    
+
 }
