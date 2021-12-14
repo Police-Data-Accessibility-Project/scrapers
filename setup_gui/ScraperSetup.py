@@ -219,23 +219,23 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
         # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
+        # This bit isn't working yet
         if len(searched) >= 1:
             # Iterate over rows_searched json "rows"
-            for row_number, response_row in enumerate(searched):
-                logging.debug("row_number:", row_number)
-                self.dataset_table.insertRow(row_number)
-                column_number = self.dataset_table.columnCount()
+            for column_number, response_row in enumerate(searched):
+                logging.debug("column_number: " + str(column_number))
+                self.searchResult_table.insertColumn(column_number)
+                row_number = self.searchResult_table.rowCount()
 
                 current_row = 0
-                tracking_column_number = 0
                 # Add data to table
                 for cell_data in response_row:
                     logging.debug("cell_data: " + str(cell_data))
-                    print(current_row, column_number, cell_data)
-                    self.dataset_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
-                    tracking_column_number += 1
+                    # print(current_row, column_number, response_row)
+                    # print(rows_searched[i])
+                    self.searchResult_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
                     current_row += 1
-                    if tracking_column_number == column_number:
+                    if current_row == row_number:
                         break
 
 
