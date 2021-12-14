@@ -173,7 +173,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                         break
             success = True
 
-        elif len(searched) == 0:
+        elif len(self.searched) == 0:
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Critical)
             msg.setText("Couldn't find anything, may not have an existing dataset!")
@@ -201,6 +201,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         selected_index = self.schema_spinBox.value() - 1
         agency_id = self.searched[selected_index]["id"]
+        print(agency_id)
 
         # Search for existing datasets
         owner, repo, branch = 'pdap', 'datasets', 'master'
@@ -210,8 +211,9 @@ class ScraperGui(QtWidgets.QMainWindow):
         jsoned = res.json()
         # print(json.dumps(jsoned, indent=4))
         # Filter out everything except the "rows" table
-        expression = jmespath.compile("rows[]")
+        expression = jmespath.compile('rows[].["id", "url","status_id","scraper_id"]')
         searched = expression.search(jsoned)
+        print(searched)
 
         header = self.searchResult_table.horizontalHeader()
 
@@ -220,19 +222,20 @@ class ScraperGui(QtWidgets.QMainWindow):
         if len(searched) >= 1:
             # Iterate over rows_searched json "rows"
             for row_number, response_row in enumerate(searched):
-                logging.debug("column_number: " + str(column_number))
+                logging.debug("row_number:", row_number)
                 self.dataset_table.insertRow(row_number)
                 column_number = self.dataset_table.columnCount()
 
                 current_row = 0
+                tracking_column_number = 0
                 # Add data to table
                 for cell_data in response_row:
                     logging.debug("cell_data: " + str(cell_data))
-                    # print(current_row, column_number, response_row)
-                    # print(rows_searched[i])
+                    print(current_row, column_number, cell_data)
                     self.dataset_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
+                    tracking_column_number += 1
                     current_row += 1
-                    if current_row == row_number:
+                    if tracking_column_number == column_number:
                         break
 
 
