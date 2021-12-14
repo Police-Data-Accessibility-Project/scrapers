@@ -190,6 +190,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             self.tabWidget.setTabEnabled(7, True)
             self.tabWidget.setCurrentIndex(7)
             self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
+        
 
     def create_schema(self):
         selected_index = self.schema_spinBox.value()
@@ -255,11 +256,17 @@ class ScraperGui(QtWidgets.QMainWindow):
                 agency_data = data["data"]
 
                 try:
+                    agency_data[0]["dataset_id"] = str(uuid.uuid4()).replace('-','')
                     agency_data[0]["url"] = url_input
                     agency_data[0]["full_data_location"] = str(save_dir)
+                    agency_data[0]["source_type"] = 0
+                    agency_data[0]["data_type"] = 0
+                    agency_data[0]["format_type"] = 0
+                    agency_data[0]["update_freq"] = 0
+                    agency_data[0]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
                     agency_data[0]["scraper_path"] = scraper_save_dir
                     agency_data[0]["scraper_id"] = str(uuid.uuid4()).replace('-','')
-                    agency_data[0]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+                    agency_data[0]["mapping"] = ""
 
                 except NameError:
                     logging.warning("Opendata is not currently supported for schema data creation")
@@ -269,6 +276,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     msg.setWindowTitle("Error")
                     msg.exec_()
 
+            # If schema already exists
             else:
                 logging.info("Schema is not new")
                 logging.debug("Data length: " + str(len(data["data"])))
@@ -279,7 +287,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                 agency_data.append({})
 
                 try:
-                    agency_data[agency_index]["dataset_id"] = ""
+                    agency_data[agency_index]["dataset_id"] = str(uuid.uuid4()).replace('-','')
                     agency_data[agency_index]["url"] = url_input
                     agency_data[agency_index]["full_data_location"] = str(save_dir)
                     agency_data[agency_index]["source_type"] = 0
