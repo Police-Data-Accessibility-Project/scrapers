@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="ChooseBaseScraper">
      <attribute name="title">
@@ -2074,7 +2074,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="DolthubSearch">
      <attribute name="title">
       <string>Search Schema</string>
      </attribute>
@@ -2267,7 +2267,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="SelectSchema">
      <attribute name="title">
       <string>Schema</string>
      </attribute>
@@ -2375,6 +2375,56 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
       <property name="wordWrap">
        <bool>true</bool>
       </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="DatasetCreation">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+     <widget class="QTableWidget" name="searchResult_table_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>80</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>61</number>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>29</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>url</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>status_id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>scraper_id</string>
+       </property>
+      </column>
      </widget>
     </widget>
     <widget class="QWidget" name="Help">
