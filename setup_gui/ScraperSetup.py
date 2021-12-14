@@ -56,6 +56,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.tabWidget.setTabEnabled(5, False)  # Disable opendata row tab
         self.tabWidget.setTabEnabled(6, False)  # Disable search schema
         self.tabWidget.setTabEnabled(7, False)  # Disable schema tab
+        self.tabWidget.setTabEnabled(8, False) # Disable dataset tab
         self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
 
         """Initialize buttons"""
@@ -70,6 +71,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.opendata_create_button.clicked.connect(self.opendata_create_pressed)
         self.search_button.clicked.connect(self.get_agency_info)
         self.search_button_2.clicked.connect(self.get_agency_info)
+        self.select_agency_button.clicked.connect(self.create_dataset)
         self.create_schema_button.clicked.connect(self.create_schema)
 
         self.show()
@@ -82,6 +84,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         success_dialog = SuccessDialog()
         success_dialog.exec_()
 
+    # Executed on `Search Schema` tab
     def get_agency_info(self):
         '''Get agency info from dolthub
         :param self: self
@@ -111,7 +114,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             # print(json.dumps(jsoned, indent=4))
             # Filter out everything except the "rows" table
             expression = jmespath.compile("rows[]")
-            searched = expression.search(jsoned)
+            self.searched = expression.search(jsoned)
 
         elif sender.text() == "Alternative Search":
             state_iso = str(self.stateISO_input.text()).upper()
@@ -119,14 +122,14 @@ class ScraperGui(QtWidgets.QMainWindow):
 
 
             owner, repo, branch = 'pdap', 'datasets', 'master'
-            query = f'''SELECT * FROM `agencies` WHERE `state_iso` = "{state_iso}" and city = "{city_input}"'''
+            query = '''SELECT * FROM `agencies` WHERE `state_iso` = "{}" and city = "{}"'''.format(state_iso, city_input)
             # print(query)
             res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
             jsoned = res.json()
             # print(json.dumps(jsoned, indent=4))
             # Filter out everything except the "rows" table
             expression = jmespath.compile("rows[]")
-            searched = expression.search(jsoned)
+            self.searched = expression.search(jsoned)
 
 
         """
@@ -190,7 +193,48 @@ class ScraperGui(QtWidgets.QMainWindow):
             self.tabWidget.setTabEnabled(7, True)
             self.tabWidget.setCurrentIndex(7)
             self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
-        
+
+    def create_dataset(self):
+        self.tabWidget.setTabEnabled(8, True)
+        self.tabWidget.setCurrentIndex(8)
+        self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Recompute stylesheet
+
+        selected_index = self.schema_spinBox.value() - 1
+        agency_id = self.searched[selected_index]["id"]
+
+        # Search for existing datasets
+        owner, repo, branch = 'pdap', 'datasets', 'master'
+        query = '''SELECT id, url, status_id, scraper_id FROM `datasets` WHERE `agency_id` = "{}"'''.format(agency_id)
+
+        res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
+        jsoned = res.json()
+        # print(json.dumps(jsoned, indent=4))
+        # Filter out everything except the "rows" table
+        expression = jmespath.compile("rows[]")
+        searched = expression.search(jsoned)
+
+        header = self.searchResult_table.horizontalHeader()
+
+        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
+        if len(searched) >= 1:
+            # Iterate over rows_searched json "rows"
+            for row_number, response_row in enumerate(searched):
+                logging.debug("column_number: " + str(column_number))
+                self.dataset_table.insertRow(row_number)
+                column_number = self.dataset_table.columnCount()
+
+                current_row = 0
+                # Add data to table
+                for cell_data in response_row:
+                    logging.debug("cell_data: " + str(cell_data))
+                    # print(current_row, column_number, response_row)
+                    # print(rows_searched[i])
+                    self.dataset_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
+                    current_row += 1
+                    if current_row == row_number:
+                        break
+
 
     def create_schema(self):
         selected_index = self.schema_spinBox.value()

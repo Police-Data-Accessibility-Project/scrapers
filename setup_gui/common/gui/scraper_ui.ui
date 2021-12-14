@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="ChooseBaseScraper">
      <attribute name="title">
@@ -2321,7 +2321,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
        </property>
       </row>
      </widget>
-     <widget class="QPushButton" name="create_schema_button">
+     <widget class="QPushButton" name="select_agency_button">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2336,7 +2336,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
        </font>
       </property>
       <property name="text">
-       <string>Create Schema</string>
+       <string>Select Agency</string>
       </property>
      </widget>
      <widget class="QSpinBox" name="schema_spinBox">
@@ -2379,9 +2379,9 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
     </widget>
     <widget class="QWidget" name="DatasetCreation">
      <attribute name="title">
-      <string>Page</string>
+      <string>Dataset</string>
      </attribute>
-     <widget class="QTableWidget" name="searchResult_table_2">
+     <widget class="QTableWidget" name="dataset_table">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2425,6 +2425,24 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         <string>scraper_id</string>
        </property>
       </column>
+     </widget>
+     <widget class="QPushButton" name="create_schema_button">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>510</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Create Schema</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Help">
