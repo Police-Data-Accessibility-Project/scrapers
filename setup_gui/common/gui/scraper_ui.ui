@@ -2384,10 +2384,10 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
      <widget class="QTableWidget" name="dataset_table">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>331</width>
-        <height>161</height>
+        <x>0</x>
+        <y>30</y>
+        <width>351</width>
+        <height>171</height>
        </rect>
       </property>
       <property name="sizeAdjustPolicy">
@@ -2442,6 +2442,27 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
       </property>
       <property name="text">
        <string>Create Schema</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="step1_note">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-10</y>
+        <width>301</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Make sure that there isn't already a dataset for it</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>

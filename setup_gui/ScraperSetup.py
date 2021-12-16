@@ -24,7 +24,6 @@ success_modal = "common/gui/success_modal.ui"
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-
 class ErrorDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super(ErrorDialog, self).__init__()
@@ -201,7 +200,6 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         selected_index = self.schema_spinBox.value() - 1
         agency_id = self.searched[selected_index]["id"]
-        print(agency_id)
 
         # Search for existing datasets
         owner, repo, branch = 'pdap', 'datasets', 'master'
@@ -209,34 +207,31 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         res = requests.get('https://www.dolthub.com/api/v1alpha1/{}/{}/{}'.format(owner, repo, branch), params={'q': query})
         jsoned = res.json()
-        # print(json.dumps(jsoned, indent=4))
+
         # Filter out everything except the "rows" table
         expression = jmespath.compile('rows[].["id", "url","status_id","scraper_id"]')
         searched = expression.search(jsoned)
-        print(searched)
 
-        header = self.searchResult_table.horizontalHeader()
+        num_rows = len(searched)
+        num_cols = len(searched[0])
 
-        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        # This bit isn't working yet
+        self.dataset_table.setRowCount(num_rows)
+        self.dataset_table.setColumnCount(num_cols)
+
         if len(searched) >= 1:
             # Iterate over rows_searched json "rows"
-            for column_number, response_row in enumerate(searched):
-                logging.debug("column_number: " + str(column_number))
-                self.searchResult_table.insertColumn(column_number)
-                row_number = self.searchResult_table.rowCount()
+            for row in range(num_rows):
+                for column in range(num_cols):
+                    self.dataset_table.setItem(row, column, QTableWidgetItem(searched[row][column]))
+        else:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("No existing datasets!")
+            msg.setWindowTitle("Error")
+            msg.exec_()
 
-                current_row = 0
-                # Add data to table
-                for cell_data in response_row:
-                    logging.debug("cell_data: " + str(cell_data))
-                    # print(current_row, column_number, response_row)
-                    # print(rows_searched[i])
-                    self.searchResult_table.setItem(current_row, column_number, QTableWidgetItem(str(cell_data)))
-                    current_row += 1
-                    if current_row == row_number:
-                        break
+            success = False
+            logging.info("Couldn't find anything")
 
 
     def create_schema(self):
