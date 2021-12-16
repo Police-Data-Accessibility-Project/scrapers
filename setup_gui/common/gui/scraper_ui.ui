@@ -2266,6 +2266,27 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
        <string>Alternative Search</string>
       </property>
      </widget>
+     <widget class="QLabel" name="step3note_6">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>100</y>
+        <width>351</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Note that it may take a moment for it to load, only click the search button ONCE</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="SelectSchema">
      <attribute name="title">
@@ -2464,6 +2485,337 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
       <property name="wordWrap">
        <bool>true</bool>
       </property>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>30</y>
+        <width>391</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="step1_dataset">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 1: Source type</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboBox_step1">
+         <item>
+          <property name="text">
+           <string>Court</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Direct</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Third party</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="step2_dataset">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 2: Data type</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBox_step2">
+         <item>
+          <property name="text">
+           <string>Accident reports</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Arrest records</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Booking reports</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Calls for service (CFS)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Car GPS</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Court cases</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Daily activity logs</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dispatch logs</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dispatch Recordings</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Incident reports</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Officer complaint records</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Officer records</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Personnel files</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Policy manuals</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Post certifications</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Time sheets</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Traffic citations</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Traffic stops</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Traing logs</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Use of force reports (UoF)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Video metadata</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Videos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Crime statistics</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Annual reports</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Daily crime bulletin</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Media bulletin</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Multi</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sex offender registry</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Wanted persons</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Crime maps</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Missing kids</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="step3_dataset">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 3: Format type</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBox_step3">
+         <item>
+          <property name="text">
+           <string>NIBRS</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>CityProtect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Crimemapping</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Opendata</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Crimegraphics</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="step4_dataset">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 4: Update Frequency</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>Annually</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bi-annually (6 month)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Quarterly</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Monthly</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Weekly</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Daily</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="step3_dataset_3">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 5 (Optional): Coverage start</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QDateEdit" name="dateEdit"/>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="Help">
