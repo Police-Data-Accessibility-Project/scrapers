@@ -318,7 +318,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     msg.setWindowTitle("Error")
                     msg.exec_()
 
-            # If schema already exists
+            # If schema already exists, append the new dataset to it
             else:
                 logging.info("Schema is not new")
                 logging.debug("Data length: " + str(len(data["data"])))
@@ -664,6 +664,7 @@ class ScraperGui(QtWidgets.QMainWindow):
     # list_pdf create
     def create_button_pressed(self):
         # This is executed when the button is pressed
+        # Try using self. instead
         global url_input
 
         # if self.button_pressed
