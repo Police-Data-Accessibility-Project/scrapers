@@ -394,14 +394,15 @@ class ScraperGui(QtWidgets.QMainWindow):
             for key in dataset_dict.keys():
                 dataset_fieldnames.append(key)
 
+            scraper_fieldnames = []
+            for key in scraper_dict.keys():
+                scraper_fieldnames.append(key)
+
             with open(f"{self.scraper_name}_UPLOAD_TO_DATASETS.csv", "w") as f:
                 writer = csv.DictWriter(f, fieldnames=dataset_fieldnames)
                 writer.writeheader()
                 writer.writerow(dataset_dict)
 
-            scraper_fieldnames = []
-            for key in scraper_dict.keys():
-                scraper_fieldnames.append(key)
 
             with open(f"{self.scraper_name}_UPLOAD_TO_SCRAPERS.csv", "w") as f:
                 writer = csv.DictWriter(f, fieldnames=scraper_fieldnames)
