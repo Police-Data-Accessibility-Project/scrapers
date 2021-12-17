@@ -13,6 +13,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 import logging
 import uuid
+import csv
 
 
 # Support for high resolution screens
@@ -363,7 +364,6 @@ class ScraperGui(QtWidgets.QMainWindow):
             if coverage_start == "1752-09-14":
                 coverage_start = ""
 
-            print(type(coverage_start))
             dataset_dict = {
                 "id": dataset_id,
                 "url": url_input,
@@ -387,6 +387,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                 "last_modified": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
             }
 
+
             # Save the dictionaries to separate csv files
             # Can probably be condensed into a for loop
             dataset_fieldnames = []
@@ -396,8 +397,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             with open(f"{self.scraper_name}_UPLOAD_TO_DATASETS.csv", "w") as f:
                 writer = csv.DictWriter(f, fieldnames=dataset_fieldnames)
                 writer.writeheader()
-                for data in dataset_dict:
-                    writer.writerow(data)
+                writer.writerow(dataset_dict)
 
             scraper_fieldnames = []
             for key in scraper_dict.keys():
@@ -406,8 +406,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             with open(f"{self.scraper_name}_UPLOAD_TO_SCRAPERS.csv", "w") as f:
                 writer = csv.DictWriter(f, fieldnames=scraper_fieldnames)
                 writer.writeheader()
-                for data in scraper_dict:
-                    writer.writerow(data)
+                writer.writerow(scraper_dict)
 
             # Save schema
             schema_out.seek(0)
