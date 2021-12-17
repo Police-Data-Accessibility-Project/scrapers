@@ -2489,8 +2489,8 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
      <widget class="QWidget" name="formLayoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>30</y>
+        <x>360</x>
+        <y>20</y>
         <width>391</width>
         <height>221</height>
        </rect>
@@ -2512,7 +2512,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QComboBox" name="comboBox_step1">
+        <widget class="QComboBox" name="source_type_cb">
          <item>
           <property name="text">
            <string>Court</string>
@@ -2546,7 +2546,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QComboBox" name="comboBox_step2">
+        <widget class="QComboBox" name="data_type_cb">
          <item>
           <property name="text">
            <string>Accident reports</string>
@@ -2720,7 +2720,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QComboBox" name="comboBox_step3">
+        <widget class="QComboBox" name="format_type_cb">
          <item>
           <property name="text">
            <string>NIBRS</string>
@@ -2764,7 +2764,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="update_freq_cb">
          <item>
           <property name="text">
            <string>Annually</string>
@@ -2798,7 +2798,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="step3_dataset_3">
+        <widget class="QLabel" name="step5_dataset">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2813,9 +2813,94 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QDateEdit" name="dateEdit"/>
+        <widget class="QDateEdit" name="coverage_start_dateEdit">
+         <property name="displayFormat">
+          <string>MM/dd/yyyy</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>false</bool>
+         </property>
+         <property name="timeSpec">
+          <enum>Qt::UTC</enum>
+         </property>
+         <property name="date">
+          <date>
+           <year>1752</year>
+           <month>9</month>
+           <day>14</day>
+          </date>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="step6_dataset">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 6: Machine readable (i.e. csv)</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="machine_readable">
+         <item>
+          <property name="text">
+           <string>No</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="step7_dataset">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Step 7: Notes*</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPlainTextEdit" name="dataset_notes"/>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="step_7_note">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>240</y>
+        <width>161</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>*Keep it short, do not add line breaks.</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Help">

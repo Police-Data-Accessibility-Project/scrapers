@@ -89,7 +89,6 @@ class ScraperGui(QtWidgets.QMainWindow):
         :param self: self
         :param search_schema: whether it is search schema tab or not (bool)
         '''
-        global searched
 
         sender = self.sender()
 
@@ -210,19 +209,19 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         # Filter out everything except the "rows" table
         expression = jmespath.compile('rows[].["id", "url","status_id","scraper_id"]')
-        searched = expression.search(jsoned)
+        filtered_response = expression.search(jsoned)
 
-        num_rows = len(searched)
-        num_cols = len(searched[0])
+        num_rows = len(filtered_response)
+        num_cols = len(filtered_response[0])
 
         self.dataset_table.setRowCount(num_rows)
         self.dataset_table.setColumnCount(num_cols)
 
-        if len(searched) >= 1:
+        if len(filtered_response) >= 1:
             # Iterate over rows_searched json "rows"
             for row in range(num_rows):
                 for column in range(num_cols):
-                    self.dataset_table.setItem(row, column, QTableWidgetItem(searched[row][column]))
+                    self.dataset_table.setItem(row, column, QTableWidgetItem(filtered_response[row][column]))
         else:
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Critical)
@@ -263,7 +262,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         # Get the selected agency from dolthub response
         try:
-            schema_data = searched[selected_agency]
+            schema_data = self.searched[selected_agency]
             logging.info("searched: " + str(schema_data))
 
         except IndexError:
@@ -282,6 +281,8 @@ class ScraperGui(QtWidgets.QMainWindow):
         with open(schema_path, "r+", encoding="utf-8") as schema_out:
             data = json.load(schema_out)
             agency_info = data["agency_info"]
+            dataset_id = str(uuid.uuid4()).replace('-','')
+            scraper_id = str(uuid.uuid4()).replace('-','')
 
             if schema_is_new:
                 logging.info("Schema is new")
@@ -298,16 +299,16 @@ class ScraperGui(QtWidgets.QMainWindow):
                 agency_data = data["data"]
 
                 try:
-                    agency_data[0]["dataset_id"] = str(uuid.uuid4()).replace('-','')
+                    agency_data[0]["dataset_id"] = dataset_id
                     agency_data[0]["url"] = url_input
                     agency_data[0]["full_data_location"] = str(save_dir)
-                    agency_data[0]["source_type"] = 0
-                    agency_data[0]["data_type"] = 0
-                    agency_data[0]["format_type"] = 0
-                    agency_data[0]["update_freq"] = 0
+                    agency_data[0]["source_type"] = int(self.source_type_cb.currentIndex()) + 1
+                    agency_data[0]["data_type"] = int(self.data_type_cb.currentIndex()) + 1
+                    agency_data[0]["format_type"] = int(self.format_type_cb.currentIndex()) + 1
+                    agency_data[0]["update_freq"] = int(self.update_freq_cb.currentIndex()) + 1
                     agency_data[0]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-                    agency_data[0]["scraper_path"] = scraper_save_dir
-                    agency_data[0]["scraper_id"] = str(uuid.uuid4()).replace('-','')
+                    agency_data[0]["scraper_path"] = self.full_path
+                    agency_data[0]["scraper_id"] = scraper_id
                     agency_data[0]["mapping"] = ""
 
                 except NameError:
@@ -329,16 +330,16 @@ class ScraperGui(QtWidgets.QMainWindow):
                 agency_data.append({})
 
                 try:
-                    agency_data[agency_index]["dataset_id"] = str(uuid.uuid4()).replace('-','')
+                    agency_data[agency_index]["dataset_id"] = dataset_id
                     agency_data[agency_index]["url"] = url_input
                     agency_data[agency_index]["full_data_location"] = str(save_dir)
-                    agency_data[agency_index]["source_type"] = 0
-                    agency_data[agency_index]["data_type"] = 0
-                    agency_data[agency_index]["format_type"] = 0
-                    agency_data[agency_index]["update_freq"] = 0
+                    agency_data[agency_index]["source_type"] = int(self.source_type_cb.currentIndex()) + 1
+                    agency_data[agency_index]["data_type"] =  int(self.data_type_cb.currentIndex()) + 1
+                    agency_data[agency_index]["format_type"] =  int(self.format_type_cb.currentIndex()) + 1
+                    agency_data[agency_index]["update_freq"] = int(self.update_freq_cb.currentIndex()) + 1
                     agency_data[agency_index]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-                    agency_data[agency_index]["scraper_path"] = scraper_save_dir
-                    agency_data[agency_index]["scraper_id"] = str(uuid.uuid4()).replace('-','')
+                    agency_data[agency_index]["scraper_path"] = self.full_path
+                    agency_data[agency_index]["scraper_id"] = scraper_id
                     agency_data[agency_index]["mapping"] = ""
                     logging.debug(json.dumps(data, indent=4))
 
@@ -350,6 +351,65 @@ class ScraperGui(QtWidgets.QMainWindow):
                     msg.setWindowTitle("Error")
                     msg.exec_()
 
+
+            """
+            Create csvs for dataset/scraper creation in the database
+            """
+
+            # Convert the Qdatetime object thingy into a datetime object
+            coverage_start = self.coverage_start_dateEdit.date().toPyDate()
+
+            # Don't want default date
+            if coverage_start == "1752-09-14":
+                coverage_start = ""
+
+            print(type(coverage_start))
+            dataset_dict = {
+                "id": dataset_id,
+                "url": url_input,
+                "status_id": 3,
+                "source_type_id": int(self.source_type_cb.currentIndex()) + 1,
+                "data_types_id": int(self.data_type_cb.currentIndex()) + 1,
+                "format_types_id": int(self.format_type_cb.currentIndex()) + 1,
+                "agency_id": schema_data["id"],
+                "update_frequency": int(self.update_freq_cb.currentIndex()) + 1,
+                "coverage_start": str(coverage_start),
+                "scraper_id": scraper_id,
+                "notes": self.dataset_notes.toPlainText(),
+                "can_scrape": 1,
+                "date_insert": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+            }
+
+            scraper_dict = {
+                "id": scraper_id,
+                "path": self.full_path,
+                "date_insert": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+                "last_modified": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+            }
+
+            # Save the dictionaries to separate csv files
+            # Can probably be condensed into a for loop
+            dataset_fieldnames = []
+            for key in dataset_dict.keys():
+                dataset_fieldnames.append(key)
+
+            with open(f"{self.scraper_name}_UPLOAD_TO_DATASETS.csv", "w") as f:
+                writer = csv.DictWriter(f, fieldnames=dataset_fieldnames)
+                writer.writeheader()
+                for data in dataset_dict:
+                    writer.writerow(data)
+
+            scraper_fieldnames = []
+            for key in scraper_dict.keys():
+                scraper_fieldnames.append(key)
+
+            with open(f"{self.scraper_name}_UPLOAD_TO_SCRAPERS.csv", "w") as f:
+                writer = csv.DictWriter(f, fieldnames=scraper_fieldnames)
+                writer.writeheader()
+                for data in scraper_dict:
+                    writer.writerow(data)
+
+            # Save schema
             schema_out.seek(0)
             json.dump(data, schema_out, indent=4)
             # schema_out.truncate()
@@ -408,8 +468,6 @@ class ScraperGui(QtWidgets.QMainWindow):
 
     def setup_opendata_pressed(self):
         # Step 1
-        global full_path
-        global scraper_name
         global is_v3
         global sleep_time
         global save_dir_input
@@ -444,14 +502,14 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Step 3
         # Copy the scraper file
         scraper_name_input = self.scraper_name_input_opendata.text()
-        scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
+        self.scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
         template_folder = "./Base_Scripts/Scrapers/opendata/"
-        full_path = scraper_save_dir + scraper_name
-        logging.info("full_path: " + str(full_path))
+        self.full_path = scraper_save_dir + self.scraper_name
+        logging.info("full_path: " + str(self.full_path))
 
         # Copy and rename the scraper
         scraper_input_text = "opendata_scraper.py"
-        copyfile(template_folder + scraper_input_text, full_path)
+        copyfile(template_folder + scraper_input_text, self.full_path)
 
         self.tabWidget.setTabEnabled(5, True)
         self.tabWidget.setCurrentIndex(5)
@@ -462,7 +520,7 @@ class ScraperGui(QtWidgets.QMainWindow):
     def opendata_create_pressed(self):
         """Edit the config dictionary within the scraper script"""
         try:
-            with open(full_path, "r+") as output:
+            with open(self.full_path, "r+") as output:
                 # output.seek(config_start)
                 lines = output.readlines() #[config_start:]  # This doesn't seem to do what I want
                 logging.debug("Lines length: " + str(len(lines)))
@@ -487,7 +545,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
             lines_to_change = ['save_url = []','save_folder = "./data/"', 'opendata_scraper2(save_url, save_folder, sleep_time=1)']
             change_to = [save_url_string, save_dir_input, f"opendata_scraper2(save_url, save_folder, sleep_time={sleep_time})"]
-            for line in fileinput.input(full_path, inplace=1):
+            for line in fileinput.input(self.full_path, inplace=1):
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], change_to[i])
@@ -549,7 +607,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             cg_type = "crimegraphics_clery.py"
 
         scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
-        full_path = scraper_save_dir + cg_type
+        self.full_path = scraper_save_dir + cg_type
 
         # Create directory if it doesn't exist
         if not os.path.exists(scraper_save_dir):
@@ -570,7 +628,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             copyfile(cg_template_folder + cg_type, scraper_save_dir + cg_type)
 
             # Iterate over file to find and replace the configs
-            for line in fileinput.input(full_path, inplace=1):
+            for line in fileinput.input(self.full_path, inplace=1):
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i])
@@ -590,8 +648,6 @@ class ScraperGui(QtWidgets.QMainWindow):
     # Choose Scraper list_pdf
     def choose_scraper_pressed(self):
         """ 'Enter' button on `Choose Scraper` tab"""
-        global full_path
-        global scraper_name
         global is_v3
         global scraper_save_dir
         global save_dir_input
@@ -614,13 +670,13 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Step 4
         # Copy the scraper file
         scraper_name_input = self.scraper_name_input.text()
-        scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
+        self.scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
         template_folder = "./Base_Scripts/Scrapers/list_pdf_scrapers/"
 
         # Step 1
         scraper_input_text = self.scraper_input.currentText()  # Get the selected scraper text
         scraper_input_index = self.scraper_input.currentIndex()
-        full_path = scraper_save_dir + scraper_name
+        self.full_path = scraper_save_dir + self.scraper_name
 
         if scraper_input_index == 0:
             is_v3 = False
@@ -628,7 +684,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             is_v3 = True
 
         # Copy and rename the scraper
-        copyfile(template_folder + scraper_input_text, full_path)
+        copyfile(template_folder + scraper_input_text, self.full_path)
 
         # Step 3
         # Edit the save_dir
@@ -650,7 +706,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         default_save_dir = 'save_dir = "./data/"'
         logging.info("save_dir_input: " + str(save_dir_input))
 
-        for line in fileinput.input(full_path, inplace=1):
+        for line in fileinput.input(self.full_path, inplace=1):
             if default_save_dir in line:
                 line = line.replace(default_save_dir, save_dir_input)
             sys.stdout.write(line)
@@ -682,7 +738,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Get the index of config = {
         try:
             """Edit the config dictionary within the scraper script"""
-            with open(full_path, "r+") as output:
+            with open(self.full_path, "r+") as output:
                 # output.seek(config_start)
                 lines = output.readlines() #[config_start:]  # This doesn't seem to do what I want
                 logging.debug("Lines length: " + str(len(lines)))
@@ -713,7 +769,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                 logging.debug("is v3")
                 lines_to_change = lines_to_change.append('"non_important": [],')
             # Use fileinput to replace config lines.
-            for line in fileinput.input(full_path, inplace=1):
+            for line in fileinput.input(self.full_path, inplace=1):
                 for i in range(len(lines_to_change)):
                     if lines_to_change[i] in line:
                         line = line.replace(lines_to_change[i], config_list[i] + ",")
