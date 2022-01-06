@@ -2492,7 +2492,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         <x>360</x>
         <y>20</y>
         <width>391</width>
-        <height>229</height>
+        <height>281</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_3">
@@ -2805,7 +2805,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
           </font>
          </property>
          <property name="text">
-          <string>Step 5 (Optional): Coverage start</string>
+          <string>Step 5 (Optional): Coverage start*</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -2869,7 +2869,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
           </font>
          </property>
          <property name="text">
-          <string>Step 7: Notes*</string>
+          <string>Step 7: Notes**</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -2885,9 +2885,9 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
       <property name="geometry">
        <rect>
         <x>360</x>
-        <y>240</y>
+        <y>300</y>
         <width>161</width>
-        <height>51</height>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
@@ -2896,7 +2896,8 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
        </font>
       </property>
       <property name="text">
-       <string>*Keep it short, do not add line breaks.</string>
+       <string>*Leave default if you don't know
+**Keep it short, do not add line breaks.</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
