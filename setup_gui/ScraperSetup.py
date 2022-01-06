@@ -151,9 +151,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         header = self.searchResult_table.horizontalHeader()
 
-        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        if len(rows_searched) >= 1:
+        if rows_searched:
             # Iterate over rows_searched json "rows"
             for column_number, response_row in enumerate(rows_searched):
                 logging.debug("column_number: " + str(column_number))
@@ -172,15 +170,15 @@ class ScraperGui(QtWidgets.QMainWindow):
                         break
             success = True
 
-        elif len(self.searched) == 0:
+        elif not self.searched:
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Critical)
-            msg.setText("Couldn't find anything, may not have an existing dataset!")
+            msg.setText("Couldn't find anything, may not be in our agency database! Check for typos and try again.")
             msg.setWindowTitle("Error")
             msg.exec_()
 
-            success = False
             logging.info("Couldn't find anything")
+            success = False
 
         # Go back through and resize the columns.
         # I tried putting it in the first loop, but it caused it to crash...
@@ -188,6 +186,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             header.setSectionResizeMode(column_number, QtWidgets.QHeaderView.ResizeToContents)
         # print(json.dumps(searched, indent=4))
 
+        # If no agency was found, we don't want user to be able to proceed
         if success:
             self.tabWidget.setTabEnabled(7, True)
             self.tabWidget.setCurrentIndex(7)
