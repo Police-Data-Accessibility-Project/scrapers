@@ -2187,7 +2187,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         <x>290</x>
         <y>410</y>
         <width>211</width>
-        <height>72</height>
+        <height>76</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_6">
@@ -2492,7 +2492,7 @@ Note that ./data/ will be prepended to your input. You can add as many subfolder
         <x>360</x>
         <y>20</y>
         <width>391</width>
-        <height>221</height>
+        <height>229</height>
        </rect>
       </property>
       <layout class="QFormLayout" name="formLayout_3">
@@ -3310,6 +3310,67 @@ Most departments do not seem to have a crawl-delay specified, so leave it at 5 (
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>scraper_choice</tabstop>
+  <tabstop>next_button</tabstop>
+  <tabstop>scraper_input</tabstop>
+  <tabstop>country_input</tabstop>
+  <tabstop>state_input</tabstop>
+  <tabstop>county_input</tabstop>
+  <tabstop>department_type_input</tabstop>
+  <tabstop>city_input</tabstop>
+  <tabstop>save_dir_input</tabstop>
+  <tabstop>scraper_name_input</tabstop>
+  <tabstop>choose_scraper_button</tabstop>
+  <tabstop>webpage_input</tabstop>
+  <tabstop>web_path_input</tabstop>
+  <tabstop>domain_included_input</tabstop>
+  <tabstop>domain_input</tabstop>
+  <tabstop>sleep_time_input</tabstop>
+  <tabstop>unimportant_input</tabstop>
+  <tabstop>create_scraper_button</tabstop>
+  <tabstop>choose_cg_input</tabstop>
+  <tabstop>choose_cg_button</tabstop>
+  <tabstop>country_input_cg</tabstop>
+  <tabstop>state_input_cg</tabstop>
+  <tabstop>county_input_cg</tabstop>
+  <tabstop>department_type_input_cg</tabstop>
+  <tabstop>city_input_cg</tabstop>
+  <tabstop>url_input_cg</tabstop>
+  <tabstop>save_dir_input_cg</tabstop>
+  <tabstop>create_cg_button</tabstop>
+  <tabstop>country_input_opendata</tabstop>
+  <tabstop>state_input_opendata</tabstop>
+  <tabstop>county_input_opendata</tabstop>
+  <tabstop>department_type_input_opendata</tabstop>
+  <tabstop>city_input_opendata</tabstop>
+  <tabstop>save_dir_input_opendata</tabstop>
+  <tabstop>scraper_name_input_opendata</tabstop>
+  <tabstop>sleep_time_input_opendata</tabstop>
+  <tabstop>setup_opendata_button</tabstop>
+  <tabstop>addRow_button</tabstop>
+  <tabstop>removeRow_button</tabstop>
+  <tabstop>opendata_create_button</tabstop>
+  <tabstop>homepageURLSearch_input</tabstop>
+  <tabstop>search_button</tabstop>
+  <tabstop>stateISO_input</tabstop>
+  <tabstop>city_schema_input</tabstop>
+  <tabstop>search_button_2</tabstop>
+  <tabstop>searchResult_table</tabstop>
+  <tabstop>schema_spinBox</tabstop>
+  <tabstop>select_agency_button</tabstop>
+  <tabstop>opendataTable</tabstop>
+  <tabstop>source_type_cb</tabstop>
+  <tabstop>data_type_cb</tabstop>
+  <tabstop>format_type_cb</tabstop>
+  <tabstop>update_freq_cb</tabstop>
+  <tabstop>coverage_start_dateEdit</tabstop>
+  <tabstop>machine_readable</tabstop>
+  <tabstop>dataset_notes</tabstop>
+  <tabstop>create_schema_button</tabstop>
+  <tabstop>dataset_table</tabstop>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
