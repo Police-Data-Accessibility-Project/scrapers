@@ -211,6 +211,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         expression = jmespath.compile('rows[].["id", "url","status_id","scraper_id"]')
         filtered_response = expression.search(jsoned)
 
+        # Prevents index error, doesn't matter if it exists or not, as we are creating/adding one anyways
         if filtered_response:
             num_rows = len(filtered_response)
             num_cols = len(filtered_response[0])
