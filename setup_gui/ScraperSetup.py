@@ -212,13 +212,13 @@ class ScraperGui(QtWidgets.QMainWindow):
         expression = jmespath.compile('rows[].["id", "url","status_id","scraper_id"]')
         filtered_response = expression.search(jsoned)
 
-        num_rows = len(filtered_response)
-        num_cols = len(filtered_response[0])
+        if filtered_response:
+            num_rows = len(filtered_response)
+            num_cols = len(filtered_response[0])
 
-        self.dataset_table.setRowCount(num_rows)
-        self.dataset_table.setColumnCount(num_cols)
+            self.dataset_table.setRowCount(num_rows)
+            self.dataset_table.setColumnCount(num_cols)
 
-        if len(filtered_response) >= 1:
             # Iterate over rows_searched json "rows"
             for row in range(num_rows):
                 for column in range(num_cols):
@@ -231,7 +231,7 @@ class ScraperGui(QtWidgets.QMainWindow):
             msg.exec_()
 
             success = False
-            logging.info("Couldn't find anything")
+            logging.info("Couldn't find any datasets")
 
 
     def create_schema(self):
