@@ -61,5 +61,6 @@ print("The following datasets were found at the Data Portal you provided: \n")
 for key in datasets:
     print(key)
 
+#This is to help provide degugging information as to the type of data the datasets variable is (list vs. dictionary vs. dataframe, etc)
 print(type(datasets))
 
