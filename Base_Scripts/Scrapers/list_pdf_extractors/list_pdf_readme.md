@@ -5,7 +5,7 @@
 3. Copy the extractor version you need, and the `configs.py` to the `COUNTRY/STATE/COUNTY` that you created for the precinct.
 4. For example, Alameda county, California, would be placed into the folder `Scrapers/USA/CA/alameda/`.
 
-   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/USA/CA/alameda) for the example.
+   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/USA/CA/alameda_county/municipality/alameda) for the example.
 
 Open the `configs.py` file that you copied:
 1. Set `webpage` to the page with the pdf lists
@@ -32,7 +32,7 @@ For example, `domain = "https://www.website.com"` would become `domain = "https:
  If the site has a set crawler time under it's `robots.txt`, set `sleep_time` to it's value. Otherwise, just leave it at `5`
 
 If this does not make sense, try checking the comments within the code.
- Working example can be found [here](https://github.com/CaptainStabs/Scrapers/blob/master/USA/CA/alameda/alameda_scraper.py)
+ Working example can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/USA/CA/alameda_county/municipality/alameda/alameda_scraper.py)
 
 ## Edge Cases:
 #### Dropdown lists:
