@@ -15,12 +15,20 @@ Include the Terms of Service or robots.txt (or link to them). How does your code
 - `_id`
 - `PK`: Incident ID number
 - `CCR`: Incident report number
-- `HIERARCHY`: Highest UCR hierarchy
+- `HIERARCHY`: Highest UCR hierarchy number
 - `INCIDENTTIME`
 - `INCIDENTLOCATION`
 - `CLEARED_FLAG`: Whether the incident was closed
 - `INCIDENTNEIGHBORHOOD`
 - `INCIDENTZONE`
+- `HIERARCHYDESC`
+- `INCIDENTHIERARCHYDESC`
+- `OFFENSES`
+- `INCIDENTTRACT`
+- `COUNCIL_DISTRICT`
+- `PUBLIC_WORKS_DIVISION`
+- `X`
+- `Y`
 
 ## Fields unobtainable within our legal guidelines:
 
@@ -30,4 +38,4 @@ Are cases or records numbered in a consistent (or inconsistent) way that might b
 
 ## Sample response
 
-In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
+See `./data` folder
