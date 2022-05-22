@@ -15,8 +15,11 @@ save_url = [
     [
         "incident_blotter_archive/2016-present/",
         "https://data.wprdc.org/datastore/dump/044f2016-1dfd-4ab0-bc1e-065da05fca2e"
+    ],
+    [
+        "incident_blotter_30day/",
+        "https://data.wprdc.org/datastore/dump/1797ead8-8262-41cc-9099-cbc8a161924b"
     ]
-    #["save_folder", "url"],
     #["save_folder", "url"],
 ]
 
