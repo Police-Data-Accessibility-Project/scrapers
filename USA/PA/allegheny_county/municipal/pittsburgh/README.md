@@ -8,6 +8,8 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 
 ## Legal
 
+[Creative Commons Attribution](http://www.opendefinition.org/licenses/cc-by)
+
 Include the Terms of Service or robots.txt (or link to them). How does your code account for or meet the legal guidelines?
 
 ## Fields being collected:
@@ -18,7 +20,7 @@ Include the Terms of Service or robots.txt (or link to them). How does your code
 - `HIERARCHY`: Highest UCR hierarchy number
 - `INCIDENTTIME`
 - `INCIDENTLOCATION`
-- `CLEARED_FLAG`: Whether the incident was closed
+- `CLEARED_FLAG`: Whether the incident was cleared
 - `INCIDENTNEIGHBORHOOD`
 - `INCIDENTZONE`
 - `HIERARCHYDESC`
