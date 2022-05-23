@@ -4,11 +4,13 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 
 ## Data refresh rate
 
-[Police Incident Blotter Archive](https://data.wprdc.org/dataset/uniform-crime-reporting-data): Weekly
+[Police Incident Blotter Archive](https://data.wprdc.org/dataset/uniform-crime-reporting-data): Daily
 
 [Police Incident Blotter (30 Day)](https://data.wprdc.org/dataset/police-incident-blotter): Daily
 
 [Police Officer Training](https://data.wprdc.org/dataset/officer-training): Annually, none since 2016
+
+[Police Arrest Records](https://data.wprdc.org/dataset/arrest-data): Daily
 
 ## Legal
 
@@ -62,10 +64,19 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 - `CLASS_HOURS_2016`
 - `TOTAL_HOURS`
 
+- `AGE`
+- `GENDER`
+- `RACE`
+- `ARRESTTIME`
+- `ARRESTLOCATION`
+
 ## Fields unobtainable within our legal guidelines:
 
+Some data (such as `ARRESTLOCATION` and `INCIDENTLOCATION`) are generalized to protect the privacy of those involved.
+Exact address data is not available to the public.
 ## Data uniformity
 
+Some data only had .xls files available for download while the rest are in .csv format.
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
 
 ## Sample response
