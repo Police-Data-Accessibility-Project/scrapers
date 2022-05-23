@@ -14,6 +14,8 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 
 [Police Firearm Seizures](https://data.wprdc.org/dataset/pbp-fire-arm-seizures): Monthly
 
+[Non-Traffic Citations](https://data.wprdc.org/dataset/non-traffic-citations): Daily
+
 ## Legal
 
 [Creative Commons Attribution](http://www.opendefinition.org/licenses/cc-by)
@@ -91,6 +93,8 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 - `fire_zone`
 - `latitude`
 - `longitute`
+
+- `CITEDTIME`
 
 ## Fields unobtainable within our legal guidelines:
 
