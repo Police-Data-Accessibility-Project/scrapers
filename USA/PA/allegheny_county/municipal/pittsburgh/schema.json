@@ -184,6 +184,38 @@
                 "datasets_id": "__dataset_id__",
                 "date_insert": "__date__"
             }
+        },
+        {
+            "dataset_id": "fd5f28fe7ee811ec9ebd9ab047cb6ae8",
+            "url":"https://data.wprdc.org/dataset/non-traffic-citations",
+            "full_data_location":"data/non_traffic_citations",
+            "source_type": 3,
+            "data_type": 33,
+            "format_type": 4,
+            "update_freq": 6,
+            "last_modified": "2022-05-23 11:05:00 EST",
+            "scraper_path":"USA/PA/allegheny_county/municipal/pittsburgh/scraper.py",
+            "scraper_id":"",
+            "mapping":{
+                "id": "__uuid__",
+                "incident_id": "PK",
+                "report_num": "CCR",
+                "gender": "GENDER",
+                "race": "RACE",
+                "age": "AGE",
+                "cited_time": "CITEDTIME",
+                "incident_location": "INCIDENTLOCATION",
+                "offenses": "OFFENSES",
+                "neighborhood": "NEIGHBORHOOD",
+                "zone": "ZONE",
+                "incident_tract": "INCIDENTTRACT",
+                "council_district": "COUNCIL_DISTRICT",
+                "public_works_division": "PUBLIC_WORKS_DIVISION",
+                "x": "X",
+                "y": "Y",
+                "datasets_id": "__dataset_id__",
+                "date_insert": "__date__"
+            }
         }
     ]
 
