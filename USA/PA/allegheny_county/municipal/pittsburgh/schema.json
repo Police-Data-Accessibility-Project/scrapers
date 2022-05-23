@@ -73,6 +73,48 @@
                 "datasets_id": "__dataset_id__",
                 "date_insert": "__date__"
             }
+        },
+        {
+            "dataset_id": "022e93c07ee911ec9ebd9ab047cb6ae8",
+            "url":"https://data.wprdc.org/dataset/officer-training",
+            "full_data_location":"data/officer_training",
+            "source_type": 3,
+            "data_type": 19,
+            "format_type": 4,
+            "update_freq": 1,
+            "last_modified": "2022-05-22 19:35:00 EST",
+            "scraper_path":"USA/PA/allegheny_county/municipal/pittsburgh/scraper.py",
+            "scraper_id":"",
+            "mapping":{
+                "id": "__uuid__",
+                "class_name": "CLASS_NAME",
+                "officers_trained_2006": "OFFICERS_TRAINED_2006",
+                "officers_trained_2007": "OFFICERS_TRAINED_2007",
+                "officers_trained_2008": "OFFICERS_TRAINED_2008",
+                "officers_trained_2009": "OFFICERS_TRAINED_2009",
+                "officers_trained_2010": "OFFICERS_TRAINED_2010",
+                "officers_trained_2011": "OFFICERS_TRAINED_2011",
+                "officers_trained_2012": "OFFICERS_TRAINED_2012",
+                "officers_trained_2013": "OFFICERS_TRAINED_2013",
+                "officers_trained_2014": "OFFICERS_TRAINED_2014",
+                "officers_trained_2015": "OFFICERS_TRAINED_2015",
+                "officers_trained_2016": "OFFICERS_TRAINED_2016",
+                "officers_total": "TOTALS",
+                "class_hours_2006": "CLASS_HOURS_2006",
+                "class_hours_2007": "CLASS_HOURS_2007",
+                "class_hours_2008": "CLASS_HOURS_2008",
+                "class_hours_2009": "CLASS_HOURS_2009",
+                "class_hours_2010": "CLASS_HOURS_2010",
+                "class_hours_2011": "CLASS_HOURS_2011",
+                "class_hours_2012": "CLASS_HOURS_2012",
+                "class_hours_2013": "CLASS_HOURS_2013",
+                "class_hours_2014": "CLASS_HOURS_2014",
+                "class_hours_2015": "CLASS_HOURS_2015",
+                "class_hours_2016": "CLASS_HOURS_2016",
+                "total_hours": "TOTAL_HOURS",
+                "datasets_id": "__dataset_id__",
+                "date_insert": "__date__"
+            }
         }
     ]
 
