@@ -24,9 +24,13 @@ save_url = [
 #        "officer_training/",
 #        "https://data.wprdc.org/datastore/dump/1f047ff9-c2ae-45cf-af7e-7eb6d33babd7"
 #    ],
+#    [
+#        "arrest_data/",
+#        "https://data.wprdc.org/datastore/dump/e03a89dd-134a-4ee8-a2bd-62c40aeebc6f"
+#    ],
     [
-        "arrest_data/",
-        "https://data.wprdc.org/datastore/dump/e03a89dd-134a-4ee8-a2bd-62c40aeebc6f"
+        "firearm_seizures/",
+        "https://data.wprdc.org/datastore/dump/e967381d-d7e9-48e3-a2a2-39262f7fa5c4"
     ]
 ]
 

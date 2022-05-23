@@ -12,6 +12,8 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 
 [Police Arrest Records](https://data.wprdc.org/dataset/arrest-data): Daily
 
+[Police Firearm Seizures](https://data.wprdc.org/dataset/pbp-fire-arm-seizures): Monthly
+
 ## Legal
 
 [Creative Commons Attribution](http://www.opendefinition.org/licenses/cc-by)
@@ -70,13 +72,37 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 - `ARRESTTIME`
 - `ARRESTLOCATION`
 
+- `address`
+- `total_count`
+- `other_count`
+- `pistol_count`
+- `revolver_count`
+- `rifle_count`
+- `shotgun_count`
+- `year`
+- `month`
+- `dow`: Day of week (0-6 starting Sunday)
+- `neighborhood`
+- `council_district`
+- `ward`
+- `tract`: 2010 Census tract location
+- `public_works_division`
+- `police_zone`
+- `fire_zone`
+- `latitude`
+- `longitute`
+
 ## Fields unobtainable within our legal guidelines:
 
 Some data (such as `ARRESTLOCATION` and `INCIDENTLOCATION`) are generalized to protect the privacy of those involved.
 Exact address data is not available to the public.
+
+Some data (such as dates and locations) may be ommitted to protect ongoing investigations.
+
 ## Data uniformity
 
 Some data only had .xls files available for download while the rest are in .csv format.
+
 Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
 
 ## Sample response

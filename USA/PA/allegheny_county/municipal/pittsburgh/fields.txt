@@ -29,6 +29,26 @@
 * OFFICERS_TRAINED_2016
 * TOTALS
 
+* address
+* total_count
+* other_count
+* pistol_count
+* revolver_count
+* rifle_count
+* shotgun_count
+* year
+* month
+* dow
+* neighborhood
+* council_district
+* ward
+* tract
+* public_works_division
+* police_zone
+* fire_zone
+* latitude
+* longitude
+
 * AGE
 * GENDER
 * RACE
