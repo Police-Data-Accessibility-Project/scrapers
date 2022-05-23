@@ -20,9 +20,13 @@ save_url = [
 #        "incident_blotter_30day/",
 #        "https://data.wprdc.org/datastore/dump/1797ead8-8262-41cc-9099-cbc8a161924b"
 #    ],
+#    [
+#        "officer_training/",
+#        "https://data.wprdc.org/datastore/dump/1f047ff9-c2ae-45cf-af7e-7eb6d33babd7"
+#    ],
     [
-        "officer_training/",
-        "https://data.wprdc.org/datastore/dump/1f047ff9-c2ae-45cf-af7e-7eb6d33babd7"
+        "arrest_data/",
+        "https://data.wprdc.org/datastore/dump/e03a89dd-134a-4ee8-a2bd-62c40aeebc6f"
     ]
 ]
 
