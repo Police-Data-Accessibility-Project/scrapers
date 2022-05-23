@@ -4,13 +4,17 @@ Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datase
 
 ## Data refresh rate
 
-[Police Incident Blotter Archive](https://data.wprdc.org/dataset/uniform-crime-reporting-data): Daily
+[Police Incident Blotter Archive](https://data.wprdc.org/dataset/uniform-crime-reporting-data): Weekly
+
+[Police Incident Blotter (30 Day)](https://data.wprdc.org/dataset/police-incident-blotter): Daily
+
+[Police Officer Training](https://data.wprdc.org/dataset/officer-training): Annually, none since 2016
 
 ## Legal
 
 [Creative Commons Attribution](http://www.opendefinition.org/licenses/cc-by)
 
-Include the Terms of Service or robots.txt (or link to them). How does your code account for or meet the legal guidelines?
+[Terms of Use](https://www.wprdc.org/terms-of-use/)
 
 ## Fields being collected:
 
@@ -31,6 +35,32 @@ Include the Terms of Service or robots.txt (or link to them). How does your code
 - `PUBLIC_WORKS_DIVISION`
 - `X`
 - `Y`
+
+- `CLASS_NAME`
+- `OFFICERS_TRAINED_2006`
+- `OFFICERS_TRAINED_2007`
+- `OFFICERS_TRAINED_2008`
+- `OFFICERS_TRAINED_2009`
+- `OFFICERS_TRAINED_2010`
+- `OFFICERS_TRAINED_2011`
+- `OFFICERS_TRAINED_2012`
+- `OFFICERS_TRAINED_2013`
+- `OFFICERS_TRAINED_2014`
+- `OFFICERS_TRAINED_2015`
+- `OFFICERS_TRAINED_2016`
+- `TOTALS`
+- `CLASS_HOURS_2006`
+- `CLASS_HOURS_2007`
+- `CLASS_HOURS_2008`
+- `CLASS_HOURS_2009`
+- `CLASS_HOURS_2010`
+- `CLASS_HOURS_2011`
+- `CLASS_HOURS_2012`
+- `CLASS_HOURS_2013`
+- `CLASS_HOURS_2014`
+- `CLASS_HOURS_2015`
+- `CLASS_HOURS_2016`
+- `TOTAL_HOURS`
 
 ## Fields unobtainable within our legal guidelines:
 
