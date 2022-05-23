@@ -1,7 +1,5 @@
 # Source info
 
-Be sure to [update the dataset](https://www.dolthub.com/repositories/pdap/datasets) if something has changed.
-
 ## Data refresh rate
 
 [Police Incident Blotter Archive](https://data.wprdc.org/dataset/uniform-crime-reporting-data): Daily
@@ -106,8 +104,6 @@ Some data (such as dates and locations) may be ommitted to protect ongoing inves
 ## Data uniformity
 
 Some data only had .xls files available for download while the rest are in .csv format.
-
-Are cases or records numbered in a consistent (or inconsistent) way that might be helpful to note?
 
 ## Sample response
 
