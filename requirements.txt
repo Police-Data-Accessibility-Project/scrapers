@@ -18,3 +18,4 @@ regex==2021.7.1
 requests_toolbelt==0.9.1
 table_ocr==0.2.5
 Scrapy==2.5.1
+savepagenow==1.2.2
