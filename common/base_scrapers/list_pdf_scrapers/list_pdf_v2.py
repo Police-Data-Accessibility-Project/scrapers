@@ -12,6 +12,7 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 from common.utils import get_files
 from common.utils import extract_info
+from common.utils.metadata import create_metadata
 
 """
 configs = {
@@ -121,5 +122,6 @@ def list_pdf_v2(
             pdf_extract(pdf_directory=save_dir, flavor=flavor)
             pass
 
+    create_metadata(webpage)
     # honestly not sure why this is down here, but there is probably a e
     # import etl.py

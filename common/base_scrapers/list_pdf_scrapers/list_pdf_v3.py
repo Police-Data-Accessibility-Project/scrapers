@@ -12,6 +12,7 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 from common.utils import get_files
 from common.utils import extract_info
+from common.utils.metadata import create_metadata
 
 """
 configs = {
@@ -172,6 +173,7 @@ def list_pdf_v3(
                     new_file.write(line)
                     print(line)
             print(" [*] Done writing")
+
     # if debug is false, can probably be rewritten as "if not debug:"
     # functions the same as the delete variable tbh
     if not debug:
@@ -194,8 +196,6 @@ def list_pdf_v3(
         add_date=add_date,
     )
 
-    # import etl for eric (this likely will not work due to etl being in common)
-    import etl
 
     # this section of code only runs if extract_tables is True
     if extract_tables:
@@ -216,6 +216,8 @@ def list_pdf_v3(
             # call pdf_extract again, this time without passing csv_dir to it.
             pdf_extract(pdf_directory=save_dir, flavor=flavor)
             pass
-
+    
+    create_metadata(webpage)
+    # import etl for eric (this likely will not work due to etl being in common)
     # honestly not sure why this is down here, but there is probably a reason
     # import etl.py
