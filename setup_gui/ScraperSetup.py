@@ -46,7 +46,6 @@ class ScraperGui(QtWidgets.QMainWindow):
     def __init__(self):
         super(ScraperGui, self).__init__()
         uic.loadUi(ui_file, self)
-
         self.version_label.setText("Version: " + str(__version__))
         self.tabWidget.setCurrentIndex(0)       # Start on the first page
         self.tabWidget.setTabEnabled(1, False)  # Disable the Choose Scraper tab
@@ -57,6 +56,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.tabWidget.setTabEnabled(6, False)  # Disable search schema
         self.tabWidget.setTabEnabled(7, False)  # Disable schema tab
         self.tabWidget.setTabEnabled(8, False) # Disable dataset tab
+        # self.skipped_widget.hide
         self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
 
         """Initialize buttons"""
@@ -73,6 +73,12 @@ class ScraperGui(QtWidgets.QMainWindow):
         self.search_button_2.clicked.connect(self.get_agency_info)
         self.select_agency_button.clicked.connect(self.create_dataset)
         self.create_schema_button.clicked.connect(self.create_schema)
+        self.skip_button.clicked.connect(self.skip)
+        self.skip_ok_button.clicked.connect(self.skip_ok)
+
+        # Initialize widget
+        self.skipped_widget = self.findChild(QtWidgets.QWidget, "skipped_widget")
+        self.skipped_widget.hide()
 
         self.show()
 
@@ -83,6 +89,28 @@ class ScraperGui(QtWidgets.QMainWindow):
     def success_dialog(self):
         success_dialog = SuccessDialog()
         success_dialog.exec_()
+
+    def skip(self):
+        self.tabWidget.setTabEnabled(6, True)  # Enable search schema
+        self.tabWidget.setTabEnabled(7, True)  # Enable schema tab
+        self.tabWidget.setTabEnabled(8, True)  # Enable dataset tab
+        self.tabWidget.setCurrentIndex(6)      # Go to search schema tab
+        self.setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;} ")  # Hide the tabs
+        self.create_schema_button.hide()
+        self.skipped_widget.show()
+
+    def skip_ok(self):
+        country_input = self.country_input_data.text()
+        state_input = self.state_input_data.text()
+        county_input = self.county_input_data.text()
+        department_type_input = str(self.department_type_input_data.currentText())
+        city_input = self.city_input_data.text()
+        self.url_input = self.url_data.text()
+        self.save_dir = "./data/" + self.save_data.text()
+        self.scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        self.scraper_name = self.scraper_name_data.text()
+        self.full_path = self.scraper_save_dir + self.scraper_name
+        self.create_schema_button.show()
 
     # Executed on `Search Schema` tab
     def get_agency_info(self):
@@ -243,7 +271,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
         template_folder = "Base_Scripts"
 
-        working_folder = scraper_save_dir
+        working_folder = self.scraper_save_dir
         working_folder = os.path.normpath(working_folder)
 
         # os.path.join isn't working for me
@@ -301,8 +329,8 @@ class ScraperGui(QtWidgets.QMainWindow):
 
                 try:
                     agency_data[0]["dataset_id"] = dataset_id
-                    agency_data[0]["url"] = url_input
-                    agency_data[0]["full_data_location"] = str(save_dir)
+                    agency_data[0]["url"] = self.url_input
+                    agency_data[0]["full_data_location"] = str(self.save_dir)
                     agency_data[0]["source_type"] = int(self.source_type_cb.currentIndex()) + 1
                     agency_data[0]["data_type"] = int(self.data_type_cb.currentIndex()) + 1
                     agency_data[0]["format_type"] = int(self.format_type_cb.currentIndex()) + 1
@@ -310,7 +338,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                     agency_data[0]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
                     agency_data[0]["scraper_path"] = self.full_path
                     agency_data[0]["scraper_id"] = scraper_id
-                    agency_data[0]["mapping"] = ""
+                    agency_data[0]["mapping"] = []
 
                 except NameError:
                     logging.warning("Opendata is not currently supported for schema data creation")
@@ -332,8 +360,8 @@ class ScraperGui(QtWidgets.QMainWindow):
 
                 try:
                     agency_data[agency_index]["dataset_id"] = dataset_id
-                    agency_data[agency_index]["url"] = url_input
-                    agency_data[agency_index]["full_data_location"] = str(save_dir)
+                    agency_data[agency_index]["url"] = self.url_input
+                    agency_data[agency_index]["full_data_location"] = str(self.save_dir)
                     agency_data[agency_index]["source_type"] = int(self.source_type_cb.currentIndex()) + 1
                     agency_data[agency_index]["data_type"] =  int(self.data_type_cb.currentIndex()) + 1
                     agency_data[agency_index]["format_type"] =  int(self.format_type_cb.currentIndex()) + 1
@@ -341,10 +369,11 @@ class ScraperGui(QtWidgets.QMainWindow):
                     agency_data[agency_index]["last_modified"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
                     agency_data[agency_index]["scraper_path"] = self.full_path
                     agency_data[agency_index]["scraper_id"] = scraper_id
-                    agency_data[agency_index]["mapping"] = ""
+                    agency_data[agency_index]["mapping"] = []
                     logging.debug(json.dumps(data, indent=4))
 
-                except NameError:
+                except NameError as e:
+                    print(e)
                     logging.warning("Opendata is not currently supported for schema data creation")
                     msg = QtWidgets.QMessageBox()
                     msg.setIcon(QtWidgets.QMessageBox.Critical)
@@ -366,7 +395,7 @@ class ScraperGui(QtWidgets.QMainWindow):
 
             dataset_dict = {
                 "id": dataset_id,
-                "url": url_input,
+                "url": self.url_input,
                 "status_id": 3,
                 "source_type_id": int(self.source_type_cb.currentIndex()) + 1,
                 "data_types_id": int(self.data_type_cb.currentIndex()) + 1,
@@ -468,10 +497,10 @@ class ScraperGui(QtWidgets.QMainWindow):
 
     def setup_opendata_pressed(self):
         # Step 1
-        global is_v3
+        # global is_v3
         global sleep_time
         global save_dir_input
-        global scraper_save_dir
+        # global self.scraper_save_dir
 
         country_input = self.country_input_opendata.text().upper()
         state_input = self.state_input_opendata.text().lower()
@@ -479,14 +508,14 @@ class ScraperGui(QtWidgets.QMainWindow):
         department_type_input = str(self.department_type_input_opendata.currentText()).lower()
         city_input = self.city_input.text().lower()
         save_dir_input = self.save_dir_input_opendata.text().lower()
-        # scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
-        scraper_save_dir = os.path.join(country_input, state_input, county_input, department_type_input, city_input)
-        scraper_save_dir = scraper_save_dir
+        # self.scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        self.self.scraper_save_dir = os.path.join(country_input, state_input, county_input, department_type_input, city_input)
+        self.self.scraper_save_dir = self.self.scraper_save_dir
         sleep_time = self.sleep_time_input_opendata.value()
 
         # Create directory if it doesn't exist
-        if not os.path.exists(scraper_save_dir):
-            os.makedirs(scraper_save_dir)
+        if not os.path.exists(self.scraper_save_dir):
+            os.makedirs(self.scraper_save_dir)
 
         # Step 2
         save_dir_input = self.save_dir_input_opendata.text().replace(" ", "_").rstrip("/")  # Clean input of spaces
@@ -504,7 +533,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         scraper_name_input = self.scraper_name_input_opendata.text()
         self.scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
         template_folder = "./Base_Scripts/Scrapers/opendata/"
-        self.full_path = scraper_save_dir + self.scraper_name
+        self.full_path = self.scraper_save_dir + self.scraper_name
         logging.info("full_path: " + str(self.full_path))
 
         # Copy and rename the scraper
@@ -587,18 +616,18 @@ class ScraperGui(QtWidgets.QMainWindow):
 
     # Create crimegraphic scraper
     def create_cg_pressed(self):
-        global scraper_save_dir
-        global url_input
+        # global self.scraper_save_dir
+        # global url_input
         global save_dir_input
-        global save_dir
+        # global save_dir
 
         #  Get user input
         country_input = self.country_input_cg.text()
         state_input = self.state_input_cg.text()
         county_input = self.county_input_cg.text()
         department_type_input = str(self.department_type_input_cg.currentText())
-        city_input = self.city_input.text()
-        url_input = self.url_input_cg.text()
+        city_input = self.city_input.text() # Fix this
+        self.url_input = self.url_input_cg.text()
         save_dir_input = self.save_dir_input_cg.text()
 
         if self.choose_cg_input.currentIndex() == 0:
@@ -606,26 +635,26 @@ class ScraperGui(QtWidgets.QMainWindow):
         elif self.choose_cg_input.currentIndex() == 1:
             cg_type = "crimegraphics_clery.py"
 
-        scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
-        self.full_path = scraper_save_dir + cg_type
+        self.scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        self.full_path = self.scraper_save_dir + cg_type
 
         # Create directory if it doesn't exist
-        if not os.path.exists(scraper_save_dir):
-            os.makedirs(scraper_save_dir)
+        if not os.path.exists(self.scraper_save_dir):
+            os.makedirs(self.scraper_save_dir)
 
         cg_template_folder = "./Base_Scripts/Scrapers/crimegraphics/"
         # configs = {
         #     "url": "",
         #     "department_code": "",
-        department_code = url_input.split(".")
+        department_code = self.url_input.split(".")
         department_code = str(department_code[0]).replace("https://", "")
         logging.info("Department Code: " + str(department_code))
-        save_dir = "./data/" + save_dir_input
+        self.save_dir = "./data/" + save_dir_input
         lines_to_change = ['"url": "",', '"department_code": "",', 'save_dir = "./data/"']
-        config_list = [f'"url": "{url_input}",', f'"department_code": "{department_code}"', f'save_dir = "{save_dir_input}"']
+        config_list = [f'"url": "{self.url_input}",', f'"department_code": "{department_code}"', f'save_dir = "{save_dir_input}"']
 
-        if not os.path.exists(scraper_save_dir + cg_type):
-            copyfile(cg_template_folder + cg_type, scraper_save_dir + cg_type)
+        if not os.path.exists(self.scraper_save_dir + cg_type):
+            copyfile(cg_template_folder + cg_type, self.scraper_save_dir + cg_type)
 
             # Iterate over file to find and replace the configs
             for line in fileinput.input(self.full_path, inplace=1):
@@ -648,10 +677,8 @@ class ScraperGui(QtWidgets.QMainWindow):
     # Choose Scraper list_pdf
     def choose_scraper_pressed(self):
         """ 'Enter' button on `Choose Scraper` tab"""
-        global is_v3
-        global scraper_save_dir
-        global save_dir_input
-        global save_dir
+        # global is_v3
+        # global save_dir
 
         # Step 2
         # /country/state/county/type/city/
@@ -661,11 +688,11 @@ class ScraperGui(QtWidgets.QMainWindow):
         county_input = self.county_input.text().lower()
         department_type_input = str(self.department_type_input.currentText().lower())
         city_input = self.city_input.text().lower()
-        scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
+        self.scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
 
         # Create directory if it doesn't exist
-        if not os.path.exists(scraper_save_dir):
-            os.makedirs(scraper_save_dir)
+        if not os.path.exists(self.scraper_save_dir):
+            os.makedirs(self.scraper_save_dir)
 
         # Step 4
         # Copy the scraper file
@@ -676,12 +703,12 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Step 1
         scraper_input_text = self.scraper_input.currentText()  # Get the selected scraper text
         scraper_input_index = self.scraper_input.currentIndex()
-        self.full_path = scraper_save_dir + self.scraper_name
+        self.full_path = self.scraper_save_dir + self.scraper_name
 
         if scraper_input_index == 0:
-            is_v3 = False
+            self.is_v3 = False
         elif scraper_input_index == 1:
-            is_v3 = True
+            self.is_v3 = True
 
         # Copy and rename the scraper
         copyfile(template_folder + scraper_input_text, self.full_path)
@@ -693,12 +720,12 @@ class ScraperGui(QtWidgets.QMainWindow):
         if save_dir_input:
             logging.info("save_dir_input not blank")
             save_dir_input = save_dir_input.replace("./data/","")  # Remove any accidental data prepends
-            save_dir = "./data/" + save_dir_input + '"'
+            self.save_dir = "./data/" + save_dir_input + '"'
             save_dir_input = 'save_dir = "./data/' + save_dir_input + '"'
         else:
             logging.info("save_dir_input blank")
             save_dir_input = 'save_dir = "./data/"'
-            save_dir = "./data/"
+            self.save_dir = "./data/"
 
 
         # make sure that black formatting does not affect this
@@ -721,11 +748,11 @@ class ScraperGui(QtWidgets.QMainWindow):
     def create_button_pressed(self):
         # This is executed when the button is pressed
         # Try using self. instead
-        global url_input
+        # global url_input
 
         # if self.button_pressed
         webpage_input = self.webpage_input.text()
-        url_input = webpage_input
+        self.url_input = webpage_input
         web_path_input = self.web_path_input.text()
         domain_included_input = self.domain_included_input.currentText()
         # print(domain_included_input)
@@ -743,7 +770,7 @@ class ScraperGui(QtWidgets.QMainWindow):
                 lines = output.readlines() #[config_start:]  # This doesn't seem to do what I want
                 logging.debug("Lines length: " + str(len(lines)))
                 # for i in range(config_start, config_end):
-                if not is_v3:
+                if not self.is_v3:
                     config_list = [
                         f'"webpage":"{webpage_input}"',
                         f'"web_path":"{web_path_input}"',
@@ -763,11 +790,11 @@ class ScraperGui(QtWidgets.QMainWindow):
                     ]
 
             # Does not support more advanced arguments atm
-            lines_to_change = ['"webpage": "",', '"web_path": "",', '"domain_included": False,', '"domain": "",', '"sleep_time": 5,']
-
-            if is_v3:
-                logging.debug("is v3")
-                lines_to_change = lines_to_change.append('"non_important": [],')
+            lines_to_change = ['"webpage": "",', '"web_path": "",', '"domain_included": False,', '"domain": "",', '"sleep_time": 5,', '"non_important": [],']
+            print(lines_to_change)
+            if not self.is_v3:
+                lines_to_change = lines_to_change[:-1]
+                print(lines_to_change)
             # Use fileinput to replace config lines.
             for line in fileinput.input(self.full_path, inplace=1):
                 for i in range(len(lines_to_change)):
