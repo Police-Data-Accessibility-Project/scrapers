@@ -626,7 +626,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         state_input = self.state_input_cg.text()
         county_input = self.county_input_cg.text()
         department_type_input = str(self.department_type_input_cg.currentText())
-        city_input = self.city_input.text() # Fix this
+        city_input = self.city_input_cg.text()
         self.url_input = self.url_input_cg.text()
         save_dir_input = self.save_dir_input_cg.text()
 
