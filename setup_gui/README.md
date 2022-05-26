@@ -1,5 +1,5 @@
 # PDAP-Scraper-Setup-GUI
-A local Python GUI to help you write data scrapers.
+A local Python GUI to help you write data scrapers. Our latest releases are [here]([url](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/releases)).
 
 # Usage:
 Follow the instructions in [`CONTRIBUTING.md`](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/CONTRIBUTING.md).
