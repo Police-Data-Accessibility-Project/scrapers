@@ -6,6 +6,7 @@ import re
 import time
 import sys
 from pathlib import Path
+import datetime
 
 # This is a hack that basically loads that root common folder like a module (without you expressly needing to install it).
 p = Path(__file__).resolve().parents[3]
@@ -51,6 +52,7 @@ def list_pdf_v2(
     :param try_overwite: mostly deprecated. ask before using
     :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
     """
+    run_start = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S %Z")
     # If save_dir does not exist, make the directory
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -122,6 +124,6 @@ def list_pdf_v2(
             pdf_extract(pdf_directory=save_dir, flavor=flavor)
             pass
 
-    create_metadata(webpage)
+    create_metadata(webpage, run_start)
     # honestly not sure why this is down here, but there is probably a e
     # import etl.py
