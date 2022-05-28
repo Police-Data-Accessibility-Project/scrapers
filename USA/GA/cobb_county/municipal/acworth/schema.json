@@ -1,0 +1,44 @@
+{
+    "agency_id": "e8e00b3fc3ea42bf8858f70d6785bf8a",
+    "agency_info": {
+        "agency_name": "Acworth Police Department",
+        "agency_coords": {
+            "lat": "34.061256408691406",
+            "lng": "-84.66028594970703"
+        },
+        "agency_type": "4",
+        "city": "Acworth",
+        "state": "GA",
+        "zip": "30101",
+        "county_fips": "13067"
+    },
+    "data": [
+        {
+            "dataset_id": "dd45a7cc69bb280a9a8e0f52a1b50d5a",
+            "url": "https://acworthpolice.org/departments/annual-report",
+            "full_data_location": "./data/annual_reports/",
+            "source_type": 2,
+            "data_type": 24,
+            "format_type": 1,
+            "update_freq": 1,
+            "last_modified": "2022-05-28 18:54:44 UTC",
+            "scraper_path": "./USA/GA/cobb_county/municipal/acworth/acworth_annual_scraper.py",
+            "scraper_id": "4a58780f698346d0b2dce76b91ce7ff1",
+            "mapping": []
+        }
+    ],
+    "archives": [
+        {
+            "dataset_id": "dd45a7cc69bb280a9a8e0f52a1b50d5a",
+            "run_start": "2022-05-28 22:40:45 UTC",
+            "run_end": "2022-05-28 22:40:51 UTC",
+            "dataset_snapshot": "https://web.archive.org/web/20220528223750/https://acworthpolice.org/departments/annual-report"
+        },
+        {
+            "dataset_id": "dd45a7cc69bb280a9a8e0f52a1b50d5a",
+            "run_start": "2022-05-28 22:41:37 UTC",
+            "run_end": "2022-05-28 22:41:43 UTC",
+            "dataset_snapshot": "https://web.archive.org/web/20220528223750/https://acworthpolice.org/departments/annual-report"
+        }
+    ]
+}
