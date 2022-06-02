@@ -17,11 +17,11 @@ def create_metadata(url, run_start):
             dataset_id = next((item for item in agency_data if item["url"] == url))
             dataset_id = dataset_id["dataset_id"]
             # Check if archives exists in the file
-            if "archives" in data:
-                archives = data["archives"]
+            if "dataset_archive" in data:
+                archives = data["dataset_archive"]
             else:
-                data["archives"] = []
-                archives = data["archives"]
+                data["dataset_archive"] = []
+                archives = data["dataset_archive"]
             archives.append({
                 "dataset_id": dataset_id, 
                 "run_start": run_start,
