@@ -13,4 +13,4 @@ tqdm
 beautifulsoup4
 pandas
 doltpy==2.0.7
-Scrapy==2.5.1
+Scrapy==2.6.2
