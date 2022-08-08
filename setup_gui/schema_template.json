@@ -11,7 +11,7 @@
       },
       "data": [
           {
-              "dataset_id": "",
+              "data_source__id": "",
               "url":"",
               "full_data_location":"data",
               "source_type": 2,

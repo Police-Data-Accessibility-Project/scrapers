@@ -11,14 +11,13 @@ You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal
 ### Best Practices
 - We can run the scraper by running one script, called `scraper.py` or at least beginning `scraper-`
 - Populate the readme for your scraper with as much helpful information as you can!
-- The config file appropriately references a dataset.
+- The config file appropriately references a Data Source.
 - Include a truncated version of some sample data so we understand what is generated.
-- Ensure you have a `schema.json` file & a blank `etl.py` file in your scraper directory, and call `import etl` at the end of your scraper. [Read more about Scraper Schemas here](https://docs.pdap.io/components/datasets/scraper_schemas).
 - Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`.
 
-## 1. Find a dataset to scrape.
+## 1. Find a Data Source to scrape.
 
-Navigate to our [Datasets repo in DoltHub](https://www.dolthub.com/repositories/pdap/datasets) or the [PostgreSQL mirror](https://docs.pdap.io/components/datasets/hadoop-datasets-mirror) and find a source to scrape. If you have a particular dataset in mind you may need to [add it dataset yourself](https://docs.pdap.io/components/data-collection/dataset-catalog/submit-or-update-datasets). This takes about 5–10 minutes. 
+Navigate to our [Data Sources repo in DoltHub](https://www.dolthub.com/repositories/pdap/data_sources) or the [PostgreSQL mirror](https://docs.pdap.io/activities/data-storage/submit-or-update-datasets/hadoop-datasets-mirror) and find a source to scrape. If you have a particular data source in mind you may need to [add it yourself](https://docs.pdap.io/activities/data-storage/submit-or-update-datasets). This takes about 5–10 minutes. 
 
 
 ## 2. Get set up locally.
@@ -31,11 +30,11 @@ Navigate to our [Datasets repo in DoltHub](https://www.dolthub.com/repositories/
    - [@Pythonidaer](https://github.com/Pythonidaer/pythonidaer) made an [excellent walkthrough of the GUI as of the v0.0.1 release](https://www.youtube.com/watch?v=oJxXkSytreE).
 4. Copy the resulting folder into your clone of `PDAP-Scrapers`.
 
-## 3. Check the `/common` `/Base_Scripts` folder for helpful assets and scrapers before you start. 
+## 3. Check the `/common` `/Base_Scripts` folder for helpful assets and scrapers before you start.
 [`/common` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)
 [`/Base_Scripts` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/Base_Scripts/Scrapers)
 
-Why start from scratch if we have a useful library? Keep in mind that we can always refactor your work later if necessary, so if you're not sure, we still want 
+Why start from scratch if we have a useful library? Keep in mind that we can always refactor your work later if necessary, so if you're not sure, we still want
 you to submit!
 
 ## 4. Code your scraper and make a Pull Request!
@@ -46,7 +45,7 @@ Make sure you follow this guideline for creating folders:
 ```
 COUNTRY/
   STATE/
-    COUNTY/ 
+    COUNTY/
       DEPARTMENT_TYPE
                 (CITY)
                 (COUNTY)
@@ -70,4 +69,3 @@ Python is preferred. If you use another language, we may not be able to easily f
 > Are there any specific formatting guidelines I should adhere to?
 
 For now, if you use Python: Try to stick with PEP8 formatting. A good formatter for this is [Black](https://github.com/psf/black).
-
