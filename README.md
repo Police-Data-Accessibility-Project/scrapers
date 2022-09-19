@@ -1,6 +1,10 @@
 # Police Data Accessibility Project Scrapers
 This repo contains the data scrapers for [Police Data Accessibility Project](https://pdap.io). Thank you for being here!
 
+Scrapers are one piece of the puzzle of making police data more accessible. For a broader look at the work we're doing, and where our attention is focused, start with the docs: https://docs.pdap.io/ and the roadmap: https://github.com/orgs/Police-Data-Accessibility-Project/projects/17
+
+# How to use Scrapers to answer questions
+
 # How to run a scraper
 Right now, this requires some Python knowledge and patience. We're in the early stages: there's no automated scraper farm or fancy GUI yet.
 
