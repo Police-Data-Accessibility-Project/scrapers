@@ -2,6 +2,8 @@
 PDAP - Dolt
 
 Library for re-usable functions pertaining to our dolt instance
+
+NOTE: This is near-deprecated and likely broken by changing "datasets" to "data sources" in dolt and via commit 8a672ffb7cc05a474dfbb02243dfba656dc4a5cf.
 '''
 
 from doltpy.cli import Dolt
