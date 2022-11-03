@@ -1,4 +1,4 @@
 # Reporting a vulnerability
-primary: `alec.akin@pdap.io`
-secondary: `eddie.brown@pdap.io`
-contingency: DM Alec or Eddie in Slack
+primary: `operations@pdap.io`, `alec.akin@pdap.io`, and `jacob.sanders@pdap.io`
+secondary: `josh.chamberlain@pdap.io` and `eddie.brown@pdap.io`
+contingency: DM Alec, Jacob, Josh, or Eddie in Discord
