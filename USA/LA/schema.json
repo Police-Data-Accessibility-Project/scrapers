@@ -1,0 +1,30 @@
+{
+    "agency_id": "",
+    "agency_info":{
+        "agency_name":"Acadia Sheriff's Office",
+        "agency_coords":{"lat": "", "lng":""},
+        "agency_type": 4,
+        "city": "",
+        "state": "LA",
+        "zip":"",
+        "county_fips":""
+    },
+    "data": [
+        {
+          "dataset_id": "",
+          "url":"http://www.acadia.lavns.org/roster.aspx",
+          "full_data_location":"/data",
+          "source_type": ,
+          "data_type": ,
+          "format_type": ,
+          "update_freq": ,
+          "last_modified": "",
+          "scraper_path":"USA/LA/scraper_la_jails/scraper_la_jails/spiders/scrape_la_jails.py",
+          "scraper_id":"",
+          "mapping":{
+
+          }
+        }
+    ]
+
+}
