@@ -1,7 +1,14 @@
 ## Run the scraper.
 
+To run an editor:
 1. `cd` into the `/USA/LA/scraper-la-jails` directory.
 2. Run the command `python scraper-la-jails/spiders` to start the scraper. The data will save to a csv file in the `/USA/LA/data/la_jail_data` directory 
+
+To run in a venv:
+
+`virtualenv scraper-la-jails`
+`source scraper-la-jails/bin/activate`
+`pip install scrapy`
 
 
 # Source info

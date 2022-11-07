@@ -39,6 +39,4 @@ def run_scraper():
     process = CrawlerProcess()
     process.crawl(MySpider)
     process.start()
-
-
-# import etl.py
+    
