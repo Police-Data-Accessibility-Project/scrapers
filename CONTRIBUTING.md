@@ -36,7 +36,7 @@ Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-d
 Why start from scratch if we have a useful library? Keep in mind that we can always refactor your work later if necessary, so if you're not sure, we still want you to submit!
 
 ## 4. Code your scraper and make a Pull Request!
-The most important thing here is that your scraper is grabbing public criminal records, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
+The most important thing here is that your scraper is grabbing public criminal justice records, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
 
 Make sure you follow this guideline for creating folders:
 
