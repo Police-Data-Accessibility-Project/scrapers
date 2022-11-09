@@ -39,7 +39,11 @@ https://www.indy.gov
 
 It is a newline delimited text file containing host URLs to start scraping.
 
-To start scraping the sitemaps- run:
+Change directory to the `sitemap_scraper/sitemap` directory:
+
+`$cd sitemap`
+
+To start scraping the sitemaps- run: (be sure you are in directory: `sitemap_scraper/scrapy/`)
 
 `$scrapy crawl sitemapspider`
 
