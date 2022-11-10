@@ -10,9 +10,8 @@ Purpose: Given a list of host URLs/domains. Get all sitemap XML information (sit
 
 """
 
-import os
-import json
 import scrapy
+import xmltodict
 
 
 def nested_dict_values(my_dict, key_substrings=('',)):
