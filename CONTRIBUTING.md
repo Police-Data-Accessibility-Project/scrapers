@@ -11,19 +11,18 @@ You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal
 ### Best Practices
 - We can run the scraper by running one script, called `scraper.py` or at least beginning `scraper-`
 - Populate the readme for your scraper with as much helpful information as you can!
-- The config file appropriately references a Data Source.
 - Include a truncated version of some sample data so we understand what is generated.
-- Stick to the format of `USA/$STATE/$COUNTY/$RECORD_TYPE`.
+- Stick to the format of `USA/$STATE/$COUNTY/$MUNICIPALITY/$RECORD_TYPE`. If there is no specific county or municipality, you can skip those.
 
 ## 1. Find a Data Source to scrape.
 
-Navigate to our [Data Sources repo in DoltHub](https://www.dolthub.com/repositories/pdap/data_sources) or the [PostgreSQL mirror](https://docs.pdap.io/activities/data-storage/submit-or-update-datasets/hadoop-datasets-mirror) and find a source to scrape. If you have a particular data source in mind you may need to [add it yourself](https://docs.pdap.io/activities/data-storage/submit-or-update-datasets). This takes about 5–10 minutes. 
+Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). This should take under 5 minutes. 
 
 
 ## 2. Get set up locally.
 
 1. Clone this repository. [Don't know how?](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)
-2. `cd` into the `/setup_gui` directory.
+2. Optionally, `cd` into the `/setup_gui` directory.
 3. Follow through the GUI.
    - Mac: run the script with `python3 ScraperSetup.py`
    - Windows: run the executable by double clicking it.
@@ -34,11 +33,10 @@ Navigate to our [Data Sources repo in DoltHub](https://www.dolthub.com/repositor
 [`/common` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)
 [`/Base_Scripts` folder here!](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/Base_Scripts/Scrapers)
 
-Why start from scratch if we have a useful library? Keep in mind that we can always refactor your work later if necessary, so if you're not sure, we still want
-you to submit!
+Why start from scratch if we have a useful library? Keep in mind that we can always refactor your work later if necessary, so if you're not sure, we still want you to submit!
 
 ## 4. Code your scraper and make a Pull Request!
-The most important thing here is that your scraper is grabbing public police data, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
+The most important thing here is that your scraper is grabbing public criminal justice records, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
 
 Make sure you follow this guideline for creating folders:
 
