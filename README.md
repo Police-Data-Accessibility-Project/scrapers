@@ -1,7 +1,16 @@
-# Police Data Accessibility Project Scrapers
-This repo contains the data scrapers for [Police Data Accessibility Project](https://pdap.io). Thank you for being here!
+<img src="https://user-images.githubusercontent.com/30379833/204395427-c8327551-a3c9-4363-8689-63880d72a495.png" width="200px">
 
-Scrapers are one piece of the puzzle of making police data more accessible. For a broader look at the work we're doing, and where our attention is focused, start with the docs: https://docs.pdap.io/ and the roadmap: https://github.com/orgs/Police-Data-Accessibility-Project/projects/17
+# Welcome!
+
+This is the GitHub home for the [Police Data Accessibility Project](https://pdap.io). We're assembling a toolkit and space for shared resources. People all over the country use these resources to collect public records about the U.S. criminal justice system.
+
+This repository is also a guide to the countless ways we use scraper code to access data. ([Wait, what's a web scraper?](https://docs.pdap.io/activities/terms-and-definitions))
+
+<details>
+  <summary>Table of contents</summary>
+  
+  
+</details>
 
 # How to run a scraper
 Right now, this requires some Python knowledge and patience. We're in the early stages: there's no automated scraper farm or fancy GUI yet.
