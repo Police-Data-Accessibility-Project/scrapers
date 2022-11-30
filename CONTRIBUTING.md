@@ -4,15 +4,18 @@
 
 You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal/legal-data-scraping) and process a sample data file. For example, you could be using Python to turn a PDF of police activities into JSON, or making recurring API calls to pull down files.
 
-### Requirements
+### Best practices
 
-- It's [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
+- It's [legal](https://docs.pdap.io/meta/legal/legal-data-scraping). Collecting public records from the internet is not problematic in itself, but respecting the wishes of data publishers wherever possible is a good way to ensure data stays accessible.
 
 ### Best Practices
-- We can run the scraper by running one script, called `scraper.py` or at least beginning `scraper-`
+
+- Scrapers are self-contained; when they're run, data should be saved locally or in their own GitHub repo.
 - Populate the readme for your scraper with as much helpful information as you can!
 - Include a truncated version of some sample data so we understand what is generated.
 - Stick to the format of `USA/$STATE/$COUNTY/$MUNICIPALITY/$RECORD_TYPE`. If there is no specific county or municipality, you can skip those.
+
+# Get started
 
 ## 1. Find a Data Source to scrape.
 
