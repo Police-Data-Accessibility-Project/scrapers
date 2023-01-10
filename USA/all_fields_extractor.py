@@ -1,3 +1,6 @@
+# this makes a list of headers from all the CSV files found in the USA directory.
+# fields are added to fields.txt.
+
 import sys
 import os
 from pathlib import Path

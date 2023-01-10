@@ -2,7 +2,7 @@
 
 ## Overview
 
-You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal/legal-data-scraping) and process a sample data file. For example, you could be using Python to turn a PDF of police activities into JSON, or making recurring API calls to pull down files.
+Your goal is to submit a data scraper and a sample data file. For example, you could be using Python to turn a PDF of police activities into JSON, or making recurring API calls to pull down files.
 
 ### Best practices
 
@@ -11,7 +11,7 @@ You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal
 ### Best Practices
 
 - Scrapers are self-contained; when they're run, data should be saved locally or in their own GitHub repo.
-- Populate the readme for your scraper with as much helpful information as you can!
+- Populate the readme for your scraper with as much helpful information as you can.
 - Include a truncated version of some sample data so we understand what is generated.
 - Stick to the format of `USA/$STATE/$COUNTY/$MUNICIPALITY/$RECORD_TYPE`. If there is no specific county or municipality, you can skip those.
 
@@ -19,7 +19,7 @@ You’re going to program a [legal data scraper](https://docs.pdap.io/meta/legal
 
 ## 1. Find a Data Source to scrape.
 
-Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). This should take under 5 minutes. 
+Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please let us know as part of your submission or [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). Filling in that form usually takes under 5 minutes. 
 
 
 ## 2. Get set up locally.
@@ -41,27 +41,11 @@ Why start from scratch if we have a useful library? Keep in mind that we can alw
 ## 4. Code your scraper and make a Pull Request!
 The most important thing here is that your scraper is grabbing public criminal justice records, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
 
-Make sure you follow this guideline for creating folders:
-
-```
-COUNTRY/
-  STATE/
-    COUNTY/
-      DEPARTMENT_TYPE
-                (CITY)
-                (COUNTY)
-                (COLLEGE)
-                (STATE)
-                (FEDERAL)/
-                    DEPARTMENT-X-NAME/
-```
-
-
 # FAQ
 
 > What kind of data are we scraping?
 
-Police data that's already made public by a government jurisdiction.
+Police data that's already made public by a government jurisdiction. The [data sources listed here](https://airtable.com/shrUAtA8qYasEaepI) are our to-do list. If you're not sure where to start, [read more here](https://docs.pdap.io/activities/data-scraping/our-approach-to-scraping).
 
 > What languages are allowed?
 
