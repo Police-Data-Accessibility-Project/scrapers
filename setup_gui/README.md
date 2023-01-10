@@ -24,3 +24,6 @@ pip install pyinstaller
 ```
 pyinstaller --onefile --windowed --console ScraperSetup.py
 ```
+
+# Meta
+We're using Qt Designer under the LGPL license.
