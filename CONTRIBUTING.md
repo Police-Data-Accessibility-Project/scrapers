@@ -17,6 +17,20 @@ Your goal is to submit a data scraper and a sample data file. For example, you c
 
 # Get started
 
+## 0. Decide where the scraper should live.
+
+You can add a scraper to our repo, or create your own. Either way, we'll add it to our database so people can find and use it.
+
+Scrapers repo | Standalone repo
+--- | ---
+Best for beginners doing things "the PDAP way" | Best if you have strong opinions about your project's structure, license, or usage
+May reference common utilities | Does not reference common utilities
+Best for simple scrapers and common data portals | Best for complicated projects involving multiple Data Sources
+Scrapers only: no analysis, aggregation, messaging | In addition to a web scraper, you can publish analysis of your results
+The PDAP community has a responsibility to maintain your work | Maintenance is at your discretion
+Best for Data Sources which people may want to scrape at any time | Best for creating a complete package of useful data which may not be updated further
+
+
 ## 1. Find a Data Source to scrape.
 
 Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please let us know as part of your submission or [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). Filling in that form usually takes under 5 minutes. 
