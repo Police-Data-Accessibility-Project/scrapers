@@ -50,7 +50,7 @@ Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-d
    - [@Pythonidaer](https://github.com/Pythonidaer/pythonidaer) made an [excellent walkthrough of the GUI as of the v0.0.1 release](https://www.youtube.com/watch?v=oJxXkSytreE).
 4. Copy the resulting folder into your clone of `PDAP-Scrapers`.
 
-## 3. Check the our provided examples and utilities for helpful assets and scrapers before you start.
+## 3. Check our provided examples and utilities for helpful assets and scrapers before you start.
 
 Why start from scratch if we have a useful library? Keep in mind that you -- or we! -- we can always refactor your work later if necessary, so if you're not sure, we still want you to submit!
 
