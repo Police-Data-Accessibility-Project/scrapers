@@ -13,7 +13,7 @@ class SF_Court_Scraper:
     Scraper class for SF Court data
     """
 
-    date_range = []
+    dates_to_scrape = []
 
     def __init__(self, date=None, date_range=None):
         """
@@ -31,8 +31,10 @@ class SF_Court_Scraper:
 
         # If date_range is passed as a param, then we need to generate a list of date values between the start and end date passed
         if date_range:
-            self.date_range = pd.date_range(
-                date_range[0], periods=(date_range[1] - date_range[0]).days
+            # Calculate all of the dates that we want to scrape from the SF Court portal, excluding weekends
+            num_days_scraping_period = (date_range[1] - date_range[0]).days + 1
+            self.dates_to_scrape = pd.date_range(
+                date_range[0], periods=num_days_scraping_period
             )
 
     def scrape(self):
@@ -70,7 +72,7 @@ def main():
             datetime.strptime("2021-01-05", "%Y-%m-%d"),
         )
     )
-    print(temp.date_range)
+    print(temp.dates_to_scrape)
 
 
 if __name__ == "__main__":
