@@ -30,12 +30,17 @@ class SF_Court_Scraper:
         self.CAPTCHA_timeout = 30
 
         # If date_range is passed as a param, then we need to generate a list of date values between the start and end date passed
-        if date_range:
+        # We also want to have a check in place to see whether a single date was also passed. If this is the case, we'll use the single date value instead of the range and provide log output.
+        if date_range and not date:
             # Calculate all of the dates that we want to scrape from the SF Court portal, excluding weekends
             num_days_scraping_period = (date_range[1] - date_range[0]).days + 1
-            self.dates_to_scrape = pd.date_range(
-                date_range[0], periods=num_days_scraping_period
+            temp = pd.date_range(date_range[0], periods=num_days_scraping_period)
+            self.dates_to_scrape = temp.format(
+                formatter=lambda x: x.strftime("%Y-%m-%d")
             )
+
+        elif date:
+            self.dates_to_scrape.append(date)
 
     def scrape(self):
         """
