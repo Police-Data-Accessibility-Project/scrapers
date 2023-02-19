@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from datetime import datetime
+import pandas as pd
 import time
 
 
@@ -15,18 +16,24 @@ class SF_Court_Scraper:
     date_range = []
 
     def __init__(self, date=None, date_range=None):
-        '''
+        """
         date or date_range can be entered.
         ---
         date: datetime.date("YYYY-MM-DD")
         date_range: tuple of two datetime.date values (start, end)
         ---
-        Example date_range: ("2021-02-01", "2021-03-01")
-        '''
+        Example date_range: (datetime.date("2021-02-01"), datetime.date("2021-03-01"))
+        """
         self.sf_court_entry_link = r"https://webapps.sftc.org/captcha/captcha.dll?referrer=https://webapps.sftc.org/ci/CaseInfo.dll?"
         # Selenium timeout param in seconds. If this is too low we won't be able to complete the CAPTCHA before it times out.
         # A "wait" function could potentially be used instead of timeout; the timeout is nice because it will kill our driver if the CAPTCHA isn't completed.
         self.CAPTCHA_timeout = 30
+
+        # If date_range is passed as a param, then we need to generate a list of date values between the start and end date passed
+        if date_range:
+            self.date_range = pd.date_range(
+                date_range[0], periods=(date_range[1] - date_range[0]).days
+            )
 
     def scrape(self):
         """
@@ -55,15 +62,15 @@ class SF_Court_Scraper:
 
         return
 
-    def check_dates(self):
-        if not self.check_dates:
-            print("Dates empty. Scraping for today.")
-        else:
-            
-
 
 def main():
-    SF_Court_Scraper().scrape()
+    temp = SF_Court_Scraper(
+        date_range=(
+            datetime.strptime("2021-01-01", "%Y-%m-%d"),
+            datetime.strptime("2021-01-05", "%Y-%m-%d"),
+        )
+    )
+    print(temp.date_range)
 
 
 if __name__ == "__main__":
