@@ -152,6 +152,10 @@ class SF_Court_Scraper:
         time.sleep(delay)
 
     # TODO : If tests are requested for this, it'd be easy to mock this with a dummy payload that's maintained alongside the code/tests
+    
+    # TODO : We need to add a case that checks whether or not there exists records. There are some dates which don't have records (example : weekends)
+    #        - The response received in this case will still be 200, problem is that the JSON won't have a body to be accessed beyond the string of something like "No Records..."
+    #        - This should be easy to implement : Write a REGEX to check for the "no records" indicator, generate a field that has the date with some indicator that there are no records
     def _parse_response(self, response_date, response_json):
         """
         For each response that we receive from our GET request, we need to parse them with REGEX to extract the CASE_NAME and CASE_NUMBER
@@ -176,11 +180,13 @@ class SF_Court_Scraper:
         df = pd.DataFrame(parsed_data, columns=["DATE", "CASE_NUMBER", "CASE_TITLE"])
 
         return df
+    
+    # TODO : Create a public "get_records" function that handles _wait, multiple date values, checks if the response is none
 
 
 def main():
     temp = SF_Court_Scraper()
-    rat = temp._get_record_by_date("2022-02-02")
+    rat = temp._get_record_by_date("2023-02-25")
     print(
         temp._parse_response(
             response_date=rat["date"], response_json=rat["content"]
