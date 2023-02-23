@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from datetime import datetime
+import json
 import random
 import uuid
 import requests
@@ -21,6 +22,7 @@ class SF_Court_Scraper:
     session_id = ""
     # Random seed used for rand num generator wait time values
     random_seed = None
+    # incr used by _wait randomizer, logs
     incr = 0
 
     def __init__(self, date=None, date_range=None, rand_seed=None):
@@ -116,23 +118,23 @@ class SF_Court_Scraper:
         if self.session_id == "":
             self._generate_session_id()
 
-        url = r"https://webapps.sftc.org/ci/CaseInfo.dll/datasnap/rest/TServerMethods1/GetCasesWithFilings/{}/{}".format(
+        date_specific_url = r"https://webapps.sftc.org/ci/CaseInfo.dll/datasnap/rest/TServerMethods1/GetCasesWithFilings/{}/{}".format(
             date_to_scrape, self.session_id
         )
-        print("SCRAPING WITH URL : {}".format(url))
+
+        print("SCRAPING WITH URL : {}".format(date_specific_url))
 
         try:
-            get_records = requests.get(url)
-            if get_records.status_code == 200:
-                # TODO : How do we want to route requests response? Use parse_response to grab the requested fields.
-                print(get_records.content)
+            req = requests.get(date_specific_url)
+            if req.status_code == 200:
+                # Successful GET request! We will return the response to be parsed.
+                return {"date": date_to_scrape, "content": req.content}
         # In the event of an HTTP error, regenerate a new session ID and restart from last date scraped.
         except requests.exceptions.HTTPError:
             self._generate_session_id()
         # Catch all other exceptions ("nuclear" error code.)
         except requests.exceptions.RequestException as e:
             raise SystemExit(e)
-        return
 
     def _wait(self, debug=False):
         """
@@ -140,23 +142,50 @@ class SF_Court_Scraper:
         Our easiest way around low-level security after the CAPTCHA is just to use randomized numbers for our wait period between requests.
         """
         random.seed(self.random_seed)
-        if self.incr % 3 == 0:
-            delay = random.randint(4, 10) + random.uniform(0.0, 1.0)
+        if self.incr % 5 == 0:
+            # "long" wait happens every fifth request
+            delay = random.randint(10, 15) + random.uniform(0.0, 1.0)
+        else:
+            delay = random.randint(2, 8) + random.uniform(0.0, 1.0)
         if debug:
             print("WAIT DELAY:" + str(delay))
         time.sleep(delay)
 
-    # TODO : Dummy method
-    def parse_response(self):
+    # TODO : If tests are requested for this, it'd be easy to mock this with a dummy payload that's maintained alongside the code/tests
+    def _parse_response(self, response_date, response_json):
         """
-        For each response that we receive from our GET request, we need to parse them with REGEX to extract the required fields
+        For each response that we receive from our GET request, we need to parse them with REGEX to extract the CASE_NAME and CASE_NUMBER
+        Expects a JSON Response payload to parse, date value that is output by _get_record_by_date is used in the final output to track the specific date attached to case name and number
+
+        BE AWARE : This method is fragile. The JSON parser is dependent on how the SF Court webapp stores data. This may need improvement/modification in the future if the SF data format changes for whatever reason.
+
+        returns a DataFrame containing the following columns : DATE, CASE_NUMBER, CASE_TITLE
         """
-        return
+        raw_response = json.loads(response_json)["result"][1]
+        regex_to_extract_case_number = r"[A-Z]{3}-\d*-\d*</A>"
+        # List of tuples that we'll use to populate our DataFrame output
+        parsed_data = []
+
+        for i in json.loads(raw_response):
+            case_number = re.search(regex_to_extract_case_number, str(i))[0].replace(
+                "</A>", ""
+            )
+            case_title = i["CASE_TITLE"]
+            parsed_data.append((response_date, case_number, case_title))
+
+        df = pd.DataFrame(parsed_data, columns=["DATE", "CASE_NUMBER", "CASE_TITLE"])
+
+        return df
 
 
 def main():
     temp = SF_Court_Scraper()
-    temp._wait(debug=True)
+    rat = temp._get_record_by_date("2022-02-02")
+    print(
+        temp._parse_response(
+            response_date=rat["date"], response_json=rat["content"]
+        ).head()
+    )
     # temp._get_record_by_date("2022-01-01")
     # temp._get_record_by_date("2023-02-02")
     # temp.get_record_by_date(date_to_scrape="2022-01-01")
