@@ -27,6 +27,9 @@ class SF_Court_Scraper:
         Example date_range: ("2021-01-01", "2021-02-01")
         """
         self.sf_court_entry_link = r"https://webapps.sftc.org/captcha/captcha.dll?referrer=https://webapps.sftc.org/ci/CaseInfo.dll?"
+
+        # This is the link that we want to update with the new session ID once we get it after completing the CAPTCHA
+        self.session_id = ""
         # Selenium timeout param in seconds. If this is too low we won't be able to complete the CAPTCHA before it times out.
         # A "wait" function could potentially be used instead of timeout; the timeout is nice because it will kill our driver if the CAPTCHA isn't completed.
         self.CAPTCHA_timeout = 30
@@ -34,6 +37,9 @@ class SF_Court_Scraper:
         # If date_range is passed as a param, then we need to generate a list of date values between the start and end date passed
         # We also want to have a check in place to see whether a single date was also passed. If this is the case, we'll use the single date value instead of the range and provide log output.
         if date_range and not date:
+            if date_range[0] > date_range[1]:
+                print("Start Date entered must be less than End Date in 'date_range' param")
+                raise ValueError
             # Calculate all of the dates that we want to scrape from the SF Court portal, excluding weekends
             # This is a bit funky. We're getting the difference between the start and end date, adding one to get all of the dates in the range (inclusive)
             num_days_scraping_period = (
@@ -41,7 +47,7 @@ class SF_Court_Scraper:
                 - datetime.strptime(date_range[0], "%Y-%m-%d")
             ).days + 1
             # Use pandas to generate a list of dates based off of our specified range
-            temp = pd.date_range(date_range[0], periods=num_days_scraping_period)
+            temp = pd.bdate_range(date_range[0], periods=num_days_scraping_period)
             # Format the dates : YYYY-MM-DD expected by SF court portal
             self.dates_to_scrape = temp.format(
                 formatter=lambda x: x.strftime("%Y-%m-%d")
@@ -50,11 +56,9 @@ class SF_Court_Scraper:
         elif date:
             self.dates_to_scrape.append(date)
 
-    # TODO : This is not a great implementation. We will rewrite "scrape" so that it just grabs the session id, stores it at class level and then closes.
-    # TODO : Rename this method to something like generate session ID, change docstring to reference CAPTCHA
-    def scrape(self):
+    def generate_session_id(self):
         """
-        Main scraper function for the San Francisco Court website
+        Function that gets us a Session ID that can be used with Requests to scrape the San Francisco Court website
         """
         driver = webdriver.Firefox()
         driver.get(self.sf_court_entry_link)
@@ -70,25 +74,16 @@ class SF_Court_Scraper:
             driver.close()
             return
 
-        print("CAPTCHA Completed! Session ID generated for scraping.")
-
-        # TODO : This is a bad solution that relies on selenium browser. We can scrape the values after a session id has been generated with requests module
-        # --- Clean this up
-        try:
-            element_present = EC.presence_of_element_located((By.ID, "ui-id-3"))
-            WebDriverWait(driver, timeout).until(element_present)
-        except TimeoutException:
-            print(
-                "CAPTCHA completed but driver timed out waiting for main app page to load"
-            )
-            driver.close()
-            return
-
-        time.sleep(5)
-        # We made it through the CAPTCHA! Move to the "Search by New Filings" menu
-        driver.find_element_by_id("ui-id-3").click()
-        time.sleep(3)
-        # --- End Clean lol
+        # Sample URL after accessing CAPTCHA :  'https://webapps.sftc.org/ci/CaseInfo.dll?&SessionID=50E1755E0EC222BCB0D689F4BE119593447B1F89'
+        # We want to get the SessionID param at the end of this url, so we use a bit of regex
+        self.session_id = (
+            re.search("=.*$", driver.current_url).group(0).replace("=", "")
+        )
+        print("URL after CAPTCHA:" + driver.current_url)
+        print("SessionID value:" + self.session_id)
+        print(
+            "CAPTCHA Completed! Session ID generated for scraping. Closing Selenium browser session."
+        )
 
         # End condition with driver, close browser
         if driver.window_handles:
@@ -97,13 +92,20 @@ class SF_Court_Scraper:
         return
 
     # TODO : Dummy method, need to be implemented
-    def get_records(self, date):
+    def get_record_by_date(self, date_to_scrape):
         """
         This is the method that uses GET requests to call the SF court website once we've obtained a session token/id (stored at class level)
 
         date : For each specific set of records/GET request, we need a date provided (sample : date="2022-01-01")
         """
-        # Sample URL : "https://webapps.sftc.org/ci/CaseInfo.dll/datasnap/rest/TServerMethods1/GetCasesWithFilings/2023-02-01/614B0E1B97DE9C565BE9D3D6DB091C77778EEB96/"
+
+        if self.session_id == "":
+            self.generate_session_id()
+
+        url = r"https://webapps.sftc.org/ci/CaseInfo.dll/datasnap/rest/TServerMethods1/GetCasesWithFilings/{}/{}".format(
+            date_to_scrape, self.session_id
+        )
+        print("SCRAPING WITH URL : {}".format(url))
 
         return
 
@@ -117,9 +119,9 @@ class SF_Court_Scraper:
 
 def main():
     temp = SF_Court_Scraper(date="2022-01-01")
-    temp.scrape()
-    # temp = SF_Court_Scraper(date_range=("2022-01-01", "2022-01-05"))
-    # print(temp.dates_to_scrape)
+    # temp.get_record_by_date(date_to_scrape="2022-01-01")
+    temp = SF_Court_Scraper(date_range=("2023-01-01", "2022-01-20"))
+    print(temp.dates_to_scrape)
 
 
 if __name__ == "__main__":
