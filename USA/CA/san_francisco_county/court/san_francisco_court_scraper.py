@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from datetime import datetime
+import os
 import json
 import random
 import uuid
@@ -11,6 +12,25 @@ import requests
 import re
 import pandas as pd
 import time
+
+# Hiding deprecation warning for uuid import.
+# TODO : This is a sloppy solution. The uuid is just used to generate random numbers in the scrapers _wait() function. Easy item to fix.
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+
+# TODO : This is a "weak" implementation that doesn't check the user's input dates to see if they're valid.
+def get_user_input_dates():
+    """
+    Helper function to get user input for SF_Court_Scraper class to use.
+    """
+    print(
+        "P.D.A.P. San Francisco Court Scraper.\n---------------\nUSE WITH DISCRETION. This system is intended for data discovery and may not be used as a sole source of truth for legal reference/documentation.\n---------------\nEnter both the START_DATE and END_DATE values in 'YYYY-MM-DD' format (example : 2022-01-03)\n"
+    )
+    start_date = input("Enter START_DATE : ")
+    end_date = input("Enter END_DATE : ")
+    return [start_date, end_date]
 
 
 class SF_Court_Scraper:
@@ -41,7 +61,7 @@ class SF_Court_Scraper:
         self.session_id = ""
         # Selenium timeout param in seconds. If this is too low we won't be able to complete the CAPTCHA before it times out.
         # A "wait" function could potentially be used instead of timeout; the timeout is nice because it will kill our driver if the CAPTCHA isn't completed.
-        self.CAPTCHA_timeout = 30
+        self.CAPTCHA_timeout = 60
 
         # If date_range is passed as a param, then we need to generate a list of date values between the start and end date passed
         # We also want to have a check in place to see whether a single date was also passed. If this is the case, we'll use the single date value instead of the range and provide log output.
@@ -51,14 +71,8 @@ class SF_Court_Scraper:
                     "Start Date entered must be less than End Date in 'date_range' param"
                 )
                 raise ValueError
-            # Calculate all of the dates that we want to scrape from the SF Court portal, excluding weekends
-            # This is a bit funky. We're getting the difference between the start and end date, adding one to get all of the dates in the range (inclusive)
-            num_days_scraping_period = (
-                datetime.strptime(date_range[1], "%Y-%m-%d")
-                - datetime.strptime(date_range[0], "%Y-%m-%d")
-            ).days + 1
             # Use pandas to generate a list of dates based off of our specified range
-            temp = pd.bdate_range(date_range[0], periods=num_days_scraping_period)
+            temp = pd.bdate_range(start=date_range[0], end=date_range[1])
             # Format the dates : YYYY-MM-DD expected by SF court portal
             self.dates_to_scrape = temp.format(
                 formatter=lambda x: x.strftime("%Y-%m-%d")
@@ -133,6 +147,7 @@ class SF_Court_Scraper:
                         "The GET request has indicated that we need to regenerate our session id. Please solve the new CAPTCHA."
                     )
                     self._generate_session_id()
+                    pass
                 # Content does not contain indicator of failed request, return the records from this get request
                 else:
                     return {"date": date_to_scrape, "content": req.content}
@@ -192,22 +207,42 @@ class SF_Court_Scraper:
 
         return df
 
-    # TODO : Create a public "get_records" function that handles _wait, multiple date values, checks if the response is none
+    def get_records(self):
+        dates = []
+        if self.dates_to_scrape:
+            dates = self.dates_to_scrape
+        else:
+            dates.append(str(datetime.today("%y-%m-%d")))
+        if not os.path.exists("./data"):
+            os.makedirs("./data")
+
+        # If the file already exists, don't use a header
+        if os.path.exists("./data/sf_court_records.csv"):
+            use_header = False
+        else:
+            use_header = True
+
+        for i in dates:
+            print("Scraping record for: ", i)
+            temp = self._get_record_by_date(i)
+            output = self._parse_response(temp["date"], temp["content"])
+            # Output the DataFrame to csv file to persist storage of records outside of scraper runtime
+            output.to_csv(
+                "data/sf_court_records.csv", mode="a", index=False, header=use_header
+            )
+
+            if use_header:
+                use_header = False
+            # Store the date that we just scraped in dates file
+            with open("./data/dates_scraped.txt", "a") as f:
+                f.write(i + "\n")
+            self._wait()
+        print("Scraping complete for dates : {}".format(self.dates_to_scrape))
 
 
 def main():
-    temp = SF_Court_Scraper()
-    rat = temp._get_record_by_date("2023-02-25")
-    print(
-        temp._parse_response(
-            response_date=rat["date"], response_json=rat["content"]
-        ).head()
-    )
-    # temp._get_record_by_date("2022-01-01")
-    # temp._get_record_by_date("2023-02-02")
-    # temp.get_record_by_date(date_to_scrape="2022-01-01")
-    # temp = SF_Court_Scraper(date_range=("2023-01-01", "2022-01-20"))
-    # print(temp.dates_to_scrape)
+    scraper = SF_Court_Scraper(date_range=get_user_input_dates())
+    scraper.get_records()
 
 
 if __name__ == "__main__":

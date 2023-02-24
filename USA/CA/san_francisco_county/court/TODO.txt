@@ -1,3 +1,0 @@
-0. Replace print statements with logging
-1. Have a refresh option in place to reset the session_id in the event that the session/CAPTCHA times out
-2. Have an option that checks whether or not previous values have already been scraped?
