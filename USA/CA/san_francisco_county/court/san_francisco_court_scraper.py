@@ -127,8 +127,15 @@ class SF_Court_Scraper:
         try:
             req = requests.get(date_specific_url)
             if req.status_code == 200:
-                # Successful GET request! We will return the response to be parsed.
-                return {"date": date_to_scrape, "content": req.content}
+                # Successful GET request! Next we'll check the content. If it contains string '"result":[-1,""]', we need to regenerate our session token and try again
+                if '"result":[-1,""]' in str(req.content):
+                    print(
+                        "The GET request has indicated that we need to regenerate our session id. Please solve the new CAPTCHA."
+                    )
+                    self._generate_session_id()
+                # Content does not contain indicator of failed request, return the records from this get request
+                else:
+                    return {"date": date_to_scrape, "content": req.content}
         # In the event of an HTTP error, regenerate a new session ID and restart from last date scraped.
         except requests.exceptions.HTTPError:
             self._generate_session_id()
@@ -152,10 +159,6 @@ class SF_Court_Scraper:
         time.sleep(delay)
 
     # TODO : If tests are requested for this, it'd be easy to mock this with a dummy payload that's maintained alongside the code/tests
-    
-    # TODO : We need to add a case that checks whether or not there exists records. There are some dates which don't have records (example : weekends)
-    #        - The response received in this case will still be 200, problem is that the JSON won't have a body to be accessed beyond the string of something like "No Records..."
-    #        - This should be easy to implement : Write a REGEX to check for the "no records" indicator, generate a field that has the date with some indicator that there are no records
     def _parse_response(self, response_date, response_json):
         """
         For each response that we receive from our GET request, we need to parse them with REGEX to extract the CASE_NAME and CASE_NUMBER
@@ -165,6 +168,14 @@ class SF_Court_Scraper:
 
         returns a DataFrame containing the following columns : DATE, CASE_NUMBER, CASE_TITLE
         """
+        # Edge-case in the event that no cases were found for this specific date (weekend slipped in, date was from the future).
+        if "No cases found with filings" in str(response_json):
+            print("No cases found for {}".format(response_date))
+            return pd.DataFrame(
+                [(response_date, "None", "NO CASES FOUND FOR THIS DATE")],
+                columns=["DATE", "CASE_NUMBER", "CASE_TITLE"],
+            )
+
         raw_response = json.loads(response_json)["result"][1]
         regex_to_extract_case_number = r"[A-Z]{3}-\d*-\d*</A>"
         # List of tuples that we'll use to populate our DataFrame output
@@ -180,7 +191,7 @@ class SF_Court_Scraper:
         df = pd.DataFrame(parsed_data, columns=["DATE", "CASE_NUMBER", "CASE_TITLE"])
 
         return df
-    
+
     # TODO : Create a public "get_records" function that handles _wait, multiple date values, checks if the response is none
 
 

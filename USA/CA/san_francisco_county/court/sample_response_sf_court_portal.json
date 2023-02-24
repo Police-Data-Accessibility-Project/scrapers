@@ -1,0 +1,6 @@
+{
+	"result": [
+		98,
+		"[{\"CASE_NUMBER\":\"<A HREF=\\\"https:\\\/\\\/webapps.sftc.org\\\/ci\\\/CaseInfo.dll?CaseNum=CCH23585382&SessionID=3896670F4D35ED2856A89933C5D4BC00490C4200\\\" TARGET=\\\"_blank\\\" >CCH-23-585382<\\\/A>\",\"CASE_TITLE\":\"<  FAKE CASE NAME  >\"},{\"CASE_NUMBER\":\"<A HREF=\\\"https:\\\/\\\/webapps.sftc.org\\\/ci\\\/CaseInfo.dll?CaseNum=CCH23585383&SessionID=3896670F4D35ED2856A89933C5D4BC00490C4200\\\" TARGET=\\\"_blank\\\" >CCH-23-585383<\\\/A>\",\"CASE_TITLE\":\"<  FAKE CASE NAME  >\"},{\"CASE_NUMBER\":\"<A HREF=\\\"https:\\\/\\\/webapps.sftc.org\\\/ci\\\/CaseInfo.dll?CaseNum=CCH23585384&SessionID=3896670F4D35ED2856A89933C5D4BC00490C4200\\\" TARGET=\\\"_blank\\\" >CCH-23-585384<\\\/A>\",\"CASE_TITLE\":\"<  FAKE CASE NAME  >\"},{\"CASE_NUMBER\":\"<A HREF=\\\"https:\\\/\\\/webapps.sftc.org\\\/ci\\\/CaseInfo.dll?}]"
+	]
+}
