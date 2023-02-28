@@ -7,28 +7,17 @@ This is the GitHub home for the [Police Data Accessibility Project](https://pdap
 This repository is also a guide to the countless ways we use scraper code to access data. ([What do we mean by web scraper?](https://docs.pdap.io/activities/terms-and-definitions))
 
 
-[//]: # (Tempting to flesh this out in advance as something to work toward, and then adjust as necessary)
-<details>
-  <summary>Table of contents</summary>
-</details>
-
 # How to run a scraper
 Right now, this requires some Python knowledge and patience. We're in the early stages: there's no automated scraper farm or fancy GUI yet.
 
-[//]: # (We should have or point to a guide for No. 1; it can be tricky and annoying and it's in our power to make it less so)
-
-[//]: # (And we should be much more specific about No. 4. Ideally, how someone installs something shouldn't impact how it works. But if we do want to keep that, we should have different paths for instructions so we can show folks step by step exactly what they need and what to expect)
-
-1. Install Python. 
+1. [Install Python](https://docs.google.com/document/d/1cYmpfZEZ8r-09Q6Go917cKVcQk_d0P61gm0q8DAdIdg/). Prefer a differently opinionated guide? Perhaps [this](https://chrisamico.com/blog/2023-01-14/python-setup/) is more your speed.
 2. [Clone this repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 3. Find the scraper you wish to run. These are sorted geographically, so start by looking in `/USA/...`.
-4. Run the `scraper.py` file with something like `python3 <scraper path>` depending on how you installed it.
+4. Follow the instructions in the scraper's `README` to get going. **(If it's broken or simply out of date, please open an issue in this repo or submit a PR.)**
 
-## Did it work?
+## Sharing back to the PDAP community
 
-[//]: # (What do we mean here by "findings"? Just that it worked? If we're assuming analysis or exploration -- or impact! -- we could be clearer about that)
-
-If it worked, discuss your findings in our [Discord](https://discord.gg/wMqex8nKZJ). If it didn't, make an issue in this repo or reach out in Discord.
+If you do something cool or interesting or fun with your shiny new data, share that in our [Discord](https://discord.gg/wMqex8nKZJ). Want to kick around an idea or share something that doesn't work as expected? Discord's a great place for that, too.
 
 # How to contribute
 To write a scraper, start with [CONTRIBUTING.md](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/CONTRIBUTING.md). Be sure to check out the [/common folder](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)!
@@ -37,8 +26,4 @@ For everything else, start with [docs.pdap.io](https://docs.pdap.io/).
 
 ## Resources
 
-[//]: # (We should be clearer about these: Why do we like them? What problems would they help a contributor solve?)
-
-Potentially useful tools. If you find something useful, or if one of these is out of date, make a PR!
-- https://www.scrapingbee.com/
-- https://github.com/CJWorkbench/cjworkbench
+Potentially useful tools. If you find something useful, or if [one of these](https://docs.pdap.io/tools/resources) is out of date, make a PR!
