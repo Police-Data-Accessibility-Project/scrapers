@@ -39,11 +39,9 @@ Scrapers only: no analysis, aggregation, messaging | Whatever you want
 Easier to find when people look for tools around police data | Less visible, but more control
 Best for Data Sources which people may want to scrape at any time | Best for creating a complete package of useful data which may not be updated further
 
-
 ## 1. Find a Data Source to scrape.
 
 Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please let us know as part of your submission or [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). Filling in that form usually takes less than 5 minutes.
-
 
 ## 2. Get set up locally.
 
