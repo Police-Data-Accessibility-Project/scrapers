@@ -13,9 +13,17 @@ Other options: Improve or fix existing scrapers, add tests, extend helpers and u
 - Populate the `README` for your scraper with as much helpful information as you can, including steps to setup and run the code.
 - Include a truncated version of some sample data so we understand what is generated.
 
+You can read more about our philosophy and priorities around scraping [here](https://docs.pdap.io/activities/data-scraping/our-approach-to-scraping).
+
 # Get started
 
-## 0. Decide where a new scraper should live.
+## 1. Find a Data Source to scrape.
+
+What question are you trying to answer? What kind of data are you trying to help people use or preserve?
+
+You can browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please let us know as part of your submission or [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). Filling in that form usually takes less than 5 minutes.
+
+## 2. Decide where a new scraper should live.
 
 You can add a scraper to our collection, or create your own within your personal GitHub space.
 
@@ -39,22 +47,18 @@ Scrapers only: no analysis, aggregation, messaging | Whatever you want
 Easier to find when people look for tools around police data | Less visible, but more control
 Best for Data Sources which people may want to scrape at any time | Best for creating a complete package of useful data which may not be updated further
 
-## 1. Find a Data Source to scrape.
-
-Browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please let us know as part of your submission or [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). Filling in that form usually takes less than 5 minutes.
-
-## 2. Get set up locally.
+## 3. Get set up locally.
 
 - Clone this repository. [Don't know how?](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)
 
-## 3. Check our provided examples and utilities for helpful assets and scrapers before you start.
+## 4. Check our provided examples and utilities for helpful assets and scrapers before you start.
 
 Why start from scratch if we have a useful library? Keep in mind that you -- or we! -- can always refactor your work later if necessary, so if you're not sure, we still want you to submit!
 
 [//]: # (Not gonna lie, writing some templates/examples is gonna be fun)
 Not sure where to start with a page you want to scrape? Check our examples and templates to see if we have that covered. If you see use cases we're missing, open an issue or (please and thank you) contribute it yourself.
 
-## 4. Code your scraper and make a Pull Request!
+## 5. Code your scraper and make a Pull Request!
 
 The most important thing here is that your scraper is grabbing public criminal legal records, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
 
