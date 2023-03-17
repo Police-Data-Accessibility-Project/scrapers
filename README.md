@@ -6,9 +6,10 @@ This is the GitHub home for the [Police Data Accessibility Project](https://pdap
 
 This repository is also a guide to the countless ways we use scraper code to access data. ([What do we mean by web scraper?](https://docs.pdap.io/activities/terms-and-definitions))
 
+> Note: This repo is a work in progress, especially the structure of its utilities. Trust what you read here!
 
 # How to run a scraper
-Right now, this requires some Python knowledge and patience. We're in the early stages: there's no automated scraper farm or fancy GUI yet.
+Right now, this requires some Python knowledge and patience. We're in the early stages: there's no automated scraper farm or fancy GUI yet. Scrapers can be run locally as needed.
 
 1. [Install Python](https://docs.google.com/document/d/1cYmpfZEZ8r-09Q6Go917cKVcQk_d0P61gm0q8DAdIdg/). Prefer a differently opinionated guide? Perhaps [this](https://chrisamico.com/blog/2023-01-14/python-setup/) is more your speed.
 2. [Clone this repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
