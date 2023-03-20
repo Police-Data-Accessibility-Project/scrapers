@@ -27,4 +27,4 @@ For everything else, start with [docs.pdap.io](https://docs.pdap.io/).
 
 ## Resources
 
-[Here are some potentially useful tools](https://docs.pdap.io/tools/resources). If you find something useful, or if one of them is out of date, you can edit the docs in GitHub!
+[Here are some potentially useful tools](https://docs.pdap.io/tools/resources). If you want to make additions or updates, you can edit the docs in GitHub!
