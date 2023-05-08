@@ -50,7 +50,7 @@ def scrape():
                         "Retrieved {}. ({} of {} files collected)".format(
                             output_file_name,
                             files_collected_incr,
-                            (len(uof_ind_case_review_links)),
+                            (len(uof_ind_case_review_links) + 1),
                         )
                     )
                     # Courtesy sleep timer
