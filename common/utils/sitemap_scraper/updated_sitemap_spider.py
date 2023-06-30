@@ -39,7 +39,7 @@ def parse(response):
 
     # Get URLs
     # TODO: update this with more/better keywords?
-    tld_keywords = ('.us', '.gov')
+    tld_keywords = ('police', '.us', '.gov')
     # Returns: (url, last_modified_date_string), (url, last_modified_date_string), ...
     tld_urls = nested_dict_values(xml_dict, key_substrings=tld_keywords)
     for tld_url in tld_urls:
