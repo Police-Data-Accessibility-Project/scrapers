@@ -18,14 +18,21 @@ def in_repo_filter(row):
         not_in_repo.append(row)
 
 
+def write_md():
+    md = open('scraper_index.md', 'w')
+    md.write('# Scraper Index\n\n')
+
+
 def main():
     data = get_data()
 
     for row in data:
         in_repo_filter(row)
 
-    for row in not_in_repo:
-        print(row['state'])
+    write_md()
+
+    #for row in not_in_repo:
+        #print(row['state'])
 
 
 if __name__ == '__main__':
