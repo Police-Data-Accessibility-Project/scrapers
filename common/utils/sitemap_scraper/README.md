@@ -3,7 +3,7 @@
 
 This is a general scraper for a list of host URLs, which finds the `hostURL/sitemap.xml`
 and finds/stores all the url-routes that have specific words in them. (Currently
-only `police` and `cop`, see further improvements below.)
+only `.us` and `.gov`, see further improvements below.)
 
 Getting Started
 ------------
@@ -25,7 +25,7 @@ $pip install -r requirements.txt
 
 Be sure that your list of host URLs is available and contains the URLs you wish to scrape. 
 There is a sample list of URLs provided here: 
-`PDAP-Scrapers/common/utils/sitemap_scraper/sitemap/sitemap/sample_host_sites.txt`
+`PDAP-Scrapers/common/utils/sitemap_scraper/sample_host_sites.txt`
 
 Which looks like:
 
@@ -39,13 +39,9 @@ https://www.indy.gov
 
 It is a newline delimited text file containing host URLs to start scraping.
 
-Change directory to the `sitemap_scraper/sitemap` directory:
+To start scraping the sitemaps- run:
 
-`$cd sitemap`
-
-To start scraping the sitemaps- run: (be sure you are in directory: `sitemap_scraper/scrapy/`)
-
-`$scrapy crawl sitemapspider`
+`$python updated_sitemap_spider.py`
 
 You'll then find the output located in the base directory (`sitemap_scraper/`) which looks like
 
@@ -54,14 +50,11 @@ You'll then find the output located in the base directory (`sitemap_scraper/`) w
 Project Organization
 ------------
 
-This is a standard scraping project setup from python's Scrapy library.
-
 Files of note:
 
  - `../sitemap_scraper/requirements.txt` - Python library requirements for this sitemap scraper
- - `../sitemap_scraper/sitemap/sample_host_sites.txt` - initial sample of host domains to run. Replace this file with your list of host domains.
- - `../sitemap_scraper/sitemap/sitemap/piplines.py` - Find the `CSVPipeline()` Class that saves each JSON object to a CSV row.
- - `../sitemap_scraper/sitemap/sitemap/spiders/sitemap_spider.py` - Actual logic for scraping.
+ - `../sitemap_scraper/sample_host_sites.txt` - initial sample of host domains to run. Replace this file with your list of host domains.
+ - `../sitemap_scraper/updated_sitemap_spider.py` - Actual logic for scraping.
 
 Resources
 ---------
@@ -93,7 +86,7 @@ Limitations
 The URLs we used for this project came from limiting to URLs that use `.us` or `.gov`
 domains. This can be limiting to what we can find. We're open to ideas to improve this.
 
-Sitemap exploration is limited to only URLs that have keywords: `police` or `cop`.
+Sitemap exploration is limited to only URLs that have keywords: `.us` or `.gov`.
 This is a big limitation. There are many URL routes on a server that can be very highly
 relevant but not contain those words. We will have to expand past sitemap scraping into
 actual webpage scraping to get past this. E.g. if we find the police department homepage:
