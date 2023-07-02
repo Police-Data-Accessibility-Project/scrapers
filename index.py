@@ -19,13 +19,13 @@ def write_md():
     md = open('scraper_index.md', 'w')
     md.write('# Scraper Index\n\n')
     md.write('<details>\n')
-    md.write('\t<summary>In this repo</summary>\n')
+    md.write('\t<summary>In this repo</summary>\n\n')
     
     current_state = 'Start'
     for row in not_in_repo:
         new_state = current_state != row['state']
         if new_state and current_state != 'Start':
-            md.write('\t\t---\n')
+            md.write('\t\t- - -\n')
             md.write('\t</details>\n')
         if new_state:
             write_state_header(md, row)
@@ -41,12 +41,12 @@ def write_md():
 
 def write_state_header(md, row):
     md.write('\t<details>\n')
-    md.write(f'\t\t<summary>{row["state"]}</summary>\n')
+    md.write(f'\t\t<summary>{row["state"]}</summary>\n\n')
 
 
 def write_scraper(md, row):
     md.write('\t\t<details>\n')
-    md.write(f'\t\t\t<summary>{row["name"]}</summary>\n')
+    md.write(f'\t\t\t<summary>{row["name"]}</summary>\n\n')
     md.write(f'\t\t</details>\n')
 
 
