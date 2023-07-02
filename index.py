@@ -9,9 +9,11 @@ def get_data():
 
 
 def in_repo_filter(row):
-    if 'Police-Data-Accessibility-Project' in row['scraper_url']:
+    is_in_list = lambda list: row['name'] in [row['name'] for row in list]
+
+    if 'Police-Data-Accessibility-Project' in row['scraper_url'] and not is_in_list(in_repo):
         in_repo.append(row)
-    elif row['scraper_url']:
+    elif row['scraper_url'] and not is_in_list(not_in_repo):
         not_in_repo.append(row)
 
 
@@ -20,7 +22,7 @@ def write_md():
     md.write('# Scraper Index\n\n')
     md.write('<details>\n')
     md.write('\t<summary><font size="+2">In this repo</font></summary>\n')
-    
+
     current_state = 'Start'
     for row in not_in_repo:
         new_state = current_state != row['state']

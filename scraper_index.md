@@ -47,24 +47,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Phoenix<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
 			<summary><u>Officer Demographics for Phoenix PD</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Phoenix Police Department - AZ<br>
 			&emsp;&emsp;<b>Record type:</b> Personnel Records<br>
@@ -72,15 +54,6 @@
 			&emsp;&emsp;<b>State:</b> AZ<br>
 			&emsp;&emsp;<b>County:</b> Maricopa<br>
 			&emsp;&emsp;<b>Municipality:</b> Phoenix<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
 		</details>
 		<details>
 			<summary><u>Officer Pointed Gun at Person reports</u></summary>
@@ -110,33 +83,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
 			<summary><u>Arrest Records for Phoenix Police Department - AZ</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Phoenix Police Department - AZ<br>
 			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
@@ -144,51 +90,6 @@
 			&emsp;&emsp;<b>State:</b> AZ<br>
 			&emsp;&emsp;<b>County:</b> Maricopa<br>
 			&emsp;&emsp;<b>Municipality:</b> Phoenix<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
-			<summary><u>Officer Involved Shootings for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
-		</details>
-		<details>
-			<summary><u>Officer Involved Shootings for Tucson Police Department - AZ</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Tucson Police Department - AZ<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AZ<br>
-			&emsp;&emsp;<b>County:</b> Pima<br>
-			&emsp;&emsp;<b>Municipality:</b> Tucson<br>
 		</details>
 		<details>
 			<summary><u>Use of Force Reports for Phoenix Police Department - AZ</u></summary>
@@ -437,24 +338,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Officer Involved Shootings for Los Angeles County Sheriff's Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles County Sheriff's Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> West Covina<br>
-		</details>
-		<details>
 			<summary><u>Personnel Records for Menlo Park Police Department - CA</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Menlo Park Police Department - CA<br>
 			&emsp;&emsp;<b>Record type:</b> Personnel Records<br>
@@ -462,105 +345,6 @@
 			&emsp;&emsp;<b>State:</b> CA<br>
 			&emsp;&emsp;<b>County:</b> San Mateo<br>
 			&emsp;&emsp;<b>Municipality:</b> Menlo Park<br>
-		</details>
-		<details>
-			<summary><u>Officer Involved Shootings for Los Angeles County Sheriff's Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles County Sheriff's Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> West Covina<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Menlo Park Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Menlo Park Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> San Mateo<br>
-			&emsp;&emsp;<b>Municipality:</b> Menlo Park<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Menlo Park Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Menlo Park Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> San Mateo<br>
-			&emsp;&emsp;<b>Municipality:</b> Menlo Park<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Menlo Park Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Menlo Park Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> San Mateo<br>
-			&emsp;&emsp;<b>Municipality:</b> Menlo Park<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
 		</details>
 		<details>
 			<summary><u>Incident Reports for Los Angeles Police Department - CA</u></summary>
@@ -581,33 +365,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Los Angeles Police Department - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Los Angeles Police Department - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-			&emsp;&emsp;<b>County:</b> Los Angeles<br>
-			&emsp;&emsp;<b>Municipality:</b> Los Angeles<br>
-		</details>
-		<details>
 			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
 			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
@@ -622,83 +379,6 @@
 			&emsp;&emsp;<b>State:</b> CA<br>
 			&emsp;&emsp;<b>County:</b> Riverside<br>
 			&emsp;&emsp;<b>Municipality:</b> Corona<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for California Aggregated - CA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> California Aggregated - CA<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> CA<br>
 		</details>
 		<details>
 			<summary><u>Stops for Berkeley Police Department - CA</u></summary>
@@ -1035,15 +715,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Bloomington<br>
 		</details>
 		<details>
-			<summary><u>Personnel Records for Bloomington Police Department - IN</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Bloomington Police Department - IN<br>
-			&emsp;&emsp;<b>Record type:</b> Personnel Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> IN<br>
-			&emsp;&emsp;<b>County:</b> Monroe<br>
-			&emsp;&emsp;<b>Municipality:</b> Bloomington<br>
-		</details>
-		<details>
 			<summary><u>Vehicle Pursuits for Bloomington Police Department - IN</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Bloomington Police Department - IN<br>
 			&emsp;&emsp;<b>Record type:</b> Vehicle Pursuits<br>
@@ -1091,63 +762,9 @@
 			&emsp;&emsp;<b>County:</b> Jefferson<br>
 			&emsp;&emsp;<b>Municipality:</b> Louisville<br>
 		</details>
-		<details>
-			<summary><u>Citations for Louisville Metro Police Department - KY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Louisville Metro Police Department - KY<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> KY<br>
-			&emsp;&emsp;<b>County:</b> Jefferson<br>
-			&emsp;&emsp;<b>Municipality:</b> Louisville<br>
-		</details>
-		<details>
-			<summary><u>Citations for Louisville Metro Police Department - KY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Louisville Metro Police Department - KY<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> KY<br>
-			&emsp;&emsp;<b>County:</b> Jefferson<br>
-			&emsp;&emsp;<b>Municipality:</b> Louisville<br>
-		</details>
 	</details>
 	<details>
 		<summary><font size="+1">LA</font></summary>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
 		<details>
 			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
@@ -1167,54 +784,9 @@
 			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
 			<summary><u>Stops for New Orleans Police Department - LA</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
 			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> LA<br>
 			&emsp;&emsp;<b>County:</b> Orleans<br>
@@ -1225,33 +797,6 @@
 			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
 			&emsp;&emsp;<b>Record type:</b> Complaints & Misconduct<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> LA<br>
-			&emsp;&emsp;<b>County:</b> Orleans<br>
-			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for New Orleans Police Department - LA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New Orleans Police Department - LA<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://github.com/tsdataclinic/Vera/">https://github.com/tsdataclinic/Vera/</a><br>
 			&emsp;&emsp;<b>State:</b> LA<br>
 			&emsp;&emsp;<b>County:</b> Orleans<br>
 			&emsp;&emsp;<b>Municipality:</b> New Orleans<br>
@@ -1344,42 +889,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Baltimore<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for Baltimore Police Department - MD</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Baltimore Police Department - MD<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MD<br>
-			&emsp;&emsp;<b>County:</b> Baltimore<br>
-			&emsp;&emsp;<b>Municipality:</b> Baltimore<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Baltimore Police Department - MD</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Baltimore Police Department - MD<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MD<br>
-			&emsp;&emsp;<b>County:</b> Baltimore<br>
-			&emsp;&emsp;<b>Municipality:</b> Baltimore<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Baltimore Police Department - MD</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Baltimore Police Department - MD<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MD<br>
-			&emsp;&emsp;<b>County:</b> Baltimore<br>
-			&emsp;&emsp;<b>Municipality:</b> Baltimore<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Baltimore Police Department - MD</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Baltimore Police Department - MD<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MD<br>
-			&emsp;&emsp;<b>County:</b> Baltimore<br>
-			&emsp;&emsp;<b>Municipality:</b> Baltimore<br>
-		</details>
-		<details>
 			<summary><u>Arrest Records for Baltimore Police Department - MD</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Baltimore Police Department - MD<br>
 			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
@@ -1454,15 +963,6 @@
 			&emsp;&emsp;<b>County:</b> Wayne<br>
 			&emsp;&emsp;<b>Municipality:</b> Detroit<br>
 		</details>
-		<details>
-			<summary><u>Calls for Service for Detroit Police Department - MI</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Detroit Police Department - MI<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://github.com/tsdataclinic/Vera">https://github.com/tsdataclinic/Vera</a><br>
-			&emsp;&emsp;<b>State:</b> MI<br>
-			&emsp;&emsp;<b>County:</b> Wayne<br>
-			&emsp;&emsp;<b>Municipality:</b> Detroit<br>
-		</details>
 	</details>
 	<details>
 		<summary><font size="+1">MN</font></summary>
@@ -1521,86 +1021,6 @@
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> MO<br>
 			&emsp;&emsp;<b>County:</b> St. Louis<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for St. Louis County Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> St. Louis County Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> St. Louis<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
-		</details>
-		<details>
-			<summary><u>Stops for Columbia Police Department - MO</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Columbia Police Department - MO<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> MO<br>
-			&emsp;&emsp;<b>County:</b> Boone<br>
-			&emsp;&emsp;<b>Municipality:</b> Columbia<br>
 		</details>
 		<details>
 			<summary><u>Stops for Columbia Police Department - MO</u></summary>
@@ -1679,15 +1099,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Durham<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
 			<summary><u>Use of Force Reports for Greensboro Police Department - NC</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Greensboro Police Department - NC<br>
 			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
@@ -1695,69 +1106,6 @@
 			&emsp;&emsp;<b>State:</b> NC<br>
 			&emsp;&emsp;<b>County:</b> Guilford<br>
 			&emsp;&emsp;<b>Municipality:</b> Greensboro<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Greensboro Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Greensboro Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Guilford<br>
-			&emsp;&emsp;<b>Municipality:</b> Greensboro<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
 		</details>
 		<details>
 			<summary><u>Stops for Greensboro Police Department - NC</u></summary>
@@ -1769,60 +1117,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Greensboro<br>
 		</details>
 		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
 			<summary><u>Stops for Fayetteville Police Department - NC</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Fayetteville Police Department - NC<br>
 			&emsp;&emsp;<b>Record type:</b> Stops<br>
@@ -1830,33 +1124,6 @@
 			&emsp;&emsp;<b>State:</b> NC<br>
 			&emsp;&emsp;<b>County:</b> Cumberland<br>
 			&emsp;&emsp;<b>Municipality:</b> Fayetteville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Durham Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Durham Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Durham<br>
-			&emsp;&emsp;<b>Municipality:</b> Durham<br>
-		</details>
-		<details>
-			<summary><u>Officer Involved Shootings for Charlotte-Mecklenburg Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Charlotte-Mecklenburg Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Mecklenburg<br>
-			&emsp;&emsp;<b>Municipality:</b> Charlotte<br>
 		</details>
 		<details>
 			<summary><u>Officer Involved Shootings for Charlotte-Mecklenburg Police Department - NC</u></summary>
@@ -1895,159 +1162,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Charlotte<br>
 		</details>
 		<details>
-			<summary><u>Officer Involved Shootings for Charlotte-Mecklenburg Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Charlotte-Mecklenburg Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Mecklenburg<br>
-			&emsp;&emsp;<b>Municipality:</b> Charlotte<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
-			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
-			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NC<br>
-			&emsp;&emsp;<b>County:</b> Buncombe<br>
-			&emsp;&emsp;<b>Municipality:</b> Asheville<br>
-		</details>
-		<details>
 			<summary><u>Calls for Service for Asheville Police Department - NC</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Asheville Police Department - NC<br>
 			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
@@ -2069,15 +1183,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
 		</details>
 		<details>
-			<summary><u>Stops for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
 			<summary><u>Use of Force Reports for Lincoln Police Department - NE</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
 			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
@@ -2090,114 +1195,6 @@
 			<summary><u>Vehicle Pursuits for Lincoln Police Department - NE</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
 			&emsp;&emsp;<b>Record type:</b> Vehicle Pursuits<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Stops for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Stops for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Stops for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Stops for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Vehicle Pursuits for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Vehicle Pursuits<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Vehicle Pursuits for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Vehicle Pursuits<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Vehicle Pursuits for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Vehicle Pursuits<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Stops for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Stops for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NE<br>
-			&emsp;&emsp;<b>County:</b> Lancaster<br>
-			&emsp;&emsp;<b>Municipality:</b> Lincoln<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Lincoln Police Department - NE</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Lincoln Police Department - NE<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> NE<br>
 			&emsp;&emsp;<b>County:</b> Lancaster<br>
@@ -2272,24 +1269,6 @@
 			&emsp;&emsp;<b>Municipality:</b> New York<br>
 		</details>
 		<details>
-			<summary><u>Incident Reports for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Incident Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
 			<summary><u>Stops for New York City Police Department - NY</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
 			&emsp;&emsp;<b>Record type:</b> Stops<br>
@@ -2302,78 +1281,6 @@
 			<summary><u>Complaints & Misconduct for New York City Police Department - NY</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
 			&emsp;&emsp;<b>Record type:</b> Complaints & Misconduct<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Complaints & Misconduct for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Complaints & Misconduct<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Complaints & Misconduct for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Complaints & Misconduct<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> NY<br>
 			&emsp;&emsp;<b>County:</b> Kings<br>
@@ -2389,63 +1296,9 @@
 			&emsp;&emsp;<b>Municipality:</b> New York<br>
 		</details>
 		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
 			<summary><u>Personnel Records for New York City Police Department - NY</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
 			&emsp;&emsp;<b>Record type:</b> Personnel Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Incident Reports for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Incident Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Complaints & Misconduct for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Complaints & Misconduct<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> NY<br>
-			&emsp;&emsp;<b>County:</b> Kings<br>
-			&emsp;&emsp;<b>Municipality:</b> New York<br>
-		</details>
-		<details>
-			<summary><u>Stops for New York City Police Department - NY</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> New York City Police Department - NY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> NY<br>
 			&emsp;&emsp;<b>County:</b> Kings<br>
@@ -2512,15 +1365,6 @@
 			<summary><u>Calls for Service for Cincinnati Police Department - OH</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Cincinnati Police Department - OH<br>
 			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> OH<br>
-			&emsp;&emsp;<b>County:</b> Hamilton<br>
-			&emsp;&emsp;<b>Municipality:</b> Cincinnati<br>
-		</details>
-		<details>
-			<summary><u>Stops for Cincinnati Police Department - OH</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Cincinnati Police Department - OH<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> OH<br>
 			&emsp;&emsp;<b>County:</b> Hamilton<br>
@@ -2719,24 +1563,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Charleston<br>
 		</details>
 		<details>
-			<summary><u>Citations for Charleston Police Department - SC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Charleston Police Department - SC<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> SC<br>
-			&emsp;&emsp;<b>County:</b> Charleston<br>
-			&emsp;&emsp;<b>Municipality:</b> Charleston<br>
-		</details>
-		<details>
-			<summary><u>Citations for Charleston Police Department - SC</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Charleston Police Department - SC<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> SC<br>
-			&emsp;&emsp;<b>County:</b> Charleston<br>
-			&emsp;&emsp;<b>Municipality:</b> Charleston<br>
-		</details>
-		<details>
 			<summary><u>Calls for Service for Charleston Police Department - SC</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Charleston Police Department - SC<br>
 			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
@@ -2779,162 +1605,9 @@
 			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
 		</details>
 		<details>
-			<summary><u>Use of Force Reports for Dallas Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Dallas Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Dallas<br>
-			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Dallas Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Dallas Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Dallas<br>
-			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Dallas Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Dallas Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Dallas<br>
-			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Dallas Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Dallas Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Dallas<br>
-			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Dallas Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Dallas Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Dallas<br>
-			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Dallas Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Dallas Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Dallas<br>
-			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Dallas Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Dallas Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Dallas<br>
-			&emsp;&emsp;<b>Municipality:</b> Dallas<br>
-		</details>
-		<details>
 			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
 			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Stops for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Citations for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Arrest Records for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Arrest Records for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> TX<br>
 			&emsp;&emsp;<b>County:</b> Williamson<br>
@@ -2959,225 +1632,9 @@
 			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
 		</details>
 		<details>
-			<summary><u>Stops for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Citations for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Stops for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
 			<summary><u>Arrest Records for Austin Police Department - TX</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
 			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Arrest Records for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Citations for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Stops for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Stops for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Arrest Records for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Citations for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Citations for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Stops for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Officer Involved Shootings for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Officer Involved Shootings for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Arrest Records for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Arrest Records for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Stops for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> TX<br>
-			&emsp;&emsp;<b>County:</b> Williamson<br>
-			&emsp;&emsp;<b>Municipality:</b> Cedar Park<br>
-		</details>
-		<details>
-			<summary><u>Citations for Austin Police Department - TX</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Austin Police Department - TX<br>
-			&emsp;&emsp;<b>Record type:</b> Citations<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> TX<br>
 			&emsp;&emsp;<b>County:</b> Williamson<br>
@@ -3258,15 +1715,6 @@
 			<summary><u>Citations for Fairfax County Police Department - VA</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Fairfax County Police Department - VA<br>
 			&emsp;&emsp;<b>Record type:</b> Citations<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> VA<br>
-			&emsp;&emsp;<b>County:</b> Fairfax<br>
-			&emsp;&emsp;<b>Municipality:</b> Fairfax<br>
-		</details>
-		<details>
-			<summary><u>Arrest Records for Fairfax County Police Department - VA</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Fairfax County Police Department - VA<br>
-			&emsp;&emsp;<b>Record type:</b> Arrest Records<br>
 			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
 			&emsp;&emsp;<b>State:</b> VA<br>
 			&emsp;&emsp;<b>County:</b> Fairfax<br>
@@ -3380,33 +1828,6 @@
 	</details>
 	<details>
 		<summary><font size="+1">WI</font></summary>
-		<details>
-			<summary><u>Use of Force Reports for Beloit Police Department - WI</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Beloit Police Department - WI<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> WI<br>
-			&emsp;&emsp;<b>County:</b> Rock<br>
-			&emsp;&emsp;<b>Municipality:</b> Beloit<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Beloit Police Department - WI</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Beloit Police Department - WI<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> WI<br>
-			&emsp;&emsp;<b>County:</b> Rock<br>
-			&emsp;&emsp;<b>Municipality:</b> Beloit<br>
-		</details>
-		<details>
-			<summary><u>Use of Force Reports for Beloit Police Department - WI</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Beloit Police Department - WI<br>
-			&emsp;&emsp;<b>Record type:</b> Use of Force Reports<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> WI<br>
-			&emsp;&emsp;<b>County:</b> Rock<br>
-			&emsp;&emsp;<b>Municipality:</b> Beloit<br>
-		</details>
 		<details>
 			<summary><u>Use of Force Reports for Beloit Police Department - WI</u></summary>
 			&emsp;&emsp;<b>Agency described:</b> Beloit Police Department - WI<br>
