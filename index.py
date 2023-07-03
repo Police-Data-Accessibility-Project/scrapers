@@ -20,11 +20,24 @@ def in_repo_filter(row):
 def write_md():
     md = open('scraper_index.md', 'w')
     md.write('# Scraper Index\n\n')
+    
     md.write('<details>\n')
     md.write('\t<summary><font size="+2">In this repo</font></summary>\n')
+    write_section(md, in_repo)
+    md.write('</details>\n')
 
+    md.write('<details>\n')
+    md.write('\t<summary><font size="+2">Not in this repo</font></summary>\n')
+    write_section(md, not_in_repo)
+    md.write('</details>\n')
+
+    md.close()
+
+
+def write_section(md, section_data):
     current_state = 'Start'
-    for row in not_in_repo:
+
+    for row in section_data:
         new_state = current_state != row['state']
         if new_state and current_state != 'Start':
             md.write('\t</details>\n')
@@ -34,11 +47,8 @@ def write_md():
 
         write_scraper(md, row)
 
-    md.write('</details>\n')
-
-
-    md.close()
-
+    md.write('\t</details>\n')
+    
 
 def write_state_header(md, row):
     md.write('\t<details>\n')
@@ -71,6 +81,5 @@ def main():
 if __name__ == '__main__':
     in_repo = []
     not_in_repo = []
-    md = None
 
     main()

@@ -3,6 +3,29 @@
 <details>
 	<summary><font size="+2">In this repo</font></summary>
 	<details>
+		<summary><font size="+1">CA</font></summary>
+		<details>
+			<summary><u>San Bernardino County Officer Involved Shootings</u></summary>
+			&emsp;&emsp;<b>Agency described:</b> San Bernardino County Aggregated - CA<br>
+			&emsp;&emsp;<b>Record type:</b> Officer Involved Shootings<br>
+			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/pull/202">https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/pull/202</a><br>
+			&emsp;&emsp;<b>State:</b> CA<br>
+			&emsp;&emsp;<b>County:</b> San Bernardino<br>
+		</details>
+		<details>
+			<summary><u>Calls for Service for Oakland Police Department - CA</u></summary>
+			&emsp;&emsp;<b>Agency described:</b> Oakland Police Department - CA<br>
+			&emsp;&emsp;<b>Record type:</b> Calls for Service<br>
+			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://github.com/Police-Data-Accessibility-Project/github-actions-demo/">https://github.com/Police-Data-Accessibility-Project/github-actions-demo/</a><br>
+			&emsp;&emsp;<b>State:</b> CA<br>
+			&emsp;&emsp;<b>County:</b> Alameda<br>
+			&emsp;&emsp;<b>Municipality:</b> Oakland<br>
+		</details>
+	</details>
+</details>
+<details>
+	<summary><font size="+2">Not in this repo</font></summary>
+	<details>
 		<summary><font size="+1">AR</font></summary>
 		<details>
 			<summary><u>Calls for Service for Little Rock Police Department - AR</u></summary>
@@ -1846,4 +1869,5 @@
 			&emsp;&emsp;<b>County:</b> Milwaukee<br>
 			&emsp;&emsp;<b>Municipality:</b> Milwaukee<br>
 		</details>
+	</details>
 </details>
