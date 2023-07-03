@@ -22,9 +22,6 @@
 			&emsp;&emsp;<b>Municipality:</b> Oakland<br>
 		</details>
 	</details>
-	<details>
-		<summary><font size="+1">National and multistate</font></summary>
-	</details>
 </details>
 <details>
 	<summary><font size="+2">Not in this repo</font></summary>
