@@ -22,6 +22,9 @@
 			&emsp;&emsp;<b>Municipality:</b> Oakland<br>
 		</details>
 	</details>
+	<details>
+		<summary><font size="+1">National and multistate</font></summary>
+	</details>
 </details>
 <details>
 	<summary><font size="+2">Not in this repo</font></summary>
@@ -35,18 +38,6 @@
 			&emsp;&emsp;<b>State:</b> AR<br>
 			&emsp;&emsp;<b>County:</b> Pulaski<br>
 			&emsp;&emsp;<b>Municipality:</b> North Little Rock<br>
-		</details>
-	</details>
-	<details>
-		<summary><font size="+1">AR,AZ,AZ,AZ,CA,CA,CA,CA,CA,CA,CA,CA,CA,CA,CA,CO,CO,CT,FL,FL,FL,GA,IA,ID,IL,IL,IN,KS,KY,MA,MD,MD,MI,MO,MS,MT,NC,NC,NC,NC,ND,ND,NE,NH,NV,NV,NY,NY,OH,OH,OK,OK,OR,RI,SC,SD,TN,TN,TX,TX,TX,TX,TX,TX,TX,WA,WA,WA,WI,WI,WY</font></summary>
-		<details>
-			<summary><u>Stanford Open Policing Project stops dashboard</u></summary>
-			&emsp;&emsp;<b>Agency described:</b> Little Rock Police Department - AR,Gilbert Police Department - AZ,Mesa Police Department - AZ,Arizona Aggregated - AZ,Anaheim Police Department - CA,Bakersfield Police Department - CA,Long Beach Police Department - CA,Oakland Police Department - CA,San Bernardino Police Department - CA,San Diego Police Department - CA,San Francisco Police Department - CA,San Jose Police Department - CA,Santa Ana Police Department - CA,California Aggregated - CA,Stockton Police Department - CA,Aurora Police Department - CO,Colorado Aggregated - CO,Hartford Police Department - CT,Saint Petersburg Police Department - FL,Florida Aggregated - FL,Tampa Police Department - FL,Georgia Aggregated - GA,Iowa Aggregated - IA,Idaho Falls Police Department - ID,Chicago Police Department - IL,Illinois Aggregated - IL,Fort Wayne Police Department - IN,Wichita Police Department - KS,Owensboro Police Department - KY,Massachusetts Aggregated - MA,Baltimore Police Department - MD,Maryland Aggregated - MD,Michigan Aggregated - MI,Missouri Aggregated - MO,Mississippi Aggregated - MS,Montana Aggregated - MT,Durham Police Department - NC,Raleigh Police Department - NC,North Carolina Aggregated - NC,Winston-Salem Police Department - NC,Grand Forks Police Department - ND,North Dakota Aggregated - ND,Nebraska Aggregated - NE,New Hampshire Aggregated - NH,Henderson Police Department - NV,Nevada Aggregated - NV,Albany Police Department - NY,New York Aggregated - NY,Columbus Division of Police - OH,Ohio Aggregated - OH,Oklahoma City Police Department - OK,Tulsa Police Department - OK,Oregon Aggregated - OR,Rhode Island Aggregated - RI,South Carolina Aggregated - SC,South Dakota Aggregated - SD,Metropolitan Nashville Police Department - TN,Tennessee Aggregated - TN,Arlington Police Department - TX,Garland Police Department - TX,Houston Police Department - TX,Lubbock Police Department - TX,Plano Police Department - TX,San Antonio Police Department - TX,Texas Aggregated - TX,Seattle Police Department - WA,Washington Aggregated - WA,Tacoma Police Department - WA,Madison Police Department - WI,Wisconsin Aggregated - WI,Wyoming Aggregated - WY<br>
-			&emsp;&emsp;<b>Record type:</b> Stops<br>
-			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
-			&emsp;&emsp;<b>State:</b> AR,AZ,AZ,AZ,CA,CA,CA,CA,CA,CA,CA,CA,CA,CA,CA,CO,CO,CT,FL,FL,FL,GA,IA,ID,IL,IL,IN,KS,KY,MA,MD,MD,MI,MO,MS,MT,NC,NC,NC,NC,ND,ND,NE,NH,NV,NV,NY,NY,OH,OH,OK,OK,OR,RI,SC,SD,TN,TN,TX,TX,TX,TX,TX,TX,TX,WA,WA,WA,WI,WI,WY<br>
-			&emsp;&emsp;<b>County:</b> Pulaski, Maricopa, Maricopa, Orange, Kern, Los Angeles, Alameda, San Bernardino, San Diego, San Francisco, Santa Clara, Orange, San Joaquin, Arapahoe, Hartford, Pinellas, Hillsborough, Bonneville, Cook, Allen, Sedgwick, Daviess, Baltimore, Durham, Wake, Forsyth, Grand Forks, Clark, Albany, Franklin, Oklahoma, Tulsa, Davidson, Tarrant, Dallas, Harris, Lubbock, Collin, Bexar, King, Pierce, Dane<br>
-			&emsp;&emsp;<b>Municipality:</b> North Little Rock, Gilbert, Mesa, Anaheim, Bakersfield, Long Beach, Oakland, San Bernardino, La Jolla, San Francisco, San Jose, Santa Ana, Stockton, Aurora, Hartford, Saint Petersburg, Tampa, Idaho Falls, Chicago, Fort Wayne, Wichita, Owensboro, Baltimore, Durham, Raleigh, Winston-Salem, Grand Forks, Henderson, Albany, Columbus, Oklahoma City, Tulsa, Nashville, Arlington, Garland, Houston, Lubbock, Plano, San Antonio, Seattle, Bellingham, Madison<br>
 		</details>
 	</details>
 	<details>
@@ -1868,6 +1859,18 @@
 			&emsp;&emsp;<b>State:</b> WI<br>
 			&emsp;&emsp;<b>County:</b> Milwaukee<br>
 			&emsp;&emsp;<b>Municipality:</b> Milwaukee<br>
+		</details>
+	</details>
+	<details>
+		<summary><font size="+1">National and multistate</font></summary>
+		<details>
+			<summary><u>Stanford Open Policing Project stops dashboard</u></summary>
+			&emsp;&emsp;<b>Agency described:</b> Little Rock Police Department - AR, Gilbert Police Department - AZ, Mesa Police Department - AZ, Arizona Aggregated - AZ, Anaheim Police Department - CA, Bakersfield Police Department - CA, Long Beach Police Department - CA, Oakland Police Department - CA, San Bernardino Police Department - CA, San Diego Police Department - CA, San Francisco Police Department - CA, San Jose Police Department - CA, Santa Ana Police Department - CA, California Aggregated - CA, Stockton Police Department - CA, Aurora Police Department - CO, Colorado Aggregated - CO, Hartford Police Department - CT, Saint Petersburg Police Department - FL, Florida Aggregated - FL, Tampa Police Department - FL, Georgia Aggregated - GA, Iowa Aggregated - IA, Idaho Falls Police Department - ID, Chicago Police Department - IL, Illinois Aggregated - IL, Fort Wayne Police Department - IN, Wichita Police Department - KS, Owensboro Police Department - KY, Massachusetts Aggregated - MA, Baltimore Police Department - MD, Maryland Aggregated - MD, Michigan Aggregated - MI, Missouri Aggregated - MO, Mississippi Aggregated - MS, Montana Aggregated - MT, Durham Police Department - NC, Raleigh Police Department - NC, North Carolina Aggregated - NC, Winston-Salem Police Department - NC, Grand Forks Police Department - ND, North Dakota Aggregated - ND, Nebraska Aggregated - NE, New Hampshire Aggregated - NH, Henderson Police Department - NV, Nevada Aggregated - NV, Albany Police Department - NY, New York Aggregated - NY, Columbus Division of Police - OH, Ohio Aggregated - OH, Oklahoma City Police Department - OK, Tulsa Police Department - OK, Oregon Aggregated - OR, Rhode Island Aggregated - RI, South Carolina Aggregated - SC, South Dakota Aggregated - SD, Metropolitan Nashville Police Department - TN, Tennessee Aggregated - TN, Arlington Police Department - TX, Garland Police Department - TX, Houston Police Department - TX, Lubbock Police Department - TX, Plano Police Department - TX, San Antonio Police Department - TX, Texas Aggregated - TX, Seattle Police Department - WA, Washington Aggregated - WA, Tacoma Police Department - WA, Madison Police Department - WI, Wisconsin Aggregated - WI, Wyoming Aggregated - WY<br>
+			&emsp;&emsp;<b>Record type:</b> Stops<br>
+			&emsp;&emsp;<b>Scraper URL:</b> <a href="https://pypi.org/project/openpolicedata/">https://pypi.org/project/openpolicedata/</a><br>
+			&emsp;&emsp;<b>State:</b> AR, AZ, CA, CO, CT, FL, GA, IA, ID, IL, IN, KS, KY, MA, MD, MI, MO, MS, MT, NC, ND, NE, NH, NV, NY, OH, OK, OR, RI, SC, SD, TN, TX, WA, WI, WY<br>
+			&emsp;&emsp;<b>County:</b> Pulaski,  Maricopa,  Orange,  Kern,  Los Angeles,  Alameda,  San Bernardino,  San Diego,  San Francisco,  Santa Clara,  San Joaquin,  Arapahoe,  Hartford,  Pinellas,  Hillsborough,  Bonneville,  Cook,  Allen,  Sedgwick,  Daviess,  Baltimore,  Durham,  Wake,  Forsyth,  Grand Forks,  Clark,  Albany,  Franklin,  Oklahoma,  Tulsa,  Davidson,  Tarrant,  Dallas,  Harris,  Lubbock,  Collin,  Bexar,  King,  Pierce,  Dane<br>
+			&emsp;&emsp;<b>Municipality:</b> North Little Rock,  Gilbert,  Mesa,  Anaheim,  Bakersfield,  Long Beach,  Oakland,  San Bernardino,  La Jolla,  San Francisco,  San Jose,  Santa Ana,  Stockton,  Aurora,  Hartford,  Saint Petersburg,  Tampa,  Idaho Falls,  Chicago,  Fort Wayne,  Wichita,  Owensboro,  Baltimore,  Durham,  Raleigh,  Winston-Salem,  Grand Forks,  Henderson,  Albany,  Columbus,  Oklahoma City,  Tulsa,  Nashville,  Arlington,  Garland,  Houston,  Lubbock,  Plano,  San Antonio,  Seattle,  Bellingham,  Madison<br>
 		</details>
 	</details>
 </details>
