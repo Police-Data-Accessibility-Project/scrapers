@@ -9,7 +9,7 @@ def get_data():
     Returns:
         list: List of dictionaries of data sources sorted by state code.
     """
-    with open('PDAP Data Sources.csv', encoding='utf-8-sig') as data_sources:
+    with open('common/utils/scraper_index/PDAP Data Sources.csv', encoding='utf-8-sig') as data_sources:
         reader = list(csv.DictReader(data_sources))
         # Sort by state code
         reader.sort(key=lambda data_source: data_source['state'])
@@ -34,7 +34,7 @@ def in_repo_filter(data_source):
 
 def write_md():
     """Write to the markdown file"""
-    md = open('scraper_index.md', 'w')
+    md = open('INDEX.md', 'w')
     md.write('# Scraper Index\n\n')
 
     # In this repo section
@@ -118,7 +118,7 @@ def write_scraper(md, data_source):
         Scraper URL:\n
         State:\n
         County:\n
-        Municipality:\n
+        Municipality:
 
     Args:
         md (TextIOWrapper): Markdown file to write to.
