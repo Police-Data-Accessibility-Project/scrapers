@@ -33,15 +33,17 @@ def in_repo_filter(data_source):
 
 
 def write_md():
-    """Write to the markdown file"""
+    """Create and write to the markdown file"""
     md = open('INDEX.md', 'w')
     md.write('# Scraper Index\n\n')
+    md.write('[Scrapers in this repo](#scrapers-in-this-repo)\n\n')
+    md.write('[Scrapers not in this repo](#scrapers-not-in-this-repo)\n')
 
     # In this repo section
-    write_section(md, in_repo, header='In this repo')
+    write_section(md, in_repo, header='Scrapers in this repo')
 
     # Not in this repo section
-    write_section(md, not_in_repo, header='Not in this repo')
+    write_section(md, not_in_repo, header='Scrapers not in this repo')
 
     md.close()
 
@@ -51,14 +53,14 @@ def write_section(md, section_data, header):
 
     Args:
         md (TextIOWrapper): Markdown file to write to.
-        section_data (list): List of dictionaries of data sources sorted.
+        section_data (list): List of dictionaries of data sources.
         header (String): Header, either In this repo or Not in this repo
     """
     national_data = []
-    current_state = 'Start'
 
-    md.write('<details>\n')
-    md.write(f'\t<summary><font size="+2">{header}</font></summary>\n')
+    md.write(f'\n## {header}\n\n')
+    md.write('Name | Agency Described | Record Type | State | County | Municipality | Scraper URL\n')
+    md.write('--- | --- | --- | --- | --- | --- | ---\n')
 
     for data_source in section_data:
         # Sort out national and multistate data sources
@@ -66,20 +68,12 @@ def write_section(md, section_data, header):
             national_data.append(data_source)
             continue
 
-        new_state = current_state != data_source['state']
-        if new_state and current_state != 'Start':
-            md.write('\t</details>\n')
-        if new_state:
-            write_state_header(md, data_source['state'])
-            current_state = data_source['state']
-
         write_scraper(md, data_source)
 
     if national_data:
-        # Write national and multistate data section
-        md.write('\t</details>\n')
-        
-        write_state_header(md, 'National and multistate')
+        md.write('\n### National and Multistate\n\n')
+        md.write('Name | Agency Described | Record Type | State | County | Municipality | Scraper URL\n')
+        md.write('--- | --- | --- | --- | --- | --- | ---\n')
 
         """Removes duplicate entries from a string"""
         remove_duplicates = lambda s: ", ".join(OrderedDict.fromkeys(s.split(',')))
@@ -95,30 +89,10 @@ def write_section(md, section_data, header):
                 data_source['state'] = 'USA'
 
             write_scraper(md, data_source)
-        
-    md.write('\t</details>\n')
-    md.write('</details>\n')
-
-
-def write_state_header(md, state):
-    """Write a new state header.
-
-    Args:
-        md (TextIOWrapper): Markdown file to write to.
-        state (str): State code.
-    """
-    md.write('\t<details>\n')
-    md.write(f'\t\t<summary><font size="+1">{state}</font></summary>\n')
 
 
 def write_scraper(md, data_source):
-    """Write scraper information in the following format:
-        Agency described:\n
-        Record type:\n
-        Scraper URL:\n
-        State:\n
-        County:\n
-        Municipality:
+    """Write scraper information in table.
 
     Args:
         md (TextIOWrapper): Markdown file to write to.
@@ -128,25 +102,17 @@ def write_scraper(md, data_source):
     """Removes redundant trailing state code"""
     remove_state_code = lambda s: re.sub(r' - [A-Z]{2}$', '', s)
 
-    md.write('\t\t<details>\n')
     name = remove_state_code(data_source['name'])
-    md.write(f'\t\t\t<summary><u>{name}</u></summary>\n')
-
     agency = data_source['agency_described']
     if ',' not in agency:
-        agency = remove_state_code(data_source['agency_described'])
-        
-    md.write(f'\t\t\t{"&emsp;" * 2}<b>Agency described:</b> {agency}<br>\n')
-    md.write(f'\t\t\t{"&emsp;" * 2}<b>Record type:</b> {data_source["record_type"]}<br>\n')
-    md.write(f'\t\t\t{"&emsp;" * 2}<b>Scraper URL:</b> <a href="{data_source["scraper_url"]}">{data_source["scraper_url"]}</a><br>\n')
-    md.write(f'\t\t\t{"&emsp;" * 2}<b>State:</b> {data_source["state"]}<br>\n')
-    if data_source['county']:
-        md.write(f'\t\t\t{"&emsp;" * 2}<b>County:</b> {data_source["county"]}<br>\n')
-    if data_source['municipality']:
-        md.write(f'\t\t\t{"&emsp;" * 2}<b>Municipality:</b> {data_source["municipality"]}<br>\n')
+        agency = remove_state_code(agency)
+    type = data_source['record_type']
+    state = data_source['state']
+    county = data_source['county']
+    municipality = data_source['municipality']
+    url = data_source['scraper_url']
 
-    md.write(f'\t\t</details>\n')
-
+    md.write(f'{name} | {agency} | {type} | {state} | {county} | {municipality} | [{url}]({url})\n')
 
 def main():
     data_sources = get_data()
