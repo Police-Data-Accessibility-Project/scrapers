@@ -101,13 +101,8 @@ def list_pdf_v2(
     # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date
     get_files(save_dir, sleep_time, name_in_url=name_in_url, add_date=add_date)
 
-    # this imports etl for eric to do his magic.
-    import etl
-
-    # this section of code only runs if extract_tables is True
     if extract_tables:
-        # import the pdf_extract module from ./common/etl/data_extraction.py
-        from common.etl import pdf_extract
+        from common.utils import pdf_extract
 
         try:
             # Pass save_dir to pdf_extract's pdf_directory param, and retrieve csv_dir from the configs
@@ -125,5 +120,3 @@ def list_pdf_v2(
             pass
 
     create_metadata(webpage, run_start)
-    # honestly not sure why this is down here, but there is probably a e
-    # import etl.py
