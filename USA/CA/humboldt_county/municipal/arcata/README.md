@@ -2,8 +2,6 @@ This readme should give people everything they need to maintain the scraper.
 
 Please stick to [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) when modifying this readme.  
 
-Note: Ensure your scraper calls the etl.py file. Even if there is nothing in there now, the scraped data will need to be loaded into our database and the etl.py file is what will handle that!
-
 # Source info
 Added to dataset. Agency ID: 3cb9fb8cb0364797bd44c0e48c95d46b
 
