@@ -37,7 +37,6 @@ class FaulknerCoPipeline:
     def close_spider(self, spider):
         self.file.write(json.dumps(self.items))
         self.file.close()
-        import faulkner_co.etl
 
     def process_item(self, item, spider):
         self.items.append(ItemAdapter(item).asdict())

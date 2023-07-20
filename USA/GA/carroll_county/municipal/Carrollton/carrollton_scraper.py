@@ -116,5 +116,3 @@ while start_year <= int(max_year):
 	if start_year > int(max_year):
 		break
 	"""
-
-# import etl.py
