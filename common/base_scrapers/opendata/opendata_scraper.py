@@ -99,5 +99,3 @@ def opendata_scraper(
             print(
                 f" [!!!] Url {url_table[i]} returned code {response.status_code}. Check that the url is correct."
             )
-
-    # import etl

@@ -145,5 +145,3 @@ def opendata_scraper2(save_url, save_folder, sleep_time=1, save_subfolder=False,
             time.sleep(int(sleep_time))
         else:
             print(f" [!!!] Url {save_url[i]} returned code {response.status_code}. Check that the url is correct.")
-
-    # import etl

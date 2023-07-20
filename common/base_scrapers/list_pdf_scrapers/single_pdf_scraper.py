@@ -45,11 +45,3 @@ def single_pdf_scraper(
     get_pdf(
         save_dir, file_name, url_2, debug=False, sleep_time=0, try_overwite=False, no_overwrite=True, add_date=True,
     )
-
-    # import etl
-    # from etl import pdf_extract
-    #
-    # # Pass save_dir to pdf_extract's pdf_directory param
-    # etl.pdf_extract(pdf_directory=save_dir, flavor=flavor)
-
-    # import etl.py
