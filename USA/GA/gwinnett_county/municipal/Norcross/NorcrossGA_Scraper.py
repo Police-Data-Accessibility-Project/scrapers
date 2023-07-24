@@ -56,4 +56,3 @@ def download_data():
 
 
 download_data()
-# import etl.py

@@ -50,4 +50,3 @@ def get_files():
 
 
 get_files()
-# import etl.py

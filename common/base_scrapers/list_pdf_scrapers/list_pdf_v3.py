@@ -198,11 +198,8 @@ def list_pdf_v3(
         add_date=add_date,
     )
 
-
-    # this section of code only runs if extract_tables is True
     if extract_tables:
-        # import the pdf_extract module from ./common/etl/data_extraction.py
-        from common.etl import pdf_extract
+        from common.utils import pdf_extract
 
         try:
             # Pass save_dir to pdf_extract's pdf_directory param
@@ -220,6 +217,3 @@ def list_pdf_v3(
             pass
     
     create_metadata(webpage, run_start)
-    # import etl for eric (this likely will not work due to etl being in common)
-    # honestly not sure why this is down here, but there is probably a reason
-    # import etl.py

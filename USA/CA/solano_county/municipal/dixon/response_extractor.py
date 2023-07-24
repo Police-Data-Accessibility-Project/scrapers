@@ -41,5 +41,3 @@ except FileNotFoundError:
     pass
 
 get_files(save_dir, configs.sleep_time)
-
-# import etl.py

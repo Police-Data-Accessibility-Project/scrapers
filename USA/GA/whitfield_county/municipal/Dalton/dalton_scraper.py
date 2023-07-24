@@ -47,5 +47,3 @@ except FileNotFoundError:
 
 extract_info(soup)
 get_files(save_dir, sleep_time)
-
-# import etl.py # Has a file sorter, make sure to include

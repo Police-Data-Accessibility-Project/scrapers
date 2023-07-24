@@ -88,7 +88,7 @@ class SexOffenderItem(scrapy.Item):
 ### FaulknerCoPipeline
 There is a single item pipeline called [FaulknerCoPipeline](faulkner_co/pipelines.py). 
 It initializes an array when a given spider is opened. Each item is appended to that array as they are passed down by the spider. 
-When the spider closes, the array is dumped to a JSON file which is named based on the _type_ of spider passing it through the pipeline (also at this step the import [etl.py](faulkner_co/etl.py)) 
+When the spider closes, the array is dumped to a JSON file which is named based on the _type_ of spider passing it through the pipeline
 *   ChildSupportOffenderSpider  ==> sex_offenders.json
 *   CurrentInmatesSpider        ==> inmates.json
 *   SexOffendersSpider          ==> sex_offenders.json

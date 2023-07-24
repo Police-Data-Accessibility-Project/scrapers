@@ -93,5 +93,3 @@ except FileNotFoundError:
     pass
 extract_info(soup, domain)
 get_files()
-
-# import etl.py
