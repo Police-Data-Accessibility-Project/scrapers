@@ -19,7 +19,7 @@
             "format_type": 4,
             "update_freq": 6,
             "last_modified": "2021-12-13 16:41:00",
-            "scraper_path":"USA/CA/alameda_county/municipality/berkely/berkely_opendata_daily.py",
+            "scraper_path":"scrapers/CA/alameda_county/municipality/berkely/berkely_opendata_daily.py",
             "scraper_id":"cc7b61b333bd44d2824f451182c3ef01",
             "mapping":{
 
@@ -34,7 +34,7 @@
             "format_type": 4,
             "update_freq": 2,
             "last_modified": "2021-12-13 16:49:00",
-            "scraper_path":"USA/CA/alameda_county/municipality/berkely/berkely_opendata_6_month.py",
+            "scraper_path":"scrapers/CA/alameda_county/municipality/berkely/berkely_opendata_6_month.py",
             "scraper_id":"c0ee05e7320945d583caa6418407e77a",
             "mapping":{
 
@@ -49,7 +49,7 @@
               "format_type": 4,
               "update_freq": "",
               "last_modified": "2021-12-13 16:58:00",
-              "scraper_path":"USA/CA/alameda_county/municipality/berkely/berkely_opendata.py",
+              "scraper_path":"scrapers/CA/alameda_county/municipality/berkely/berkely_opendata.py",
               "scraper_id":"e6bed0f6582648119d22475b59b35113",
               "mapping":{
 
@@ -64,7 +64,7 @@
               "format_type": 4,
               "update_freq": 5,
               "last_modified": "2021-12-13 17:04:00",
-              "scraper_path":"USA/CA/alameda_county/municipality/berkely/berkely_weekly_opendata.py",
+              "scraper_path":"scrapers/CA/alameda_county/municipality/berkely/berkely_weekly_opendata.py",
               "scraper_id":"22ca1f0607494491b826a9a8604f04e4",
               "mapping":{
 

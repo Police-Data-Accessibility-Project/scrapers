@@ -1,4 +1,4 @@
-USA/IN/MARION
+scrapers/IN/MARION
 ===
 
 # Summary

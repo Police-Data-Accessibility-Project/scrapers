@@ -19,7 +19,7 @@
             "format_type": 5,
             "update_freq": 6,
             "last_modified": "2021-12-13 18:14:00 UTC",
-            "scraper_path":"USA/CA/humboldt_county/municipal/arcata/crimegraphics_bulletin.py",
+            "scraper_path":"scrapers/CA/humboldt_county/municipal/arcata/crimegraphics_bulletin.py",
             "scraper_id":"4465a3173d74449f8c84b40a968894ca",
             "mapping":{
 

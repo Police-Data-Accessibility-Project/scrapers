@@ -18,7 +18,7 @@
             "data_type": 7,
             "format_type": 1,
             "last_modified":"2021-06-02 14:16:00",
-            "scraper_path":"USA/CA/alameda_county/municipality/alameda/alameda_scraper.py",
+            "scraper_path":"scrapers/CA/alameda_county/municipality/alameda/alameda_scraper.py",
             "scraper_id":"e491f6da3097482d8e8e75b91d056b88",
             "mapping":[
             ]

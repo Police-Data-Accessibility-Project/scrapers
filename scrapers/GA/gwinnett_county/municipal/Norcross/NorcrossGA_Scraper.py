@@ -5,7 +5,7 @@ import urllib
 
 
 cur_dir = os.getcwd()
-save_dir = cur_dir + "/USA/GA/Norcross/pdfs/"
+save_dir = cur_dir + "/scrapers/GA/Norcross/pdfs/"
 
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)

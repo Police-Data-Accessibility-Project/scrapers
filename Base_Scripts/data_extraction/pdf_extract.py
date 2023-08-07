@@ -2,7 +2,7 @@ import tabula
 import os
 
 cur_dir = os.getcwd()
-directory = cur_dir + "/USA/GA/Norcross/pdfs/"
+directory = cur_dir + "/scrapers/GA/Norcross/pdfs/"
 folder = directory + "/tables/"
 """
 if not os.path.isdir(folder):

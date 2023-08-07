@@ -19,7 +19,7 @@
           "format_type": 3,
           "update_freq": 5,
           "last_modified": "2021-12-13 17:50:00",
-          "scraper_path":"USA/CA/contra_costa_county/municipality/antioch/antioch_arrest_scraper.py",
+          "scraper_path":"scrapers/CA/contra_costa_county/municipality/antioch/antioch_arrest_scraper.py",
           "scraper_id":"435bd58723b74a11a35a95348a57aa2f",
           "mapping":{
 
@@ -34,7 +34,7 @@
             "format_type": 3,
             "update_freq": 5,
             "last_modified": "2021-12-13 17:52:00",
-            "scraper_path":"USA/CA/contra_costa_county/municipality/antioch/CFS_scraper.py",
+            "scraper_path":"scrapers/CA/contra_costa_county/municipality/antioch/CFS_scraper.py",
             "scraper_id":"6fa64287ddcc4cb1b91741ec05463eb5",
             "mapping":{
 
@@ -49,7 +49,7 @@
             "format_type": 3,
             "update_freq": 4,
             "last_modified": "2021-12-2021 17:56:00",
-            "scraper_path":"USA/CA/contra_costa_county/municipality/antioch/antioch_scraper.py",
+            "scraper_path":"scrapers/CA/contra_costa_county/municipality/antioch/antioch_scraper.py",
             "scraper_id":"cbaa571c9f4e4b12809edf6a3e94f07b",
             "mapping":{
 

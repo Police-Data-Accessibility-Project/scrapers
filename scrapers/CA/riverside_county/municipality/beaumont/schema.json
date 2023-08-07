@@ -19,7 +19,7 @@
             "format_type": 3,
             "update_freq": 1,
             "last_modified": "2021-05-28 19:09:00",
-            "scraper_path":"USA\CA\riverside_county\municipality\beaumont\beaumont_stat_scraper2.py",
+            "scraper_path":"scrapers\CA\riverside_county\municipality\beaumont\beaumont_stat_scraper2.py",
             "scraper_id":"8a6379b35ba64347b56a3e94d3a5c626",
             "mapping":{
 

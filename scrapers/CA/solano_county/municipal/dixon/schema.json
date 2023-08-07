@@ -19,7 +19,7 @@
             "format_type": 3,
             "update_freq": 1,
             "last_modified": "2021-05-28 19:27:00",
-            "scraper_path":"USA/CA/solano_county/municipal/dixon/response_extractor.py",
+            "scraper_path":"scrapers/CA/solano_county/municipal/dixon/response_extractor.py",
             "scraper_id":"32ede372bfe245b9a80c0923e41fe63f",
             "mapping":{
 

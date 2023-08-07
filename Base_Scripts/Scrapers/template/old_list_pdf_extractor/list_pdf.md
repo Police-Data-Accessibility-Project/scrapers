@@ -2,10 +2,10 @@
 
 1. Clone the repo, either via the command line, `git clone https://github.com/Police-Data-Accessibility-Project/Scrapers.git` or from the website.
 2. `CD` into the `Scrapers` folder, and type `pip install -r requirements.txt` 
-3. Copy the extractor version you need, and the `configs.py` to the `COUNTRY/STATE/COUNTY` that you created for the precinct.
-4. For example, Alameda county, California, would be placed into the folder `Scrapers/USA/CA/alameda/`. 
+3. Copy the extractor version you need, and the `configs.py` to the `scrapers/STATE/COUNTY` that you created for the precinct.
+4. For example, Alameda county, California, would be placed into the folder `Scrapers/scrapers/CA/alameda/`. 
    
-   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/USA/CA/alameda) for the example.
+   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/scrapers/CA/alameda) for the example.
 
 Open the `configs.py` file that you copied:
 1. Set `webpage` to the page with the pdf lists
@@ -34,14 +34,14 @@ For example, `domain = "https://www.website.com"` would become `domain = "https:
  If the site has a set crawler time under it's `robots.txt`, set `sleep_time` to it's value. Otherwise, just leave it at `5`
 
 If this does not make sense, try checking the comments within the code.
- Working example can be found [here](https://github.com/CaptainStabs/Scrapers/blob/master/USA/CA/alameda/alameda_scraper.py)
+ Working example can be found [here](https://github.com/CaptainStabs/Scrapers/blob/master/scrapers/CA/alameda/alameda_scraper.py)
 
 # Versions:
 `list_pdf_extractor.py` : most basic of the scripts, mostly used for reference
 
 `list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/CaptainStabs/Scrapers/blob/master/common/bs_scrapers/get_files.py)
 
-`list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. See [golden_west_scraper.py](https://github.com/CaptainStabs/Scrapers/blob/master/USA/CA/golden_west_college/golden_west_scraper.py) for working example.
+`list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. See [golden_west_scraper.py](https://github.com/CaptainStabs/Scrapers/blob/master/scrapers/CA/golden_west_college/golden_west_scraper.py) for working example.
 
 
 This script has two functions, the first, `extract_info`, extracts the links containing documents, and saves the url and the document name to a file called `links.txt`

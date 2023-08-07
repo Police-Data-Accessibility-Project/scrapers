@@ -2,10 +2,10 @@
 
 1. Clone the repo, either via the command line, `git clone https://github.com/Police-Data-Accessibility-Project/Scrapers.git` or from the website.
 2. `CD` into the `Scrapers` folder, and type `pip3 install -r requirements.txt`
-3. Copy the extractor version you need, and the `configs.py` to the `COUNTRY/STATE/COUNTY` that you created for the precinct.
-4. For example, Alameda county, California, would be placed into the folder `Scrapers/USA/CA/alameda/`.
+3. Copy the extractor version you need, and the `configs.py` to the `scrapers/STATE/COUNTY` that you created for the precinct.
+4. For example, Alameda county, California, would be placed into the folder `Scrapers/scrapers/CA/alameda/`.
 
-   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/USA/CA/alameda_county/municipality/alameda) for the example.
+   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/scrapers/CA/alameda_county/municipality/alameda) for the example.
 
 Open the `configs.py` file that you copied:
 1. Set `webpage` to the page with the pdf lists
@@ -32,7 +32,7 @@ For example, `domain = "https://www.website.com"` would become `domain = "https:
  If the site has a set crawler time under it's `robots.txt`, set `sleep_time` to it's value. Otherwise, just leave it at `5`
 
 If this does not make sense, try checking the comments within the code.
- Working example can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/USA/CA/alameda_county/municipality/alameda/alameda_scraper.py)
+ Working example can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/scrapers/CA/alameda_county/municipality/alameda/alameda_scraper.py)
 
 ## Edge Cases:
 #### Dropdown lists:
@@ -48,7 +48,7 @@ Any dynamically loaded content will not be seen by these scrapers. If the conten
 
 `list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/common/utils/list_pdf_utils/get_files.py)
 
-`list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. See [golden_west_scraper.py](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/USA/CA/los_angeles_county/colleges/golden_west/golden_west_scraper.py) for working example.
+`list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. See [golden_west_scraper.py](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/scrapers/CA/los_angeles_county/colleges/golden_west/golden_west_scraper.py) for working example.
 
 
 This script has two functions, the first, `extract_info`, extracts the links containing documents, and saves the url and the document name to a file called `links.txt`
