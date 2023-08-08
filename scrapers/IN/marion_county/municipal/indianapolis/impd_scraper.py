@@ -2,7 +2,7 @@
 Police code is based on the request that is sent when you press download on cityprotect.com
 set start_year and start_month to the earliest year and month of data that is available
 
-Forked from https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/Base_Scripts/Scrapers/Cityprotect_base_scraper.py
+Forked from https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/scrapers/Base_Scripts/Scrapers/Cityprotect_base_scraper.py
 """
 
 import requests
