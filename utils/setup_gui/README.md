@@ -7,7 +7,7 @@ Follow the instructions in [`CONTRIBUTING.md`](https://github.com/Police-Data-Ac
 If you only want to create a scraper, you can install the bare minimum requirements for the creation gui by running:
 (from the PDAP-Scrapers folder)
 ```
-cd setup_gui
+cd utils/setup_gui
 ```
 ```
 python3 -m pip install -r min_requirements.txt
