@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
-from common.base_scrapers import crimegraphics_bulletin
+from scrapers.data_portals import crimegraphics_bulletin
 
 
 save_dir = "./data/bulletin/"

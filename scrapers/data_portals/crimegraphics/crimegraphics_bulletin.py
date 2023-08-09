@@ -9,16 +9,11 @@ from tqdm import tqdm
 import time
 from pathlib import Path
 
-# This is a hack that loads that root common folder like a module (without you expressly needing to install it).
-# I'm going to be honest, I have no clue why it uses parents[1] while the list_pdf scrapesr use parents[3]
-p = Path(__file__).resolve().parents[1]
+p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 
-# import hash_comparer, page_hasher, and page_update from common/utils/website_hasher/page_update.py
 from common.utils import hash_comparer, page_hasher, page_update
-
-# import data_parser from common/crimegraphics/utils/data_parser.py
-from crimegraphics.utils import data_parser
+from scrapers.data_portals.crimegraphics.utils import data_parser
 
 # this function is used for gathering time stats
 def function_timer(stats):
