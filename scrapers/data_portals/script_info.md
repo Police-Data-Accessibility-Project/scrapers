@@ -21,3 +21,5 @@ Scraper for `crimegraphics` sites (only really used in California).
 These are the most commonly used scrapers. They will work for the majority of departments. They will scrape PDFs, DOCs, and XLS.
 
 [list_pdf_scrapers Readme](https://github.com/Police-Data-Accessibility-Project/Scrapers/blob/master/scrapers/Base_scripts/Scrapers/list_pdf_extractors/list_pdf_readme.md)
+
+**Note for Kylie to go change these links later**
