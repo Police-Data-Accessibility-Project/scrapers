@@ -19,9 +19,9 @@ import csv
 # Support for high resolution screens
 os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
 
-ui_file = "common/gui/scraper_ui.ui"
-error_modal = "common/gui/error_modal.ui"
-success_modal = "common/gui/success_modal.ui"
+ui_file = "gui/scraper_ui.ui"
+error_modal = "gui/error_modal.ui"
+success_modal = "gui/success_modal.ui"
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
