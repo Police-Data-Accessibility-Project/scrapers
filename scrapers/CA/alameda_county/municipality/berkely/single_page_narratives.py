@@ -3,7 +3,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
-from common import single_pdf_scraper
+from utils.pdf.list_pdf_scrapers import single_pdf_scraper
 
 url_2 = [
     "https://data.cityofberkeley.info/api/views/k2nh-s5h5/files/tgCx9-LwzyULzas6ZSxGdPmc1f-0euS2Y6EVOrNH940?download=true&filename=01_Page_Narrative_Crime.pdf",

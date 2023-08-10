@@ -5,7 +5,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
-from common import list_pdf_v2
+from utils.pdf.list_pdf_scrapers import list_pdf_v2
 
 save_dir = "./data/"
 
