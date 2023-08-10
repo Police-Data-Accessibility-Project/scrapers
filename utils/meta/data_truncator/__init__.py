@@ -1,1 +1,1 @@
-from .data_truncater import data_truncator
+from .truncate import data_truncator
