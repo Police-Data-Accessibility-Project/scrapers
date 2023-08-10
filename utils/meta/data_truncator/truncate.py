@@ -1,14 +1,11 @@
 import os
 
-# filename = "./data/vehicle_ped_investigations/2020-present/2021_05_11_2020-present.csv"
-# dir = "./"
 
-
-def data_truncater(dir):
+def data_truncator(dir):
     """Truncate the data so as to keep repo small"""
     for root, dirs, files in os.walk(dir):
         print(files)
-        # print(files)
+
         for i in range(len(files)):
             if files[i].endswith(".csv"):
                 filename = f"{root}/{files[i]}"
