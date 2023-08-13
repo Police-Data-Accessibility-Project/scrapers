@@ -7,7 +7,7 @@ only `.us` and `.gov`, see further improvements below.)
 
 Getting Started
 ------------
-Navigate to the base directory here, `PDAP-Scrapers/common/utils/sitemap_scraper/`.
+Navigate to the base directory here, `PDAP-Scrapers/utils/sitemap_scraper/`.
 
 In Mac/Linux, create a new virtual environment and activate it.
 

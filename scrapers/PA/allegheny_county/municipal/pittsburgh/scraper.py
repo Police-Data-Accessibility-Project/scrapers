@@ -6,7 +6,7 @@ p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 
 from scrapers.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
-from common.utils import get_xls
+from utils.file_downloaders.downloaders import get_xls
 
 save_url = [
     [

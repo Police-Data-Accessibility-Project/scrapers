@@ -6,7 +6,7 @@ import mimetypes
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 
-from common.utils import get_pdf
+from utils.file_downloaders.downloaders import get_pdf
 
 
 def single_pdf_scraper(

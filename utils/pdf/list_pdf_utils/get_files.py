@@ -9,10 +9,10 @@ import traceback
 from pathlib import Path
 import logging
 
-p = Path(__file__).resolve().parents[2]
+p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 
-from common.utils.file_downloaders import get_doc, get_pdf, get_xls
+from utils.file_downloaders.downloaders import get_doc, get_pdf, get_xls
 
 
 def get_files(
