@@ -3,7 +3,7 @@ from typing import Optional, Sequence
 from enforce_typing import enforce_types
 from dataclass_builder import dataclass_builder
 from dataclasses import dataclass
-from common.pii import Pii
+from utils.meta.pii.Pii import Pii
 
 
 @enforce_types

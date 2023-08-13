@@ -12,8 +12,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException, TimeoutException
 
 from common.captcha.benchmark.BenchmarkAdditionSolver import CaptchaSolver
-from common.pii import Pii
-from common.record import Charge, ChargeBuilder
+from utils.meta.pii.Pii import Pii
+from utils.meta.record.record import Charge, ChargeBuilder
 import utils.ScraperUtils as ScraperUtils
 from utils.ScraperUtils import BenchmarkRecordBuilder
 

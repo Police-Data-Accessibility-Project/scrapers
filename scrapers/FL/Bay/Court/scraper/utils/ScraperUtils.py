@@ -10,8 +10,8 @@ from pathvalidate import sanitize_filename
 from requests.exceptions import HTTPError, Timeout
 from requests_toolbelt.utils import dump
 import requests
-from common.pii import Pii
-from common.record import Record
+from utils.meta.pii.Pii import Pii
+from utils.meta.record.record import Record
 
 
 @enforce_types

@@ -1,5 +1,5 @@
 from absl.testing import flagsaver
-from common.pii import Pii
+from utils.meta.pii.Pii import Pii
 
 
 class TestPiiWrappers:
