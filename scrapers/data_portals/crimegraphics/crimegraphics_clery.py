@@ -10,11 +10,10 @@ import time
 from datetime import date
 from pathlib import Path
 
-
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 
-from common.utils import hash_comparer, page_hasher, page_update
+from utils.website_hasher.page_update import hash_comparer, page_hasher, page_update
 
 # this function is used for gathering time stats
 def function_timer(stats):

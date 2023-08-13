@@ -9,7 +9,7 @@ import urllib
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 
-from common.utils import page_update
+from utils.website_hasher.page_update import page_update
 
 
 def opendata_scraper(
