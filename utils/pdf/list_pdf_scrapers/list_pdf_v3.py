@@ -12,7 +12,7 @@ import datetime
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 from common.utils import get_files
-from common.utils import extract_info
+from utils.pdf.list_pdf_utils.extract_info import extract_info
 from common.utils.metadata import create_metadata
 
 """
