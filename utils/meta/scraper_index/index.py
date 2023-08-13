@@ -1,5 +1,7 @@
 import csv
 import re
+import sys
+from pathlib import Path
 from collections import OrderedDict
 
 
@@ -9,7 +11,7 @@ def get_data():
     Returns:
         list: List of dictionaries of data sources sorted by state code.
     """
-    with open("common/utils/scraper_index/PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
+    with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
         reader = list(csv.DictReader(data_sources))
         # Sort by state code
         reader.sort(key=lambda data_source: data_source["state"])
@@ -34,7 +36,9 @@ def in_repo_filter(data_source):
 
 def write_md():
     """Create and write to the markdown file"""
-    md = open("INDEX.md", "w")
+    filepath = Path(__file__).resolve().parents[3]
+
+    md = open(f"{filepath}/INDEX.md", "w")
     md.write("# Scraper Index\n\n")
     md.write("[Scrapers in this repo](#scrapers-in-this-repo)\n\n")
     md.write("[Scrapers not in this repo](#scrapers-not-in-this-repo)\n")
