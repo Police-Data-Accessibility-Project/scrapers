@@ -2,7 +2,7 @@ import os
 import requests
 import shutil
 
-from common.v2.utils.logging import LogOwnerMixin
+from utils.v2.utils.logging import LogOwnerMixin
 
 class Downloader(LogOwnerMixin, object):
     def process(self, url, save_dir, local_filename=None, overwrite=False):
