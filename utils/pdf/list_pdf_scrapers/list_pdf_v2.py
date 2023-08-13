@@ -13,7 +13,7 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 from utils.pdf.list_pdf_utils.get_files import get_files
 from utils.pdf.list_pdf_utils.extract_info import extract_info
-from common.utils.metadata import create_metadata
+from utils.meta.metadata.metadata import create_metadata
 
 """
 configs = {
