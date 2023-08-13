@@ -8,7 +8,6 @@ import sys
 from pathlib import Path
 import datetime
 
-# This is a hack that basically loads that root common folder like a module (without you expressly needing to install it).
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 from utils.pdf.list_pdf_utils.get_files import get_files
