@@ -5,7 +5,7 @@ from pathlib import Path
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 
-from common import opendata_scraper
+from scrapers.data_portals.opendata.opendata_scraper import opendata_scraper
 
 save_url = [
     [
