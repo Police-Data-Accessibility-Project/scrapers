@@ -9,7 +9,7 @@ from pathlib import Path
 
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
-from common.utils import get_files
+from utils.pdf.list_pdf_utils.get_files import get_files
 
 webpage = "https://www.goldenwestcollege.edu/public-safety/statistics/index.html"
 """

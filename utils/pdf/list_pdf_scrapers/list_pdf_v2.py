@@ -11,7 +11,7 @@ import datetime
 # This is a hack that basically loads that root common folder like a module (without you expressly needing to install it).
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
-from common.utils import get_files
+from utils.pdf.list_pdf_utils.get_files import get_files
 from utils.pdf.list_pdf_utils.extract_info import extract_info
 from common.utils.metadata import create_metadata
 
@@ -102,7 +102,7 @@ def list_pdf_v2(
     get_files(save_dir, sleep_time, name_in_url=name_in_url, add_date=add_date)
 
     if extract_tables:
-        from common.utils import pdf_extract
+        from utils.pdf.list_pdf_utils.pdf_extract import pdf_extract
 
         try:
             # Pass save_dir to pdf_extract's pdf_directory param, and retrieve csv_dir from the configs
