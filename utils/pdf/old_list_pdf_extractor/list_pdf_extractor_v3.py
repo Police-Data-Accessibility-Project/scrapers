@@ -10,8 +10,8 @@ from configs import non_important
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + "/common")
-from bs_scrapers.get_files import get_files
+sys.path.insert(1, str(p))
+from utils.pdf.list_pdf_utils.get_files import get_files
 
 save_dir = "./data/"
 

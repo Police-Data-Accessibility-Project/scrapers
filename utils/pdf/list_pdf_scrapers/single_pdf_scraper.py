@@ -40,7 +40,6 @@ def single_pdf_scraper(
         # Set file_name to file name provided to single_pdf_scraper as parameter "filename" (defaults to null)
         file_name = filename
 
-    # the following function is imported from ./common/utils/list_pdf_utils/
     get_pdf(
         save_dir, file_name, url_2, debug=False, sleep_time=0, try_overwite=False, no_overwrite=True, add_date=True,
     )

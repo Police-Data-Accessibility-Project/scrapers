@@ -21,7 +21,7 @@ Right now, this requires some Python knowledge and patience. We're in the early 
 If you do something cool or interesting or fun with your shiny new data, share that in our [Discord](https://discord.gg/wMqex8nKZJ). Want to kick around an idea or share something that doesn't work as expected? Discord's a great place for that, too.
 
 # How to contribute
-To write a scraper, start with [CONTRIBUTING.md](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/CONTRIBUTING.md). Be sure to check out the [/common folder](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/common/)!
+To write a scraper, start with [CONTRIBUTING.md](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/CONTRIBUTING.md). Be sure to check out the [/utils folder](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/utils/)!
 
 For everything else, start with [docs.pdap.io](https://docs.pdap.io/).
 

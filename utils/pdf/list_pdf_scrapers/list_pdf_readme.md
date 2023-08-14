@@ -37,7 +37,7 @@ If this does not make sense, try checking the comments within the code. (if you 
 # Versions:
 `list_pdf_extractor.py` : most basic of the scripts, mostly used for reference
 
-`list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/common/utils/list_pdf_utils/get_files.py)
+`list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/utils/list_pdf_utils/get_files.py)
 
 `list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. ~~See [golden_west_scraper.py](https://github.com/CaptainStabs/Scrapers/blob/master/scrapers/CA/golden_west_college/golden_west_scraper.py) for working example.~~
 
@@ -47,7 +47,7 @@ The second function, `get_files`, reads the link and name from `links.txt` and d
 
 #### Arguments:
 
-As the `list_pdf_scrapers` all use a common modules, they accept the same arguments.
+As the `list_pdf_scrapers` all use a common module, they accept the same arguments.
 
 * `configs` : Required - comes with the template script, so no need to worry about it.
 * `save_dir` : Required - comes with the template script, so no need to worry about it.
@@ -55,7 +55,7 @@ As the `list_pdf_scrapers` all use a common modules, they accept the same argume
 * `flavor` : Optional - Defaults to `stream`; (Used when `extract_tables` is True) accepted arguments are `stream` and `lattice`. Useful if the extracted data is jumbled (may not fix everything though).
 * `extract_tables` : Optional - Defaults to False; if set to True, will attempt to extract tables from pdfs using [Camelot](https://camelot-py.readthedocs.io/en/master/).
 
-The following 5 arguments are all passed to the `get_files` module. It's readme is located [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/common/utils/list_pdf_utils/get_files_README.md)
+The following 5 arguments are all passed to the `get_files` module. It's readme is located [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/utils/list_pdf_utils/get_files_README.md)
 
 * `name_in_url` : Optional - Defaults to True; As the name implies, if the document name is **NOT** in the url/path or in the `href`
 

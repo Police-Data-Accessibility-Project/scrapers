@@ -92,7 +92,6 @@ def list_pdf_v2(
 
     print(" [*] Extracting info...")
 
-    # the following two functions are imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
     extract_info(soup, configs, extract_name=extract_name, configs_file=configs_file, debug=debug)
 

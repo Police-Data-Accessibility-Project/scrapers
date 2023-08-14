@@ -7,12 +7,6 @@ import time
 import sys
 import traceback
 
-# from pathlib import Path
-#
-# p = Path(__file__).resolve().parents[5]
-# sys.path.insert(1, str(p))
-# from common import extract_info
-
 
 configs = {
     "webpage": "https://www.sanfranciscopolice.org/your-sfpd/published-reports/arrests-use-force-and-stop-data-admin-code-96a",

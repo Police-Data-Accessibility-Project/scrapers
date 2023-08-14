@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './common/gui/error_modal.ui'
+# Form implementation generated from reading ui file './gui/error_modal.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #

@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 p = Path(__file__).resolve().parents[3]
-sys.path.insert(1, str(p) + "/common")
+sys.path.insert(1, str(p) + "/utils")
 from pdf_extraction.pdf_to_csv_cv import process_file
 
 cur_dir = os.getcwd()

@@ -110,7 +110,6 @@ def list_pdf_v3(
 
     print(" [*] Extracting info.")
 
-    # the following function is imported from ./common/utils/list_pdf_utils/
     # send soup, the configs, and the setting of extract_name to the extract_info module
     extract_info(
         soup, configs, extract_name=extract_name, name_in_url=name_in_url, configs_file=configs_file,
@@ -184,7 +183,6 @@ def list_pdf_v3(
             pass
         os.rename("2url_name.txt", "url_name.txt")
 
-    # the following function is imported from ./common/utils/list_pdf_utils/
     # call get_files and pass parameters supplied to `list_pdf_v3` to get_files
     get_files(
         save_dir,

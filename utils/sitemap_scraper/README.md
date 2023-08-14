@@ -25,7 +25,7 @@ $pip install -r requirements.txt
 
 Be sure that your list of host URLs is available and contains the URLs you wish to scrape. 
 There is a sample list of URLs provided here: 
-`PDAP-Scrapers/common/utils/sitemap_scraper/sample_host_sites.txt`
+`PDAP-Scrapers/utils/sitemap_scraper/sample_host_sites.txt`
 
 Which looks like:
 
