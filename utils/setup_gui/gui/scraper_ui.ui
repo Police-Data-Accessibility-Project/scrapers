@@ -305,12 +305,12 @@ list_pdf_v3 allows filtering links by common unwanted words.</string>
       </property>
       <item>
        <property name="text">
-        <string>list_pdf_v2.py</string>
+        <string>list_pdf_v2_template.py</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>list_pdf_v3.py</string>
+        <string>list_pdf_v3_template.py</string>
        </property>
       </item>
      </widget>

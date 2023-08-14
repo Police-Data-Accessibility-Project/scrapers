@@ -269,8 +269,6 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Lists start at 0, table doesn't
         selected_agency = selected_index - 1
 
-        template_folder = "Base_Scripts"
-
         working_folder = self.scraper_save_dir
         working_folder = os.path.normpath(working_folder)
 
@@ -278,7 +276,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         scraper_save_dir_cwd = os.getcwd() + pathsep + working_folder
 
         # Copy the schema to the scraper's directory
-        schema_file = os.path.normpath(template_folder) + pathsep + "schema.json"
+        schema_file = "schema_template.json"
         template_schema = os.getcwd() + pathsep + schema_file
         schema_save_path = scraper_save_dir_cwd + pathsep + "schema.json"
 
@@ -532,12 +530,12 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Copy the scraper file
         scraper_name_input = self.scraper_name_input_opendata.text()
         self.scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
-        template_folder = "./Base_Scripts/Scrapers/opendata/"
+        template_folder = str(Path(__file__).parents[2]) + "/scrapers/data_portals/opendata/template/"
         self.full_path = self.scraper_save_dir + self.scraper_name
         logging.info("full_path: " + str(self.full_path))
 
         # Copy and rename the scraper
-        scraper_input_text = "opendata_scraper.py"
+        scraper_input_text = "opendata_scraper_template.py"
         copyfile(template_folder + scraper_input_text, self.full_path)
 
         self.tabWidget.setTabEnabled(5, True)
@@ -631,9 +629,9 @@ class ScraperGui(QtWidgets.QMainWindow):
         save_dir_input = self.save_dir_input_cg.text()
 
         if self.choose_cg_input.currentIndex() == 0:
-            cg_type = "crimegraphics_bulletin.py"
+            cg_type = "crimegraphics_bulletin_template.py"
         elif self.choose_cg_input.currentIndex() == 1:
-            cg_type = "crimegraphics_clery.py"
+            cg_type = "crimegraphics_clery_template.py"
 
         self.scraper_save_dir = f"./{country_input}/{state_input}/{county_input}/{department_type_input}/{city_input}/"
         self.full_path = self.scraper_save_dir + cg_type
@@ -642,7 +640,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         if not os.path.exists(self.scraper_save_dir):
             os.makedirs(self.scraper_save_dir)
 
-        cg_template_folder = "./Base_Scripts/Scrapers/crimegraphics/"
+        cg_template_folder = str(Path(__file__).parents[2]) + "/scrapers/data_portals/crimegraphics/template/"
         # configs = {
         #     "url": "",
         #     "department_code": "",
@@ -698,7 +696,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Copy the scraper file
         scraper_name_input = self.scraper_name_input.text()
         self.scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
-        template_folder = "./Base_Scripts/Scrapers/list_pdf_scrapers/"
+        template_folder = str(Path(__file__).parent.parent) + "/pdf/list_pdf_scrapers/template/"
 
         # Step 1
         scraper_input_text = self.scraper_input.currentText()  # Get the selected scraper text
