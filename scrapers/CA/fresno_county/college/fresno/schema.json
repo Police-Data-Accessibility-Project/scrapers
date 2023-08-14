@@ -1,0 +1,30 @@
+{
+    "agency_id": "3255cb899684443ab5add9135738a915",
+    "agency_info":{
+        "agency_name":"Fresno State University Police Department",
+        "agency_coords":{"lat": "36.81549835205078", "lng":"-119.7482681274414"},
+        "agency_type": 5,
+        "city": "Fresno",
+        "state": "CA",
+        "zip":"93740",
+        "county_fips":"06019"
+    },
+    "data": [
+        {
+            "dataset_id": "",
+            "url":"https://www.fresnostate.edu/adminserv/police/documents/",
+            "full_data_location":"data",
+            "source_type": 2,
+            "data_type": 25,
+            "format_type": 3,
+            "update_freq": 6,
+            "last_modified": "2021-12-13 17:08:00",
+            "scraper_path":"scrapers/CA/fresno_county/college/fresno/fresno_daily_scraper.py",
+            "scraper_id":"fa6b8224706c43288b310ad72dd7f030",
+            "mapping":{
+
+            }
+        }
+    ]
+
+}

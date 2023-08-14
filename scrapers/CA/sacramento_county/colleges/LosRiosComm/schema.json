@@ -1,0 +1,45 @@
+{
+    "agency_id": "cf92e569457b4950b5aea9cc9549b99c",
+    "agency_info":{
+        "agency_name":"Los Rios Community College Police Department",
+        "agency_coords":{"lat": "38.54246139526367", "lng":"-121.48689270019531"},
+        "agency_type": 5,
+        "city": "Sacramento",
+        "state": "CA",
+        "zip":"95822",
+        "county_fips":"06067"
+    },
+    "data": [
+        {
+            "dataset_id": "1bf970474a2724441bc3357f8565616f",
+            "url":"https://police.losrios.edu/clery",
+            "full_data_location":"data/annual/",
+            "source_type": 2,
+            "data_type": 24,
+            "format_type": 3,
+            "update_freq": 1,
+            "last_modified": "2021-05-28 19:12:00",
+            "scraper_path":"scrapers/CA/sacramento_county/colleges/LosRiosComm/annual_report_scraper.py",
+            "scraper_id":"a48cc21561a540ab82f16def59bf46d3",
+            "mapping":{
+
+            }
+        },
+        {
+            "dataset_id": "30dfa376489c43af21ad78b146e963f5",
+            "url":"https://lrpd.crimegraphics.com/2013/default.aspx",
+            "full_data_location":"data/daily_bulletin/",
+            "source_type": 3,
+            "data_type": 25,
+            "format_type": 5,
+            "update_freq": 6,
+            "last_modified": "2021-05-28 19:13:00",
+            "scraper_path":"scrapers/CA/sacramento_county/colleges/LosRiosComm/annual_report_scraper.py",
+            "scraper_id":"49668981659849029f219b976b0bcdaf",
+            "mapping":{
+
+            }
+          }
+    ]
+
+}

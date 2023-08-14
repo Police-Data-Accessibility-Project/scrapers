@@ -29,7 +29,7 @@ You can add a scraper to our collection, or create your own within your personal
 
 If you'd like PDAP to host it, there are two options.
 
-You can contribute it here, following our conventions, and people can find and use it as they please. Please stick to the format of `USA/$STATE/$COUNTY/$MUNICIPALITY/$RECORD_TYPE`. If there is no specific county or municipality, it can live in the most relevant higher-level directory.
+You can contribute it here, following our conventions, and people can find and use it as they please. Please stick to the format of `scraper/$STATE/$COUNTY/$MUNICIPALITY/$RECORD_TYPE`. If there is no specific county or municipality, it can live in the most relevant higher-level directory.
 
 Or, if there's a compelling reason to have it running regularly -- there's a specific request to use the data, say, or the data gets overwritten periodically -- help us understand that. We will consider hosting it in a separate PDAP repo that also includes automated data collection, such as via [GitHub Actions](https://docs.github.com/en/actions).
 
