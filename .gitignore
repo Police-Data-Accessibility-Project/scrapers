@@ -2,7 +2,7 @@
 /Counties/Florida/Bay County/Scraper/attachments/*
 /Counties/Florida/Bay County/Scraper/captcha/correct/*
 /Counties/Florida/Bay County/Scraper/captcha/incorrect/*
-/USA/CA/san_bernardino_county/data
+/scrapers/CA/san_bernardino_county/data
 
 # Ignore dolt repos (cloned from ETL)
 **/datasets

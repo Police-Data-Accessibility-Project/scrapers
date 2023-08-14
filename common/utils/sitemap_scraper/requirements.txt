@@ -1,2 +1,0 @@
-scrapy~=2.7.1
-xmltodict~=0.13.0
