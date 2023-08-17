@@ -7,10 +7,12 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 import pandas as pd
 from tqdm import tqdm
+from from_root import from_root
 
-p = Path(__file__).resolve().parents[5]
+p = from_root('CODE_OF_CONDUCT.md').parent
 sys.path.insert(1, str(p))
-from scrapers.data_portals.crimegraphics import crimegraphics_clery
+
+from scrapers.data_portals.crimegraphics.crimegraphics_clery import crimegraphics_clery
 
 
 save_dir = "./data/"
