@@ -1,8 +1,8 @@
-import os
 import sys
-from pathlib import Path
 
-p = Path(__file__).resolve().parents[5]
+from from_root import from_root
+
+p = from_root('CODE_OF_CONDUCT.md').parent
 sys.path.insert(1, str(p))
 
 from scrapers.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
