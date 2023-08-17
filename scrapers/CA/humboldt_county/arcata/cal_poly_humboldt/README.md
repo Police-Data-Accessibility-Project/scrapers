@@ -1,59 +1,30 @@
-This readme should give people everything they need to maintain the scraper.
+# Source Info
 
-# Summary
-Added to Datasets. Agency ID: 02342e64a2c011eb9c9b8c8590d4a7fc
-Is there anything in particular of note with the scraping landscape in this jurisdiction?
-Time period of data: Previous two months.
+## Summary
 
-_Remove fields that were collected_
-## Fields that could not be obtained within the PDAP legal guidelines:
-**Note:** the naming convention for these fields may not be consistent across data sources
-* _id
-* _state
-* _county
-* ~~CaseNum~~
-* FirstName
-* MiddleName
-* LastName
-* Suffix
-* DOB
-* Race
-* Sex
-* ArrestDate
-* FilingDate
-* ~~OffenseDate~~
-* DivisionName
-* CaseStatus
-* DefenseAttorney
-* PublicDefender
-* Judge
-* ChargeCount
-* ChargeStatute
-* ~~ChargeDescription~~
-* ~~ChargeDisposition~~
-* ~~ChargeDispositionDate~~
-* ChargeOffenseDate
-* ChargeCitationNum
-* ChargePlea
-* ChargePleaDate
-* ArrestingOfficer
-* ArrestingOfficerBadgeNumber
+Scrapes daily crime/fire log from the Cal Poly Humbolt Police Department
 
-# Other Fields:
+## Data source location
 
-* Location
-* ReportDate
+Main page: https://police.humboldt.edu/ > Top horizontal menu bar, furthest to the right, HSU Crime Map
 
-# How to locate the data source
-Main page: https://police.humboldt.edu/ > Top horizontal menu bar, furthest to the right, `HSU Crime Map`
+## Data refresh rate
 
-# Data refresh rate
-Updates daily, but only if there was a crime.
+Daily
 
-# Sample response
-In the folder, include a JSON payload, a PDF, or anything that is representative of what kind of data we get back when we run this scraper. Truncate it if necessary.
+## Legal
 
-# Legal
-There is no ToS for crimegraphics
+>This website is provided as a public service by the Humboldt State University Police Department. In an effort to protect victim privacy this website does not provide information regarding juvenile offenders, or specific information regarding calls for service that are sensitive in nature. The Department does not guarantee the accuracy, completeness, or timeliness of the information contained on this website regarding specific incidents, crimes, or people with respect to the omission of information that may have not yet been filed or is pending filing with a court of jurisdiction relating to criminal offenses.
 
-# Data uniformity
+## Fields being collected:
+
+* `Nature`: Nature of incident
+* `Case/Incident #`
+* `Reported`: Time incident reported
+* `Occurred`: Time incident occurred
+* `Location`
+* `Disposition`: Action taken by authorities
+
+## Sample response
+
+See `./data` folder
