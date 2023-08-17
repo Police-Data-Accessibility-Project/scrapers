@@ -1,11 +1,12 @@
 import sys
-import os
-from pathlib import Path
 
-p = Path(__file__).resolve().parents[5]
+from from_root import from_root
+
+p = from_root('CODE_OF_CONDUCT.md').parent
 sys.path.insert(1, str(p))
 
-from utils.meta import data_truncator, field_extractor
+from utils.meta.all_fields_extractor.field_extractor import field_extractor
+from utils.meta.data_truncator.truncate import data_truncator
 
 directory = "./"
 
