@@ -1,5 +1,7 @@
 # Source info
 
+Scrapes data from the Pittsburgh Bureau of Police
+
 ## Data refresh rate
 
 [Police Incident Blotter Archive](https://data.wprdc.org/dataset/uniform-crime-reporting-data): Daily

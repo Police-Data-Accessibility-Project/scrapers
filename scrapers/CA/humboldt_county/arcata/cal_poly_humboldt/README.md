@@ -1,7 +1,5 @@
 # Source Info
 
-## Summary
-
 Scrapes daily crime/fire log from the Cal Poly Humbolt Police Department
 
 ## Data source location
