@@ -2,11 +2,12 @@
 
 # Welcome!
 
-This is the GitHub home for the [Police Data Accessibility Project](https://pdap.io). We're assembling a toolkit and space for shared resources. People all over the country use these resources to collect public records about the U.S. criminal legal system.
+This is the GitHub home for web scraping at the [Police Data Accessibility Project](https://pdap.io).
 
-This repository is also a guide to the countless ways we use scraper code to access data. ([What do we mean by web scraper?](https://docs.pdap.io/activities/terms-and-definitions))
+[(What do we mean by web scraping?)](https://docs.pdap.io/activities/terms-and-definitions)
 
-> Note: This repo is a work in progress, especially the structure of its utilities. Trust what you read here!
+## How PDAP works
+This repo is part of a toolkit for people all over the country to learn about our police systems. Check out our [software development roadmap](https://github.com/orgs/Police-Data-Accessibility-Project/projects/24) and [high-level technical diagram](https://www.figma.com/file/19axhLZb0ejtlOWSFZcNAc/High-level-technical-diagram?type=whiteboard&node-id=0%3A1&t=Q51wVP3gfK4aSlED-1) to learn more about our ecosystem.
 
 # How to run a scraper
 Right now, this requires some Python knowledge and patience. We're in the early stages: there's no automated scraper farm or fancy GUI yet. Scrapers can be run locally as needed.
