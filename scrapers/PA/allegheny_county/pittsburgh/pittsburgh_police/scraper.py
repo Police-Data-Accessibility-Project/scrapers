@@ -11,7 +11,7 @@ from utils.file_downloaders.downloaders import get_xls
 save_url = [
     [
         "incident_blotter_archive/2005-2015/", 
-        "https://data.wprdc.org/dataset/5e6711a3-90e5-457d-8c73-445fb5f363e2/resource/391942e2-25ef-43e4-8263-f8519fa8aada/download/archive-police-blotter.csv"
+        "https://data.wprdc.org/datastore/dump/391942e2-25ef-43e4-8263-f8519fa8aada"
     ],
     [
         "incident_blotter_archive/2016-present/",
