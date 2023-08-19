@@ -109,7 +109,7 @@ Some data (such as dates and locations) may be ommitted to protect ongoing inves
 
 ## Data uniformity
 
-Some data only had .xls files available for download while the rest are in .csv format.
+Some data only has .xls files available for download while the rest are in .csv format.
 
 ## Sample response
 
