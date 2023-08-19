@@ -2,6 +2,8 @@
 
 Copied and modified from `/scrapers/PA/allegheny_county/pittsburgh/pittsburgh_police`
 
+cd into `/example_scraper_1/` and run `scraper.py` to see how it works!
+
 Scrapes data from the Pittsburgh Bureau of Police
 
 ## Data refresh rate
