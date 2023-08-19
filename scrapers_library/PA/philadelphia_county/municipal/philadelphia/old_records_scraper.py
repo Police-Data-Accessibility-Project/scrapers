@@ -5,7 +5,7 @@ from pathlib import Path
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 
-from scrapers.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
+from scrapers_library.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
 
 # Change to what you need (remove what you don't)
 url_save = [
@@ -59,7 +59,7 @@ url_save = [
     ],
     [
         "crime_incidents/2012/",
-        "https://phl.carto.com/api/v2/sql?filename/home/kali/github/PDAP-Scrapers/scrapers/PA/philadelphia_county/municipal/philadelphia=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272013-01-01%27%20AND%20dispatch_date_time%20%3C%20%272014-01-01%27",
+        "https://phl.carto.com/api/v2/sql?filename/home/kali/github/PDAP-Scrapers/scrapers_library/PA/philadelphia_county/municipal/philadelphia=incidents_part1_part2&format=csv&skipfields=cartodb_id,the_geom,the_geom_webmercator&q=SELECT%20*%20,%20ST_Y(the_geom)%20AS%20lat,%20ST_X(the_geom)%20AS%20lng%20FROM%20incidents_part1_part2%20WHERE%20dispatch_date_time%20%3E=%20%272013-01-01%27%20AND%20dispatch_date_time%20%3C%20%272014-01-01%27",
     ],
     [
         "crime_incidents/2013/",

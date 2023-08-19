@@ -19,7 +19,7 @@
             "format_type": 3,
             "update_freq": 1,
             "last_modified": "2021-05-28 19:30:00",
-            "scraper_path":"scrapers\CA\tehama_county\colleges\el_camino\el_camino_annual_scraper.py",
+            "scraper_path":"scrapers_library\CA\tehama_county\colleges\el_camino\el_camino_annual_scraper.py",
             "scraper_id":"5aa979813afa4c0c99857f15532b6866",
             "mapping":{
 

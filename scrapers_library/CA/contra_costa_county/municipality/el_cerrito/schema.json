@@ -19,7 +19,7 @@
             "format_type": 3,
             "update_freq": 1,
             "last_modified": "2021-12-13 18:00:00",
-            "scraper_path":"scrapers/CA/contra_costa_county/municipality/el_cerrito/admin_investigation_scraper.py",
+            "scraper_path":"scrapers_library/CA/contra_costa_county/municipality/el_cerrito/admin_investigation_scraper.py",
             "scraper_id":"71fbe0ee7e244a6f9eb7a3c24945a96c",
             "mapping":{
 

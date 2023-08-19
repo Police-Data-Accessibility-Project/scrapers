@@ -530,7 +530,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         # Copy the scraper file
         scraper_name_input = self.scraper_name_input_opendata.text()
         self.scraper_name = scraper_name_input.replace(" ", "_") + "_scraper.py"
-        template_folder = str(Path(__file__).parents[2]) + "/scrapers/data_portals/opendata/template/"
+        template_folder = str(Path(__file__).parents[2]) + "/scrapers_library/data_portals/opendata/template/"
         self.full_path = self.scraper_save_dir + self.scraper_name
         logging.info("full_path: " + str(self.full_path))
 
@@ -640,7 +640,7 @@ class ScraperGui(QtWidgets.QMainWindow):
         if not os.path.exists(self.scraper_save_dir):
             os.makedirs(self.scraper_save_dir)
 
-        cg_template_folder = str(Path(__file__).parents[2]) + "/scrapers/data_portals/crimegraphics/template/"
+        cg_template_folder = str(Path(__file__).parents[2]) + "/scrapers_library/data_portals/crimegraphics/template/"
         # configs = {
         #     "url": "",
         #     "department_code": "",

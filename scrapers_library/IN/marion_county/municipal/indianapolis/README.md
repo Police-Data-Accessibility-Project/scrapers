@@ -1,4 +1,4 @@
-scrapers/IN/MARION
+scrapers_library/IN/MARION
 ===
 
 # Summary

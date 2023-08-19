@@ -36,7 +36,7 @@ Indiana Court Data can be found [here](https://public.courts.in.gov/home/portal)
 More high volume / main city departments like Carmel or IMPD update more frequently (almost daily) than the rural departments, such as Greensburg (updates at the end of the year).
 
 # Sample response
-In `scrapers/IN/marion/data`
+In `scrapers_library/IN/marion/data`
 
 # Legal
 Is there anything specific to this jurisdiction we should know as we work?

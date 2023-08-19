@@ -19,7 +19,7 @@
             "format_type": 3,
             "update_freq": 6,
             "last_modified": "2021-12-13 17:08:00",
-            "scraper_path":"scrapers/CA/fresno_county/college/fresno/fresno_daily_scraper.py",
+            "scraper_path":"scrapers_library/CA/fresno_county/college/fresno/fresno_daily_scraper.py",
             "scraper_id":"fa6b8224706c43288b310ad72dd7f030",
             "mapping":{
 

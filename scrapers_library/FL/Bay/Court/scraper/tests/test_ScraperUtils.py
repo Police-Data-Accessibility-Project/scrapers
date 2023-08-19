@@ -1,7 +1,7 @@
 import pytest
 from absl.testing import flagsaver
 from utils.meta.pii.Pii import Pii
-from scrapers.FL.Bay.Court.scraper.utils import ScraperUtils
+from scrapers_library.FL.Bay.Court.scraper.utils import ScraperUtils
 import os
 
 

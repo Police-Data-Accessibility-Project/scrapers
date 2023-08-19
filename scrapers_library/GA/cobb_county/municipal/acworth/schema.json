@@ -22,7 +22,7 @@
             "format_type": 1,
             "update_freq": 1,
             "last_modified": "2022-05-28 18:54:44 UTC",
-            "scraper_path": "./scrapers/GA/cobb_county/municipal/acworth/acworth_annual_scraper.py",
+            "scraper_path": "./scrapers_library/GA/cobb_county/municipal/acworth/acworth_annual_scraper.py",
             "scraper_id": "4a58780f698346d0b2dce76b91ce7ff1",
             "mapping": []
         }

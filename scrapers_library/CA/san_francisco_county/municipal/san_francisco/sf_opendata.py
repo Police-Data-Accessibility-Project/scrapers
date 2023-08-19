@@ -5,7 +5,7 @@ from pathlib import Path
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
 
-from scrapers.data_portals.opendata.opendata_scraper import opendata_scraper
+from scrapers_library.data_portals.opendata.opendata_scraper import opendata_scraper
 
 # Change to what you need (remove what you don't)
 url_table = [

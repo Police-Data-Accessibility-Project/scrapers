@@ -21,7 +21,7 @@
             "data_type": 4,
             "update_freq": 6,
             "last_modified": "2021-07-05T21:05:46.223+00:00",
-            "scraper_path": "scrapers/AR/faulkner_county/conway/calls_for_service/spiders/conwaypd.py",
+            "scraper_path": "scrapers_library/AR/faulkner_county/conway/calls_for_service/spiders/conwaypd.py",
             "scraper_id": "798adc12fc71459c9992e6040e6e07a"
         }
     ]

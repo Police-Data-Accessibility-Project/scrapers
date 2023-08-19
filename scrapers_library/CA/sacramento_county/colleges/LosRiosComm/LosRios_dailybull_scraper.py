@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 p = Path(__file__).resolve().parents[5]
 sys.path.insert(1, str(p))
-from scrapers.data_portals.crimegraphics import crimegraphics_clery
+from scrapers_library.data_portals.crimegraphics import crimegraphics_clery
 
 
 save_dir = "./data/daily_bulletin/"

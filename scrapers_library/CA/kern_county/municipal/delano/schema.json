@@ -19,7 +19,7 @@
             "format_type": 3,
             "update_freq": 4,
             "last_modified": "2021-12-13 18:15:00 UTC",
-            "scraper_path":"scrapers/CA/kern_county/municipal/delano/delano_scraper.py",
+            "scraper_path":"scrapers_library/CA/kern_county/municipal/delano/delano_scraper.py",
             "scraper_id":"e11f64fb1c8d47b89b5970b6c9075ca6",
             "mapping":{
 

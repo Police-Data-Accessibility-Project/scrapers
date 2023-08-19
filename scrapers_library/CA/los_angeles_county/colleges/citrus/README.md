@@ -50,7 +50,7 @@ On the [main page](https://www.citruscollege.edu/campussafety/Pages/default.aspx
 All data is currently a year behind, leading me to believe that it is updated at the end of the year.
 
 # Sample response
-In `scrapers/CA/citrus_college/data`
+In `scrapers_library/CA/citrus_college/data`
 
 # Legal
 Is there anything specific to this jurisdiction we should know as we work?

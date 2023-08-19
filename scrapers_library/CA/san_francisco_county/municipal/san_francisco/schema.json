@@ -19,7 +19,7 @@
             "format_type": "",
             "update_freq": 3,
             "last_modified": "2021-06-11 13:16:00",
-            "scraper_path":"scrapers/CA/san_francisco_county/municipal/san_francisco/admin_code_96a_scraper.py",
+            "scraper_path":"scrapers_library/CA/san_francisco_county/municipal/san_francisco/admin_code_96a_scraper.py",
             "scraper_id":"56620ca46cec49cd88c11b83d4062dd0",
             "mapping":{
 

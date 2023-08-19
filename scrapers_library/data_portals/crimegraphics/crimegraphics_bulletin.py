@@ -13,7 +13,7 @@ p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
 print(sys.path)
 from utils.website_hasher.page_update import hash_comparer, page_hasher, page_update
-from scrapers.data_portals.crimegraphics.data_parser import data_parser
+from scrapers_library.data_portals.crimegraphics.data_parser import data_parser
 
 # this function is used for gathering time stats
 def function_timer(stats):
