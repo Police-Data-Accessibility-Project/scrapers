@@ -31,7 +31,7 @@ save_url = [
     ],
     [
         "firearm_seizures/",
-        "https://data.wprdc.org/datastore/dump/e967381d-d7e9-48e3-a2a2-39262f7fa5c4"
+        "https://web.archive.org/web/20230819003305/https://data.wprdc.org/datastore/dump/e967381d-d7e9-48e3-a2a2-39262f7fa5c4"
     ],
     [
         "non_traffic_citations/",
