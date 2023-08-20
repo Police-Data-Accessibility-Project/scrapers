@@ -1,6 +1,6 @@
 # Source Info
 
-Copied and modified from `/scrapers/CA/humboldt_county/arcata/cal_poly_humboldt`
+Copied and modified from `/scrapers_library/CA/humboldt_county/arcata/cal_poly_humboldt`
 
 cd into `/example_scraper_2/` and run `humboldt_daily_scraper.py` to see how it works!
 

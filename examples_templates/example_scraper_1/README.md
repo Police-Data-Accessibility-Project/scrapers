@@ -1,6 +1,6 @@
 # Source info
 
-Copied and modified from `/scrapers/PA/allegheny_county/pittsburgh/pittsburgh_police`
+Copied and modified from `/scrapers_library/PA/allegheny_county/pittsburgh/pittsburgh_police`
 
 cd into `/example_scraper_1/` and run `scraper.py` to see how it works!
 

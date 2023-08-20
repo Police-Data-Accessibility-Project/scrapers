@@ -5,7 +5,7 @@ from from_root import from_root
 p = from_root('CODE_OF_CONDUCT.md').parent
 sys.path.insert(1, str(p))
 
-from scrapers.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
+from scrapers_library.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
 from utils.file_downloaders.downloaders import get_xls
 
 save_url = [

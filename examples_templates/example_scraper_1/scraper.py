@@ -5,14 +5,15 @@ from from_root import from_root
 p = from_root('CODE_OF_CONDUCT.md').parent
 sys.path.insert(1, str(p))
 
-from scrapers.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
+from scrapers_library.data_portals.opendata.opendata_scraper_2 import opendata_scraper2
 from utils.file_downloaders.downloaders import get_xls
+
 
 '''
 We used Internet Archive to archive the websites we were scraping the data from to ensure this example scraper will 
 still work even if the original website changes or is unavailable. The URLs will look differnent in scrapers that 
 scrape directly from a department's website. Archives used were created 8/18/2023.
-See /scrapers/PA/allegheny_county/pittsburgh/pittsburgh_police for the unmodified scraper.
+See /scrapers_library/PA/allegheny_county/pittsburgh/pittsburgh_police for the unmodified scraper.
 '''
 save_url = [
     [
