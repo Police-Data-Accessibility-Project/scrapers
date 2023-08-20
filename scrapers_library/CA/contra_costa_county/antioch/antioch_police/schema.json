@@ -1,0 +1,60 @@
+{
+    "agency_id": "b83eb5be02144bf9a884d1697dc24a51",
+    "agency_info":{
+        "agency_name":"Antioch Police Department",
+        "agency_coords":{"lat": "38.016151428222656", "lng":"-121.82064819335938"},
+        "agency_type": 4,
+        "city": "Antioch",
+        "state": "CA",
+        "zip":"94509",
+        "county_fips":"06013"
+    },
+    "data": [
+        {
+          "dataset_id": "8665c23362e3648b75d63e9d41d38948",
+          "url":"https://www.antiochca.gov/fc/police/crime-maps/this-weeks-aar.pdf",
+          "full_data_location":"/data/arrests",
+          "source_type": 2,
+          "data_type": 2,
+          "format_type": 3,
+          "update_freq": 5,
+          "last_modified": "2021-12-13 17:50:00",
+          "scraper_path":"scrapers_library/CA/contra_costa_county/antioch/antioch_police/antioch_arrest_scraper.py",
+          "scraper_id":"435bd58723b74a11a35a95348a57aa2f",
+          "mapping":{
+
+          }
+        },
+        {
+            "dataset_id": "b203de78935414ea7d073457e6b46751",
+            "url":"https://www.antiochca.gov/fc/police/crime-maps/this-weeks-cfs.pdf",
+            "full_data_location":"/data/cfs",
+            "source_type": 2,
+            "data_type": 4,
+            "format_type": 3,
+            "update_freq": 5,
+            "last_modified": "2021-12-13 17:52:00",
+            "scraper_path":"scrapers_library/CA/contra_costa_county/antioch/antioch_police/CFS_scraper.py",
+            "scraper_id":"6fa64287ddcc4cb1b91741ec05463eb5",
+            "mapping":{
+
+            }
+        },
+        {
+            "dataset_id": "9d88e0964c7392da2571240952d97b63",
+            "url":"https://www.antiochca.gov/police/crime-statistics/crime-statistics/",
+            "full_data_location":"/data/crime_stats/",
+            "source_type": 2,
+            "data_type": 23,
+            "format_type": 3,
+            "update_freq": 4,
+            "last_modified": "2021-12-2021 17:56:00",
+            "scraper_path":"scrapers_library/CA/contra_costa_county/antioch/antioch_police/antioch_scraper.py",
+            "scraper_id":"cbaa571c9f4e4b12809edf6a3e94f07b",
+            "mapping":{
+
+            }
+        }
+    ]
+
+}

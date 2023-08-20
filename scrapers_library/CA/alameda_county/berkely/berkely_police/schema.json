@@ -1,0 +1,74 @@
+{
+    "agency_id": "772ff373b08a432b8393f7adb223b63b",
+    "agency_info":{
+        "agency_name":"Berkeley Police Department",
+        "agency_coords":{"lat": "37.86997604370117", "lng":"-122.27304077148438"},
+        "agency_type": 4,
+        "city": "Berkeley",
+        "state": "CA",
+        "zip":"94703",
+        "county_fips":"06001"
+    },
+    "data": [
+        {
+            "dataset_id": "c93cca9826af4702ad1e2c608f9ee799",
+            "url":"",
+            "full_data_location":"data/daily/",
+            "source_type": 2,
+            "data_type": 2,
+            "format_type": 4,
+            "update_freq": 6,
+            "last_modified": "2021-12-13 16:41:00",
+            "scraper_path":"scrapers_library/CA/alameda_county/berkely/berkely_police/berkely_opendata_daily.py",
+            "scraper_id":"cc7b61b333bd44d2824f451182c3ef01",
+            "mapping":{
+
+            }
+        },
+        {
+            "dataset_id": "208873655abd4dfbae3111ff8201b54",
+            "url":"https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Calls-for-Service/k2nh-s5h5",
+            "full_data_location":"data/cfs/",
+            "source_type": 2,
+            "data_type": 4,
+            "format_type": 4,
+            "update_freq": 2,
+            "last_modified": "2021-12-13 16:49:00",
+            "scraper_path":"scrapers_library/CA/alameda_county/berkely/berkely_police/berkely_opendata_6_month.py",
+            "scraper_id":"c0ee05e7320945d583caa6418407e77a",
+            "mapping":{
+
+            }
+          },
+          {
+              "dataset_id": "3f3489a5df9f4b15b6500afc1d2c8fdd",
+              "url":"https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Stop-Data-October-1-2020-Present-/ysvs-bcge",
+              "full_data_location":"data/stop_data/",
+              "source_type": 2,
+              "data_type": 18,
+              "format_type": 4,
+              "update_freq": "",
+              "last_modified": "2021-12-13 16:58:00",
+              "scraper_path":"scrapers_library/CA/alameda_county/berkely/berkely_police/berkely_opendata.py",
+              "scraper_id":"e6bed0f6582648119d22475b59b35113",
+              "mapping":{
+
+              }
+          },
+          {
+              "dataset_id": "42288509be074fe8ba6a1120da4b1f66",
+              "url":"https://data.cityofberkeley.info/Public-Safety/Berkeley-PD-Stop-Data-Jan-26-2015-to-Sep-30-2020-/4tbf-3yt8",
+              "full_data_location":"data/stop_data/weekly/",
+              "source_type": 2,
+              "data_type": 18,
+              "format_type": 4,
+              "update_freq": 5,
+              "last_modified": "2021-12-13 17:04:00",
+              "scraper_path":"scrapers_library/CA/alameda_county/berkely/berkely_police/berkely_weekly_opendata.py",
+              "scraper_id":"22ca1f0607494491b826a9a8604f04e4",
+              "mapping":{
+
+              }
+            }
+    ]
+}
