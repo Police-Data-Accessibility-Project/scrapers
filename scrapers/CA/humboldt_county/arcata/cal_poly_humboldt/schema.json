@@ -19,7 +19,7 @@
             "format_type": 5,
             "update_freq": 6,
             "last_modified": "2021-12-13 17:10:00",
-            "scraper_path":"scrapers_library/CA/humboldt_county/colleges/humboldt/humboldt_daily_scraper.py",
+            "scraper_path":"scrapers_library/CA/humboldt_county/arcata/cal_poly_humboldt/humboldt_daily_scraper.py",
             "scraper_id":"ccceeb8fecad4ab09756995bc37d71de",
             "mapping":{
 
