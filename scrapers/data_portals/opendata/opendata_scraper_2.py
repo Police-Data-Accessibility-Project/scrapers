@@ -115,18 +115,14 @@ def opendata_scraper2(save_url, save_folder, sleep_time=1, save_subfolder=False,
                     file_name = str(date_name).replace("-", "_") + "_" + save_location.strip("/")
 
                 if "json" in content_type:
-                    # if save_subfolder:
-                    #     if not os.path.exists(save_folder + save_location):
-                    #         os.makedirs(save_folder + save_location)
                     with open(save_folder + save_location + file_name + ".json", "w") as output:
                         output.write(json.dumps(parsed, indent=4, sort_keys=False))
-
                 elif "csv" in content_type:
                     with open(save_folder + save_location + file_name + ".csv", "w") as output:
                         output.write(response.text)
-
                 elif "octet-stream" in content_type:
                     print('  [*] content_type is "octect-stream", saving as csv. (Experimental)')
+
                     if ".csv" in save_url[i]:
                         with open(save_folder + save_location + file_name + ".csv", "w") as output:
                             output.write(response.text)
@@ -134,7 +130,6 @@ def opendata_scraper2(save_url, save_folder, sleep_time=1, save_subfolder=False,
                         urllib.request.urlretrieve(
                             save_url[i], save_folder + save_location + file_name + ".xlsx",
                         )
-
                 else:
                     print(f"   [!] The url in index {i}, save_folder: {save_location}, did not have a handled content_type!")
                     print("      [?] content_type: " + content_type)
