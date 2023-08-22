@@ -1,18 +1,20 @@
-import requests
-import os
-from bs4 import BeautifulSoup
-import urllib
-import re
-import time
-import sys
-from pathlib import Path
 import datetime
+import os
+import re
+import sys
+import time
+import urllib
+from pathlib import Path
+
+import requests
+from bs4 import BeautifulSoup
 
 p = Path(__file__).resolve().parents[3]
 sys.path.insert(1, str(p))
-from utils.pdf.list_pdf_utils.get_files import get_files
-from utils.pdf.list_pdf_utils.extract_info import extract_info
+
 from utils.meta.metadata.metadata import create_metadata
+from utils.pdf.list_pdf_utils.extract_info import extract_info
+from utils.pdf.list_pdf_utils.get_files import get_files
 
 """
 configs = {
@@ -52,7 +54,7 @@ def list_pdf_v2(
     :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
     """
     run_start = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S %Z")
-    # If save_dir does not exist, make the directory
+  
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
@@ -74,42 +76,30 @@ def list_pdf_v2(
             except AttributeError:
                 pass
 
-    # Use python's requests module to fetch the webpage as plain html
     html_page = requests.get(webpage).text
-
-    # use BeautifulSoup4 (bs4) to parse the returned html_page using BeautifulSoup4's html parser (html.parser)
     soup = BeautifulSoup(html_page, "html.parser")
 
-    # initialize url_name table
     url_name = []
 
-    # Attempts to remove any residual url_name.txt file as we will want to create a new clean version.
     try:
         os.remove("url_name.txt")
     except FileNotFoundError:
-        # if os.remove returns FileNotFoundError, handle the error by continuing.
         pass
 
     print(" [*] Extracting info...")
 
-    # send soup, the configs, and the setting of extract_name to the extract_info module
     extract_info(soup, configs, extract_name=extract_name, configs_file=configs_file, debug=debug)
 
-    # Check added for backwards compatibility.
-    # pass the variable save_dir, access sleep_time from configs, set name_in_url to the value of name_in_url, and set add_date to the value of add_date
     get_files(save_dir, sleep_time, name_in_url=name_in_url, add_date=add_date)
 
     if extract_tables:
         from utils.pdf.list_pdf_utils.pdf_extract import pdf_extract
 
         try:
-            # Pass save_dir to pdf_extract's pdf_directory param, and retrieve csv_dir from the configs
             pdf_extract(save_dir, csv_dir)
-
         except AttributeError:
             # this will happen if csv_dir was not defined in the configs.
             if debug:
-                # because i hate having tons of stuff printed in my terminal, this will only print if debug=True (set when calling list_pdf_v2)
                 print("  [INFO] csv_dir is not defined in the configs.")
                 print("      If you want to save in a different location for some reason, ")
                 print('      define it in the configs as `csv_dir="<folder>"`')
