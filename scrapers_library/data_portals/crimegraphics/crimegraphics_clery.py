@@ -47,7 +47,7 @@ def crimegraphics_clery(configs, save_dir, stats=False, configs_file=False):
 
     # automatically have the CLERYMenu clicked for daily crime data
     payload = {
-        "MYAGCODE": configs.department_code,
+        "MYAGCODE": department_code,
         "__EVENTTARGET": "MainMenu$CLERYMenu",
         "__EVENTARGUMENT": "CLERYMenu",
     }
@@ -61,7 +61,7 @@ def crimegraphics_clery(configs, save_dir, stats=False, configs_file=False):
     request_start = function_timer(stats)
 
     # Send a POST request to the url with our headers
-    response = requests.request("POST", configs.url, data=payload)
+    response = requests.request("POST", url, data=payload)
     request_end = function_timer(stats)
     time_dif(stats, "Request Time", request_start, request_end)
 
@@ -100,6 +100,6 @@ def crimegraphics_clery(configs, save_dir, stats=False, configs_file=False):
     date_name = date.today()
     file_name = "_" + str(date_name).replace("-", "_")  # + "_"
 
-    dataframe = pd.DataFrame(data=data, columns=configs.list_header)
+    dataframe = pd.DataFrame(data=data, columns=list_header)
 
-    dataframe.to_csv(save_dir + configs.department_code + file_name + "_daily_bulletin")
+    dataframe.to_csv(save_dir + department_code + file_name + "_daily_bulletin")

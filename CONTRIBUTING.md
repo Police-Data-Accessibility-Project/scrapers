@@ -29,7 +29,7 @@ You can add a scraper to our collection, or create your own within your personal
 
 If you'd like PDAP to host it, there are two options.
 
-You can contribute it here, following our conventions, and people can find and use it as they please. Please stick to the format of `scraper/$STATE/$COUNTY/$MUNICIPALITY/$RECORD_TYPE`. If there is no specific county or municipality, it can live in the most relevant higher-level directory.
+You can contribute it here, following our conventions, and people can find and use it as they please. Please stick to the format of `scrapers/$STATE/$COUNTY/$MUNICIPALITY/$RECORD_TYPE`. If there is no specific county or municipality, it can live in the most relevant higher-level directory.
 
 Or, if there's a compelling reason to have it running regularly -- there's a specific request to use the data, say, or the data gets overwritten periodically -- help us understand that. We will consider hosting it in a separate PDAP repo that also includes automated data collection, such as via [GitHub Actions](https://docs.github.com/en/actions).
 
@@ -55,8 +55,13 @@ Best for Data Sources which people may want to scrape at any time | Best for cre
 
 Why start from scratch if we have a useful library? Keep in mind that you -- or we! -- can always refactor your work later if necessary, so if you're not sure, we still want you to submit!
 
-[//]: # (Not gonna lie, writing some templates/examples is gonna be fun)
-Not sure where to start with a page you want to scrape? Check our examples and templates to see if we have that covered. If you see use cases we're missing, open an issue or (please and thank you) contribute it yourself.
+Not sure where to start with a page you want to scrape? Check our examples and templates (`/examples_templates`) to see if we have that covered. If you see use cases we're missing, open an issue or (please and thank you) contribute it yourself.
+
+### Example scrapers
+
+[Example Scraper 1](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/examples_templates/example_scraper_1) - This scraper collects arrest records, firearm siezures, incident blotter, non-traffic citations, and officer training data from the Pittsburgh Bureau of Police by using the OpenData scraper.
+
+[Example Scraper 2](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/examples_templates/example_scraper_2) - This scraper collects the daily crime/fire log from the Cal Poly Humboldt Police Department by using a CrimeGraphics scraper.
 
 ## 5. Code your scraper and make a Pull Request!
 

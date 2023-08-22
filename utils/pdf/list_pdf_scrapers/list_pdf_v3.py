@@ -78,12 +78,11 @@ def list_pdf_v3(
                 csv_dir = configs["csv_dir"]
             except AttributeError:
                 pass
-
     else:
         webpage = configs.webpage
         sleep_time = configs.sleep_time
         try:
-            configs_non_important_ = configs.non_important
+            configs_non_important = configs.non_important
         except AttributeError:
             pass
         if extract_tables:
