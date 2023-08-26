@@ -1,3 +1,4 @@
+import csv
 import json
 
 import requests
@@ -9,14 +10,12 @@ FILTERED_CATEGORIES = [
     "infrastructure", "planning", "human services", "city government", "health and social services", "automobiles",
     "neighborhood census data", "business", "housing", "service requests", "ptsd-repository", "fire and medical",
     "geographic locations and boundaries"
-    ]
-FILTERED_NAMES = [
-    "permit", "inspection", "blood", "covid", "certificate", "fire and spec ops"
-    ]
+]
+FILTERED_NAMES = ["permit", "inspection", "blood", "covid", "certificate", "fire and spec ops"]
 FILTERED_TAGS = [
     "ems", "survey", "vaccination", "fire", "fire investigations", "employee", "311", "council", "animal", "animals",
     "alarm", "tax", "alert", "dog"
-    ]
+]
 
 
 def get_data(search_term):
@@ -61,17 +60,64 @@ def filter_data(dataset):
     return True
 
 
+def write_csv(data):
+    fieldnames = [
+        "name", "agency_described", "record_type", "description", "source_url", "readme_url", "scraper_url", "state",
+        "county", "municipality", "agency_type", "jurisdiction_type", "View Archive", "agency_aggregation",
+        "agency_supplied", "supplying_entity", "agency_originated", "originating_entity", "community_data_source",
+        "coverage_start", "source_last_updated", "coverage_end", "retention_schedule", "number_of_records_available",
+        "size", "access_type", "record_download_option_provided", "data_portal_type", "access_restrictions",
+        "access_restrictions_notes", "record_format", "update_frequency", "update_method", "sort_method",
+        "detail_level", "data_source_created", "agency_described_linked_uid", "airtable_uid", 
+        "airtable_source_last_modified", "url_broken"
+    ]
+
+    with open("Open Data Network.csv", "w", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for dataset in data:
+            dataset["resource"]["name"] = parse_string(dataset["resource"]["name"])
+            if dataset["resource"]["attribution"]:
+                dataset["resource"]["attribution"] = parse_string(dataset["resource"]["attribution"])
+            dataset["resource"]["description"] = parse_string(dataset["resource"]["description"])
+
+            name = dataset["resource"]["name"]
+            agency_described = dataset["resource"]["attribution"]
+            description = dataset["resource"]["description"]
+            source_url = dataset["link"]
+
+            writer.writerow(
+                {
+                    "name": name,
+                    "agency_described": agency_described,
+                    "description": description,
+                    "source_url": source_url
+                }
+            )
+
+    print("Results written to Open Data Network.csv")
+
+def parse_string(string):
+    string = string.replace('"', '""')
+    result = '"' + string + '"'
+
+    return result
+
 def main():
     print("Retrieving data from http://api.us.socrata.com/...")
 
     data = get_data("police") + get_data("crime")
-    data = { each["resource"]["id"] : each for each in data }.values()
+    data = {each["resource"]["id"]: each for each in data}.values()
 
     print(f"{len(data)} records returned by API")
 
     data = list(filter(filter_data, data))
 
     print(f"{len(data)} records remaining after filtering")
+
+    write_csv(data)
 
 
 if __name__ == "__main__":
