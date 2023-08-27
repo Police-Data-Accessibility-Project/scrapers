@@ -93,17 +93,20 @@ def write_csv(data):
                     "name": name,
                     "agency_described": agency_described,
                     "description": description,
-                    "source_url": source_url
+                    "source_url": source_url,
+                    "data_portal_type": "Opendata"
                 }
             )
 
     print("Results written to Open Data Network.csv")
+
 
 def parse_string(string):
     string = string.replace('"', '""')
     result = '"' + string + '"'
 
     return result
+
 
 def main():
     print("Retrieving data from http://api.us.socrata.com/...")
