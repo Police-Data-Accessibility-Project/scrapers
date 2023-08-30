@@ -1,10 +1,12 @@
-import sys
 import os
-import CG_configs as configs
-from pathlib import Path
+import sys
 
-p = Path(__file__).resolve().parents[5]
+import CG_configs as configs
+from from_root import from_root
+
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
+
 from scrapers_library.data_portals.crimegraphics import crimegraphics_clery
 
 configs = {

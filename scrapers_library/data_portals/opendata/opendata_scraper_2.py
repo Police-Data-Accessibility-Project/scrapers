@@ -1,17 +1,18 @@
-import requests
+import json
 import os
 import sys
+import time
+import urllib
 from datetime import date
 from pathlib import Path
-import json
-import urllib
-import time
 
-p = Path(__file__).resolve().parents[3]
+import requests
+from from_root import from_root
+
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
 
 from utils.website_hasher.page_update import page_update
-
 
 # save_url = [
 #     [save_folder, url],

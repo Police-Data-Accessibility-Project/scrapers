@@ -1,19 +1,21 @@
-import sys
-import os
-import requests
 import json
-from pathlib import Path
-from bs4 import BeautifulSoup
-import pandas as pd
-from tqdm import tqdm
+import os
+import sys
 import time
 from pathlib import Path
 
-p = Path(__file__).resolve().parents[3]
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+from from_root import from_root
+from tqdm import tqdm
+
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
-print(sys.path)
-from utils.website_hasher.page_update import hash_comparer, page_hasher, page_update
+
 from scrapers_library.data_portals.crimegraphics.data_parser import data_parser
+from utils.website_hasher.page_update import hash_comparer, page_hasher, page_update
+
 
 # this function is used for gathering time stats
 def function_timer(stats):
