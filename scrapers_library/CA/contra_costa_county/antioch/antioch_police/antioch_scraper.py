@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 from from_root import from_root
 
-p = from_root('CODE_OF_CONDUCT.md').parent
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
 
 from utils.pdf.list_pdf_utils.get_files import get_files

@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from from_root import from_root
 from tqdm import tqdm
 
-p = from_root('CODE_OF_CONDUCT.md').parent
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
 
 from scrapers_library.data_portals import crimegraphics_bulletin

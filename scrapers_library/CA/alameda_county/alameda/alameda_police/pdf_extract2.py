@@ -5,7 +5,7 @@ import tabula
 from from_root import from_root
 from tqdm import tqdm
 
-p = from_root('CODE_OF_CONDUCT.md').parent
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p) + "/utils")
 from pdf_extraction.pdf_to_csv_cv import process_file
 
