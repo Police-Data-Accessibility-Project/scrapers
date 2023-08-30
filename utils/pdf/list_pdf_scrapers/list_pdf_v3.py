@@ -1,18 +1,21 @@
-import requests
-import os
-from bs4 import BeautifulSoup
-import urllib
-import re
-import time
-import sys
-from pathlib import Path
 import datetime
+import os
+import re
+import sys
+import time
+import urllib
+from pathlib import Path
 
-p = Path(__file__).resolve().parents[3]
+import requests
+from bs4 import BeautifulSoup
+from from_root import from_root
+
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
-from utils.pdf.list_pdf_utils.get_files import get_files
-from utils.pdf.list_pdf_utils.extract_info import extract_info
+
 from utils.meta.metadata.metadata import create_metadata
+from utils.pdf.list_pdf_utils.extract_info import extract_info
+from utils.pdf.list_pdf_utils.get_files import get_files
 
 """
 configs = {

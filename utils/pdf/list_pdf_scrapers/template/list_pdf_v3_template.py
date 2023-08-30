@@ -1,9 +1,11 @@
-import sys
 import os
-from pathlib import Path
+import sys
 
-p = Path(__file__).resolve().parents[5]
+from from_root import from_root
+
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
+
 from utils.pdf.list_pdf_scrapers import list_pdf_v3
 
 """

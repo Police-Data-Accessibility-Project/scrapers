@@ -1,15 +1,17 @@
-import os
-import sys
-import urllib
-import re
-import time
-import requests
-import mimetypes
-import traceback
-from pathlib import Path
 import logging
+import mimetypes
+import os
+import re
+import sys
+import time
+import traceback
+import urllib
+from pathlib import Path
 
-p = Path(__file__).resolve().parents[3]
+import requests
+from from_root import from_root
+
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
 
 from utils.file_downloaders.downloaders import get_doc, get_pdf, get_xls

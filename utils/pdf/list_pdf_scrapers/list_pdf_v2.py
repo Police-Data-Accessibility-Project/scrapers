@@ -8,8 +8,9 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+from from_root import from_root
 
-p = Path(__file__).resolve().parents[3]
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
 
 from utils.meta.metadata.metadata import create_metadata
