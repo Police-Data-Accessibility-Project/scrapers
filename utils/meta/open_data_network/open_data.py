@@ -3,6 +3,7 @@ import json
 
 import requests
 
+# Categories, names, and tags used to filter out irrelevant data
 FILTERED_CATEGORIES = [
     "building and facilities", "information", "administration & finance", "general government", "retirement systems",
     "economy", "transportation", "growing economic opportunities", "environment", "licensing", "covid",
@@ -23,6 +24,14 @@ FILTERED_TAGS = [
 
 
 def get_data(search_term):
+    """Gets Open Data Network data using the Socrata api.
+
+    Args:
+        search_term (str): Search term to query.
+
+    Returns:
+        list: List of results from the query.
+    """    
     api_url = f"http://api.us.socrata.com/api/catalog/v1?categories=Public%20Safety&q={search_term}&limit=10000"
     response = requests.get(api_url)
 
@@ -36,13 +45,23 @@ def get_data(search_term):
 
 
 def filter_data(dataset):
+    """Filters out irrelevant data.
+
+    Args:
+        dataset (dict): Information about a dataset.
+
+    Returns:
+        bool: True if data is relevant, False otherwise.
+    """    
     domain_category = ""
     resource_name = dataset["resource"]["name"].lower()
     domain_tags = [tag.lower() for tag in dataset["classification"]["domain_tags"]]
 
     try:
         domain_category = dataset["classification"]["domain_category"].lower()
+        # Check if the category needs to be filtered out
         if any(tag in domain_category for tag in FILTERED_CATEGORIES):
+            # Transportation is a mostly irrelevant category, unless the name contains "crashes"
             if domain_category == "transporation" and "crashes" in resource_name:
                 return True
             else:
@@ -50,21 +69,22 @@ def filter_data(dataset):
     except KeyError:
         pass
     
+    # Check if the name or tag needs to be filtered out
     if any(name in resource_name for name in FILTERED_NAMES) or any(tag in domain_tags for tag in FILTERED_TAGS):
         return False
-
-    #if "base maps" in domain_category:
-    #if "calendar" in resource_name:
-    #if "directory" in domain_tags:
-        #print(f'{dataset["resource"]["id"]} - {resource_name} - {domain_category}')
-
-    #if domain_category not in domain_categories:
-        #domain_categories.append(domain_category)
 
     return True
 
 
 def remove_duplicates(data):
+    """Removes data sources that are already in the PDAP database.
+
+    Args:
+        data (list): List of dataset dictionaries.
+
+    Returns:
+        list: List of datasets with duplicates removed.
+    """    
     with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
         sources_list = list(csv.DictReader(data_sources))
 
@@ -75,6 +95,11 @@ def remove_duplicates(data):
 
 
 def write_csv(data):
+    """Write the data to CSV file.
+
+    Args:
+        data (list): List of dataset dictionaries.
+    """    
     fieldnames = [
         "name", "agency_described", "record_type", "description", "source_url", "readme_url", "scraper_url", "state",
         "county", "municipality", "agency_type", "jurisdiction_type", "View Archive", "agency_aggregation",
@@ -112,10 +137,16 @@ def write_csv(data):
                 }
             )
 
-    print("Results written to Open Data Network.csv")
-
 
 def parse_string(string):
+    """Parses a string for CSV compatibility.
+
+    Args:
+        string (str): String to parse.
+
+    Returns:
+        str: Resulting string.
+    """    
     string = string.replace('"', '""')
     result = '"' + string + '"'
 
@@ -126,6 +157,7 @@ def main():
     print("Retrieving data from http://api.us.socrata.com/...")
 
     data = get_data("jail") + get_data("court") + get_data("police") + get_data("crime")
+    # Remove duplicates from overlapping data
     data = {each["resource"]["id"]: each for each in data}.values()
 
     print(f"{len(data)} records returned by API")
@@ -137,6 +169,7 @@ def main():
 
     write_csv(data)
 
+    print("Results written to Open Data Network.csv")
 
 if __name__ == "__main__":
     main()
