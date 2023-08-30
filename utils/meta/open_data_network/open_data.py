@@ -9,12 +9,16 @@ FILTERED_CATEGORIES = [
     "culture and recreation", "public works", "tax", "city management and ethics", "thriving neighborhoods",
     "infrastructure", "planning", "human services", "city government", "health and social services", "automobiles",
     "neighborhood census data", "business", "housing", "service requests", "ptsd-repository", "fire and medical",
-    "geographic locations and boundaries"
+    "geographic locations and boundaries", "services and amenities", "buildings", "transparency", "water", "surveys",
+    "base maps"
 ]
-FILTERED_NAMES = ["permit", "inspection", "blood", "covid", "certificate", "fire and spec ops"]
+FILTERED_NAMES = [
+    "permit", "inspection", "blood", "covid", "certificate", "fire and spec ops", "code violation", "weeds",
+    "calendar"
+]
 FILTERED_TAGS = [
     "ems", "survey", "vaccination", "fire", "fire investigations", "employee", "311", "council", "animal", "animals",
-    "alarm", "tax", "alert", "dog"
+    "alarm", "tax", "alert", "dog", "chemical exposure", "directory"
 ]
 
 
@@ -49,15 +53,25 @@ def filter_data(dataset):
     if any(name in resource_name for name in FILTERED_NAMES) or any(tag in domain_tags for tag in FILTERED_TAGS):
         return False
 
-    #if domain_category == "":
-    #if "fire and spec ops" in resource_name:
-    #if "agriculture" in domain_tags:
+    #if "base maps" in domain_category:
+    #if "calendar" in resource_name:
+    #if "directory" in domain_tags:
         #print(f'{dataset["resource"]["id"]} - {resource_name} - {domain_category}')
 
     #if domain_category not in domain_categories:
-    #    domain_categories.append(domain_category)
+        #domain_categories.append(domain_category)
 
     return True
+
+
+def remove_duplicates(data):
+    with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
+        sources_list = list(csv.DictReader(data_sources))
+
+    source_urls = list(map(lambda source: source["source_url"], sources_list))
+    data = filter(lambda dataset: dataset["link"] not in source_urls, data)
+
+    return list(data)
 
 
 def write_csv(data):
@@ -94,7 +108,7 @@ def write_csv(data):
                     "agency_described": agency_described,
                     "description": description,
                     "source_url": source_url,
-                    "data_portal_type": "Opendata"
+                    "data_portal_type": "Socrata"
                 }
             )
 
@@ -111,12 +125,13 @@ def parse_string(string):
 def main():
     print("Retrieving data from http://api.us.socrata.com/...")
 
-    data = get_data("police") + get_data("crime")
+    data = get_data("jail") + get_data("court") + get_data("police") + get_data("crime")
     data = {each["resource"]["id"]: each for each in data}.values()
 
     print(f"{len(data)} records returned by API")
 
     data = list(filter(filter_data, data))
+    data = remove_duplicates(data)
 
     print(f"{len(data)} records remaining after filtering")
 
