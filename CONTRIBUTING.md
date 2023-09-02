@@ -63,6 +63,18 @@ Not sure where to start with a page you want to scrape? Check our examples and t
 
 [Example Scraper 2](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/tree/main/examples_templates/example_scraper_2) - This scraper collects the daily crime/fire log from the Cal Poly Humboldt Police Department by using a CrimeGraphics scraper.
 
+### What are utilities, and why might you use them?
+
+Utilities are scripts provided in the `/utils` folder of the project directory. These can assist in scraping data from websites, such as the `list_pdf_scrapers` that can retrieve one or multiple PDF documents from a given webpage. Many of these utilities have READMEs that tell you what they do and how they work. 
+
+You can see how utilities can be imported and used in your own scraper by looking at the examples in the `/examples_templates` folder.
+
+### What are data portal scrapers, and why might you use them?
+
+Data portal scrapers are scripts provided in the `/scrapers_library/data_portals` folder. These can assist in scraping data from common data portals where police data is often available, normally utilizing the site's API. No need to reinvent the wheel, if you want to scrape data from a common data portal you can find usage instructions in the README files accompanying each data portal scraper.
+
+You can see how data portal scrapers can be imported and used in your own scraper by looking at the examples in the `/examples_templates` folder.
+
 ## 5. Code your scraper and make a Pull Request!
 
 The most important thing here is that your scraper is grabbing public criminal legal records, and is [legal](https://docs.pdap.io/meta/legal/legal-data-scraping).
