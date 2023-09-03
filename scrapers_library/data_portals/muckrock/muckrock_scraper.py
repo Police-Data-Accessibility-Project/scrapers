@@ -14,13 +14,13 @@ def get_single_file(save_folder, url, file_name=""):
     file_path = save_folder + file_name
 
     if os.path.exists(file_path):
-        print(f"File {file_path} already exists.")
+        print(f"Already exists: {file_path}")
         return
 
     if not os.path.exists(save_folder):
        os.makedirs(save_folder)
 
-    print(f"Downloading file {file_path}")
+    print(f"Downloading: {file_path}")
 
     r = requests.get(url, stream=True)
     with open(file_path, 'wb') as fd:
@@ -28,7 +28,7 @@ def get_single_file(save_folder, url, file_name=""):
             fd.write(chunk)
 
 
-def get_foia_files(save_folder, url):
+def get_foia_files(save_folder, url, ignore=[]):
     start_index = url.rfind("-") + 1
     end_index = url.rfind("/")
     foia_id = url[start_index:end_index]
@@ -45,12 +45,15 @@ def get_foia_files(save_folder, url):
 
     for comm in comms:
         for file in comm["files"]:
-            url = file["ffile"]
+            file_url = file["ffile"]
 
-            get_single_file(save_folder, url)
+            if ignore and file_ignored(file, ignore):
+                continue
+
+            get_single_file(save_folder, file_url)
         
 
-def get_all_agency_files(save_folder, url):
+def get_all_agency_files(save_folder, url, ignore=[]):
     start_index = url.rfind("-") + 1
     end_index = url.rfind("/")
     agency_id = url[start_index:end_index]
@@ -58,10 +61,14 @@ def get_all_agency_files(save_folder, url):
     files = get_files_list(agency_id)
 
     for file in files:
-        url = file["ffile"]
+        file_url = file["ffile"]
+
+        if ignore and file_ignored(file, ignore):
+            continue
+
         path = f"{save_folder}{file['path']}/"
 
-        get_single_file(path, url)
+        get_single_file(path, file_url)
 
 
 def get_communications_data(jurisdiction_id, foia_id):
@@ -103,3 +110,18 @@ def get_files_list(agency_id):
     
     files = list(chain(*files))
     return files
+
+
+def file_ignored(file, ignore):
+    title = file["title"]
+    file_url = file["ffile"]
+    datetime = file["datetime"]
+
+    if any(
+        ignored_item in title or ignored_item in file_url or datetime.startswith(ignored_item)
+        for ignored_item in ignore
+    ):
+        print(f"Ignored: {file_url}")
+        return True
+
+    return False
