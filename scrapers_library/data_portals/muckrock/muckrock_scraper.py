@@ -7,7 +7,15 @@ import requests
 
 
 def get_single_file(save_folder, url, file_name=""):
+    """Downloads a single file from Muckrock.
+
+    Args:
+        save_folder (str): Relative path where the file will be saved.
+        url (str): Download URL for the file.
+        file_name (str, optional): What the file being downloaded will be named. Defaults to last part of url.
+    """
     if not file_name:
+        # Retrieve the file name from the URL
         i = url.rfind("/") + 1
         file_name = url[i:]
 
@@ -28,19 +36,28 @@ def get_single_file(save_folder, url, file_name=""):
             fd.write(chunk)
 
 
-def get_foia_files(save_folder, url, ignore=[]):
+def get_foi_files(save_folder, url, ignore=[]):
+    """Downloads all files from a foi request.
+
+    Args:
+        save_folder (str): Relative path where the files will be saved.
+        url (str): URL for the foi request.
+        ignore (list, optional): A list of strings for files to be ignored. Compares from the file download url, datetime, and file title. Defaults to [].
+    """
+    # Retrieve the foi ID from the URL
     start_index = url.rfind("-") + 1
     end_index = url.rfind("/")
-    foia_id = url[start_index:end_index]
+    foi_id = url[start_index:end_index]
 
+    # Retrieve the jurisdiction ID from the URL
     end_index = url.rfind("/", 28, start_index)
     start_index = url.rfind("-", 28, end_index) + 1
     jurisdiction_id = url[start_index:end_index]
 
-    comms = get_communications_data(jurisdiction_id, foia_id)
+    comms = get_communications_data(jurisdiction_id, foi_id)
 
     if not comms:
-        print(f"FOIA request could not be found: {url}")
+        print(f"FOI request could not be found: {url}")
         return
 
     for comm in comms:
@@ -54,6 +71,14 @@ def get_foia_files(save_folder, url, ignore=[]):
         
 
 def get_all_agency_files(save_folder, url, ignore=[]):
+    """Downloads all files from an agency.
+
+    Args:
+        save_folder (str): Relative path where the files will be saved.
+        url (url): URL for the agency.
+        ignore (list, optional): A list of strings for files to be ignored. Compares from the file download url, datetime, and file title. Defaults to [].
+    """
+    # Retrieve the agency ID from the URL
     start_index = url.rfind("-") + 1
     end_index = url.rfind("/")
     agency_id = url[start_index:end_index]
@@ -71,7 +96,18 @@ def get_all_agency_files(save_folder, url, ignore=[]):
         get_single_file(path, file_url)
 
 
-def get_communications_data(jurisdiction_id, foia_id):
+def get_communications_data(jurisdiction_id, foi_id):
+    """Companion function to get_foi_files(). 
+
+    Retrieves communications data from the Muckrock API for specified FOIA ID.
+
+    Args:
+        jurisdiction_id (str): Muckrock jurisdiction ID to be searched through.
+        foi_id (str): Muckrock FOIA ID to search for.
+
+    Returns:
+        list: List of communications dictionaries. False if none could be found.
+    """    
     page = 1
 
     while True:
@@ -79,9 +115,9 @@ def get_communications_data(jurisdiction_id, foia_id):
         response = requests.get(api_url)
         response_json = json.loads(response.text)
 
-        for foia in response_json["results"]:
-            if foia["id"] == int(foia_id):
-                return foia["communications"]
+        for foi in response_json["results"]:
+            if foi["id"] == int(foi_id):
+                return foi["communications"]
         
         if not response_json["next"]:
             return False
@@ -90,6 +126,16 @@ def get_communications_data(jurisdiction_id, foia_id):
 
 
 def get_files_list(agency_id):
+    """Companion function to get_all_agency_files().
+
+    Retrieves all file dictionaries for a given agency.
+
+    Args:
+        agency_id (str): Muckrock agency ID to be searched through.
+
+    Returns:
+        list: List of file dictionaries.
+    """    
     page = 1
     files = []
 
@@ -98,21 +144,35 @@ def get_files_list(agency_id):
         response = requests.get(api_url)
         response_json = json.loads(response.text)
 
-        for foia in response_json["results"]:
-            for comm in foia["communications"]:
+        for foi in response_json["results"]:
+            for comm in foi["communications"]:
                 files.append(comm["files"])
-                files[-1] = [dict(file, **{"path": foia["title"].replace("/", "|")}) for file in files[-1]]
+                # Add path key and value to the dictionaries just added to files
+                # This is used later for the folder names to sort downloaded files into 
+                files[-1] = [dict(file, **{"path": foi["title"].replace("/", "|")}) for file in files[-1]]
         
         if not response_json["next"]:
             break
 
         page += 1
     
+    # Flatten the list
     files = list(chain(*files))
     return files
 
 
 def file_ignored(file, ignore):
+    """Check if a file should be ignored.
+
+    Compares from the file download url, datetime, and file title.
+
+    Args:
+        file (dict): File dictionary.
+        ignore (list): List of strings for files to be ignored.
+
+    Returns:
+        bool: True if file is to be ignored, False otherwise.
+    """    
     title = file["title"]
     file_url = file["ffile"]
     datetime = file["datetime"]
