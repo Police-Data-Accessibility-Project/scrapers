@@ -1,5 +1,6 @@
 import csv
 import json
+from os.path import exists
 
 import requests
 
@@ -163,7 +164,8 @@ def main():
     print(f"{len(data)} records returned by API")
 
     data = list(filter(filter_data, data))
-    data = remove_duplicates(data)
+    if exists("PDAP Data Sources.csv"):
+        data = remove_duplicates(data)
 
     print(f"{len(data)} records remaining after filtering")
 
