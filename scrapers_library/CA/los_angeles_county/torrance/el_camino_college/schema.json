@@ -1,0 +1,30 @@
+{
+    "agency_id": "b6dc276851454e25bba480317d101503",
+    "agency_info":{
+        "agency_name":"El Camino College Police Department",
+        "agency_coords":{"lat": "33.882991790771484", "lng":"-118.32723236083984"},
+        "agency_type": 5,
+        "city": "Torrance",
+        "state": "CA",
+        "zip":"90506",
+        "county_fips":"06037"
+    },
+    "data": [
+        {
+            "dataset_id": "309458915d6597307f7705d1f34387c9",
+            "url":"https://www.elcamino.edu/about/depts/police/cleryact/index.aspx",
+            "full_data_location":"data",
+            "source_type": 2,
+            "data_type": 24,
+            "format_type": 3,
+            "update_freq": 1,
+            "last_modified": "2021-05-28 19:30:00",
+            "scraper_path":"scrapers_library/CA/los_angeles_county/torrance/el_camino_college/el_camino_annual_scraper.py",
+            "scraper_id":"5aa979813afa4c0c99857f15532b6866",
+            "mapping":{
+
+            }
+        }
+    ]
+
+}

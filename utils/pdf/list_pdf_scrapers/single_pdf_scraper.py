@@ -1,9 +1,11 @@
+import mimetypes
+import os
 import sys
 from pathlib import Path
-import os
-import mimetypes
 
-p = Path(__file__).resolve().parents[3]
+from from_root import from_root
+
+p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
 
 from utils.file_downloaders.downloaders import get_pdf

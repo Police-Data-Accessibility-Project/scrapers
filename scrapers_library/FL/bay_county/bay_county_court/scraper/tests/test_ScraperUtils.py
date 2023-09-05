@@ -1,0 +1,190 @@
+import pytest
+from absl.testing import flagsaver
+from utils.meta.pii.Pii import Pii
+from scrapers_library.FL.bay_county.bay_county_court.scraper.utils import ScraperUtils
+import os
+
+
+class TestScraperUtils:
+
+    def test_parse_plea_case_numbers_blank(self):
+        assert ScraperUtils.parse_plea_case_numbers("", [1, 2, 3]) == []
+        assert ScraperUtils.parse_plea_case_numbers(None, [1, 2, 3]) == []
+
+    def test_parse_plea_case_numbers__no_charge_mentioned(self):
+        plea = "PLEA OF NOT GUILTY"
+        assert ScraperUtils.parse_plea_case_numbers(plea, [1]) == []
+
+    def test_parse_plea_case_numbers_one_charge_mentioned(self):
+        plea = "DEFENDANT ENTERED PLEA OF : NOLO-CONTENDERE SEQ 2"
+        assert ScraperUtils.parse_plea_case_numbers(plea, [1, 2]) == [2]
+        assert ScraperUtils.parse_plea_case_numbers(plea, None) == []
+
+    def test_parse_plea_case_numbers_no_charge_numbers(self):
+        plea = "DEFENDANT ENTERED PLEA OF NOLO CONTENDERE SEQ: 1,2,3,4,5"
+        assert ScraperUtils.parse_plea_case_numbers(plea, []) == []
+
+    def test_parse_plea_case_numbers_multiple_case_numbers(self):
+        plea = "DEFENDANT ENTERED PLEA OF NOLO CONTENDERE SEQ: 1,2,3,4,5"
+        assert ScraperUtils.parse_plea_case_numbers(plea, [1, 2, 3, 4, 5, 6]) == [1, 2, 3, 4, 5]
+
+    def test_parse_plea_case_numbers_messy(self):
+        # Test a really ugly plea docket I found in one case
+        plea = "PLEA OF NOT GUILTY/DENIAL, WAIVER OF ARRAIGNMENT, DEMAND FOR NOTICE OF EXPERT TESTIMONY, DEMAND FOR DISCOVERY, DEMAND FOR STATEMENT OF PARTICULARS, DEMAND FOR JURY TRIAL, DESIGNATION OF E-MAIL ADDRESSES PURSUANT TO RULE 2.516 1/28/2020"
+        assert ScraperUtils.parse_plea_case_numbers(plea, [1, 2, 3]) == []
+
+    def test_parse_plea_type_blank(self):
+        assert ScraperUtils.parse_plea_type('') is None
+        assert ScraperUtils.parse_plea_type(None) is None
+
+    def test_parse_plea_type_nolo_contendere(self):
+        plea1 = 'PLEA OF NOLO CONTENDERE'
+        plea2 = "DEFENDANT ENTERED PLEA OF : NOLO-CONTENDERE SEQ 2"
+        plea3 = "DEFENDANT ENTERED PLEA OF NOLO CONTENDERE SEQ: 1,2,3,4,5"
+        assert ScraperUtils.parse_plea_type(plea1) == 'Nolo Contendere'
+        assert ScraperUtils.parse_plea_type(plea2) == 'Nolo Contendere'
+        assert ScraperUtils.parse_plea_type(plea3) == 'Nolo Contendere'
+
+    def test_parse_plea_type_guilty(self):
+        plea1 = 'PLEA OF GUILTY'
+        plea2 = 'DEFENDANT ENTERED PLEA OF : GUILTY SEQ 2'
+        assert ScraperUtils.parse_plea_type(plea1) == 'Guilty'
+        assert ScraperUtils.parse_plea_type(plea2) == 'Guilty'
+
+    def test_parse_plea_type_not_guilty(self):
+        plea1 = 'PLEA OF NOT GUILTY'
+        plea2 = "PLEA OF NOT GUILTY/DENIAL, WAIVER OF ARRAIGNMENT, DEMAND FOR NOTICE OF EXPERT TESTIMONY, DEMAND FOR DISCOVERY, DEMAND FOR STATEMENT OF PARTICULARS, DEMAND FOR JURY TRIAL, DESIGNATION OF E-MAIL ADDRESSES PURSUANT TO RULE 2.516 1/28/2020"
+        plea3 = 'EP - NOTICE OF APPEARANCE, AND ENTRY OF CONDITIONAL PLEA OF NOT GUILTY AND DEMAND FOR JURY TRIAL'
+        assert ScraperUtils.parse_plea_type(plea1) == 'Not Guilty'
+        assert ScraperUtils.parse_plea_type(plea2) == 'Not Guilty'
+        assert ScraperUtils.parse_plea_type(plea3) == 'Not Guilty'
+
+    @flagsaver.flagsaver(collect_pii=True)
+    def test_parse_name(self):
+        name1 = "DOE, JANE EMILY"
+        name2 = "DOE, JOHN"
+        assert ScraperUtils.parse_name(name1) == ('JANE', 'EMILY', 'DOE')
+        assert ScraperUtils.parse_name(name2) == ('JOHN', None, 'DOE')
+
+    @flagsaver.flagsaver(collect_pii=False)
+    def test_parse_name_redacted(self):
+        name1 = "DOE, JANE EMILY"
+        name2 = "DOE, JOHN"
+        assert ScraperUtils.parse_name(name1) == (
+                '[redacted]', '[redacted]', '[redacted]')
+        assert ScraperUtils.parse_name(name2) == (
+                '[redacted]', '[redacted]', '[redacted]')
+
+    def test_parse_name_error(self):
+        name1 = None
+        name2 = ''
+        assert ScraperUtils.parse_name(name1) == (None, None, None)
+        assert ScraperUtils.parse_name(name2) == (None, None, None)
+
+    def test_parse_charge_statute(self):
+        charge1 = '	FLEEING OR ATTEMPTING TO ELUDE (HIGH SPEED RECKLESS) (3161935 3)  '
+        charge2 = 'DRIVING WHILE LICENSE SUSPENDED OR REVOKED (32234 2a)'
+        charge3 = '	FELON IN POSSESSION OF AMMUNITION (ACTUAL POSSESSION) (79023)  '
+        charge4 = 'FAIL TO DISPLAY REGISTRATION - POSSESSION REQUIRED (320.0605(1))  '
+        assert ScraperUtils.parse_charge_statute(charge1) == (
+            'FLEEING OR ATTEMPTING TO ELUDE (HIGH SPEED RECKLESS)', '3161935 3')
+        assert ScraperUtils.parse_charge_statute(charge2) == ('DRIVING WHILE LICENSE SUSPENDED OR REVOKED', '32234 2a')
+        assert ScraperUtils.parse_charge_statute(charge3) == (
+            'FELON IN POSSESSION OF AMMUNITION (ACTUAL POSSESSION)', '79023')
+        assert ScraperUtils.parse_charge_statute(charge4) == ('FAIL TO DISPLAY REGISTRATION - POSSESSION REQUIRED', '320.0605(1)')
+
+    def test_parse_charge_statute_incomplete(self):
+        charge1 = '(32234 2a)'
+        charge2 = 'DRIVING WHILE LICENSE SUSPENDED OR REVOKED'
+        assert ScraperUtils.parse_charge_statute(charge1) == (None, '32234 2a')
+        assert ScraperUtils.parse_charge_statute(charge2) == (charge2, None)
+        assert ScraperUtils.parse_charge_statute(' ') == (None, None)
+        assert ScraperUtils.parse_charge_statute(None) == (None, None)
+
+    @flagsaver.flagsaver(collect_pii=True)
+    def test_parse_defense_attorneys(self):
+        attorneys1 = ['DEFENSE ATTORNEY: DOE, JANE EMILY ASSIGNED', 'DEFENSE ATTORNEY: DOE, JOHN MICHAEL ASSIGNED', 'DEFENSE ATTORNEY: SELF, SELF ASSIGNED']
+        public_defenders1 = ['COURT APPOINTED ATTORNEY: DOE, JOHN MICHAEL ASSIGNED']
+        assert ScraperUtils.parse_attorneys(attorneys1) == ('DOE, JANE EMILY', 'DOE, JOHN MICHAEL', 'SELF, SELF')
+        assert ScraperUtils.parse_attorneys(public_defenders1) == ('DOE, JOHN MICHAEL',)
+
+    def test_parse_defense_attorneys_invalid(self):
+        invalid_test = ['', '', '']
+        invalid_test2 = []
+        invalid_test3 = None
+        assert not ScraperUtils.parse_attorneys(invalid_test)
+        assert not ScraperUtils.parse_attorneys(invalid_test2)
+        assert not ScraperUtils.parse_attorneys(invalid_test3)
+
+    def test_parse_out_path_illegal_characters(self):
+        filename_invalid_chars = 't<>:e"/s\\t|?n*ame'
+        assert ScraperUtils.parse_out_path('', filename_invalid_chars, 'pdf') == os.path.join('', 'testname.pdf')
+
+    def test_parse_out_path_valid(self):
+        # Function should not affect valid length filenames and paths.
+        normal_filename = 'document'
+        parsedPath = ScraperUtils.parse_out_path('C:\\Example\\Path', normal_filename, 'pdf')
+        assert parsedPath == os.path.join('C:\\Example\\Path', '{}.{}'.format(normal_filename, 'pdf'))
+
+    def test_filename_invalid(self):
+        filename = None
+        parsed_path = ScraperUtils.parse_out_path(r'C:\\Example\\Path', filename, 'pdf')
+        assert parsed_path == os.path.join(r'C:\\Example\\Path', '.pdf')
+
+    def test_parse_out_path_filename_extension_shortening(self):
+        # 252 characters long, but with the .pdf extension it becomes 256 characters long - one too many.
+        filename = '012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901'
+        parsed_filename = ScraperUtils.parse_out_path('', filename, 'pdf')
+        assert parsed_filename == '{}.{}'.format(filename[:-1], 'pdf')
+
+    def test_parse_out_path_shortening(self):
+        # 260 characters long before the extension. This is an invalid filename in Windows.
+        filename_too_long = '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789'
+        parsed_path = ScraperUtils.parse_out_path(os.getcwd(), filename_too_long, 'txt')
+        try:
+            open(parsed_path, 'w')
+            os.remove(parsed_path)
+        except OSError:
+            pytest.fail('parse_out_path() generates an invalid file path.')
+
+    def test_parse_out_path_correct_length(self):
+        # 260 characters long before the extension. This is an invalid filename in Windows.
+        filename_too_long = '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789'
+        parsed_path = ScraperUtils.parse_out_path(os.getcwd(), filename_too_long, 'txt')
+        assert len(parsed_path) <= 256
+
+    @flagsaver.flagsaver(collect_pii=False)
+    def test_enforce_use_of_pii_wrappers(self):
+        with pytest.raises(TypeError, match=".*Pii.String.*"):
+            builder = ScraperUtils.BenchmarkRecordBuilder(
+                    id="foo", state="bar", county="baz")
+            builder.first_name = "I should be in a PII wrapper"
+            builder.build()
+
+        with pytest.raises(TypeError, match=".*Pii.String.*"):
+            ScraperUtils.BenchmarkRecord(id="foo", state="bar", county="baz",
+                                         first_name="naked PII")
+
+    @flagsaver.flagsaver(collect_pii=False)
+    def test_happy_builder_with_nopii(self):
+        builder = ScraperUtils.BenchmarkRecordBuilder(
+                id="foo", state="bar", county="baz", party_id="lol")
+        builder.first_name = Pii.String("I'm in a PII wrapper")
+        r = builder.build()
+        assert r.first_name == "[redacted]"
+        assert r.id == "foo"
+        assert r.state == "bar"
+        assert r.county == "baz"
+        assert r.party_id == "lol"
+
+    @flagsaver.flagsaver(collect_pii=True)
+    def test_happy_builder_with_pii(self):
+        builder = ScraperUtils.BenchmarkRecordBuilder(
+                id="foo", state="bar", county="baz", party_id="lol")
+        builder.first_name = Pii.String("pii")
+        r = builder.build()
+        assert r.first_name == "pii"
+        assert r.id == "foo"
+        assert r.state == "bar"
+        assert r.county == "baz"
+        assert r.party_id == "lol"

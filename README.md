@@ -14,7 +14,7 @@ Right now, this requires some Python knowledge and patience. We're in the early 
 
 1. [Install Python](https://docs.google.com/document/d/1cYmpfZEZ8r-09Q6Go917cKVcQk_d0P61gm0q8DAdIdg/). Prefer a differently opinionated guide? Perhaps [this](https://chrisamico.com/blog/2023-01-14/python-setup/) is more your speed.
 2. [Clone this repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
-3. Find the scraper you wish to run. These are sorted geographically, so start by looking in `/scrapers/...`.
+3. Find the scraper you wish to run. These are sorted geographically, so start by looking in `/scrapers_library/...`.
 4. Follow the instructions in the scraper's `README` to get going. **(If it's broken or simply out of date, please open an issue in this repo or submit a PR.)**
 
 ## Sharing back to the PDAP community

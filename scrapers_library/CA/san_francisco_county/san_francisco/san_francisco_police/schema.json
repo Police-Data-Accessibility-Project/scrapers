@@ -1,0 +1,30 @@
+{
+    "agency_id": "e696239d1983440383fbfd05fa521e20",
+    "agency_info":{
+        "agency_name":"San Francisco Police Department",
+        "agency_coords":{"lat": "37.74442672729492", "lng":"-122.4413833618164"},
+        "agency_type": 4,
+        "city": "San Francisco",
+        "state": "CA",
+        "zip":"94131",
+        "county_fips":"06075"
+    },
+    "data": [
+        {
+            "dataset_id": "ec69974712674d6f9e46cfc5d65a1b07",
+            "url":"https://www.sanfranciscopolice.org/your-sfpd/published-reports/arrests-use-force-and-stop-data-admin-code-96a",
+            "full_data_location":"data/admin_code_96a",
+            "source_type": 2,
+            "data_type": "",
+            "format_type": "",
+            "update_freq": 3,
+            "last_modified": "2021-06-11 13:16:00",
+            "scraper_path":"scrapers_library/CA/san_francisco_county/san_francisco/san_francisco_police/admin_code_96a_scraper.py",
+            "scraper_id":"56620ca46cec49cd88c11b83d4062dd0",
+            "mapping":{
+
+            }
+        }
+    ]
+
+}
