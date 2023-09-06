@@ -11,8 +11,7 @@ FILTERED_CATEGORIES = [
     "culture and recreation", "public works", "tax", "city management and ethics", "thriving neighborhoods",
     "infrastructure", "planning", "human services", "city government", "health and social services", "automobiles",
     "neighborhood census data", "business", "housing", "service requests", "ptsd-repository", "fire and medical",
-    "geographic locations and boundaries", "services and amenities", "buildings", "transparency", "water", "surveys",
-    "base maps"
+    "services and amenities", "buildings", "water", "surveys", "base maps"
 ]
 FILTERED_NAMES = [
     "permit", "inspection", "blood", "covid", "certificate", "fire and spec ops", "code violation", "weeds",
@@ -102,14 +101,7 @@ def write_csv(data):
         data (list): List of dataset dictionaries.
     """    
     fieldnames = [
-        "name", "agency_described", "record_type", "description", "source_url", "readme_url", "scraper_url", "state",
-        "county", "municipality", "agency_type", "jurisdiction_type", "View Archive", "agency_aggregation",
-        "agency_supplied", "supplying_entity", "agency_originated", "originating_entity", "community_data_source",
-        "coverage_start", "source_last_updated", "coverage_end", "retention_schedule", "number_of_records_available",
-        "size", "access_type", "record_download_option_provided", "data_portal_type", "access_restrictions",
-        "access_restrictions_notes", "record_format", "update_frequency", "update_method", "sort_method",
-        "detail_level", "data_source_created", "agency_described_linked_uid", "airtable_uid", 
-        "airtable_source_last_modified", "url_broken"
+        "name", "agency_described", "description", "source_url", "data_portal_type"
     ]
 
     with open("Open Data Network.csv", "w", newline="") as csvfile:
