@@ -39,7 +39,7 @@ def get_data(search_term):
         print("Response returned status code {response.status_code}")
         quit()
 
-    response_json = json.loads(response.text)
+    response_json = response.json()
 
     return response_json["results"]
 
@@ -88,7 +88,7 @@ def remove_duplicates(data):
     with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
         sources_list = list(csv.DictReader(data_sources))
 
-    source_urls = list(map(lambda source: source["source_url"], sources_list))
+    source_urls = [source["source_url"] for source in sources_list]
     data = filter(lambda dataset: dataset["link"] not in source_urls, data)
 
     return list(data)
@@ -149,9 +149,11 @@ def parse_string(string):
 def main():
     print("Retrieving data from http://api.us.socrata.com/...")
 
-    data = get_data("jail") + get_data("court") + get_data("police") + get_data("crime")
+    return_data = get_data("jail") + get_data("court") + get_data("police") + get_data("crime")
+
+    data = []
     # Remove duplicates from overlapping data
-    data = {each["resource"]["id"]: each for each in data}.values()
+    [data.append(dataset) for dataset in return_data if dataset not in data]
 
     print(f"{len(data)} records returned by API")
 
