@@ -1,21 +1,35 @@
 import csv
+import json
+import os
 import re
 import sys
-from pathlib import Path
 from collections import OrderedDict
+
+import requests
+from dotenv import load_dotenv
+from from_root import from_root
 
 
 def get_data():
-    """Retrieve data from the csv file.
+    """Retrieve data from the data sources API.
 
     Returns:
         list: List of dictionaries of data sources sorted by state code.
     """
-    with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
-        reader = list(csv.DictReader(data_sources))
+    #with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
+        #reader = list(csv.DictReader(data_sources))
         # Sort by state code
-        reader.sort(key=lambda data_source: data_source["state"])
-    return reader
+        #reader.sort(key=lambda data_source: data_source["state"])
+    load_dotenv()
+    api_key = "Bearer " + os.getenv("PDAP_API_KEY")
+
+    response = requests.get("https://data-sources-app-bda3z.ondigitalocean.app/data-sources", headers={"Authorization": api_key})
+    response_json = response.json()
+
+    # Filter out data sources without a scraper url
+    result = [data_source for data_source in response_json if data_source["scraper_url"]]
+    print(json.dumps(result, sort_keys=True, indent=4))
+    return result
 
 
 def in_repo_filter(data_source):
@@ -36,7 +50,7 @@ def in_repo_filter(data_source):
 
 def write_md():
     """Create and write to the markdown file"""
-    filepath = Path(__file__).resolve().parents[3]
+    filepath = from_root('CONTRIBUTING.md').parent
 
     md = open(f"{filepath}/INDEX.md", "w")
     md.write("# Scraper Index\n\n")

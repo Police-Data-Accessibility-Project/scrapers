@@ -8,9 +8,11 @@ The scraper index helps people find scrapers for datasets both inside and outsid
 
 ## How to use
 
-1. Create a PDAP [API key](https://docs.pdap.io/api/introduction)
+1. Clone the repository
 
-2. Create a `.env` file in the project's root directory
+2. Create a PDAP [API key](https://docs.pdap.io/api/introduction)
+
+3. Create a `.env` file in the project's root directory
 
     It should contain the following:
 
@@ -18,13 +20,13 @@ The scraper index helps people find scrapers for datasets both inside and outsid
     PDAP_API_KEY = "[your API key]"
     ```
 
-3. Navigate to the `scraper_index` folder
+4. Navigate to the `scraper_index` folder
 
     ```bash
     cd utils/meta/scraper_index
     ```
 
-4. Run `python3 index.py`
+5. Run `python3 index.py`
 
 ## Requirements
 
