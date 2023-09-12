@@ -1,8 +1,9 @@
 import csv
 import json
-from os.path import exists
+import os
 
 import requests
+from dotenv import load_dotenv
 
 # Categories, names, and tags used to filter out irrelevant data
 FILTERED_CATEGORIES = [
@@ -76,22 +77,28 @@ def filter_data(dataset):
     return True
 
 
-def remove_duplicates(data):
+def remove_duplicates(data_sources):
     """Removes data sources that are already in the PDAP database.
 
     Args:
-        data (list): List of dataset dictionaries.
+        data_sources (list): List of dataset dictionaries.
 
     Returns:
         list: List of datasets with duplicates removed.
-    """    
-    with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
-        sources_list = list(csv.DictReader(data_sources))
+    """
+    load_dotenv()
+    api_key = "Bearer " + os.getenv("PDAP_API_KEY")
 
-    source_urls = [source["source_url"] for source in sources_list]
-    data = filter(lambda dataset: dataset["link"] not in source_urls, data)
+    response = requests.get("https://data-sources-app-bda3z.ondigitalocean.app/data-sources", headers={"Authorization": api_key})
+    if response.status_code != 200:
+        print("Request to PDAP API failed. Response code:", response.status_code)
+        return data_sources
+    response_json = response.json()
 
-    return list(data)
+    source_urls = [data_source["source_url"] for data_source in response_json]
+    data_sources = [data_source for data_source in data_sources if data_source["link"] not in source_urls]
+
+    return data_sources
 
 
 def write_csv(data):
@@ -157,9 +164,9 @@ def main():
 
     print(f"{len(data)} records returned by API")
 
+    # Filter irrelevant records
     data = list(filter(filter_data, data))
-    if exists("PDAP Data Sources.csv"):
-        data = remove_duplicates(data)
+    data = remove_duplicates(data)
 
     print(f"{len(data)} records remaining after filtering")
 
