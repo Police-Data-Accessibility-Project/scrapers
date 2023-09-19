@@ -1,11 +1,11 @@
 # Setup
 
-1. Clone the repo, either via the command line, `git clone https://github.com/Police-Data-Accessibility-Project/Scrapers.git` or from the website.
-2. `CD` into the `Scrapers` folder, and type `pip3 install -r requirements.txt`
-3. Copy the extractor version you need, and the `configs.py` to the `scrapers_library/STATE/COUNTY` that you created for the precinct.
-4. For example, Alameda county, California, would be placed into the folder `Scrapers/scrapers_library/CA/alameda/`.
+1. Clone the repo, either via the command line, `git clone https://github.com/Police-Data-Accessibility-Project/scrapers.git` or from the website.
+2. `CD` into the `scrapers` folder, and type `pip3 install -r requirements.txt`
+3. Copy the extractor version you need, and the `configs.py` to the `scrapers_library/STATE/COUNTY/MUNICIPALITY` that you created for the precinct.
+4. For example, Alameda, California, would be placed into the folder `scrapers/scrapers_library/CA/alameda_county/alameda`.
 
-   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/Scrapers/tree/master/scrapers_library/CA/alameda) for the example.
+   This **MUST** be placed within the `Scrapers` folder that you downloaded. See [here](https://github.com/Police-Data-Accessibility-Project/scrapers/tree/main/scrapers_library/CA/alameda_county/alameda/alameda_police) for the example.
 
 Open the `configs.py` file that you copied:
 1. Set `webpage` to the page with the pdf lists
@@ -32,14 +32,14 @@ For example, `domain = "https://www.website.com"` would become `domain = "https:
  If the site has a set crawler time under it's `robots.txt`, set `sleep_time` to it's value. Otherwise, just leave it at `5`
 
 If this does not make sense, try checking the comments within the code. (if you can find any)
- Working example can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/scrapers_library/CA/fresno_county/college/fresno/fresno_daily_scraper.py)
+ Working example can be found [here](https://github.com/Police-Data-Accessibility-Project/scrapers/blob/main/scrapers_library/CA/fresno_county/fresno/fresno_state_college/fresno_daily_scraper.py)
 
 # Versions:
 `list_pdf_extractor.py` : most basic of the scripts, mostly used for reference
 
-`list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/utils/list_pdf_utils/get_files.py)
+`list_pdf_extractor_v2.py` : Uses imported `get_files` function. Useful for cases where a custom `get_files` is **not** needed. Function can be found [here](https://github.com/Police-Data-Accessibility-Project/scrapers/blob/main/utils/pdf/list_pdf_utils/get_files.py)
 
-`list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. ~~See [golden_west_scraper.py](https://github.com/CaptainStabs/Scrapers/blob/master/scrapers_library/CA/golden_west_college/golden_west_scraper.py) for working example.~~
+`list_pdf_extractor_v3.py` : Built off of V2, Allows for filtering links by common unwanted words. ~~See [golden_west_scraper.py](https://github.com/Police-Data-Accessibility-Project/scrapers/blob/main/scrapers_library/CA/los_angeles_county/huntington_beach/golden_west_college/golden_west_scraper.py) for working example.~~
 
 
 This script has two functions, the first, `extract_info`, extracts the links containing documents, and saves the url and the document name to a file called `links.txt`
@@ -55,7 +55,7 @@ As the `list_pdf_scrapers` all use a common module, they accept the same argumen
 * `flavor` : Optional - Defaults to `stream`; (Used when `extract_tables` is True) accepted arguments are `stream` and `lattice`. Useful if the extracted data is jumbled (may not fix everything though).
 * `extract_tables` : Optional - Defaults to False; if set to True, will attempt to extract tables from pdfs using [Camelot](https://camelot-py.readthedocs.io/en/master/).
 
-The following 5 arguments are all passed to the `get_files` module. It's readme is located [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/master/utils/list_pdf_utils/get_files_README.md)
+The following 5 arguments are all passed to the `get_files` module. It's readme is located [here](https://github.com/Police-Data-Accessibility-Project/PDAP-Scrapers/blob/main/utils/pdf/list_pdf_utils/get_files_README.md)
 
 * `name_in_url` : Optional - Defaults to True; As the name implies, if the document name is **NOT** in the url/path or in the `href`
 
@@ -74,5 +74,3 @@ The following 5 arguments are all passed to the `get_files` module. It's readme 
 
 # More in depth explanations (Poorly explained, nerdy stuff)
  `extract_info` uses `urllib` to open the webpage, and then `BeautifulSoup4` to parse it. It then uses regex to find all links that end with pdf or doc. It needs a few lines to be replaced with regex.
-
-[//]: # (Note for Kylie to fix later)
