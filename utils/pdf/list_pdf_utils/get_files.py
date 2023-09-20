@@ -96,6 +96,9 @@ def get_files(
                 #  All of these separate functions are likely unecessary
                 if ".pdf" in extension:
                     # save_path = os.path.join(save_dir, file_name+".pdf")
+                    if not file_name.endswith(".pdf"):
+                        file_name = file_name + ".pdf"
+
                     print("   [*] Getting file " + file_name)
                     get_pdf(
                         save_dir, file_name, url_2, debug, sleep_time, try_overwite, no_overwrite, add_date=add_date,
