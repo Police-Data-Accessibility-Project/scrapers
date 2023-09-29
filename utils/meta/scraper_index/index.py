@@ -1,35 +1,27 @@
 import csv
-import json
-import os
 import re
-import sys
-from collections import OrderedDict
-
 import requests
-from dotenv import load_dotenv
-from from_root import from_root
+import os
+from pathlib import Path
+from collections import OrderedDict
 
 
 def get_data():
-    """Retrieve data from the data sources API.
+    """Retrieve data from the PDAP API data sources endpoint.
 
     Returns:
         list: List of dictionaries of data sources sorted by state code.
     """
-    #with open("PDAP Data Sources.csv", encoding="utf-8-sig") as data_sources:
-        #reader = list(csv.DictReader(data_sources))
-        # Sort by state code
-        #reader.sort(key=lambda data_source: data_source["state"])
-    load_dotenv()
-    api_key = "Bearer " + os.getenv("PDAP_API_KEY")
-
-    response = requests.get("https://data-sources-app-bda3z.ondigitalocean.app/data-sources", headers={"Authorization": api_key})
-    response_json = response.json()
-
-    # Filter out data sources without a scraper url
-    result = [data_source for data_source in response_json if data_source["scraper_url"]]
-    print(json.dumps(result, sort_keys=True, indent=4))
-    return result
+    API_KEY = os.getenv("PDAP_API_KEY")
+    r = requests.get("http://data-sources.pdap.io/data-sources", headers={"Authorization": f"Bearer {API_KEY}"})
+    data = r.json()["data"]
+    clean_data = []
+    for d in data:
+        d["state"] = d["state"] if d["state"] is not None else ""
+        clean_data.append(d)
+    # Sort by state code
+    clean_data.sort(key=lambda data_source: data_source["state"])
+    return clean_data
 
 
 def in_repo_filter(data_source):
@@ -42,7 +34,7 @@ def in_repo_filter(data_source):
     """Checks for duplicate names"""
     is_in_list = lambda list: data_source["name"] in [data_source["name"] for data_source in list]
 
-    if "Police-Data-Accessibility-Project" in data_source["scraper_url"] and not is_in_list(in_repo):
+    if "scraper_url" in data_source and data_source["scraper_url"] and "Police-Data-Accessibility-Project" in data_source["scraper_url"] and not is_in_list(in_repo):
         in_repo.append(data_source)
     elif data_source["scraper_url"] and not is_in_list(not_in_repo):
         not_in_repo.append(data_source)
@@ -50,7 +42,7 @@ def in_repo_filter(data_source):
 
 def write_md():
     """Create and write to the markdown file"""
-    filepath = from_root('CONTRIBUTING.md').parent
+    filepath = Path(__file__).resolve().parents[3]
 
     md = open(f"{filepath}/INDEX.md", "w")
     md.write("# Scraper Index\n\n")
@@ -99,7 +91,7 @@ def write_section(md, section_data, header):
         for data_source in national_data:
             is_multistate = "," in data_source["state"]
             if is_multistate:
-                data_source["agency_described"] = remove_duplicates(data_source["agency_described"])
+                data_source["agency_described"] = remove_duplicates(data_source["agency_described"]) if "agency_described" in data_source else ""
                 data_source["state"] = remove_duplicates(data_source["state"])
                 data_source["county"] = remove_duplicates(data_source["county"])
                 data_source["municipality"] = remove_duplicates(data_source["municipality"])
@@ -121,7 +113,7 @@ def write_scraper(md, data_source):
     remove_state_code = lambda s: re.sub(r" - [A-Z]{2}$", "", s)
 
     name = remove_state_code(data_source["name"])
-    agency = data_source["agency_described"]
+    agency = data_source["agency_described"] if "agency_described" in data_source else ""
     if "," not in agency:
         agency = remove_state_code(agency)
     type = data_source["record_type"]
