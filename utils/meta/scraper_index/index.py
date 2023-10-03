@@ -43,7 +43,12 @@ def in_repo_filter(data_source):
     """Checks for duplicate names"""
     is_in_list = lambda list: data_source["name"] in [data_source["name"] for data_source in list]
 
-    if "scraper_url" in data_source and data_source["scraper_url"] and "Police-Data-Accessibility-Project" in data_source["scraper_url"] and not is_in_list(in_repo):
+    if (
+        "scraper_url" in data_source
+        and data_source["scraper_url"]
+        and "Police-Data-Accessibility-Project" in data_source["scraper_url"]
+        and not is_in_list(in_repo)
+    ):
         in_repo.append(data_source)
     elif data_source["scraper_url"] and not is_in_list(not_in_repo):
         not_in_repo.append(data_source)
@@ -114,7 +119,7 @@ def clean_data(data, none_str=""):
 
     Returns:
         str: Cleaned data string.
-    """    
+    """
     # Convert string to list
     data = ast.literal_eval(data) if data else none_str
 
