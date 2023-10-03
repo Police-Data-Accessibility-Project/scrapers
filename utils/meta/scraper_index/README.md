@@ -12,12 +12,10 @@ The scraper index helps people find scrapers for datasets both inside and outsid
 
 2. Create a PDAP [API key](https://docs.pdap.io/api/introduction)
 
-3. Create a `.env` file in the project's root directory
+3. Create an environment variable with your API key
 
-    It should contain the following:
-
-    ```py
-    PDAP_API_KEY = "[your API key]"
+    ```bash
+    export PDAP_API_KEY="[your API key]"
     ```
 
 4. Navigate to the `scraper_index` folder
@@ -33,4 +31,3 @@ The scraper index helps people find scrapers for datasets both inside and outsid
 - `Python 3`
 - `requests`
 - `from_root`
-- `dotenv`

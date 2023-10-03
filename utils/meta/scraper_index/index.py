@@ -1,9 +1,11 @@
+import ast
 import csv
-import re
-import requests
 import os
-from pathlib import Path
+import re
 from collections import OrderedDict
+
+import requests
+from from_root import from_root
 
 
 def get_data():
@@ -13,8 +15,15 @@ def get_data():
         list: List of dictionaries of data sources sorted by state code.
     """
     API_KEY = os.getenv("PDAP_API_KEY")
-    r = requests.get("http://data-sources.pdap.io/data-sources", headers={"Authorization": f"Bearer {API_KEY}"})
-    data = r.json()["data"]
+    r = requests.get("https://data-sources.pdap.io/data-sources", headers={"Authorization": f"Bearer {API_KEY}"})
+
+    try:
+        data = r.json()["data"]
+    except KeyError:
+        print(r)
+        print(r.json())
+        quit()
+
     clean_data = []
     for d in data:
         d["state"] = d["state"] if d["state"] is not None else ""
@@ -42,7 +51,7 @@ def in_repo_filter(data_source):
 
 def write_md():
     """Create and write to the markdown file"""
-    filepath = Path(__file__).resolve().parents[3]
+    filepath = from_root("CONTRIBUTING.md").parent
 
     md = open(f"{filepath}/INDEX.md", "w")
     md.write("# Scraper Index\n\n")
@@ -73,8 +82,12 @@ def write_section(md, section_data, header):
     md.write("--- | --- | --- | --- | --- | --- | ---\n")
 
     for data_source in section_data:
+        data_source["state"] = clean_data(data_source["state"], none_str="USA")
+        data_source["county"] = clean_data(data_source["county"])
+        data_source["municipality"] = clean_data(data_source["municipality"])
+
         # Sort out national and multistate data sources
-        if not data_source["state"] or "," in data_source["state"]:
+        if data_source["state"] == "USA" or ", " in data_source["state"]:
             national_data.append(data_source)
             continue
 
@@ -85,20 +98,34 @@ def write_section(md, section_data, header):
         md.write("Name | Agency Described | Record Type | State | County | Municipality | Scraper URL\n")
         md.write("--- | --- | --- | --- | --- | --- | ---\n")
 
-        """Removes duplicate entries from a string"""
-        remove_duplicates = lambda s: ", ".join(OrderedDict.fromkeys(s.split(",")))
-
         for data_source in national_data:
-            is_multistate = "," in data_source["state"]
-            if is_multistate:
-                data_source["agency_described"] = remove_duplicates(data_source["agency_described"]) if "agency_described" in data_source else ""
-                data_source["state"] = remove_duplicates(data_source["state"])
-                data_source["county"] = remove_duplicates(data_source["county"])
-                data_source["municipality"] = remove_duplicates(data_source["municipality"])
-            elif not data_source["state"]:
-                data_source["state"] = "USA"
+            if ", " in data_source["state"]:
+                data_source["agency_name"] = "Various"
 
             write_scraper(md, data_source)
+
+
+def clean_data(data, none_str=""):
+    """Cleans up data, removing duplicate entries and turning it into a string without quotes or brackets.
+
+    Args:
+        data (str): Data to clean.
+        none_str (str, optional): What to set data to in case of None value. Defaults to "".
+
+    Returns:
+        str: Cleaned data string.
+    """    
+    # Convert string to list
+    data = ast.literal_eval(data) if data else none_str
+
+    if len(data) == 1:
+        data = data[0]
+    elif type(data) == list:
+        # Remove duplicates from the list
+        data = list(OrderedDict.fromkeys(data))
+        data = ", ".join(data)
+
+    return data
 
 
 def write_scraper(md, data_source):
@@ -113,9 +140,7 @@ def write_scraper(md, data_source):
     remove_state_code = lambda s: re.sub(r" - [A-Z]{2}$", "", s)
 
     name = remove_state_code(data_source["name"])
-    agency = data_source["agency_described"] if "agency_described" in data_source else ""
-    if "," not in agency:
-        agency = remove_state_code(agency)
+    agency = remove_state_code(data_source["agency_name"])
     type = data_source["record_type"]
     state = data_source["state"]
     county = data_source["county"]
