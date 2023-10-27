@@ -46,16 +46,12 @@ def get_files(
     else:
         logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-    # Why do I have this?
-    name_in_url = name_in_url
-
     if not os.path.isfile("url_name.txt"):
         print("url_name.txt does not exist. Did you call extract_info first?")
         return
 
     print(" [*] Opening url_name.txt")
     with open("url_name.txt", "r") as input_file:
-
         # Counts the number of lines in the file
         print("    [*] Counting lines")
         line_count = len(input_file.readlines())
@@ -104,22 +100,17 @@ def get_files(
                         save_dir, file_name, url_2, debug, sleep_time, try_overwite, no_overwrite, add_date=add_date,
                     )
                     print("   [*]Sleeping for: " + str(sleep_time))
-
                 elif ".doc" in extension:
                     print("Getting doc: " + file_name)
                     get_doc(save_dir, file_name, url_2, sleep_time)
-
                 elif ".xls" in extension:
                     get_xls(save_dir, file_name, url_2, sleep_time)
-
                 else:
                     print(" [!!!] Unhandled documents type")
                     print(" [!!!] Url: " + url_2)
-
             # If name_in_url is False
             else:
                 import cgi
-
 
                 response = urllib.request.urlopen(url_2)
                 logging.debug("Response: " + str(response))
@@ -143,16 +134,12 @@ def get_files(
                     # save_path = os.path.join(save_dir, file_name+".pdf")
                     print(file_name)
                     get_pdf(save_dir, file_name, url_2, debug, sleep_time, try_overwite)
-
                 elif ".doc" in extension:
                     get_doc(save_dir, file_name, url_2, sleep_time)
-
                 elif ".xls" in extension:
                     get_xls(save_dir, file_name, url_2, sleep_time)
-
                 elif ".zip" in extension:
                     urllib.request.urlretrieve(url_2, save_dir + file_name.replace("/", "-"))
-
                 else:
                     print(" [!!!] Unhandled documents type")
                     print(" [!!!] Url: " + url_2)

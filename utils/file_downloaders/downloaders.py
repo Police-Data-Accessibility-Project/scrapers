@@ -69,7 +69,6 @@ def check_if_exists(save_dir, file_name, add_date):
 def get_pdf(
     save_dir, file_name, url_2, sleep_time, debug=False, try_overwite=False, no_overwrite=False, add_date=False,
 ):
-
     """
     Download PDFs
     :param save_dir: path where files should be saved, string
@@ -81,7 +80,6 @@ def get_pdf(
     :param no_overwrite: replaces try_overwrite. Use with add_date for best results. Prevent overwriting of data files. (default false)
     :param add_date: adds the date scraped to the filename, bool
     """
-    
     if debug:
         logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     else:
@@ -153,7 +151,6 @@ def get_pdf(
             
         print("   [*] Comparing")
 
-
         # Saves the pdf while prepending with "new_"
         print(" [*] Saving as new_" + file_name)
         with open(save_dir + "new_" + file_name, "wb") as file:
@@ -173,7 +170,6 @@ def get_pdf(
             with open(save_dir + file_name, "wb") as file:
                 file.write(pdf.read())
             file.close()
-    # Checks if the files exists, and that `try_overwite` is True
     elif os.path.exists(save_dir + file_name) is True and try_overwite is True:
         print(" [!!!] try_overwite is set to True, verify that you want this before continuing")
         # Tries to get the file and set it to pdf
@@ -231,7 +227,7 @@ def get_doc(save_dir, file_name, url_2, sleep_time):
         document = requests.get(url_2.replace(" ", "%20", allow_redirects=True))
 
         with open(file_name, "w") as data_file:
-            data_file.write(document.text)  # Writes using requests text 	function thing
+            data_file.write(document.text)  # Writes using requests text function thing
 
         data_file.close()
         time.sleep(sleep_time)
