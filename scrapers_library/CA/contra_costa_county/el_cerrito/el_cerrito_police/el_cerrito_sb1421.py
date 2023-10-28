@@ -9,6 +9,7 @@ p = from_root('CONTRIBUTING.md').parent
 sys.path.insert(1, str(p))
 
 from utils.pdf.list_pdf_scrapers import list_pdf_v3
+from utils.pdf.list_pdf_scrapers.single_pdf_scraper import single_pdf_scraper
 
 
 def get_case():
@@ -37,7 +38,7 @@ def get_case():
                 fd.write(chunk)
 
 
-def main():
+def main():  
     save_dir = "./data/Administrative Investigation 12-21/"
     configs = {
         "webpage": "https://www.el-cerrito.org/1343/Administrative-Investigation-12-21",
@@ -49,6 +50,14 @@ def main():
     list_pdf_v3(configs, save_dir)
 
     get_case()
+
+    url = "https://www.el-cerrito.org/DocumentCenter/View/11676/Public-Record-2003"
+    save_dir = "./data/Public Record 2003/"
+    single_pdf_scraper(save_dir, url)
+
+    url = "https://www.el-cerrito.org/DocumentCenter/View/14043/UAS-Policy-04062020"
+    save_dir = "./data/UAS Policy/"
+    single_pdf_scraper(save_dir, url)
 
 if __name__ == "__main__":
     main()
