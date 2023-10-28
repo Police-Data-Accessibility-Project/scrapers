@@ -5,7 +5,7 @@ import requests
 from tqdm import tqdm
 from from_root import from_root
 
-p = from_root('CONTRIBUTING.md').parent
+p = from_root("CONTRIBUTING.md").parent
 sys.path.insert(1, str(p))
 
 from utils.pdf.list_pdf_scrapers import list_pdf_v3
@@ -13,10 +13,11 @@ from utils.pdf.list_pdf_scrapers.single_pdf_scraper import single_pdf_scraper
 
 
 def get_case():
+    """Downloads files related to ECPD Case 15-22851"""
     save_folder = "./data/ECPD Case 15-22851/"
 
     if not os.path.exists(save_folder):
-       os.makedirs(save_folder)
+        os.makedirs(save_folder)
 
     print("\nRetrieving ECPD Case 15-22851 media files...")
     for x in tqdm(range(11541, 11638)):
@@ -38,7 +39,7 @@ def get_case():
                 fd.write(chunk)
 
 
-def main():  
+def main():
     save_dir = "./data/Administrative Investigation 12-21/"
     configs = {
         "webpage": "https://www.el-cerrito.org/1343/Administrative-Investigation-12-21",
@@ -58,6 +59,7 @@ def main():
     url = "https://www.el-cerrito.org/DocumentCenter/View/14043/UAS-Policy-04062020"
     save_dir = "./data/UAS Policy/"
     single_pdf_scraper(save_dir, url)
+
 
 if __name__ == "__main__":
     main()
