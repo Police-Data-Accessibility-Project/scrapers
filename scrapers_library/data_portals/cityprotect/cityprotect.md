@@ -1,3 +1,7 @@
+# Note
+
+Some of the instructions here appear outdated/irrelevant. 
+
 # Instructions
 
 Go to their [administration page](https://www.carrolltonpd.com/divisions/administration/), on the right side, "crime reports"
@@ -29,9 +33,7 @@ The file name format is `police_code`-`start_month`.`start_year`-`end_month`.`en
 `police_code = 1423`
 
 
-Scroll down to the bottom of the report list, and set [`start_year`](https://github.com/CaptainStabs/Scrapers/blob/master/scrapers_library/GA/Carrollton/carrollton_scraper.py#L14) to the lowest year of data available.
+Scroll down to the bottom of the report list, and set [`start_year`](https://github.com/Police-Data-Accessibility-Project/scrapers/blob/main/scrapers_library/GA/carroll_county/carrollton/carrollton_police/carrollton_scraper.py#L14) to the lowest year of data available.
 
 
-If the data is not current, comment out [line 20](https://github.com/CaptainStabs/Scrapers/blob/master/scrapers_library/GA/Carrollton/carrollton_scraper.py#L20), and close the block comment on [line 24](https://github.com/CaptainStabs/Scrapers/blob/master/scrapers_library/GA/Carrollton/carrollton_scraper.py#L24)
-
-[//]: # (Note for Kylie to fix later)
+If the data is not current, comment out [line 20](https://github.com/Police-Data-Accessibility-Project/scrapers/blob/main/scrapers_library/GA/carroll_county/carrollton/carrollton_police/carrollton_scraper.py#L20), and close the block comment on [line 24](https://github.com/Police-Data-Accessibility-Project/scrapers/blob/main/scrapers_library/GA/carroll_county/carrollton/carrollton_police/carrollton_scraper.py#L24)
