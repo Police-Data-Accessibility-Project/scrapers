@@ -1,8 +1,8 @@
-# El Cirrito Police Scraper
+# El Cerrito Police Scraper
 
 ## Source info
 
-Records related to the El Cirrito Police as part of California's SB 1421. 
+Records related to the El Cerrito Police as part of California's SB 1421. 
 
 The records can be found online at [https://www.el-cerrito.org/1342/Released-Records](https://www.el-cerrito.org/1342/Released-Records)
 
