@@ -1,6 +1,7 @@
 import logging
 import sys
 
+
 def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_file=False, debug=False):
     """
     Extract information from supplied beautiful soup
@@ -11,12 +12,10 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
     :param configs_file: reverse compatbility, leave alone (default false)
     :param debug: whether to print debug information (default false)
     """
-
     if debug:
         logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     else:
         logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-
 
     if not name_in_url:
         import cgi
@@ -38,8 +37,6 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
         if not link["href"].startswith(web_path):
             # Not really sure why I added these in commit 986357286bc98bc154f2333ae75934be4e5df00d,
             # But they were causing tons of terminal puke.
-            # print("href not startswith")
-            # print(link)
             continue
             logging.debug("link: " + link.get("href"))
 
@@ -50,13 +47,9 @@ def extract_info(soup, configs, extract_name=False, name_in_url=True, configs_fi
         print(url)
         
         if not extract_name:
-            # print(" [?] extract_name is False")
             name = url[url.rindex("/") :]
-
         else:
             name = link.string
-            # print(" [?] extract_name is True")
-            # print(name)
 
         if not name_in_url:
             response = urllib.request.urlopen(domain + url)

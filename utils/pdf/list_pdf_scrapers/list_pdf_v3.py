@@ -25,7 +25,6 @@ configs = {
     "domain": "",
     "sleep_time": "",
     "non_important": "",
-    "debug": "",
     "csv_dir": "",
 }
 """
@@ -72,9 +71,10 @@ def list_pdf_v3(
     if not configs_file:  # Default setting
         webpage = configs["webpage"]
         sleep_time = configs["sleep_time"]
+        configs_non_important = []
         try:
             configs_non_important = configs["non_important"]
-        except AttributeError:
+        except (AttributeError, KeyError):
             pass
         if extract_tables:
             try:
@@ -102,9 +102,8 @@ def list_pdf_v3(
     # use BeautifulSoup4 (bs4) to parse the returned html_page using BeautifulSoup4's html parser (html.parser)
     soup = BeautifulSoup(html_page, "html.parser")
 
-    # if delete is not false (i think that would be true then), try to remove url_name.txt
     # the delete option is primarily used for debugging
-    if delete is not False:
+    if delete is True:
         try:
             os.remove("url_name.txt")
         except FileNotFoundError:
@@ -152,9 +151,7 @@ def list_pdf_v3(
             else:
                 important = configs.important
         except AttributeError:
-            # print("")
             print("   [!] Important is still named `non_important`")
-            # print("")
 
             # As there is no variable called important in configs, use non_important instead.
             # Check added for backwards compatibility.
@@ -176,7 +173,6 @@ def list_pdf_v3(
                     print(line)
             print(" [*] Done writing")
 
-    # if debug is false, can probably be rewritten as "if not debug:"
     # functions the same as the delete variable tbh
     if not debug:
         try:
