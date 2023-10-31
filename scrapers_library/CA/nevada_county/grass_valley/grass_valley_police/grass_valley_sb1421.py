@@ -2,6 +2,7 @@ import sys
 import os
 
 import requests
+from tqdm import tqdm
 from vimeo_downloader import Vimeo
 from from_root import from_root
 
@@ -11,22 +12,49 @@ sys.path.insert(1, str(p))
 from utils.pdf.list_pdf_scrapers.single_pdf_scraper import single_pdf_scraper
 
 
-'''
-file_url = "https://cityofgrassvalley-my.sharepoint.com/%3Ab%3A/g/personal/bkalstein_gvpd_net/EaVFsdEin1FMiUaf8SklOoAB51Bt8shEF376SWVHrgUgXA?e=RDd9VP"
-save_path = './data/G2000004/'
+def get_sharepoint_pdfs():
+    pdfs = [
+        {
+            "name": "Grass Valley Police Incident Report.pdf",
+            "url1": "https://cityofgrassvalley-my.sharepoint.com/%3Ab%3A/g/personal/bkalstein_gvpd_net/EX1xjYG48R1Nk-vaAX9HOJYBlIjjKO13gKZLdXzkHOv0SQ?e=2lfUg1",
+            "url2": "https://cityofgrassvalley-my.sharepoint.com/personal/bkalstein_gvpd_net/Documents/GVPD/OIS/Open%20Access/Grass%20Valley%20Police%20Incident%20Report.pdf"
+        },
+        {
+            "name": "Internal Review and Findings.pdf",
+            "url1": "https://cityofgrassvalley-my.sharepoint.com/%3Ab%3A/g/personal/bkalstein_gvpd_net/EaVFsdEin1FMiUaf8SklOoAB51Bt8shEF376SWVHrgUgXA?e=RDd9VP",
+            "url2": "https://cityofgrassvalley-my.sharepoint.com/personal/bkalstein_gvpd_net/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fbkalstein%5Fgvpd%5Fnet%2FDocuments%2FGVPD%2FOIS%2FOpen%20Access%2FInternal%20Review%20and%20Findings%2Epdf"
+        },
+        {
+            "name": "District Attorney Findings and Report of Incident.pdf",
+            "url1": "https://cityofgrassvalley-my.sharepoint.com/%3Ab%3A/g/personal/bkalstein_gvpd_net/Efx7ivUAGwVKiQYbt8S4dtYBLqcxTwdt52fhjNvOHVRmPQ?e=dGZBnD",
+            "url2": "https://cityofgrassvalley-my.sharepoint.com/personal/bkalstein_gvpd_net/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fbkalstein%5Fgvpd%5Fnet%2FDocuments%2FGVPD%2FOIS%2FOpen%20Access%2FDA%5Freview%5Fstrickland%2Epdf"
+        }
+    ]
 
-res = requests.get(file_url)
-cookie_dict = res.cookies.get_dict()
-file_url = 'https://cityofgrassvalley-my.sharepoint.com/personal/bkalstein_gvpd_net/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fbkalstein%5Fgvpd%5Fnet%2FDocuments%2FGVPD%2FOIS%2FOpen%20Access%2FInternal%20Review%20and%20Findings%2Epdf'
-headers = {"Cookie": f"FedAuth={cookie_dict['FedAuth']}"}
-res = requests.get(file_url, headers=headers)
-print(res)
-file_path = "./data/G2000004/test.pdf"
-with open(file_path, "wb") as fd:
-    for chunk in res.iter_content():
-        fd.write(chunk)
+    print("\nRetrieving Sharpoint PDFs...")
+    for pdf in pdfs:
+        filepath = f"./data/G2000004/{pdf['name']}"
 
-'''
+        if os.path.exists(filepath):
+            continue
+
+        # Perform a get request to the first url to retrieve a FedAuth cookie for download authorization
+        res = requests.get(pdf["url1"])
+        cookie_dict = res.cookies.get_dict()
+        headers = {"Cookie": f"FedAuth={cookie_dict['FedAuth']}"}
+        
+        res = requests.get(pdf["url2"], headers=headers, stream=True)
+        total = int(res.headers.get('content-length', 0))
+        progress_bar = tqdm(total=total, unit='iB', unit_scale=True, desc=pdf["name"])
+
+        with open(filepath, "wb") as fd:
+            for chunk in res.iter_content(chunk_size=1024):
+                progress_bar.update(len(chunk))
+                fd.write(chunk)
+        
+        progress_bar.close()
+
+
 
 def get_vimeo_videos():
     embedded_on = "https://www.cityofgrassvalley.com/"
@@ -89,6 +117,8 @@ def main():
 
     if not os.path.exists("./data/G2000004/"):
         os.makedirs("./data/G2000004/")
+
+    get_sharepoint_pdfs()
 
     get_vimeo_videos()
 
