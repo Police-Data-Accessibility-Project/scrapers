@@ -13,6 +13,7 @@ from utils.pdf.list_pdf_scrapers.single_pdf_scraper import single_pdf_scraper
 
 
 def get_sharepoint_pdfs():
+    """Downloads PDF files that are hosted on Microsoft SharePoint."""    
     pdfs = [
         {
             "name": "Grass Valley Police Incident Report.pdf",
@@ -33,7 +34,7 @@ def get_sharepoint_pdfs():
 
     print("\nRetrieving Sharpoint PDFs...")
     for pdf in pdfs:
-        filepath = f"./data/G2000004/{pdf['name']}"
+        filepath = "./data/G2000004/" + pdf["name"]
 
         if os.path.exists(filepath):
             continue
@@ -55,8 +56,8 @@ def get_sharepoint_pdfs():
         progress_bar.close()
 
 
-
 def get_vimeo_videos():
+    """Downloads videos that are hosted on Vimeo."""
     embedded_on = "https://www.cityofgrassvalley.com/"
     videos = [
         {
