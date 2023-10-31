@@ -16,10 +16,10 @@ Sample response is ommitted due to many of the files being large in size.
 
 The final folder structure is as follows:
 
-- `./data/Administrative Investigation 12-21`
-- `./data/ECPD Case 15-22851`
-- `./data/Public Record 2003`
-- `./data/UAS Policy`
+- `./data/Administrative Investigation 12-21/`
+- `./data/ECPD Case 15-22851/`
+- `./data/Public Record 2003/`
+- `./data/UAS Policy/`
 
 ## Requirements
 

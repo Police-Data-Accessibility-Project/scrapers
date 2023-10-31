@@ -111,7 +111,6 @@ def get_pdf(
         try:
             print(" [*] Requesting file....")
             pdf = urllib.request.urlopen(url_2.replace(" ", "%20"))
-
         except urllib.error.HTTPError as exception:
             print(f"   [!] {exception}")
             print("   [!] URL: " + str(url_2))
@@ -131,8 +130,7 @@ def get_pdf(
 
         time.sleep(sleep_time)
         print("Sleep")
-
-        # If the file exists, and no_overwrite is true, then:
+    # If the file exists, and no_overwrite is true, then:
     elif (
         os.path.exists(save_dir + file_name) is True
         and check_if_exists(save_dir, file_name, add_date=add_date) is False
@@ -227,7 +225,7 @@ def get_doc(save_dir, file_name, url_2, sleep_time):
         document = requests.get(url_2.replace(" ", "%20", allow_redirects=True))
 
         with open(file_name, "w") as data_file:
-            data_file.write(document.text)  # Writes using requests text function thing
+            data_file.write(document.text)
 
         data_file.close()
         time.sleep(sleep_time)
