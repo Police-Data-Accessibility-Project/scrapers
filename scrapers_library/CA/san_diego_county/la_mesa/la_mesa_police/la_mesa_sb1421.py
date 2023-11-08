@@ -3,6 +3,8 @@ import m3u8
 import shutil
 import re
 import os
+from concurrent.futures import as_completed, ThreadPoolExecutor
+from tqdm import tqdm
 
 '''
 def strip_end(text, suffix):
@@ -21,17 +23,20 @@ def get_ts_stream():
     if not os.path.exists("ts_files"):
         os.makedirs("ts_files")
 
-    for seg in m3u8_master.data["segments"]:
-        download_url = url + seg["uri"]
-        print(f"downloading {seg['uri']}")
-        download_file(download_url)
+    results = []
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        future_to_url = [executor.submit(download_file, url + seg["uri"]) for seg in m3u8_master.data["segments"]]
+
+        for future in tqdm(as_completed(future_to_url), total=len(future_to_url), desc="Clip11Knudson1221Protest.ts"):
+            data = future.result()
+            results.append(data)
 
     TS_DIR = "./ts_files"
     with open("Clip11Knudson1221Protest.ts", "wb") as video:
         dir_list = os.listdir(TS_DIR)
         dir_list.sort(key=lambda f: int("".join(filter(str.isdigit, f))))
 
-        for ts_file in dir_list:
+        for ts_file in tqdm(dir_list, desc="Merging segments"):
             with open(f"{TS_DIR}/{ts_file}", "rb") as mergefile:
                 shutil.copyfileobj(mergefile, video)
 
@@ -53,6 +58,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
