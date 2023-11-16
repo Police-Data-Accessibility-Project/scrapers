@@ -1,4 +1,19 @@
-videos = [
+yt_videos = [
+    {
+        "url": "https://www.youtube.com/watch?v=bGXsV-caJH8",
+        "dir": "./data/CR 19-16636/"
+    },
+    {
+        "url": "https://www.youtube.com/watch?v=dpakdAIs8_4",
+        "dir": "./data/CR 19-16636/"
+    },
+    {
+        "url": "https://www.youtube.com/watch?v=CTmZqHLhdN8",
+        "dir": "./data/CR 23-019207/"
+    }
+]
+
+ts_videos = [
     {
         "name": "Purdy Protest.ts",
         "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/145063/smil:civplus/encoded_streams/0/385/145063.smil/chunklist_w993471234_b4319633.m3u8",
@@ -181,5 +196,10 @@ pdfs = [
         "name": "CR-17-03392.pdf",
         "url": "https://www.cityoflamesa.us/DocumentCenter/View/16902/CR-17-03392",
         "dir": "./data/CR 17-03392/"
+    },
+    {
+        "name": "CR-19-16636-OIS-Nava2.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/19024/CR-19-16636-OIS-Nava",
+        "dir": "./data/CR 19-16636/"
     },
 ]

@@ -6,14 +6,22 @@ import os
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from tqdm import tqdm
 from bs4 import BeautifulSoup
-from content import videos, pdfs
+from pytube import YouTube
+from content import yt_videos, ts_videos, pdfs
 
-'''
-def strip_end(text, suffix):
-    if not text.endswith(suffix):
-        return text
-    return text[:len(text)-len(suffix)]
-'''
+
+def get_youtube_video(youtube_url, savedir):
+    progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(len(data_chunk))
+
+    yt = YouTube(youtube_url, on_progress_callback=progress_callback)
+
+    if os.path.exists(savedir + yt.title + ".mp4"):
+        return
+
+    stream = yt.streams.get_highest_resolution()
+    progress_bar = tqdm(total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title)
+    stream.download(output_path=savedir)
+
 
 def get_ts_stream(m3u8_url, savedir, filename):
     if os.path.exists(savedir + filename):
@@ -60,8 +68,8 @@ def download_file(url, savedir, filename=None, show_status=False):
     r = requests.get(url, stream=True)
 
     if show_status:
-        total = int(r.headers.get('content-length', 0))
-        progress_bar = tqdm(total=total, unit='iB', unit_scale=True, desc=filename)
+        total = int(r.headers.get("content-length", 0))
+        progress_bar = tqdm(total=total, unit="iB", unit_scale=True, desc=filename)
 
     with open(savedir + filename, "wb") as f:
         for chunk in r.iter_content(chunk_size=1024):
@@ -74,15 +82,21 @@ def download_file(url, savedir, filename=None, show_status=False):
 
 
 def main():
-    r = requests.get("https://www.sandiego.gov/police/data-transparency/mandated-disclosures/case?id=07-25-2017%204300%20Altadena%20Ave&cat=Officer%20Involved%20Shootings")
+    print("Retrieving YouTube videos...")
+    for video in yt_videos:
+        get_youtube_video(video["url"], video["dir"])
+
+    return
+    url = "https://www.sandiego.gov/police/data-transparency/mandated-disclosures/case?id=07-25-2017%204300%20Altadena%20Ave&cat=Officer%20Involved%20Shootings"
+    r = requests.get(url)
     soup = BeautifulSoup(r.content)
     a_list = soup.find(class_="view-content").find_all("a")
     for a in a_list:
-        url = a["href"].replace("\n", "")
-        download_file(url, "./data/CR 17-0042912/", a.text, show_status=True)
-        
+        dowlnoad_url = a["href"].replace("\n", "")
+        download_file(download_url, "./data/CR 17-0042912/", a.text, show_status=True)
+
     print("Retrieving video files...")
-    for video in videos:
+    for video in ts_videos:
         get_ts_stream(video["url"], video["dir"], video["name"])
 
     print("Retrieving PDF files...")
