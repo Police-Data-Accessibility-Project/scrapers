@@ -122,4 +122,64 @@ pdfs = [
         "url": "https://www.cityoflamesa.us/DocumentCenter/View/17173/SDSO-Scene-Photos-3",
         "dir": "./data/CR 20-015724/"
     },
+    {
+        "name": "CR 20-015724.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/17165/CR-20-015724",
+        "dir": "./data/CR 20-015724/"
+    },
+    {
+        "name": "CR 20-015724 Update.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/17200/CR-20-015724-Update",
+        "dir": "./data/CR 20-015724/"
+    },
+    {
+        "name": "CR 99-02243.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16901/CR-99-02243",
+        "dir": "./data/CR 99-02243/"
+    },
+    {
+        "name": "CR 02-05343-1.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16904/CR-02-05343-1",
+        "dir": "./data/CR 02-05343/"
+    },
+    {
+        "name": "CR 02-05343-2.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16903/CR-02-05343-2",
+        "dir": "./data/CR 02-05343/"
+    },
+    {
+        "name": "CR 08-00460.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16900/CR-08-00460",
+        "dir": "./data/CR 08-00460/"
+    },
+    {
+        "name": "CR 11-04264.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/17001/CR-11-04264",
+        "dir": "./data/CR 11-04264/"
+    },
+    {
+        "name": "CR 13-0047.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16899/CR-13-0047",
+        "dir": "./data/CR 13-0047/"
+    },
+    {
+        "name": "CR 13-052430-1.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16898/CR-13-052430-1",
+        "dir": "./data/CR 13-052430/"
+    },
+    {
+        "name": "CR 13-052430-2.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16897/CR-13-052430-2",
+        "dir": "./data/CR 13-052430/"
+    },
+    {
+        "name": "CR-17-0042912---Admin-Review.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/19951/CR-17-0042912---Admin-Review",
+        "dir": "./data/CR 17-0042912/"
+    },
+    {
+        "name": "CR-17-03392.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16902/CR-17-03392",
+        "dir": "./data/CR 17-03392/"
+    },
 ]

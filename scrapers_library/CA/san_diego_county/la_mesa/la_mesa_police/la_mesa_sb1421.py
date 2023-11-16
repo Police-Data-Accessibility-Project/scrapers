@@ -5,6 +5,7 @@ import re
 import os
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from tqdm import tqdm
+from bs4 import BeautifulSoup
 from content import videos, pdfs
 
 '''
@@ -73,6 +74,13 @@ def download_file(url, savedir, filename=None, show_status=False):
 
 
 def main():
+    r = requests.get("https://www.sandiego.gov/police/data-transparency/mandated-disclosures/case?id=07-25-2017%204300%20Altadena%20Ave&cat=Officer%20Involved%20Shootings")
+    soup = BeautifulSoup(r.content)
+    a_list = soup.find(class_="view-content").find_all("a")
+    for a in a_list:
+        url = a["href"].replace("\n", "")
+        download_file(url, "./data/CR 17-0042912/", a.text, show_status=True)
+        
     print("Retrieving video files...")
     for video in videos:
         get_ts_stream(video["url"], video["dir"], video["name"])
