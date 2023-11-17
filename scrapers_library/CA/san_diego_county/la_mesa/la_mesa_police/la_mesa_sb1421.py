@@ -11,6 +11,13 @@ from content import yt_videos, ts_videos, pdfs
 
 
 def get_youtube_video(youtube_url, savedir):
+    """Downloads a YouTube video to a given directory.
+
+    Args:
+        youtube_url (str): YouTube video url to download.
+        savedir (str): Directory where the video will be saved.
+    """
+    """Callaback function used to update the download progress bar."""
     progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(
         len(data_chunk)
     )
@@ -24,10 +31,18 @@ def get_youtube_video(youtube_url, savedir):
     progress_bar = tqdm(
         total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title
     )
+
     stream.download(output_path=savedir)
 
 
 def get_ts_stream(m3u8_url, savedir, filename):
+    """Downloads ts stream segments and merges them into one video file.
+
+    Args:
+        m3u8_url (str): Url of the relevant m3u8 file listing all of the segment locations.
+        savedir (str): Directory where the video will be saved.
+        filename (str): Name the video file will be saved as.
+    """
     if os.path.exists(savedir + filename):
         return
 
@@ -40,6 +55,7 @@ def get_ts_stream(m3u8_url, savedir, filename):
     shutil.rmtree(TS_DIR, ignore_errors=True)
 
     results = []
+    # Download the individual segments
     with ThreadPoolExecutor(max_workers=6) as executor:
         future_to_url = [
             executor.submit(download_file, url + seg["uri"], TS_DIR)
@@ -54,6 +70,7 @@ def get_ts_stream(m3u8_url, savedir, filename):
 
     os.makedirs(savedir, exist_ok=True)
 
+    # Merge the segments into one file
     with open(savedir + filename, "wb") as video:
         dir_list = os.listdir(TS_DIR)
         dir_list.sort(key=lambda f: int("".join(filter(str.isdigit, f))))
@@ -66,6 +83,7 @@ def get_ts_stream(m3u8_url, savedir, filename):
 
 
 def get_case_media():
+    """Downloads media for case #17-0042912"""
     url = "https://www.sandiego.gov/police/data-transparency/mandated-disclosures/case?id=07-25-2017%204300%20Altadena%20Ave&cat=Officer%20Involved%20Shootings"
     r = requests.get(url)
 
@@ -83,6 +101,14 @@ def get_case_media():
 
 
 def download_file(url, savedir, filename=None, show_status=False):
+    """Downloads a file to a given directory.
+
+    Args:
+        url (str): Url of the file to download.
+        savedir (str): Directory where the file will be saved.
+        filename (str, optional): Name the file will be saved as. Defaults to last part of url.
+        show_status (bool, optional): Whether or not to show a status bar when downloading. Defaults to False.
+    """
     if filename is None:
         filename = url.split("/")[-1]
 
@@ -115,6 +141,7 @@ def main():
     print("\nRetrieving video files...")
     for video in ts_videos:
         get_ts_stream(video["url"], video["dir"], video["name"])
+
     video_url = "https://www.cityoflamesa.us/DocumentCenter/View/16962/Witness-2_Cell_Phone_Video"
     download_file(
         video_url,
