@@ -56,6 +56,18 @@ def get_ts_stream(m3u8_url, savedir, filename):
     shutil.rmtree(TS_DIR)
 
 
+def get_case_media():
+    url = "https://www.sandiego.gov/police/data-transparency/mandated-disclosures/case?id=07-25-2017%204300%20Altadena%20Ave&cat=Officer%20Involved%20Shootings"
+    r = requests.get(url)
+
+    soup = BeautifulSoup(r.content, from_encoding="utf-8")
+    a_list = soup.find(class_="view-content").find_all("a")
+
+    for a in a_list:
+        dowlnoad_url = a["href"].replace("\n", "")
+        download_file(download_url, savedir="./data/CR 17-0042912/", filename=a.text, show_status=True)
+
+
 def download_file(url, savedir, filename=None, show_status=False):
     if filename is None:
         filename = url.split("/")[-1]
@@ -86,22 +98,22 @@ def main():
     for video in yt_videos:
         get_youtube_video(video["url"], video["dir"])
 
-    return
-    url = "https://www.sandiego.gov/police/data-transparency/mandated-disclosures/case?id=07-25-2017%204300%20Altadena%20Ave&cat=Officer%20Involved%20Shootings"
-    r = requests.get(url)
-    soup = BeautifulSoup(r.content)
-    a_list = soup.find(class_="view-content").find_all("a")
-    for a in a_list:
-        dowlnoad_url = a["href"].replace("\n", "")
-        download_file(download_url, "./data/CR 17-0042912/", a.text, show_status=True)
-
-    print("Retrieving video files...")
+    print("\nRetrieving video files...")
     for video in ts_videos:
         get_ts_stream(video["url"], video["dir"], video["name"])
+    video_url = "https://www.cityoflamesa.us/DocumentCenter/View/16962/Witness-2_Cell_Phone_Video"
+    download_file(video_url, savedir="./data/IA #2020-02/", filename="Witness Video 2.mp4", show_status=True)
 
-    print("Retrieving PDF files...")
+    print("\nRetrieving PDF files...")
     for pdf in pdfs:
         download_file(pdf["url"], pdf["dir"], pdf["name"], show_status=True)
+
+    print("\nRetrieving CR 17-0042912 media...")
+    get_case_media()
+
+    print()
+    audio_url = "https://www.cityoflamesa.us/DocumentCenter/View/16964/RadioRedacted"
+    download_file(audio_url, savedir="./data/IA #2020-02/", filename="Radio.mp3", show_status=True)
 
 
 if __name__ == "__main__":

@@ -109,6 +109,46 @@ ts_videos = [
         "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/145088/smil:civplus/encoded_streams/0/385/145088.smil/chunklist_w2134352645_b3363863.m3u8",
         "dir": "./data/CR 20-015724/"
     },
+    {
+        "name": "BWC Video 1.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144244/smil:civplus/encoded_streams/0/385/144244.smil/chunklist_w2123275771_b4974402.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "BWC Video 2.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144245/smil:civplus/encoded_streams/0/385/144245.smil/chunklist_w1907626841_b3426925.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "BWC Video 3.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144246/smil:civplus/encoded_streams/0/385/144246.smil/chunklist_w210612203_b4117880.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "BWC Video 4.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144243/smil:civplus/encoded_streams/0/385/144243.smil/chunklist_w2075418071_b2960874.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "BWC Video 5.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144247/smil:civplus/encoded_streams/0/385/144247.smil/chunklist_w582944565_b5547404.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "BWC Video 6.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144248/smil:civplus/encoded_streams/0/385/144248.smil/chunklist_w1012898233_b4819269.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "Witness Video 1.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144241/smil:civplus/encoded_streams/0/385/144241.smil/chunklist_w291352307_b7421734.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "Trolley Video.ts",
+        "url": "https://wms.civplus.tikiliveapi.com/rokuvod_civplus/144371/smil:civplus/encoded_streams/0/385/144371.smil/chunklist_w847512885_b10169545.m3u8",
+        "dir": "./data/IA #2020-02/"
+    },
 ]
 
 pdfs = [
@@ -201,5 +241,30 @@ pdfs = [
         "name": "CR-19-16636-OIS-Nava2.pdf",
         "url": "https://www.cityoflamesa.us/DocumentCenter/View/19024/CR-19-16636-OIS-Nava",
         "dir": "./data/CR 19-16636/"
+    },
+    {
+        "name": "CR-03-6586.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16807/CR-03-6586",
+        "dir": "./data/CR 03-6586/"
+    },
+    {
+        "name": "CR-06-6482.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16808/CR-06-6482",
+        "dir": "./data/CR 06-6482/"
+    },
+    {
+        "name": "Phone Screen Shots.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16969/ARJISPhoneScreenShots",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "Axon Still Photos.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16961/AxonStillPhotos",
+        "dir": "./data/IA #2020-02/"
+    },
+    {
+        "name": "IA2020-02.pdf",
+        "url": "https://www.cityoflamesa.us/DocumentCenter/View/16971/IA2020-02",
+        "dir": "./data/IA #2020-02/"
     },
 ]
