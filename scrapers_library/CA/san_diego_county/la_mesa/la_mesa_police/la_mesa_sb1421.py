@@ -87,11 +87,11 @@ def get_case_media():
     url = "https://www.sandiego.gov/police/data-transparency/mandated-disclosures/case?id=07-25-2017%204300%20Altadena%20Ave&cat=Officer%20Involved%20Shootings"
     r = requests.get(url)
 
-    soup = BeautifulSoup(r.content, from_encoding="utf-8")
+    soup = BeautifulSoup(r.content, "html.parser")
     a_list = soup.find(class_="view-content").find_all("a")
 
     for a in a_list:
-        dowlnoad_url = a["href"].replace("\n", "")
+        download_url = a["href"].replace("\n", "")
         download_file(
             download_url,
             savedir="./data/CR 17-0042912/",
@@ -134,6 +134,9 @@ def download_file(url, savedir, filename=None, show_status=False):
 
 
 def main():
+    webpage_url = "https://www.cityoflamesa.us/1650/SB1421-Public-Records"
+    download_file(webpage_url, savedir="./data/", filename="SB1421 Public Records.html")
+
     print("Retrieving YouTube videos...")
     for video in yt_videos:
         get_youtube_video(video["url"], video["dir"])
