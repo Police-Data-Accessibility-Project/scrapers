@@ -21,7 +21,7 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
         len(data_chunk)
     )
 
-    yt = YouTube(youtube_url, on_progress_callback=progress_callback, disable=disable_progressbar)
+    yt = YouTube(youtube_url, on_progress_callback=progress_callback)
 
     if os.path.exists(savedir + yt.title + ".mp4"):
         return
@@ -29,7 +29,7 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
     stream = yt.streams.get_highest_resolution()
     
     progress_bar = tqdm(
-        total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title
+        total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title, disable=disable_progressbar
     )
 
     stream.download(output_path=savedir)
