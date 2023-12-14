@@ -1,5 +1,38 @@
+import os
+
 import requests
 from tqdm import tqdm
+from bs4 import BeautifulSoup
+
+from content import pdfs
+
+
+def get_case_media(url, class_="relatedDocuments"):
+    r = requests.get(url)
+
+    soup = BeautifulSoup(r.content, "html.parser")
+    title = soup.find("h1", id="versionHeadLine").text.strip()
+    a_list = soup.find(class_=class_).find_all("a")
+
+    print(f"Retrieving {title} media...")
+
+    for a in a_list:
+        download_url = "https://www.lakesheriff.com" + a["href"]
+        filename = a.text
+
+        if filename.endswith("(PDF)") or filename.endswith("(MP4)"):
+            filetype = "." + filename[len(filename)-4:len(filename)-1].lower()
+        elif filename.endswith("(VID)"):
+            filetype = ".vob"
+        
+        filename = filename[:len(filename)-6] + filetype
+        savedir = f"./data/{title}/"
+
+        download_file(
+            download_url,
+            savedir=savedir,
+            filename=filename
+        )
 
 
 def download_file(url, savedir, filename=None):
@@ -32,7 +65,16 @@ def download_file(url, savedir, filename=None):
 
 
 def main():
-    pass
+    urls = [
+        "https://www.lakesheriff.com/1463/Case-01070402",
+        "https://www.lakesheriff.com/1499/Case-08020293",
+        "https://www.lakesheriff.com/1465/Case-10080048",
+        "https://www.lakesheriff.com/1500/Case-14010032",
+    ]
+
+    for url in urls:
+        get_case_media(url)
+        print()
 
 
 if __name__ == "__main__":
