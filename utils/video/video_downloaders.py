@@ -6,6 +6,7 @@ import requests
 import m3u8
 from tqdm import tqdm
 from pytube import YouTube
+from pytube.innertube import InnerTube
 
 
 def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
@@ -21,7 +22,7 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
         len(data_chunk)
     )
 
-    yt = YouTube(youtube_url, on_progress_callback=progress_callback)
+    yt = YouTube_Override(youtube_url, on_progress_callback=progress_callback)
 
     if os.path.exists(savedir + yt.title + ".mp4"):
         return
@@ -33,6 +34,28 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
     )
 
     stream.download(output_path=savedir)
+
+
+class YouTube_Override(YouTube):
+    """Fixes an issue with PyTube that would fail to bypass age restrictions"""
+
+    def bypass_age_gate(self):
+        """Attempt to update the vid_info by bypassing the age gate."""
+        innertube = InnerTube(
+            client="ANDROID",
+            use_oauth=self.use_oauth,
+            allow_cache=self.allow_oauth_cache
+        )
+        innertube_response = innertube.player(self.video_id)
+
+        playability_status = innertube_response["playabilityStatus"].get("status", None)
+
+        # If we still can't access the video, raise an exception
+        # (tier 3 age restriction)
+        if playability_status == "UNPLAYABLE":
+            raise exceptions.AgeRestrictedError(self.video_id)
+
+        self._vid_info = innertube_response
 
 
 def ts_downloader(m3u8_url, savedir, filename, disable_progressbar=False):
