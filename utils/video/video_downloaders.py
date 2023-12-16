@@ -1,10 +1,12 @@
 import os
 import shutil
+import traceback
 from concurrent.futures import as_completed, ThreadPoolExecutor
 
 import requests
 import m3u8
 from tqdm import tqdm
+import pytube
 from pytube import YouTube
 from pytube.innertube import InnerTube
 
@@ -22,18 +24,28 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
         len(data_chunk)
     )
 
-    yt = YouTube_Override(youtube_url, on_progress_callback=progress_callback)
-
-    if os.path.exists(savedir + yt.title + ".mp4"):
+    yt = YouTube(youtube_url, on_progress_callback=progress_callback)
+     
+    filename = savedir + yt.title + ".mp4"
+    if os.path.exists(filename):
         return
+    try:
+        stream = yt.streams.get_highest_resolution()
+    except pytube.exceptions.AgeRestrictedError:
+        yt = YouTube_Override(youtube_url, on_progress_callback=progress_callback)
+        stream = yt.streams.get_highest_resolution()
 
-    stream = yt.streams.get_highest_resolution()
-    
     progress_bar = tqdm(
         total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title, disable=disable_progressbar
     )
 
-    stream.download(output_path=savedir)
+    while True:
+        try:
+            stream.download(output_path=savedir)
+            break
+        except Exception as e:
+            print("Download failed, retrying...")
+            os.remove(filename)
 
 
 class YouTube_Override(YouTube):
@@ -53,7 +65,7 @@ class YouTube_Override(YouTube):
         # If we still can't access the video, raise an exception
         # (tier 3 age restriction)
         if playability_status == "UNPLAYABLE":
-            raise exceptions.AgeRestrictedError(self.video_id)
+            raise pytube.exceptions.AgeRestrictedError(self.video_id)
 
         self._vid_info = innertube_response
 
