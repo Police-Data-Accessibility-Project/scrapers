@@ -13,6 +13,11 @@ from utils.video.video_downloaders import youtube_downloader
 
 
 def get_case_media(url):
+    """Downloads all media files linked on a case's page.
+
+    Args:
+        url (str): Url of the page where the case media is linked.
+    """    
     r = requests.get(url)
 
     soup = BeautifulSoup(r.content, "html.parser")
@@ -34,6 +39,7 @@ def get_case_media(url):
         
         filetype = ""
         if filename.endswith("(PDF)") or filename.endswith("(MP4)") or filename.endswith("(MP3)") or filename.upper().endswith("(WAV)"):
+            # Grab the last part of the filename to be used as the file extention
             filetype = "." + filename[len(filename)-4:len(filename)-1].lower()
         elif filename.endswith("(VID)"):
             if "IA 2018-0023" in title:
@@ -43,12 +49,14 @@ def get_case_media(url):
         elif filename.endswith("(audio only)"):
             filename = filename + ".mp3"
         else:
+            # Retrieve webpage as an html file
             webpage_url = a["href"]
             filename = filename + ".html"
             download_file(webpage_url, savedir=savedir, filename=filename)
             continue
         
         if not filename.endswith("(audio only).mp3"):
+            # Remove the file extension from the last part of the filename
             filename = filename[:len(filename)-6] + filetype
         
         download_url = "https://www.lakesheriff.com" + a["href"]
@@ -61,6 +69,11 @@ def get_case_media(url):
 
 
 def get_photo_gallery(savedir):
+    """Retrieves all images from a photo gallery.
+
+    Args:
+        savedir (str): Directory where the images will be saved.
+    """    
     savedir = savedir + "Images/"
 
     if "18020066" in savedir:
@@ -86,6 +99,7 @@ def download_file(url, savedir, filename=None, disable=False):
         url (str): Url of the file to download.
         savedir (str): Directory where the file will be saved.
         filename (str, optional): Name the file will be saved as. Defaults to last part of url.
+        disable (bool, optional): Whether or not to disable the progress bar in the command line. Defaults to False.
     """
     if filename is None:
         filename = url.split("/")[-1]
@@ -117,7 +131,8 @@ def main():
     r = requests.get(homepage_url)
     soup = BeautifulSoup(r.content, "html.parser")
     a_list = soup.find(class_="fr-alternate-rows").find_all("a")
-    
+    a_list.reverse()
+
     for a in a_list:
         url = "https://www.lakesheriff.com" + a["href"]
         get_case_media(url)
