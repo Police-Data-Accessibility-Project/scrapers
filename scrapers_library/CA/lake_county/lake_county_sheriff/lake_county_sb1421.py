@@ -17,7 +17,7 @@ def get_case_media(url):
 
     Args:
         url (str): Url of the page where the case media is linked.
-    """    
+    """
     r = requests.get(url)
 
     soup = BeautifulSoup(r.content, "html.parser")
@@ -36,11 +36,16 @@ def get_case_media(url):
         elif "Photo Gallery" in filename:
             get_photo_gallery(savedir)
             continue
-        
+
         filetype = ""
-        if filename.endswith("(PDF)") or filename.endswith("(MP4)") or filename.endswith("(MP3)") or filename.upper().endswith("(WAV)"):
+        if (
+            filename.endswith("(PDF)")
+            or filename.endswith("(MP4)")
+            or filename.endswith("(MP3)")
+            or filename.upper().endswith("(WAV)")
+        ):
             # Grab the last part of the filename to be used as the file extention
-            filetype = "." + filename[len(filename)-4:len(filename)-1].lower()
+            filetype = "." + filename[len(filename) - 4 : len(filename) - 1].lower()
         elif filename.endswith("(VID)"):
             if "IA 2018-0023" in title:
                 filetype = ".mp4"
@@ -49,23 +54,19 @@ def get_case_media(url):
         elif filename.endswith("(audio only)"):
             filename = filename + ".mp3"
         else:
-            # Retrieve webpage as an html file
+            # Retrieve webpage as an html
             webpage_url = a["href"]
             filename = filename + ".html"
             download_file(webpage_url, savedir=savedir, filename=filename)
             continue
-        
+
         if not filename.endswith("(audio only).mp3"):
             # Remove the file extension from the last part of the filename
-            filename = filename[:len(filename)-6] + filetype
-        
+            filename = filename[: len(filename) - 6] + filetype
+
         download_url = "https://www.lakesheriff.com" + a["href"]
 
-        download_file(
-            download_url,
-            savedir=savedir,
-            filename=filename
-        )
+        download_file(download_url, savedir=savedir, filename=filename)
 
 
 def get_photo_gallery(savedir):
@@ -73,7 +74,7 @@ def get_photo_gallery(savedir):
 
     Args:
         savedir (str): Directory where the images will be saved.
-    """    
+    """
     savedir = savedir + "Images/"
 
     if "18020066" in savedir:

@@ -20,12 +20,10 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
         disable_progressbar (bool, optional): Whether to disable the progress bar in the command line. Default is False.
     """
     """Callaback function used to update the download progress bar."""
-    progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(
-        len(data_chunk)
-    )
+    progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(len(data_chunk))
 
     yt = YouTube(youtube_url, on_progress_callback=progress_callback)
-     
+
     filename = savedir + yt.title + ".mp4"
     if os.path.exists(filename):
         return
@@ -54,9 +52,7 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
             else:
                 return
 
-    progress_bar = tqdm(
-        total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title, disable=disable_progressbar
-    )
+    progress_bar = tqdm(total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title, disable=disable_progressbar)
 
     while True:
         try:
@@ -69,14 +65,10 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
 
 class YouTube_Override(YouTube):
     """Fixes an issue with PyTube that would fail to bypass age restrictions"""
-    
+
     def bypass_age_gate(self):
         """Attempt to update the vid_info by bypassing the age gate."""
-        innertube = InnerTube(
-            client="ANDROID",
-            use_oauth=self.use_oauth,
-            allow_cache=self.allow_oauth_cache
-        )
+        innertube = InnerTube(client="ANDROID", use_oauth=self.use_oauth, allow_cache=self.allow_oauth_cache)
         innertube_response = innertube.player(self.video_id)
 
         playability_status = innertube_response["playabilityStatus"].get("status", None)
@@ -113,8 +105,7 @@ def ts_downloader(m3u8_url, savedir, filename, disable_progressbar=False):
     # Download the individual segments
     with ThreadPoolExecutor(max_workers=6) as executor:
         future_to_url = [
-            executor.submit(download_file, url + seg["uri"], TS_DIR)
-            for seg in m3u8_master.data["segments"]
+            executor.submit(download_file, url + seg["uri"], TS_DIR) for seg in m3u8_master.data["segments"]
         ]
 
         for future in tqdm(
