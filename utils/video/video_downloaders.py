@@ -54,13 +54,15 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
 
     progress_bar = tqdm(total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title, disable=disable_progressbar)
 
-    while True:
+    retries = 0
+    while retries < 5:
         try:
             stream.download(output_path=savedir)
             break
         except Exception as e:
             print("Download failed, retrying...")
             os.remove(filename.replace("#", ""))
+            retries = retries + 1
 
 
 class YouTube_Override(YouTube):
