@@ -1,7 +1,8 @@
 import requests
 import json
+import os
 
-url="https://services.pacourts.us/public/v1/cases/"
+url=os.getenv("PA_COURTS_ENDPOINT")
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'} # prevents request from being denied by api
 
 # "MJ-05213-LT-0000011-2021"
