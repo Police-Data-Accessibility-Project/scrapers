@@ -14,6 +14,8 @@ def pull_case_json(case_id):
     with open(filename, 'w') as f:
         json.dump(resp.json(), f) # save json to local file
 
+#un-comment one or more lines below, replacing with the appropriate case numbers, to scrape the cases.
+
 #pull_case_json("MJ-09302-TR-0000928-2020")
 #pull_case_json("MJ-06306-TR-0000813-2020")
 #pull_case_json("MJ-51301-TR-0000779-2020")
