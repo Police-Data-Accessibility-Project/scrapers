@@ -1,17 +1,19 @@
+#from concurrent.futures import as_completed, ThreadPoolExecutor
 import os
 import shutil
-from concurrent.futures import as_completed, ThreadPoolExecutor
 
-import requests
+#from inputimeout import inputimeout, TimeoutOccurred
 import m3u8
-from inputimeout import inputimeout, TimeoutOccurred
-from tqdm import tqdm
 import pytube
 from pytube import YouTube
-from pytube.innertube import InnerTube
+#from pytube.innertube import InnerTube
+import requests
 
 
-def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
+from video_downloader_utils import *
+
+
+def youtube_downloader(youtube_url: str, savedir: str, disable_progressbar: bool = False) -> None:
     """Downloads a YouTube video to a given directory.
 
     Args:
@@ -19,8 +21,8 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
         savedir (str): Directory where the video will be saved.
         disable_progressbar (bool, optional): Whether to disable the progress bar in the command line. Default is False.
     """
-    """Callaback function used to update the download progress bar."""
-    progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(len(data_chunk))
+    """Callaback function used to update the download progress bar.
+    progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(len(data_chunk))"""
 
     yt = YouTube(youtube_url, on_progress_callback=progress_callback)
 
@@ -38,7 +40,12 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
             stream = yt.streams.get_highest_resolution()
         except KeyError:
             # Some video's age restriction is unable to be overridden and requires a sign in
-            print("This YouTube video is age restricted and requires that you sign in to YouTube to access it.")
+            sign_in = youtube_sign_in()
+            if sign_in is False:
+                return
+            else:
+                stream = sign_in
+            '''print("This YouTube video is age restricted and requires that you sign in to YouTube to access it.")
             print("Login will only be required once and will be cached for later.")
             try:
                 signin = inputimeout(prompt="Would you like to sign in? (y/n): ", timeout=30)
@@ -50,7 +57,7 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
                 yt = YouTube_Override(youtube_url, on_progress_callback=progress_callback, use_oauth=True)
                 stream = yt.streams.get_highest_resolution()
             else:
-                return
+                return'''
 
     progress_bar = tqdm(total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title, disable=disable_progressbar)
 
@@ -65,10 +72,10 @@ def youtube_downloader(youtube_url, savedir, disable_progressbar=False):
             retries = retries + 1
 
 
-class YouTube_Override(YouTube):
+'''class YouTube_Override(YouTube):
     """Fixes an issue with PyTube that would fail to bypass age restrictions"""
 
-    def bypass_age_gate(self):
+    def bypass_age_gate(self) -> None:
         """Attempt to update the vid_info by bypassing the age gate."""
         innertube = InnerTube(client="ANDROID", use_oauth=self.use_oauth, allow_cache=self.allow_oauth_cache)
         innertube_response = innertube.player(self.video_id)
@@ -80,10 +87,9 @@ class YouTube_Override(YouTube):
         if playability_status == "UNPLAYABLE":
             raise pytube.exceptions.AgeRestrictedError(self.video_id)
 
-        self._vid_info = innertube_response
+        self._vid_info = innertube_response'''
 
-
-def ts_downloader(m3u8_url, savedir, filename, disable_progressbar=False):
+def ts_downloader(m3u8_url: str, savedir: str, filename: str, disable_progressbar: bool = False) -> None:
     """Downloads ts stream segments and merges them into one video file.
 
     Args:
@@ -97,13 +103,15 @@ def ts_downloader(m3u8_url, savedir, filename, disable_progressbar=False):
 
     r = requests.get(m3u8_url)
     m3u8_master = m3u8.loads(r.text)
+    print(type(m3u8_master))
     m3u8_file = m3u8_url.split("/")[-1]
     url = m3u8_url[: len(m3u8_url) - len(m3u8_file)]
 
     TS_DIR = "./ts_files/"
     shutil.rmtree(TS_DIR, ignore_errors=True)
 
-    results = []
+    download_segments(url, m3u8_master, filename, disable_progressbar, TS_DIR)
+    '''utils/results = []
     # Download the individual segments
     with ThreadPoolExecutor(max_workers=6) as executor:
         future_to_url = [
@@ -114,17 +122,19 @@ def ts_downloader(m3u8_url, savedir, filename, disable_progressbar=False):
             as_completed(future_to_url), total=len(future_to_url), desc=filename, disable=disable_progressbar
         ):
             data = future.result()
-            results.append(data)
+            results.append(data)'''
 
     os.makedirs(savedir, exist_ok=True)
 
+    filename = savedir + filename
+    merge_segments(filename, TS_DIR, disable_progressbar)
     # Merge the segments into one file
-    with open(savedir + filename, "wb") as video:
+    '''with open(savedir + filename, "wb") as video:
         dir_list = os.listdir(TS_DIR)
         dir_list.sort(key=lambda f: int("".join(filter(str.isdigit, f))))
 
         for ts_file in tqdm(dir_list, desc="Merging segments", disable=disable_progressbar):
             with open(TS_DIR + ts_file, "rb") as mergefile:
-                shutil.copyfileobj(mergefile, video)
+                shutil.copyfileobj(mergefile, video)'''
 
     shutil.rmtree(TS_DIR)
