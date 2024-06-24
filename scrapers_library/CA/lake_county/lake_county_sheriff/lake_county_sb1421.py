@@ -1,10 +1,10 @@
 import os
 import sys
 
-import requests
-from tqdm import tqdm
 from bs4 import BeautifulSoup
 from from_root import from_root
+import requests
+from tqdm import tqdm
 
 p = from_root("CONTRIBUTING.md").parent
 sys.path.insert(1, str(p))
@@ -29,9 +29,10 @@ def get_case_media(url):
     for a in a_list:
         filename = a.text
         savedir = f"./data/{title}/"
+        webpage_url = a["href"]
 
-        if "YouTube" in filename:
-            youtube_downloader(a["href"], savedir)
+        if "youtu.be" in webpage_url:
+            youtube_downloader(webpage_url, savedir)
             continue
         elif "Photo Gallery" in filename:
             get_photo_gallery(savedir)
@@ -54,8 +55,11 @@ def get_case_media(url):
         elif filename.endswith("(audio only)"):
             filename = filename + ".mp3"
         else:
+            if "Case 23110157" in title:
+                get_case_23110157_media(download_url=a["href"], savedir=savedir, filename=filename)
+                continue
+
             # Retrieve webpage as an html
-            webpage_url = a["href"]
             filename = filename + ".html"
             download_file(webpage_url, savedir=savedir, filename=filename)
             continue
@@ -67,6 +71,20 @@ def get_case_media(url):
         download_url = "https://www.lakesheriff.com" + a["href"]
 
         download_file(download_url, savedir=savedir, filename=filename)
+
+
+def get_case_23110157_media(download_url: str, savedir: str, filename: str) -> None:
+    filetype = ""
+    if "Video" in filename or "Camera" in filename:
+        filetype = ".mov"
+    elif "Interview" in filename or "Statement" in filename:
+        filetype = ".mp3"
+    else:
+        filetype = ".pdf"
+    
+    filename = filename + filetype
+    download_url = "https://www.lakesheriff.com" + download_url
+    download_file(download_url, savedir=savedir, filename=filename)
 
 
 def get_photo_gallery(savedir):
