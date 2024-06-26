@@ -3,38 +3,71 @@ import os
 import shutil
 
 from inputimeout import inputimeout, TimeoutOccurred
-import pytube
-from pytube.innertube import InnerTube
+import pytubefix
+from pytubefix import YouTube
+from pytubefix.innertube import InnerTube, _default_clients
 from tqdm import tqdm
 
 
-"""Callaback function used to update the download progress bar."""
-progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(len(data_chunk))
+class YouTubeVideo:
+
+    def __init__(self, yotube_url: str, disable_progressbar: bool) -> None:
+        self.youtube_url = yotube_url
+        self.disable_progressbar = disable_progressbar
+        self.yt = YouTube(self.youtube_url, on_progress_callback=self.progress_callback)
+        self.title = self.yt.title
+        self.stream = None
 
 
-def youtube_sign_in():
-    print("This YouTube video is age restricted and requires that you sign in to YouTube to access it.")
-    print("Login will only be required once and will be cached for later.")
-    try:
-        signin = inputimeout(prompt="Would you like to sign in? (y/n): ", timeout=30)
-    except TimeoutOccurred:
-        signin = "n"
-        return False
+    def get_stream(self) -> None:
+        self.stream = self.yt.streams.get_highest_resolution()
 
-    if signin.lower() == "y":
-        yt = YouTube_Override(youtube_url, on_progress_callback=progress_callback, use_oauth=True)
-        stream = yt.streams.get_highest_resolution()
-        print(type(stream))
-        return stream
-    else:
-        return False
+
+    def override_age_restriction(self) -> None:
+        self.yt = YouTube_Override(self.youtube_url, on_progress_callback=self.progress_callback)
+        self.stream = self.yt.streams.get_highest_resolution()
+
+
+    def set_progress_bar(self) -> None:
+        self.progress_bar = tqdm(total=self.stream.filesize, unit="iB", unit_scale=True, desc=self.yt.title, disable=self.disable_progressbar)
+    
+
+    def youtube_sign_in(self, signin: bool | None) -> None:
+        answer = ""
+
+        if signin is None:
+            print("This YouTube video is age restricted and requires that you sign in to YouTube to access it.")
+            print("Login will only be required once and will be cached for later.")
+            try:
+                answer = inputimeout(prompt="Would you like to sign in? (y/n): ", timeout=30)
+            except TimeoutOccurred:
+                pass
+        elif signin is True:
+            answer = "y"
+
+        if answer.lower() != "y":
+            return False
+            
+        self.yt = YouTube_Override(self.youtube_url, on_progress_callback=self.progress_callback, use_oauth=True)
+        self.stream = self.yt.streams.get_highest_resolution()
+        return True
+            
+
+    """Callaback function used to update the download progress bar."""
+    progress_callback = lambda self, stream, data_chunk, bytes_remaining: self.progress_bar.update(len(data_chunk))
+
 
 
 class YouTube_Override(YouTube):
     """Fixes an issue with PyTube that would fail to bypass age restrictions"""
 
     def bypass_age_gate(self) -> None:
-        """Attempt to update the vid_info by bypassing the age gate."""
+        """Attempt to update the vid_info by bypassing the age gate.
+
+        Raises:
+            pytube.exceptions.AgeRestrictedError: If the age restriction cannot be bypassed.
+        """
+        _default_clients["ANDROID"]["context"]["client"]["clientVersion"] = "19.08.35"
         innertube = InnerTube(client="ANDROID", use_oauth=self.use_oauth, allow_cache=self.allow_oauth_cache)
         innertube_response = innertube.player(self.video_id)
 
@@ -46,7 +79,7 @@ class YouTube_Override(YouTube):
             raise pytube.exceptions.AgeRestrictedError(self.video_id)
 
         self._vid_info = innertube_response
-
+        
 
 def download_segments(url: str, m3u8_master, filename: str, disable_progressbar: bool, ts_dir: str) -> None:
     results = []
@@ -60,6 +93,7 @@ def download_segments(url: str, m3u8_master, filename: str, disable_progressbar:
         ):
             data = future.result()
             results.append(data)
+
 
 def merge_segments(filename: str, ts_dir: str, disable_progressbar: bool) -> None:
     with open(filename, "wb") as video:

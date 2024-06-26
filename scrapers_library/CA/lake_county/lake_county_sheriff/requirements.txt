@@ -1,0 +1,7 @@
+requests
+tqdm
+pytubefix
+m3u8
+BeautifulSoup4
+inputimeout
+from_root

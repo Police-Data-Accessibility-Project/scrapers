@@ -12,7 +12,7 @@ Some of the videos and images contain graphic displays of police violence and bo
 
 ## Storage and execution time
 
-This scraper requires at least 14 GB of available disk space for all files and takes ~23 minutes to complete; dependant on disk and network speed.
+This scraper requires at least 17 GB of available disk space for all files and takes ~30 minutes to complete; dependant on disk and network speed.
 
 ## Content redaction
 

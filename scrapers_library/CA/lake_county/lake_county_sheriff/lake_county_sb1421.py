@@ -24,7 +24,7 @@ def get_case_media(url):
     title = soup.find("h1", id="versionHeadLine").text.strip()
     a_list = soup.find(class_="moduleContentNew").find_all("a")
 
-    print(f"Retrieving {title} media...")
+    print(f"\nRetrieving {title} media...")
 
     for a in a_list:
         filename = a.text

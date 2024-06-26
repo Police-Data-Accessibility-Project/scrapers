@@ -1,17 +1,15 @@
-#from concurrent.futures import as_completed, ThreadPoolExecutor
 import os
 import shutil
+import urllib
 
-#from inputimeout import inputimeout, TimeoutOccurred
 import m3u8
-import pytube
-from pytube import YouTube
-#from pytube.innertube import InnerTube
+import pytubefix
 import requests
 
+from .video_downloader_utils import *
 
-from video_downloader_utils import *
 
+signin = None
 
 def youtube_downloader(youtube_url: str, savedir: str, disable_progressbar: bool = False) -> None:
     """Downloads a YouTube video to a given directory.
@@ -21,73 +19,47 @@ def youtube_downloader(youtube_url: str, savedir: str, disable_progressbar: bool
         savedir (str): Directory where the video will be saved.
         disable_progressbar (bool, optional): Whether to disable the progress bar in the command line. Default is False.
     """
-    """Callaback function used to update the download progress bar.
-    progress_callback = lambda stream, data_chunk, bytes_remaining: progress_bar.update(len(data_chunk))"""
+    ytVideo = YouTubeVideo(youtube_url, disable_progressbar)
 
-    yt = YouTube(youtube_url, on_progress_callback=progress_callback)
-
-    filename = savedir + yt.title + ".mp4"
+    filename = savedir + ytVideo.title + ".mp4"
+    filename = filename.replace("#", "")
     if os.path.exists(filename):
+        print("File already exists: " + ytVideo.title + ".mp4")
         return
 
     try:
-        stream = yt.streams.get_highest_resolution()
-    except pytube.exceptions.AgeRestrictedError:
-        # Attempt to override YouTube's age restriction
-        yt = YouTube_Override(youtube_url, on_progress_callback=progress_callback)
-
+        ytVideo.get_stream()
+        ytVideo.set_progress_bar()
+    except (pytubefix.exceptions.AgeRestrictedError, KeyError):
         try:
-            stream = yt.streams.get_highest_resolution()
-        except KeyError:
+            # Attempt to override YouTube's age restriction
+            ytVideo.override_age_restriction()
+            ytVideo.set_progress_bar()
+        except (pytubefix.exceptions.AgeRestrictedError, KeyError, urllib.error.HTTPError):
             # Some video's age restriction is unable to be overridden and requires a sign in
-            sign_in = youtube_sign_in()
-            if sign_in is False:
-                return
-            else:
-                stream = sign_in
-            '''print("This YouTube video is age restricted and requires that you sign in to YouTube to access it.")
-            print("Login will only be required once and will be cached for later.")
-            try:
-                signin = inputimeout(prompt="Would you like to sign in? (y/n): ", timeout=30)
-            except TimeoutOccurred:
-                signin = "n"
-                return
-
-            if signin.lower() == "y":
-                yt = YouTube_Override(youtube_url, on_progress_callback=progress_callback, use_oauth=True)
-                stream = yt.streams.get_highest_resolution()
-            else:
-                return'''
-
-    progress_bar = tqdm(total=stream.filesize, unit="iB", unit_scale=True, desc=yt.title, disable=disable_progressbar)
-
+            global signin
+            while True: 
+                if signin is False:
+                    print("Age restricted (download skipped): " + ytVideo.title)
+                    return
+                elif signin is None:
+                    signin = ytVideo.youtube_sign_in(signin)
+                else:
+                    ytVideo.youtube_sign_in(signin)
+                    break
+    
+    ytVideo.set_progress_bar()
     retries = 0
     while retries < 5:
         try:
-            stream.download(output_path=savedir)
+            ytVideo.stream.download(output_path=savedir)
             break
         except Exception as e:
             print("Download failed, retrying...")
-            os.remove(filename.replace("#", ""))
+            ytVideo.set_progress_bar()
+            os.remove(filename)
             retries = retries + 1
 
-
-'''class YouTube_Override(YouTube):
-    """Fixes an issue with PyTube that would fail to bypass age restrictions"""
-
-    def bypass_age_gate(self) -> None:
-        """Attempt to update the vid_info by bypassing the age gate."""
-        innertube = InnerTube(client="ANDROID", use_oauth=self.use_oauth, allow_cache=self.allow_oauth_cache)
-        innertube_response = innertube.player(self.video_id)
-
-        playability_status = innertube_response["playabilityStatus"].get("status", None)
-
-        # If we still can't access the video, raise an exception
-        # (tier 3 age restriction)
-        if playability_status == "UNPLAYABLE":
-            raise pytube.exceptions.AgeRestrictedError(self.video_id)
-
-        self._vid_info = innertube_response'''
 
 def ts_downloader(m3u8_url: str, savedir: str, filename: str, disable_progressbar: bool = False) -> None:
     """Downloads ts stream segments and merges them into one video file.
