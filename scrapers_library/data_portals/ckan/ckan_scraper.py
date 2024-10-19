@@ -16,18 +16,20 @@ def ckan_package_search(
     :param base_url: Base URL to search from. e.g. "https://catalog.data.gov/"
     :param query: Search string, defaults to None. None will return all packages.
     :param rows: Maximum number of results to return, defaults to maximum integer.
-    :param start: Offsets the results, defaults to 0
+    :param start: Offsets the results, defaults to 0.
     :param kwargs: See https://docs.ckan.org/en/2.10/api/index.html#ckan.logic.action.get.package_search for additional arguments.
     :return: List of dictionaries representing the CKAN package search results.
-    """    
+    """
     remote = RemoteCKAN(base_url, get_only=True)
     results = []
     offset = start
-    rows_max = 1000 # CKAN's package search has a hard limit of 1000 packages returned at a time by default
+    rows_max = 1000  # CKAN's package search has a hard limit of 1000 packages returned at a time by default
 
     while start < rows:
         num_rows = rows - start + offset
-        packages = remote.action.package_search(q=query, rows=num_rows, start=start, **kwargs)
+        packages = remote.action.package_search(
+            q=query, rows=num_rows, start=start, **kwargs
+        )
         results += packages["results"]
 
         total_results = packages["count"]
@@ -35,6 +37,7 @@ def ckan_package_search(
             rows = total_results
 
         result_len = len(packages["results"])
+        # Check if the website has a different rows_max value than CKAN's default
         if result_len != rows_max and start + rows_max < total_results:
             rows_max = result_len
 
