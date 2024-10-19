@@ -33,3 +33,7 @@ Searches for packages in a CKAN data portal that satisfies a given search criter
 * **rows (optional)** - The maximum number of results to return. Leaving empty will return all results.
 * **start (optional)** - Which result number to start at. Leaving empty will start at the first result.
 * **kwargs (optional)** - Additional keyword arguments. For more information on acceptable keyword arguments and their function see <https://docs.ckan.org/en/2.10/api/index.html#ckan.logic.action.get.package_search>
+
+### Return
+
+The function returns a list of dictionaries containing matching package results.
