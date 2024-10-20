@@ -42,3 +42,5 @@ def ckan_package_search(
             rows_max = result_len
 
         start += rows_max
+
+    return results
