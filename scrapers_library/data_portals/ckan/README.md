@@ -8,6 +8,25 @@ The scraper's functions can be found in `ckan_scraper.py`.
 
 A template can be found in the `template` folder.
 
+## Setup
+
+1. In a terminal, navigate to the CKAN scraper folder
+    ```cmd
+    cd scrapers_library/data_portals/ckan/
+    ```
+2. Create a Python virtual environment
+    ```cmd
+    python -m venv venv
+    ```
+3. Install the requirements
+    ```cmd
+    pip install -r requirements.txt
+    ```
+4. Copy the template script to another desired directory. Edit the template as needed. Then, run the scraper
+    ```cmd
+    python [script name]
+    ```
+
 ## How can I tell if a website I want to scrape is hosted using CKAN?
 
 There's no easy way to tell, some websites will reference CKAN or link back to the CKAN documentation while others will not. There doesn't seem to be a database of all CKAN instances either.
