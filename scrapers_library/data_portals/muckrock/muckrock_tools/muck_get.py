@@ -1,4 +1,5 @@
 import requests
+import json
 
 # Define the base API endpoint
 base_url = "https://www.muckrock.com/api_v1/foia/"
@@ -19,7 +20,7 @@ while True:
     if response.status_code == 200:
         # Parse the JSON response
         data = response.json()
-        
+
         if not data['results']:
             break
 
@@ -36,7 +37,7 @@ while True:
             break
 
         page += 1
-        
+
     else:
         print(f"Error: {response.status_code}")
         break

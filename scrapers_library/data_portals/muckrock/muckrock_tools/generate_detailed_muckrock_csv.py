@@ -29,7 +29,7 @@ def get_agency(agency_id):
     if agency_id:
         agency_url = f"https://www.muckrock.com/api_v1/agency/{agency_id}/"
         response = requests.get(agency_url)
-    
+
         if response.status_code == 200:
             agency_data = response.json()
             return agency_data
@@ -50,7 +50,7 @@ def get_jurisdiction(jurisdiction_id):
             return ""
     else:
         print("Jurisdiction ID not found in item")
-    
+
 
 # Open a CSV file for writing
 with open('detailed-muckrock-data.csv', 'w', newline='') as csvfile:
@@ -60,7 +60,7 @@ with open('detailed-muckrock-data.csv', 'w', newline='') as csvfile:
     writer.writeheader()
 
     # Iterate through the JSON data
-    for item in data:
+    for item in json_data:
         print(f"Writing data for {item.get('title')}")
         agency_data = get_agency(item.get("agency"))
         time.sleep(1)
@@ -140,6 +140,6 @@ with open('detailed-muckrock-data.csv', 'w', newline='') as csvfile:
             "retention_schedule": "",
             "detail_level": ""
         }
-        
+
         # Write the extracted row to the CSV file
         writer.writerow(csv_row)
