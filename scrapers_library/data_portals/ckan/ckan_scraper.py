@@ -11,7 +11,7 @@ def ckan_package_search(
     start: Optional[int] = 0,
     **kwargs
 ) -> list[dict[str, Any]]:
-    """Performs a CKAN package search from a CKAN data catalog URL.
+    """Performs a CKAN package (dataset) search from a CKAN data catalog URL.
 
     :param base_url: Base URL to search from. e.g. "https://catalog.data.gov/"
     :param query: Search string, defaults to None. None will return all packages.
@@ -44,3 +44,18 @@ def ckan_package_search(
         start += rows_max
 
     return results
+
+
+def ckan_group_package_show(
+    base_url: str, id: str, limit: Optional[int] = sys.maxsize
+) -> list[dict[str, Any]]:
+    """Returns a list of CKAN packages from a group.
+
+    :param base_url: Base URL of the CKAN portal. e.g. "https://catalog.data.gov/"
+    :param id: The group's ID.
+    :param limit: Maximum number of results to return, defaults to maximum integer.
+    :return: List of dictionaries representing the packages associated with the group.
+    """
+    remote = RemoteCKAN(base_url, get_only=True)
+    result = remote.action.group_package_show(id=id, limit=limit)
+    return result
