@@ -82,6 +82,8 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
     :return: List of Package objects representing the packages associated with the collection.
     """
     packages = []
+    url = f"{base_url}?collection_package_id={collection_id}"
+    soup = get_soup(url)
     # Calculate the total number of pages of packages
     num_results = int(soup.find(class_="new-results").text.split()[0].replace(",", ""))
     pages = math.ceil(num_results / 20)

@@ -84,6 +84,8 @@ The function returns a list of dictionaries representing the packages associated
 
 Returns a list of CKAN package information that belong to a collection. When querying the API, CKAN data portals are supposed to have relationships returned along with the rest of the data. However, in practice not all data portals have it set up this way. Since child packages are not able to be queried directly, they will not show up in any search results. To get around this, this function will manually scrape the information of all child packages related to the given parent.
 
+*NOTE: This function has only been tested on <https://catalog.data.gov/>. It is likely it will not work properly on other platforms.*
+
 * **base_url** - The base URL of the CKAN portal before the collection ID. e.g. "https://catalog.data.gov/dataset/"
 * **collection_id** - The ID of the parent package. This can be found by querying the parent package and using the "id" key, or by navigating to the list of child packages and looking in the URL. e.g. In <https://catalog.data.gov/dataset/?collection_package_id=7b1d1941-b255-4596-89a6-99e1a33cc2d8> the collection_id is "7b1d1941-b255-4596-89a6-99e1a33cc2d8"
 
