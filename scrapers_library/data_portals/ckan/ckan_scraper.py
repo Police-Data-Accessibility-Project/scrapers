@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import sys
 from typing import Any, Optional
 from urllib.parse import urljoin
@@ -6,7 +7,13 @@ from bs4 import BeautifulSoup
 from ckanapi import RemoteCKAN
 import requests
 
-from .multi_portal_scraper.package import Package
+
+@dataclass
+class Package:
+    url: str = ""
+    title: str = ""
+    agency_name: str = ""
+    description: str = ""
 
 
 def ckan_package_search(
