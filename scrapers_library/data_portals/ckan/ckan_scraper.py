@@ -1,7 +1,12 @@
 import sys
 from typing import Any, Optional
+from urllib.parse import urljoin
 
+from bs4 import BeautifulSoup
 from ckanapi import RemoteCKAN
+import requests
+
+from .multi_portal_scraper.package import Package
 
 
 def ckan_package_search(
@@ -59,3 +64,43 @@ def ckan_group_package_show(
     remote = RemoteCKAN(base_url, get_only=True)
     result = remote.action.group_package_show(id=id, limit=limit)
     return result
+
+
+def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
+    """Returns a list of CKAN packages from a collection.
+
+    :param base_url: Base URL of the CKAN portal before the collection ID. e.g. "https://catalog.data.gov/dataset/"
+    :param collection_id: The ID of the parent package.
+    :return: List of Package objects representing the packages associated with the collection.
+    """
+    url = f"{base_url}?collection_package_id={collection_id}"
+    soup = get_soup(url)
+    packages = []
+
+    # Extract the URL of each dataset from the HTML content
+    for pos, dataset_heading in enumerate(soup.find_all(class_="dataset-heading")):
+        package = Package()
+        joined_url = urljoin(base_url, dataset_heading.a.get("href"))
+        dataset_soup = get_soup(joined_url)
+
+        # Determine if the dataset url should be the linked page to an external site or the current site
+        resources = dataset_soup.find("section", id="dataset-resources").find_all(class_="resource-item")
+        button = resources[0].find(class_="btn-group")
+        if len(resources) == 1 and button is not None and button.a.text == "Visit page":
+            package.url = button.a.get("href")
+        else:
+            package.url = joined_url
+        
+        package.title = dataset_soup.find(itemprop="name").text.strip()
+        package.agency_name = dataset_soup.find("h1", class_="heading").text.strip()
+        package.description = dataset_soup.find(class_="notes").p.text
+
+        packages.append(package)
+    
+    return packages
+
+
+def get_soup(url: str) -> BeautifulSoup:
+    """Returns a BeautifulSoup object for the given URL."""
+    response = requests.get(url)
+    return BeautifulSoup(response.content, "lxml")
