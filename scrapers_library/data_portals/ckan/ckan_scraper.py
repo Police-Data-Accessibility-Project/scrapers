@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import math
 import sys
 from typing import Any, Optional
 from urllib.parse import urljoin
@@ -80,29 +81,34 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
     :param collection_id: The ID of the parent package.
     :return: List of Package objects representing the packages associated with the collection.
     """
-    url = f"{base_url}?collection_package_id={collection_id}"
-    soup = get_soup(url)
     packages = []
+    # Calculate the total number of pages of packages
+    num_results = int(soup.find(class_="new-results").text.split()[0].replace(",", ""))
+    pages = math.ceil(num_results / 20)
 
-    # Extract the URL of each dataset from the HTML content
-    for pos, dataset_heading in enumerate(soup.find_all(class_="dataset-heading")):
-        package = Package()
-        joined_url = urljoin(base_url, dataset_heading.a.get("href"))
-        dataset_soup = get_soup(joined_url)
+    for page in range(1, pages + 1):
+        url = f"{base_url}?collection_package_id={collection_id}&page={page}"
+        soup = get_soup(url)
 
-        # Determine if the dataset url should be the linked page to an external site or the current site
-        resources = dataset_soup.find("section", id="dataset-resources").find_all(class_="resource-item")
-        button = resources[0].find(class_="btn-group")
-        if len(resources) == 1 and button is not None and button.a.text == "Visit page":
-            package.url = button.a.get("href")
-        else:
-            package.url = joined_url
-        
-        package.title = dataset_soup.find(itemprop="name").text.strip()
-        package.agency_name = dataset_soup.find("h1", class_="heading").text.strip()
-        package.description = dataset_soup.find(class_="notes").p.text
+        # Extract the URL of each dataset from the HTML content
+        for pos, dataset_heading in enumerate(soup.find_all(class_="dataset-heading")):
+            package = Package()
+            joined_url = urljoin(base_url, dataset_heading.a.get("href"))
+            dataset_soup = get_soup(joined_url)
 
-        packages.append(package)
+            # Determine if the dataset url should be the linked page to an external site or the current site
+            resources = dataset_soup.find("section", id="dataset-resources").find_all(class_="resource-item")
+            button = resources[0].find(class_="btn-group")
+            if len(resources) == 1 and button is not None and button.a.text == "Visit page":
+                package.url = button.a.get("href")
+            else:
+                package.url = joined_url
+            
+            package.title = dataset_soup.find(itemprop="name").text.strip()
+            package.agency_name = dataset_soup.find("h1", class_="heading").text.strip()
+            package.description = dataset_soup.find(class_="notes").p.text
+
+            packages.append(package)
     
     return packages
 
