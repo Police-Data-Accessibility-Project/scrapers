@@ -22,7 +22,7 @@ def ckan_package_search(
     query: Optional[str] = None,
     rows: Optional[int] = sys.maxsize,
     start: Optional[int] = 0,
-    **kwargs
+    **kwargs,
 ) -> list[dict[str, Any]]:
     """Performs a CKAN package (dataset) search from a CKAN data catalog URL.
 
@@ -99,19 +99,25 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
             dataset_soup = get_soup(joined_url)
 
             # Determine if the dataset url should be the linked page to an external site or the current site
-            resources = dataset_soup.find("section", id="dataset-resources").find_all(class_="resource-item")
+            resources = dataset_soup.find("section", id="dataset-resources").find_all(
+                class_="resource-item"
+            )
             button = resources[0].find(class_="btn-group")
-            if len(resources) == 1 and button is not None and button.a.text == "Visit page":
+            if (
+                len(resources) == 1
+                and button is not None
+                and button.a.text == "Visit page"
+            ):
                 package.url = button.a.get("href")
             else:
                 package.url = joined_url
-            
+
             package.title = dataset_soup.find(itemprop="name").text.strip()
             package.agency_name = dataset_soup.find("h1", class_="heading").text.strip()
             package.description = dataset_soup.find(class_="notes").p.text
 
             packages.append(package)
-    
+
     return packages
 
 
