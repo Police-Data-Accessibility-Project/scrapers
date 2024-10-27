@@ -1,6 +1,9 @@
+from concurrent.futures import as_completed, ThreadPoolExecutor
 from dataclasses import dataclass
 import math
 import sys
+
+import time
 from typing import Any, Optional
 from urllib.parse import urljoin
 
@@ -84,6 +87,7 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
     packages = []
     url = f"{base_url}?collection_package_id={collection_id}"
     soup = get_soup(url)
+
     # Calculate the total number of pages of packages
     num_results = int(soup.find(class_="new-results").text.split()[0].replace(",", ""))
     pages = math.ceil(num_results / 20)
@@ -92,36 +96,46 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
         url = f"{base_url}?collection_package_id={collection_id}&page={page}"
         soup = get_soup(url)
 
-        # Extract the URL of each dataset from the HTML content
-        for pos, dataset_heading in enumerate(soup.find_all(class_="dataset-heading")):
-            package = Package()
-            joined_url = urljoin(base_url, dataset_heading.a.get("href"))
-            dataset_soup = get_soup(joined_url)
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            futures = [
+                executor.submit(
+                    collection_search_get_package_data, dataset_heading, base_url
+                )
+                for dataset_heading in soup.find_all(class_="dataset-heading")
+            ]
 
-            # Determine if the dataset url should be the linked page to an external site or the current site
-            resources = dataset_soup.find("section", id="dataset-resources").find_all(
-                class_="resource-item"
-            )
-            button = resources[0].find(class_="btn-group")
-            if (
-                len(resources) == 1
-                and button is not None
-                and button.a.text == "Visit page"
-            ):
-                package.url = button.a.get("href")
-            else:
-                package.url = joined_url
+            [packages.append(package) for package in as_completed(futures)]
 
-            package.title = dataset_soup.find(itemprop="name").text.strip()
-            package.agency_name = dataset_soup.find("h1", class_="heading").text.strip()
-            package.description = dataset_soup.find(class_="notes").p.text
-
-            packages.append(package)
+        # Take a break to avoid being timed out
+        if len(futures) >= 15:
+            time.sleep(10)
 
     return packages
 
 
+def collection_search_get_package_data(dataset_heading, base_url: str):
+    package = Package()
+    joined_url = urljoin(base_url, dataset_heading.a.get("href"))
+    dataset_soup = get_soup(joined_url)
+    # Determine if the dataset url should be the linked page to an external site or the current site
+    resources = dataset_soup.find("section", id="dataset-resources").find_all(
+        class_="resource-item"
+    )
+    button = resources[0].find(class_="btn-group")
+    if len(resources) == 1 and button is not None and button.a.text == "Visit page":
+        package.url = button.a.get("href")
+    else:
+        package.url = joined_url
+
+    package.title = dataset_soup.find(itemprop="name").text.strip()
+    package.agency_name = dataset_soup.find("h1", class_="heading").text.strip()
+    package.description = dataset_soup.find(class_="notes").p.text
+
+    return package
+
+
 def get_soup(url: str) -> BeautifulSoup:
     """Returns a BeautifulSoup object for the given URL."""
+    time.sleep(1)
     response = requests.get(url)
     return BeautifulSoup(response.content, "lxml")
