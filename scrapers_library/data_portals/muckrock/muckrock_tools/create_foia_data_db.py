@@ -36,7 +36,7 @@ def fetch_page(page):
         return None
 
 
-def make_foia_db(page):
+def create_db(page):
 
     with sqlite3.connect('foia_data.db') as conn:
 
@@ -150,7 +150,7 @@ def make_foia_db(page):
 
 if __name__ == '__main__':
     try:
-        make_foia_db(page)
+        create_db(page)
     except Exception as e:
         logging.error(f'An unexpected error occurred: {e}')
         print('Check errors.log to review errors. Run make_foia_db.py again to continue')
