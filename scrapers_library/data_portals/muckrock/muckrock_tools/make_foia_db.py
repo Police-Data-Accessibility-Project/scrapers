@@ -1,11 +1,9 @@
 import requests
-import csv
-import time
-import json
 import pandas as pd
 import sqlite3
 import logging
 import os
+import json
 
 logging.basicConfig(filename='errors.log', level=logging.ERROR,
                     format='%(levelname)s: %(message)s')
@@ -21,7 +19,6 @@ max_retries = 2
 def fetch_page(page):
     response = requests.get(
         base_url, params={'page': page, 'page_size': per_page, 'format': 'json'})
-    print("headers: ", response.request.headers, 'text: ', response.text)
     if response.status_code == 200:
         return response.json()
     elif 500 <= response.status_code < 600:
@@ -60,7 +57,8 @@ def make_foia_db(page):
                 price TEXT,
                 disable_autofollowups BOOLEAN,
                 tags TEXT,
-                communications TEXT
+                communications TEXT,
+                absolute_url TEXT
             )
             ''')
 
@@ -68,8 +66,8 @@ def make_foia_db(page):
                     INSERT INTO results (id, title, slug, status, embargo_status, user, username, agency,
                                         datetime_submitted, date_due, days_until_due, date_followup,
                                         datetime_done, datetime_updated, date_embargo, tracking_id,
-                                        price, disable_autofollowups, tags, communications)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                        price, disable_autofollowups, tags, communications, absolute_url)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     '''
 
         if os.path.exists(last_page_fetched):
@@ -110,7 +108,8 @@ def make_foia_db(page):
                     result['price'],
                     result['disable_autofollowups'],
                     result['tags'],
-                    result['communications']
+                    result['communications'],
+                    result['absolute_url']
                 ))
 
             retries = 0
