@@ -65,7 +65,7 @@ pip install -r requirements.txt
 - After `foia_data.db` is created, run `search_foia_data_db.py`, which receives a search string as input and outputs a JSON file with all related foia requests for later processing by `generate_detailed_muckrock_csv.py`. For example,
 
 ```
-python3 search_foia_data_db.py --search "use of force"
+python3 search_foia_data_db.py --search_for "use of force"
 ```
 
 produces 'use_of_force.json'.
