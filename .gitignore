@@ -221,3 +221,6 @@ flycheck_*.el
 
 .vscode
 /.vscode
+
+*.db
+last_page_fetched.txt
