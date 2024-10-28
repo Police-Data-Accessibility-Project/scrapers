@@ -4,6 +4,7 @@ import sqlite3
 import logging
 import os
 import json
+import time
 
 logging.basicConfig(filename='errors.log', level=logging.ERROR,
                     format='%(levelname)s: %(message)s')
@@ -21,9 +22,12 @@ def fetch_page(page):
         base_url, params={'page': page, 'page_size': per_page, 'format': 'json'})
     if response.status_code == 200:
         return response.json()
+    elif response.status_code == 404:
+        print('No more pages to fetch')
+        return -1  # Typically 404 response will mean there are no more pages to fetch
     elif 500 <= response.status_code < 600:
         logging.error(f'Server error {response.status_code} on page {page}')
-        time.sleep(5)
+        page = page + 1
         return fetch_page(page)
     else:
         print(f'Error fetching page {page}: {response.status_code}')
@@ -77,6 +81,8 @@ def make_foia_db(page):
         while True:
             print(f'Fetching page {page}...')
             data = fetch_page(page)
+            if data == -1:  # Exit program because no more data exixts
+                break
             if data is None:
                 print(f'Skipping page {page}...')
                 page += 1
@@ -134,9 +140,6 @@ def make_foia_db(page):
                 page += 1
                 continue
 
-            if not data.get('next'):
-                break
-
             with open(last_page_fetched, mode='w') as file:
                 file.write(str(page))
 
@@ -150,4 +153,4 @@ if __name__ == '__main__':
         make_foia_db(page)
     except Exception as e:
         logging.error(f'An unexpected error occurred: {e}')
-        print('Run make_foia_db.py again to continue')
+        print('Check errors.log to review errors. Run make_foia_db.py again to continue')

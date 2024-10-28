@@ -3,10 +3,12 @@ import argparse
 import csv
 import requests
 import time
+import re
 
 # Load the JSON data
 parser = argparse.ArgumentParser(description="Parse JSON from a file.")
-parser.add_argument('--json_file', type=str, required=True, help="Path to the JSON file")
+parser.add_argument('--json_file', type=str, required=True,
+                    help="Path to the JSON file")
 
 args = parser.parse_args()
 
@@ -24,6 +26,7 @@ headers = [
     "update_method", "retention_schedule", "detail_level"
 ]
 
+
 def get_agency(agency_id):
     # API call to get agency_described
     if agency_id:
@@ -38,9 +41,11 @@ def get_agency(agency_id):
     else:
         print("Agency ID not found in item")
 
+
 def get_jurisdiction(jurisdiction_id):
     if jurisdiction_id:
-        jurisdiction_url = f"https://www.muckrock.com/api_v1/jurisdiction/{jurisdiction_id}/"
+        jurisdiction_url = f"https://www.muckrock.com/api_v1/jurisdiction/{
+            jurisdiction_id}/"
         response = requests.get(jurisdiction_url)
 
         if response.status_code == 200:
@@ -52,8 +57,9 @@ def get_jurisdiction(jurisdiction_id):
         print("Jurisdiction ID not found in item")
 
 
+output_csv = re.sub(r'_(?=[^.]*$)', '-', args.json_file[:-5]) + '.csv'
 # Open a CSV file for writing
-with open('detailed-muckrock-data.csv', 'w', newline='') as csvfile:
+with open(output_csv, 'w', newline='') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=headers)
 
     # Write the header row
@@ -67,21 +73,22 @@ with open('detailed-muckrock-data.csv', 'w', newline='') as csvfile:
         jurisdiction_data = get_jurisdiction(agency_data.get("jurisdiction"))
 
         jurisdiction_level = jurisdiction_data.get("level")
-        #federal jurisduction level
+        # federal jurisduction level
         if jurisdiction_level == "f":
             state = ""
             county = ""
             municipality = ""
             juris_type = "federal"
-        #state jurisdiction level
+        # state jurisdiction level
         if jurisdiction_level == "s":
             state = jurisdiction_data.get("name")
             county = ""
             municipality = ""
             juris_type = "state"
-        #local jurisdiction level
+        # local jurisdiction level
         if jurisdiction_level == "l":
-            parent_juris_data = get_jurisdiction(jurisdiction_data.get("parent"))
+            parent_juris_data = get_jurisdiction(
+                jurisdiction_data.get("parent"))
             state = parent_juris_data.get("abbrev")
             if "County" in jurisdiction_data.get("name"):
                 county = jurisdiction_data.get("name")
