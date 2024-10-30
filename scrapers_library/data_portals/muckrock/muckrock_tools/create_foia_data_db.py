@@ -1,11 +1,32 @@
+'''
+create_foia_data_db.py
+
+This script fetches data from the MuckRock FOIA API and stores it in a SQLite database.
+Run this prior to companion script `search_foia_data_db.py`.
+
+A successful run will output a SQLite database `foia_data.db` with one table `results`.
+The database will contain all FOIA requests available through MuckRock.
+
+Functions:
+    - create_db()
+    - fetch_page()
+    - transform_page_data()
+    - populate_db()
+    - main()
+
+Error Handling:
+Errors encountered during API requests or database operations are logged to an `errors.log` file
+and/or printed to the console.
+'''
+
+
 import requests
-import pandas as pd
 import sqlite3
 import logging
 import os
 import json
 import time
-from typing import List, Tuple, Dict, Any, Union
+from typing import List, Tuple, Dict, Any, Union, Literal
 
 logging.basicConfig(filename='errors.log', level=logging.ERROR,
                     format='%(levelname)s: %(message)s')
@@ -54,12 +75,15 @@ foia_insert_query = '''
     '''
 
 
-def create_db() -> None:
+def create_db() -> bool:
     '''
     Creates foia_data.db SQLite database with one table named `results`.
 
     Returns:
-        None
+        bool: True, if database is successfully created; False otherwise.
+
+    Raises:
+        sqlite3.Error: If the table creation operation fails, prints error and returns False.
     '''
 
     try:
@@ -67,11 +91,15 @@ def create_db() -> None:
             conn.execute(create_table_query)
             conn.commit()
         print('Successfully created foia_data.db!')
+        return True
     except sqlite3.Error as e:
         print(f'SQLite error: {e}.')
+        logging.error(
+            f'Failed to create foia_data.db due to SQLite error: {e}')
+        return False
 
 
-def fetch_page(page: int) -> Union[JSON, NO_MORE_DATA, None]:
+def fetch_page(page: int) -> Union[JSON, Literal[NO_MORE_DATA], None]:
     '''
     Fetches a page of 100 results from the MuckRock FOIA API.
 
@@ -79,9 +107,9 @@ def fetch_page(page: int) -> Union[JSON, NO_MORE_DATA, None]:
         page (int): The page number to fetch from the API.
 
     Returns:
-        Union[JSON, None, NO_MORE_DATA]:
+        Union[JSON, None, Literal[NO_MORE_DATA]]:
             - JSON Dict[str, Any]: The response's JSON data, if the request is successful.
-            - NO_MORE_DATA (int): A constant, if there are no more pages to fetch (indicated by a 404 response).
+            - NO_MORE_DATA (int = -1): A constant, if there are no more pages to fetch (indicated by a 404 response).
             - None: If there is an error other than 404.
     '''
 
@@ -160,6 +188,10 @@ def populate_db(transformed_data: List[Tuple[Any, ...]]) -> None:
 
     Returns:
         None
+
+    Raises:
+        sqlite3.Error: If the insertion operation fails, attempts to retry operation (max_retries = 2). If retries are
+                       exhausted, logs error and exits.
     '''
 
     with sqlite3.connect('foia_data.db') as conn:
@@ -195,9 +227,8 @@ def main() -> None:
 
     if not os.path.exists('foia_data.db'):
         print('Creating foia_data.db...')
-        try:
-            create_db()
-        except:
+        success = create_db()
+        if success == False:
             print('Failed to create foia_data.db')
             return
 
@@ -213,7 +244,7 @@ def main() -> None:
         page_data = fetch_page(page)
 
         if page_data == NO_MORE_DATA:
-            break  # Exit program no more data exixts
+            break  # Exit program because no more data exixts
         if page_data is None:
             print(f'Skipping page {page}...')
             page += 1

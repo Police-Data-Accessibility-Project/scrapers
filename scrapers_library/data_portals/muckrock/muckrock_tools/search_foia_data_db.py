@@ -1,3 +1,24 @@
+'''
+search_foia_data_db.py
+
+This script provides search functionality for the `foia_data.db` SQLite database. The search looks in `title`s and
+`tags` of FOIA requests that match an input string provided by the user.
+Run this after companion script `create_foia_data_db.py`.
+
+A successful run will output a JSON file containing entries matching the search string.
+
+Functions:
+    - parser_init()
+    - search_foia_db()
+    - parse_communications_column()
+    - generate_json()
+    - main()
+
+Error Handling:
+Errors encountered during database operations, JSON parsing, or file writing are printed to the console.
+'''
+
+
 import sqlite3
 import pandas as pd
 import json
@@ -45,6 +66,10 @@ def search_foia_db(search_string: str) -> Union[pd.DataFrame, None]:
         Union[pandas.DataFrame, None]:
             - pandas.DataFrame: A DataFrame containing the matching entries from the database.
             - None: If an error occurs during the database operation.
+
+    Raises:
+        sqlite3.Error: If any database operation fails, prints error and returns None.
+        Exception: If any unexpected error occurs, prints error and returns None.
     '''
 
     print(f'Searching foia_data.db for "{search_string}"...')
@@ -81,7 +106,10 @@ def parse_communications_column(communications) -> List[Dict]:
 
     Returns:
         list (List[Dict]): A list containing the parsed JSON data. If the input is NaN (missing values) or
-        there is a JSON decoding error, an empty list is returned.
+            there is a JSON decoding error, an empty list is returned.
+
+    Raises:
+        json.JSONDecodeError: If deserialization fails, prints error and returns empty list.
     '''
 
     if pd.isna(communications):
@@ -105,6 +133,9 @@ def generate_json(df: pd.DataFrame, search_string: str) -> None:
 
     Returns:
         None
+
+    Raises:
+        Exception: If writing to JSON file operation fails, prints error and returns.
     '''
 
     output_json = f'{search_string.replace(' ', '_')}.json'

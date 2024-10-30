@@ -1,3 +1,13 @@
+'''
+utils.py
+
+Provides useful functions for muckrock_tools.
+
+Functions:
+    - format_filename_json_to_csv()
+'''
+
+
 import re
 
 
