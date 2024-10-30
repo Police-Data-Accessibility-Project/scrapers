@@ -62,9 +62,11 @@ pip install -r requirements.txt
 
 - `create_foia_data_db.py` creates and populates a SQLite database (`foia_data.db`) with all MuckRock foia requests. Various errors outside the scope of this script may occur; a counter (`last_page_fetched.txt`) is created to keep track of the most recent page fetched and inserted into the database. If the program exits prematurely, simply run `create_foia_data_db.py` again to continue where you left off. A log file is created to capture errors for later reference.
 
-- After `foia_data.db` is created, run `search_foia_data_db.py`, which receives a search string as input and outputs a JSON file with all related foia requests for later processing by `generate_detailed_muckrock_csv.py`. For example,
+- After `foia_data.db` is created, run `search_foia_data_db.py`, which receives a search string as input and outputs a JSON file with all related FOIA requests for later processing by `generate_detailed_muckrock_csv.py`. For example,
 
 ```
+python3 create_foia_data_db.py
+
 python3 search_foia_data_db.py --search_for "use of force"
 ```
 
