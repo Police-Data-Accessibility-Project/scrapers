@@ -266,4 +266,4 @@ if __name__ == '__main__':
         main()
     except Exception as e:
         logging.error(f'An unexpected error occurred: {e}')
-        print('Check errors.log to review errors. Run make_foia_db.py again to continue')
+        print('Check errors.log to review errors. Run create_foia_data_db.py again to continue')
