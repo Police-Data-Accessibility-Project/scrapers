@@ -3,7 +3,7 @@ import argparse
 import csv
 import requests
 import time
-import re
+from utils import format_filename_json_to_csv
 
 # Load the JSON data
 parser = argparse.ArgumentParser(description="Parse JSON from a file.")
@@ -57,7 +57,7 @@ def get_jurisdiction(jurisdiction_id):
         print("Jurisdiction ID not found in item")
 
 
-output_csv = re.sub(r'_(?=[^.]*$)', '-', args.json_file[:-5]) + '.csv'
+output_csv = format_filename_json_to_csv(args.json_file)
 # Open a CSV file for writing
 with open(output_csv, 'w', newline='') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=headers)
