@@ -179,12 +179,13 @@ def transform_page_data(data_to_transform: JSON) -> List[Tuple[Any, ...]]:
     return transformed_data
 
 
-def populate_db(transformed_data: List[Tuple[Any, ...]]) -> None:
+def populate_db(transformed_data: List[Tuple[Any, ...]], page: int) -> None:
     '''
     Populates foia_data.db SQLite database with the transfomed FOIA request data.
 
     Args:
         transformed_data (List[Tuple[Any, ...]]): A list of tuples, where each tuple contains the fields of a single FOIA request.
+        page (int): The current page number for printing and logging errors.
 
     Returns:
         None
@@ -252,7 +253,7 @@ def main() -> None:
 
         transformed_data = transform_page_data(page_data)
 
-        populate_db(transformed_data)
+        populate_db(transformed_data, page)
 
         with open(last_page_fetched, mode='w') as file:
             file.write(str(page))
