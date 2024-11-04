@@ -19,6 +19,14 @@ class Package:
     agency_name: str = ""
     description: str = ""
 
+    def to_dict():
+        return {
+            "url": self.url,
+            "title": self.title,
+            "agency_name": self.agency_name,
+            "description": self.description,
+        }
+
 
 def ckan_package_search(
     base_url: str,
@@ -62,6 +70,29 @@ def ckan_package_search(
     return results
 
 
+def ckan_package_search_from_organization(
+    base_url: str, organization_id: str
+) -> list[dict[str, Any]]:
+    """Returns a list of CKAN packages from an organization.
+
+    :param base_url: Base URL of the CKAN portal. e.g. "https://catalog.data.gov/"
+    :param organization_id: The organization's ID.
+    :return: List of dictionaries representing the packages associated with the organization.
+    """
+    remote = RemoteCKAN(base_url, get_only=True)
+    organization = remote.action.organization_show(
+        id=organization_id, include_datasets=True
+    )
+    packages = organization["packages"]
+    results = []
+
+    for package in packages:
+        query = f"id:{package['id']}"
+        results += ckan_package_search(base_url=base_url, query=query)
+
+    return results
+
+
 def ckan_group_package_show(
     base_url: str, id: str, limit: Optional[int] = sys.maxsize
 ) -> list[dict[str, Any]]:
@@ -73,8 +104,8 @@ def ckan_group_package_show(
     :return: List of dictionaries representing the packages associated with the group.
     """
     remote = RemoteCKAN(base_url, get_only=True)
-    result = remote.action.group_package_show(id=id, limit=limit)
-    return result
+    results = remote.action.group_package_show(id=id, limit=limit)
+    return results
 
 
 def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
@@ -104,7 +135,10 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
                 for dataset_heading in soup.find_all(class_="dataset-heading")
             ]
 
-            [packages.append(package) for package in as_completed(futures)]
+            [
+                packages.append(package.result().to_dict())
+                for package in as_completed(futures)
+            ]
 
         # Take a break to avoid being timed out
         if len(futures) >= 15:
