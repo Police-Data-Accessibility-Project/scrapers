@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This scraper can be used to retrieve package information from CKAN, which hosts open data projects such as <https://data.gov/>
+This scraper can be used to retrieve package information from [CKAN](https://ckan.org/), which hosts open data projects such as <https://data.gov/>. CKAN API documentation can be found at <https://docs.ckan.org/en/2.9/api/>
 
 The scraper's functions can be found in `ckan_scraper.py`.
 
@@ -46,6 +46,8 @@ The best way to determine if a data catalog is using CKAN is to attempt to query
 
 *NOTE: Some hosts use a different base URL for API requests. For example, Canada's Open Government Portal can be found at <https://search.open.canada.ca/opendata/> while the API access link is <https://open.canada.ca/data/en/api/3/action/package_search> as described in their [Access our API](https://open.canada.ca/en/access-our-application-programming-interface-api) page*
 
+Another way to tell is by looking at the page layout. Most CKAN instances have a similar layout to one another. You can see an example at <https://catalog.data.gov/dataset/> and <https://opendata.swiss/en/group/gove>. Both catalogues have a sidebar on the left with search refinement options, a search box on the top below the page title, and a list of datasets to the right of the sidebar among other similarities.
+
 ## Documentation
 
 `ckan_package_search(base_url: str, query: Optional[str], rows: Optional[int], start: Optional[int], **kwargs) -> list[dict[str, Any]]`
@@ -55,7 +57,7 @@ Searches for packages (datasets) in a CKAN data portal that satisfies a given se
 ### Parameters
 
 * **base_url** - The base URL to search from. e.g. "https://catalog.data.gov/"
-* **query (optional)** - The keyword string to search for. e.g. "police". Leaving empty will return all packages in the package list.
+* **query (optional)** - The keyword string to search for. e.g. "police". Leaving empty will return all packages in the package list. Multi-word searches should be done with double quotes around the search term. For example, '"calls for service"' will return packages with the term "calls for service" while 'calls for service' will return packages with either "calls", "for", or "service" as keywords.
 * **rows (optional)** - The maximum number of results to return. Leaving empty will return all results.
 * **start (optional)** - Which result number to start at. Leaving empty will start at the first result.
 * **kwargs (optional)** - Additional keyword arguments. For more information on acceptable keyword arguments and their function see <https://docs.ckan.org/en/2.10/api/index.html#ckan.logic.action.get.package_search>
