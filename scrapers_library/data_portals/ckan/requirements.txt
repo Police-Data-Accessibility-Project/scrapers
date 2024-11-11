@@ -2,3 +2,5 @@ from_root
 ckanapi
 bs4
 lxml
+tqdm
+pandas

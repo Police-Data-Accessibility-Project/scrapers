@@ -1,3 +1,4 @@
+"""Toolkit of functions that use ckanapi to retrieve packages from CKAN data portals"""
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -162,6 +163,7 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
 
 
 def _collection_search_get_package_data(dataset_content, base_url: str):
+    """Parses the dataset content and returns a Package object."""
     package = Package()
     joined_url = urljoin(base_url, dataset_content.a.get("href"))
     dataset_soup = _get_soup(joined_url)

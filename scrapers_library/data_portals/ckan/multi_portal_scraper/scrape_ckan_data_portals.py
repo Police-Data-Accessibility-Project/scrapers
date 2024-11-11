@@ -1,9 +1,11 @@
+"""Retrieves packages from CKAN data portals and parses relevant information then outputs to a CSV file"""
 from itertools import chain
 import json
 import sys
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 
 from from_root import from_root
+import pandas as pd
 from tqdm import tqdm
 
 p = from_root("CONTRIBUTING.md").parent
@@ -19,9 +21,33 @@ from scrapers_library.data_portals.ckan.ckan_scraper import (
 from search_terms import package_search, group_search, organization_search
 
 
+def perform_search(
+    search_func: Callable,
+    search_terms: list[dict[str, Any]],
+    results: list[dict[str, Any]],
+):
+    """Executes a search function with the given search terms.
+
+    :param search_func: The search function to execute.
+    :param search_terms: The list of urls and search terms.
+    :param results: The list of results.
+    :return: Updated list of results.
+    """
+    key = list(search_terms[0].keys())[1]
+    for search in tqdm(search_terms):
+        results += [search_func(search["url"], item) for item in search[key]]
+
+    return results
+
+
 def get_collection_child_packages(
     results: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
+    """Retrieves the child packages of each collection.
+
+    :param results: List of results.
+    :return: List of results containing child packages.
+    """
     new_list = []
 
     for result in tqdm(results):
@@ -47,6 +73,11 @@ def get_collection_child_packages(
 
 
 def filter_result(result: dict[str, Any] | Package):
+    """Filters the result based on the defined criteria.
+
+    :param result: The result to filter.
+    :return: True if the result should be included, False otherwise.
+    """
     if isinstance(result, Package) or "extras" not in result.keys():
         return True
 
@@ -62,25 +93,34 @@ def filter_result(result: dict[str, Any] | Package):
         elif extra["key"] == "accessLevel" and extra["value"] == "non-public":
             return False
 
+    # Remove packages with no data or landing page
+    if len(result["resources"]) == 0:
+        landing_page = next(
+            (extra for extra in result["extras"] if extra["key"] == "landingPage"), None
+        )
+        if landing_page is None:
+            return False
+
     return True
 
 
 def parse_result(result: dict[str, Any] | Package) -> dict[str, Any]:
+    """Retrieves the important information from the package.
+
+    :param result: The result to parse.
+    :return: The parsed result as a dictionary.
+    """
     package = Package()
 
     if isinstance(result, Package):
-        return parse_result_package(result)
+        package.record_format = get_record_format_list(package)
+        return package.to_dict()
 
     package.record_format = get_record_format_list(
         package=package, resources=result["resources"]
     )
 
-    if len(result["resources"]) == 1 and package.record_format == ["HTML text"]:
-        package.url = result["resources"][0]["url"]
-    else:
-        package.url = f"{result['base_url']}dataset/{result['name']}"
-        package.data_portal_type = "CKAN"
-
+    package = get_source_url(result, package)
     package.title = result["title"]
     package.description = result["notes"]
     package.agency_name = result["organization"]["title"]
@@ -90,15 +130,16 @@ def parse_result(result: dict[str, Any] | Package) -> dict[str, Any]:
     return package.to_dict()
 
 
-def parse_result_package(package: Package) -> dict[str, Any]:
-    package.record_format = get_record_format_list(package)
-    return package.to_dict()
-
-
 def get_record_format_list(
     package: Package,
     resources: Optional[list[dict[str, Any]]] = None,
 ) -> list[str]:
+    """Retrieves the record formats from the package's resources.
+
+    :param package: The package to retrieve record formats from.
+    :param resources: The list of resources.
+    :return: List of record formats.
+    """
     data_types = [
         "CSV",
         "PDF",
@@ -147,9 +188,11 @@ def get_record_format_list(
         else:
             format = resource["format"]
 
+        # Is the format one of our conversion types?
         if format in type_conversion.keys():
             format = type_conversion[format]
 
+        # Add the format to the package's record format list if it's not already there and is a valid data type
         if format not in package.record_format and format in data_types:
             package.record_format.append(format)
 
@@ -159,14 +202,47 @@ def get_record_format_list(
     return package.record_format
 
 
+def get_source_url(result: dict[str, Any], package: Package) -> Package:
+    """Retrieves the source URL from the package's resources.
+
+    :param result: The result to retrieve source URL from.
+    :param package: The package to update with the source URL.
+    :return: The updated package.
+    """
+    # If there is only one resource available and it's a link
+    if len(result["resources"]) == 1 and package.record_format == ["HTML text"]:
+        # Use the link to the external page
+        package.url = result["resources"][0]["url"]
+    # If there are no resources available
+    elif len(result["resources"]) == 0:
+        # Use the dataset's external landing page
+        package.url = [
+            extra["value"]
+            for extra in result["extras"]
+            if extra["key"] == "landingPage"
+        ]
+        package.record_format = ["HTML text"]
+    else:
+        # Use the package's dataset information page
+        package.url = f"{result['base_url']}dataset/{result['name']}"
+        package.data_portal_type = "CKAN"
+
+    return package
+
+
 def get_supplying_entity(result: dict[str, Any]) -> str:
+    """Retrieves the supplying entity from the package's extras.
+
+    :param result: The result to retrieve supplying entity from.
+    :return: The supplying entity.
+    """
     if "extras" not in result.keys():
         return result["organization"]["title"]
-    
+
     for extra in result["extras"]:
         if extra["key"] == "publisher":
             return extra["value"]
-        
+
     return result["organization"]["title"]
 
 
@@ -174,25 +250,21 @@ def main():
     results = []
 
     print("Gathering results...")
-    for search in tqdm(package_search):
-        results += [
-            ckan_package_search(base_url=search["url"], query=query)
-            for query in search["terms"]
-        ]
-
-    for search in tqdm(group_search):
-        results += [
-            ckan_group_package_show(base_url=search["url"], id=id)
-            for id in search["ids"]
-        ]
-
-    for search in tqdm(organization_search):
-        results += [
-            ckan_package_search_from_organization(
-                base_url=search["url"], organization_id=id
-            )
-            for id in search["ids"]
-        ]
+    results = perform_search(
+        search_func=ckan_package_search,
+        search_terms=package_search,
+        results=results,
+    )
+    results = perform_search(
+        search_func=ckan_group_package_show,
+        search_terms=group_search,
+        results=results,
+    )
+    results = perform_search(
+        search_func=ckan_package_search_from_organization,
+        search_terms=organization_search,
+        results=results,
+    )
 
     flat_list = list(chain(*results))
     # Deduplicate entries
@@ -202,6 +274,10 @@ def main():
 
     filtered_results = list(filter(filter_result, flat_list))
     parsed_results = list(map(parse_result, filtered_results))
+
+    # Write to CSV
+    df = pd.DataFrame(parsed_results)
+    df.to_csv("results.csv")
 
 
 if __name__ == "__main__":
