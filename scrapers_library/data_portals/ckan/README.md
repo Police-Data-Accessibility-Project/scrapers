@@ -67,6 +67,20 @@ Searches for packages (datasets) in a CKAN data portal that satisfies a given se
 The function returns a list of dictionaries containing matching package results.
 
 ---
+`ckan_package_search_from_organization(base_url: str, organization_id: str) -> list[dict[str, Any]]`
+
+Returns a list of CKAN packages from an organization. Due to CKAN limitations, only 10 packages are able to be returned.
+
+### Parameters
+
+* **base_url** - The base URL to search from. e.g. "https://catalog.data.gov/"
+* **organization_id** - The ID of the organization. This can be retrieved by searching for a package and finding the "id" key in the "organization" key.
+
+### Return
+
+The function returns a list of dictionaries containing matching package results. Only 10 packages are able to be returned.
+
+---
 
 `ckan_group_package_show(base_url: str, id: str, limit: Optional[int]) -> list[dict[str, Any]]`
 

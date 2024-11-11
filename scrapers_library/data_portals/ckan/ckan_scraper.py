@@ -1,5 +1,6 @@
 from concurrent.futures import as_completed, ThreadPoolExecutor
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime
 import math
 import sys
 
@@ -14,17 +15,26 @@ import requests
 
 @dataclass
 class Package:
+    base_url: str = ""
     url: str = ""
     title: str = ""
     agency_name: str = ""
     description: str = ""
+    supplying_entity: str = ""
+    record_format: list = field(default_factory=lambda: [])
+    data_portal_type: str = ""
+    source_last_updated: str = ""
 
-    def to_dict():
+    def to_dict(self):
         return {
-            "url": self.url,
-            "title": self.title,
+            "source_url": self.url,
+            "submitted_name": self.title,
             "agency_name": self.agency_name,
             "description": self.description,
+            "supplying_entity": self.supplying_entity,
+            "record_format": self.record_format,
+            "data_portal_type": self.data_portal_type,
+            "source_last_updated": self.source_last_updated,
         }
 
 
@@ -54,6 +64,8 @@ def ckan_package_search(
         packages = remote.action.package_search(
             q=query, rows=num_rows, start=start, **kwargs
         )
+        # Add the base_url to each package
+        [package.update(base_url=base_url) for package in packages["results"]]
         results += packages["results"]
 
         total_results = packages["count"]
@@ -73,7 +85,7 @@ def ckan_package_search(
 def ckan_package_search_from_organization(
     base_url: str, organization_id: str
 ) -> list[dict[str, Any]]:
-    """Returns a list of CKAN packages from an organization.
+    """Returns a list of CKAN packages from an organization. Only 10 packages are able to be returned.
 
     :param base_url: Base URL of the CKAN portal. e.g. "https://catalog.data.gov/"
     :param organization_id: The organization's ID.
@@ -105,6 +117,8 @@ def ckan_group_package_show(
     """
     remote = RemoteCKAN(base_url, get_only=True)
     results = remote.action.group_package_show(id=id, limit=limit)
+    # Add the base_url to each package
+    [package.update(base_url=base_url) for package in results]
     return results
 
 
@@ -117,7 +131,7 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
     """
     packages = []
     url = f"{base_url}?collection_package_id={collection_id}"
-    soup = get_soup(url)
+    soup = _get_soup(url)
 
     # Calculate the total number of pages of packages
     num_results = int(soup.find(class_="new-results").text.split()[0].replace(",", ""))
@@ -125,18 +139,18 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
 
     for page in range(1, pages + 1):
         url = f"{base_url}?collection_package_id={collection_id}&page={page}"
-        soup = get_soup(url)
+        soup = _get_soup(url)
 
         with ThreadPoolExecutor(max_workers=10) as executor:
             futures = [
                 executor.submit(
-                    collection_search_get_package_data, dataset_heading, base_url
+                    _collection_search_get_package_data, dataset_content, base_url
                 )
-                for dataset_heading in soup.find_all(class_="dataset-heading")
+                for dataset_content in soup.find_all(class_="dataset-content")
             ]
 
             [
-                packages.append(package.result().to_dict())
+                packages.append(package.result())
                 for package in as_completed(futures)
             ]
 
@@ -147,10 +161,10 @@ def ckan_collection_search(base_url: str, collection_id: str) -> list[Package]:
     return packages
 
 
-def collection_search_get_package_data(dataset_heading, base_url: str):
+def _collection_search_get_package_data(dataset_content, base_url: str):
     package = Package()
-    joined_url = urljoin(base_url, dataset_heading.a.get("href"))
-    dataset_soup = get_soup(joined_url)
+    joined_url = urljoin(base_url, dataset_content.a.get("href"))
+    dataset_soup = _get_soup(joined_url)
     # Determine if the dataset url should be the linked page to an external site or the current site
     resources = dataset_soup.find("section", id="dataset-resources").find_all(
         class_="resource-item"
@@ -160,15 +174,24 @@ def collection_search_get_package_data(dataset_heading, base_url: str):
         package.url = button.a.get("href")
     else:
         package.url = joined_url
-
+        package.data_portal_type = "CKAN"
+    package.base_url = base_url
     package.title = dataset_soup.find(itemprop="name").text.strip()
     package.agency_name = dataset_soup.find("h1", class_="heading").text.strip()
+    package.supplying_entity = dataset_soup.find(property="dct:publisher").text.strip()
     package.description = dataset_soup.find(class_="notes").p.text
-
+    package.record_format = [
+        record_format.text.strip() for record_format in dataset_content.find_all("li")
+    ]
+    package.record_format = list(set(package.record_format))
+    
+    date = dataset_soup.find(property="dct:modified").text.strip()
+    package.source_last_updated = datetime.strptime(date, "%B %d, %Y").strftime("%Y-%d-%m")
+    
     return package
 
 
-def get_soup(url: str) -> BeautifulSoup:
+def _get_soup(url: str) -> BeautifulSoup:
     """Returns a BeautifulSoup object for the given URL."""
     time.sleep(1)
     response = requests.get(url)
