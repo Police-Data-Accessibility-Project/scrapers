@@ -11,7 +11,7 @@ from tqdm import tqdm
 p = from_root("CONTRIBUTING.md").parent
 sys.path.insert(1, str(p))
 
-from scrapers_library.data_portals.ckan.ckan_scraper import (
+from scrapers_library.data_portals.ckan.ckan_scraper_toolkit import (
     ckan_package_search,
     ckan_group_package_show,
     ckan_collection_search,
