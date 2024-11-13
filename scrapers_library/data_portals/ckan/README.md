@@ -25,10 +25,12 @@ Running the scraper will output a list of packages to a CSV file using the searc
     ```cmd
     cd scrapers_library/data_portals/ckan/
     ```
-2. Create a Python virtual environment
+2. Create and activate a Python virtual environment
     ```cmd
     python -m venv venv
+    source venv/bin/activate
     ```
+
 3. Install the requirements
     ```cmd
     pip install -r requirements.txt
@@ -37,6 +39,7 @@ Running the scraper will output a list of packages to a CSV file using the searc
     ```cmd
     python scrape_ckan_data_portals.py
     ```
+5. Review the generated `results.csv` file.
 
 ## How can I tell if a website I want to scrape is hosted using CKAN?
 
