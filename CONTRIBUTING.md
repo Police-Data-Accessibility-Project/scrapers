@@ -21,7 +21,7 @@ You can read more about our philosophy and priorities around scraping [here](htt
 
 What question are you trying to answer? What kind of data are you trying to help people use or preserve?
 
-You can browse our [Data Sources](https://docs.pdap.io/activities/data-sources/explore-data-sources) and find a source to scrape. If the source you want to scrape isn't there, please let us know as part of your submission or [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). Filling in that form usually takes less than 5 minutes.
+You can browse our [Data Sources](https://data-sources.pdap.io) and find a source to scrape. If the source you want to scrape isn't there, please let us know as part of your submission or [add it yourself](https://docs.pdap.io/activities/data-sources/contribute-data-sources). Filling in that form usually takes less than 5 minutes.
 
 ## 2. Decide where a new scraper should live.
 
